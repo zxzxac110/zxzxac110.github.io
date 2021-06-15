@@ -145,20 +145,20 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-项目相关-11-Worker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-项目相关-14-模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/">11-Worker</a>
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-14-%E6%A8%A1%E5%9D%97/">14-模块 CommonJs和es6的Module的区别</a>
     </h1>
   
 
         
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-14-%E6%A8%A1%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
       </header>
@@ -166,13 +166,85 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p>  <a href="/项目相关-5-解答题/#title1" target="_self">程序 进程 线程</a><br>  由于 Chrome 不允许通过本地文件访问使用Web Worker。<br>  所以可以<br>  <strong>1.更换使用其他浏览器尝试</strong><br>  <strong>2.文件部署到服务器中【上线环境解决方法】</strong></p>
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>借鉴： <a target="_blank" rel="noopener" href="https://blog.csdn.net/itpika/article/details/104240804">https://blog.csdn.net/itpika/article/details/104240804</a></p>
+<h3 id="四种模块规范"><a href="#四种模块规范" class="headerlink" title="四种模块规范"></a>四种模块规范</h3><div style="width:400px;">
+
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AMD规范</td>
+<td>requires</td>
+<td>浏览器端</td>
+</tr>
+<tr>
+<td>CMD规范</td>
+<td>sea.js</td>
+<td>浏览器端</td>
+</tr>
+<tr>
+<td>CommonJS规范</td>
+<td>nodejs</td>
+<td>服务器端</td>
+</tr>
+<tr>
+<td>es6 规范</td>
+<td>-</td>
+<td>浏览器和服务器端</td>
+</tr>
+</tbody></table>
+</div>
+
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>CommonJS 是一个标准规范.是JS向服务器端发展的规范</p>
+<p>历史上，js一直没有模块(module)体系，无法将一个项目拆分成多个模块文件。正对这一情况，社区出现了一些统一的规范：CommonJs和AMD，前者是针对服务端的js，也就是nodejs。后者是针对浏览器的。ES6在语言标准层面上，实现了模块功能，而且实现也比较简单。完全可以取代CommonJs和AMD。达成前后端js的模块风格统一。不过目前还未完全达到这一目的。nodejs目前主流还是采用CommonJS规范。不过在v13.2版本，nodejs已经实现了ES6模块语法，还未正式替换，在考察阶段。v13.2版本将js文件以 .mjs结尾，nodejs将它视为ES6模块。以 .cjs结尾则视为CommonJS模块。也可以在包的package.json文件中增加 “type”: “module”信息。nodejs则将整个包都视为ES6模块来加载运行。</p>
 <blockquote>
-<p>问题:如果1.js执行时间非常长，网页出现停止现象(空白)<br>  解决方案:创建一个新线程(Worker)让它执行耗时js任务, UI主线只负责绘制二个按钮<br>  1.js<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟一个较长的js</span></span><br><span class="line"><span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> end = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">&#125; <span class="keyword">while</span> (</span><br><span class="line">  end - start &lt; <span class="number">5000</span>                 </span><br><span class="line">);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;执行完毕&quot;</span>)</span><br></pre></td></tr></table></figure><br>  1.html<br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>模拟JS执行超时结果<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>1111<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &lt;script src=&quot;1.js&quot;&gt;&lt;/script&gt; </span></span><br><span class="line"><span class="comment">如果直接引用 1.js 会发现网页出现5s空白 或者 只有111按钮 222按钮会等5s后才出现。</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 创建新对象并且新线程的执行01:js任务 不会出现空白 和只有111按钮的状况</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> w =<span class="keyword">new</span> Worker(<span class="string">&quot;./1.js&quot;</span>)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>22222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure><br>  总结:WebWorker 新线程用于执行耗时js任务 提高网页效率<br>  js任务不能有DOM/BOM/jquery.js 代码</p>
+<p>commonjs与ES6的module还是有很大区别的：<br>    1. 两者的模块导入导出语法不同，commonjs是module.exports，exports导出，require导入；ES6则是export导出，import导入。<br>    2. commonjs是运行时加载模块，ES6是在静态编译期间就确定模块的依赖。<br>    3. ES6在编译期间会将所有import提升到顶部，commonjs不会提升require。<br>    4. commonjs导出的是一个值拷贝，会对加载结果进行缓存，一旦内部再修改这个值，则不会同步到外部。ES6是导出的一个引用，内部修改可以同步到外部。<br>    5. 两者的循环导入的实现原理不同，commonjs是当模块遇到循环加载时，返回的是当前已经执行的部分的值，而不是代码全部执行后的值，两者可能会有差异。所以，输入变量的时候，必须非常小心。ES6 模块是动态引用，如果使用import从一个模块加载变量（即import foo from ‘foo’），那些变量不会被缓存，而是成为一个指向被加载模块的引用，需要开发者自己保证，真正取值的时候能够取到值。<br>    6. commonjs中顶层的this指向这个模块本身，而ES6中顶层this指向undefined。<br>    7. 然后就是commonjs中的一些顶层变量在ES6中不再存在：</p>
 </blockquote>
-<blockquote>
-<p>通讯<br>  <code>postMessage</code> 发送<br>  <code>onmessage</code> 接受<br>   2.js<br>   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//接收 2.hteml发送的数据</span></span><br><span class="line">  onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.console.log(<span class="string">&#x27;js接受到消息:&#x27;</span> + e.data) <span class="comment">// js接受到消息:1</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 发送</span></span><br><span class="line">postMessage(<span class="string">&quot;2&quot;</span>)</span><br></pre></td></tr></table></figure><br>   2.html<br>   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>02.html UI进程<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> w = <span class="keyword">new</span> Worker(<span class="string">&quot;./02.js&quot;</span>)</span></span><br><span class="line"><span class="javascript">  w.postMessage(<span class="string">&quot;1&quot;</span>)</span></span><br><span class="line"><span class="javascript">  w.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123; <span class="comment">// 接收</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&#x27;得到js传递的消息:&#x27;</span> + e.data) <span class="comment">// 得到js传递的消息:2</span></span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>CommonJS规范</th>
+<th>es6 规范</th>
+<th>es6 规范</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>导出 1.js</td>
+<td><code>Module.exports</code>={<br> aaa:aaa, <br> …<br>}</td>
+<td><code>export</code> var aaa=’aaa’ <br> <code>export</code> function fun(){}</td>
+<td><code>export default&#123; *:*&#125;</code></td>
+</tr>
+<tr>
+<td>引入</td>
+<td><code>require(&#39;./1.js&#39;)</code></td>
+<td><code>import &#123;**, **, ...&#125; from &#39;./1.js&#39;</code> 按需引入</td>
+<td><code>import ** from &#39;./1.js&#39; </code></td>
+</tr>
+<tr>
+<td>导出数量</td>
+<td>只能导出一个对象</td>
+<td>导出多个变量和方法</td>
+<td>默认导出一个对象</td>
+</tr>
+<tr>
+<td>使用限制</td>
+<td>可以在顶部或者内部</td>
+<td>只能在顶部</td>
+<td>只能在顶部</td>
+</tr>
+<tr>
+<td>支持情况</td>
+<td>服务端，在nodeJs中可以直接使用</td>
+<td>目前还不被大部分的浏览器所支出，只能使用编译器处理转化为es5</td>
+<td>目前还不被大部分的浏览器所支出，只能使用编译器处理转化为es5</td>
+</tr>
+</tbody></table>
 
         
       
@@ -197,7 +269,342 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/">展开全文 >></a>
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-14-%E6%A8%A1%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-项目相关-13-Webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/">13-Webpack</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>中文网站：<a target="_blank" rel="noopener" href="https://www.webpackjs.com/">https://www.webpackjs.com/</a></p>
+<ul>
+<li><p>概念：webpack是一个javaScript应用程序的静态模块打包器.当webpack处理应用程序的时候.它会递归的构建一个关系依赖图.其中就包含应用程序需要的每一个模块（js.css.图片）.最后将所有的这些模块打包成一个资源包（bundle）文件</p>
+</li>
+<li><p>用途：资源打包后，再供客户端一次性加载，只需要请求一个文件,减少请求次数和请求数据总大小，从而提高访问效率。<br>注意：Webpack本身用于打包静态资源，通常的使用场景是：项目初步开发完成后，运行Webpack(是一个NPM扩展包)，把需要处理的静态资源打包，把得到的打包文件和HTML文件一起发布到WEB服务器(可以是Node/PHP/Java等)上供客户端访问。</p>
+</li>
+<li><p>18.webpackss\webpack-myapp</p>
+</li>
+</ul>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>1 先编写webpack.config.js声明入口和输出<br>2 执行Webpack打包过程<br>3 使用过程：<br>  (1)创建客户端项目，编写HTML/CSS/JS/图片等文件<br>  (2)创建项目的描述文件：package.json<br>    npm  init<br>  (3)下载webpack及其依赖的模块，并添加为当前项目的“开发阶段依赖模块”<br>    npm  install webpack  –save-dev<br>  (4)创建webpack主配置文件： webpack.config.js<br>   webpack.config.js    同 package.json在同一级<br>内容输入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置文件.将来会被nodejs运行 所以用Nodejs的导出方式</span></span><br><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    mode:<span class="string">&#x27;development&#x27;</span>,         <span class="comment">// 运行模式：开发模式</span></span><br><span class="line">    <span class="comment">//mode:&#x27;production&#x27;         // 产品模式.会对代码进行压缩.打包过程会慢</span></span><br><span class="line">    entry:<span class="string">&#x27;./src/js/index2.js&#x27;</span>,  <span class="comment">//入口,入口文件.从哪个文件开始打包</span></span><br><span class="line">    output:&#123;                    <span class="comment">//出口文件.打包后输出的文件.要求使用绝对路径</span></span><br><span class="line">        path:__dirname+<span class="string">&#x27;/dist&#x27;</span>, <span class="comment">//目录.dist文件后续会自动创建</span></span><br><span class="line">        filename:<span class="string">&#x27;bundle.js&#x27;</span>    <span class="comment">//文件名称</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//3.加载器.默认情况下.webpacks只能打包JS文件.如果想打包其他格式文件需要有对应的加载器（loader）</span></span><br><span class="line">    <span class="built_in">module</span>:&#123;</span><br><span class="line">        rules:[</span><br><span class="line">            <span class="comment">//检查如果模块以css结尾的话.那么就使用指定的加载器</span></span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.css$/</span>, <span class="comment">// 正则判断文件名后缀</span></span><br><span class="line">                use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>] <span class="comment">//  npm install style-loader css-loader  --save-dev</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.scss$/</span>,</span><br><span class="line">                use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;sass-loader&#x27;</span>] <span class="comment">// npm install sass-loader node-sass --save-dev</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;   <span class="comment">//图片和字体的文件名后缀</span></span><br><span class="line">                test:<span class="regexp">/\.jpg|gif|png|bmp|eot|ttf|woff|woff2|svg$/</span>,</span><br><span class="line">                use:<span class="string">&#x27;url-loader?limit=25600&#x27;</span>  <span class="comment">//limit 大小 1024*25kb  npm install file-loader url-loader --save-dev</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins:[] <span class="comment">// 插件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  (5)运行webpack，根据主配置文件对静态资源进行打包<br>    Nodejs 运行 webpack文件<br>    <code>node  ./node_modules/webpack/bin/webpack.js</code><br>    或者配置为<br>  <code>scripts： &quot;build&quot;: &quot;webpack&quot;</code>，用 <code>npm  run  build</code>方式运行</p>
+<p>  如果输入报错.先输入 <code>npm install webpack-cli –global</code>或<code>npm install webpack-cli --save-dev</code><br>  再输入webpack</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-项目相关-12-webSocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/">12-webSocket</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>/12.HTML5/day6<br>/ls-protogenesis-lx/websocket - 运行chat_app.js</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><pre><code>webSocket工作方式:广播和收听
+    客户端连接到服务器上就不再断开双方都可以随时向对方发送数据</code></pre>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>下载socket.io服务器端第三方模块<br>#npm i socket.io<br>地址下载 <a target="_blank" rel="noopener" href="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js">https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js</a></p>
+<p>服务端<br><strong>X.on()</strong> 接受消息<br><strong>X.emit(名称,内容)</strong> 发送消息<br><strong>connection</strong> 默认登陆触发 事件名称<br><strong>disconnect</strong> 默认对出触发 事件名称</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app=<span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>).createServer();         <span class="comment">// 1.创建一个服务对象</span></span><br><span class="line"><span class="keyword">var</span> io=<span class="built_in">require</span>(<span class="string">&quot;socket.io&quot;</span>)(app);               <span class="comment">// 2.创建一个io对象</span></span><br><span class="line">app.listen(<span class="number">3000</span>)                                <span class="comment">// 3.绑定服务器监听端口 3000</span></span><br><span class="line"><span class="keyword">var</span> clientCount=<span class="number">0</span>;                              <span class="comment">// 4.创建变量 clientCount 客户端数量</span></span><br><span class="line">io.on(<span class="string">&quot;connection&quot;</span>,<span class="function">(<span class="params">socket</span>)=&gt;</span>&#123;                  <span class="comment">// 5.为io对象绑定事件 connection  每次有人访问 都会触发此事件</span></span><br><span class="line">  clientCount++;</span><br><span class="line">  <span class="built_in">console</span>.log(socket.id) <span class="comment">// 具体属性自己百度。反正有个随机唯一的id            </span></span><br><span class="line">  <span class="keyword">var</span> nickname = <span class="string">&quot;user&quot;</span> + clientCount;            <span class="comment">// 创建对应的编号</span></span><br><span class="line">  io.emit(<span class="string">&quot;enter&quot;</span>, nickname + <span class="string">&quot;：上线&quot;</span>)         <span class="comment">// 广播事件 enter 内容nickname+&quot;上线&quot;</span></span><br><span class="line"></span><br><span class="line">  socket.on(<span class="string">&quot;message&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;               <span class="comment">// 接收客户发来事件 message</span></span><br><span class="line">    io.emit(<span class="string">&quot;list&quot;</span>, nickname + <span class="string">&quot; : &quot;</span> + data)  <span class="comment">// 广播事件 list,</span></span><br><span class="line">  &#125;)</span><br><span class="line">  socket.on(<span class="string">&quot;disconnect&quot;</span>, <span class="function">() =&gt;</span> &#123;               <span class="comment">//接收客户离开事件  默认事件 浏览器关闭后触发disconnect事件      </span></span><br><span class="line">    io.emit(<span class="string">&quot;leave&quot;</span>, nickname + <span class="string">&quot; : 退出&quot;</span>)      <span class="comment">// 广播事件 leave</span></span><br><span class="line">  &#125;)                                       </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>客服端<br><strong>io(val)</strong> 连接<br><strong>X.on()</strong> 接受消息<br><strong>X.emit(名称,内容)</strong> 发送消息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=<span class="string">&quot;btn&quot;</span>&gt;确认申请&lt;/button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn1&quot;</span>&gt;发送&lt;/button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn2&quot;</span>&gt;退出&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> clientSocket=io(<span class="string">&quot;ws://127.0.0.1:3000&quot;</span>); <span class="comment">// 协议名称 域名 端口号</span></span><br><span class="line">  clientSocket.emit(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;我一上来就说一句话&quot;</span>)        <span class="comment">// 发送到服务器的message 服务的得到了 我一上来就说一句话 并通过 list事件返回</span></span><br><span class="line">  clientSocket.on(<span class="string">&quot;list&quot;</span>,<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;            <span class="comment">// 接收到服务的发过来的 list消息</span></span><br><span class="line">      <span class="built_in">console</span>.log(data) <span class="comment">//输出2 我一上来就说一句话</span></span><br><span class="line">  &#125;)</span><br><span class="line">  clientSocket.on(<span class="string">&quot;enter&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 输出顺序按服务的返回的为准。</span></span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">// 输出1 user1上线</span></span><br><span class="line">  &#125;);</span><br><span class="line">  clientSocket.on(<span class="string">&quot;leave&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 这一步需要关闭别的链接webSocket的网址才能触发</span></span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">//</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.emit(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;用户提交了申请&quot;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn1&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.send(<span class="string">&quot;77777&quot;</span>) <span class="comment">// 触发服务器 message 的事件 =  clientSocket.emit(&quot;message&quot;, &quot;777777&quot;)</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn2&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.close() <span class="comment">// 触发服务器 disconnect 的事件 ！！类似 但不等于 clientSocket.emit(&quot;disconnect&quot;,&quot;&quot;)</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-项目相关-16-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">16-设计模式</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="1-Observer观察者模式（也称为“订阅-发布”模式）："><a href="#1-Observer观察者模式（也称为“订阅-发布”模式）：" class="headerlink" title="1- Observer观察者模式（也称为“订阅-发布”模式）："></a>1- Observer观察者模式（也称为“订阅-发布”模式）：</h3><p>  乙方声明“订阅(subscribe)”甲方；<br>  在未来的某个不确定时间，甲方“发布(publish)”新消息，乙方会立即接到通知。<br>  HttpClient服务采用了“观察者/订阅-发布模式”，其最核心对象为：<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span>  obj  =  <span class="keyword">new</span>  Observable( );  <span class="comment">//可被观察的对象</span></span><br><span class="line"><span class="comment">//可以关注/订阅“可被观察的”对象</span></span><br><span class="line">obj.subscribe(<span class="function">()=&gt;</span>&#123; <span class="comment">//收到订阅消息时的回调函数 &#125;)</span></span><br></pre></td></tr></table></figure></p>
+<p>  待续</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-项目相关-15-SPA" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/">15-SPA</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>多页面.会有多个页面.页面之间的跳转实际就是删除当前dom树，新建新的dom树</p>
+<p>Single Page Application  SPA<br><code>单页应用</code>——整个应用中只有一个完整的HTML页面，其它所有的“页面”其实都是一段HTML片段</p>
+<blockquote>
+<p>SPA应用的优点：<br>  (1)DOM树只需要创建一次，“页面切换”只是在切换部分元素<br>  (2)便于实现“过场动画”——多页应用不可能做到</p>
+</blockquote>
+<blockquote>
+<p>SPA应用的不足：<br>  (1)不便于实现SEO优化</p>
+</blockquote>
+<p>SPA应用的核心——路由词典routermodule(把一个地址和一个组件对应起来)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123; path: &#39;index&#39;,  component: ...&#125;</span><br><span class="line">	&#123; path: &#39;product&#x2F;list&#39;,  component: ...&#125;</span><br><span class="line">	&#123; path: &#39;user&#x2F;login&#39;,  component: ...&#125;</span><br><span class="line">	.....</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>SPA应用的原理：框架根据客户端请求的路由地址，异步加载对应的组件内容，替换之前的组件内容。</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/">展开全文 >></a>
         </p>
       
 
@@ -302,92 +709,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-10-跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">10-跨域</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>什么是跨域: 一个域名下的网页，向另一个域名下的服务器请求资源.受浏览器的同源策略控制，禁止发送的</p>
-<p><code>浏览器同源(origin)策略</code>: 也称禁止跨不同源头访问资源<br>        所有浏览器都有一个安全策略: <code>禁止CORS</code><br>        禁止Cross Origin Resources Shareing<br>        浏览器规定: 请求回来的响应数据的响应头中记录的远程url必须和当前网页正在打开的url地址相同！</p>
-<p>浏览器收到数据后:<br>        会用当前地址栏中的<code>url地址和headers中的origin对比</code>！只有协议，域名，端口号完全一致！才允许网页使用数据</p>
-<h3 id="解决对策-1-服务端解决"><a href="#解决对策-1-服务端解决" class="headerlink" title="解决对策 1.服务端解决"></a>解决对策 1.服务端解决</h3><p>让服务端返回响应时，篡改响应头中响应源头的地址,nodejs为例子<br>1 手写<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// res.send(result); // 不要用res.send了</span></span><br><span class="line"><span class="comment">//  res.send其实是一种简写: 等效于 res.writeHead()+res.write(JSON.stringify(result))+res.end()</span></span><br><span class="line">res.writeHead(<span class="number">200</span>,&#123; <span class="comment">//修改头部.200表示成功</span></span><br><span class="line">  <span class="string">&quot;Access-Control-Allow-Origin&quot;</span>:http:<span class="comment">//127.0.0.1:5500</span></span><br><span class="line">                     <span class="comment">//或者：“*” 代表所有</span></span><br><span class="line">&#125;);</span><br><span class="line">res.write(<span class="built_in">JSON</span>.stringify(result)); <span class="comment">//发送的内容</span></span><br><span class="line">res.end(); <span class="comment">//发送</span></span><br><span class="line"><span class="comment">//   写在原来node中代替res.send(result);的作用.每个都要写</span></span><br><span class="line"><span class="comment">//  这样返回的数据，就被伪装成来自127.0.0.1:5500的，就可以通过浏览器的同源策略检查，可正常使用</span></span><br></pre></td></tr></table></figure><br>2 引入插件统一写 (推荐)<br>服务端nodejs安装: <code>npm i -save cors</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js中: </span></span><br><span class="line"><span class="keyword">const</span> cors=<span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>); 引入模块</span><br><span class="line">				</span><br><span class="line"> <span class="comment">//在创建端口listen()之后</span></span><br><span class="line"> app.use(cors(&#123;</span><br><span class="line">     origin:<span class="string">&quot;http://127.0.0.1:5500&quot;</span><span class="comment">//不能用*</span></span><br><span class="line"> &#125;));</span><br><span class="line"> <span class="comment">//中间件。。从此所有响应，自动带Access-Control-Allow-Origin:http://127.0.0.1:5500</span></span><br><span class="line"> <span class="comment">//万一客户端浏览器地址发生变化，只改这里origin一处即可！</span></span><br></pre></td></tr></table></figure>
-<h3 id="解决对策-2-jsonp解决"><a href="#解决对策-2-jsonp解决" class="headerlink" title="解决对策 2.jsonp解决"></a>解决对策 2.jsonp解决</h3><p> jsonp + Promise 只能用于GET请求</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myJsonp</span> (<span class="params">url, obj</span>) </span>&#123; <span class="comment">// 地址，参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> cb = <span class="string">`jsonp<span class="subst">$&#123;<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random() * <span class="number">1000000</span>)&#125;</span>`</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      url += <span class="string">&#x27;&amp;&#x27;</span> + key + <span class="string">&#x27;=&#x27;</span> + obj[key]</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = url + <span class="string">&#x27;&amp;callback=&#x27;</span> + cb <span class="comment">// 地址 + 参数 + 回调函数名 需于后端统一命名</span></span><br><span class="line">    script.id = <span class="string">&#x27;jsonpS&#x27;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">    <span class="built_in">window</span>[cb] = <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> script = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;jsonpS&#x27;</span>);</span><br><span class="line">      <span class="built_in">document</span>.body.removeChild(script);</span><br><span class="line">      <span class="keyword">delete</span> <span class="built_in">window</span>[cb];</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">async</span> a () &#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="keyword">await</span> myJsonp (<span class="string">&#x27;http://dev-test.api.faquange.cn/apppage.php?m=Top&amp;c=getList&#x27;</span>, &#123; <span class="attr">TopCate</span>:<span class="number">1</span> &#125; )</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="解决对策-3-ajax解决"><a href="#解决对策-3-ajax解决" class="headerlink" title="解决对策 3.ajax解决"></a>解决对策 3.ajax解决</h3><p><code>dataType:&quot;jsonp&quot;</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line"> url: <span class="string">&quot;服务端接口地址&quot;</span>, <span class="comment">// http://localhost:3000/users/login</span></span><br><span class="line"> type: <span class="string">&quot;get|post&quot;</span>,</span><br><span class="line"> data: &#123; <span class="attr">uname</span>: <span class="string">&quot;dingding&quot;</span>, <span class="attr">upwd</span>: <span class="string">&quot;123456&quot;</span> &#125;,</span><br><span class="line"> <span class="comment">// &quot;uname=dingding&amp;upwd=123456&quot;,</span></span><br><span class="line"> <span class="comment">// 如果返回json，需要自动JSON.parse()转为js对象</span></span><br><span class="line"> dataType:<span class="string">&quot;json&quot;</span>, <span class="comment">//如果不写需要自己手动调用JSON.parse()</span></span><br><span class="line"> <span class="comment">// dataType:&quot;jsonp&quot; // jsonp 跨域</span></span><br><span class="line"> success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;   <span class="comment">// 与.then2选1</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">展开全文 >></a>
         </p>
       
 
@@ -886,20 +1207,20 @@
 
 
   
-    <article id="post-杂项-电脑部分网页访问不了-nds设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-项目相关-11-Worker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-%E7%94%B5%E8%84%91%E9%83%A8%E5%88%86%E7%BD%91%E9%A1%B5%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86-nds%E8%AE%BE%E7%BD%AE/">电脑部分网页访问不了-nds设置</a>
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/">11-Worker</a>
     </h1>
   
 
         
-        <a href="/%E6%9D%82%E9%A1%B9-%E7%94%B5%E8%84%91%E9%83%A8%E5%88%86%E7%BD%91%E9%A1%B5%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86-nds%E8%AE%BE%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.450Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
       </header>
@@ -907,453 +1228,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="win10"><a href="#win10" class="headerlink" title="win10"></a>win10</h3><p>点击 <code>当前 （右下角网络）网络</code> -&gt; <code>属性</code> 下滑可以看见当前设置 其中有一项是IPv4 DNS 服务器<br>-&gt; <code>返回</code> 下滑<br>-&gt; <code>网络和共享中心</code><br>-&gt; 右边 <code>链接 (内容)</code><br>-&gt; 左下 <code>属性</code><br>-&gt; 选中 <code>Internet 协议版本4</code> 点击 <code>属性</code><br>-&gt; 使用下面DNS服务器地址 首选DNS服务器 114.114.114.114</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-%E7%94%B5%E8%84%91%E9%83%A8%E5%88%86%E7%BD%91%E9%A1%B5%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86-nds%E8%AE%BE%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-画图-echarts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E7%94%BB%E5%9B%BE-echarts/">echarts</a>
-    </h1>
-  
-
-        
-        <a href="/%E7%94%BB%E5%9B%BE-echarts/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.450Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>第三方绘图库<br>1.<a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/download.html">下载echarts库文件</a></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> &lt; div id=<span class="string">&quot;main&quot;</span> style=<span class="string">&quot;width:500px;height:400px&quot;</span>&gt;&lt;<span class="regexp">/div&gt; /</span><span class="regexp">/ 容器</span></span><br><span class="line"><span class="regexp"> &lt; script src=&quot;echarts.js&quot;&gt;&lt;/</span>script&gt; <span class="comment">// 引入插件</span></span><br><span class="line"> <span class="keyword">var</span> main = <span class="built_in">document</span>.getElementById(<span class="string">&quot;main&quot;</span>); <span class="comment">// 获取容器并且创建echarts对象</span></span><br><span class="line"> <span class="keyword">var</span> mychart = echarts.init(main);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> option = &#123; <span class="comment">// 创建配置项(柱状统计图)</span></span><br><span class="line">   title:&#123;<span class="attr">text</span>:<span class="string">&quot;echarts 入门示例&quot;</span>&#125;    			<span class="comment">// 顶部标题</span></span><br><span class="line">   xAxis:&#123;<span class="attr">data</span>:[<span class="string">&quot;第一季度&quot;</span>,<span class="string">&quot;第二季度&quot;</span>,<span class="string">&quot;第三季度&quot;</span>,<span class="string">&quot;第四季度&quot;</span>]&#125;, <span class="comment">// x轴数据</span></span><br><span class="line">   yAxis:&#123;&#125;,  								<span class="comment">// y轴数据(空)</span></span><br><span class="line">   series:[</span><br><span class="line">     &#123;</span><br><span class="line">       type:<span class="string">&quot;bar&quot;</span>,<span class="attr">data</span>:[<span class="number">1005</span>,<span class="number">1053</span>,<span class="number">1012</span>,<span class="number">1355</span>] <span class="comment">// type:&quot;bar&quot; 指绘图像类型 bar line pie .....    bar柱状 line折线 pie饼状</span></span><br><span class="line">     &#125;,</span><br><span class="line">     &#123;</span><br><span class="line">       type:<span class="string">&quot;line&quot;</span>,<span class="attr">data</span>:[<span class="number">1005</span>,<span class="number">1053</span>,<span class="number">1012</span>,<span class="number">1355</span>]</span><br><span class="line">     &#125;</span><br><span class="line">   ] </span><br><span class="line"> &#125;</span><br><span class="line"> mychart.setOption(option); <span class="comment">// 将配置项添加mychart对</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>  <a href="/study/echarts/easyDemonstration" target="_self">简单示例</a></p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">画图</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-echarts/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-杂项-终端账号密码-凭据管理器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-%E7%BB%88%E7%AB%AF%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81-%E5%87%AD%E6%8D%AE%E7%AE%A1%E7%90%86%E5%99%A8/">终端账号密码-凭据管理器</a>
-    </h1>
-  
-
-        
-        <a href="/%E6%9D%82%E9%A1%B9-%E7%BB%88%E7%AB%AF%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81-%E5%87%AD%E6%8D%AE%E7%AE%A1%E7%90%86%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.450Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h5 id="终端输入密码时输入错误-一直提示你密码错误又不让你改-怎么办？"><a href="#终端输入密码时输入错误-一直提示你密码错误又不让你改-怎么办？" class="headerlink" title="终端输入密码时输入错误 一直提示你密码错误又不让你改 怎么办？"></a>终端输入密码时输入错误 一直提示你密码错误又不让你改 怎么办？</h5><h3 id="win10"><a href="#win10" class="headerlink" title="win10"></a>win10</h3><p> 左下角搜索 -&gt; <code>凭据管理器</code> -&gt; 右侧 <code>windows凭据</code> -&gt; 这时可以看到你的网址 点击可以修改输入的账号密码</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-%E7%BB%88%E7%AB%AF%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81-%E5%87%AD%E6%8D%AE%E7%AE%A1%E7%90%86%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-画图-canvas" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E7%94%BB%E5%9B%BE-canvas/">canvas</a>
-    </h1>
-  
-
-        
-        <a href="/%E7%94%BB%E5%9B%BE-canvas/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.450Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <style>
-  table tr th:nth-child(3){
-    width: 90px !important;
-  }
-  table tr th:first-child{
-    width: 350px !important;
-  }
-</style>
-
-<h3 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h3><p> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Basic_animations">更多api参考内容</a><br> 2D位图用像素点组成图形 特点:不可以放大或缩小，颜色细腻<br> 注意</p>
+          <p>  <a href="/项目相关-5-解答题/#title1" target="_self">程序 进程 线程</a><br>  由于 Chrome 不允许通过本地文件访问使用Web Worker。<br>  所以可以<br>  <strong>1.更换使用其他浏览器尝试</strong><br>  <strong>2.文件部署到服务器中【上线环境解决方法】</strong></p>
 <blockquote>
-<p> 1.画布宽度和高度只能通过js 或者标签属性来赋值<br>    2.样式要写在绘制之前才能改变绘制的样式<br>    3.绘制的东西不会超过画布的大小</p>
+<p>问题:如果1.js执行时间非常长，网页出现停止现象(空白)<br>  解决方案:创建一个新线程(Worker)让它执行耗时js任务, UI主线只负责绘制二个按钮<br>  1.js<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟一个较长的js</span></span><br><span class="line"><span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> end = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">&#125; <span class="keyword">while</span> (</span><br><span class="line">  end - start &lt; <span class="number">5000</span>                 </span><br><span class="line">);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;执行完毕&quot;</span>)</span><br></pre></td></tr></table></figure><br>  1.html<br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>模拟JS执行超时结果<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>1111<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &lt;script src=&quot;1.js&quot;&gt;&lt;/script&gt; </span></span><br><span class="line"><span class="comment">如果直接引用 1.js 会发现网页出现5s空白 或者 只有111按钮 222按钮会等5s后才出现。</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 创建新对象并且新线程的执行01:js任务 不会出现空白 和只有111按钮的状况</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> w =<span class="keyword">new</span> Worker(<span class="string">&quot;./1.js&quot;</span>)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>22222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure><br>  总结:WebWorker 新线程用于执行耗时js任务 提高网页效率<br>  js任务不能有DOM/BOM/jquery.js 代码</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>代码</th>
-<th>说明</th>
-<th>-</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>dom.getContext(&quot;2d&quot;)</code></td>
-<td>获取画布对象</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.strokeRect(x,y,w,h)</code></td>
-<td>绘制<strong>空心矩形</strong> x,y矩形左上角位置 w,h 短形宽度和高度</td>
-<td>样式如下</td>
-</tr>
-<tr>
-<td><code>ctx.strokeText(str,x,y)</code></td>
-<td>绘制<strong>空心文本</strong> x,y文本左上角位置 str 文案</td>
-<td>样式如下</td>
-</tr>
-<tr>
-<td>—-<code>ctx.strokeStyle = &quot;#47227b&quot;</code></td>
-<td>设置空心样式</td>
-<td>空心样式</td>
-</tr>
-<tr>
-<td>—-<code>ctx.lineWidth = 1</code></td>
-<td>设置空心宽度</td>
-<td>空心宽度</td>
-</tr>
-<tr>
-<td><code>ctx.fillRect(x,y,w,h)</code></td>
-<td>绘制<strong>实心矩形</strong> x,y矩形左上角位置 w,h 短形宽度和高度</td>
-<td>样式如下</td>
-</tr>
-<tr>
-<td><code>ctx.fillText(str,x,y)</code></td>
-<td>绘制<strong>实心文本</strong> x,y文本左上角位置 str 文案</td>
-<td>样式如下</td>
-</tr>
-<tr>
-<td>—-<code>ctx.fillStyle = &quot;#47227b&quot;</code></td>
-<td>设置实心填充样式</td>
-<td>实心样式</td>
-</tr>
-<tr>
-<td>—-<code>ctx.globalAlpha = 0.5</code></td>
-<td>透明度</td>
-<td>通用</td>
-</tr>
-<tr>
-<td>—-<code>ctx.font</code></td>
-<td>字体与大小</td>
-<td>字体</td>
-</tr>
-<tr>
-<td>—-<code>ctx.textBaseline = &quot;alphabetic&quot;</code></td>
-<td>指定文本基线位置[“alphabetic”,”top”,”bottom”,Middle，Hanging]<br>基线/上/下/中/悬挂 正常思维使用bottom。默认是alphabetic</td>
-<td>-</td>
-</tr>
-<tr>
-<td>—-<code>ctx.measureText(str)</code></td>
-<td>获取此时绘制 str 文本的宽度对象 {width:}</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.clearRect(x,y,w,h)</code></td>
-<td>清除一个矩形范围内所有元素 xy位置,wh范围</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.moveTo(x,y)</code></td>
-<td>移动到指定点-只移动不画</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.lineTo(x,y)</code></td>
-<td>画到指定点-又移又画</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.arc(350, 100, 15, 0, 2 * Math.PI,true)</code></td>
-<td>画圆-又移又画 中心点x y坐标 半径 开始角 结束角 方向</td>
-<td><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_arc.asp">角度参考网址</a></td>
-</tr>
-<tr>
-<td><code>ctx.closePath(x,y)</code></td>
-<td>闭合当前路径.从终点画到起点</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.stroke()</code></td>
-<td><strong>描边 绘制</strong></td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.drawImage(img,x,y,w,h))</code></td>
-<td>绘制<strong>图片</strong> 图片,xy坐标,宽高，<br>框高不写为原图大小</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.rotate(50 * Math.PI / 180)</code></td>
-<td>旋转 旋转50度，写于绘制之前！！</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.translate(x,y)</code></td>
-<td>将画布轴点(原点)移到指定位置,默认是画布中心</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.save(x,y)</code></td>
-<td>保存画笔状态</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.restore(x,y)</code></td>
-<td>恢复画笔状态</td>
-<td>-</td>
-</tr>
-<tr>
-<td>var g = <code>ctx.createLinearGradient(x1,y1,x2,y2)</code></td>
-<td><strong>创建渐变对象</strong> x1,y1开始坐标，x2,y2结束坐标</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>g.addColorStop(offset,color)</code></td>
-<td><strong>渐变对象添加颜色点</strong> 进度(跟动画一样,小数写法) 结束颜色</td>
-<td>-</td>
-</tr>
-</tbody></table>
-<p> html 内容：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;c3&quot;</span> <span class="attr">width</span>=<span class="string">&quot;1000&quot;</span> <span class="attr">height</span>=<span class="string">&quot;1000&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure><br> js内容 绘制矩形空心 和实心</p>
-<pre><code class="js">var c3 = document.getElementById(&quot;c3&quot;); // 获取画布
-var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指定画笔对象[上下文对象]
-// 矩形
-   ctx.strokeStyle = &quot;#47227b&quot;; // 设置空心边框样式
-   ctx.lineWidth = 1; // 设置空心边框宽度
-   ctx.strokeRect(5,5,50,50); //  绘制空心矩形 x,y矩形左上角位置 w,h 短形宽度和高度
-// 矩形
-   ctx.fillStyle = &quot;#47227b&quot;;// 设置实心填充样式
-   ctx.fillRect(60,5,50,50); // 绘制实心矩形
-// 字体
-   ctx.globalAlpha = 0.5 // 透明度
-   ctx.font = &quot;19px SimHei&quot;; // 字体与大小
-   ctx.textBaseline = &quot;alphabetic&quot;;     // 指定文本基线位置[&quot;alphabetic&quot;,&quot;top&quot;,&quot;bottom&quot;,Middle，Hanging]基线/上/下/中/悬挂 正常思维使用bottom。默认是alphabetic
-   ctx.fillText(str,x,y);
-   ctx.strokeText(str,x,y); 
-// 3角
-   ctx.beginPath(); // 开始新路径
-   ctx.moveTo(100,100); // 移动到指定点
-   ctx.lineTo(150,100); // 画到指定点
-   ctx.lineTo(150,150);
-   ctx.closePath(); // 闭合当前路径.终点到起点
-   ctx.stroke(); // 描边
-// 圆，半圆 
-   ctx.beginPath();        // 开始新路径
-   // ctx.moveTo(265,200);    // 移动到指定点
-   ctx.arc(250, 200, 15, 180 * Math.PI / 180, 2 * Math.PI);// 画半圆
-   ctx.stroke();           // 描边
-   ctx.beginPath();        // 开始新路径
-   ctx.moveTo(365, 100);    // 移动到指定点
-   ctx.arc(350, 100, 15, 0, 2 * Math.PI);// 画整圆
-   ctx.stroke();           // 描边
-// 画图
-   var p3 = new Image();
-   p3.src = &quot;x.png&quot;;
-   p.onload = function () &#123; // 图片加载完成后
-     ctx.drawImage(p3,x,y);   // x,y 左上角位置(原始大小图片)
-     ctx.drawImage(p3,x,y,w,h); // w,h 图片大小
-     ctx.rotate(50 * Math.PI / 180);
-     ctx.drawImage(p,0,0);   //画出旋转了15度的图
-   &#125;
-// 示例2个不停选择的图片涉及技术-旋转，保存状态，画图，移动远点
-   var deg1=0,deg2=0;                      //创建变量保存飞机旋转角度
-   p.onload=function()&#123;                    //下载完毕执行函数
-       var time=setInterval(function()&#123;    //定时器 模拟旋转状态
-           ctx.clearRect(-500,-500,1000,1000)
-
-           ctx.save();                     //保存画笔状态
-           ctx.translate(100,200)          //平移原点
-           deg1+=4                        //变量累计角度
-           ctx.rotate(deg1*Math.PI/180)    //旋转角度
-           ctx.drawImage(p,0-100,0-50)     //绘制飞机图片200*100大小
-           ctx.restore()                   //恢复画笔状态
-
-           ctx.save();                         //保存画笔状态 2
-           ctx.translate(300,200)              //平移原点2
-           deg2+=8                            //累计角度2
-           ctx.rotate(deg2*Math.PI/180)        //旋转角度2
-           ctx.drawImage(p,0-100,0-50)         //绘制飞机图片200*100大小2
-           ctx.restore()                       //恢复画笔状态 2
-       &#125;,100/6)
-   &#125;
- // 创建 渐变颜色的 矩形
-     var g = ctx.createLinearGradient(0, 0, 1000, 1000);
-     g.addColorStop(0, &#39;#f00&#39;);
-     g.addColorStop(1, &#39;#00f&#39;);
-     ctx.fillStyle = g;
-     ctx.strokeStyle = g;
-     ctx.fillRect(0, 0, 1000, 100);</code></pre>
+<blockquote>
+<p>通讯<br>  <code>postMessage</code> 发送<br>  <code>onmessage</code> 接受<br>   2.js<br>   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//接收 2.hteml发送的数据</span></span><br><span class="line">  onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.console.log(<span class="string">&#x27;js接受到消息:&#x27;</span> + e.data) <span class="comment">// js接受到消息:1</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 发送</span></span><br><span class="line">postMessage(<span class="string">&quot;2&quot;</span>)</span><br></pre></td></tr></table></figure><br>   2.html<br>   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>02.html UI进程<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> w = <span class="keyword">new</span> Worker(<span class="string">&quot;./02.js&quot;</span>)</span></span><br><span class="line"><span class="javascript">  w.postMessage(<span class="string">&quot;1&quot;</span>)</span></span><br><span class="line"><span class="javascript">  w.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123; <span class="comment">// 接收</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&#x27;得到js传递的消息:&#x27;</span> + e.data) <span class="comment">// 得到js传递的消息:2</span></span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
 
         
       
@@ -1368,7 +1249,7 @@ var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">画图</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
         		</li>
       		
 		</ul>
@@ -1378,7 +1259,7 @@ var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-canvas/">展开全文 >></a>
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/">展开全文 >></a>
         </p>
       
 
@@ -1408,20 +1289,20 @@ var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指
 
 
   
-    <article id="post-杂项-编码类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-项目相关-10-跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/">编码类型</a>
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">10-跨域</a>
     </h1>
   
 
         
-        <a href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.450Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
       </header>
@@ -1429,7 +1310,17 @@ var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h3><p>1)如何存储英文字符<br><code>ASCII</code>: 总共有128个,对所有的英文字母和符号进行编码<br><code>Latin-1</code>: 总共有256，兼容<code>ASCII</code>码，同时对欧洲符号进行了编码，<code>mysql</code>默认使用这种编码。<br>(2)如何存储中文字符<br><code>GB2312</code>:对常用的6千多汉字进行编码，兼容<code>ASCII</code>码<br><code>GBK</code>: 对2万多汉字进行了编码，兼容<code>GB2312</code><br><code>BIG5</code>: 台湾繁体字编码，兼容<code>ASCII</code>码<br><code>Unicode</code>: 对世界上主流的国家常用的语言进行了编码，<code>兼容ASCII</code>，不兼容<code>GB2312,GBK,BIG5</code>，具体分为<code>UTF-8，UTF-16，UTF-32</code>存储方案</p>
+          <p>什么是跨域: 一个域名下的网页，向另一个域名下的服务器请求资源.受浏览器的同源策略控制，禁止发送的</p>
+<p><code>浏览器同源(origin)策略</code>: 也称禁止跨不同源头访问资源<br>        所有浏览器都有一个安全策略: <code>禁止CORS</code><br>        禁止Cross Origin Resources Shareing<br>        浏览器规定: 请求回来的响应数据的响应头中记录的远程url必须和当前网页正在打开的url地址相同！</p>
+<p>浏览器收到数据后:<br>        会用当前地址栏中的<code>url地址和headers中的origin对比</code>！只有协议，域名，端口号完全一致！才允许网页使用数据</p>
+<h3 id="解决对策-1-服务端解决"><a href="#解决对策-1-服务端解决" class="headerlink" title="解决对策 1.服务端解决"></a>解决对策 1.服务端解决</h3><p>让服务端返回响应时，篡改响应头中响应源头的地址,nodejs为例子<br>1 手写<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// res.send(result); // 不要用res.send了</span></span><br><span class="line"><span class="comment">//  res.send其实是一种简写: 等效于 res.writeHead()+res.write(JSON.stringify(result))+res.end()</span></span><br><span class="line">res.writeHead(<span class="number">200</span>,&#123; <span class="comment">//修改头部.200表示成功</span></span><br><span class="line">  <span class="string">&quot;Access-Control-Allow-Origin&quot;</span>:http:<span class="comment">//127.0.0.1:5500</span></span><br><span class="line">                     <span class="comment">//或者：“*” 代表所有</span></span><br><span class="line">&#125;);</span><br><span class="line">res.write(<span class="built_in">JSON</span>.stringify(result)); <span class="comment">//发送的内容</span></span><br><span class="line">res.end(); <span class="comment">//发送</span></span><br><span class="line"><span class="comment">//   写在原来node中代替res.send(result);的作用.每个都要写</span></span><br><span class="line"><span class="comment">//  这样返回的数据，就被伪装成来自127.0.0.1:5500的，就可以通过浏览器的同源策略检查，可正常使用</span></span><br></pre></td></tr></table></figure><br>2 引入插件统一写 (推荐)<br>服务端nodejs安装: <code>npm i -save cors</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js中: </span></span><br><span class="line"><span class="keyword">const</span> cors=<span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>); 引入模块</span><br><span class="line">				</span><br><span class="line"> <span class="comment">//在创建端口listen()之后</span></span><br><span class="line"> app.use(cors(&#123;</span><br><span class="line">     origin:<span class="string">&quot;http://127.0.0.1:5500&quot;</span><span class="comment">//不能用*</span></span><br><span class="line"> &#125;));</span><br><span class="line"> <span class="comment">//中间件。。从此所有响应，自动带Access-Control-Allow-Origin:http://127.0.0.1:5500</span></span><br><span class="line"> <span class="comment">//万一客户端浏览器地址发生变化，只改这里origin一处即可！</span></span><br></pre></td></tr></table></figure>
+<h3 id="解决对策-2-jsonp解决"><a href="#解决对策-2-jsonp解决" class="headerlink" title="解决对策 2.jsonp解决"></a>解决对策 2.jsonp解决</h3><p> jsonp + Promise 只能用于GET请求</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myJsonp</span> (<span class="params">url, obj</span>) </span>&#123; <span class="comment">// 地址，参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> cb = <span class="string">`jsonp<span class="subst">$&#123;<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random() * <span class="number">1000000</span>)&#125;</span>`</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      url += <span class="string">&#x27;&amp;&#x27;</span> + key + <span class="string">&#x27;=&#x27;</span> + obj[key]</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = url + <span class="string">&#x27;&amp;callback=&#x27;</span> + cb <span class="comment">// 地址 + 参数 + 回调函数名 需于后端统一命名</span></span><br><span class="line">    script.id = <span class="string">&#x27;jsonpS&#x27;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">    <span class="built_in">window</span>[cb] = <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> script = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;jsonpS&#x27;</span>);</span><br><span class="line">      <span class="built_in">document</span>.body.removeChild(script);</span><br><span class="line">      <span class="keyword">delete</span> <span class="built_in">window</span>[cb];</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">async</span> a () &#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="keyword">await</span> myJsonp (<span class="string">&#x27;http://dev-test.api.faquange.cn/apppage.php?m=Top&amp;c=getList&#x27;</span>, &#123; <span class="attr">TopCate</span>:<span class="number">1</span> &#125; )</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决对策-3-ajax解决"><a href="#解决对策-3-ajax解决" class="headerlink" title="解决对策 3.ajax解决"></a>解决对策 3.ajax解决</h3><p><code>dataType:&quot;jsonp&quot;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line"> url: <span class="string">&quot;服务端接口地址&quot;</span>, <span class="comment">// http://localhost:3000/users/login</span></span><br><span class="line"> type: <span class="string">&quot;get|post&quot;</span>,</span><br><span class="line"> data: &#123; <span class="attr">uname</span>: <span class="string">&quot;dingding&quot;</span>, <span class="attr">upwd</span>: <span class="string">&quot;123456&quot;</span> &#125;,</span><br><span class="line"> <span class="comment">// &quot;uname=dingding&amp;upwd=123456&quot;,</span></span><br><span class="line"> <span class="comment">// 如果返回json，需要自动JSON.parse()转为js对象</span></span><br><span class="line"> dataType:<span class="string">&quot;json&quot;</span>, <span class="comment">//如果不写需要自己手动调用JSON.parse()</span></span><br><span class="line"> <span class="comment">// dataType:&quot;jsonp&quot; // jsonp 跨域</span></span><br><span class="line"> success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;   <span class="comment">// 与.then2选1</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 
         
       
@@ -1444,7 +1335,7 @@ var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
         		</li>
       		
 		</ul>
@@ -1454,7 +1345,7 @@ var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">展开全文 >></a>
         </p>
       
 
@@ -1486,7 +1377,7 @@ var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1581,23 +1472,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1613,15 +1500,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1645,11 +1536,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1661,11 +1552,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
             
             <div class="clearfix"></div>
