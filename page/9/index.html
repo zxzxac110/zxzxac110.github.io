@@ -145,19 +145,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Python-3-异常处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Python-4-模块-导入导出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Python-3-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">3-异常处理</a>
+      <a class="article-title" href="/Python-4-%E6%A8%A1%E5%9D%97-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/">4-模块,导入导出</a>
     </h1>
   
 
         
-        <a href="/Python-3-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="archive-article-date">
+        <a href="/Python-4-%E6%A8%A1%E5%9D%97-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.438Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -166,9 +166,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">默认判断异常</span><br><span class="line"><span class="keyword">except</span>  Exception <span class="keyword">as</span>  err:  这个捕捉块必须是最后一个，所有的错误都继承自Exception</span><br><span class="line"><span class="comment">#让用户输入两个数字，程序输出它们的商</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  n1 = input(<span class="string">&#x27;请输入被除数：&#x27;</span>)</span><br><span class="line">  n1 = int(n1)    <span class="comment"># 可能抛出ValueError</span></span><br><span class="line">  n2 = input(<span class="string">&#x27;请输入除数：&#x27;</span>)</span><br><span class="line">  n2 = int(n2)    <span class="comment"># 可能抛出ValueError</span></span><br><span class="line">  result = n1/n2  <span class="comment"># 可能抛出ZeroDivisionError</span></span><br><span class="line">  print(<span class="string">&#x27;%d和%d的商为：%f&#x27;</span>%(n1,n2,result))</span><br><span class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> err:</span><br><span class="line">  <span class="comment">#print(&#x27;您输入了非法的数字&#x27;)</span></span><br><span class="line">  print(err)</span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> err:</span><br><span class="line">  <span class="comment">#print(&#x27;您输入的除数不能为0&#x27;)</span></span><br><span class="line">  print(err)</span><br><span class="line"><span class="keyword">except</span>  Exception <span class="keyword">as</span> err:   </span><br><span class="line">   print(err)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">  print(<span class="string">&#x27;----即将离开可能发生异常的代码块----&#x27;</span>) <span class="comment"># 总是输出</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;====程序运行结束====&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>手动定义异常</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">setAge</span>(<span class="params"> age </span>):</span></span><br><span class="line">  <span class="keyword">if</span> age&gt;=<span class="number">18</span> <span class="keyword">and</span> age&lt;<span class="number">60</span>:</span><br><span class="line">    print(<span class="string">&#x27;年龄合法！正在保存：&#x27;</span>, age)</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">raise</span> Exception(<span class="string">&#x27;年龄非法！无法保存！&#x27;</span>)</span><br><span class="line">  print(<span class="string">&#x27;----setAge即将推出----&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  setAge(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">except</span>  Exception <span class="keyword">as</span> err:</span><br><span class="line">  print(err)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;====程序结束====&#x27;</span>)</span><br></pre></td></tr></table></figure>
+          <p><span href="#title1" target="_self">1.导入导出</span><br><a href="#title2" target="_self">3.官方常用模块 json math random time </a></p>
+<blockquote>
+<h4 id="导入文件"><a href="#导入文件" class="headerlink" title="导入文件"></a>导入文件</h4>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a1.py</span></span><br><span class="line">  uname = <span class="string">&#x27;dangdang&#x27;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">login</span>():</span></span><br><span class="line">    print(<span class="string">&#x27;11&#x27;</span>, uname)</span><br><span class="line"><span class="comment"># 2.py</span></span><br><span class="line">  <span class="keyword">import</span> a1     <span class="comment"># 把模块作为一个完整的对象全部导入 a1.uname = &#x27;dangdang&#x27;</span></span><br><span class="line">  <span class="keyword">import</span> a1 <span class="keyword">as</span> p <span class="comment"># p.uname = a1.uanme = &#x27;dangdang&#x27;</span></span><br><span class="line"><span class="comment"># 3.py</span></span><br><span class="line">  <span class="keyword">from</span> a1 <span class="keyword">import</span> uname <span class="keyword">as</span> pn  <span class="comment"># 单独引入 a1中的uanme 并起别名pn  pn = a1.uname = &#x27;dangdang&#x27;</span></span><br><span class="line">  <span class="keyword">from</span> a1 <span class="keyword">import</span> uname <span class="keyword">as</span> un,login <span class="comment"># 单独多个</span></span><br><span class="line">  <span class="comment">#正确但谨慎使用： from user import *</span></span><br><span class="line">  print(<span class="string">&#x27;main:&#x27;</span>, pn) <span class="comment"># &#x27;dangdang&#x27;</span></span><br><span class="line">  print(<span class="string">&#x27;main:&#x27;</span>, un) <span class="comment"># &#x27;dangdang&#x27;</span></span><br><span class="line">  login() <span class="comment"># 11 dangdang</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<h4 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h4><p>  Node.js中：模块(module)和包(package)指的是同一种事物，具体又分为“文件模块”和“目录模块”<br>  Python中：模块(module）专指文件，包(package)专指目录；包用于盛放多个功能相关的模块——就是一个目录下可以多个.py文件<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  controller.a1 <span class="comment"># 此处只能导入模块名，不能是包名</span></span><br><span class="line">  controller.a1.login()</span><br><span class="line"><span class="keyword">from</span> controller <span class="keyword">import</span> a1    <span class="comment">#from+包名，import+模块名</span></span><br><span class="line">  a1.login()</span><br><span class="line"><span class="keyword">from</span> controller.a1  <span class="keyword">import</span>  uname, login  <span class="comment">#from+模块名，import+成员</span></span><br><span class="line">  login()</span><br></pre></td></tr></table></figure><br>  注意!!<br>   1-一个模块一旦被import，会自动缓存一份；如果接下来再次被import会首先使用缓存的模块对象——即多次导入同一模块只会执行一次<br>   2-包目录下可以声明<strong>__ init __.py</strong>文件——这是包的初始化文件，其中可以声明变量<strong>all</strong>=[‘user’, ‘product’]，其中声明的模块名可以被外界使用 import* 导入<br>    但是即使__all__中没声明的模块名，也可以使用import 模块名 方式强制导入<br>      <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 声明 __init__.py</span></span><br><span class="line">__all__=[<span class="string">&#x27;user&#x27;</span>]</span><br><span class="line"><span class="keyword">from</span> controller <span class="keyword">import</span> user,user2</span><br><span class="line"><span class="comment"># from controller import *  会导致使用此方式 product.uname 报警</span></span><br><span class="line">print(<span class="string">&#x27;main:&#x27;</span>, user.uname)</span><br><span class="line">print(<span class="string">&#x27;main:&#x27;</span>, user2.uname)</span><br></pre></td></tr></table></figure><br>    3-每个模块中都有一个变量：<code>__name__</code>，若当前模块是启动模块，则解释器自动赋值为’<code>__main__</code>‘，若当前模块不是启动模块(是被其它模块导入的)，此变量的值为’包名.模块名’。利用这一特点，可以进行模块的单元测试，而不影响其被正常导入：<br>   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">  print( <span class="string">&#x27;我不是被别人调用才跑的，我是自己跑的&#x27;</span> )</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="官方常用模块"><a href="#官方常用模块" class="headerlink" title="官方常用模块"></a><span id="title2">官方常用模块</span></h3><p>说明手册 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/index.html">https://docs.python.org/zh-cn/3/library/index.html</a><br>安装位置 C:\Users\web\AppData\Local\Programs\Python\Python36-32\Lib<br>一般来说 都会在当初安装时以前安装了，不用在这里再次安装</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">str = json.dumps(data)  <span class="comment">#对象序列化：对象=&gt;字符串</span></span><br><span class="line">obj = json.loads( str )   <span class="comment">#JSON字符串反序列化：字符串=&gt;对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">math.ceil(<span class="number">3.5</span>) <span class="comment"># 4</span></span><br><span class="line">math.floor(<span class="number">3.5</span>) <span class="comment"># 3</span></span><br><span class="line">math.sin(  math.pi/<span class="number">6</span>  ) <span class="comment"># 0.499994</span></span><br><span class="line">math.pi <span class="comment"># 3.1415</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os.path <span class="comment">#把相对路径转换为绝对路径</span></span><br><span class="line">os.path.abspath(<span class="string">&#x27;./&#x27;</span>) <span class="comment"># 当前运行cmd的路径</span></span><br><span class="line">os.path.abspath(<span class="string">&#x27;../../&#x27;</span>) <span class="comment"># 当前路径前2页</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span>  random <span class="keyword">as</span> r</span><br><span class="line">r.randrange(<span class="number">100</span>) <span class="comment"># 生成0~100间的随机整数</span></span><br><span class="line">r.randrange(<span class="number">1000</span>, <span class="number">10000</span>) <span class="comment">#生成四位的随机整数</span></span><br><span class="line">r.randrange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>) <span class="comment"># 成100以内的随机整10的数 r.randrange(开始范围 结束范围 递增值)</span></span><br><span class="line">stuList = [<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;4&#x27;</span>]</span><br><span class="line">r.choice(stuList) <span class="comment">#随机抽取一个学员</span></span><br><span class="line"><span class="comment">#随机打乱序列中元素的位置——打乱数组中原有的数据</span></span><br><span class="line">r.shuffle(stuList)   <span class="comment">#返回None，改变原序列</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#测试time模块</span></span><br><span class="line"><span class="keyword">import</span> time <span class="keyword">as</span> t</span><br><span class="line">t.sleep(<span class="number">3</span>) <span class="comment"># 定时器 3秒后跑后续操作</span></span><br><span class="line"></span><br><span class="line">print( t.time() )  <span class="comment"># 1600827052.0348608</span></span><br><span class="line">print( int( t.time()*<span class="number">1000</span> ) )   <span class="comment"># 当前系统时间：以毫秒为单位 = new Date().getTime()</span></span><br><span class="line"><span class="comment"># 数字 转 “本地时间”对象</span></span><br><span class="line">lt = t.localtime(t.time())   </span><br><span class="line">print( lt ) <span class="comment"># time.struct_time(tm_year=2020, tm_mon=9, tm_mday=23, tm_hour=10, tm_min=12, tm_sec=31, tm_wday=2, tm_yday=267, tm_isdst=0)</span></span><br><span class="line">print( type(lt) ) <span class="comment"># &lt;class &#x27;time.struct_time&#x27;&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># “本地时间”对象 转 字符串</span></span><br><span class="line">str = t.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)  <span class="comment"># 2020-09-23 10:12:31</span></span><br><span class="line">print( t.strftime(<span class="string">&#x27;%Y-%m-%d&#x27;</span>, t.localtime(t.time()))  ) <span class="comment"># 2020-09-23 年月日</span></span><br><span class="line">print( t.strftime(<span class="string">&#x27;2020-1-1&#x27;</span>, t.localtime(t.time()))  ) <span class="comment"># 2020-1-1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#把年月日时分秒字符串 转 “本地时间”对象</span></span><br><span class="line">lt = t.strptime(<span class="string">&#x27;1970-1-1 8:1:1&#x27;</span>, <span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)  <span class="comment">#把字符串解析为“本地时间”对象 time.struct_time(tm_year=1970, tm_mon=1, tm_mday=1, tm_hour=8, tm_min=1, tm_sec=1, tm_wday=3, tm_yday=1, tm_isdst=-1)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把“本地时间”对象 转 数字</span></span><br><span class="line">sec = t.mktime(lt)   <span class="comment"># 61.0 离计算机元年的秒数</span></span><br></pre></td></tr></table></figure>
         
       
 
@@ -192,7 +198,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/Python-3-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/Python-4-%E6%A8%A1%E5%9D%97-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/">展开全文 >></a>
         </p>
       
 
@@ -222,19 +228,19 @@
 
 
   
-    <article id="post-Python-2-函数-作用域-封装-继承-多态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Python-1-简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/">2-函数,作用域,封装,继承,多态</a>
+      <a class="article-title" href="/Python-1-%E7%AE%80%E4%BB%8B/">1-Python简介</a>
     </h1>
   
 
         
-        <a href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/" class="archive-article-date">
+        <a href="/Python-1-%E7%AE%80%E4%BB%8B/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.438Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -243,32 +249,151 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>实参列表必须与形参列完全一致<br>但是 可以不给有默认值的形参赋值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span>(<span class="params">num1, num2 = <span class="number">500</span></span>):</span></span><br><span class="line">  num3 = num1 + num2</span><br><span class="line">  <span class="keyword">return</span> num3   <span class="comment"># 如果没有声明return默认返回的是None</span></span><br><span class="line">result = sum(<span class="number">1000</span>, <span class="number">2000</span>)</span><br><span class="line">print(<span class="string">&#x27;1000和2000的算术和为：&#x27;</span>, result)</span><br></pre></td></tr></table></figure>
-
-<p>如果硬是要函数名义与但是 参数位数不同 使用 星号</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">add</span>(<span class="params"> *args </span>):</span>  <span class="comment"># *表示此参数是可变长度参数——tuple</span></span><br><span class="line">  print(args)</span><br><span class="line">add(<span class="number">10</span>)  <span class="comment"># args: (10,)</span></span><br><span class="line">add(<span class="number">10</span>, <span class="number">20</span>) <span class="comment">#args:(10, 20)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">add</span>(<span class="params"> **args </span>):</span> <span class="comment">#**表示此参数是可变长度参数——dict</span></span><br><span class="line">add() <span class="comment">#args: &#123; &#125;</span></span><br><span class="line">add(n1=<span class="number">10</span>) <span class="comment">#args: &#123;&#x27;n1&#x27;:10&#125;</span></span><br><span class="line">add(n1=<span class="number">10</span>, n2=<span class="number">20</span>, n3=<span class="number">30</span>) <span class="comment">#args:&#123;&#x27;n1&#x27;:10, &#x27;n2&#x27;:20, &#x27;n3&#x27;:30&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>Python中提供了四种作用域：—— L&gt;E&gt;G&gt;B<br>  L：<code>Local</code>，本地/局部作用域，只能在当前函数内使用<br>  E：<code>Enclosing</code>，闭包作用域，由外部函数提供给内部函数使用的变量作用域<br>  G：<code>Global</code>，全局作用域，可以在全局使用；<br>  B：<code>Built-In</code>，内置作用域，是由Python提供的函数和变量，如id()/type()/int()…..<br>如果函数内想修改全局作用域变量值，必须声明：<br><code>global</code>  变量名<br>如果函数内想修改闭包作用域变量值，必须声明：<br><code>nonlocal</code>  变量名</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mySum = <span class="number">200</span>   </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>():</span></span><br><span class="line">  <span class="keyword">global</span> mySum   <span class="comment"># 声明此处的mySum是全局变量 没有这句话会报警，因为他找不到局部的mySum</span></span><br><span class="line">  mySum = mySum+<span class="number">1</span></span><br><span class="line">  print(mySum) <span class="comment"># 201</span></span><br><span class="line">add()</span><br><span class="line">print(mySum) <span class="comment"># 201</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="封装-继承-多态"><a href="#封装-继承-多态" class="headerlink" title="封装 继承 多态"></a>封装 继承 多态</h2><blockquote>
-<p>封装</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 说明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span>  类名 :</span></span><br><span class="line">   变量名 = 值</span><br><span class="line">	<span class="function"><span class="keyword">def</span>  <span class="title">__init__</span>(<span class="params">self, 形参列表</span>):</span></span><br><span class="line">		构造方法体</span><br><span class="line">	<span class="function"><span class="keyword">def</span>  成员方法(<span class="params">self</span>):</span><span class="comment">#所有方法的第一个参数都是self</span></span><br><span class="line">		成员方法体</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> :</span></span><br><span class="line">    a = <span class="string">&#x27;7&#x27;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n, s, m</span>) :</span> <span class="comment"># 所有方法第一个参数都是self</span></span><br><span class="line">    self.__ename = n    <span class="comment"># 声明一个私有属性成员</span></span><br><span class="line">    self.salary = s    <span class="comment"># 声明一个属性成员</span></span><br><span class="line">    self.__isMarried = m   <span class="comment"># 声明一个私有属性成员</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#对象内部的方法成员</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>) :</span> <span class="comment"># 所有方法第一个参数都是self</span></span><br><span class="line">    print(<span class="string">&#x27;员工姓名：%s 工资：%f 婚否：%d&#x27;</span>%(self.__ename, self.salary, self.a)</span><br><span class="line"></span><br><span class="line">e1 = Emp(<span class="string">&#x27;丁丁&#x27;</span>,<span class="number">5000</span>,<span class="literal">True</span>)</span><br><span class="line">e1.printInfo() <span class="comment"># 员工姓名：丁丁 工资：5000.000000 婚否：1&#x27;</span></span><br><span class="line"><span class="comment"># print(e1.__ename)   #私有属性不能在类外面使用</span></span><br><span class="line">print(e1.salary) <span class="comment"># 5000</span></span><br></pre></td></tr></table></figure>
-
+          <p>  <a href="#title1" target="_self">2.一些代码</a><br>  <a href="#title2" target="_self">3.运算符号</a><br>  <a href="#title3" target="_self">4.类型</a><br>  <a href="#title4" target="_self">5.循环和判断</a></p>
+<h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>教程 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/tutorial/index.html">https://docs.python.org/zh-cn/3/tutorial/index.html</a><br>1 - 下载并安装Python解释器 <a target="_blank" rel="noopener" href="https://www.python.org/downloads/release/python-385/">https://www.python.org/downloads/release/python-385/</a><br>2.7: 好多旧项目使用的2.7<br>3.8: 新项目使用3.8<br><img src="https://s1.ax1x.com/2020/09/24/wzaom6.png" alt="python下载"></p>
+<p>2 - 注意：安装时记得勾选“把Python命令添加到Path环境变量”<br>默认会安装在如下目录：<br>C:\Users\web\AppData\Local\Programs\Python\Python36-32<br><img src="https://s1.ax1x.com/2020/09/24/wzNdAg.png" alt="python安装"><br>  在命令行执行<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\44814&gt;node -V</span><br><span class="line">node: bad option: -V</span><br></pre></td></tr></table></figure></p>
+<h2 id="一些代码"><a href="#一些代码" class="headerlink" title="一些代码"></a><span id="title1">一些代码</span></h2><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>说明</th>
+<th>效果</th>
+<th>js写法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>print()</td>
+<td>打印括号内内容 <br>print(111, 222, 333, sep=’/‘) sep 打印内容按指定格式隔开 默认是空格<br> print( 888,  end=’’) end 当前打印已指定格式结尾，不换行</td>
+<td>-</td>
+<td>console.log()</td>
+</tr>
+<tr>
+<td>input()</td>
+<td>获取用户输入内容</td>
+<td>-</td>
+<td>prompt()</td>
+</tr>
+<tr>
+<td>type(变量名)</td>
+<td>获取类型</td>
+<td>&lt; class ‘bool’ &gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>id(变量名)</td>
+<td>变量的标识符/内存地址</td>
+<td>140727214288768</td>
+<td></td>
+</tr>
+<tr>
+<td>int( … )</td>
+<td>转整数，具有无限精度</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>bin( … )</td>
+<td>十进制转化成2进制</td>
+<td>0b1010</td>
+<td></td>
+</tr>
+<tr>
+<td>float( … )</td>
+<td>转浮点数</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>bool( … )</td>
+<td>转布尔</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>str( … )</td>
+<td>转字符串</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>list( … )</td>
+<td>转数组（列表）</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>range(开始,结束,步长)</td>
+<td>list( range(0,20,5) # [0,5,15]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>quit()</td>
+<td>退出交互模式</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>myArr.append()</td>
+<td>末尾添加</td>
+<td>-</td>
+<td>push()</td>
+</tr>
+<tr>
+<td>myArr.insert(下标, 新值)</td>
+<td>下标处添加</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>del myArr[下标]</td>
+<td>下标处删除</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>len(myList)</td>
+<td>获取长度</td>
+<td></td>
+<td>arr.length</td>
+</tr>
+<tr>
+<td>#</td>
+<td>屏蔽内容</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>‘’’内容’’’</td>
+<td>屏蔽内容</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>“””内容”””</td>
+<td>屏蔽内容</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>a = “””内容”””</td>
+<td>赋值一个可换行的内容</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>\n</td>
+<td>回车</td>
+<td>-</td>
+<td></td>
+</tr>
+</tbody></table>
 <blockquote>
-<p>继承</p>
+<p>print()函数输出变量的值时，如果有字符串和数字的混合输出，不能直接使用+进行拼接，可以使用如下三种方案：<br>  print( ‘年龄为：’ + str(age) )<br>  print( ‘年龄为：’, age )<br>  print( ‘数据为：%d%.2f%s’%(age, price, name) )<br>  占位符<br>  %s :字符串 原样输出<br>  %d :整数 输出整数部分<br>  %f :浮点 默认6位小数, 不足补0; .nf n代表保留几位小数,自带四舍五入 %.2f==toFixed(2)<br>    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ename = <span class="string">&#x27;建国&#x27;</span></span><br><span class="line">age = <span class="number">20</span></span><br><span class="line">isMarried = <span class="literal">True</span></span><br><span class="line">print(<span class="string">&#x27;员工年龄为：&#x27;</span> + str(age) )  <span class="comment">#方式1</span></span><br><span class="line">print(<span class="string">&#x27;员工年龄为：&#x27;</span>, age, sep=<span class="string">&quot;&quot;</span> )  <span class="comment">#方式2</span></span><br><span class="line">print(<span class="string">&#x27;员工姓名为：%s 年龄为：%d&#x27;</span>%(ename,age))  <span class="comment">#方式3</span></span><br><span class="line"></span><br><span class="line">bookTitle = <span class="string">&#x27;三国志&#x27;</span></span><br><span class="line">price = <span class="number">35.555</span></span><br><span class="line">soldCount = <span class="number">1000</span></span><br><span class="line">print(<span class="string">&#x27;书名：%s 单价：%.2f 销售数量：%d&#x27;</span>%(bookTitle,price,soldCount)) </span><br><span class="line">print(<span class="string">&#x27;书名：&#123;0&#125; 单价：&#123;1&#125; 销售数量：&#123;2&#125;&#x27;</span>%(bookTitle,price,soldCount)) </span><br></pre></td></tr></table></figure></p>
 </blockquote>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#说明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span>(<span class="params"> Parent1 </span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, 形参列表</span>):</span></span><br><span class="line">    super().__init__(实参)</span><br><span class="line">    self.xx = xx</span><br></pre></td></tr></table></figure>
-
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例</span></span><br><span class="line"><span class="comment">#继承： Coder is a Emp</span></span><br><span class="line"><span class="comment">#is a关系就是继承关系</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> :</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n, s</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;一个Emp对象被构建了&#x27;</span>)</span><br><span class="line">    self.ename = n   </span><br><span class="line">    self.salary = s  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;员工姓名：%s 工资：%f&#x27;</span>%(self.ename, self.salary))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coder</span>(<span class="params"> Emp </span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, ename, salary, lang</span>):</span></span><br><span class="line">    super().__init__(ename, salary)  <span class="comment">#子类构造方法内部第一句永远调用父类的构造方法</span></span><br><span class="line">    self.language = lang </span><br><span class="line">    print(<span class="string">&#x27;一个Coder对象被构建了&#x27;</span>)</span><br><span class="line"></span><br><span class="line">c1 = Coder(<span class="string">&#x27;当当&#x27;</span>,<span class="number">8000</span>,<span class="string">&#x27;JS/ES/TS&#x27;</span>)</span><br><span class="line">print(c1.ename) <span class="comment"># 当当</span></span><br><span class="line">print(c1.salary) <span class="comment"># 8000</span></span><br><span class="line">print(c1.language) <span class="comment"># JS/ES/TS</span></span><br><span class="line">c1.printInfo() <span class="comment"># 员工姓名：当当 工资：8000.000000</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>多态<br>  同一个方法，在不同情况下运行结果不同<br>  Python中只有一种：子类覆盖了/重写了父类的同名方法<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> :</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n, s</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;一个Emp对象被构建了&#x27;</span>)</span><br><span class="line">    self.ename = n   </span><br><span class="line">    self.salary = s  </span><br><span class="line"></span><br><span class="line">  <span class="comment">#对象内部的方法成员</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;员工姓名：%s 工资：%f&#x27;</span>%(self.ename, self.salary))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coder</span>(<span class="params"> Emp </span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, ename, salary, lang</span>):</span></span><br><span class="line">    super().__init__(ename, salary) </span><br><span class="line">    self.language = lang </span><br><span class="line">    print(<span class="string">&#x27;一个Coder对象被构建了&#x27;</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#子类继承了printInfo方法，但是觉得不够用，于是重写了/覆盖了父类的同名方法</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>):</span></span><br><span class="line">    print(<span class="string">&#x27;程序员姓名：%s 工资：%f 擅长的语言：%s&#x27;</span>%(self.ename, self.salary, self.language))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#创建程序员对象</span></span><br><span class="line">e1 = Emp(<span class="string">&#x27;当当&#x27;</span>,<span class="number">8000</span>)</span><br><span class="line">e1.printInfo()</span><br><span class="line"></span><br><span class="line">c1 = Coder(<span class="string">&#x27;当当&#x27;</span>,<span class="number">8000</span>,<span class="string">&#x27;JS/ES/TS&#x27;</span>)</span><br><span class="line">c1.printInfo()</span><br></pre></td></tr></table></figure></p>
-</blockquote>
+<h2 id="运算符号"><a href="#运算符号" class="headerlink" title="运算符号"></a><span id="title2">运算符号</span></h2><p>  (1)算术运算：  + - *  / %   //  **  =  +=   -=   *=   /=   %=<br>    <code>//</code>表示取商  表示能被除尽的整数<br>    <code>**</code>表示求N次方；<br>    <code>==</code> 相当于 js的 <code>===</code> 但是布尔类型比较时还是会只有js<code>==</code>的效果<br>    <code>and</code> == js的 <code>&amp;&amp;</code><br>    <code>or</code> == js的 <code>||</code><br>    <code>not</code> == js的 <code>!</code><br>    <code>is</code>  <code>is not</code>—身份运算符<br>    <code>in</code> <code>not in</code> —成员运算符<br>    Python中没有自增(++)和自减(–)运算<br>    运算除+法外 其他运算都需要自己转化类型</p>
+<h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a><span id="title3">类型</span></h2><p>  <code>int</code>：整数，具有无限精度！<br>  <code>bool</code>：布尔，只有True和False<br>  <code>float</code>：浮点数<br>  <code>complex</code>：复数<br>  <code>str</code>: 字符串类型 1字符串可以使用单引号、双引号、三重引号括起来 2可以用[下标]形式访问字符串中每个字符，如：[0], [-1], [2:5], [-3:] 3可以使用for..in循环遍历字符串中的每个字符<br>  <code>list</code>：列表，即内容可变的数组  [10,20,30]<br>  <code>tuple</code>：元祖，内容不可变的数组  (10,20,30)<br>  <code>NoneType</code>：空 赋值为 a = <code>None</code><br>  <code>set</code> 集合类型 内容不重复; 自动去重,排序 a = {1, 2, 4, 4, 3} 会得到 {1,2,3,4}<br>  <code>dict</code> 字典类型 a = {‘a’: 123} 只支持a[‘a’]访问方式</p>
+<h2 id="循环和判断"><a href="#循环和判断" class="headerlink" title="循环和判断"></a><span id="title4">循环和判断</span></h2>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for in</span></span><br><span class="line">   txt = <span class="string">&#x27;abcdefg&#x27;</span></span><br><span class="line">   print( txt[<span class="number">0</span>] )   <span class="comment">#a</span></span><br><span class="line">   print( txt[<span class="number">0</span>:<span class="number">4</span>] ) <span class="comment">#abcd</span></span><br><span class="line">   print( txt[<span class="number">2</span>:<span class="number">4</span>] ) <span class="comment">#cd</span></span><br><span class="line">   print( txt[<span class="number">-1</span>] )  <span class="comment">#g</span></span><br><span class="line">   print( txt[<span class="number">-3</span>:] ) <span class="comment">#efg</span></span><br><span class="line">   print( txt[:<span class="number">-3</span>] ) <span class="comment">#abcd</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">#使用for循环遍历字符串中的每个字符</span></span><br><span class="line">   <span class="keyword">for</span> c <span class="keyword">in</span> txt:</span><br><span class="line">     print(c)</span><br><span class="line">     print(<span class="string">&#x27;------&#x27;</span>)</span><br><span class="line"></span><br><span class="line"> <span class="comment"># while</span></span><br><span class="line">   emps = []</span><br><span class="line">   <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">     emp = input(<span class="string">&#x27;请输入员工姓名, 输入end结束:&#x27;</span>)</span><br><span class="line">     <span class="keyword">if</span> emp == <span class="string">&#x27;end&#x27;</span>:</span><br><span class="line">       <span class="keyword">break</span></span><br><span class="line">     <span class="keyword">else</span>:</span><br><span class="line">       emps.append(emp)</span><br><span class="line">       print(emps)</span><br><span class="line"></span><br><span class="line"> <span class="comment"># 判断</span></span><br><span class="line">     <span class="comment"># 3目</span></span><br><span class="line">     print(<span class="string">&#x27;已&#x27;</span> <span class="keyword">if</span> a <span class="keyword">else</span> <span class="string">&#x27;未&#x27;</span>)  <span class="comment">## a ? &#x27;已&#x27; : &#x27;未&#x27; </span></span><br><span class="line"></span><br><span class="line">     <span class="comment"># 分支语法</span></span><br><span class="line">     <span class="keyword">if</span> a:</span><br><span class="line">       print(<span class="string">&#x27;已&#x27;</span>) <span class="comment"># if(a)&#123;console.log&#125;</span></span><br><span class="line">     <span class="keyword">else</span>:</span><br><span class="line">       print(<span class="string">&#x27;未&#x27;</span>) <span class="comment"># else &#123;console.log&#125;</span></span><br><span class="line"></span><br><span class="line">     <span class="comment"># 多分支语法</span></span><br><span class="line">     <span class="keyword">if</span> type == <span class="number">1</span>:</span><br><span class="line">       print(<span class="string">&#x27;黑铁&#x27;</span>)</span><br><span class="line">     <span class="keyword">elif</span> type == <span class="number">2</span>:</span><br><span class="line">       print(<span class="string">&#x27;白银&#x27;</span>)</span><br><span class="line">     <span class="keyword">elif</span> type == <span class="number">3</span>:</span><br><span class="line">       print(<span class="string">&#x27;黄金&#x27;</span>)</span><br><span class="line">     <span class="keyword">else</span>:</span><br><span class="line">       print(<span class="string">&#x27;类型错误&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
         
       
@@ -293,7 +418,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/">展开全文 >></a>
+          <a class="article-more-a" href="/Python-1-%E7%AE%80%E4%BB%8B/">展开全文 >></a>
         </p>
       
 
@@ -323,19 +448,19 @@
 
 
   
-    <article id="post-Node-js-4-express模块框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Node-js-5-express框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Node-js-4-express%E6%A8%A1%E5%9D%97%E6%A1%86%E6%9E%B6/">4-express模块</a>
+      <a class="article-title" href="/Node-js-5-express%E6%A1%86%E6%9E%B6/">5-express框架-脚手架</a>
     </h1>
   
 
         
-        <a href="/Node-js-4-express%E6%A8%A1%E5%9D%97%E6%A1%86%E6%9E%B6/" class="archive-article-date">
+        <a href="/Node-js-5-express%E6%A1%86%E6%9E%B6/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -344,28 +469,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p> 基于nodejs的，快速、开发、极简的web开发框架<br> <a target="_blank" rel="noopener" href="https://www.npmjs.com/packagr/express">https://www.npmjs.com/packagr/express</a><br> <a target="_blank" rel="noopener" href="http://www.expressjs.com.cn/">www.expressjs.com.cn</a> 中文版<br><code>npm  install  express</code> 安装<br><a href="#title1" target="_self">1.简单编写</a><br><a href="#title2" target="_self">2.路由</a><br><a href="#title3" target="_self">3.中间件</a></p>
-<h2 id="1-简单编写"><a href="#1-简单编写" class="headerlink" title="1.简单编写"></a>1.简单编写</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>); <span class="comment">// 引入express</span></span><br><span class="line"><span class="keyword">const</span> querystring = <span class="built_in">require</span>(<span class="string">&#x27;querystring&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server=express(); <span class="comment">//创建web服务器</span></span><br><span class="line">server.listen(<span class="number">8080</span>); <span class="comment">//设置端口</span></span><br><span class="line">server.get(<span class="string">&#x27;/login&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> query = req.query <span class="comment">// 参数</span></span><br><span class="line">  <span class="built_in">console</span>.log(query)</span><br><span class="line">  res.send(<span class="string">&#x27;&lt;h1&gt;阿刘到此一游&lt;h1&gt;&#x27;</span>);  <span class="comment">//  响应内容，只能响应一次,也只能使用一次send</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 网页跳转</span></span><br><span class="line">server.get(<span class="string">&#x27;/study&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.redirect(<span class="string">&#x27;http://www.tmooc.cn&#x27;</span>)	  <span class="comment">// 响应的重定向跳转网页 跳转 </span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//读取文件</span></span><br><span class="line">server.get(<span class="string">&#x27;/demo&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( __dirname); <span class="comment">// 出现目录</span></span><br><span class="line">  <span class="built_in">console</span>.log(__filename); <span class="comment">// 出现本文件目录 </span></span><br><span class="line">  <span class="built_in">console</span>.log(req.method); <span class="comment">// 请求的方法  GET</span></span><br><span class="line">  <span class="built_in">console</span>.log(req.url); <span class="comment">// 请求的URL /demo</span></span><br><span class="line">  <span class="built_in">console</span>.log(req.headers); <span class="comment">// 请求的头信息 </span></span><br><span class="line">  <span class="built_in">console</span>.log(req.query ); <span class="comment">// 获取请求时查询字符串传递的数据，并格式化为对象 问号后面的参数</span></span><br><span class="line">  res.sendFile(__dirname + <span class="string">&#x27;/01.html&#x27;</span>) <span class="comment">// 响应文件，必须使用绝对路径(__dirname)</span></span><br><span class="line">&#125;) </span><br><span class="line"><span class="comment">// post请求 后期有更简单的</span></span><br><span class="line">server.post(<span class="string">&#x27;/postLogin&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  req.on(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">a</span>) </span>&#123;<span class="comment">// a就是获取的数据，格式为buffer，转为字符串后格式为查询字符串，需要借助查询字符串模块格式化为对象</span></span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">    <span class="keyword">var</span> str = a.toString() <span class="comment">// uname=777888&amp;upwd=</span></span><br><span class="line">    <span class="keyword">var</span> bbb = querystring.parse(str)</span><br><span class="line">    res.send(bbb.uname)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-路由"><a href="#2-路由" class="headerlink" title="2.路由"></a>2.路由</h2><blockquote>
-<p>路由传参<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> querystring = <span class="built_in">require</span>(<span class="string">&#x27;querystring&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> server=express();</span><br><span class="line">server.listen(<span class="number">8080</span>);</span><br><span class="line">server.get(<span class="string">&#x27;/detail/:lid&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123; <span class="comment">// 声明 :lid/:bid/:did 可以接多个</span></span><br><span class="line">  <span class="built_in">console</span>.log(req.params)  <span class="comment">//获取路由传递的数据，格式为对象 &#123;lid:5&#125;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>路由器<br>  将路由按文件形式分开编写 然后导入<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// datail.js</span></span><br><span class="line">  <span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line">  <span class="keyword">var</span> route=express.Router() <span class="comment">// 创建路由器对象</span></span><br><span class="line">  route.get(<span class="string">&#x27;/list&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;<span class="comment">// 添加 路由 可以多个</span></span><br><span class="line">      res.send(<span class="string">&#x27;列表&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  ...</span><br><span class="line">  <span class="built_in">module</span>.exports=route; <span class="comment">// 导出对象router</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// app.js</span></span><br><span class="line">  <span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> productRouter=<span class="built_in">require</span>(<span class="string">&#x27;./product.js&#x27;</span>) <span class="comment">// 引入</span></span><br><span class="line">  <span class="keyword">const</span> userRouter1=<span class="built_in">require</span>(<span class="string">&#x27;./user&#x27;</span>) <span class="comment">// 引入</span></span><br><span class="line">  <span class="keyword">var</span> app=express();</span><br><span class="line">  app.listen(<span class="number">8080</span>);</span><br><span class="line">  <span class="comment">// 服务器使用路由器，添加前缀，防止不同模块出现相同URL</span></span><br><span class="line">  app.use(<span class="string">&#x27;/product&#x27;</span>,userRouter) <span class="comment">// 挂载</span></span><br><span class="line">  app.use(<span class="string">&#x27;/user&#x27;</span>,userRouter) <span class="comment">// 挂载</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="3-中间件"><a href="#3-中间件" class="headerlink" title="3.中间件"></a>3.中间件</h2><p>  中间件理解是一个过滤器，作用是为主要的业务逻辑服务<br>  <em>1.应用级中间件、2.路由级中间件、3.内置中间件、4.第三方中间件、5.错误处理中间件</em></p>
-<blockquote>
-<p>(1)应用级(自定义)中间件<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line">app.listen(<span class="number">8080</span>);</span><br><span class="line">app.use(<span class="string">&#x27;/reg&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123; <span class="comment">// 应用级(自定义)中间件</span></span><br><span class="line">  <span class="keyword">if</span>(!req.query.ID)&#123;</span><br><span class="line">    res.send(<span class="string">&#x27;身份证不能为空&#x27;</span>);   <span class="comment">// 判断空就提示</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    next() <span class="comment">//不空就跳过</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">&#x27;/reg&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">rqe, res, next</span>) </span>&#123; <span class="comment">// 应用级(自定义)中间件</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;用户名未被注册&#x27;</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/reg&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">&#x27;我是内容&#x27;</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>(2)路由级中间件<br>    服务器名.use(文件路径, 路由器);<br>    就是路由器的使用 <code>app.use(&#39;/product&#39;,userRouter)</code> // 挂载</p>
-</blockquote>
-<blockquote>
-<p>(3)内置中间件<br>  不需要创建单独的路由响应文件 在express下只保留了一个内置的中间件<br>  <code>express.static(&#39;目录&#39;)</code><br>  把静态资源托管到指定的目录，如果浏览器请求静态资源，自动到该目录下查找。<br>  静态资源：html、css、浏览器js、图像….<br>  直接在浏览器网页上输入文件夹中的文件名<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 把所有的静态资源托管到public目录下。如果浏览器清求文件会自动到public中寻找</span></span><br><span class="line">app.use(express.static(<span class="string">&#x27;public&#x27;</span>))<span class="comment">//直接在浏览器网页上输入文件夹中的文件名 127.0.0.1/login.html</span></span><br><span class="line"><span class="comment">// 就可以访问的 他下面的login.html 文件了</span></span><br><span class="line">app.post(<span class="string">&#x27;/mylog&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  req.on(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">buf</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = buf.toString()</span><br><span class="line">    <span class="keyword">var</span> obj = querystring.parse(a)</span><br><span class="line">    res.send(obj)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>(4)第三方中间件<br>  属于是第三方的模块，需要下载安装。<br>  比如 <code>body-parser</code> 的使用 <strong>获取post参数 格式为对象</strong><br>  下载安装  <code>npm install body-parser</code><br>  通常会和express附带<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入body-parser中间件模块</span></span><br><span class="line"><span class="string">`const bodyParser=require(&#x27;body-parser&#x27;)`</span></span><br><span class="line"><span class="comment">// 使用body-parser中间件，将所有post请求数据解析为对象</span></span><br><span class="line"><span class="string">`app.use( bodyParser.urlencoded(&#123;extended:false//是否使用第三方查询字符串模块,false不使用,就会使用核心的模块&#125;));`</span></span><br><span class="line"><span class="comment">// 路由中获取post请求数据，格式为对象</span></span><br><span class="line"><span class="string">`req.body`</span></span><br></pre></td></tr></table></figure><br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line">  <span class="keyword">const</span> querystring=<span class="built_in">require</span>(<span class="string">&#x27;querystring&#x27;</span>)</span><br><span class="line">  <span class="keyword">const</span> bodyParser=<span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>)</span><br><span class="line">  <span class="keyword">var</span> app=express();</span><br><span class="line">  app.listen(<span class="number">8080</span>);</span><br><span class="line">  app.use(bodyParser.urlencoded(&#123;<span class="comment">// urlencoded 将post请求的数据格式化为对象</span></span><br><span class="line">    extended:<span class="literal">false</span> <span class="comment">//不使用第三方qs模块，而是使用核心模块querystrinig将查询字符串格式化为对象</span></span><br><span class="line">  &#125;))</span><br><span class="line"></span><br><span class="line">app.use(express.static(<span class="string">&#x27;public&#x27;</span>))</span><br><span class="line">app.post(<span class="string">&#x27;/mylog&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(req.body)</span><br><span class="line">      <span class="comment">// req.on(&#x27;data&#x27;,function(buf)&#123;//事件.收到.数据</span></span><br><span class="line">          <span class="comment">//var a=buf.toString()</span></span><br><span class="line">    <span class="comment">// var obj=querystring.parse(a)</span></span><br><span class="line">      res.send(req.body) <span class="comment">//  req.body 就等于 a</span></span><br><span class="line"><span class="comment">// &#125;) </span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><br>（5）错误处理中间件<br> 暂无</p>
-</blockquote>
+          <h3 id="创建项目-18-webpackss-myapp"><a href="#创建项目-18-webpackss-myapp" class="headerlink" title="创建项目 18.webpackss\myapp"></a>创建项目 18.webpackss\myapp</h3><p><code>npm install express-generator –global</code> 下载express<br><code>express --view=pug myapp</code> 创建项目 myapp<br><code>cd myapp</code> 进入项目目录<br><code>npm install</code> 下载依赖<br><code>npm start </code> 运行</p>
 
         
       
@@ -390,92 +494,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/Node-js-4-express%E6%A8%A1%E5%9D%97%E6%A1%86%E6%9E%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Node-js-3-mysql模块和连接池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/">3-mysql模块和连接池</a>
-    </h1>
-  
-
-        
-        <a href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p><a href="#" target="_self">1.mysql模块</a><br><a href="#title1" target="_self">2.连接池</a></p>
-<h3 id="1-mysql模块"><a href="#1-mysql模块" class="headerlink" title="1.mysql模块"></a>1.mysql模块</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 说明</span></span><br><span class="line"><span class="keyword">var</span> connection=mysql.createConnection(&#123;&#125;</span><br><span class="line">  host:<span class="string">&#x27;127.0.0.1&#x27;</span>,<span class="comment">//服务器</span></span><br><span class="line">  port:<span class="string">&#x27;3306&#x27;</span>,<span class="comment">//端口</span></span><br><span class="line">  user: <span class="string">&#x27;root&#x27;</span>,<span class="comment">//用户名</span></span><br><span class="line">  password:<span class="string">&#x27;&#x27;</span>,<span class="comment">//密码</span></span><br><span class="line">  database: <span class="string">&#x27;tedu&#x27;</span><span class="comment">//连接后要使用的数据库</span></span><br><span class="line">&#125;); 创建连接对象，传递连接数据库需要的服务器、端口、用户名、密码、要使用的数据库</span><br><span class="line">connection.connect()  建立连接对象</span><br><span class="line">connection.query(sql, callback)  要执行的SQL语句 , 回调函数-用于获取SQL语句的结果</span><br><span class="line">connection.end()  执行完所有的SQL语句，关闭连接</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需要使用到的mysql</span></span><br><span class="line">SET NAMES UTF8;</span><br><span class="line">DROP DATABASE IF EXISTS tedu;</span><br><span class="line">CREATE DATABASE tedu CHARSET=UTF8;</span><br><span class="line">USE tedu;</span><br><span class="line"></span><br><span class="line">CREATE TABLE emp(eid INT,</span><br><span class="line">               ename VARCHAR(<span class="number">40</span>),</span><br><span class="line">              sex BOOL,</span><br><span class="line">               birthday DATETIME,</span><br><span class="line">               salary DECIMAL(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">               deptId VARCHAR(<span class="number">40</span>) );</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">1</span>,<span class="string">&#x27;张三1&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2018-12-12 12:12&#x27;</span>,<span class="number">111.11</span>,<span class="number">20</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">3</span>,<span class="string">&#x27;张三3&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2015-2-12 12:12&#x27;</span>,<span class="number">333.33</span>,<span class="number">20</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">4</span>,<span class="string">&#x27;张三4&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2014-3-13 12:12&#x27;</span>,<span class="number">444.44</span>,<span class="number">10</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">5</span>,<span class="string">&#x27;张三5&#x27;</span>,<span class="string">&#x27;0&#x27;</span>,<span class="string">&#x27;2012-4-14 12:12&#x27;</span>,<span class="number">555.55</span>,<span class="number">30</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">6</span>,<span class="string">&#x27;张三6&#x27;</span>,<span class="string">&#x27;0&#x27;</span>,<span class="string">&#x27;2018-5-15 12:12&#x27;</span>,<span class="number">666.66</span>,<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例子</span></span><br><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>);<span class="comment">//引入MYSQL模块</span></span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;<span class="comment">//创建连接对象</span></span><br><span class="line">  <span class="comment">// host:&#x27;127.0.0.1&#x27;,//服务器</span></span><br><span class="line">  <span class="comment">// port:&#x27;3306&#x27;,//端口</span></span><br><span class="line">  user: <span class="string">&#x27;root&#x27;</span>,<span class="comment">//用户名</span></span><br><span class="line">  <span class="comment">// password:&#x27;&#x27;,//密码</span></span><br><span class="line">  database: <span class="string">&#x27;tedu&#x27;</span><span class="comment">//连接后要使用的数据库</span></span><br><span class="line">&#125;);</span><br><span class="line">connection.connect()<span class="comment">// 建立连接对象</span></span><br><span class="line">connection.query(<span class="string">&#x27;SELECT*FROM emp WHERE eid=1&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;<span class="comment">//有错误 ，丢出来</span></span><br><span class="line">  <span class="built_in">console</span>.log(res)<span class="comment">// 查询res得到 []</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">&#x27;DELETE FROM emp WHERE eid=5&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(res)<span class="comment">// res.affectedRows: 1,删除成功。为0则失败</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">&#x27;INSERT INTO emp VALUES(?,?,?,?,?,?)&#x27;</span>, [<span class="literal">null</span>, <span class="string">&#x27;sss&#x27;</span>, <span class="number">1</span>, <span class="string">&#x27;1999-5-5&#x27;</span>, <span class="number">5000</span>, <span class="number">20</span>], <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(res);<span class="comment">// res.affectedRows: 1,添加成功。为0则失败</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">`UPDATE emp SET ename=&#x27;ssss&#x27;  WHERE eid=3`</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(res);<span class="comment">// res.affectedRows: 1,修改。为0则失败</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">connection.end(); <span class="comment">// 执行完所有的SQL语句，关闭连接</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-使用连接池"><a href="#2-使用连接池" class="headerlink" title="2.使用连接池"></a><span id="title1">2.使用连接池</span></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以使用单独文件 然后导入导出</span></span><br><span class="line"><span class="comment">// module.exports = pool 导出连接池</span></span><br><span class="line"><span class="comment">// const pool = require(&#x27;../pool.js&#x27;)引用链接池</span></span><br><span class="line"> <span class="keyword">const</span> mysql=<span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line"> <span class="keyword">const</span> pool=mysql.createPool(&#123;<span class="comment">//创建连接池对象</span></span><br><span class="line">    host:<span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">    port:<span class="string">&#x27;3306&#x27;</span>,</span><br><span class="line">    user:<span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    password:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    database:<span class="string">&#x27;tedu&#x27;</span>,</span><br><span class="line">    connectionLimit:<span class="number">15</span> <span class="comment">// 使用数据库设置连接池的大小 connectionLimit，默认是15</span></span><br><span class="line">	&#125;);</span><br><span class="line"> pool.query(<span class="string">&#x27;SELECT*FROM emp WHERE eid=?&#x27;</span>,[<span class="number">1</span>],<span class="function"><span class="keyword">function</span>(<span class="params">e,b</span>)</span>&#123; <span class="comment">// eid=站位符号. 后面数组替代站位符号。可以防止SQL注入</span></span><br><span class="line">  <span class="keyword">if</span>(e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(b);<span class="comment">//对象结果</span></span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
-<p>使用导入导出模式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pool.js</span></span><br><span class="line"> <span class="keyword">const</span> mysql=<span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line"> <span class="keyword">const</span> pool=mysql.createPool(&#123;<span class="comment">//创建连接池对象</span></span><br><span class="line">   host:<span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">   port:<span class="string">&#x27;3306&#x27;</span>,</span><br><span class="line">   user:<span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">   password:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">   database:<span class="string">&#x27;tedu&#x27;</span>,</span><br><span class="line">   connectionLimit:<span class="number">15</span> <span class="comment">// 使用数据库设置连接池的大小 connectionLimit，默认是15</span></span><br><span class="line">&#125;);</span><br><span class="line"> <span class="built_in">module</span>.exports = pool 导出连接池</span><br><span class="line"> <span class="comment">// routes/user.js</span></span><br><span class="line"> <span class="keyword">const</span> pool = <span class="built_in">require</span>(<span class="string">&#x27;../pool.js&#x27;</span>) <span class="comment">// 引用链接池</span></span><br><span class="line"> <span class="comment">// 然后各种操作</span></span><br><span class="line"> pool.query(<span class="string">&#x27;SELECT*FROM emp WHERE eid=?&#x27;</span>,[<span class="number">1</span>],<span class="function"><span class="keyword">function</span>(<span class="params">e,b</span>)</span>&#123; <span class="comment">// eid=站位符号. 后面数组替代站位符号。可以防止SQL注入</span></span><br><span class="line">   <span class="keyword">if</span>(e) <span class="keyword">throw</span> e;</span><br><span class="line">   <span class="built_in">console</span>.log(b);<span class="comment">//对象结果</span></span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node J S</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/Node-js-5-express%E6%A1%86%E6%9E%B6/">展开全文 >></a>
         </p>
       
 
@@ -639,19 +658,19 @@
 
 
   
-    <article id="post-Node-js-5-express框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Node-js-3-mysql模块和连接池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Node-js-5-express%E6%A1%86%E6%9E%B6/">5-express框架-脚手架</a>
+      <a class="article-title" href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/">3-mysql模块和连接池</a>
     </h1>
   
 
         
-        <a href="/Node-js-5-express%E6%A1%86%E6%9E%B6/" class="archive-article-date">
+        <a href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -660,7 +679,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="创建项目-18-webpackss-myapp"><a href="#创建项目-18-webpackss-myapp" class="headerlink" title="创建项目 18.webpackss\myapp"></a>创建项目 18.webpackss\myapp</h3><p><code>npm install express-generator –global</code> 下载express<br><code>express --view=pug myapp</code> 创建项目 myapp<br><code>cd myapp</code> 进入项目目录<br><code>npm install</code> 下载依赖<br><code>npm start </code> 运行</p>
+          <p><a href="#" target="_self">1.mysql模块</a><br><a href="#title1" target="_self">2.连接池</a></p>
+<h3 id="1-mysql模块"><a href="#1-mysql模块" class="headerlink" title="1.mysql模块"></a>1.mysql模块</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 说明</span></span><br><span class="line"><span class="keyword">var</span> connection=mysql.createConnection(&#123;&#125;</span><br><span class="line">  host:<span class="string">&#x27;127.0.0.1&#x27;</span>,<span class="comment">//服务器</span></span><br><span class="line">  port:<span class="string">&#x27;3306&#x27;</span>,<span class="comment">//端口</span></span><br><span class="line">  user: <span class="string">&#x27;root&#x27;</span>,<span class="comment">//用户名</span></span><br><span class="line">  password:<span class="string">&#x27;&#x27;</span>,<span class="comment">//密码</span></span><br><span class="line">  database: <span class="string">&#x27;tedu&#x27;</span><span class="comment">//连接后要使用的数据库</span></span><br><span class="line">&#125;); 创建连接对象，传递连接数据库需要的服务器、端口、用户名、密码、要使用的数据库</span><br><span class="line">connection.connect()  建立连接对象</span><br><span class="line">connection.query(sql, callback)  要执行的SQL语句 , 回调函数-用于获取SQL语句的结果</span><br><span class="line">connection.end()  执行完所有的SQL语句，关闭连接</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需要使用到的mysql</span></span><br><span class="line">SET NAMES UTF8;</span><br><span class="line">DROP DATABASE IF EXISTS tedu;</span><br><span class="line">CREATE DATABASE tedu CHARSET=UTF8;</span><br><span class="line">USE tedu;</span><br><span class="line"></span><br><span class="line">CREATE TABLE emp(eid INT,</span><br><span class="line">               ename VARCHAR(<span class="number">40</span>),</span><br><span class="line">              sex BOOL,</span><br><span class="line">               birthday DATETIME,</span><br><span class="line">               salary DECIMAL(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">               deptId VARCHAR(<span class="number">40</span>) );</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">1</span>,<span class="string">&#x27;张三1&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2018-12-12 12:12&#x27;</span>,<span class="number">111.11</span>,<span class="number">20</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">3</span>,<span class="string">&#x27;张三3&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2015-2-12 12:12&#x27;</span>,<span class="number">333.33</span>,<span class="number">20</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">4</span>,<span class="string">&#x27;张三4&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2014-3-13 12:12&#x27;</span>,<span class="number">444.44</span>,<span class="number">10</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">5</span>,<span class="string">&#x27;张三5&#x27;</span>,<span class="string">&#x27;0&#x27;</span>,<span class="string">&#x27;2012-4-14 12:12&#x27;</span>,<span class="number">555.55</span>,<span class="number">30</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">6</span>,<span class="string">&#x27;张三6&#x27;</span>,<span class="string">&#x27;0&#x27;</span>,<span class="string">&#x27;2018-5-15 12:12&#x27;</span>,<span class="number">666.66</span>,<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例子</span></span><br><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>);<span class="comment">//引入MYSQL模块</span></span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;<span class="comment">//创建连接对象</span></span><br><span class="line">  <span class="comment">// host:&#x27;127.0.0.1&#x27;,//服务器</span></span><br><span class="line">  <span class="comment">// port:&#x27;3306&#x27;,//端口</span></span><br><span class="line">  user: <span class="string">&#x27;root&#x27;</span>,<span class="comment">//用户名</span></span><br><span class="line">  <span class="comment">// password:&#x27;&#x27;,//密码</span></span><br><span class="line">  database: <span class="string">&#x27;tedu&#x27;</span><span class="comment">//连接后要使用的数据库</span></span><br><span class="line">&#125;);</span><br><span class="line">connection.connect()<span class="comment">// 建立连接对象</span></span><br><span class="line">connection.query(<span class="string">&#x27;SELECT*FROM emp WHERE eid=1&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;<span class="comment">//有错误 ，丢出来</span></span><br><span class="line">  <span class="built_in">console</span>.log(res)<span class="comment">// 查询res得到 []</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">&#x27;DELETE FROM emp WHERE eid=5&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(res)<span class="comment">// res.affectedRows: 1,删除成功。为0则失败</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">&#x27;INSERT INTO emp VALUES(?,?,?,?,?,?)&#x27;</span>, [<span class="literal">null</span>, <span class="string">&#x27;sss&#x27;</span>, <span class="number">1</span>, <span class="string">&#x27;1999-5-5&#x27;</span>, <span class="number">5000</span>, <span class="number">20</span>], <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(res);<span class="comment">// res.affectedRows: 1,添加成功。为0则失败</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">`UPDATE emp SET ename=&#x27;ssss&#x27;  WHERE eid=3`</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(res);<span class="comment">// res.affectedRows: 1,修改。为0则失败</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">connection.end(); <span class="comment">// 执行完所有的SQL语句，关闭连接</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-使用连接池"><a href="#2-使用连接池" class="headerlink" title="2.使用连接池"></a><span id="title1">2.使用连接池</span></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以使用单独文件 然后导入导出</span></span><br><span class="line"><span class="comment">// module.exports = pool 导出连接池</span></span><br><span class="line"><span class="comment">// const pool = require(&#x27;../pool.js&#x27;)引用链接池</span></span><br><span class="line"> <span class="keyword">const</span> mysql=<span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line"> <span class="keyword">const</span> pool=mysql.createPool(&#123;<span class="comment">//创建连接池对象</span></span><br><span class="line">    host:<span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">    port:<span class="string">&#x27;3306&#x27;</span>,</span><br><span class="line">    user:<span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    password:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    database:<span class="string">&#x27;tedu&#x27;</span>,</span><br><span class="line">    connectionLimit:<span class="number">15</span> <span class="comment">// 使用数据库设置连接池的大小 connectionLimit，默认是15</span></span><br><span class="line">	&#125;);</span><br><span class="line"> pool.query(<span class="string">&#x27;SELECT*FROM emp WHERE eid=?&#x27;</span>,[<span class="number">1</span>],<span class="function"><span class="keyword">function</span>(<span class="params">e,b</span>)</span>&#123; <span class="comment">// eid=站位符号. 后面数组替代站位符号。可以防止SQL注入</span></span><br><span class="line">  <span class="keyword">if</span>(e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(b);<span class="comment">//对象结果</span></span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<p>使用导入导出模式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pool.js</span></span><br><span class="line"> <span class="keyword">const</span> mysql=<span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line"> <span class="keyword">const</span> pool=mysql.createPool(&#123;<span class="comment">//创建连接池对象</span></span><br><span class="line">   host:<span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">   port:<span class="string">&#x27;3306&#x27;</span>,</span><br><span class="line">   user:<span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">   password:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">   database:<span class="string">&#x27;tedu&#x27;</span>,</span><br><span class="line">   connectionLimit:<span class="number">15</span> <span class="comment">// 使用数据库设置连接池的大小 connectionLimit，默认是15</span></span><br><span class="line">&#125;);</span><br><span class="line"> <span class="built_in">module</span>.exports = pool 导出连接池</span><br><span class="line"> <span class="comment">// routes/user.js</span></span><br><span class="line"> <span class="keyword">const</span> pool = <span class="built_in">require</span>(<span class="string">&#x27;../pool.js&#x27;</span>) <span class="comment">// 引用链接池</span></span><br><span class="line"> <span class="comment">// 然后各种操作</span></span><br><span class="line"> pool.query(<span class="string">&#x27;SELECT*FROM emp WHERE eid=?&#x27;</span>,[<span class="number">1</span>],<span class="function"><span class="keyword">function</span>(<span class="params">e,b</span>)</span>&#123; <span class="comment">// eid=站位符号. 后面数组替代站位符号。可以防止SQL注入</span></span><br><span class="line">   <span class="keyword">if</span>(e) <span class="keyword">throw</span> e;</span><br><span class="line">   <span class="built_in">console</span>.log(b);<span class="comment">//对象结果</span></span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
 
         
       
@@ -685,7 +713,193 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/Node-js-5-express%E6%A1%86%E6%9E%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Node-js-4-express模块框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Node-js-4-express%E6%A8%A1%E5%9D%97%E6%A1%86%E6%9E%B6/">4-express模块</a>
+    </h1>
+  
+
+        
+        <a href="/Node-js-4-express%E6%A8%A1%E5%9D%97%E6%A1%86%E6%9E%B6/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p> 基于nodejs的，快速、开发、极简的web开发框架<br> <a target="_blank" rel="noopener" href="https://www.npmjs.com/packagr/express">https://www.npmjs.com/packagr/express</a><br> <a target="_blank" rel="noopener" href="http://www.expressjs.com.cn/">www.expressjs.com.cn</a> 中文版<br><code>npm  install  express</code> 安装<br><a href="#title1" target="_self">1.简单编写</a><br><a href="#title2" target="_self">2.路由</a><br><a href="#title3" target="_self">3.中间件</a></p>
+<h2 id="1-简单编写"><a href="#1-简单编写" class="headerlink" title="1.简单编写"></a>1.简单编写</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>); <span class="comment">// 引入express</span></span><br><span class="line"><span class="keyword">const</span> querystring = <span class="built_in">require</span>(<span class="string">&#x27;querystring&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server=express(); <span class="comment">//创建web服务器</span></span><br><span class="line">server.listen(<span class="number">8080</span>); <span class="comment">//设置端口</span></span><br><span class="line">server.get(<span class="string">&#x27;/login&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> query = req.query <span class="comment">// 参数</span></span><br><span class="line">  <span class="built_in">console</span>.log(query)</span><br><span class="line">  res.send(<span class="string">&#x27;&lt;h1&gt;阿刘到此一游&lt;h1&gt;&#x27;</span>);  <span class="comment">//  响应内容，只能响应一次,也只能使用一次send</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 网页跳转</span></span><br><span class="line">server.get(<span class="string">&#x27;/study&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.redirect(<span class="string">&#x27;http://www.tmooc.cn&#x27;</span>)	  <span class="comment">// 响应的重定向跳转网页 跳转 </span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//读取文件</span></span><br><span class="line">server.get(<span class="string">&#x27;/demo&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( __dirname); <span class="comment">// 出现目录</span></span><br><span class="line">  <span class="built_in">console</span>.log(__filename); <span class="comment">// 出现本文件目录 </span></span><br><span class="line">  <span class="built_in">console</span>.log(req.method); <span class="comment">// 请求的方法  GET</span></span><br><span class="line">  <span class="built_in">console</span>.log(req.url); <span class="comment">// 请求的URL /demo</span></span><br><span class="line">  <span class="built_in">console</span>.log(req.headers); <span class="comment">// 请求的头信息 </span></span><br><span class="line">  <span class="built_in">console</span>.log(req.query ); <span class="comment">// 获取请求时查询字符串传递的数据，并格式化为对象 问号后面的参数</span></span><br><span class="line">  res.sendFile(__dirname + <span class="string">&#x27;/01.html&#x27;</span>) <span class="comment">// 响应文件，必须使用绝对路径(__dirname)</span></span><br><span class="line">&#125;) </span><br><span class="line"><span class="comment">// post请求 后期有更简单的</span></span><br><span class="line">server.post(<span class="string">&#x27;/postLogin&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  req.on(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">a</span>) </span>&#123;<span class="comment">// a就是获取的数据，格式为buffer，转为字符串后格式为查询字符串，需要借助查询字符串模块格式化为对象</span></span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">    <span class="keyword">var</span> str = a.toString() <span class="comment">// uname=777888&amp;upwd=</span></span><br><span class="line">    <span class="keyword">var</span> bbb = querystring.parse(str)</span><br><span class="line">    res.send(bbb.uname)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-路由"><a href="#2-路由" class="headerlink" title="2.路由"></a>2.路由</h2><blockquote>
+<p>路由传参<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> querystring = <span class="built_in">require</span>(<span class="string">&#x27;querystring&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> server=express();</span><br><span class="line">server.listen(<span class="number">8080</span>);</span><br><span class="line">server.get(<span class="string">&#x27;/detail/:lid&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123; <span class="comment">// 声明 :lid/:bid/:did 可以接多个</span></span><br><span class="line">  <span class="built_in">console</span>.log(req.params)  <span class="comment">//获取路由传递的数据，格式为对象 &#123;lid:5&#125;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>路由器<br>  将路由按文件形式分开编写 然后导入<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// datail.js</span></span><br><span class="line">  <span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line">  <span class="keyword">var</span> route=express.Router() <span class="comment">// 创建路由器对象</span></span><br><span class="line">  route.get(<span class="string">&#x27;/list&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;<span class="comment">// 添加 路由 可以多个</span></span><br><span class="line">      res.send(<span class="string">&#x27;列表&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  ...</span><br><span class="line">  <span class="built_in">module</span>.exports=route; <span class="comment">// 导出对象router</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// app.js</span></span><br><span class="line">  <span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> productRouter=<span class="built_in">require</span>(<span class="string">&#x27;./product.js&#x27;</span>) <span class="comment">// 引入</span></span><br><span class="line">  <span class="keyword">const</span> userRouter1=<span class="built_in">require</span>(<span class="string">&#x27;./user&#x27;</span>) <span class="comment">// 引入</span></span><br><span class="line">  <span class="keyword">var</span> app=express();</span><br><span class="line">  app.listen(<span class="number">8080</span>);</span><br><span class="line">  <span class="comment">// 服务器使用路由器，添加前缀，防止不同模块出现相同URL</span></span><br><span class="line">  app.use(<span class="string">&#x27;/product&#x27;</span>,userRouter) <span class="comment">// 挂载</span></span><br><span class="line">  app.use(<span class="string">&#x27;/user&#x27;</span>,userRouter) <span class="comment">// 挂载</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="3-中间件"><a href="#3-中间件" class="headerlink" title="3.中间件"></a>3.中间件</h2><p>  中间件理解是一个过滤器，作用是为主要的业务逻辑服务<br>  <em>1.应用级中间件、2.路由级中间件、3.内置中间件、4.第三方中间件、5.错误处理中间件</em></p>
+<blockquote>
+<p>(1)应用级(自定义)中间件<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line">app.listen(<span class="number">8080</span>);</span><br><span class="line">app.use(<span class="string">&#x27;/reg&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123; <span class="comment">// 应用级(自定义)中间件</span></span><br><span class="line">  <span class="keyword">if</span>(!req.query.ID)&#123;</span><br><span class="line">    res.send(<span class="string">&#x27;身份证不能为空&#x27;</span>);   <span class="comment">// 判断空就提示</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    next() <span class="comment">//不空就跳过</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">&#x27;/reg&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">rqe, res, next</span>) </span>&#123; <span class="comment">// 应用级(自定义)中间件</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;用户名未被注册&#x27;</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/reg&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">&#x27;我是内容&#x27;</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>(2)路由级中间件<br>    服务器名.use(文件路径, 路由器);<br>    就是路由器的使用 <code>app.use(&#39;/product&#39;,userRouter)</code> // 挂载</p>
+</blockquote>
+<blockquote>
+<p>(3)内置中间件<br>  不需要创建单独的路由响应文件 在express下只保留了一个内置的中间件<br>  <code>express.static(&#39;目录&#39;)</code><br>  把静态资源托管到指定的目录，如果浏览器请求静态资源，自动到该目录下查找。<br>  静态资源：html、css、浏览器js、图像….<br>  直接在浏览器网页上输入文件夹中的文件名<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 把所有的静态资源托管到public目录下。如果浏览器清求文件会自动到public中寻找</span></span><br><span class="line">app.use(express.static(<span class="string">&#x27;public&#x27;</span>))<span class="comment">//直接在浏览器网页上输入文件夹中的文件名 127.0.0.1/login.html</span></span><br><span class="line"><span class="comment">// 就可以访问的 他下面的login.html 文件了</span></span><br><span class="line">app.post(<span class="string">&#x27;/mylog&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  req.on(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">buf</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = buf.toString()</span><br><span class="line">    <span class="keyword">var</span> obj = querystring.parse(a)</span><br><span class="line">    res.send(obj)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>(4)第三方中间件<br>  属于是第三方的模块，需要下载安装。<br>  比如 <code>body-parser</code> 的使用 <strong>获取post参数 格式为对象</strong><br>  下载安装  <code>npm install body-parser</code><br>  通常会和express附带<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入body-parser中间件模块</span></span><br><span class="line"><span class="string">`const bodyParser=require(&#x27;body-parser&#x27;)`</span></span><br><span class="line"><span class="comment">// 使用body-parser中间件，将所有post请求数据解析为对象</span></span><br><span class="line"><span class="string">`app.use( bodyParser.urlencoded(&#123;extended:false//是否使用第三方查询字符串模块,false不使用,就会使用核心的模块&#125;));`</span></span><br><span class="line"><span class="comment">// 路由中获取post请求数据，格式为对象</span></span><br><span class="line"><span class="string">`req.body`</span></span><br></pre></td></tr></table></figure><br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line">  <span class="keyword">const</span> querystring=<span class="built_in">require</span>(<span class="string">&#x27;querystring&#x27;</span>)</span><br><span class="line">  <span class="keyword">const</span> bodyParser=<span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>)</span><br><span class="line">  <span class="keyword">var</span> app=express();</span><br><span class="line">  app.listen(<span class="number">8080</span>);</span><br><span class="line">  app.use(bodyParser.urlencoded(&#123;<span class="comment">// urlencoded 将post请求的数据格式化为对象</span></span><br><span class="line">    extended:<span class="literal">false</span> <span class="comment">//不使用第三方qs模块，而是使用核心模块querystrinig将查询字符串格式化为对象</span></span><br><span class="line">  &#125;))</span><br><span class="line"></span><br><span class="line">app.use(express.static(<span class="string">&#x27;public&#x27;</span>))</span><br><span class="line">app.post(<span class="string">&#x27;/mylog&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(req.body)</span><br><span class="line">      <span class="comment">// req.on(&#x27;data&#x27;,function(buf)&#123;//事件.收到.数据</span></span><br><span class="line">          <span class="comment">//var a=buf.toString()</span></span><br><span class="line">    <span class="comment">// var obj=querystring.parse(a)</span></span><br><span class="line">      res.send(req.body) <span class="comment">//  req.body 就等于 a</span></span><br><span class="line"><span class="comment">// &#125;) </span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><br>（5）错误处理中间件<br> 暂无</p>
+</blockquote>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node J S</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Node-js-4-express%E6%A8%A1%E5%9D%97%E6%A1%86%E6%9E%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Node-js-1-nodeJS简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Node-js-1-nodeJS%E7%AE%80%E4%BB%8B/">1-nodeJS简介</a>
+    </h1>
+  
+
+        
+        <a href="/Node-js-1-nodeJS%E7%AE%80%E4%BB%8B/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.436Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>  1.说明<br>  <a href="#title2" target="_self">2.对象</a><br>  <a href="#title3" target="_self">3.大体导图</a><br>  <a href="/Node-js-2-各种模块/" target="_self">4.模块才是大头！</a></p>
+<h3 id="1-说明"><a href="#1-说明" class="headerlink" title="1.说明"></a>1.说明</h3><p> 特点<br>  单线程逻辑处理<br>  非阻塞的异步I/O处理<br>  支持数万个并发连接<br>  事件驱动编程<br>  无锁机制，不会产生死锁</p>
+<p>执行方式<br>    1.脚本模式   node  app.js<br>       与文件后缀名没有关系。但一般我们还是将文件用JS后缀<br>    2.交互模式   node  回车<br>      两次<code>ctrl+c</code>   或者 <code>.exit </code>退出交互模式</p>
+<h2 id="2-对象"><a href="#2-对象" class="headerlink" title="2.对象"></a>2.对象</h2><blockquote>
+<p>全局对象 js:window  nodejs:<code>global</code><br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">global</span>.console.log()  <span class="comment">// 打印日志</span></span><br><span class="line"><span class="built_in">global</span>.console.info() <span class="comment">// 打印消息</span></span><br><span class="line"><span class="built_in">global</span>.console.warn()  <span class="comment">// 打印自定义的警告</span></span><br><span class="line"><span class="built_in">global</span>.console.error()  <span class="comment">// 打印自定义的错误这4种输出是一样的，但是显示的图标不一样</span></span><br><span class="line"><span class="built_in">global</span>.console.time(<span class="string">&#x27;自定义字符串&#x27;</span>)  <span class="comment">// 开始计时&#x27;自定义字符串&#x27;相对于命名</span></span><br><span class="line"><span class="built_in">global</span>.console.timeEnd(<span class="string">&#x27;自定义字符串&#x27;</span>)  <span class="comment">// 结束计时自定义字符串前后保持一致</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><code>process</code>对象——进程<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">process.arch  <span class="comment">//查看当前CPU的架构</span></span><br><span class="line">process.platform  <span class="comment">//查看当前的操作系统</span></span><br><span class="line">process.env  <span class="comment">//查看当前系统的环境变量</span></span><br><span class="line">process.version  <span class="comment">//查看当前nodejs的版本号</span></span><br><span class="line">process.pid  <span class="comment">//查看当前的进程编号</span></span><br><span class="line">process.kill()   <span class="comment">//结束某个编号的进程</span></span><br><span class="line">process.nextTick(fun) <span class="comment">// 类似vue的nextTick</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><code>Buffer</code> 对象——缓冲区<br>  一块用于临时存储数据的内存区域，可以存储文件数据、常用于网络上传输的资源(视频、在线直播…)<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf=Buffer.alloc(<span class="number">5</span>,<span class="string">&#x27;abcde&#x27;</span>);<span class="comment">// alloc(最多个数,&#x27;字符串&#x27;)  当字符串个数少于最多个数时 回从头开始重复知道满足最大个数</span></span><br><span class="line"><span class="built_in">console</span>.log(buf)<span class="comment">//&lt;Buffer 61 62 63 64 65&gt; 打印的是Unicode统一码</span></span><br><span class="line"><span class="built_in">console</span>.log(buf.toString())<span class="comment">// 将buffer数据转为字符串buf.toString() abcde</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="3-大体导图"><a href="#3-大体导图" class="headerlink" title="3.大体导图"></a>3.大体导图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">创建数据库     mys&#x2F;    user.sql</span><br><span class="line">创建连接池对象         pool.js</span><br><span class="line">        引用模块</span><br><span class="line">        确认路径</span><br><span class="line">        导出模块</span><br><span class="line">创建静态页面    public&#x2F; user.html</span><br><span class="line">创建服务器             app.js</span><br><span class="line">        引用模块</span><br><span class="line">        创建服务器</span><br><span class="line">        导入路由器</span><br><span class="line">        挂载静态资源（确认文件路径）</span><br><span class="line">        挂载路由器</span><br><span class="line">创建路由器    routes&#x2F;  user.js</span><br><span class="line">        引用模块</span><br><span class="line">        引用连接池</span><br><span class="line">        创建路由器对象</span><br><span class="line">        中间件.路由.具体操作</span><br><span class="line">        导出路由器对象</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node J S</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Node-js-1-nodeJS%E7%AE%80%E4%BB%8B/">展开全文 >></a>
         </p>
       
 
@@ -1402,108 +1616,19 @@
 
 
   
-    <article id="post-Node-js-1-nodeJS简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JS-6-运算符号" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Node-js-1-nodeJS%E7%AE%80%E4%BB%8B/">1-nodeJS简介</a>
+      <a class="article-title" href="/JS-6-%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%B7/">6-运算符号</a>
     </h1>
   
 
         
-        <a href="/Node-js-1-nodeJS%E7%AE%80%E4%BB%8B/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.436Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>  1.说明<br>  <a href="#title2" target="_self">2.对象</a><br>  <a href="#title3" target="_self">3.大体导图</a><br>  <a href="/Node-js-2-各种模块/" target="_self">4.模块才是大头！</a></p>
-<h3 id="1-说明"><a href="#1-说明" class="headerlink" title="1.说明"></a>1.说明</h3><p> 特点<br>  单线程逻辑处理<br>  非阻塞的异步I/O处理<br>  支持数万个并发连接<br>  事件驱动编程<br>  无锁机制，不会产生死锁</p>
-<p>执行方式<br>    1.脚本模式   node  app.js<br>       与文件后缀名没有关系。但一般我们还是将文件用JS后缀<br>    2.交互模式   node  回车<br>      两次<code>ctrl+c</code>   或者 <code>.exit </code>退出交互模式</p>
-<h2 id="2-对象"><a href="#2-对象" class="headerlink" title="2.对象"></a>2.对象</h2><blockquote>
-<p>全局对象 js:window  nodejs:<code>global</code><br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">global</span>.console.log()  <span class="comment">// 打印日志</span></span><br><span class="line"><span class="built_in">global</span>.console.info() <span class="comment">// 打印消息</span></span><br><span class="line"><span class="built_in">global</span>.console.warn()  <span class="comment">// 打印自定义的警告</span></span><br><span class="line"><span class="built_in">global</span>.console.error()  <span class="comment">// 打印自定义的错误这4种输出是一样的，但是显示的图标不一样</span></span><br><span class="line"><span class="built_in">global</span>.console.time(<span class="string">&#x27;自定义字符串&#x27;</span>)  <span class="comment">// 开始计时&#x27;自定义字符串&#x27;相对于命名</span></span><br><span class="line"><span class="built_in">global</span>.console.timeEnd(<span class="string">&#x27;自定义字符串&#x27;</span>)  <span class="comment">// 结束计时自定义字符串前后保持一致</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><code>process</code>对象——进程<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">process.arch  <span class="comment">//查看当前CPU的架构</span></span><br><span class="line">process.platform  <span class="comment">//查看当前的操作系统</span></span><br><span class="line">process.env  <span class="comment">//查看当前系统的环境变量</span></span><br><span class="line">process.version  <span class="comment">//查看当前nodejs的版本号</span></span><br><span class="line">process.pid  <span class="comment">//查看当前的进程编号</span></span><br><span class="line">process.kill()   <span class="comment">//结束某个编号的进程</span></span><br><span class="line">process.nextTick(fun) <span class="comment">// 类似vue的nextTick</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><code>Buffer</code> 对象——缓冲区<br>  一块用于临时存储数据的内存区域，可以存储文件数据、常用于网络上传输的资源(视频、在线直播…)<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf=Buffer.alloc(<span class="number">5</span>,<span class="string">&#x27;abcde&#x27;</span>);<span class="comment">// alloc(最多个数,&#x27;字符串&#x27;)  当字符串个数少于最多个数时 回从头开始重复知道满足最大个数</span></span><br><span class="line"><span class="built_in">console</span>.log(buf)<span class="comment">//&lt;Buffer 61 62 63 64 65&gt; 打印的是Unicode统一码</span></span><br><span class="line"><span class="built_in">console</span>.log(buf.toString())<span class="comment">// 将buffer数据转为字符串buf.toString() abcde</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="3-大体导图"><a href="#3-大体导图" class="headerlink" title="3.大体导图"></a>3.大体导图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">创建数据库     mys&#x2F;    user.sql</span><br><span class="line">创建连接池对象         pool.js</span><br><span class="line">        引用模块</span><br><span class="line">        确认路径</span><br><span class="line">        导出模块</span><br><span class="line">创建静态页面    public&#x2F; user.html</span><br><span class="line">创建服务器             app.js</span><br><span class="line">        引用模块</span><br><span class="line">        创建服务器</span><br><span class="line">        导入路由器</span><br><span class="line">        挂载静态资源（确认文件路径）</span><br><span class="line">        挂载路由器</span><br><span class="line">创建路由器    routes&#x2F;  user.js</span><br><span class="line">        引用模块</span><br><span class="line">        引用连接池</span><br><span class="line">        创建路由器对象</span><br><span class="line">        中间件.路由.具体操作</span><br><span class="line">        导出路由器对象</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node J S</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Node-js-1-nodeJS%E7%AE%80%E4%BB%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS-7-js时间" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/JS-7-js%E6%97%B6%E9%97%B4/">7-js时间</a>
-    </h1>
-  
-
-        
-        <a href="/JS-7-js%E6%97%B6%E9%97%B4/" class="archive-article-date">
+        <a href="/JS-6-%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%B7/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.435Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -1512,139 +1637,124 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <ul>
-<li>新建时间对象</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(); <span class="comment">// 当前时间</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1555554640000</span>); <span class="comment">// 存储的是距离计算机元年的毫秒数对应的日期时间 1970.1.1.0:0:0</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;2019/4/18 10:30:40&#x27;</span>); <span class="comment">// &#x27;2019-4-18 10:30:40&#x27;也可以</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2019</span>,<span class="number">3</span>,<span class="number">18</span>,<span class="number">10</span>,<span class="number">30</span>,<span class="number">40</span>); <span class="comment">// 以上这3个都是时间 为 2019-4-18 10:30:40</span></span><br></pre></td></tr></table></figure>
-
-<table>
+          <h3 id="转化"><a href="#转化" class="headerlink" title="转化"></a>转化</h3><table>
 <thead>
 <tr>
-<th>代码</th>
-<th>说明</th>
-<th>-</th>
+<th>类型/转换后类型</th>
+<th>数字(Number())</th>
+<th>字符(tostring())</th>
+<th>布尔(Boolean())</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>date.getFullYear()</td>
-<td>获取年份</td>
-<td>-</td>
+<td>(Number)数字</td>
+<td>数字</td>
+<td>字符</td>
+<td>除了<code>0</code> <code>false</code> <code>null</code> <code>undefined</code> <code>NaN</code> <code>&#39;&#39;</code> 其他都为true</td>
 </tr>
 <tr>
-<td>date.getMonth()</td>
-<td>获取月 范围0~11 手动加+才是月份</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.getDate()</td>
-<td>获取日</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.getHours()</td>
-<td>获取时</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.getMinutes()</td>
-<td>获取分</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.getSeconds()</td>
-<td>获取秒</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.getMilliseconds()</td>
-<td>获取毫秒</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.getDay()</td>
-<td>周 范围0~6 星期天为0</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.getTime()</td>
-<td>距离计算机元年毫秒数.总共的毫秒数（时间戳）</td>
-<td>-</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
+<td>(String)字符</td>
+<td>能转得转掉，开头就不能转就NaN</td>
+<td>字符</td>
 <td></td>
 </tr>
 <tr>
-<td>date.setFullYear()</td>
-<td>设置年-改变原时间-并返回时间的时间戳</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.setMonth()</td>
-<td>设置月</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.setDate()</td>
-<td>设置日</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.setHours()</td>
-<td>设置时</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.setMinutes()</td>
-<td>设置分</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.setSeconds()</td>
-<td>设置秒</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.setMilliseconds()</td>
-<td>设置毫秒</td>
-<td>-</td>
-</tr>
-<tr>
-<td>date.setTime()</td>
-<td>设置总的毫秒数</td>
-<td>-</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
+<td>(Boolean)布尔</td>
+<td>1 0</td>
+<td>字符</td>
 <td></td>
 </tr>
 <tr>
-<td>date.toLocaleDateString()</td>
-<td>将时间转化成 ‘年/月/日’ 的字符串</td>
-<td>-</td>
+<td>undefined</td>
+<td>NaN</td>
+<td>报警</td>
+<td></td>
 </tr>
 <tr>
-<td>date.toLocaleTimeString()</td>
-<td>将时间转化成 ‘上午时:分:秒的’ 的字符串</td>
-<td>-</td>
+<td>null</td>
+<td>0</td>
+<td>报警</td>
+<td></td>
 </tr>
 <tr>
-<td>date.toLocaleString()</td>
-<td>‘年/月/日 上午时:分:秒’的格式</td>
-<td>-</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>‘NaN’</td>
+<td></td>
 </tr>
 </tbody></table>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
-<li>a b 时间差</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;2019/6/7 00:00:00&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> c = a - b <span class="comment">// 得到相差的毫秒数</span></span><br><span class="line"><span class="keyword">var</span> c = <span class="built_in">Math</span>.floor(c / <span class="number">1000</span>) <span class="comment">// 忽略毫秒</span></span><br><span class="line">day = <span class="built_in">Math</span>.floor(c / (<span class="number">24</span> * <span class="number">3600</span>)) <span class="comment">// 得到天</span></span><br><span class="line">hours = c % (<span class="number">24</span> * <span class="number">3600</span>)    <span class="comment">// 总秒数取余 一天24*3600 则剩下的为不足一天的</span></span><br><span class="line">hours = <span class="built_in">Math</span>.floor(hours / <span class="number">3600</span>);  <span class="comment">// 不足一天秒数取余 小时3600 向下取整 = 不足一天的小时</span></span><br><span class="line">mintutes = c % <span class="number">3600</span></span><br><span class="line">mintutes = <span class="built_in">Math</span>.floor(mintutes / <span class="number">60</span>)</span><br><span class="line"><span class="keyword">var</span> seconds = c % <span class="number">60</span></span><br><span class="line"><span class="built_in">console</span>.log(day + <span class="string">&#x27;天&#x27;</span> + hours + <span class="string">&#x27;小时&#x27;</span> + mintutes + <span class="string">&#x27;分&#x27;</span> + seconds + <span class="string">&#x27;秒&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><table>
+<thead>
+<tr>
+<th align="center">+/-</th>
+<th align="center">数字</th>
+<th align="center">字符</th>
+<th align="center">布尔</th>
+<th align="center">undefined</th>
+<th align="center">null</th>
+<th align="center">NaN</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">数字</td>
+<td align="center">数字/数字</td>
+<td align="center">字符/数字或者NaN</td>
+<td align="center">数字/数字</td>
+<td align="center">NaN/NaN</td>
+<td align="center">数字/数字</td>
+<td align="center">NaN/NaN</td>
+</tr>
+<tr>
+<td align="center">字符</td>
+<td align="center">字符/数字或者NaN</td>
+<td align="center">字符串/NAN</td>
+<td align="center">字符叠加/NaN</td>
+<td align="center">字符叠加/NaN</td>
+<td align="center">字符叠加/能转数字就为数字,不能就是NaN</td>
+<td align="center">字符叠加/NaN</td>
+</tr>
+<tr>
+<td align="center">布尔</td>
+<td align="center">数字/数字</td>
+<td align="center">字符串/数字或者NAN</td>
+<td align="center">数字/数字</td>
+<td align="center">NaN/NaN</td>
+<td align="center">数字/数字</td>
+<td align="center">NaN/NaN</td>
+</tr>
+<tr>
+<td align="center">undefined</td>
+<td align="center">NaN/NaN</td>
+<td align="center">字符叠加/NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">NaN/NaN</td>
+</tr>
+<tr>
+<td align="center">null</td>
+<td align="center">数字/数字</td>
+<td align="center">字符叠加/数字或者NaN</td>
+<td align="center">数字/数字</td>
+<td align="center">NaN/NaN</td>
+<td align="center">0 / 0</td>
+<td align="center">NaN/NaN</td>
+</tr>
+<tr>
+<td align="center">NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">字符叠加/NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">NaN/NaN</td>
+</tr>
+</tbody></table>
+<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p>在执行运算的时候，计算机会把数据转成二进制进行运算。<br>1 10 11  100  101  110  111  1000  1001  1010<br>100110 = 100000 + 100 + 10 = 32  + 4 + 2<br>25 = 16 + 8 + 1 = 10000 + 1000 + 1 = 11001<br>按位与<code>&amp;</code>       二进制位数相比 上下两位都是1，结果是1，否则是0    将数转化为2进制 然后比较相同位数（10位于10位比）<br>按位或<code>|</code>     二进制位数相比 上下两位含有1，结果是1，否则是0<br>按位异或<code>^</code>    二进制位数相比 上下两位不同为1，相同为0<br>按位右移<code>&gt;&gt;</code>    删除二进制的最后一位或者多位，每次缩小到原来的一半或者更多。<br>按位左移<code>&lt;&lt;</code>   在二进制的最后添加0，成倍增加</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>&amp;<span class="number">5</span>); <span class="comment">// 011 和101比 得到001 即10进制的1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">7</span>&amp;<span class="number">13</span>);<span class="comment">// 0111 和1101 得到0101 即10进制的5  </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>|<span class="number">5</span>);<span class="comment">//011  和101比 得到111 即7</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>^<span class="number">5</span>);<span class="comment">//011  和101比 得到110  即6</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>&gt;&gt;<span class="number">1</span>);<span class="comment">//5转成2进制101.右移1位删除最后一位 得到10 即 2 </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">40</span>&gt;&gt;<span class="number">1</span>);<span class="comment">//101000  10100 即20</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">40</span>&gt;&gt;<span class="number">2</span>);<span class="comment">//101000 移动2位 删除最后两位 1010 即10</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>&lt;&lt;<span class="number">2</span>);<span class="comment">//101,添加一位  10100即20</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>当前时间</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">getNowFormatDate = <span class="function">() =&gt;</span> &#123; <span class="comment">// 2020-05-05 01:01:01</span></span><br><span class="line">  <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  <span class="keyword">let</span> seperator1 = <span class="string">&#x27;-&#x27;</span></span><br><span class="line">  <span class="keyword">let</span> year = date.getFullYear()</span><br><span class="line">  <span class="keyword">let</span> month = date.getMonth() + <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> strDate = date.getDate()</span><br><span class="line">  <span class="keyword">let</span> hour = date.getHours();</span><br><span class="line">  <span class="keyword">let</span> minu = date.getMinutes();</span><br><span class="line">  <span class="keyword">let</span> sec = date.getSeconds();</span><br><span class="line">  <span class="keyword">if</span> (month &gt;= <span class="number">1</span> &amp;&amp; month &lt;= <span class="number">9</span>) &#123;</span><br><span class="line">    month = <span class="string">&#x27;0&#x27;</span> + month</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (strDate &gt;= <span class="number">0</span> &amp;&amp; strDate &lt;= <span class="number">9</span>) &#123;</span><br><span class="line">    strDate = <span class="string">&#x27;0&#x27;</span> + strDate</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (hour &lt; <span class="number">10</span>) hour = <span class="string">&quot;0&quot;</span> + hour</span><br><span class="line">  <span class="keyword">if</span> (minu &lt; <span class="number">10</span>) minu = <span class="string">&quot;0&quot;</span> + minu</span><br><span class="line">  <span class="keyword">if</span> (sec &lt; <span class="number">10</span>) sec = <span class="string">&quot;0&quot;</span> + sec</span><br><span class="line">  <span class="keyword">let</span> currentdate = year + seperator1 + month + seperator1 + strDate + <span class="string">&#x27; &#x27;</span> + hour + <span class="string">&#x27;:&#x27;</span> + minu + <span class="string">&#x27;:&#x27;</span> + sec</span><br><span class="line">  <span class="keyword">return</span> currentdate</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>空字符串 优先会转化为字符串，次级转化数字0<br>null==undefined    true<br>null===undefined   false</p>
+
         
       
 
@@ -1668,7 +1778,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/JS-7-js%E6%97%B6%E9%97%B4/">展开全文 >></a>
+          <a class="article-more-a" href="/JS-6-%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%B7/">展开全文 >></a>
         </p>
       
 
@@ -1795,11 +1905,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1831,15 +1941,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1848,6 +1954,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1867,19 +1977,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
             
             <div class="clearfix"></div>
