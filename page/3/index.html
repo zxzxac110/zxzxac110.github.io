@@ -145,19 +145,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-项目相关-14-模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-项目相关-16-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-14-%E6%A8%A1%E5%9D%97/">14-模块 CommonJs和es6的Module的区别</a>
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">16-设计模式</a>
     </h1>
   
 
         
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-14-%E6%A8%A1%E5%9D%97/" class="archive-article-date">
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -166,85 +166,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>借鉴： <a target="_blank" rel="noopener" href="https://blog.csdn.net/itpika/article/details/104240804">https://blog.csdn.net/itpika/article/details/104240804</a></p>
-<h3 id="四种模块规范"><a href="#四种模块规范" class="headerlink" title="四种模块规范"></a>四种模块规范</h3><div style="width:400px;">
-
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>AMD规范</td>
-<td>requires</td>
-<td>浏览器端</td>
-</tr>
-<tr>
-<td>CMD规范</td>
-<td>sea.js</td>
-<td>浏览器端</td>
-</tr>
-<tr>
-<td>CommonJS规范</td>
-<td>nodejs</td>
-<td>服务器端</td>
-</tr>
-<tr>
-<td>es6 规范</td>
-<td>-</td>
-<td>浏览器和服务器端</td>
-</tr>
-</tbody></table>
-</div>
-
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>CommonJS 是一个标准规范.是JS向服务器端发展的规范</p>
-<p>历史上，js一直没有模块(module)体系，无法将一个项目拆分成多个模块文件。正对这一情况，社区出现了一些统一的规范：CommonJs和AMD，前者是针对服务端的js，也就是nodejs。后者是针对浏览器的。ES6在语言标准层面上，实现了模块功能，而且实现也比较简单。完全可以取代CommonJs和AMD。达成前后端js的模块风格统一。不过目前还未完全达到这一目的。nodejs目前主流还是采用CommonJS规范。不过在v13.2版本，nodejs已经实现了ES6模块语法，还未正式替换，在考察阶段。v13.2版本将js文件以 .mjs结尾，nodejs将它视为ES6模块。以 .cjs结尾则视为CommonJS模块。也可以在包的package.json文件中增加 “type”: “module”信息。nodejs则将整个包都视为ES6模块来加载运行。</p>
-<blockquote>
-<p>commonjs与ES6的module还是有很大区别的：<br>    1. 两者的模块导入导出语法不同，commonjs是module.exports，exports导出，require导入；ES6则是export导出，import导入。<br>    2. commonjs是运行时加载模块，ES6是在静态编译期间就确定模块的依赖。<br>    3. ES6在编译期间会将所有import提升到顶部，commonjs不会提升require。<br>    4. commonjs导出的是一个值拷贝，会对加载结果进行缓存，一旦内部再修改这个值，则不会同步到外部。ES6是导出的一个引用，内部修改可以同步到外部。<br>    5. 两者的循环导入的实现原理不同，commonjs是当模块遇到循环加载时，返回的是当前已经执行的部分的值，而不是代码全部执行后的值，两者可能会有差异。所以，输入变量的时候，必须非常小心。ES6 模块是动态引用，如果使用import从一个模块加载变量（即import foo from ‘foo’），那些变量不会被缓存，而是成为一个指向被加载模块的引用，需要开发者自己保证，真正取值的时候能够取到值。<br>    6. commonjs中顶层的this指向这个模块本身，而ES6中顶层this指向undefined。<br>    7. 然后就是commonjs中的一些顶层变量在ES6中不再存在：</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>-</th>
-<th>CommonJS规范</th>
-<th>es6 规范</th>
-<th>es6 规范</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>导出 1.js</td>
-<td><code>Module.exports</code>={<br> aaa:aaa, <br> …<br>}</td>
-<td><code>export</code> var aaa=’aaa’ <br> <code>export</code> function fun(){}</td>
-<td><code>export default&#123; *:*&#125;</code></td>
-</tr>
-<tr>
-<td>引入</td>
-<td><code>require(&#39;./1.js&#39;)</code></td>
-<td><code>import &#123;**, **, ...&#125; from &#39;./1.js&#39;</code> 按需引入</td>
-<td><code>import ** from &#39;./1.js&#39; </code></td>
-</tr>
-<tr>
-<td>导出数量</td>
-<td>只能导出一个对象</td>
-<td>导出多个变量和方法</td>
-<td>默认导出一个对象</td>
-</tr>
-<tr>
-<td>使用限制</td>
-<td>可以在顶部或者内部</td>
-<td>只能在顶部</td>
-<td>只能在顶部</td>
-</tr>
-<tr>
-<td>支持情况</td>
-<td>服务端，在nodeJs中可以直接使用</td>
-<td>目前还不被大部分的浏览器所支出，只能使用编译器处理转化为es5</td>
-<td>目前还不被大部分的浏览器所支出，只能使用编译器处理转化为es5</td>
-</tr>
-</tbody></table>
+          <h3 id="1-Observer观察者模式（也称为“订阅-发布”模式）："><a href="#1-Observer观察者模式（也称为“订阅-发布”模式）：" class="headerlink" title="1- Observer观察者模式（也称为“订阅-发布”模式）："></a>1- Observer观察者模式（也称为“订阅-发布”模式）：</h3><p>  乙方声明“订阅(subscribe)”甲方；<br>  在未来的某个不确定时间，甲方“发布(publish)”新消息，乙方会立即接到通知。<br>  HttpClient服务采用了“观察者/订阅-发布模式”，其最核心对象为：<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span>  obj  =  <span class="keyword">new</span>  Observable( );  <span class="comment">//可被观察的对象</span></span><br><span class="line"><span class="comment">//可以关注/订阅“可被观察的”对象</span></span><br><span class="line">obj.subscribe(<span class="function">()=&gt;</span>&#123; <span class="comment">//收到订阅消息时的回调函数 &#125;)</span></span><br></pre></td></tr></table></figure></p>
+<p>  待续</p>
 
         
       
@@ -269,7 +192,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-14-%E6%A8%A1%E5%9D%97/">展开全文 >></a>
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
         </p>
       
 
@@ -470,19 +393,19 @@
 
 
   
-    <article id="post-项目相关-16-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-项目相关-14-模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">16-设计模式</a>
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-14-%E6%A8%A1%E5%9D%97/">14-模块 CommonJs和es6的Module的区别</a>
     </h1>
   
 
         
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-14-%E6%A8%A1%E5%9D%97/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -491,8 +414,85 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="1-Observer观察者模式（也称为“订阅-发布”模式）："><a href="#1-Observer观察者模式（也称为“订阅-发布”模式）：" class="headerlink" title="1- Observer观察者模式（也称为“订阅-发布”模式）："></a>1- Observer观察者模式（也称为“订阅-发布”模式）：</h3><p>  乙方声明“订阅(subscribe)”甲方；<br>  在未来的某个不确定时间，甲方“发布(publish)”新消息，乙方会立即接到通知。<br>  HttpClient服务采用了“观察者/订阅-发布模式”，其最核心对象为：<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span>  obj  =  <span class="keyword">new</span>  Observable( );  <span class="comment">//可被观察的对象</span></span><br><span class="line"><span class="comment">//可以关注/订阅“可被观察的”对象</span></span><br><span class="line">obj.subscribe(<span class="function">()=&gt;</span>&#123; <span class="comment">//收到订阅消息时的回调函数 &#125;)</span></span><br></pre></td></tr></table></figure></p>
-<p>  待续</p>
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>借鉴： <a target="_blank" rel="noopener" href="https://blog.csdn.net/itpika/article/details/104240804">https://blog.csdn.net/itpika/article/details/104240804</a></p>
+<h3 id="四种模块规范"><a href="#四种模块规范" class="headerlink" title="四种模块规范"></a>四种模块规范</h3><div style="width:400px;">
+
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AMD规范</td>
+<td>requires</td>
+<td>浏览器端</td>
+</tr>
+<tr>
+<td>CMD规范</td>
+<td>sea.js</td>
+<td>浏览器端</td>
+</tr>
+<tr>
+<td>CommonJS规范</td>
+<td>nodejs</td>
+<td>服务器端</td>
+</tr>
+<tr>
+<td>es6 规范</td>
+<td>-</td>
+<td>浏览器和服务器端</td>
+</tr>
+</tbody></table>
+</div>
+
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>CommonJS 是一个标准规范.是JS向服务器端发展的规范</p>
+<p>历史上，js一直没有模块(module)体系，无法将一个项目拆分成多个模块文件。正对这一情况，社区出现了一些统一的规范：CommonJs和AMD，前者是针对服务端的js，也就是nodejs。后者是针对浏览器的。ES6在语言标准层面上，实现了模块功能，而且实现也比较简单。完全可以取代CommonJs和AMD。达成前后端js的模块风格统一。不过目前还未完全达到这一目的。nodejs目前主流还是采用CommonJS规范。不过在v13.2版本，nodejs已经实现了ES6模块语法，还未正式替换，在考察阶段。v13.2版本将js文件以 .mjs结尾，nodejs将它视为ES6模块。以 .cjs结尾则视为CommonJS模块。也可以在包的package.json文件中增加 “type”: “module”信息。nodejs则将整个包都视为ES6模块来加载运行。</p>
+<blockquote>
+<p>commonjs与ES6的module还是有很大区别的：<br>    1. 两者的模块导入导出语法不同，commonjs是module.exports，exports导出，require导入；ES6则是export导出，import导入。<br>    2. commonjs是运行时加载模块，ES6是在静态编译期间就确定模块的依赖。<br>    3. ES6在编译期间会将所有import提升到顶部，commonjs不会提升require。<br>    4. commonjs导出的是一个值拷贝，会对加载结果进行缓存，一旦内部再修改这个值，则不会同步到外部。ES6是导出的一个引用，内部修改可以同步到外部。<br>    5. 两者的循环导入的实现原理不同，commonjs是当模块遇到循环加载时，返回的是当前已经执行的部分的值，而不是代码全部执行后的值，两者可能会有差异。所以，输入变量的时候，必须非常小心。ES6 模块是动态引用，如果使用import从一个模块加载变量（即import foo from ‘foo’），那些变量不会被缓存，而是成为一个指向被加载模块的引用，需要开发者自己保证，真正取值的时候能够取到值。<br>    6. commonjs中顶层的this指向这个模块本身，而ES6中顶层this指向undefined。<br>    7. 然后就是commonjs中的一些顶层变量在ES6中不再存在：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>CommonJS规范</th>
+<th>es6 规范</th>
+<th>es6 规范</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>导出 1.js</td>
+<td><code>Module.exports</code>={<br> aaa:aaa, <br> …<br>}</td>
+<td><code>export</code> var aaa=’aaa’ <br> <code>export</code> function fun(){}</td>
+<td><code>export default&#123; *:*&#125;</code></td>
+</tr>
+<tr>
+<td>引入</td>
+<td><code>require(&#39;./1.js&#39;)</code></td>
+<td><code>import &#123;**, **, ...&#125; from &#39;./1.js&#39;</code> 按需引入</td>
+<td><code>import ** from &#39;./1.js&#39; </code></td>
+</tr>
+<tr>
+<td>导出数量</td>
+<td>只能导出一个对象</td>
+<td>导出多个变量和方法</td>
+<td>默认导出一个对象</td>
+</tr>
+<tr>
+<td>使用限制</td>
+<td>可以在顶部或者内部</td>
+<td>只能在顶部</td>
+<td>只能在顶部</td>
+</tr>
+<tr>
+<td>支持情况</td>
+<td>服务端，在nodeJs中可以直接使用</td>
+<td>目前还不被大部分的浏览器所支出，只能使用编译器处理转化为es5</td>
+<td>目前还不被大部分的浏览器所支出，只能使用编译器处理转化为es5</td>
+</tr>
+</tbody></table>
 
         
       
@@ -517,7 +517,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-14-%E6%A8%A1%E5%9D%97/">展开全文 >></a>
         </p>
       
 
@@ -634,19 +634,19 @@
 
 
   
-    <article id="post-项目相关-1-env文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-项目相关-11-Worker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/">1-.env 文件</a>
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/">11-Worker</a>
     </h1>
   
 
         
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/" class="archive-article-date">
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -655,35 +655,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><p>  <code>.env</code> 全局默认配置文件，不论什么环境都会加载合并<br>  <code>.env.development</code> 开发环境下的配置文件<br>  <code>.env.production</code>生产环境下的配置文件`</p>
-<h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>  属性名必须以 <code>VUE_APP_</code> 开头，比如 <code>VUE_APP_XXX</code></p>
-<h3 id="文件加载"><a href="#文件加载" class="headerlink" title="文件加载"></a>文件加载</h3><p>  比如执行npm run serve命令，会自动加载.env.development文件</p>
-<p>  如果我们运行npm run serve 在就<br>  先加载.env文件，<br>  之后加载.env.development文件，<br>  两个文件有同一个项，则，后加载的文件就会覆盖掉第一个文件，<br>  也即是.env.development文件覆盖掉了.env文件的NOOE_ENV选项。</p>
-<p>　同理如果npm run build 就执行了.env和.env.development。</p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
-<li><p>一. 创建3个文件 <code>.env.develop</code> <code>.env.development</code> <code>.env.production</code><br>.env.develop 用于测试环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39; &#x2F;&#x2F; 按照线上环境的配置打包-比如是否hash命名（热更新的感觉）</span><br><span class="line">VUE_APP_CURRENTMODE &#x3D; &#39;testing&#39; &#x2F;&#x2F; 字段，用于识别</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;测试环境地址&#39; &#x2F;&#x2F; 地址，用于接口</span><br></pre></td></tr></table></figure>
-
-<p>.env.development 用于开发环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;development&#39; &#x2F;&#x2F; 按照测试环境的配置打包</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#x2F;api&#x2F; </span><br></pre></td></tr></table></figure>
-
-<p>.env.production 用于正式环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39;</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;***&#39;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<ul>
-<li><p>二. 2 <code>package.json</code>文件中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;serve&quot;</span>: <span class="string">&quot;vue-cli-service serve&quot;</span>,</span><br><span class="line">  <span class="string">&quot;lint&quot;</span>: <span class="string">&quot;vue-cli-service lint&quot;</span>,</span><br><span class="line">  <span class="string">&quot;build&quot;</span>: <span class="string">&quot;vue-cli-service build&quot;</span>, // 默认会走 .env.production 文件</span><br><span class="line">  <span class="string">&quot;test&quot;</span>: <span class="string">&quot;vue-cli-service build --mode develop&quot;</span> // 会走 .env.develop 文件 即声明的 --mode 后接文件明</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<ul>
-<li>三. 自己项目中的接口URL合集文件  我的是 <code>src/plugins/apiUrls.js</code></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const path = process.env.VUE_APP_API_BASE // 当前环境所对应的接口域名</span><br><span class="line">const urls = &#123;</span><br><span class="line">loginCheck: `<span class="variable">$&#123;path&#125;</span>465465-***8774/` // 具体接口后缀</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">export</span> default urls</span><br></pre></td></tr></table></figure>
+          <p>  <a href="/项目相关-5-解答题/#title1" target="_self">程序 进程 线程</a><br>  由于 Chrome 不允许通过本地文件访问使用Web Worker。<br>  所以可以<br>  <strong>1.更换使用其他浏览器尝试</strong><br>  <strong>2.文件部署到服务器中【上线环境解决方法】</strong></p>
+<blockquote>
+<p>问题:如果1.js执行时间非常长，网页出现停止现象(空白)<br>  解决方案:创建一个新线程(Worker)让它执行耗时js任务, UI主线只负责绘制二个按钮<br>  1.js<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟一个较长的js</span></span><br><span class="line"><span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> end = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">&#125; <span class="keyword">while</span> (</span><br><span class="line">  end - start &lt; <span class="number">5000</span>                 </span><br><span class="line">);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;执行完毕&quot;</span>)</span><br></pre></td></tr></table></figure><br>  1.html<br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>模拟JS执行超时结果<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>1111<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &lt;script src=&quot;1.js&quot;&gt;&lt;/script&gt; </span></span><br><span class="line"><span class="comment">如果直接引用 1.js 会发现网页出现5s空白 或者 只有111按钮 222按钮会等5s后才出现。</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 创建新对象并且新线程的执行01:js任务 不会出现空白 和只有111按钮的状况</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> w =<span class="keyword">new</span> Worker(<span class="string">&quot;./1.js&quot;</span>)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>22222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure><br>  总结:WebWorker 新线程用于执行耗时js任务 提高网页效率<br>  js任务不能有DOM/BOM/jquery.js 代码</p>
+</blockquote>
+<blockquote>
+<p>通讯<br>  <code>postMessage</code> 发送<br>  <code>onmessage</code> 接受<br>   2.js<br>   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//接收 2.hteml发送的数据</span></span><br><span class="line">  onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.console.log(<span class="string">&#x27;js接受到消息:&#x27;</span> + e.data) <span class="comment">// js接受到消息:1</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 发送</span></span><br><span class="line">postMessage(<span class="string">&quot;2&quot;</span>)</span><br></pre></td></tr></table></figure><br>   2.html<br>   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>02.html UI进程<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> w = <span class="keyword">new</span> Worker(<span class="string">&quot;./02.js&quot;</span>)</span></span><br><span class="line"><span class="javascript">  w.postMessage(<span class="string">&quot;1&quot;</span>)</span></span><br><span class="line"><span class="javascript">  w.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123; <span class="comment">// 接收</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&#x27;得到js传递的消息:&#x27;</span> + e.data) <span class="comment">// 得到js传递的消息:2</span></span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
 
         
       
@@ -708,7 +686,93 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-项目相关-10-跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">10-跨域</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>什么是跨域: 一个域名下的网页，向另一个域名下的服务器请求资源.受浏览器的同源策略控制，禁止发送的</p>
+<p><code>浏览器同源(origin)策略</code>: 也称禁止跨不同源头访问资源<br>        所有浏览器都有一个安全策略: <code>禁止CORS</code><br>        禁止Cross Origin Resources Shareing<br>        浏览器规定: 请求回来的响应数据的响应头中记录的远程url必须和当前网页正在打开的url地址相同！</p>
+<p>浏览器收到数据后:<br>        会用当前地址栏中的<code>url地址和headers中的origin对比</code>！只有协议，域名，端口号完全一致！才允许网页使用数据</p>
+<h3 id="解决对策-1-服务端解决"><a href="#解决对策-1-服务端解决" class="headerlink" title="解决对策 1.服务端解决"></a>解决对策 1.服务端解决</h3><p>让服务端返回响应时，篡改响应头中响应源头的地址,nodejs为例子<br>1 手写<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// res.send(result); // 不要用res.send了</span></span><br><span class="line"><span class="comment">//  res.send其实是一种简写: 等效于 res.writeHead()+res.write(JSON.stringify(result))+res.end()</span></span><br><span class="line">res.writeHead(<span class="number">200</span>,&#123; <span class="comment">//修改头部.200表示成功</span></span><br><span class="line">  <span class="string">&quot;Access-Control-Allow-Origin&quot;</span>:http:<span class="comment">//127.0.0.1:5500</span></span><br><span class="line">                     <span class="comment">//或者：“*” 代表所有</span></span><br><span class="line">&#125;);</span><br><span class="line">res.write(<span class="built_in">JSON</span>.stringify(result)); <span class="comment">//发送的内容</span></span><br><span class="line">res.end(); <span class="comment">//发送</span></span><br><span class="line"><span class="comment">//   写在原来node中代替res.send(result);的作用.每个都要写</span></span><br><span class="line"><span class="comment">//  这样返回的数据，就被伪装成来自127.0.0.1:5500的，就可以通过浏览器的同源策略检查，可正常使用</span></span><br></pre></td></tr></table></figure><br>2 引入插件统一写 (推荐)<br>服务端nodejs安装: <code>npm i -save cors</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js中: </span></span><br><span class="line"><span class="keyword">const</span> cors=<span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>); 引入模块</span><br><span class="line">				</span><br><span class="line"> <span class="comment">//在创建端口listen()之后</span></span><br><span class="line"> app.use(cors(&#123;</span><br><span class="line">     origin:<span class="string">&quot;http://127.0.0.1:5500&quot;</span><span class="comment">//不能用*</span></span><br><span class="line"> &#125;));</span><br><span class="line"> <span class="comment">//中间件。。从此所有响应，自动带Access-Control-Allow-Origin:http://127.0.0.1:5500</span></span><br><span class="line"> <span class="comment">//万一客户端浏览器地址发生变化，只改这里origin一处即可！</span></span><br></pre></td></tr></table></figure>
+<h3 id="解决对策-2-jsonp解决"><a href="#解决对策-2-jsonp解决" class="headerlink" title="解决对策 2.jsonp解决"></a>解决对策 2.jsonp解决</h3><p> jsonp + Promise 只能用于GET请求</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myJsonp</span> (<span class="params">url, obj</span>) </span>&#123; <span class="comment">// 地址，参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> cb = <span class="string">`jsonp<span class="subst">$&#123;<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random() * <span class="number">1000000</span>)&#125;</span>`</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      url += <span class="string">&#x27;&amp;&#x27;</span> + key + <span class="string">&#x27;=&#x27;</span> + obj[key]</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = url + <span class="string">&#x27;&amp;callback=&#x27;</span> + cb <span class="comment">// 地址 + 参数 + 回调函数名 需于后端统一命名</span></span><br><span class="line">    script.id = <span class="string">&#x27;jsonpS&#x27;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">    <span class="built_in">window</span>[cb] = <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> script = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;jsonpS&#x27;</span>);</span><br><span class="line">      <span class="built_in">document</span>.body.removeChild(script);</span><br><span class="line">      <span class="keyword">delete</span> <span class="built_in">window</span>[cb];</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">async</span> a () &#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="keyword">await</span> myJsonp (<span class="string">&#x27;http://dev-test.api.faquange.cn/apppage.php?m=Top&amp;c=getList&#x27;</span>, &#123; <span class="attr">TopCate</span>:<span class="number">1</span> &#125; )</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决对策-3-ajax解决"><a href="#解决对策-3-ajax解决" class="headerlink" title="解决对策 3.ajax解决"></a>解决对策 3.ajax解决</h3><p><code>dataType:&quot;jsonp&quot;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line"> url: <span class="string">&quot;服务端接口地址&quot;</span>, <span class="comment">// http://localhost:3000/users/login</span></span><br><span class="line"> type: <span class="string">&quot;get|post&quot;</span>,</span><br><span class="line"> data: &#123; <span class="attr">uname</span>: <span class="string">&quot;dingding&quot;</span>, <span class="attr">upwd</span>: <span class="string">&quot;123456&quot;</span> &#125;,</span><br><span class="line"> <span class="comment">// &quot;uname=dingding&amp;upwd=123456&quot;,</span></span><br><span class="line"> <span class="comment">// 如果返回json，需要自动JSON.parse()转为js对象</span></span><br><span class="line"> dataType:<span class="string">&quot;json&quot;</span>, <span class="comment">//如果不写需要自己手动调用JSON.parse()</span></span><br><span class="line"> <span class="comment">// dataType:&quot;jsonp&quot; // jsonp 跨域</span></span><br><span class="line"> success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;   <span class="comment">// 与.then2选1</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">展开全文 >></a>
         </p>
       
 
@@ -1207,19 +1271,19 @@
 
 
   
-    <article id="post-项目相关-11-Worker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-项目相关-1-env文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/">11-Worker</a>
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/">1-.env 文件</a>
     </h1>
   
 
         
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/" class="archive-article-date">
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -1228,13 +1292,35 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p>  <a href="/项目相关-5-解答题/#title1" target="_self">程序 进程 线程</a><br>  由于 Chrome 不允许通过本地文件访问使用Web Worker。<br>  所以可以<br>  <strong>1.更换使用其他浏览器尝试</strong><br>  <strong>2.文件部署到服务器中【上线环境解决方法】</strong></p>
-<blockquote>
-<p>问题:如果1.js执行时间非常长，网页出现停止现象(空白)<br>  解决方案:创建一个新线程(Worker)让它执行耗时js任务, UI主线只负责绘制二个按钮<br>  1.js<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟一个较长的js</span></span><br><span class="line"><span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> end = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">&#125; <span class="keyword">while</span> (</span><br><span class="line">  end - start &lt; <span class="number">5000</span>                 </span><br><span class="line">);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;执行完毕&quot;</span>)</span><br></pre></td></tr></table></figure><br>  1.html<br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>模拟JS执行超时结果<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>1111<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &lt;script src=&quot;1.js&quot;&gt;&lt;/script&gt; </span></span><br><span class="line"><span class="comment">如果直接引用 1.js 会发现网页出现5s空白 或者 只有111按钮 222按钮会等5s后才出现。</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 创建新对象并且新线程的执行01:js任务 不会出现空白 和只有111按钮的状况</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> w =<span class="keyword">new</span> Worker(<span class="string">&quot;./1.js&quot;</span>)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>22222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure><br>  总结:WebWorker 新线程用于执行耗时js任务 提高网页效率<br>  js任务不能有DOM/BOM/jquery.js 代码</p>
-</blockquote>
-<blockquote>
-<p>通讯<br>  <code>postMessage</code> 发送<br>  <code>onmessage</code> 接受<br>   2.js<br>   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//接收 2.hteml发送的数据</span></span><br><span class="line">  onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.console.log(<span class="string">&#x27;js接受到消息:&#x27;</span> + e.data) <span class="comment">// js接受到消息:1</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 发送</span></span><br><span class="line">postMessage(<span class="string">&quot;2&quot;</span>)</span><br></pre></td></tr></table></figure><br>   2.html<br>   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>02.html UI进程<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> w = <span class="keyword">new</span> Worker(<span class="string">&quot;./02.js&quot;</span>)</span></span><br><span class="line"><span class="javascript">  w.postMessage(<span class="string">&quot;1&quot;</span>)</span></span><br><span class="line"><span class="javascript">  w.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123; <span class="comment">// 接收</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&#x27;得到js传递的消息:&#x27;</span> + e.data) <span class="comment">// 得到js传递的消息:2</span></span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
+          <h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><p>  <code>.env</code> 全局默认配置文件，不论什么环境都会加载合并<br>  <code>.env.development</code> 开发环境下的配置文件<br>  <code>.env.production</code>生产环境下的配置文件`</p>
+<h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>  属性名必须以 <code>VUE_APP_</code> 开头，比如 <code>VUE_APP_XXX</code></p>
+<h3 id="文件加载"><a href="#文件加载" class="headerlink" title="文件加载"></a>文件加载</h3><p>  比如执行npm run serve命令，会自动加载.env.development文件</p>
+<p>  如果我们运行npm run serve 在就<br>  先加载.env文件，<br>  之后加载.env.development文件，<br>  两个文件有同一个项，则，后加载的文件就会覆盖掉第一个文件，<br>  也即是.env.development文件覆盖掉了.env文件的NOOE_ENV选项。</p>
+<p>　同理如果npm run build 就执行了.env和.env.development。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
+<li><p>一. 创建3个文件 <code>.env.develop</code> <code>.env.development</code> <code>.env.production</code><br>.env.develop 用于测试环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39; &#x2F;&#x2F; 按照线上环境的配置打包-比如是否hash命名（热更新的感觉）</span><br><span class="line">VUE_APP_CURRENTMODE &#x3D; &#39;testing&#39; &#x2F;&#x2F; 字段，用于识别</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;测试环境地址&#39; &#x2F;&#x2F; 地址，用于接口</span><br></pre></td></tr></table></figure>
+
+<p>.env.development 用于开发环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;development&#39; &#x2F;&#x2F; 按照测试环境的配置打包</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#x2F;api&#x2F; </span><br></pre></td></tr></table></figure>
+
+<p>.env.production 用于正式环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39;</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;***&#39;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p>二. 2 <code>package.json</code>文件中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;serve&quot;</span>: <span class="string">&quot;vue-cli-service serve&quot;</span>,</span><br><span class="line">  <span class="string">&quot;lint&quot;</span>: <span class="string">&quot;vue-cli-service lint&quot;</span>,</span><br><span class="line">  <span class="string">&quot;build&quot;</span>: <span class="string">&quot;vue-cli-service build&quot;</span>, // 默认会走 .env.production 文件</span><br><span class="line">  <span class="string">&quot;test&quot;</span>: <span class="string">&quot;vue-cli-service build --mode develop&quot;</span> // 会走 .env.develop 文件 即声明的 --mode 后接文件明</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li>三. 自己项目中的接口URL合集文件  我的是 <code>src/plugins/apiUrls.js</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const path = process.env.VUE_APP_API_BASE // 当前环境所对应的接口域名</span><br><span class="line">const urls = &#123;</span><br><span class="line">loginCheck: `<span class="variable">$&#123;path&#125;</span>465465-***8774/` // 具体接口后缀</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">export</span> default urls</span><br></pre></td></tr></table></figure>
 
         
       
@@ -1259,93 +1345,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-10-跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">10-跨域</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>什么是跨域: 一个域名下的网页，向另一个域名下的服务器请求资源.受浏览器的同源策略控制，禁止发送的</p>
-<p><code>浏览器同源(origin)策略</code>: 也称禁止跨不同源头访问资源<br>        所有浏览器都有一个安全策略: <code>禁止CORS</code><br>        禁止Cross Origin Resources Shareing<br>        浏览器规定: 请求回来的响应数据的响应头中记录的远程url必须和当前网页正在打开的url地址相同！</p>
-<p>浏览器收到数据后:<br>        会用当前地址栏中的<code>url地址和headers中的origin对比</code>！只有协议，域名，端口号完全一致！才允许网页使用数据</p>
-<h3 id="解决对策-1-服务端解决"><a href="#解决对策-1-服务端解决" class="headerlink" title="解决对策 1.服务端解决"></a>解决对策 1.服务端解决</h3><p>让服务端返回响应时，篡改响应头中响应源头的地址,nodejs为例子<br>1 手写<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// res.send(result); // 不要用res.send了</span></span><br><span class="line"><span class="comment">//  res.send其实是一种简写: 等效于 res.writeHead()+res.write(JSON.stringify(result))+res.end()</span></span><br><span class="line">res.writeHead(<span class="number">200</span>,&#123; <span class="comment">//修改头部.200表示成功</span></span><br><span class="line">  <span class="string">&quot;Access-Control-Allow-Origin&quot;</span>:http:<span class="comment">//127.0.0.1:5500</span></span><br><span class="line">                     <span class="comment">//或者：“*” 代表所有</span></span><br><span class="line">&#125;);</span><br><span class="line">res.write(<span class="built_in">JSON</span>.stringify(result)); <span class="comment">//发送的内容</span></span><br><span class="line">res.end(); <span class="comment">//发送</span></span><br><span class="line"><span class="comment">//   写在原来node中代替res.send(result);的作用.每个都要写</span></span><br><span class="line"><span class="comment">//  这样返回的数据，就被伪装成来自127.0.0.1:5500的，就可以通过浏览器的同源策略检查，可正常使用</span></span><br></pre></td></tr></table></figure><br>2 引入插件统一写 (推荐)<br>服务端nodejs安装: <code>npm i -save cors</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js中: </span></span><br><span class="line"><span class="keyword">const</span> cors=<span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>); 引入模块</span><br><span class="line">				</span><br><span class="line"> <span class="comment">//在创建端口listen()之后</span></span><br><span class="line"> app.use(cors(&#123;</span><br><span class="line">     origin:<span class="string">&quot;http://127.0.0.1:5500&quot;</span><span class="comment">//不能用*</span></span><br><span class="line"> &#125;));</span><br><span class="line"> <span class="comment">//中间件。。从此所有响应，自动带Access-Control-Allow-Origin:http://127.0.0.1:5500</span></span><br><span class="line"> <span class="comment">//万一客户端浏览器地址发生变化，只改这里origin一处即可！</span></span><br></pre></td></tr></table></figure>
-<h3 id="解决对策-2-jsonp解决"><a href="#解决对策-2-jsonp解决" class="headerlink" title="解决对策 2.jsonp解决"></a>解决对策 2.jsonp解决</h3><p> jsonp + Promise 只能用于GET请求</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myJsonp</span> (<span class="params">url, obj</span>) </span>&#123; <span class="comment">// 地址，参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> cb = <span class="string">`jsonp<span class="subst">$&#123;<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random() * <span class="number">1000000</span>)&#125;</span>`</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      url += <span class="string">&#x27;&amp;&#x27;</span> + key + <span class="string">&#x27;=&#x27;</span> + obj[key]</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = url + <span class="string">&#x27;&amp;callback=&#x27;</span> + cb <span class="comment">// 地址 + 参数 + 回调函数名 需于后端统一命名</span></span><br><span class="line">    script.id = <span class="string">&#x27;jsonpS&#x27;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">    <span class="built_in">window</span>[cb] = <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> script = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;jsonpS&#x27;</span>);</span><br><span class="line">      <span class="built_in">document</span>.body.removeChild(script);</span><br><span class="line">      <span class="keyword">delete</span> <span class="built_in">window</span>[cb];</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">async</span> a () &#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="keyword">await</span> myJsonp (<span class="string">&#x27;http://dev-test.api.faquange.cn/apppage.php?m=Top&amp;c=getList&#x27;</span>, &#123; <span class="attr">TopCate</span>:<span class="number">1</span> &#125; )</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="解决对策-3-ajax解决"><a href="#解决对策-3-ajax解决" class="headerlink" title="解决对策 3.ajax解决"></a>解决对策 3.ajax解决</h3><p><code>dataType:&quot;jsonp&quot;</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line"> url: <span class="string">&quot;服务端接口地址&quot;</span>, <span class="comment">// http://localhost:3000/users/login</span></span><br><span class="line"> type: <span class="string">&quot;get|post&quot;</span>,</span><br><span class="line"> data: &#123; <span class="attr">uname</span>: <span class="string">&quot;dingding&quot;</span>, <span class="attr">upwd</span>: <span class="string">&quot;123456&quot;</span> &#125;,</span><br><span class="line"> <span class="comment">// &quot;uname=dingding&amp;upwd=123456&quot;,</span></span><br><span class="line"> <span class="comment">// 如果返回json，需要自动JSON.parse()转为js对象</span></span><br><span class="line"> dataType:<span class="string">&quot;json&quot;</span>, <span class="comment">//如果不写需要自己手动调用JSON.parse()</span></span><br><span class="line"> <span class="comment">// dataType:&quot;jsonp&quot; // jsonp 跨域</span></span><br><span class="line"> success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;   <span class="comment">// 与.then2选1</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">展开全文 >></a>
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/">展开全文 >></a>
         </p>
       
 
@@ -1484,19 +1484,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1508,15 +1496,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1532,15 +1520,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1557,6 +1545,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网址</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
             
             <div class="clearfix"></div>

@@ -145,6 +145,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Python-4-模块-导入导出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Python-4-%E6%A8%A1%E5%9D%97-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/">4-模块,导入导出</a>
+    </h1>
+  
+
+        
+        <a href="/Python-4-%E6%A8%A1%E5%9D%97-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.438Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p><span href="#title1" target="_self">1.导入导出</span><br><a href="#title2" target="_self">3.官方常用模块 json math random time </a></p>
+<blockquote>
+<h4 id="导入文件"><a href="#导入文件" class="headerlink" title="导入文件"></a>导入文件</h4>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a1.py</span></span><br><span class="line">  uname = <span class="string">&#x27;dangdang&#x27;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">login</span>():</span></span><br><span class="line">    print(<span class="string">&#x27;11&#x27;</span>, uname)</span><br><span class="line"><span class="comment"># 2.py</span></span><br><span class="line">  <span class="keyword">import</span> a1     <span class="comment"># 把模块作为一个完整的对象全部导入 a1.uname = &#x27;dangdang&#x27;</span></span><br><span class="line">  <span class="keyword">import</span> a1 <span class="keyword">as</span> p <span class="comment"># p.uname = a1.uanme = &#x27;dangdang&#x27;</span></span><br><span class="line"><span class="comment"># 3.py</span></span><br><span class="line">  <span class="keyword">from</span> a1 <span class="keyword">import</span> uname <span class="keyword">as</span> pn  <span class="comment"># 单独引入 a1中的uanme 并起别名pn  pn = a1.uname = &#x27;dangdang&#x27;</span></span><br><span class="line">  <span class="keyword">from</span> a1 <span class="keyword">import</span> uname <span class="keyword">as</span> un,login <span class="comment"># 单独多个</span></span><br><span class="line">  <span class="comment">#正确但谨慎使用： from user import *</span></span><br><span class="line">  print(<span class="string">&#x27;main:&#x27;</span>, pn) <span class="comment"># &#x27;dangdang&#x27;</span></span><br><span class="line">  print(<span class="string">&#x27;main:&#x27;</span>, un) <span class="comment"># &#x27;dangdang&#x27;</span></span><br><span class="line">  login() <span class="comment"># 11 dangdang</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<h4 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h4><p>  Node.js中：模块(module)和包(package)指的是同一种事物，具体又分为“文件模块”和“目录模块”<br>  Python中：模块(module）专指文件，包(package)专指目录；包用于盛放多个功能相关的模块——就是一个目录下可以多个.py文件<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  controller.a1 <span class="comment"># 此处只能导入模块名，不能是包名</span></span><br><span class="line">  controller.a1.login()</span><br><span class="line"><span class="keyword">from</span> controller <span class="keyword">import</span> a1    <span class="comment">#from+包名，import+模块名</span></span><br><span class="line">  a1.login()</span><br><span class="line"><span class="keyword">from</span> controller.a1  <span class="keyword">import</span>  uname, login  <span class="comment">#from+模块名，import+成员</span></span><br><span class="line">  login()</span><br></pre></td></tr></table></figure><br>  注意!!<br>   1-一个模块一旦被import，会自动缓存一份；如果接下来再次被import会首先使用缓存的模块对象——即多次导入同一模块只会执行一次<br>   2-包目录下可以声明<strong>__ init __.py</strong>文件——这是包的初始化文件，其中可以声明变量<strong>all</strong>=[‘user’, ‘product’]，其中声明的模块名可以被外界使用 import* 导入<br>    但是即使__all__中没声明的模块名，也可以使用import 模块名 方式强制导入<br>      <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 声明 __init__.py</span></span><br><span class="line">__all__=[<span class="string">&#x27;user&#x27;</span>]</span><br><span class="line"><span class="keyword">from</span> controller <span class="keyword">import</span> user,user2</span><br><span class="line"><span class="comment"># from controller import *  会导致使用此方式 product.uname 报警</span></span><br><span class="line">print(<span class="string">&#x27;main:&#x27;</span>, user.uname)</span><br><span class="line">print(<span class="string">&#x27;main:&#x27;</span>, user2.uname)</span><br></pre></td></tr></table></figure><br>    3-每个模块中都有一个变量：<code>__name__</code>，若当前模块是启动模块，则解释器自动赋值为’<code>__main__</code>‘，若当前模块不是启动模块(是被其它模块导入的)，此变量的值为’包名.模块名’。利用这一特点，可以进行模块的单元测试，而不影响其被正常导入：<br>   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">  print( <span class="string">&#x27;我不是被别人调用才跑的，我是自己跑的&#x27;</span> )</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="官方常用模块"><a href="#官方常用模块" class="headerlink" title="官方常用模块"></a><span id="title2">官方常用模块</span></h3><p>说明手册 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/index.html">https://docs.python.org/zh-cn/3/library/index.html</a><br>安装位置 C:\Users\web\AppData\Local\Programs\Python\Python36-32\Lib<br>一般来说 都会在当初安装时以前安装了，不用在这里再次安装</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">str = json.dumps(data)  <span class="comment">#对象序列化：对象=&gt;字符串</span></span><br><span class="line">obj = json.loads( str )   <span class="comment">#JSON字符串反序列化：字符串=&gt;对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">math.ceil(<span class="number">3.5</span>) <span class="comment"># 4</span></span><br><span class="line">math.floor(<span class="number">3.5</span>) <span class="comment"># 3</span></span><br><span class="line">math.sin(  math.pi/<span class="number">6</span>  ) <span class="comment"># 0.499994</span></span><br><span class="line">math.pi <span class="comment"># 3.1415</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os.path <span class="comment">#把相对路径转换为绝对路径</span></span><br><span class="line">os.path.abspath(<span class="string">&#x27;./&#x27;</span>) <span class="comment"># 当前运行cmd的路径</span></span><br><span class="line">os.path.abspath(<span class="string">&#x27;../../&#x27;</span>) <span class="comment"># 当前路径前2页</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span>  random <span class="keyword">as</span> r</span><br><span class="line">r.randrange(<span class="number">100</span>) <span class="comment"># 生成0~100间的随机整数</span></span><br><span class="line">r.randrange(<span class="number">1000</span>, <span class="number">10000</span>) <span class="comment">#生成四位的随机整数</span></span><br><span class="line">r.randrange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>) <span class="comment"># 成100以内的随机整10的数 r.randrange(开始范围 结束范围 递增值)</span></span><br><span class="line">stuList = [<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;4&#x27;</span>]</span><br><span class="line">r.choice(stuList) <span class="comment">#随机抽取一个学员</span></span><br><span class="line"><span class="comment">#随机打乱序列中元素的位置——打乱数组中原有的数据</span></span><br><span class="line">r.shuffle(stuList)   <span class="comment">#返回None，改变原序列</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#测试time模块</span></span><br><span class="line"><span class="keyword">import</span> time <span class="keyword">as</span> t</span><br><span class="line">t.sleep(<span class="number">3</span>) <span class="comment"># 定时器 3秒后跑后续操作</span></span><br><span class="line"></span><br><span class="line">print( t.time() )  <span class="comment"># 1600827052.0348608</span></span><br><span class="line">print( int( t.time()*<span class="number">1000</span> ) )   <span class="comment"># 当前系统时间：以毫秒为单位 = new Date().getTime()</span></span><br><span class="line"><span class="comment"># 数字 转 “本地时间”对象</span></span><br><span class="line">lt = t.localtime(t.time())   </span><br><span class="line">print( lt ) <span class="comment"># time.struct_time(tm_year=2020, tm_mon=9, tm_mday=23, tm_hour=10, tm_min=12, tm_sec=31, tm_wday=2, tm_yday=267, tm_isdst=0)</span></span><br><span class="line">print( type(lt) ) <span class="comment"># &lt;class &#x27;time.struct_time&#x27;&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># “本地时间”对象 转 字符串</span></span><br><span class="line">str = t.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)  <span class="comment"># 2020-09-23 10:12:31</span></span><br><span class="line">print( t.strftime(<span class="string">&#x27;%Y-%m-%d&#x27;</span>, t.localtime(t.time()))  ) <span class="comment"># 2020-09-23 年月日</span></span><br><span class="line">print( t.strftime(<span class="string">&#x27;2020-1-1&#x27;</span>, t.localtime(t.time()))  ) <span class="comment"># 2020-1-1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#把年月日时分秒字符串 转 “本地时间”对象</span></span><br><span class="line">lt = t.strptime(<span class="string">&#x27;1970-1-1 8:1:1&#x27;</span>, <span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)  <span class="comment">#把字符串解析为“本地时间”对象 time.struct_time(tm_year=1970, tm_mon=1, tm_mday=1, tm_hour=8, tm_min=1, tm_sec=1, tm_wday=3, tm_yday=1, tm_isdst=-1)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把“本地时间”对象 转 数字</span></span><br><span class="line">sec = t.mktime(lt)   <span class="comment"># 61.0 离计算机元年的秒数</span></span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Python-4-%E6%A8%A1%E5%9D%97-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Python-2-函数-作用域-封装-继承-多态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -217,138 +300,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python-6-MySQL连接模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Python-6-MySQL%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%9D%97/">6-MySQL连接模块</a>
-    </h1>
-  
-
-        
-        <a href="/Python-6-MySQL%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.438Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="第三方提供的模块-——-MySQL连接模块-了解-因为推荐使用ORM工具"><a href="#第三方提供的模块-——-MySQL连接模块-了解-因为推荐使用ORM工具" class="headerlink" title="第三方提供的模块 —— MySQL连接模块 (了解) 因为推荐使用ORM工具"></a>第三方提供的模块 —— MySQL连接模块 (了解) 因为推荐使用ORM工具</h3><table>
-<thead>
-<tr>
-<th>解释器</th>
-<th>核心模块</th>
-<th>第三方模块管理工具</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Node.js</td>
-<td>http、querystring、…</td>
-<td>NPM</td>
-</tr>
-<tr>
-<td>Python</td>
-<td>math、random、json…</td>
-<td>Pip</td>
-</tr>
-</tbody></table>
-<p>Pip：是随同Python一同安装的第三方模块包管理工具，功能类似于NPM；默认仓库地址：<code>python.org、pythonhosted.com</code>。PIP常用命令：</p>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>说明</th>
-<th>-</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>pip  install  模块名</td>
-<td>下载指定模块</td>
-<td>-</td>
-</tr>
-<tr>
-<td>pip  install  -i  非官方模块仓库  模块名</td>
-<td>下载指定模块</td>
-<td>-</td>
-</tr>
-<tr>
-<td>pip  uninstall  模块名</td>
-<td>卸载指定模块</td>
-<td>-</td>
-</tr>
-<tr>
-<td>pip  list</td>
-<td>列出已经安装的所有模块/包</td>
-<td>-</td>
-</tr>
-<tr>
-<td>pip  show  模块名</td>
-<td>显示指定模块的详情</td>
-<td>-</td>
-</tr>
-</tbody></table>
-<h3 id="下载-MySQL连接模块"><a href="#下载-MySQL连接模块" class="headerlink" title="下载 MySQL连接模块**"></a>下载 MySQL连接模块**</h3><p><code>pip  install   mysql-connector-python</code></p>
-<p>或者尝试豆瓣网的仓库：<br>pip  install-i <a target="_blank" rel="noopener" href="http://pypi.douban.com/simple">http://pypi.douban.com/simple</a>  mysql-connector-python<br>阿里云———-<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a><br>中国科技大学—-<a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a><br>豆瓣(douban)—-<a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a><br>清华大学——–<a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a><br>中国科学技术大学-<a target="_blank" rel="noopener" href="http://pypi.mirrors.ustc.edu.cn/simple/">http://pypi.mirrors.ustc.edu.cn/simple/</a></p>
-<p><strong>当然 运行下面程序的时候 需要启动xmapp的mysql 3306 才能访问数据库</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建库</span></span><br><span class="line">  <span class="keyword">from</span> mysql.connector <span class="keyword">import</span> connect <span class="comment"># mysql.connector.connect</span></span><br><span class="line">  sql = <span class="string">&#x27;CREATE DATABASE IF NOT EXISTS web2004 CHARSET=utf8&#x27;</span></span><br><span class="line">  <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  create 创建</span></span><br><span class="line"><span class="string">  database 数据库</span></span><br><span class="line"><span class="string">  if 如果</span></span><br><span class="line"><span class="string">  not 不</span></span><br><span class="line"><span class="string">  exists 存在</span></span><br><span class="line"><span class="string">  charset 编码</span></span><br><span class="line"><span class="string">  &#x27;&#x27;&#x27;</span></span><br><span class="line">  link = connect(host=<span class="string">&#x27;localhost&#x27;</span>, passwd=<span class="string">&quot;&quot;</span>, user=<span class="string">&quot;root&quot;</span>)</span><br><span class="line">  <span class="comment"># (host=&#x27;127.0.0.1&#x27;, port=3306, user=&#x27;root&#x27;, password=&#x27;&#x27;, database=&#x27;xz&#x27;) 进入到了某个库</span></span><br><span class="line">  print(link)</span><br><span class="line">  <span class="comment"># 执行sql</span></span><br><span class="line">  <span class="comment"># 数据库连接link 中有一个 句柄cursor(). 专门负责sql执行</span></span><br><span class="line">  <span class="comment"># cursor(): 连接的控制台</span></span><br><span class="line">  <span class="comment"># execute: 执行</span></span><br><span class="line">  link.cursor().execute(sql)</span><br><span class="line">  link.close() <span class="comment"># 关闭 断开</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建表</span></span><br><span class="line">  <span class="keyword">from</span> mysql.connector <span class="keyword">import</span> connect</span><br><span class="line">  link = connect(</span><br><span class="line">    host=<span class="string">&#x27;localhost&#x27;</span>, <span class="comment"># 地址</span></span><br><span class="line">    port=<span class="number">3306</span>, <span class="comment"># 端口号</span></span><br><span class="line">    user=<span class="string">&#x27;root&#x27;</span>, <span class="comment"># 用户名</span></span><br><span class="line">    passwd=<span class="string">&#x27;&#x27;</span>, <span class="comment"># 密码</span></span><br><span class="line">    database=<span class="string">&quot;web2004&quot;</span> <span class="comment"># 数据库名</span></span><br><span class="line">  )</span><br><span class="line">  print(link)</span><br><span class="line">  sql = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  CREATE TABLE IF NOT EXISTS student(</span></span><br><span class="line"><span class="string">    id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</span></span><br><span class="line"><span class="string">    name VARCHAR(255) NOT NULL,</span></span><br><span class="line"><span class="string">    age TINYINT UNSIGNED NOT NULL,</span></span><br><span class="line"><span class="string">    phone CHAR(11) NOT NULL,</span></span><br><span class="line"><span class="string">    sex TINYINT UNSIGNED NOT NULL</span></span><br><span class="line"><span class="string">  ) CHARSET=utf8</span></span><br><span class="line"><span class="string">  &#x27;&#x27;&#x27;</span></span><br><span class="line">  link.cursor().execute(sql)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据的插入</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">范式:</span></span><br><span class="line"><span class="string">1. INSERT INTO 表 VALUES (值, 值, 值...) 要求 值和字段顺序要一致</span></span><br><span class="line"><span class="string">2. INSERT INTO 表(字段1, 字段2..) VALUES (值1, 值2..) 向指定字段插值</span></span><br><span class="line"><span class="string">3. INSERT INTO 表 VALUES (值1, 值2...), (值1, 值2...), ... 一次性插入多组值</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">from</span> mysql.connector <span class="keyword">import</span> connect</span><br><span class="line">  link = connect(database=<span class="string">&#x27;web2004&#x27;</span>, host=<span class="string">&#x27;localhost&#x27;</span>,port=<span class="number">3306</span>, user=<span class="string">&#x27;root&#x27;</span>, passwd=<span class="string">&quot;&quot;</span>)</span><br><span class="line">  sql = <span class="string">&#x27;INSERT INTO student(name,age,sex,phone) VALUES (%s, %s, %s, %s)&#x27;</span></span><br><span class="line">  args = (<span class="string">&#x27;西西&#x27;</span>, <span class="number">18</span>, <span class="number">0</span>, <span class="string">&#x27;18877889595&#x27;</span>)</span><br><span class="line">  link.cursor().execute(sql, args) <span class="comment"># 参数2: 可选参数, 用来填写占位符对应的值</span></span><br><span class="line">  <span class="comment"># 重要原因: 数据库中的数据 是最宝贵的, 属于最敏感的; 操作这些最敏感的数据时, 要求必须二次确认;</span></span><br><span class="line">  <span class="comment"># 数据敏感操作包含: 增 删 改</span></span><br><span class="line">  link.commit() <span class="comment"># commit: 提交</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删</span></span><br><span class="line">  <span class="keyword">from</span> mysql.connector <span class="keyword">import</span> connect</span><br><span class="line">  link = connect(database=<span class="string">&#x27;web2004&#x27;</span>, host=<span class="string">&#x27;localhost&#x27;</span>,user=<span class="string">&#x27;root&#x27;</span>, port=<span class="number">3306</span>, passwd=<span class="string">&quot;&quot;</span>)</span><br><span class="line">  id = <span class="number">5</span></span><br><span class="line">  sql = <span class="string">&#x27;DELETE FROM student WHERE id&gt;%s&#x27;</span></span><br><span class="line">  args = (<span class="number">5</span>,) <span class="comment"># 元组类型: 仅有一个值 则必须带有逗号结尾</span></span><br><span class="line">  myCursor = link.cursor()</span><br><span class="line">  myCursor.execute(sql, args)</span><br><span class="line">  <span class="comment"># 控制台 cursor() 执行任务之后, 其中包含了任务的反馈信息, 可以读取: 例如 影响的行数</span></span><br><span class="line">  row = myCursor.rowcount</span><br><span class="line">  print(<span class="string">&#x27;删除操作删除了:&#x27;</span>, row, <span class="string">&#x27;条&#x27;</span>) <span class="comment"># 删除操作删除了: 4 条</span></span><br><span class="line">  link.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 改</span></span><br><span class="line">  <span class="keyword">from</span> mysql.connector <span class="keyword">import</span> connect</span><br><span class="line">  link = connect(host=<span class="string">&#x27;localhost&#x27;</span>, port=<span class="number">3306</span>,</span><br><span class="line">  database=<span class="string">&quot;web2004&quot;</span>, user=<span class="string">&#x27;root&#x27;</span>, passwd=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">  <span class="comment"># 修改 id &gt; 4 的 name为 iPhone13</span></span><br><span class="line">  id = <span class="number">4</span></span><br><span class="line">  name = <span class="string">&#x27;iPhone13&#x27;</span></span><br><span class="line">  sql = <span class="string">&#x27;UPDATE student SET name=%s WHERE id&gt;%s&#x27;</span></span><br><span class="line">  args = (name, id)</span><br><span class="line">  myCursor = link.cursor()</span><br><span class="line">  myCursor.execute(sql, args)</span><br><span class="line">  row = myCursor.rowcount <span class="comment"># 执行sql 影响的行数</span></span><br><span class="line">  print(<span class="string">&#x27;更新的条数:&#x27;</span>, row)</span><br><span class="line">  link.commit() <span class="comment"># 提交执行结果</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查</span></span><br><span class="line">  <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  1. SELECT * FROM 表</span></span><br><span class="line"><span class="string">  2. SELECT 字段,字段,字段 as 别名 FROM 表</span></span><br><span class="line"><span class="string">  3. SELECT * FROM 表 WHERE 条件(比较,逻辑,模糊匹配...)</span></span><br><span class="line"><span class="string">  &#x27;&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">from</span> mysql.connector <span class="keyword">import</span> connect</span><br><span class="line">  link = connect(database=<span class="string">&#x27;web2004&#x27;</span>, host=<span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">  port=<span class="number">3306</span>, user=<span class="string">&#x27;root&#x27;</span>, passwd=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">  sql = <span class="string">&#x27;SELECT * FROM student&#x27;</span></span><br><span class="line">  <span class="comment"># 查询操作: 需要读取执行SQL之后的结果</span></span><br><span class="line">  <span class="comment"># dictionary: 参数, 代表结果要求是 字典类型, 即 &#123;字段名: 值&#125; 的结构</span></span><br><span class="line">  myCursor = link.cursor(dictionary=<span class="literal">True</span>)</span><br><span class="line">  myCursor.execute(sql)</span><br><span class="line">  <span class="comment"># 读取执行后的结果: fetch抓取 all全部</span></span><br><span class="line">  res = myCursor.fetchall()</span><br><span class="line">  print(res) <span class="comment"># list类型</span></span><br><span class="line">  <span class="comment"># limit: 限定 1条</span></span><br><span class="line">  sql = <span class="string">&#x27;SELECT * FROM student LIMIT 1&#x27;</span></span><br><span class="line">  myCursor.execute(sql)</span><br><span class="line">  <span class="comment"># fetch: 抓取 one: 一个</span></span><br><span class="line">  res = myCursor.fetchone()</span><br><span class="line">  print(res) <span class="comment"># dict</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Python-6-MySQL%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%9D%97/">展开全文 >></a>
         </p>
       
 
@@ -475,82 +426,6 @@
 
 
   
-    <article id="post-Node-js-5-express框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Node-js-5-express%E6%A1%86%E6%9E%B6/">5-express框架-脚手架</a>
-    </h1>
-  
-
-        
-        <a href="/Node-js-5-express%E6%A1%86%E6%9E%B6/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="创建项目-18-webpackss-myapp"><a href="#创建项目-18-webpackss-myapp" class="headerlink" title="创建项目 18.webpackss\myapp"></a>创建项目 18.webpackss\myapp</h3><p><code>npm install express-generator –global</code> 下载express<br><code>express --view=pug myapp</code> 创建项目 myapp<br><code>cd myapp</code> 进入项目目录<br><code>npm install</code> 下载依赖<br><code>npm start </code> 运行</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node J S</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Node-js-5-express%E6%A1%86%E6%9E%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Node-js-3-mysql模块和连接池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -607,6 +482,82 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Node-js-5-express框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Node-js-5-express%E6%A1%86%E6%9E%B6/">5-express框架-脚手架</a>
+    </h1>
+  
+
+        
+        <a href="/Node-js-5-express%E6%A1%86%E6%9E%B6/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="创建项目-18-webpackss-myapp"><a href="#创建项目-18-webpackss-myapp" class="headerlink" title="创建项目 18.webpackss\myapp"></a>创建项目 18.webpackss\myapp</h3><p><code>npm install express-generator –global</code> 下载express<br><code>express --view=pug myapp</code> 创建项目 myapp<br><code>cd myapp</code> 进入项目目录<br><code>npm install</code> 下载依赖<br><code>npm start </code> 运行</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node J S</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Node-js-5-express%E6%A1%86%E6%9E%B6/">展开全文 >></a>
         </p>
       
 
@@ -770,19 +721,19 @@
 
 
   
-    <article id="post-JS-8-RegExp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Node-js-1-nodeJS简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/JS-8-RegExp/">8-RegExp</a>
+      <a class="article-title" href="/Node-js-1-nodeJS%E7%AE%80%E4%BB%8B/">1-nodeJS简介</a>
     </h1>
   
 
         
-        <a href="/JS-8-RegExp/" class="archive-article-date">
+        <a href="/Node-js-1-nodeJS%E7%AE%80%E4%BB%8B/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.436Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -791,184 +742,20 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
-<li>声明<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg= <span class="keyword">new</span> <span class="built_in">RegExp</span> (<span class="string">&quot;^\\d&#123;6&#125;$&quot;</span>,<span class="string">&#x27;ig&#x27;</span>) <span class="comment">// 此处2个\因为现在是字符串。字符串中\是转义符</span></span><br><span class="line"><span class="keyword">var</span> reg= <span class="regexp">/^\d&#123;6&#125;$/ig</span></span><br></pre></td></tr></table></figure>
+          <p>  1.说明<br>  <a href="#title2" target="_self">2.对象</a><br>  <a href="#title3" target="_self">3.大体导图</a><br>  <a href="/Node-js-2-各种模块/" target="_self">4.模块才是大头！</a></p>
+<h3 id="1-说明"><a href="#1-说明" class="headerlink" title="1.说明"></a>1.说明</h3><p> 特点<br>  单线程逻辑处理<br>  非阻塞的异步I/O处理<br>  支持数万个并发连接<br>  事件驱动编程<br>  无锁机制，不会产生死锁</p>
+<p>执行方式<br>    1.脚本模式   node  app.js<br>       与文件后缀名没有关系。但一般我们还是将文件用JS后缀<br>    2.交互模式   node  回车<br>      两次<code>ctrl+c</code>   或者 <code>.exit </code>退出交互模式</p>
+<h2 id="2-对象"><a href="#2-对象" class="headerlink" title="2.对象"></a>2.对象</h2><blockquote>
+<p>全局对象 js:window  nodejs:<code>global</code><br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">global</span>.console.log()  <span class="comment">// 打印日志</span></span><br><span class="line"><span class="built_in">global</span>.console.info() <span class="comment">// 打印消息</span></span><br><span class="line"><span class="built_in">global</span>.console.warn()  <span class="comment">// 打印自定义的警告</span></span><br><span class="line"><span class="built_in">global</span>.console.error()  <span class="comment">// 打印自定义的错误这4种输出是一样的，但是显示的图标不一样</span></span><br><span class="line"><span class="built_in">global</span>.console.time(<span class="string">&#x27;自定义字符串&#x27;</span>)  <span class="comment">// 开始计时&#x27;自定义字符串&#x27;相对于命名</span></span><br><span class="line"><span class="built_in">global</span>.console.timeEnd(<span class="string">&#x27;自定义字符串&#x27;</span>)  <span class="comment">// 结束计时自定义字符串前后保持一致</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><code>process</code>对象——进程<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">process.arch  <span class="comment">//查看当前CPU的架构</span></span><br><span class="line">process.platform  <span class="comment">//查看当前的操作系统</span></span><br><span class="line">process.env  <span class="comment">//查看当前系统的环境变量</span></span><br><span class="line">process.version  <span class="comment">//查看当前nodejs的版本号</span></span><br><span class="line">process.pid  <span class="comment">//查看当前的进程编号</span></span><br><span class="line">process.kill()   <span class="comment">//结束某个编号的进程</span></span><br><span class="line">process.nextTick(fun) <span class="comment">// 类似vue的nextTick</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><code>Buffer</code> 对象——缓冲区<br>  一块用于临时存储数据的内存区域，可以存储文件数据、常用于网络上传输的资源(视频、在线直播…)<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf=Buffer.alloc(<span class="number">5</span>,<span class="string">&#x27;abcde&#x27;</span>);<span class="comment">// alloc(最多个数,&#x27;字符串&#x27;)  当字符串个数少于最多个数时 回从头开始重复知道满足最大个数</span></span><br><span class="line"><span class="built_in">console</span>.log(buf)<span class="comment">//&lt;Buffer 61 62 63 64 65&gt; 打印的是Unicode统一码</span></span><br><span class="line"><span class="built_in">console</span>.log(buf.toString())<span class="comment">// 将buffer数据转为字符串buf.toString() abcde</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="3-大体导图"><a href="#3-大体导图" class="headerlink" title="3.大体导图"></a>3.大体导图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">创建数据库     mys&#x2F;    user.sql</span><br><span class="line">创建连接池对象         pool.js</span><br><span class="line">        引用模块</span><br><span class="line">        确认路径</span><br><span class="line">        导出模块</span><br><span class="line">创建静态页面    public&#x2F; user.html</span><br><span class="line">创建服务器             app.js</span><br><span class="line">        引用模块</span><br><span class="line">        创建服务器</span><br><span class="line">        导入路由器</span><br><span class="line">        挂载静态资源（确认文件路径）</span><br><span class="line">        挂载路由器</span><br><span class="line">创建路由器    routes&#x2F;  user.js</span><br><span class="line">        引用模块</span><br><span class="line">        引用连接池</span><br><span class="line">        创建路由器对象</span><br><span class="line">        中间件.路由.具体操作</span><br><span class="line">        导出路由器对象</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<h2 id="1-符号"><a href="#1-符号" class="headerlink" title="1.符号"></a>1.符号</h2><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>说明</th>
-<th>例子</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>^</td>
-<td>非 / 开头</td>
-<td><code>/^1$/</code> 匹配从开头到结尾含有1的字符 <br><code>[^a-z]</code>  匹配任何不在<code>“a”到“z”</code>范围内的任何字符</td>
-</tr>
-<tr>
-<td>$</td>
-<td>表示字符串结尾</td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>*</td>
-<td>0-无限</td>
-<td></td>
-</tr>
-<tr>
-<td>+</td>
-<td>1-无限</td>
-<td></td>
-</tr>
-<tr>
-<td>?</td>
-<td>0-1</td>
-<td></td>
-</tr>
-<tr>
-<td>.</td>
-<td>匹配除“\n”之外的任何单个字符</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>或者</td>
-</tr>
-<tr>
-<td>-</td>
-<td>范围</td>
-<td><code>/[a-z]/</code>  <code>a</code>到<code>z</code>范围内的任何小写字母</td>
-</tr>
-<tr>
-<td>-</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>\d</td>
-<td>任意数字 <code>[ 0-9 ]</code></td>
-<td></td>
-</tr>
-<tr>
-<td>\D</td>
-<td>非数字字符匹配。等效于 <code>[^0-9]</code></td>
-<td></td>
-</tr>
-<tr>
-<td>\w</td>
-<td>匹配任何字类字符，包括下划线。<code>[A-Za-z0-9_]</code></td>
-<td></td>
-</tr>
-<tr>
-<td>\W</td>
-<td>与任何非单词字符匹配。与<code>[^A-Za-z0-9_]</code></td>
-<td></td>
-</tr>
-<tr>
-<td>[ \u4e00 - \u9fa5 ]</td>
-<td>汉字</td>
-<td></td>
-</tr>
-<tr>
-<td>\b</td>
-<td>表示单词边界</td>
-<td><code>/er\b/</code> 匹配 <code>never中的er</code>，但不匹配<code>verb中的er</code></td>
-</tr>
-<tr>
-<td>\B</td>
-<td>非单词边界</td>
-<td><code>/er\b/</code> bu匹配 <code>never中的er</code>，但匹配<code>verb中的er</code></td>
-</tr>
-<tr>
-<td>\s</td>
-<td>空格.制表符Tab.看不见的空格</td>
-<td></td>
-</tr>
-<tr>
-<td>\S</td>
-<td>非空</td>
-<td></td>
-</tr>
-<tr>
-<td>[ \s\S ]</td>
-<td>所有</td>
-<td></td>
-</tr>
-<tr>
-<td>{n,m}</td>
-<td>字符集{n,m} 出现n-m次</td>
-<td></td>
-</tr>
-<tr>
-<td>简单示例</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>开头的空格</td>
-<td>^\s+</td>
-<td></td>
-</tr>
-<tr>
-<td>结尾的空格</td>
-<td>\s+$</td>
-<td></td>
-</tr>
-<tr>
-<td>边界后的空格</td>
-<td>\b\s+</td>
-<td></td>
-</tr>
-<tr>
-<td>边界前的空格</td>
-<td>\s\b+</td>
-<td></td>
-</tr>
-<tr>
-<td>边界前后的一个单词</td>
-<td>\b[a-z]</td>
-<td>[a-z]\b</td>
-</tr>
-</tbody></table>
-<p>扩展</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  先行断言”指的是，x只有在y前面才匹配，必须写成/x(?=y)</span></span><br><span class="line">/\d+(?=%)/.exec(<span class="string">&#x27;100% of US presidents have been male&#x27;</span>)  <span class="comment">// [&quot;100&quot;]  百分号前的任意数字</span></span><br><span class="line">/.+(?=presidents)/.exec(<span class="string">&#x27;100% of US presidents have been male&#x27;</span>) <span class="comment">// presidents前得所以字符</span></span><br><span class="line"><span class="comment">// “先行否定断言”指的是，x只有不在y前面才匹配，必须写成/x(?!y)</span></span><br><span class="line">/\d+(?!%)/.exec(<span class="string">&#x27;that’s all 44 of them&#x27;</span>)                 <span class="comment">// [&quot;44&quot;] 数字后面不是%的数字</span></span><br><span class="line"><span class="comment">// 后行断言，x只有在y后面才匹配，必须写成/(?&lt;=y)x/</span></span><br><span class="line">/(?&lt;=\$)\d+<span class="regexp">/.exec(&#x27;Benjamin Franklin is on the $100 bill&#x27;)   /</span><span class="regexp">/ [&quot;100&quot;] $后的任意数字</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 后行否定断言”，x只有不在y后面才匹配，必须写成/</span>(?&lt;!y)x</span><br><span class="line">/(?&lt;!\$)\d+<span class="regexp">/.exec(&#x27;it’s is worth about €90&#x27;)                /</span><span class="regexp">/ [&quot;90&quot;]  不是$为前缀的任意数字</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-常用正则"><a href="#2-常用正则" class="headerlink" title="2.常用正则"></a>2.常用正则</h2><h2 id="3-使用函数"><a href="#3-使用函数" class="headerlink" title="3.使用函数"></a>3.使用函数</h2><blockquote>
-<p><span class="blue--text" id="indexOf">indexOf</span><br>      <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回值: 如果找到，返回敏感词第一个字的下标</span></span><br><span class="line"><span class="comment">// 如果没找到，返回-1</span></span><br><span class="line"><span class="keyword">var</span> i=str.indexOf(<span class="string">&quot;敏感词&quot;</span>,starti) <span class="comment">//  在str中，从starti位置开始，找下一个敏感词出现的位置</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><span class="blue--text" id="search">search</span><br>      <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 返回值: 如果找到，返回敏感词第一个字的下标</span></span><br><span class="line">  <span class="comment">// 如果没找到，返回-1</span></span><br><span class="line"><span class="keyword">var</span> i=str.search(<span class="regexp">/正则/i</span>) <span class="comment">// 在str中查找符合正则要求的第一个敏感词出现的位置</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><span class="blue--text" id="match">match</span><br>      <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//    返回值: 如果找到，返回一个数组:[&quot;0&quot;:敏感词内容, &quot;index&quot;: 下标i ]</span></span><br><span class="line"><span class="comment">// 如果没找到，null</span></span><br><span class="line"><span class="keyword">var</span> i=str.match(<span class="regexp">/正则/i</span>) <span class="comment">// 在str中查找第一个敏感词的[内容和位置]</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><span class="blue--text" id="test">test</span><br>      <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回值: true false</span></span><br><span class="line">  <span class="keyword">var</span> i=正则.test(数据) <span class="comment">// 验证str是否符合reg的格式要求</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><span class="blue--text" id="exec">exec</span><br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回值: 符合得到数组 不符合得到null、</span></span><br><span class="line"><span class="keyword">var</span> arr=正则.exec(数据) <span class="comment">// 在str中找下一个符合reg要求的敏感词的内容和位置</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str=<span class="string">&quot;老师:请用小红我的朋友造句。小亮:小红是我的小友。小然：朋友！小红是我的！&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> reg=<span class="regexp">/小[\u4e00-\u9fa5]/g</span>;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> arr = reg.exec(str);</span><br><span class="line">    <span class="keyword">if</span> (arr != <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;在位置$&#123;arr.index&#125;发现敏感词$&#123;arr[0]&#125;&#x27;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> ( <span class="literal">true</span> );</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><span class="blue--text" id="split">split</span><br>      <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将字符str 按正则内容切割转化为数组</span></span><br><span class="line"><span class="keyword">var</span> i=str.split(<span class="regexp">/正则/</span>)</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><span class="blue--text" id="replace">replace</span><br>      ```js<br>        // 替换<br>        var str=str.replace(/正则/ig,”新值”)</p>
-</blockquote>
-<pre><code>    // 高级替换
-    var str = &#39;y   c   y   u&#39;.replace(/\w/ig, function (kword) &#123; return kword.toUpperCase() &#125;) // return Y     C     Y     U
-    var str = &#39;qw3qw3qw3qw3&#39;.replace(/(q)(w)/ig,&quot;$1+&quot;) // &quot;q+3q+3q+3q+3&quot;
-    var str = &#39;qw3qw3qw3qw3&#39;.replace(/(q)(w)/ig,&quot;$2+$1&quot;) // &quot;w+q3w+q3w+q3w+q3&quot;
-  ``` // </code></pre>
 
         
       
@@ -983,7 +770,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node J S</a>
         		</li>
       		
 		</ul>
@@ -993,7 +780,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/JS-8-RegExp/">展开全文 >></a>
+          <a class="article-more-a" href="/Node-js-1-nodeJS%E7%AE%80%E4%BB%8B/">展开全文 >></a>
         </p>
       
 
@@ -1457,19 +1244,19 @@
 
 
   
-    <article id="post-Node-js-1-nodeJS简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JS-8-RegExp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Node-js-1-nodeJS%E7%AE%80%E4%BB%8B/">1-nodeJS简介</a>
+      <a class="article-title" href="/JS-8-RegExp/">8-RegExp</a>
     </h1>
   
 
         
-        <a href="/Node-js-1-nodeJS%E7%AE%80%E4%BB%8B/" class="archive-article-date">
+        <a href="/JS-8-RegExp/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.436Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -1478,20 +1265,184 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p>  1.说明<br>  <a href="#title2" target="_self">2.对象</a><br>  <a href="#title3" target="_self">3.大体导图</a><br>  <a href="/Node-js-2-各种模块/" target="_self">4.模块才是大头！</a></p>
-<h3 id="1-说明"><a href="#1-说明" class="headerlink" title="1.说明"></a>1.说明</h3><p> 特点<br>  单线程逻辑处理<br>  非阻塞的异步I/O处理<br>  支持数万个并发连接<br>  事件驱动编程<br>  无锁机制，不会产生死锁</p>
-<p>执行方式<br>    1.脚本模式   node  app.js<br>       与文件后缀名没有关系。但一般我们还是将文件用JS后缀<br>    2.交互模式   node  回车<br>      两次<code>ctrl+c</code>   或者 <code>.exit </code>退出交互模式</p>
-<h2 id="2-对象"><a href="#2-对象" class="headerlink" title="2.对象"></a>2.对象</h2><blockquote>
-<p>全局对象 js:window  nodejs:<code>global</code><br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">global</span>.console.log()  <span class="comment">// 打印日志</span></span><br><span class="line"><span class="built_in">global</span>.console.info() <span class="comment">// 打印消息</span></span><br><span class="line"><span class="built_in">global</span>.console.warn()  <span class="comment">// 打印自定义的警告</span></span><br><span class="line"><span class="built_in">global</span>.console.error()  <span class="comment">// 打印自定义的错误这4种输出是一样的，但是显示的图标不一样</span></span><br><span class="line"><span class="built_in">global</span>.console.time(<span class="string">&#x27;自定义字符串&#x27;</span>)  <span class="comment">// 开始计时&#x27;自定义字符串&#x27;相对于命名</span></span><br><span class="line"><span class="built_in">global</span>.console.timeEnd(<span class="string">&#x27;自定义字符串&#x27;</span>)  <span class="comment">// 结束计时自定义字符串前后保持一致</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><code>process</code>对象——进程<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">process.arch  <span class="comment">//查看当前CPU的架构</span></span><br><span class="line">process.platform  <span class="comment">//查看当前的操作系统</span></span><br><span class="line">process.env  <span class="comment">//查看当前系统的环境变量</span></span><br><span class="line">process.version  <span class="comment">//查看当前nodejs的版本号</span></span><br><span class="line">process.pid  <span class="comment">//查看当前的进程编号</span></span><br><span class="line">process.kill()   <span class="comment">//结束某个编号的进程</span></span><br><span class="line">process.nextTick(fun) <span class="comment">// 类似vue的nextTick</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><code>Buffer</code> 对象——缓冲区<br>  一块用于临时存储数据的内存区域，可以存储文件数据、常用于网络上传输的资源(视频、在线直播…)<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf=Buffer.alloc(<span class="number">5</span>,<span class="string">&#x27;abcde&#x27;</span>);<span class="comment">// alloc(最多个数,&#x27;字符串&#x27;)  当字符串个数少于最多个数时 回从头开始重复知道满足最大个数</span></span><br><span class="line"><span class="built_in">console</span>.log(buf)<span class="comment">//&lt;Buffer 61 62 63 64 65&gt; 打印的是Unicode统一码</span></span><br><span class="line"><span class="built_in">console</span>.log(buf.toString())<span class="comment">// 将buffer数据转为字符串buf.toString() abcde</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="3-大体导图"><a href="#3-大体导图" class="headerlink" title="3.大体导图"></a>3.大体导图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">创建数据库     mys&#x2F;    user.sql</span><br><span class="line">创建连接池对象         pool.js</span><br><span class="line">        引用模块</span><br><span class="line">        确认路径</span><br><span class="line">        导出模块</span><br><span class="line">创建静态页面    public&#x2F; user.html</span><br><span class="line">创建服务器             app.js</span><br><span class="line">        引用模块</span><br><span class="line">        创建服务器</span><br><span class="line">        导入路由器</span><br><span class="line">        挂载静态资源（确认文件路径）</span><br><span class="line">        挂载路由器</span><br><span class="line">创建路由器    routes&#x2F;  user.js</span><br><span class="line">        引用模块</span><br><span class="line">        引用连接池</span><br><span class="line">        创建路由器对象</span><br><span class="line">        中间件.路由.具体操作</span><br><span class="line">        导出路由器对象</span><br></pre></td></tr></table></figure>
+          <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>声明<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg= <span class="keyword">new</span> <span class="built_in">RegExp</span> (<span class="string">&quot;^\\d&#123;6&#125;$&quot;</span>,<span class="string">&#x27;ig&#x27;</span>) <span class="comment">// 此处2个\因为现在是字符串。字符串中\是转义符</span></span><br><span class="line"><span class="keyword">var</span> reg= <span class="regexp">/^\d&#123;6&#125;$/ig</span></span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
+<h2 id="1-符号"><a href="#1-符号" class="headerlink" title="1.符号"></a>1.符号</h2><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>说明</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^</td>
+<td>非 / 开头</td>
+<td><code>/^1$/</code> 匹配从开头到结尾含有1的字符 <br><code>[^a-z]</code>  匹配任何不在<code>“a”到“z”</code>范围内的任何字符</td>
+</tr>
+<tr>
+<td>$</td>
+<td>表示字符串结尾</td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*</td>
+<td>0-无限</td>
+<td></td>
+</tr>
+<tr>
+<td>+</td>
+<td>1-无限</td>
+<td></td>
+</tr>
+<tr>
+<td>?</td>
+<td>0-1</td>
+<td></td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配除“\n”之外的任何单个字符</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>或者</td>
+</tr>
+<tr>
+<td>-</td>
+<td>范围</td>
+<td><code>/[a-z]/</code>  <code>a</code>到<code>z</code>范围内的任何小写字母</td>
+</tr>
+<tr>
+<td>-</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>\d</td>
+<td>任意数字 <code>[ 0-9 ]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>\D</td>
+<td>非数字字符匹配。等效于 <code>[^0-9]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配任何字类字符，包括下划线。<code>[A-Za-z0-9_]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>\W</td>
+<td>与任何非单词字符匹配。与<code>[^A-Za-z0-9_]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>[ \u4e00 - \u9fa5 ]</td>
+<td>汉字</td>
+<td></td>
+</tr>
+<tr>
+<td>\b</td>
+<td>表示单词边界</td>
+<td><code>/er\b/</code> 匹配 <code>never中的er</code>，但不匹配<code>verb中的er</code></td>
+</tr>
+<tr>
+<td>\B</td>
+<td>非单词边界</td>
+<td><code>/er\b/</code> bu匹配 <code>never中的er</code>，但匹配<code>verb中的er</code></td>
+</tr>
+<tr>
+<td>\s</td>
+<td>空格.制表符Tab.看不见的空格</td>
+<td></td>
+</tr>
+<tr>
+<td>\S</td>
+<td>非空</td>
+<td></td>
+</tr>
+<tr>
+<td>[ \s\S ]</td>
+<td>所有</td>
+<td></td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>字符集{n,m} 出现n-m次</td>
+<td></td>
+</tr>
+<tr>
+<td>简单示例</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>开头的空格</td>
+<td>^\s+</td>
+<td></td>
+</tr>
+<tr>
+<td>结尾的空格</td>
+<td>\s+$</td>
+<td></td>
+</tr>
+<tr>
+<td>边界后的空格</td>
+<td>\b\s+</td>
+<td></td>
+</tr>
+<tr>
+<td>边界前的空格</td>
+<td>\s\b+</td>
+<td></td>
+</tr>
+<tr>
+<td>边界前后的一个单词</td>
+<td>\b[a-z]</td>
+<td>[a-z]\b</td>
+</tr>
+</tbody></table>
+<p>扩展</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  先行断言”指的是，x只有在y前面才匹配，必须写成/x(?=y)</span></span><br><span class="line">/\d+(?=%)/.exec(<span class="string">&#x27;100% of US presidents have been male&#x27;</span>)  <span class="comment">// [&quot;100&quot;]  百分号前的任意数字</span></span><br><span class="line">/.+(?=presidents)/.exec(<span class="string">&#x27;100% of US presidents have been male&#x27;</span>) <span class="comment">// presidents前得所以字符</span></span><br><span class="line"><span class="comment">// “先行否定断言”指的是，x只有不在y前面才匹配，必须写成/x(?!y)</span></span><br><span class="line">/\d+(?!%)/.exec(<span class="string">&#x27;that’s all 44 of them&#x27;</span>)                 <span class="comment">// [&quot;44&quot;] 数字后面不是%的数字</span></span><br><span class="line"><span class="comment">// 后行断言，x只有在y后面才匹配，必须写成/(?&lt;=y)x/</span></span><br><span class="line">/(?&lt;=\$)\d+<span class="regexp">/.exec(&#x27;Benjamin Franklin is on the $100 bill&#x27;)   /</span><span class="regexp">/ [&quot;100&quot;] $后的任意数字</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 后行否定断言”，x只有不在y后面才匹配，必须写成/</span>(?&lt;!y)x</span><br><span class="line">/(?&lt;!\$)\d+<span class="regexp">/.exec(&#x27;it’s is worth about €90&#x27;)                /</span><span class="regexp">/ [&quot;90&quot;]  不是$为前缀的任意数字</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-常用正则"><a href="#2-常用正则" class="headerlink" title="2.常用正则"></a>2.常用正则</h2><h2 id="3-使用函数"><a href="#3-使用函数" class="headerlink" title="3.使用函数"></a>3.使用函数</h2><blockquote>
+<p><span class="blue--text" id="indexOf">indexOf</span><br>      <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回值: 如果找到，返回敏感词第一个字的下标</span></span><br><span class="line"><span class="comment">// 如果没找到，返回-1</span></span><br><span class="line"><span class="keyword">var</span> i=str.indexOf(<span class="string">&quot;敏感词&quot;</span>,starti) <span class="comment">//  在str中，从starti位置开始，找下一个敏感词出现的位置</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><span class="blue--text" id="search">search</span><br>      <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 返回值: 如果找到，返回敏感词第一个字的下标</span></span><br><span class="line">  <span class="comment">// 如果没找到，返回-1</span></span><br><span class="line"><span class="keyword">var</span> i=str.search(<span class="regexp">/正则/i</span>) <span class="comment">// 在str中查找符合正则要求的第一个敏感词出现的位置</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><span class="blue--text" id="match">match</span><br>      <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//    返回值: 如果找到，返回一个数组:[&quot;0&quot;:敏感词内容, &quot;index&quot;: 下标i ]</span></span><br><span class="line"><span class="comment">// 如果没找到，null</span></span><br><span class="line"><span class="keyword">var</span> i=str.match(<span class="regexp">/正则/i</span>) <span class="comment">// 在str中查找第一个敏感词的[内容和位置]</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><span class="blue--text" id="test">test</span><br>      <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回值: true false</span></span><br><span class="line">  <span class="keyword">var</span> i=正则.test(数据) <span class="comment">// 验证str是否符合reg的格式要求</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><span class="blue--text" id="exec">exec</span><br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回值: 符合得到数组 不符合得到null、</span></span><br><span class="line"><span class="keyword">var</span> arr=正则.exec(数据) <span class="comment">// 在str中找下一个符合reg要求的敏感词的内容和位置</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str=<span class="string">&quot;老师:请用小红我的朋友造句。小亮:小红是我的小友。小然：朋友！小红是我的！&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> reg=<span class="regexp">/小[\u4e00-\u9fa5]/g</span>;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> arr = reg.exec(str);</span><br><span class="line">    <span class="keyword">if</span> (arr != <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;在位置$&#123;arr.index&#125;发现敏感词$&#123;arr[0]&#125;&#x27;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> ( <span class="literal">true</span> );</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><span class="blue--text" id="split">split</span><br>      <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将字符str 按正则内容切割转化为数组</span></span><br><span class="line"><span class="keyword">var</span> i=str.split(<span class="regexp">/正则/</span>)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><span class="blue--text" id="replace">replace</span><br>      ```js<br>        // 替换<br>        var str=str.replace(/正则/ig,”新值”)</p>
+</blockquote>
+<pre><code>    // 高级替换
+    var str = &#39;y   c   y   u&#39;.replace(/\w/ig, function (kword) &#123; return kword.toUpperCase() &#125;) // return Y     C     Y     U
+    var str = &#39;qw3qw3qw3qw3&#39;.replace(/(q)(w)/ig,&quot;$1+&quot;) // &quot;q+3q+3q+3q+3&quot;
+    var str = &#39;qw3qw3qw3qw3&#39;.replace(/(q)(w)/ig,&quot;$2+$1&quot;) // &quot;w+q3w+q3w+q3w+q3&quot;
+  ``` // </code></pre>
 
         
       
@@ -1506,7 +1457,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node J S</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		
 		</ul>
@@ -1516,7 +1467,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/Node-js-1-nodeJS%E7%AE%80%E4%BB%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/JS-8-RegExp/">展开全文 >></a>
         </p>
       
 
@@ -1862,19 +1813,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1886,15 +1825,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1910,15 +1849,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1935,6 +1874,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网址</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
             
             <div class="clearfix"></div>
