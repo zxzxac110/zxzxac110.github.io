@@ -145,184 +145,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Angular-2-服务和依赖注入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Angular-2-%E6%9C%8D%E5%8A%A1%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">2-服务和依赖注入</a>
-    </h1>
-  
-
-        
-        <a href="/Angular-2-%E6%9C%8D%E5%8A%A1%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.425Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="服务和依赖注入"><a href="#服务和依赖注入" class="headerlink" title="服务和依赖注入"></a><span id="title5">服务和依赖注入</span></h3><p><code>Component</code> 组件，仅应该只负责视图，只参与展示；与展示无关的语句都应该剥离出去；例如：做日志、计时、网络数据访问…<br>组件=视图数据+事件监听函数<br><code>Service</code> 服务，就是一个简单的对象，负责执行从组件中剥离的与视图无关的操作，例如：做日志、计时、网络访问….<br>服务=日志+计时+网络请求+格式验证</p>
-<p>在构造方法中声明需要依赖某个对象，且该对象是“可以被注入的(@Injectable)”,那么Angular就会自动创建依赖的对象，并注入给当前构造方法<br>Angular中的依赖注入(DI)是根据构造方法的形参类型来识别的！<br>不放在普通实例方法中；也不根据变量名来识别！</p>
-<p>创建服务： <code>ng   generate  service  服务名</code><br>ng   generate  service  fuWu<br>新增2个文件<br>CREATE <code>src/app/fu-wu.service.spec.ts</code> (348 bytes)<br>CREATE <code>src/app/fu-wu.service.ts</code> (133 bytes)</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Injectable &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="comment">//服务对象都是可以被注入给组件的</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span>(&#123;</span><br><span class="line">  providedIn: <span class="string">&#x27;root&#x27;</span> <span class="comment">// 服务提供者为应用根模块.到处可以用</span></span><br><span class="line">  <span class="comment">// 若服务在根模块中被提供。则可以供给其他模块中的组件使用。否则就只能在当前模块中的组件中使用</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> FuWuService &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;logger+++++++++&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  doLog(content) &#123; <span class="comment">// 接受传递的参数</span></span><br><span class="line">    <span class="keyword">let</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">    <span class="built_in">console</span>.log(now + <span class="string">&#x27;:&#x27;</span> + content) </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ***.ts 要调用的页面</span></span><br><span class="line"><span class="keyword">import</span> &#123; FuWuService &#125; <span class="keyword">from</span> <span class="string">&#x27;../fu-wu.service&#x27;</span>;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  loger = null;</span></span><br><span class="line"><span class="comment">  constructor(obj: FuWuService) &#123;</span></span><br><span class="line"><span class="comment">     console.log(obj)  // 服务</span></span><br><span class="line"><span class="comment">     obj.doLog(this.count) // 这里就调用了方法</span></span><br><span class="line"><span class="comment">    this.loger = obj </span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="comment">// 上述简写  startTime1又是形参.又是变量 </span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> loger:FuWuService</span>)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  add(e) &#123; <span class="comment">// 触发次函数 会触发服务</span></span><br><span class="line">    <span class="built_in">this</span>.count += e;</span><br><span class="line">    <span class="built_in">this</span>.loger.doLog(<span class="string">&#x27;用户购买数量&#x27;</span> + <span class="built_in">this</span>.count) </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="面试题：Angular中的Service可以在哪里被提供-Service的提供者-注入器有哪些？"><a href="#面试题：Angular中的Service可以在哪里被提供-Service的提供者-注入器有哪些？" class="headerlink" title="面试题：Angular中的Service可以在哪里被提供/Service的提供者/注入器有哪些？"></a>面试题：Angular中的Service可以在哪里被提供/Service的提供者/注入器有哪些？</h3><p>方式1：声明服务时提供    根模块中提供的服务对象是整个应用中“单例的”<br> 就是上述指令模式创建的服务<br> <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// **.service.ts</span></span><br><span class="line">   <span class="keyword">import</span> &#123; Injectable &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line">   <span class="meta">@Injectable</span>(&#123;           </span><br><span class="line">     providedIn: <span class="string">&#x27;root&#x27;</span> <span class="comment">// 此处 </span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">export</span>  <span class="keyword">class</span>  FuWuService&#123;  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p> 方式2：在模块中提供     在当前模块中的所有组件共用同一个服务对象<br> <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// **.service.ts</span></span><br><span class="line">    <span class="meta">@Injectable</span>() <span class="comment">// 改成这个样式 。不需要root声明，其他不变</span></span><br><span class="line"><span class="comment">// Add.module.ts中操作</span></span><br><span class="line">    <span class="meta">@NgModule</span>(&#123;</span><br><span class="line">        providers: [ FuWuService ] <span class="comment">// </span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
-<p> 方式3：在组件声明中提供   该服务仅能作用于当前组件，且每个组件都有自己专有的服务对象<br> <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// **.service.ts</span></span><br><span class="line">   <span class="meta">@Injectable</span>() <span class="comment">// 改成这个样式 。不需要root声明，其他不变</span></span><br><span class="line"> <span class="comment">// component.ts中操作</span></span><br><span class="line"> <span class="meta">@Component</span>(&#123;</span><br><span class="line">    selector: <span class="string">&#x27;app-myc01&#x27;</span>,</span><br><span class="line">    template: <span class="string">&#x27;  &#x27;</span>,</span><br><span class="line">    providers: [ FuWuService ] </span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="Angular提供的异步请求服务-HttpClient"><a href="#Angular提供的异步请求服务-HttpClient" class="headerlink" title="Angular提供的异步请求服务 HttpClient"></a>Angular提供的异步请求服务 HttpClient</h3><p>  1.在主模块中引入HTTPClientModule模块<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.module.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; HttpClientModule &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/common/http&#x27;</span></span><br><span class="line">imports:[ </span><br><span class="line">  HttpClientModule</span><br><span class="line">  ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure><br>  2.在组件中注入依赖的HTTPClient服务<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; HttpClient &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/common/http&#x27;</span>;</span><br><span class="line"><span class="keyword">class</span> my01Component&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> http:HttpClient</span>)&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  loadProduct()&#123;		<span class="comment">//3)在组件方法中使用被注入的httpClient服务</span></span><br><span class="line">    <span class="built_in">this</span>.http.get(url).subscribe( <span class="function">(<span class="params">res</span>)=&gt;</span>&#123; &#125; )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> body = <span class="string">&#x27;uname=tom&amp;age=20&#x27;</span></span><br><span class="line">    <span class="keyword">let</span> options = &#123;</span><br><span class="line">        headers: &#123; </span><br><span class="line">        <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span> </span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">this</span>.http.post(url, body, options).subscribe(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Angular-2-%E6%9C%8D%E5%8A%A1%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Angular-5-lonic组件库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Angular-5-lonic%E7%BB%84%E4%BB%B6%E5%BA%93/">5-lonic组件库</a>
-    </h1>
-  
-
-        
-        <a href="/Angular-5-lonic%E7%BB%84%E4%BB%B6%E5%BA%93/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.425Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>Ionic是一个基于HTML/CSS/JS技术的，创建混合App的UI组件库技术。底层可以不依赖于任何框架(引入.css和.js就可以运行)，也可以与Vue.js、React、Angular框架整合在一起，作为它们的第三方组件库使用。<br><a target="_blank" rel="noopener" href="https://ionicframework.com/docs/api/grid">https://ionicframework.com/docs/api/grid</a></p>
-<blockquote>
-<p>使用方法：<br>  (1)下载全局脚手架工具<br>    npm  i   -g   ionic<br>  (2)选择一个目录，运行脚手架工具在当前目录下创建一个项目<br>    ionic  start   项目名   blank           -空白项目<br>    ionic  start   项目名   tabs                  -带有底部菜单项目<br>    ionic  start   项目名   sidemenu            -带有左侧菜单项目<br>    创建好项目后会自动调用npm i下载所依赖的第三方模块</p>
-</blockquote>
-<blockquote>
-<p> Ionic的九种主题色——color：&lt; ion-xxx color=”” 此处?只能写9种主题色之一&gt;<br>  <code>Theme &gt; variables.scss</code> 中<br>  primary(蓝白)<br>  secondary(青白)<br>  tertiary(偏紫白)<br>  success(绿白)<br>  warning(黄白)<br>  danger(红白)<br>  dark(黑白)<br>  medium(灰白)<br>  light(亮色)</p>
-</blockquote>
-<blockquote>
-<p>页面布局 官网 =》 左侧结构体<br>  比如<br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ion-app</span>&gt;</span><span class="comment">&lt;!-- 长宽占满屏幕 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ion-header</span>&gt;</span><span class="comment">&lt;!-- 页头 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-toolbar</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ion-title</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">ion-title</span>&gt;</span><span class="comment">&lt;!-- 字体变大.并且位置有变化 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ion-toolbar</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">ion-header</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--padding 属性名.不能给定具体的值 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ion-content</span> <span class="attr">padding</span>&gt;</span><span class="comment">&lt;!-- 主题内容过多时.会出现滚动条 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-grid</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ion-row</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ion-col</span> <span class="attr">size</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&#x27;box&#x27;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;/<span class="name">ion-col</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ion-col</span> <span class="attr">size</span>=<span class="string">&quot;5&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&#x27;box&#x27;</span>&gt;</span>5<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;/<span class="name">ion-col</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ion-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ion-grid</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ion-content</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ion-footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-toolbar</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ion-title</span>&gt;</span>页尾<span class="tag">&lt;/<span class="name">ion-title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ion-toolbar</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ion-footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ion-app</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>轮播<br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ion-slides</span> <span class="attr">pager</span>=<span class="string">&quot;true&quot;</span> #<span class="attr">indexslides</span>&gt;</span><span class="comment">&lt;!-- pager 小点 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ion-slide</span> *<span class="attr">ngFor</span>=<span class="string">&quot;let item of carouselItems&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> [<span class="attr">src</span>]=<span class="string">&quot;&#x27;http://www.codeboy.com/&#x27;+item.img&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ion-slide</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ion-slides</span>&gt;</span></span><br></pre></td></tr></table></figure><br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnInit, ViewChild &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ApiService &#125; <span class="keyword">from</span> <span class="string">&#x27;../api.service&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> IndexComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line"><span class="comment">//轮播广告组件  </span></span><br><span class="line">  <span class="meta">@ViewChild</span> (<span class="string">&quot;indexslides&quot;</span>,&#123;<span class="keyword">static</span>:<span class="literal">true</span>&#125;)</span><br><span class="line">  <span class="keyword">private</span> indexslides</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> api:ApiService</span>)&#123;&#125;</span><br><span class="line">  ngOnInit()&#123;</span><br><span class="line">    <span class="built_in">this</span>.indexslides.startAutoplay() <span class="comment">// 自动播放</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="打包方式"><a href="#打包方式" class="headerlink" title="打包方式"></a>打包方式</h3><blockquote>
-<p>简单<br>  只需要把代码上传到 ionic 的官方网站, ionic就会自动帮助你打包完毕, 把安装包发送回来<br>  登录: <a target="_blank" rel="noopener" href="https://ionicframework.com/login?source=framework-home">https://ionicframework.com/login?source=framework-home</a><br>  按照官方要求: 上传代码包 并 选择创建服务即可: 300元/月<br>复杂<br>  需要下载接近 2G 的环境包, 各种配置安装 在自己电脑上搭建 编译环境(大概率会失败)<br>  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/unofficial/p/4837190.html">https://www.cnblogs.com/unofficial/p/4837190.html</a><br>  此流程 在 React 阶段会使用1天的时间 来搭建编译环境!!</p>
-</blockquote>
-<p>链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1fBHOXYLAHaeSDUw5dpVURg">https://pan.baidu.com/s/1fBHOXYLAHaeSDUw5dpVURg</a> 提取码: iz4f</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Angular-5-lonic%E7%BB%84%E4%BB%B6%E5%BA%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Angular-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -485,6 +307,183 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Angular-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Angular-3-组件传参" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Angular-3-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/">3-组件传参</a>
+    </h1>
+  
+
+        
+        <a href="/Angular-3-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.425Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="父子-子父-传参"><a href="#父子-子父-传参" class="headerlink" title="父子 子父 传参"></a>父子 子父 传参</h3><p>父子传参</p>
+<blockquote>
+<p>子组件<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnInit, Input &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>; <span class="comment">// 添加</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="string">&#x27;app-zi&#x27;</span>,</span><br><span class="line">  templateUrl: <span class="string">&#x27;./zi.component.html&#x27;</span>,</span><br><span class="line">  styleUrls: [<span class="string">&#x27;./zi.component.css&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> ZiComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line">  <span class="meta">@Input</span>() <span class="comment">// 添加</span></span><br><span class="line">  userName: <span class="built_in">string</span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123; &#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit(): <span class="built_in">void</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>父组件<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;app-zi [userName]=<span class="string">&quot;abc&quot;</span>&gt;&lt;/app-zi&gt;</span><br><span class="line"><span class="comment">// ts</span></span><br><span class="line">  abc: <span class="built_in">string</span> = <span class="string">&#x27;7777&#x27;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>子父传参</p>
+<blockquote>
+<p>子<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnInit, Input, EventEmitter, Output &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>; <span class="comment">// EventEmitter, Output</span></span><br><span class="line">  <span class="meta">@Output</span>()  <span class="comment">// 需要发射给父组件的事件--输出型属性</span></span><br><span class="line">  uname1 = <span class="keyword">new</span> EventEmitter  <span class="comment">// 事件发射器</span></span><br><span class="line">  doclick()&#123;                <span class="comment">// 点击触发事件</span></span><br><span class="line">    <span class="built_in">this</span>.uname1.emit(<span class="built_in">this</span>.inputt)<span class="comment">//发射自定义事件.携带自己的参数</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>父<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;app-zi  (uname1)=<span class="string">&quot;doCry($event)&quot;</span>&gt;&lt;<span class="regexp">/app-zi&gt; /</span><span class="regexp">/ (uname1)=&quot;doCry($event)&quot;  (子元素声明的事件发射器) = &quot;函数($event)&quot;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ ts</span></span><br><span class="line"><span class="regexp">doCry (e) &#123;</span></span><br><span class="line"><span class="regexp">    console.log(&#x27;获取得到的参数&#x27;,e)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>子组件给父组件传递数据的非标准方式—让父组件可以直接使用子组件对象 相当于vue 的ref</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// html</span></span><br><span class="line">&lt; #myc01&gt;..&lt;/&gt;</span><br><span class="line"><span class="comment">// ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; Component, OnInit, ViewChild &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>; <span class="comment">// ViewChild </span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//static 是静态还是动态？ 就是有没有if或者for</span></span><br><span class="line">  <span class="meta">@ViewChild</span>(<span class="string">&#x27;mySign01&#x27;</span>, &#123; <span class="keyword">static</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">  c1</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">  <span class="comment">// 此时 this.c1 = 当前做了 #mySign01 标记的元素</span></span><br></pre></td></tr></table></figure>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Angular-3-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Angular-2-服务和依赖注入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Angular-2-%E6%9C%8D%E5%8A%A1%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">2-服务和依赖注入</a>
+    </h1>
+  
+
+        
+        <a href="/Angular-2-%E6%9C%8D%E5%8A%A1%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.425Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="服务和依赖注入"><a href="#服务和依赖注入" class="headerlink" title="服务和依赖注入"></a><span id="title5">服务和依赖注入</span></h3><p><code>Component</code> 组件，仅应该只负责视图，只参与展示；与展示无关的语句都应该剥离出去；例如：做日志、计时、网络数据访问…<br>组件=视图数据+事件监听函数<br><code>Service</code> 服务，就是一个简单的对象，负责执行从组件中剥离的与视图无关的操作，例如：做日志、计时、网络访问….<br>服务=日志+计时+网络请求+格式验证</p>
+<p>在构造方法中声明需要依赖某个对象，且该对象是“可以被注入的(@Injectable)”,那么Angular就会自动创建依赖的对象，并注入给当前构造方法<br>Angular中的依赖注入(DI)是根据构造方法的形参类型来识别的！<br>不放在普通实例方法中；也不根据变量名来识别！</p>
+<p>创建服务： <code>ng   generate  service  服务名</code><br>ng   generate  service  fuWu<br>新增2个文件<br>CREATE <code>src/app/fu-wu.service.spec.ts</code> (348 bytes)<br>CREATE <code>src/app/fu-wu.service.ts</code> (133 bytes)</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Injectable &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="comment">//服务对象都是可以被注入给组件的</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span>(&#123;</span><br><span class="line">  providedIn: <span class="string">&#x27;root&#x27;</span> <span class="comment">// 服务提供者为应用根模块.到处可以用</span></span><br><span class="line">  <span class="comment">// 若服务在根模块中被提供。则可以供给其他模块中的组件使用。否则就只能在当前模块中的组件中使用</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> FuWuService &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;logger+++++++++&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  doLog(content) &#123; <span class="comment">// 接受传递的参数</span></span><br><span class="line">    <span class="keyword">let</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">    <span class="built_in">console</span>.log(now + <span class="string">&#x27;:&#x27;</span> + content) </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ***.ts 要调用的页面</span></span><br><span class="line"><span class="keyword">import</span> &#123; FuWuService &#125; <span class="keyword">from</span> <span class="string">&#x27;../fu-wu.service&#x27;</span>;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  loger = null;</span></span><br><span class="line"><span class="comment">  constructor(obj: FuWuService) &#123;</span></span><br><span class="line"><span class="comment">     console.log(obj)  // 服务</span></span><br><span class="line"><span class="comment">     obj.doLog(this.count) // 这里就调用了方法</span></span><br><span class="line"><span class="comment">    this.loger = obj </span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="comment">// 上述简写  startTime1又是形参.又是变量 </span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> loger:FuWuService</span>)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  add(e) &#123; <span class="comment">// 触发次函数 会触发服务</span></span><br><span class="line">    <span class="built_in">this</span>.count += e;</span><br><span class="line">    <span class="built_in">this</span>.loger.doLog(<span class="string">&#x27;用户购买数量&#x27;</span> + <span class="built_in">this</span>.count) </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="面试题：Angular中的Service可以在哪里被提供-Service的提供者-注入器有哪些？"><a href="#面试题：Angular中的Service可以在哪里被提供-Service的提供者-注入器有哪些？" class="headerlink" title="面试题：Angular中的Service可以在哪里被提供/Service的提供者/注入器有哪些？"></a>面试题：Angular中的Service可以在哪里被提供/Service的提供者/注入器有哪些？</h3><p>方式1：声明服务时提供    根模块中提供的服务对象是整个应用中“单例的”<br> 就是上述指令模式创建的服务<br> <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// **.service.ts</span></span><br><span class="line">   <span class="keyword">import</span> &#123; Injectable &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line">   <span class="meta">@Injectable</span>(&#123;           </span><br><span class="line">     providedIn: <span class="string">&#x27;root&#x27;</span> <span class="comment">// 此处 </span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">export</span>  <span class="keyword">class</span>  FuWuService&#123;  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p> 方式2：在模块中提供     在当前模块中的所有组件共用同一个服务对象<br> <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// **.service.ts</span></span><br><span class="line">    <span class="meta">@Injectable</span>() <span class="comment">// 改成这个样式 。不需要root声明，其他不变</span></span><br><span class="line"><span class="comment">// Add.module.ts中操作</span></span><br><span class="line">    <span class="meta">@NgModule</span>(&#123;</span><br><span class="line">        providers: [ FuWuService ] <span class="comment">// </span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
+<p> 方式3：在组件声明中提供   该服务仅能作用于当前组件，且每个组件都有自己专有的服务对象<br> <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// **.service.ts</span></span><br><span class="line">   <span class="meta">@Injectable</span>() <span class="comment">// 改成这个样式 。不需要root声明，其他不变</span></span><br><span class="line"> <span class="comment">// component.ts中操作</span></span><br><span class="line"> <span class="meta">@Component</span>(&#123;</span><br><span class="line">    selector: <span class="string">&#x27;app-myc01&#x27;</span>,</span><br><span class="line">    template: <span class="string">&#x27;  &#x27;</span>,</span><br><span class="line">    providers: [ FuWuService ] </span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Angular提供的异步请求服务-HttpClient"><a href="#Angular提供的异步请求服务-HttpClient" class="headerlink" title="Angular提供的异步请求服务 HttpClient"></a>Angular提供的异步请求服务 HttpClient</h3><p>  1.在主模块中引入HTTPClientModule模块<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.module.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; HttpClientModule &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/common/http&#x27;</span></span><br><span class="line">imports:[ </span><br><span class="line">  HttpClientModule</span><br><span class="line">  ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure><br>  2.在组件中注入依赖的HTTPClient服务<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; HttpClient &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/common/http&#x27;</span>;</span><br><span class="line"><span class="keyword">class</span> my01Component&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> http:HttpClient</span>)&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  loadProduct()&#123;		<span class="comment">//3)在组件方法中使用被注入的httpClient服务</span></span><br><span class="line">    <span class="built_in">this</span>.http.get(url).subscribe( <span class="function">(<span class="params">res</span>)=&gt;</span>&#123; &#125; )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> body = <span class="string">&#x27;uname=tom&amp;age=20&#x27;</span></span><br><span class="line">    <span class="keyword">let</span> options = &#123;</span><br><span class="line">        headers: &#123; </span><br><span class="line">        <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span> </span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">this</span>.http.post(url, body, options).subscribe(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Angular-2-%E6%9C%8D%E5%8A%A1%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">展开全文 >></a>
         </p>
       
 
@@ -688,19 +687,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -720,11 +719,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -736,11 +735,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -764,11 +763,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">

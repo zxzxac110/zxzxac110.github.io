@@ -278,7 +278,7 @@
 <h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><ol>
 <li>vue create 项目名<br> Vue CLI v4.2.3</li>
 </ol>
-<h3 id="弹出内容解释"><a href="#弹出内容解释" class="headerlink" title="弹出内容解释"></a>弹出内容解释</h3><p>1 Project name vue-cli2         回车<br>2 Project description (A Vue.js project) 是项目的描述，自己可以修改或者使用默认的，我们一般使用默认的直接按回车键进行下一步，<br>3 Author lishihao <a href="mailto:&#x6c;&#105;&#x73;&#x68;&#105;&#x68;&#97;&#111;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#99;&#x6f;&#109;">&#x6c;&#105;&#x73;&#x68;&#105;&#x68;&#97;&#111;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#99;&#x6f;&#109;</a>    作者信息</p>
+<h3 id="弹出内容解释"><a href="#弹出内容解释" class="headerlink" title="弹出内容解释"></a>弹出内容解释</h3><p>1 Project name vue-cli2         回车<br>2 Project description (A Vue.js project) 是项目的描述，自己可以修改或者使用默认的，我们一般使用默认的直接按回车键进行下一步，<br>3 Author lishihao <a href="mailto:&#108;&#x69;&#115;&#104;&#105;&#104;&#97;&#x6f;&#64;&#101;&#120;&#97;&#109;&#x70;&#108;&#101;&#46;&#99;&#x6f;&#x6d;">&#108;&#x69;&#115;&#104;&#105;&#104;&#97;&#x6f;&#64;&#101;&#120;&#97;&#109;&#x70;&#108;&#101;&#46;&#99;&#x6f;&#x6d;</a>    作者信息</p>
 <p>4 Vue build (Use arrow keys)<br>详情 【<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020253015%E3%80%91">https://segmentfault.com/a/1190000020253015】</a><br>Runtime + Compiler: recommended for most users<br>选择— Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere  推荐第二个<br>5 Install vue-router? Yes 路由<br>6 Use ESLint to lint your code? (Y/n) n 语法规范检查<br>7 Set up unit tests No 单元测试<br>8 Setup e2e tests with Nightwatch? No 也是测试<br>9 Should we run <code>npm install</code> for you after the project has been created? (recommended)<br>选择使用npm、还是yarn安装<br>选择— Yes, use NPM<br>Yes,use yarn<br>No I will handle that myself</p>
 <h3 id="文件解释"><a href="#文件解释" class="headerlink" title="文件解释"></a>文件解释</h3><table>
 <thead>
@@ -649,88 +649,6 @@ return resolved</code></pre>
 
 
   
-    <article id="post-Vscode-1-一键执行多个npm指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/">1-一键执行多个npm指令</a>
-    </h1>
-  
-
-        
-        <a href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.441Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="package-lock-json"><a href="#package-lock-json" class="headerlink" title="package-lock.json"></a>package-lock.json</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;声明&quot;</span>: <span class="string">&quot;代码&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="vscode-文件夹"><a href="#vscode-文件夹" class="headerlink" title=".vscode 文件夹"></a>.vscode 文件夹</h3><ul>
-<li>直接创建吧，懒得用vscode触发了</li>
-<li>创建 <code>tasks.json</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">  // 有关 tasks.json 格式的文档，请参见q</span><br><span class="line">  // https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;tasks&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;label&quot;</span>: <span class="string">&quot;BK&quot;</span>, <span class="comment"># 他的名字  被调用时</span></span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;npm&quot;</span>, <span class="comment"># 执行指令</span></span><br><span class="line">      <span class="string">&quot;script&quot;</span>: <span class="string">&quot;bk&quot;</span>, <span class="comment"># 文件夹 package.json - script - 申明的一个属性值</span></span><br><span class="line">      <span class="string">&quot;path&quot;</span>: <span class="string">&quot;BK/&quot;</span>, <span class="comment"># 在 Bk/ 文件下运行</span></span><br><span class="line">      <span class="string">&quot;problemMatcher&quot;</span>: []</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>创建 <code>launch.json</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">  // 悬停以查看现有属性的描述。</span><br><span class="line">  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">      <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;BK&quot;</span>,  <span class="comment"># 显示在调试时的名称</span></span><br><span class="line">      <span class="string">&quot;preLaunchTask&quot;</span>: <span class="string">&quot;BK&quot;</span>  <span class="comment"># 运行的要对应的名称</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vscode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-TS-ts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -807,6 +725,88 @@ return resolved</code></pre>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/TS-ts/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Vscode-1-一键执行多个npm指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/">1-一键执行多个npm指令</a>
+    </h1>
+  
+
+        
+        <a href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.441Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="package-lock-json"><a href="#package-lock-json" class="headerlink" title="package-lock.json"></a>package-lock.json</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;声明&quot;</span>: <span class="string">&quot;代码&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="vscode-文件夹"><a href="#vscode-文件夹" class="headerlink" title=".vscode 文件夹"></a>.vscode 文件夹</h3><ul>
+<li>直接创建吧，懒得用vscode触发了</li>
+<li>创建 <code>tasks.json</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">  // 有关 tasks.json 格式的文档，请参见q</span><br><span class="line">  // https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;tasks&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;label&quot;</span>: <span class="string">&quot;BK&quot;</span>, <span class="comment"># 他的名字  被调用时</span></span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;npm&quot;</span>, <span class="comment"># 执行指令</span></span><br><span class="line">      <span class="string">&quot;script&quot;</span>: <span class="string">&quot;bk&quot;</span>, <span class="comment"># 文件夹 package.json - script - 申明的一个属性值</span></span><br><span class="line">      <span class="string">&quot;path&quot;</span>: <span class="string">&quot;BK/&quot;</span>, <span class="comment"># 在 Bk/ 文件下运行</span></span><br><span class="line">      <span class="string">&quot;problemMatcher&quot;</span>: []</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>创建 <code>launch.json</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">  // 悬停以查看现有属性的描述。</span><br><span class="line">  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">      <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;BK&quot;</span>,  <span class="comment"># 显示在调试时的名称</span></span><br><span class="line">      <span class="string">&quot;preLaunchTask&quot;</span>: <span class="string">&quot;BK&quot;</span>  <span class="comment"># 运行的要对应的名称</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vscode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/">展开全文 >></a>
         </p>
       
 
@@ -1395,19 +1395,19 @@ return resolved</code></pre>
 
 
   
-    <article id="post-React-5-ReactNative路由" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-React-3-React组件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/React-5-ReactNative%E8%B7%AF%E7%94%B1/">5-ReactNative路由</a>
+      <a class="article-title" href="/React-3-React%E7%BB%84%E4%BB%B6/">3-React组件</a>
     </h1>
   
 
         
-        <a href="/React-5-ReactNative%E8%B7%AF%E7%94%B1/" class="archive-article-date">
+        <a href="/React-3-React%E7%BB%84%E4%BB%B6/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.440Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -1416,23 +1416,15 @@ return resolved</code></pre>
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="路由方法一·"><a href="#路由方法一·" class="headerlink" title="路由方法一·"></a>路由方法一·</h3><p>React本身没有路由和导航组件！<br>  如果项目是基于React的Web项目，路由和跳转可以使用React-Router；<br>  ReactNative本身也没有提供路由和导航组件！<br>  如果在RN项目可以使用第三方路由组件：<code>React-Navigation</code><br>  官网：<a target="_blank" rel="noopener" href="https://reactnavigation.org/">https://reactnavigation.org/</a><br>React Navigation是一个基于ReactNative原生App开发的路由和导航组件，在原生App中模拟出了Web浏览器中window.history访问历史记录的“栈式”效果</p>
-<p>1.下载<br><code>npm  i  react-navigation</code><br><code>npm  i  react-native-guesture-handler</code><br><code>npm  i  react-navtive-reanimated</code><br>2 创建页面组件<br>3 声明并注册路由词典</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// App.js</span></span><br><span class="line"><span class="comment">/**创建路由器/导航器 注册给根组件 */</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; createAppContainer,createStackNavigator &#125; <span class="keyword">from</span> <span class="string">&#x27;react-navigation&#x27;</span>  <span class="comment">// 引入</span></span><br><span class="line"><span class="keyword">import</span> LoginScreen <span class="keyword">from</span> <span class="string">&#x27;./src/components/LoginScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> MainScreen <span class="keyword">from</span> <span class="string">&#x27;./src/components/MainScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ProductListScreen <span class="keyword">from</span> <span class="string">&#x27;./src/components/ProductListScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ProductDetailScreen <span class="keyword">from</span> <span class="string">&#x27;./src/components/ProductDetailScreen&#x27;</span>;</span><br><span class="line"><span class="comment">//创建路由器</span></span><br><span class="line"><span class="keyword">let</span> router = createStackNavigator(&#123;</span><br><span class="line">    productList:ProductListScreen,    <span class="comment">//第一个路由即是“首屏内容”</span></span><br><span class="line">    main:MainScreen,</span><br><span class="line">    login:LoginScreen,</span><br><span class="line">    productDetail:ProductDetailScreen</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//注册路由去.导出路由</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> createAppContainer(router)</span><br></pre></td></tr></table></figure>
+          <p>React手册中提供了两种创建自定义组件的方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// (1)function式：简单功能少</span></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">ComponentName</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> jsx;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// (2)class式：复杂功能多</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span>  <span class="title">MyComponent</span>  <span class="keyword">extends</span>  <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    render()&#123;</span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">        <span class="comment">//JSX表达式</span></span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 最后</span></span><br><span class="line">  ReactDOM.render( <span class="xml"><span class="tag">&lt;<span class="name">MyComponent</span> /&gt;</span></span>,  box  )</span><br></pre></td></tr></table></figure>
 
-<p>4.路由跳转</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/view/***.js</span></span><br><span class="line">		<span class="comment">//&lt;LoginScreen navigation=&#123;&#125;&gt;</span></span><br><span class="line">		<span class="comment">//所有的路由组件，在创建时都被注入一个属性navigation</span></span><br><span class="line">		<span class="comment">//组件内部可以使用this.props.navigation访问该属性</span></span><br><span class="line">		<span class="built_in">this</span>.props.navigation.navigate(<span class="string">&#x27;main&#x27;</span>)  <span class="comment">//跳转路由地址</span></span><br><span class="line">		<span class="built_in">this</span>.props.navigation.goBack()         <span class="comment">//返回上一页</span></span><br><span class="line">		<span class="built_in">this</span>.props.navigation.popToTop()	     <span class="comment">//返回首页</span></span><br><span class="line">    <span class="built_in">this</span>.props.navigation.push ()</span><br><span class="line">    <span class="built_in">this</span>.props.navigation.pop()</span><br><span class="line">    <span class="built_in">this</span>.props.navigation.getParam ()      <span class="comment">//获取路由参数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 跳转传参</span></span><br><span class="line">    <span class="built_in">this</span>.props.navigation.navigate(<span class="string">&#x27;页面2&#x27;</span>, &#123; <span class="attr">pid</span>: <span class="number">999</span>, <span class="attr">uname</span>:<span class="string">&#x27;&#x27;</span> &#125; )  <span class="comment">// 页面1：</span></span><br><span class="line">    <span class="keyword">let</span> pid = <span class="built_in">this</span>.props.navigation.getParam(<span class="string">&#x27;pid&#x27;</span>, 默认值) <span class="comment">// 页面2 没有的话就是默认值</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 为每个页面提供头部标题栏内容：</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> ****** <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">			<span class="keyword">static</span>  navigationOptions = &#123;</span><br><span class="line">				title: <span class="string">&#x27;页面标题字&#x27;</span>,</span><br><span class="line">				<span class="comment">//headerTitle:  &lt;Image.../&gt;</span></span><br><span class="line">				<span class="comment">//headerRight:  &lt;Button.../&gt;</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<p>比如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 组件名严格要求: 大驼峰命名法 -- 与vue一致</span></span><br><span class="line"><span class="comment">// &lt;InputArea /&gt; 运行时会编译成 InputArea()</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">InputArea</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;span&gt;&#123;props.name&#125;:&lt;/span&gt;</span><br><span class="line">    &lt;input type=<span class="string">&quot;text&quot;</span> /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ReactDOM.render(InputArea(), app) === &lt;InputArea /&gt;</span></span><br><span class="line"><span class="comment">// ReactDOM.render(InputArea(&#123; name: 1 &#125;), app) === &lt;InputArea name=&quot;1&quot;/&gt;</span></span><br><span class="line"><span class="comment">// 复用</span></span><br><span class="line"><span class="keyword">let</span> form = (</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;InputArea name=<span class="string">&quot;用户名&quot;</span> /&gt;</span><br><span class="line">  &lt;InputArea name=<span class="string">&quot;邮箱&quot;</span> /&gt;</span><br><span class="line">  &lt;InputArea name=<span class="string">&quot;密码&quot;</span> /&gt;</span><br><span class="line">  &lt;InputArea name=<span class="string">&quot;手机号&quot;</span> /&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">);</span><br><span class="line">ReactDOM.render(form, app);</span><br></pre></td></tr></table></figure>
 
+<p>完整示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ./ 前缀非常重要, 带有此路径前缀 才会识别为 css 文件的引入</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./xxx.css&#x27;</span></span><br><span class="line"><span class="comment">//import &#x27;xxx.css&#x27;  错误写法: vscode认为是引入一个叫 xxx.css 的模块</span></span><br><span class="line"><span class="comment">// 强大的类方式, 要求必须继承父类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ComponentName</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line"><span class="comment">// React: state 和 setState(); 必须通过 setState() 更新数据 才会刷新UI</span></span><br><span class="line">state = &#123;&#125;;</span><br><span class="line"><span class="comment">//父类的构造</span></span><br><span class="line"><span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">  <span class="built_in">this</span>.props = props;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//生命周期: 生 -&gt; 数据更新 -&gt; UI更新 -&gt; 死</span></span><br><span class="line">componentDidMount()&#123; 生 &#125; <span class="comment">// 加载阶段 组件已经加载完成——适合于加载异步数据</span></span><br><span class="line">componentWillUnmount()&#123; 将死 &#125; <span class="comment">// 更新阶段-组件即将卸载，用于清除组件数据，如定时器等</span></span><br><span class="line">componentDidUpdate() &#123; props 和 state 有更新时 &#125; <span class="comment">// 更新阶段-组件更新完成</span></span><br><span class="line">shouldComponentUpdate()&#123; <span class="comment">// 更新阶段-组件应该更新吗？返回true即调用render，否则不调用</span></span><br><span class="line"><span class="comment">// 面试常考: 如何提高渲染效率</span></span><br><span class="line"><span class="comment">// 此函数的返回值将会决定是否要刷新重绘页面: true刷新 false不刷新</span></span><br><span class="line">&#125;</span><br><span class="line">  show () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//普通函数; 事件触发; 其中用了this; -- 必须关注this的指向</span></span><br><span class="line">  show1 () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.state.num)</span><br><span class="line">  &#125;</span><br><span class="line">  show2 = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.state.num)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 循环: 采用原生循环</span></span><br><span class="line">  names = [<span class="string">&#x27;mike&#x27;</span>, <span class="string">&#x27;lucy&#x27;</span>, <span class="string">&#x27;lily&#x27;</span>, <span class="string">&#x27;lisa&#x27;</span>]</span><br><span class="line">  showNames () &#123;</span><br><span class="line">    <span class="comment">// 判断通常配合 state; 因为state的变化 才会导致UI变更</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.state.score &gt;= <span class="number">60</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>面试通过了<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>还需要更努力呦~<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 固定方法: 组件使用时默认调用此方法</span></span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.show&#125;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.show1.bind(this)&#125;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> this.show1()&#125;&gt;点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.show2&#125;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;this.showNames()&#125;</span></span><br><span class="line"><span class="xml">      &#123;this.showRes()&#125;</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> &#x27;<span class="attr">red</span>&#x27;, <span class="attr">fontSize:</span> &#x27;<span class="attr">18px</span>&#x27; &#125;&#125; &gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;success danger&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;this.state.name&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this._inputChanged&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.state.name&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 事件触发的 函数, 默认都会接收事件本身做为参数</span></span><br><span class="line">  _inputChanged = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 如果希望通过打印来查看, 则必须调用 event.persist();</span></span><br><span class="line">    event.persist(); <span class="comment">//调用与否 对于下方的 读值无影响, 只影响log打印的结果</span></span><br><span class="line">    <span class="built_in">console</span>.log(event)</span><br><span class="line">    <span class="keyword">let</span> name = event.target.value;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">name</span>: name &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-<h3 id="路由方法二"><a href="#路由方法二" class="headerlink" title="路由方法二"></a>路由方法二</h3><p>1.编译环境OK<br>2.生成项目包:<code> react-native init xueziApp</code><br>3.安装路由模块 和 网页模块<br>  3-1 路由模块官网: <a target="_blank" rel="noopener" href="https://reactnavigation.org/docs/getting-started">https://reactnavigation.org/docs/getting-started</a><br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install @react-navigation&#x2F;native</span><br><span class="line">$ npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-nativecommunity&#x2F;masked-view</span><br><span class="line">$ npm install @react-navigation&#x2F;stack</span><br></pre></td></tr></table></figure><br> 3-2 网页模块:<br>  <a target="_blank" rel="noopener" href="https://github.com/react-native-community/react-native-webview">https://github.com/react-native-community/react-native-webview</a><br>  <a target="_blank" rel="noopener" href="https://github.com/iou90/react-native-autoheight-webview">https://github.com/iou90/react-native-autoheight-webview</a></p>
-<p>  <code>npm i react-native-autoheight-webview react-native-webview</code></p>
-<p>  编译: 先 <code>adb devices</code> 检测模拟器<br>  项目需要替换 gradle 的下载地址为本地地址<br>    <code>npm run android</code> </p>
-<p>示例 不常用 </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// App.js</span></span><br><span class="line"><span class="comment">// In App.js in a new project</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; View, Text &#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; NavigationContainer &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createStackNavigator &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/stack&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HomeScreen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">    &lt;View style=&#123;&#123; <span class="attr">flex</span>: <span class="number">1</span>, <span class="attr">alignItems</span>: <span class="string">&#x27;center&#x27;</span>, <span class="attr">justifyContent</span>: <span class="string">&#x27;center&#x27;</span> &#125;&#125;&gt;</span><br><span class="line">      &lt;Text&gt;Home Screen&lt;/Text&gt;</span><br><span class="line">    &lt;/View&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> Stack = createStackNavigator();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">  &lt;NavigationContainer&gt;</span><br><span class="line">    &lt;Stack.Navigator&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Home&quot;</span> component=&#123;HomeScreen&#125; /&gt;</span><br><span class="line">    &lt;/Stack.Navigator&gt;</span><br><span class="line">  &lt;/NavigationContainer&gt;</span><br><span class="line">  );</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
-<p>示例 引用组件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// In App.js in a new project</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;NavigationContainer&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;createStackNavigator&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/stack&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> LoginScreen <span class="keyword">from</span> <span class="string">&#x27;./screens/LoginScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> MainScreen <span class="keyword">from</span> <span class="string">&#x27;./screens/MainScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ProductsScreen <span class="keyword">from</span> <span class="string">&#x27;./screens/ProductsScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> DetailScreen <span class="keyword">from</span> <span class="string">&#x27;./screens/DetailScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> Stack = createStackNavigator();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;NavigationContainer&gt;</span><br><span class="line">    &lt;Stack.Navigator&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Login&quot;</span> component=&#123;LoginScreen&#125; /&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Main&quot;</span> component=&#123;MainScreen&#125; /&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Products&quot;</span> component=&#123;ProductsScreen&#125; /&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Detail&quot;</span> component=&#123;DetailScreen&#125; /&gt;</span><br><span class="line">    &lt;/Stack.Navigator&gt;</span><br><span class="line">  &lt;/NavigationContainer&gt;</span><br><span class="line">);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
         
       
 
@@ -1456,7 +1448,7 @@ return resolved</code></pre>
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/React-5-ReactNative%E8%B7%AF%E7%94%B1/">展开全文 >></a>
+          <a class="article-more-a" href="/React-3-React%E7%BB%84%E4%BB%B6/">展开全文 >></a>
         </p>
       
 
@@ -1583,19 +1575,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1615,11 +1607,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1631,11 +1623,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1659,11 +1651,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">

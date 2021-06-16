@@ -317,6 +317,113 @@
 
 
   
+    <article id="post-JS-101-不用try-catch，如何机智的捕获错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/">101.不用try catch，如何机智的捕获错误</a>
+    </h1>
+  
+
+        
+        <a href="/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.431Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作者： 魔术师卡颂 公号 / 卡颂 （本文来自作者投稿）<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/yOxhzfCwmQZLVaN2kVTAoQ">https://mp.weixin.qq.com/s/yOxhzfCwmQZLVaN2kVTAoQ</a></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>我们知道，<code>React</code>中有个特性<code>Error Boundary</code>，帮助我们在组件发生错误时显示“错误状态”的UI。<br>为了实现这个特性，就一定需要捕获到错误。<br>所以在<code>React</code>源码中，所有用户代码都被包裹在一个方法中执行。<br>类似如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapper</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    func();</span><br><span class="line">  &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    <span class="comment">// ...处理错误</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>比如触发<code>componentDidMount</code>时：<br><code>wrapper(componentDidMount)</code>;<br>本来一切都很完美，但是React作为世界级前端框架，受众广泛，凡事都讲究做到极致。<br>这不，有人提<code>issue</code>：<br>你们这样在<code>try catch</code>中执行用户代码会让浏览器调试工具的<code>Pause on exceptions</code>失效。</p>
+<p>Pause on exceptions是什么？<br>他是浏览器调试工具source面板的一个功能。</p>
+<p>开启该功能后，在运行时遇到会抛出错误的代码，代码的执行会自动停在该行，就像在该行打了断点一样。<br>比如，执行如下代码，并开启该功能：<br>let a = c;<br>代码的执行会在该行暂停。</p>
+<p>这个功能可以很方便的帮我们发现未捕获的错误发生的位置。<br>但是，当React将用户代码包裹在try catch后，即使代码抛出错误，也会被catch。<br>Pause on exceptions无法在抛出错误的用户代码处暂停，因为error已经被React catch了。<br>除非我们进一步开启Pause on caught exceptions。</p>
+<p>开启该功能，使代码在捕获的错误发生的位置暂停。<br>如何解决</p>
+<p>对用户来说，我写在componentDidMount中的代码明明未捕获错误，可是错误发生时Pause on exceptions却失效了，确实有些让人困惑。<br>所以，在生产环境，React继续使用try catch实现wrapper。<br>而在开发环境，为了更好的调试体验，需要重新实现一套try catch机制，包含如下功能：<br>捕获用户代码抛出的错误，使Error Boundary功能正常运行<br>不捕获用户代码抛出的错误，使Pause on exceptions不失效<br>这看似矛盾的功能，React如何机智的实现呢？<br>如何“捕获”错误</p>
+<p>让我们先实现第一点：捕获用户代码抛出的错误。<br>但是不能使用try catch，因为这会让Pause on exceptions失效。<br>解决办法是：监听window的error事件。<br>根据GlobalEventHandlers.onerror MDN[1]，该事件可以监听到两类错误：<br>js运行时错误（包括语法错误）。window会触发ErrorEvent接口的error事件<br>资源（如&lt; img &gt;或&lt; script &gt;）加载失败错误。加载资源的元素会触发Event接口的error事件，可以在window上捕获该错误<br>实现开发环境使用的wrapperDev：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 开发环境wrapper</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperDev</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleWindowError</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 收集错误交给Error Boundary处理</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">  func();</span><br><span class="line">  <span class="built_in">window</span>.removeEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当func执行时抛出错误，会被handleWindowError处理。<br>但是，对比生产环境wrapperPrd内func抛出的错误会被catch，不会影响后续代码执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperPrd</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    func();</span><br><span class="line">  &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    <span class="comment">// ...处理错误</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>开发环境func内如果抛出错误，代码的执行会中断。<br>比如执行如下代码，finish会被打印。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wrapperPrd(<span class="function">() =&gt;</span> &#123;<span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="number">123</span>)&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;finish&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>但是执行如下代码，代码执行中断，finish不会被打印。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wrapperDev(<span class="function">() =&gt;</span> &#123;<span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="number">123</span>)&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;finish&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>如何在不捕获用户代码抛出错误的前提下，又能让后续代码的执行不中断呢？</p>
+<h4 id="如何让代码执行不中断"><a href="#如何让代码执行不中断" class="headerlink" title="如何让代码执行不中断"></a>如何让代码执行不中断</h4><p>答案是：通过<code>dispatchEvent</code>触发事件回调，在回调中调用用户代码。<br>根据<code>EventTarget.dispatchEvent MDN</code>[2]：<br>不同于DOM节点触发的事件（比如<code>click</code>事件）回调是由<code>event loop</code>异步触发。<br>通过<code>dispatchEvent</code>触发的事件是同步触发，并且在事件回调中抛出的错误不会影响dispatchEvent的调用者（caller）。<br>让我们继续改造<code>wrapperDev</code>。</p>
+<p>首先创建虚构的DOM节点、事件对象、虚构的事件类型：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建虚构的DOM节点</span></span><br><span class="line"><span class="keyword">const</span> fakeNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;fake&#x27;</span>);</span><br><span class="line"><span class="comment">// 创建event</span></span><br><span class="line"><span class="keyword">const</span> event = <span class="built_in">document</span>.createEvent(<span class="string">&#x27;Event&#x27;</span>);</span><br><span class="line"><span class="comment">// 创建虚构的event类型</span></span><br><span class="line"><span class="keyword">const</span> evtType = <span class="string">&#x27;fake-event&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>初始化事件对象，监听事件。在事件回调中调用用户代码。触发事件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callCallback</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  fakeNode.removeEventListener(evtType, callCallback, <span class="literal">false</span>); </span><br><span class="line">  func();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听虚构的事件类型</span></span><br><span class="line">fakeNode.addEventListener(evtType, callCallback, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化事件</span></span><br><span class="line">event.initEvent(evtType, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发事件</span></span><br><span class="line">fakeNode.dispatchEvent(event);</span><br></pre></td></tr></table></figure>
+<p>完整流程如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperDev</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleWindowError</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 收集错误交给Error Boundary处理</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">callCallback</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    fakeNode.removeEventListener(evtType, callCallback, <span class="literal">false</span>); </span><br><span class="line">    func();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> event = <span class="built_in">document</span>.createEvent(<span class="string">&#x27;Event&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> fakeNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;fake&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> evtType = <span class="string">&#x27;fake-event&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">  fakeNode.addEventListener(evtType, callCallback, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">  event.initEvent(evtType, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  fakeNode.dispatchEvent(event);</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">window</span>.removeEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当我们调用：<br><code>wrapperDev(() =&gt; &#123;throw Error(123)&#125;)</code><br>会依次执行：<br>1.dispatchEvent触发事件回调callCallback<br>2.在callCallback内执行到throw Error(123)，抛出错误<br>3.callCallback执行中断，但调用他的函数会继续执行。<br>E4.rror(123)被window error handler捕获用于Error Boundary<br>其中步骤2使Pause on exceptions不会失效。<br>步骤3、4使得错误被捕获，且不会阻止后续代码执行，模拟了try catch的效果。<br>总结</p>
+<p>不得不说，<code>React</code>这波操作真细啊。<br>我们实现的迷你<code>wrapper</code>还有很多不足，比如：<br>没有针对不同浏览器的兼容<br>没有考虑其他代码也触发<code>window error handler</code></p>
+<p>[1]<br>GlobalEventHandlers.onerror MDN: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror">https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror</a><br>[2]<br>EventTarget.dispatchEvent MDN: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent">https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent</a><br>[3]<br>这里: <a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/master/packages/shared/invokeGuardedCallbackImpl.js#L63-L237">https://github.com/facebook/react/blob/master/packages/shared/invokeGuardedCallbackImpl.js#L63-L237</a></p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JS-1-js函数-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1388,113 +1495,6 @@
 
 
   
-    <article id="post-JS-101-不用try-catch，如何机智的捕获错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/">101.不用try catch，如何机智的捕获错误</a>
-    </h1>
-  
-
-        
-        <a href="/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.431Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作者： 魔术师卡颂 公号 / 卡颂 （本文来自作者投稿）<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/yOxhzfCwmQZLVaN2kVTAoQ">https://mp.weixin.qq.com/s/yOxhzfCwmQZLVaN2kVTAoQ</a></p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>我们知道，<code>React</code>中有个特性<code>Error Boundary</code>，帮助我们在组件发生错误时显示“错误状态”的UI。<br>为了实现这个特性，就一定需要捕获到错误。<br>所以在<code>React</code>源码中，所有用户代码都被包裹在一个方法中执行。<br>类似如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapper</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    func();</span><br><span class="line">  &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    <span class="comment">// ...处理错误</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>比如触发<code>componentDidMount</code>时：<br><code>wrapper(componentDidMount)</code>;<br>本来一切都很完美，但是React作为世界级前端框架，受众广泛，凡事都讲究做到极致。<br>这不，有人提<code>issue</code>：<br>你们这样在<code>try catch</code>中执行用户代码会让浏览器调试工具的<code>Pause on exceptions</code>失效。</p>
-<p>Pause on exceptions是什么？<br>他是浏览器调试工具source面板的一个功能。</p>
-<p>开启该功能后，在运行时遇到会抛出错误的代码，代码的执行会自动停在该行，就像在该行打了断点一样。<br>比如，执行如下代码，并开启该功能：<br>let a = c;<br>代码的执行会在该行暂停。</p>
-<p>这个功能可以很方便的帮我们发现未捕获的错误发生的位置。<br>但是，当React将用户代码包裹在try catch后，即使代码抛出错误，也会被catch。<br>Pause on exceptions无法在抛出错误的用户代码处暂停，因为error已经被React catch了。<br>除非我们进一步开启Pause on caught exceptions。</p>
-<p>开启该功能，使代码在捕获的错误发生的位置暂停。<br>如何解决</p>
-<p>对用户来说，我写在componentDidMount中的代码明明未捕获错误，可是错误发生时Pause on exceptions却失效了，确实有些让人困惑。<br>所以，在生产环境，React继续使用try catch实现wrapper。<br>而在开发环境，为了更好的调试体验，需要重新实现一套try catch机制，包含如下功能：<br>捕获用户代码抛出的错误，使Error Boundary功能正常运行<br>不捕获用户代码抛出的错误，使Pause on exceptions不失效<br>这看似矛盾的功能，React如何机智的实现呢？<br>如何“捕获”错误</p>
-<p>让我们先实现第一点：捕获用户代码抛出的错误。<br>但是不能使用try catch，因为这会让Pause on exceptions失效。<br>解决办法是：监听window的error事件。<br>根据GlobalEventHandlers.onerror MDN[1]，该事件可以监听到两类错误：<br>js运行时错误（包括语法错误）。window会触发ErrorEvent接口的error事件<br>资源（如&lt; img &gt;或&lt; script &gt;）加载失败错误。加载资源的元素会触发Event接口的error事件，可以在window上捕获该错误<br>实现开发环境使用的wrapperDev：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 开发环境wrapper</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperDev</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleWindowError</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 收集错误交给Error Boundary处理</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">  func();</span><br><span class="line">  <span class="built_in">window</span>.removeEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当func执行时抛出错误，会被handleWindowError处理。<br>但是，对比生产环境wrapperPrd内func抛出的错误会被catch，不会影响后续代码执行。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperPrd</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    func();</span><br><span class="line">  &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    <span class="comment">// ...处理错误</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>开发环境func内如果抛出错误，代码的执行会中断。<br>比如执行如下代码，finish会被打印。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wrapperPrd(<span class="function">() =&gt;</span> &#123;<span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="number">123</span>)&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;finish&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>但是执行如下代码，代码执行中断，finish不会被打印。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wrapperDev(<span class="function">() =&gt;</span> &#123;<span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="number">123</span>)&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;finish&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>如何在不捕获用户代码抛出错误的前提下，又能让后续代码的执行不中断呢？</p>
-<h4 id="如何让代码执行不中断"><a href="#如何让代码执行不中断" class="headerlink" title="如何让代码执行不中断"></a>如何让代码执行不中断</h4><p>答案是：通过<code>dispatchEvent</code>触发事件回调，在回调中调用用户代码。<br>根据<code>EventTarget.dispatchEvent MDN</code>[2]：<br>不同于DOM节点触发的事件（比如<code>click</code>事件）回调是由<code>event loop</code>异步触发。<br>通过<code>dispatchEvent</code>触发的事件是同步触发，并且在事件回调中抛出的错误不会影响dispatchEvent的调用者（caller）。<br>让我们继续改造<code>wrapperDev</code>。</p>
-<p>首先创建虚构的DOM节点、事件对象、虚构的事件类型：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建虚构的DOM节点</span></span><br><span class="line"><span class="keyword">const</span> fakeNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;fake&#x27;</span>);</span><br><span class="line"><span class="comment">// 创建event</span></span><br><span class="line"><span class="keyword">const</span> event = <span class="built_in">document</span>.createEvent(<span class="string">&#x27;Event&#x27;</span>);</span><br><span class="line"><span class="comment">// 创建虚构的event类型</span></span><br><span class="line"><span class="keyword">const</span> evtType = <span class="string">&#x27;fake-event&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>初始化事件对象，监听事件。在事件回调中调用用户代码。触发事件：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callCallback</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  fakeNode.removeEventListener(evtType, callCallback, <span class="literal">false</span>); </span><br><span class="line">  func();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听虚构的事件类型</span></span><br><span class="line">fakeNode.addEventListener(evtType, callCallback, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化事件</span></span><br><span class="line">event.initEvent(evtType, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发事件</span></span><br><span class="line">fakeNode.dispatchEvent(event);</span><br></pre></td></tr></table></figure>
-<p>完整流程如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperDev</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleWindowError</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 收集错误交给Error Boundary处理</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">callCallback</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    fakeNode.removeEventListener(evtType, callCallback, <span class="literal">false</span>); </span><br><span class="line">    func();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> event = <span class="built_in">document</span>.createEvent(<span class="string">&#x27;Event&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> fakeNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;fake&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> evtType = <span class="string">&#x27;fake-event&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">  fakeNode.addEventListener(evtType, callCallback, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">  event.initEvent(evtType, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  fakeNode.dispatchEvent(event);</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">window</span>.removeEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当我们调用：<br><code>wrapperDev(() =&gt; &#123;throw Error(123)&#125;)</code><br>会依次执行：<br>1.dispatchEvent触发事件回调callCallback<br>2.在callCallback内执行到throw Error(123)，抛出错误<br>3.callCallback执行中断，但调用他的函数会继续执行。<br>E4.rror(123)被window error handler捕获用于Error Boundary<br>其中步骤2使Pause on exceptions不会失效。<br>步骤3、4使得错误被捕获，且不会阻止后续代码执行，模拟了try catch的效果。<br>总结</p>
-<p>不得不说，<code>React</code>这波操作真细啊。<br>我们实现的迷你<code>wrapper</code>还有很多不足，比如：<br>没有针对不同浏览器的兼容<br>没有考虑其他代码也触发<code>window error handler</code></p>
-<p>[1]<br>GlobalEventHandlers.onerror MDN: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror">https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror</a><br>[2]<br>EventTarget.dispatchEvent MDN: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent">https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent</a><br>[3]<br>这里: <a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/master/packages/shared/invokeGuardedCallbackImpl.js#L63-L237">https://github.com/facebook/react/blob/master/packages/shared/invokeGuardedCallbackImpl.js#L63-L237</a></p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-JQuery-jquery" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2381,7 +2381,7 @@
 </tr>
 <tr>
 <td>-</td>
-<td><code>href</code>=”1.zip” 下载资源<br> <code>href</code>=”mailto:<a href="mailto:&#x67;&#x2d;&#x63;&#x68;&#x65;&#110;&#x67;&#x6c;&#105;&#x61;&#x6e;&#103;&#x40;&#116;&#x65;&#x64;&#x75;&#46;&#x63;&#x6e;">&#x67;&#x2d;&#x63;&#x68;&#x65;&#110;&#x67;&#x6c;&#105;&#x61;&#x6e;&#103;&#x40;&#116;&#x65;&#x64;&#x75;&#46;&#x63;&#x6e;</a>“ 打开电子邮件<br> <code>href</code>=”javascript:alert(1111111)” <code>href</code>=”javascript:show()” 执行js代码<br> <code>href</code>=”#” 回到页面顶部<br> <code>href</code>=”#x” 到id=”x”的元素位置</td>
+<td><code>href</code>=”1.zip” 下载资源<br> <code>href</code>=”mailto:<a href="mailto:&#103;&#45;&#99;&#104;&#x65;&#x6e;&#x67;&#x6c;&#x69;&#97;&#x6e;&#x67;&#64;&#x74;&#101;&#100;&#117;&#46;&#99;&#110;">&#103;&#45;&#99;&#104;&#x65;&#x6e;&#x67;&#x6c;&#x69;&#97;&#x6e;&#x67;&#64;&#x74;&#101;&#100;&#117;&#46;&#99;&#110;</a>“ 打开电子邮件<br> <code>href</code>=”javascript:alert(1111111)” <code>href</code>=”javascript:show()” 执行js代码<br> <code>href</code>=”#” 回到页面顶部<br> <code>href</code>=”#x” 到id=”x”的元素位置</td>
 <td></td>
 <td></td>
 </tr>
@@ -3529,19 +3529,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3561,11 +3561,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3577,11 +3577,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3605,11 +3605,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">

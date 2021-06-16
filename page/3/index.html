@@ -145,341 +145,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-项目相关-16-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">16-设计模式</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="1-Observer观察者模式（也称为“订阅-发布”模式）："><a href="#1-Observer观察者模式（也称为“订阅-发布”模式）：" class="headerlink" title="1- Observer观察者模式（也称为“订阅-发布”模式）："></a>1- Observer观察者模式（也称为“订阅-发布”模式）：</h3><p>  乙方声明“订阅(subscribe)”甲方；<br>  在未来的某个不确定时间，甲方“发布(publish)”新消息，乙方会立即接到通知。<br>  HttpClient服务采用了“观察者/订阅-发布模式”，其最核心对象为：<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span>  obj  =  <span class="keyword">new</span>  Observable( );  <span class="comment">//可被观察的对象</span></span><br><span class="line"><span class="comment">//可以关注/订阅“可被观察的”对象</span></span><br><span class="line">obj.subscribe(<span class="function">()=&gt;</span>&#123; <span class="comment">//收到订阅消息时的回调函数 &#125;)</span></span><br></pre></td></tr></table></figure></p>
-<p>  待续</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-12-webSocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/">12-webSocket</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>/12.HTML5/day6<br>/ls-protogenesis-lx/websocket - 运行chat_app.js</p>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><pre><code>webSocket工作方式:广播和收听
-    客户端连接到服务器上就不再断开双方都可以随时向对方发送数据</code></pre>
-<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>下载socket.io服务器端第三方模块<br>#npm i socket.io<br>地址下载 <a target="_blank" rel="noopener" href="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js">https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js</a></p>
-<p>服务端<br><strong>X.on()</strong> 接受消息<br><strong>X.emit(名称,内容)</strong> 发送消息<br><strong>connection</strong> 默认登陆触发 事件名称<br><strong>disconnect</strong> 默认对出触发 事件名称</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app=<span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>).createServer();         <span class="comment">// 1.创建一个服务对象</span></span><br><span class="line"><span class="keyword">var</span> io=<span class="built_in">require</span>(<span class="string">&quot;socket.io&quot;</span>)(app);               <span class="comment">// 2.创建一个io对象</span></span><br><span class="line">app.listen(<span class="number">3000</span>)                                <span class="comment">// 3.绑定服务器监听端口 3000</span></span><br><span class="line"><span class="keyword">var</span> clientCount=<span class="number">0</span>;                              <span class="comment">// 4.创建变量 clientCount 客户端数量</span></span><br><span class="line">io.on(<span class="string">&quot;connection&quot;</span>,<span class="function">(<span class="params">socket</span>)=&gt;</span>&#123;                  <span class="comment">// 5.为io对象绑定事件 connection  每次有人访问 都会触发此事件</span></span><br><span class="line">  clientCount++;</span><br><span class="line">  <span class="built_in">console</span>.log(socket.id) <span class="comment">// 具体属性自己百度。反正有个随机唯一的id            </span></span><br><span class="line">  <span class="keyword">var</span> nickname = <span class="string">&quot;user&quot;</span> + clientCount;            <span class="comment">// 创建对应的编号</span></span><br><span class="line">  io.emit(<span class="string">&quot;enter&quot;</span>, nickname + <span class="string">&quot;：上线&quot;</span>)         <span class="comment">// 广播事件 enter 内容nickname+&quot;上线&quot;</span></span><br><span class="line"></span><br><span class="line">  socket.on(<span class="string">&quot;message&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;               <span class="comment">// 接收客户发来事件 message</span></span><br><span class="line">    io.emit(<span class="string">&quot;list&quot;</span>, nickname + <span class="string">&quot; : &quot;</span> + data)  <span class="comment">// 广播事件 list,</span></span><br><span class="line">  &#125;)</span><br><span class="line">  socket.on(<span class="string">&quot;disconnect&quot;</span>, <span class="function">() =&gt;</span> &#123;               <span class="comment">//接收客户离开事件  默认事件 浏览器关闭后触发disconnect事件      </span></span><br><span class="line">    io.emit(<span class="string">&quot;leave&quot;</span>, nickname + <span class="string">&quot; : 退出&quot;</span>)      <span class="comment">// 广播事件 leave</span></span><br><span class="line">  &#125;)                                       </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>客服端<br><strong>io(val)</strong> 连接<br><strong>X.on()</strong> 接受消息<br><strong>X.emit(名称,内容)</strong> 发送消息</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=<span class="string">&quot;btn&quot;</span>&gt;确认申请&lt;/button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn1&quot;</span>&gt;发送&lt;/button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn2&quot;</span>&gt;退出&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> clientSocket=io(<span class="string">&quot;ws://127.0.0.1:3000&quot;</span>); <span class="comment">// 协议名称 域名 端口号</span></span><br><span class="line">  clientSocket.emit(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;我一上来就说一句话&quot;</span>)        <span class="comment">// 发送到服务器的message 服务的得到了 我一上来就说一句话 并通过 list事件返回</span></span><br><span class="line">  clientSocket.on(<span class="string">&quot;list&quot;</span>,<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;            <span class="comment">// 接收到服务的发过来的 list消息</span></span><br><span class="line">      <span class="built_in">console</span>.log(data) <span class="comment">//输出2 我一上来就说一句话</span></span><br><span class="line">  &#125;)</span><br><span class="line">  clientSocket.on(<span class="string">&quot;enter&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 输出顺序按服务的返回的为准。</span></span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">// 输出1 user1上线</span></span><br><span class="line">  &#125;);</span><br><span class="line">  clientSocket.on(<span class="string">&quot;leave&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 这一步需要关闭别的链接webSocket的网址才能触发</span></span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">//</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.emit(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;用户提交了申请&quot;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn1&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.send(<span class="string">&quot;77777&quot;</span>) <span class="comment">// 触发服务器 message 的事件 =  clientSocket.emit(&quot;message&quot;, &quot;777777&quot;)</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn2&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.close() <span class="comment">// 触发服务器 disconnect 的事件 ！！类似 但不等于 clientSocket.emit(&quot;disconnect&quot;,&quot;&quot;)</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-15-SPA" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/">15-SPA</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>多页面.会有多个页面.页面之间的跳转实际就是删除当前dom树，新建新的dom树</p>
-<p>Single Page Application  SPA<br><code>单页应用</code>——整个应用中只有一个完整的HTML页面，其它所有的“页面”其实都是一段HTML片段</p>
-<blockquote>
-<p>SPA应用的优点：<br>  (1)DOM树只需要创建一次，“页面切换”只是在切换部分元素<br>  (2)便于实现“过场动画”——多页应用不可能做到</p>
-</blockquote>
-<blockquote>
-<p>SPA应用的不足：<br>  (1)不便于实现SEO优化</p>
-</blockquote>
-<p>SPA应用的核心——路由词典routermodule(把一个地址和一个组件对应起来)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123; path: &#39;index&#39;,  component: ...&#125;</span><br><span class="line">	&#123; path: &#39;product&#x2F;list&#39;,  component: ...&#125;</span><br><span class="line">	&#123; path: &#39;user&#x2F;login&#39;,  component: ...&#125;</span><br><span class="line">	.....</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>SPA应用的原理：框架根据客户端请求的路由地址，异步加载对应的组件内容，替换之前的组件内容。</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-13-Webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/">13-Webpack</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>中文网站：<a target="_blank" rel="noopener" href="https://www.webpackjs.com/">https://www.webpackjs.com/</a></p>
-<ul>
-<li><p>概念：webpack是一个javaScript应用程序的静态模块打包器.当webpack处理应用程序的时候.它会递归的构建一个关系依赖图.其中就包含应用程序需要的每一个模块（js.css.图片）.最后将所有的这些模块打包成一个资源包（bundle）文件</p>
-</li>
-<li><p>用途：资源打包后，再供客户端一次性加载，只需要请求一个文件,减少请求次数和请求数据总大小，从而提高访问效率。<br>注意：Webpack本身用于打包静态资源，通常的使用场景是：项目初步开发完成后，运行Webpack(是一个NPM扩展包)，把需要处理的静态资源打包，把得到的打包文件和HTML文件一起发布到WEB服务器(可以是Node/PHP/Java等)上供客户端访问。</p>
-</li>
-<li><p>18.webpackss\webpack-myapp</p>
-</li>
-</ul>
-<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>1 先编写webpack.config.js声明入口和输出<br>2 执行Webpack打包过程<br>3 使用过程：<br>  (1)创建客户端项目，编写HTML/CSS/JS/图片等文件<br>  (2)创建项目的描述文件：package.json<br>    npm  init<br>  (3)下载webpack及其依赖的模块，并添加为当前项目的“开发阶段依赖模块”<br>    npm  install webpack  –save-dev<br>  (4)创建webpack主配置文件： webpack.config.js<br>   webpack.config.js    同 package.json在同一级<br>内容输入</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置文件.将来会被nodejs运行 所以用Nodejs的导出方式</span></span><br><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    mode:<span class="string">&#x27;development&#x27;</span>,         <span class="comment">// 运行模式：开发模式</span></span><br><span class="line">    <span class="comment">//mode:&#x27;production&#x27;         // 产品模式.会对代码进行压缩.打包过程会慢</span></span><br><span class="line">    entry:<span class="string">&#x27;./src/js/index2.js&#x27;</span>,  <span class="comment">//入口,入口文件.从哪个文件开始打包</span></span><br><span class="line">    output:&#123;                    <span class="comment">//出口文件.打包后输出的文件.要求使用绝对路径</span></span><br><span class="line">        path:__dirname+<span class="string">&#x27;/dist&#x27;</span>, <span class="comment">//目录.dist文件后续会自动创建</span></span><br><span class="line">        filename:<span class="string">&#x27;bundle.js&#x27;</span>    <span class="comment">//文件名称</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//3.加载器.默认情况下.webpacks只能打包JS文件.如果想打包其他格式文件需要有对应的加载器（loader）</span></span><br><span class="line">    <span class="built_in">module</span>:&#123;</span><br><span class="line">        rules:[</span><br><span class="line">            <span class="comment">//检查如果模块以css结尾的话.那么就使用指定的加载器</span></span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.css$/</span>, <span class="comment">// 正则判断文件名后缀</span></span><br><span class="line">                use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>] <span class="comment">//  npm install style-loader css-loader  --save-dev</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.scss$/</span>,</span><br><span class="line">                use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;sass-loader&#x27;</span>] <span class="comment">// npm install sass-loader node-sass --save-dev</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;   <span class="comment">//图片和字体的文件名后缀</span></span><br><span class="line">                test:<span class="regexp">/\.jpg|gif|png|bmp|eot|ttf|woff|woff2|svg$/</span>,</span><br><span class="line">                use:<span class="string">&#x27;url-loader?limit=25600&#x27;</span>  <span class="comment">//limit 大小 1024*25kb  npm install file-loader url-loader --save-dev</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins:[] <span class="comment">// 插件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  (5)运行webpack，根据主配置文件对静态资源进行打包<br>    Nodejs 运行 webpack文件<br>    <code>node  ./node_modules/webpack/bin/webpack.js</code><br>    或者配置为<br>  <code>scripts： &quot;build&quot;: &quot;webpack&quot;</code>，用 <code>npm  run  build</code>方式运行</p>
-<p>  如果输入报错.先输入 <code>npm install webpack-cli –global</code>或<code>npm install webpack-cli --save-dev</code><br>  再输入webpack</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-项目相关-14-模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -605,6 +270,577 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-14-%E6%A8%A1%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-项目相关-12-webSocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/">12-webSocket</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>/12.HTML5/day6<br>/ls-protogenesis-lx/websocket - 运行chat_app.js</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><pre><code>webSocket工作方式:广播和收听
+    客户端连接到服务器上就不再断开双方都可以随时向对方发送数据</code></pre>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>下载socket.io服务器端第三方模块<br>#npm i socket.io<br>地址下载 <a target="_blank" rel="noopener" href="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js">https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js</a></p>
+<p>服务端<br><strong>X.on()</strong> 接受消息<br><strong>X.emit(名称,内容)</strong> 发送消息<br><strong>connection</strong> 默认登陆触发 事件名称<br><strong>disconnect</strong> 默认对出触发 事件名称</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app=<span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>).createServer();         <span class="comment">// 1.创建一个服务对象</span></span><br><span class="line"><span class="keyword">var</span> io=<span class="built_in">require</span>(<span class="string">&quot;socket.io&quot;</span>)(app);               <span class="comment">// 2.创建一个io对象</span></span><br><span class="line">app.listen(<span class="number">3000</span>)                                <span class="comment">// 3.绑定服务器监听端口 3000</span></span><br><span class="line"><span class="keyword">var</span> clientCount=<span class="number">0</span>;                              <span class="comment">// 4.创建变量 clientCount 客户端数量</span></span><br><span class="line">io.on(<span class="string">&quot;connection&quot;</span>,<span class="function">(<span class="params">socket</span>)=&gt;</span>&#123;                  <span class="comment">// 5.为io对象绑定事件 connection  每次有人访问 都会触发此事件</span></span><br><span class="line">  clientCount++;</span><br><span class="line">  <span class="built_in">console</span>.log(socket.id) <span class="comment">// 具体属性自己百度。反正有个随机唯一的id            </span></span><br><span class="line">  <span class="keyword">var</span> nickname = <span class="string">&quot;user&quot;</span> + clientCount;            <span class="comment">// 创建对应的编号</span></span><br><span class="line">  io.emit(<span class="string">&quot;enter&quot;</span>, nickname + <span class="string">&quot;：上线&quot;</span>)         <span class="comment">// 广播事件 enter 内容nickname+&quot;上线&quot;</span></span><br><span class="line"></span><br><span class="line">  socket.on(<span class="string">&quot;message&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;               <span class="comment">// 接收客户发来事件 message</span></span><br><span class="line">    io.emit(<span class="string">&quot;list&quot;</span>, nickname + <span class="string">&quot; : &quot;</span> + data)  <span class="comment">// 广播事件 list,</span></span><br><span class="line">  &#125;)</span><br><span class="line">  socket.on(<span class="string">&quot;disconnect&quot;</span>, <span class="function">() =&gt;</span> &#123;               <span class="comment">//接收客户离开事件  默认事件 浏览器关闭后触发disconnect事件      </span></span><br><span class="line">    io.emit(<span class="string">&quot;leave&quot;</span>, nickname + <span class="string">&quot; : 退出&quot;</span>)      <span class="comment">// 广播事件 leave</span></span><br><span class="line">  &#125;)                                       </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>客服端<br><strong>io(val)</strong> 连接<br><strong>X.on()</strong> 接受消息<br><strong>X.emit(名称,内容)</strong> 发送消息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=<span class="string">&quot;btn&quot;</span>&gt;确认申请&lt;/button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn1&quot;</span>&gt;发送&lt;/button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn2&quot;</span>&gt;退出&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> clientSocket=io(<span class="string">&quot;ws://127.0.0.1:3000&quot;</span>); <span class="comment">// 协议名称 域名 端口号</span></span><br><span class="line">  clientSocket.emit(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;我一上来就说一句话&quot;</span>)        <span class="comment">// 发送到服务器的message 服务的得到了 我一上来就说一句话 并通过 list事件返回</span></span><br><span class="line">  clientSocket.on(<span class="string">&quot;list&quot;</span>,<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;            <span class="comment">// 接收到服务的发过来的 list消息</span></span><br><span class="line">      <span class="built_in">console</span>.log(data) <span class="comment">//输出2 我一上来就说一句话</span></span><br><span class="line">  &#125;)</span><br><span class="line">  clientSocket.on(<span class="string">&quot;enter&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 输出顺序按服务的返回的为准。</span></span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">// 输出1 user1上线</span></span><br><span class="line">  &#125;);</span><br><span class="line">  clientSocket.on(<span class="string">&quot;leave&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 这一步需要关闭别的链接webSocket的网址才能触发</span></span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">//</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.emit(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;用户提交了申请&quot;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn1&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.send(<span class="string">&quot;77777&quot;</span>) <span class="comment">// 触发服务器 message 的事件 =  clientSocket.emit(&quot;message&quot;, &quot;777777&quot;)</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn2&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.close() <span class="comment">// 触发服务器 disconnect 的事件 ！！类似 但不等于 clientSocket.emit(&quot;disconnect&quot;,&quot;&quot;)</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-项目相关-13-Webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/">13-Webpack</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>中文网站：<a target="_blank" rel="noopener" href="https://www.webpackjs.com/">https://www.webpackjs.com/</a></p>
+<ul>
+<li><p>概念：webpack是一个javaScript应用程序的静态模块打包器.当webpack处理应用程序的时候.它会递归的构建一个关系依赖图.其中就包含应用程序需要的每一个模块（js.css.图片）.最后将所有的这些模块打包成一个资源包（bundle）文件</p>
+</li>
+<li><p>用途：资源打包后，再供客户端一次性加载，只需要请求一个文件,减少请求次数和请求数据总大小，从而提高访问效率。<br>注意：Webpack本身用于打包静态资源，通常的使用场景是：项目初步开发完成后，运行Webpack(是一个NPM扩展包)，把需要处理的静态资源打包，把得到的打包文件和HTML文件一起发布到WEB服务器(可以是Node/PHP/Java等)上供客户端访问。</p>
+</li>
+<li><p>18.webpackss\webpack-myapp</p>
+</li>
+</ul>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>1 先编写webpack.config.js声明入口和输出<br>2 执行Webpack打包过程<br>3 使用过程：<br>  (1)创建客户端项目，编写HTML/CSS/JS/图片等文件<br>  (2)创建项目的描述文件：package.json<br>    npm  init<br>  (3)下载webpack及其依赖的模块，并添加为当前项目的“开发阶段依赖模块”<br>    npm  install webpack  –save-dev<br>  (4)创建webpack主配置文件： webpack.config.js<br>   webpack.config.js    同 package.json在同一级<br>内容输入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置文件.将来会被nodejs运行 所以用Nodejs的导出方式</span></span><br><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    mode:<span class="string">&#x27;development&#x27;</span>,         <span class="comment">// 运行模式：开发模式</span></span><br><span class="line">    <span class="comment">//mode:&#x27;production&#x27;         // 产品模式.会对代码进行压缩.打包过程会慢</span></span><br><span class="line">    entry:<span class="string">&#x27;./src/js/index2.js&#x27;</span>,  <span class="comment">//入口,入口文件.从哪个文件开始打包</span></span><br><span class="line">    output:&#123;                    <span class="comment">//出口文件.打包后输出的文件.要求使用绝对路径</span></span><br><span class="line">        path:__dirname+<span class="string">&#x27;/dist&#x27;</span>, <span class="comment">//目录.dist文件后续会自动创建</span></span><br><span class="line">        filename:<span class="string">&#x27;bundle.js&#x27;</span>    <span class="comment">//文件名称</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//3.加载器.默认情况下.webpacks只能打包JS文件.如果想打包其他格式文件需要有对应的加载器（loader）</span></span><br><span class="line">    <span class="built_in">module</span>:&#123;</span><br><span class="line">        rules:[</span><br><span class="line">            <span class="comment">//检查如果模块以css结尾的话.那么就使用指定的加载器</span></span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.css$/</span>, <span class="comment">// 正则判断文件名后缀</span></span><br><span class="line">                use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>] <span class="comment">//  npm install style-loader css-loader  --save-dev</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.scss$/</span>,</span><br><span class="line">                use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;sass-loader&#x27;</span>] <span class="comment">// npm install sass-loader node-sass --save-dev</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;   <span class="comment">//图片和字体的文件名后缀</span></span><br><span class="line">                test:<span class="regexp">/\.jpg|gif|png|bmp|eot|ttf|woff|woff2|svg$/</span>,</span><br><span class="line">                use:<span class="string">&#x27;url-loader?limit=25600&#x27;</span>  <span class="comment">//limit 大小 1024*25kb  npm install file-loader url-loader --save-dev</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins:[] <span class="comment">// 插件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  (5)运行webpack，根据主配置文件对静态资源进行打包<br>    Nodejs 运行 webpack文件<br>    <code>node  ./node_modules/webpack/bin/webpack.js</code><br>    或者配置为<br>  <code>scripts： &quot;build&quot;: &quot;webpack&quot;</code>，用 <code>npm  run  build</code>方式运行</p>
+<p>  如果输入报错.先输入 <code>npm install webpack-cli –global</code>或<code>npm install webpack-cli --save-dev</code><br>  再输入webpack</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-项目相关-16-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">16-设计模式</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="1-Observer观察者模式（也称为“订阅-发布”模式）："><a href="#1-Observer观察者模式（也称为“订阅-发布”模式）：" class="headerlink" title="1- Observer观察者模式（也称为“订阅-发布”模式）："></a>1- Observer观察者模式（也称为“订阅-发布”模式）：</h3><p>  乙方声明“订阅(subscribe)”甲方；<br>  在未来的某个不确定时间，甲方“发布(publish)”新消息，乙方会立即接到通知。<br>  HttpClient服务采用了“观察者/订阅-发布模式”，其最核心对象为：<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span>  obj  =  <span class="keyword">new</span>  Observable( );  <span class="comment">//可被观察的对象</span></span><br><span class="line"><span class="comment">//可以关注/订阅“可被观察的”对象</span></span><br><span class="line">obj.subscribe(<span class="function">()=&gt;</span>&#123; <span class="comment">//收到订阅消息时的回调函数 &#125;)</span></span><br></pre></td></tr></table></figure></p>
+<p>  待续</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-项目相关-15-SPA" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/">15-SPA</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>多页面.会有多个页面.页面之间的跳转实际就是删除当前dom树，新建新的dom树</p>
+<p>Single Page Application  SPA<br><code>单页应用</code>——整个应用中只有一个完整的HTML页面，其它所有的“页面”其实都是一段HTML片段</p>
+<blockquote>
+<p>SPA应用的优点：<br>  (1)DOM树只需要创建一次，“页面切换”只是在切换部分元素<br>  (2)便于实现“过场动画”——多页应用不可能做到</p>
+</blockquote>
+<blockquote>
+<p>SPA应用的不足：<br>  (1)不便于实现SEO优化</p>
+</blockquote>
+<p>SPA应用的核心——路由词典routermodule(把一个地址和一个组件对应起来)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123; path: &#39;index&#39;,  component: ...&#125;</span><br><span class="line">	&#123; path: &#39;product&#x2F;list&#39;,  component: ...&#125;</span><br><span class="line">	&#123; path: &#39;user&#x2F;login&#39;,  component: ...&#125;</span><br><span class="line">	.....</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>SPA应用的原理：框架根据客户端请求的路由地址，异步加载对应的组件内容，替换之前的组件内容。</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-画图-svg" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E7%94%BB%E5%9B%BE-svg/">svg</a>
+    </h1>
+  
+
+        
+        <a href="/%E7%94%BB%E5%9B%BE-svg/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>  <a href="#title1" target="_self">1.html 内容</a><br>  <a href="#js" target="_self">2.使用js创造</a><br>  <a href="#title3" target="_self">3.html实例</a></p>
+<p>2D矢量图 可以无限放大或缩小不会失真,颜色不够丰富</p>
+<blockquote>
+<p>1:svg图形中属性是可以通过css设置<br>   2:svg动态创建元素</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>内含标签</th>
+<th>说明</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>circle</td>
+<td>-</td>
+<td>绘制圆形</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>cx</code>=</td>
+<td>x轴位置</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>cy</code>=”</td>
+<td>y轴位置</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>r</code>=</td>
+<td>半径</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>fill</code>=</td>
+<td>填充颜色</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stroke</code></td>
+<td>边框颜色</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>fill-opacity</code></td>
+<td>填充透明度</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stroke-opacity</code></td>
+<td>边框透明度</td>
+</tr>
+<tr>
+<td>line</td>
+<td><code>x1</code>=”” <code>y1</code>=”” <code>x2</code>=”” <code>y2</code>=””</td>
+<td>直线</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stroke</code>=”#f00”</td>
+<td>颜色</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stroke-width</code>=”15”</td>
+<td>线宽度</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stroke-linecap</code>=”round”</td>
+<td>线两端样式round圆角 square方角</td>
+</tr>
+<tr>
+<td>polyline</td>
+<td>-</td>
+<td>折线</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>points</code>=”250,200 300,200 300,300 250,200”</td>
+<td>一组坐标</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stroke</code>=</td>
+<td>边线颜色</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>fill</code>=</td>
+<td>填充颜色</td>
+</tr>
+<tr>
+<td>text</td>
+<td><code>x</code>=”起点” <code>y</code>=”起点”</td>
+<td>文字  &gt; 标签文字写在这里 &lt;</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>font-size</code>=””</td>
+<td>字体大小</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>fill</code>=””</td>
+<td>颜色</td>
+</tr>
+<tr>
+<td>image</td>
+<td><code>x</code>=”起点” <code>y</code>=”起点”</td>
+<td>图片</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>xlink:href</code>=”地址”</td>
+<td>图片url</td>
+</tr>
+<tr>
+<td>linearGradient</td>
+<td><code>id</code>=”g3” <code>x1</code>=”0%” <code>y1</code>=”0%” <code>x2</code>=”100%” <code>y2</code>=”0%”</td>
+<td>声明渐变对象 包裹着stop标签 使用 原颜色=”#f00”都可改成  =”url(#g3)”</td>
+</tr>
+<tr>
+<td>stop</td>
+<td>-</td>
+<td>声明渐变对象 写在linearGradient标签中 多个</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>offset</code>=”0%”</td>
+<td>颜色点位置</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stop-color</code>=”red”</td>
+<td>颜色点位置的颜色</td>
+</tr>
+<tr>
+<td>filter</td>
+<td><code>id</code>=”f3”</td>
+<td>滤镜 包裹着<code>滤镜</code>标签  任意绘制标签添加 <code>filter=url(#f3)</code> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/filter">更多滤镜标签</a></td>
+</tr>
+<tr>
+<td>feGaussianBlur</td>
+<td><code>stdDeviation</code>=”3”</td>
+<td>高斯模糊滤镜  写在filter标签中</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stdDeviation</code>=”3”</td>
+<td>定义模糊量</td>
+</tr>
+</tbody></table>
+<p>  <span id="title1">1.html 内容：</span><br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">id</span>=<span class="string">&quot;s3&quot;</span> <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">height</span>=<span class="string">&quot;800&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 定义特性对象 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">defs</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 渐变对象 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">linearGradient</span> <span class="attr">id</span>=<span class="string">&quot;g3&quot;</span> <span class="attr">x1</span>=<span class="string">&quot;0%&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;0%&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;0%&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">&quot;0%&quot;</span> <span class="attr">stop-color</span>=<span class="string">&quot;red&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">stop-color</span>=<span class="string">&quot;yellow&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">linearGradient</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 滤镜 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter</span> <span class="attr">id</span>=<span class="string">&quot;f3&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">feGaussianBlur</span> <span class="attr">stdDeviation</span>=<span class="string">&quot;3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">feGaussianBlur</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">defs</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 圆 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">&quot;50&quot;</span> <span class="attr">cy</span>=<span class="string">&quot;50&quot;</span> <span class="attr">r</span>=<span class="string">&quot;10&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;#f00&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;#00f&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 直线 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">line</span> <span class="attr">x1</span>=<span class="string">&quot;100&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;50&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;200&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;50&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;#f00&quot;</span> <span class="attr">stroke-width</span>=<span class="string">&quot;15&quot;</span> <span class="attr">stroke-linecap</span>=<span class="string">&quot;round&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">line</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 文字 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">font-size</span>=<span class="string">&quot;30&quot;</span> <span class="attr">x</span>=<span class="string">&quot;200&quot;</span> <span class="attr">y</span>=<span class="string">&quot;50&quot;</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 图片 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">image</span> <span class="attr">xlink:href</span>=<span class="string">&quot;https://www.gravatar.com/avatar/ffaaae1be811e26b8ecfee91a76ae077?s=46&amp;d=identicon&quot;</span> <span class="attr">x</span>=<span class="string">&quot;250&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">y</span>=<span class="string">&quot;50&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 直线使用渐变对象 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">line</span> <span class="attr">x1</span>=<span class="string">&quot;300&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;20&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;600&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;50&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;url(#g3)&quot;</span> <span class="attr">stroke-width</span>=<span class="string">&quot;15&quot;</span> <span class="attr">stroke-linecap</span>=<span class="string">&quot;round&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">line</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 文字使用滤镜 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">font-size</span>=<span class="string">&quot;30&quot;</span> <span class="attr">x</span>=<span class="string">&quot;600&quot;</span> <span class="attr">y</span>=<span class="string">&quot;50&quot;</span> <span class="attr">filter</span>=<span class="string">url(#f3)</span>&gt;</span>使用滤镜<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 折线--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">&quot;250,200 300,200 300,300 250,200&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;#0f0&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;#ddd&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 折线绘制五角心 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">&quot;320,300 480,300 350,400 400,240 450,400 320,300&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;url(#g3)&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;url(#g3)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure><br>  <span id="js">2.使用js创造</span></p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 首先页面要有一个 svg元素 假设id=&quot;a&quot;</span></span><br><span class="line"> <span class="comment">// 1 动态拼接</span></span><br><span class="line">  <span class="keyword">var</span> html = <span class="string">`&lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;10&quot; fill=&quot;#f00&quot; stroke=&quot;#00f&quot;&gt;&lt;/circle&gt;`</span></span><br><span class="line">  <span class="built_in">document</span>.getElementById(a3).innerHTML = html</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.svg创建对象方法</span></span><br><span class="line">  <span class="keyword">var</span> c = <span class="built_in">document</span>.createElementNS(<span class="string">&quot;http://www.w3.org/2000/svg&quot;</span>,<span class="string">&quot;circle&quot;</span>); <span class="comment">// svg地址 内放置内部的标签</span></span><br><span class="line">      c.setAttribute(<span class="string">&quot;r&quot;</span>,<span class="number">100</span>);   <span class="comment">// 添加属性只能用核心DOM函数实现.不能用html DOM使用 不能使用 c.r = 100;</span></span><br><span class="line">  <span class="keyword">var</span> r = c.getAttribute(<span class="string">&quot;r&quot;</span>); <span class="comment">// 获取</span></span><br><span class="line">      svg.appendChild(c);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.2 循环30次---画30个圆</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="number">31</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="built_in">document</span>.createElementNS(<span class="string">&quot;http://www.w3.org/2000/svg&quot;</span>, <span class="string">&quot;circle&quot;</span>);</span><br><span class="line">    c.setAttribute(<span class="string">&quot;r&quot;</span>, i + <span class="built_in">Math</span>.random() * <span class="number">20</span>);</span><br><span class="line">    c.setAttribute(<span class="string">&quot;cx&quot;</span>, i + <span class="built_in">Math</span>.random() * <span class="number">400</span>);</span><br><span class="line">    c.setAttribute(<span class="string">&quot;cy&quot;</span>, i + <span class="built_in">Math</span>.random() * <span class="number">400</span>);</span><br><span class="line">    <span class="keyword">var</span> rgb = <span class="string">`rgb(<span class="subst">$&#123;i + <span class="built_in">Math</span>.random() * <span class="number">200</span>&#125;</span>,<span class="subst">$&#123;i + <span class="built_in">Math</span>.random() * <span class="number">200</span>&#125;</span>,<span class="subst">$&#123;i + <span class="built_in">Math</span>.random() * <span class="number">200</span>&#125;</span>)`</span></span><br><span class="line">    c.setAttribute(<span class="string">&quot;fill&quot;</span>, rgb);</span><br><span class="line">    s3.appendChild(c);</span><br><span class="line">  &#125;   </span><br></pre></td></tr></table></figure>
+
+<p><span id="title3">3.html实例：</span></p>
+<blockquote>
+<p><svg id="s3" width="800" height="400"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="red"></stop><stop offset="100%" stop-color="yellow"></stop></linearGradient><filter id="f3"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs><circle cx="50" cy="50" r="10" fill="#f00" stroke="#00f"></circle><line x1="100" y1="50" x2="200" y2="50" stroke="#f00" stroke-width="15" stroke-linecap="round"></line><text font-size="30" x="200" y="50">文字</text><image xlink:href="https://www.gravatar.com/avatar/ffaaae1be811e26b8ecfee91a76ae077?s=46&d=identicon" x="250"      y="50"></image><line x1="300" y1="20" x2="600" y2="50" stroke="url(#g3)" stroke-width="15" stroke-linecap="round"></line><text font-size="30" x="600" y="50" filter=url(#f3)>使用滤镜</text><polyline points="250,200 300,200 300,300 250,200" stroke="#0f0" fill="#ddd"></polyline><polyline points="320,300 480,300 350,400 400,240 450,400 320,300" stroke="url(#g3)" fill="url(#g3)"></polyline></svg></p>
+</blockquote>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">画图</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-svg/">展开全文 >></a>
         </p>
       
 
@@ -949,242 +1185,6 @@
 
 
   
-    <article id="post-画图-svg" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E7%94%BB%E5%9B%BE-svg/">svg</a>
-    </h1>
-  
-
-        
-        <a href="/%E7%94%BB%E5%9B%BE-svg/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>  <a href="#title1" target="_self">1.html 内容</a><br>  <a href="#js" target="_self">2.使用js创造</a><br>  <a href="#title3" target="_self">3.html实例</a></p>
-<p>2D矢量图 可以无限放大或缩小不会失真,颜色不够丰富</p>
-<blockquote>
-<p>1:svg图形中属性是可以通过css设置<br>   2:svg动态创建元素</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>内含标签</th>
-<th>说明</th>
-<th>-</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>circle</td>
-<td>-</td>
-<td>绘制圆形</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>cx</code>=</td>
-<td>x轴位置</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>cy</code>=”</td>
-<td>y轴位置</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>r</code>=</td>
-<td>半径</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>fill</code>=</td>
-<td>填充颜色</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stroke</code></td>
-<td>边框颜色</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>fill-opacity</code></td>
-<td>填充透明度</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stroke-opacity</code></td>
-<td>边框透明度</td>
-</tr>
-<tr>
-<td>line</td>
-<td><code>x1</code>=”” <code>y1</code>=”” <code>x2</code>=”” <code>y2</code>=””</td>
-<td>直线</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stroke</code>=”#f00”</td>
-<td>颜色</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stroke-width</code>=”15”</td>
-<td>线宽度</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stroke-linecap</code>=”round”</td>
-<td>线两端样式round圆角 square方角</td>
-</tr>
-<tr>
-<td>polyline</td>
-<td>-</td>
-<td>折线</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>points</code>=”250,200 300,200 300,300 250,200”</td>
-<td>一组坐标</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stroke</code>=</td>
-<td>边线颜色</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>fill</code>=</td>
-<td>填充颜色</td>
-</tr>
-<tr>
-<td>text</td>
-<td><code>x</code>=”起点” <code>y</code>=”起点”</td>
-<td>文字  &gt; 标签文字写在这里 &lt;</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>font-size</code>=””</td>
-<td>字体大小</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>fill</code>=””</td>
-<td>颜色</td>
-</tr>
-<tr>
-<td>image</td>
-<td><code>x</code>=”起点” <code>y</code>=”起点”</td>
-<td>图片</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>xlink:href</code>=”地址”</td>
-<td>图片url</td>
-</tr>
-<tr>
-<td>linearGradient</td>
-<td><code>id</code>=”g3” <code>x1</code>=”0%” <code>y1</code>=”0%” <code>x2</code>=”100%” <code>y2</code>=”0%”</td>
-<td>声明渐变对象 包裹着stop标签 使用 原颜色=”#f00”都可改成  =”url(#g3)”</td>
-</tr>
-<tr>
-<td>stop</td>
-<td>-</td>
-<td>声明渐变对象 写在linearGradient标签中 多个</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>offset</code>=”0%”</td>
-<td>颜色点位置</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stop-color</code>=”red”</td>
-<td>颜色点位置的颜色</td>
-</tr>
-<tr>
-<td>filter</td>
-<td><code>id</code>=”f3”</td>
-<td>滤镜 包裹着<code>滤镜</code>标签  任意绘制标签添加 <code>filter=url(#f3)</code> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/filter">更多滤镜标签</a></td>
-</tr>
-<tr>
-<td>feGaussianBlur</td>
-<td><code>stdDeviation</code>=”3”</td>
-<td>高斯模糊滤镜  写在filter标签中</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stdDeviation</code>=”3”</td>
-<td>定义模糊量</td>
-</tr>
-</tbody></table>
-<p>  <span id="title1">1.html 内容：</span><br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">id</span>=<span class="string">&quot;s3&quot;</span> <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">height</span>=<span class="string">&quot;800&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 定义特性对象 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">defs</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 渐变对象 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">linearGradient</span> <span class="attr">id</span>=<span class="string">&quot;g3&quot;</span> <span class="attr">x1</span>=<span class="string">&quot;0%&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;0%&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;0%&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">&quot;0%&quot;</span> <span class="attr">stop-color</span>=<span class="string">&quot;red&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">stop-color</span>=<span class="string">&quot;yellow&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">linearGradient</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 滤镜 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter</span> <span class="attr">id</span>=<span class="string">&quot;f3&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">feGaussianBlur</span> <span class="attr">stdDeviation</span>=<span class="string">&quot;3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">feGaussianBlur</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">defs</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 圆 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">&quot;50&quot;</span> <span class="attr">cy</span>=<span class="string">&quot;50&quot;</span> <span class="attr">r</span>=<span class="string">&quot;10&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;#f00&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;#00f&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 直线 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">line</span> <span class="attr">x1</span>=<span class="string">&quot;100&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;50&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;200&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;50&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;#f00&quot;</span> <span class="attr">stroke-width</span>=<span class="string">&quot;15&quot;</span> <span class="attr">stroke-linecap</span>=<span class="string">&quot;round&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">line</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 文字 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">font-size</span>=<span class="string">&quot;30&quot;</span> <span class="attr">x</span>=<span class="string">&quot;200&quot;</span> <span class="attr">y</span>=<span class="string">&quot;50&quot;</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 图片 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">image</span> <span class="attr">xlink:href</span>=<span class="string">&quot;https://www.gravatar.com/avatar/ffaaae1be811e26b8ecfee91a76ae077?s=46&amp;d=identicon&quot;</span> <span class="attr">x</span>=<span class="string">&quot;250&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">y</span>=<span class="string">&quot;50&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 直线使用渐变对象 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">line</span> <span class="attr">x1</span>=<span class="string">&quot;300&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;20&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;600&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;50&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;url(#g3)&quot;</span> <span class="attr">stroke-width</span>=<span class="string">&quot;15&quot;</span> <span class="attr">stroke-linecap</span>=<span class="string">&quot;round&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">line</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 文字使用滤镜 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">font-size</span>=<span class="string">&quot;30&quot;</span> <span class="attr">x</span>=<span class="string">&quot;600&quot;</span> <span class="attr">y</span>=<span class="string">&quot;50&quot;</span> <span class="attr">filter</span>=<span class="string">url(#f3)</span>&gt;</span>使用滤镜<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 折线--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">&quot;250,200 300,200 300,300 250,200&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;#0f0&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;#ddd&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 折线绘制五角心 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">&quot;320,300 480,300 350,400 400,240 450,400 320,300&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;url(#g3)&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;url(#g3)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure><br>  <span id="js">2.使用js创造</span></p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 首先页面要有一个 svg元素 假设id=&quot;a&quot;</span></span><br><span class="line"> <span class="comment">// 1 动态拼接</span></span><br><span class="line">  <span class="keyword">var</span> html = <span class="string">`&lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;10&quot; fill=&quot;#f00&quot; stroke=&quot;#00f&quot;&gt;&lt;/circle&gt;`</span></span><br><span class="line">  <span class="built_in">document</span>.getElementById(a3).innerHTML = html</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.svg创建对象方法</span></span><br><span class="line">  <span class="keyword">var</span> c = <span class="built_in">document</span>.createElementNS(<span class="string">&quot;http://www.w3.org/2000/svg&quot;</span>,<span class="string">&quot;circle&quot;</span>); <span class="comment">// svg地址 内放置内部的标签</span></span><br><span class="line">      c.setAttribute(<span class="string">&quot;r&quot;</span>,<span class="number">100</span>);   <span class="comment">// 添加属性只能用核心DOM函数实现.不能用html DOM使用 不能使用 c.r = 100;</span></span><br><span class="line">  <span class="keyword">var</span> r = c.getAttribute(<span class="string">&quot;r&quot;</span>); <span class="comment">// 获取</span></span><br><span class="line">      svg.appendChild(c);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.2 循环30次---画30个圆</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="number">31</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="built_in">document</span>.createElementNS(<span class="string">&quot;http://www.w3.org/2000/svg&quot;</span>, <span class="string">&quot;circle&quot;</span>);</span><br><span class="line">    c.setAttribute(<span class="string">&quot;r&quot;</span>, i + <span class="built_in">Math</span>.random() * <span class="number">20</span>);</span><br><span class="line">    c.setAttribute(<span class="string">&quot;cx&quot;</span>, i + <span class="built_in">Math</span>.random() * <span class="number">400</span>);</span><br><span class="line">    c.setAttribute(<span class="string">&quot;cy&quot;</span>, i + <span class="built_in">Math</span>.random() * <span class="number">400</span>);</span><br><span class="line">    <span class="keyword">var</span> rgb = <span class="string">`rgb(<span class="subst">$&#123;i + <span class="built_in">Math</span>.random() * <span class="number">200</span>&#125;</span>,<span class="subst">$&#123;i + <span class="built_in">Math</span>.random() * <span class="number">200</span>&#125;</span>,<span class="subst">$&#123;i + <span class="built_in">Math</span>.random() * <span class="number">200</span>&#125;</span>)`</span></span><br><span class="line">    c.setAttribute(<span class="string">&quot;fill&quot;</span>, rgb);</span><br><span class="line">    s3.appendChild(c);</span><br><span class="line">  &#125;   </span><br></pre></td></tr></table></figure>
-
-<p><span id="title3">3.html实例：</span></p>
-<blockquote>
-<p><svg id="s3" width="800" height="400"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="red"></stop><stop offset="100%" stop-color="yellow"></stop></linearGradient><filter id="f3"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs><circle cx="50" cy="50" r="10" fill="#f00" stroke="#00f"></circle><line x1="100" y1="50" x2="200" y2="50" stroke="#f00" stroke-width="15" stroke-linecap="round"></line><text font-size="30" x="200" y="50">文字</text><image xlink:href="https://www.gravatar.com/avatar/ffaaae1be811e26b8ecfee91a76ae077?s=46&d=identicon" x="250"      y="50"></image><line x1="300" y1="20" x2="600" y2="50" stroke="url(#g3)" stroke-width="15" stroke-linecap="round"></line><text font-size="30" x="600" y="50" filter=url(#f3)>使用滤镜</text><polyline points="250,200 300,200 300,300 250,200" stroke="#0f0" fill="#ddd"></polyline><polyline points="320,300 480,300 350,400 400,240 450,400 320,300" stroke="url(#g3)" fill="url(#g3)"></polyline></svg></p>
-</blockquote>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">画图</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-svg/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-项目相关-10-跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1472,19 +1472,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1504,11 +1504,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1520,11 +1520,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1548,11 +1548,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">

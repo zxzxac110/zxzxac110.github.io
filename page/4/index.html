@@ -221,161 +221,6 @@
 
 
   
-    <article id="post-杂项-编码类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/">编码类型</a>
-    </h1>
-  
-
-        
-        <a href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.450Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h3><p>1)如何存储英文字符<br><code>ASCII</code>: 总共有128个,对所有的英文字母和符号进行编码<br><code>Latin-1</code>: 总共有256，兼容<code>ASCII</code>码，同时对欧洲符号进行了编码，<code>mysql</code>默认使用这种编码。<br>(2)如何存储中文字符<br><code>GB2312</code>:对常用的6千多汉字进行编码，兼容<code>ASCII</code>码<br><code>GBK</code>: 对2万多汉字进行了编码，兼容<code>GB2312</code><br><code>BIG5</code>: 台湾繁体字编码，兼容<code>ASCII</code>码<br><code>Unicode</code>: 对世界上主流的国家常用的语言进行了编码，<code>兼容ASCII</code>，不兼容<code>GB2312,GBK,BIG5</code>，具体分为<code>UTF-8，UTF-16，UTF-32</code>存储方案</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-画图-echarts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E7%94%BB%E5%9B%BE-echarts/">echarts</a>
-    </h1>
-  
-
-        
-        <a href="/%E7%94%BB%E5%9B%BE-echarts/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.450Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>第三方绘图库<br>1.<a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/download.html">下载echarts库文件</a></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> &lt; div id=<span class="string">&quot;main&quot;</span> style=<span class="string">&quot;width:500px;height:400px&quot;</span>&gt;&lt;<span class="regexp">/div&gt; /</span><span class="regexp">/ 容器</span></span><br><span class="line"><span class="regexp"> &lt; script src=&quot;echarts.js&quot;&gt;&lt;/</span>script&gt; <span class="comment">// 引入插件</span></span><br><span class="line"> <span class="keyword">var</span> main = <span class="built_in">document</span>.getElementById(<span class="string">&quot;main&quot;</span>); <span class="comment">// 获取容器并且创建echarts对象</span></span><br><span class="line"> <span class="keyword">var</span> mychart = echarts.init(main);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> option = &#123; <span class="comment">// 创建配置项(柱状统计图)</span></span><br><span class="line">   title:&#123;<span class="attr">text</span>:<span class="string">&quot;echarts 入门示例&quot;</span>&#125;    			<span class="comment">// 顶部标题</span></span><br><span class="line">   xAxis:&#123;<span class="attr">data</span>:[<span class="string">&quot;第一季度&quot;</span>,<span class="string">&quot;第二季度&quot;</span>,<span class="string">&quot;第三季度&quot;</span>,<span class="string">&quot;第四季度&quot;</span>]&#125;, <span class="comment">// x轴数据</span></span><br><span class="line">   yAxis:&#123;&#125;,  								<span class="comment">// y轴数据(空)</span></span><br><span class="line">   series:[</span><br><span class="line">     &#123;</span><br><span class="line">       type:<span class="string">&quot;bar&quot;</span>,<span class="attr">data</span>:[<span class="number">1005</span>,<span class="number">1053</span>,<span class="number">1012</span>,<span class="number">1355</span>] <span class="comment">// type:&quot;bar&quot; 指绘图像类型 bar line pie .....    bar柱状 line折线 pie饼状</span></span><br><span class="line">     &#125;,</span><br><span class="line">     &#123;</span><br><span class="line">       type:<span class="string">&quot;line&quot;</span>,<span class="attr">data</span>:[<span class="number">1005</span>,<span class="number">1053</span>,<span class="number">1012</span>,<span class="number">1355</span>]</span><br><span class="line">     &#125;</span><br><span class="line">   ] </span><br><span class="line"> &#125;</span><br><span class="line"> mychart.setOption(option); <span class="comment">// 将配置项添加mychart对</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>  <a href="/study/echarts/easyDemonstration" target="_self">简单示例</a></p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">画图</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-echarts/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-画图-canvas" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -638,6 +483,161 @@ var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指
       
         <p class="article-more-link">
           <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-canvas/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-画图-echarts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E7%94%BB%E5%9B%BE-echarts/">echarts</a>
+    </h1>
+  
+
+        
+        <a href="/%E7%94%BB%E5%9B%BE-echarts/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.450Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>第三方绘图库<br>1.<a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/download.html">下载echarts库文件</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> &lt; div id=<span class="string">&quot;main&quot;</span> style=<span class="string">&quot;width:500px;height:400px&quot;</span>&gt;&lt;<span class="regexp">/div&gt; /</span><span class="regexp">/ 容器</span></span><br><span class="line"><span class="regexp"> &lt; script src=&quot;echarts.js&quot;&gt;&lt;/</span>script&gt; <span class="comment">// 引入插件</span></span><br><span class="line"> <span class="keyword">var</span> main = <span class="built_in">document</span>.getElementById(<span class="string">&quot;main&quot;</span>); <span class="comment">// 获取容器并且创建echarts对象</span></span><br><span class="line"> <span class="keyword">var</span> mychart = echarts.init(main);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> option = &#123; <span class="comment">// 创建配置项(柱状统计图)</span></span><br><span class="line">   title:&#123;<span class="attr">text</span>:<span class="string">&quot;echarts 入门示例&quot;</span>&#125;    			<span class="comment">// 顶部标题</span></span><br><span class="line">   xAxis:&#123;<span class="attr">data</span>:[<span class="string">&quot;第一季度&quot;</span>,<span class="string">&quot;第二季度&quot;</span>,<span class="string">&quot;第三季度&quot;</span>,<span class="string">&quot;第四季度&quot;</span>]&#125;, <span class="comment">// x轴数据</span></span><br><span class="line">   yAxis:&#123;&#125;,  								<span class="comment">// y轴数据(空)</span></span><br><span class="line">   series:[</span><br><span class="line">     &#123;</span><br><span class="line">       type:<span class="string">&quot;bar&quot;</span>,<span class="attr">data</span>:[<span class="number">1005</span>,<span class="number">1053</span>,<span class="number">1012</span>,<span class="number">1355</span>] <span class="comment">// type:&quot;bar&quot; 指绘图像类型 bar line pie .....    bar柱状 line折线 pie饼状</span></span><br><span class="line">     &#125;,</span><br><span class="line">     &#123;</span><br><span class="line">       type:<span class="string">&quot;line&quot;</span>,<span class="attr">data</span>:[<span class="number">1005</span>,<span class="number">1053</span>,<span class="number">1012</span>,<span class="number">1355</span>]</span><br><span class="line">     &#125;</span><br><span class="line">   ] </span><br><span class="line"> &#125;</span><br><span class="line"> mychart.setOption(option); <span class="comment">// 将配置项添加mychart对</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>  <a href="/study/echarts/easyDemonstration" target="_self">简单示例</a></p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">画图</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-echarts/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-杂项-编码类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/">编码类型</a>
+    </h1>
+  
+
+        
+        <a href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.450Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h3><p>1)如何存储英文字符<br><code>ASCII</code>: 总共有128个,对所有的英文字母和符号进行编码<br><code>Latin-1</code>: 总共有256，兼容<code>ASCII</code>码，同时对欧洲符号进行了编码，<code>mysql</code>默认使用这种编码。<br>(2)如何存储中文字符<br><code>GB2312</code>:对常用的6千多汉字进行编码，兼容<code>ASCII</code>码<br><code>GBK</code>: 对2万多汉字进行了编码，兼容<code>GB2312</code><br><code>BIG5</code>: 台湾繁体字编码，兼容<code>ASCII</code>码<br><code>Unicode</code>: 对世界上主流的国家常用的语言进行了编码，<code>兼容ASCII</code>，不兼容<code>GB2312,GBK,BIG5</code>，具体分为<code>UTF-8，UTF-16，UTF-32</code>存储方案</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
         </p>
       
 
@@ -1347,19 +1347,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1379,11 +1379,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1395,11 +1395,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1423,11 +1423,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
