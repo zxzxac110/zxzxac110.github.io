@@ -249,6 +249,98 @@
 
 
   
+    <article id="post-Vue-3-移动端准备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/">3-移动端准备</a>
+    </h1>
+  
+
+        
+        <a href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.442Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="这边是已cli3-0为例示范"><a href="#这边是已cli3-0为例示范" class="headerlink" title="这边是已cli3.0为例示范"></a>这边是已cli3.0为例示范</h3><h3 id="1-下载-lib-flexible"><a href="#1-下载-lib-flexible" class="headerlink" title="1 下载 lib-flexible"></a>1 下载 lib-flexible</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">指令 : npm i lib-flexible –save</span><br><span class="line">Main.js 添加: import &#39;lib-flexible&#x2F;flexible&#39;</span><br><span class="line">Index.html 修改 &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1, maximum-scale&#x3D;1, minimum-scale&#x3D;1, user-scalable&#x3D;no&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-npm-install-postcss-px2rem-–s-自动转化px插件"><a href="#2-npm-install-postcss-px2rem-–s-自动转化px插件" class="headerlink" title="2 npm install postcss-px2rem –s 自动转化px插件"></a>2 npm install postcss-px2rem –s 自动转化px插件</h3><p><code>Vue.config.js</code> 添加配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">css: &#123;</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      css: &#123;&#125;,</span><br><span class="line">        postcss: &#123;</span><br><span class="line">          plugins: [</span><br><span class="line">            require(<span class="string">&#x27;postcss-px2rem&#x27;</span>)(&#123;</span><br><span class="line">              remUnit: 37.5 <span class="comment"># 根据个人习惯了 ，这里是为了配合Vant使用</span></span><br><span class="line">            &#125;)</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-下载-axios"><a href="#3-下载-axios" class="headerlink" title="3 下载 axios"></a>3 下载 axios</h3><p>  npm install –save axios</p>
+<h3 id="4-下载-CSS-预处理语言"><a href="#4-下载-CSS-预处理语言" class="headerlink" title="4 下载 CSS 预处理语言"></a>4 下载 CSS 预处理语言</h3><p>  这里我们下载less<br>  npm install –g less<br>  这时可以一并把自己的初始化css引入到全局 引入方式：<br>  @import “../less/myLess.less”;</p>
+<h3 id="5-下载-npm-install-fastclick-D"><a href="#5-下载-npm-install-fastclick-D" class="headerlink" title="5 下载 npm install fastclick -D"></a>5 下载 npm install fastclick -D</h3><p>解决 手动点击与真正触发click事件会存在300ms的延迟（ios上面最明显）<br>Main.js 引用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import FastClick from <span class="string">&#x27;fastclick&#x27;</span>;</span><br><span class="line">FastClick.attach(document.body);</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-安装ui库"><a href="#6-安装ui库" class="headerlink" title="6 安装ui库"></a>6 安装ui库</h3><p>安装vant<br>按官网自动引入 <a target="_blank" rel="noopener" href="https://youzan.github.io/vant/#/zh-CN/quickstart">https://youzan.github.io/vant/#/zh-CN/quickstart</a></p>
+<h3 id="7-配置环境-env文件"><a href="#7-配置环境-env文件" class="headerlink" title="7 配置环境 .env文件"></a>7 配置环境 .env文件</h3><p> 详情: 可看 <a target="_blank" rel="noopener" href="https://u8y90p.coding-pages.com/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/">项目相关-.env文件</a></p>
+<p> 创建3个文件 <code>.env.develop</code> <code>.env.development</code> <code>.env.production</code><br>  .env.develop 用于测试环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39; &#x2F;&#x2F; 按照线上环境的配置打包-比如是否hash命名（热更新的感觉）</span><br><span class="line">VUE_APP_CURRENTMODE &#x3D; &#39;testing&#39; &#x2F;&#x2F; 字段，用于识别</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;测试环境地址&#39; &#x2F;&#x2F; 地址，用于接口</span><br></pre></td></tr></table></figure></p>
+<p>  .env.development 用于开发环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;development&#39; &#x2F;&#x2F; 按照测试环境的配置打包</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#x2F;api&#x2F; </span><br></pre></td></tr></table></figure></p>
+<p>  .env.production 用于正式环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39;</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;***&#39;</span><br></pre></td></tr></table></figure></p>
+<h3 id="8-vue-config-js-文件-内容"><a href="#8-vue-config-js-文件-内容" class="headerlink" title="8 vue.config.js 文件 内容"></a>8 vue.config.js 文件 内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  <span class="comment"># 当前路径 = 当前环境 === &#x27;production&#x27; ? 1 : 2</span></span><br><span class="line">  <span class="comment"># 一般可直接publicPath: ./</span></span><br><span class="line">  publicPath: process.env.NODE_ENV === <span class="string">&#x27;production&#x27;</span> ? <span class="string">&#x27;/production-sub-path/&#x27;</span> : <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  outputDir: <span class="string">&#x27;dist&#x27;</span>, <span class="comment"># 打包时生产的目录</span></span><br><span class="line">  assetsDir: <span class="string">&#x27;static&#x27;</span>, <span class="comment"># src中js,css,img文件所生产的 dist/static文件夹里面包含js、css、img、fonts文件夹</span></span><br><span class="line">  <span class="comment"># 当[数组]。包含（当前环境时）</span></span><br><span class="line">  <span class="comment"># lintOnSave: ![&#x27;production&#x27;, &#x27;develop&#x27;].includes(process.env.NODE_ENV),</span></span><br><span class="line">  lintOnSave: <span class="literal">true</span>,  <span class="comment"># 开启 eslint 检测?</span></span><br><span class="line">  filenameHashing: <span class="literal">false</span>, <span class="comment"># 默认在生成的静态资源文件名中包含hash以控制缓存 false:不包含</span></span><br><span class="line">  <span class="comment"># map文件作用 ：项目打包后，代码都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错。也就是说map文件相当于是查看源码的一个东西。如果不需要定位问题，并且不想被看到源码，就把productionSourceMap 置为false，既可以减少包大小，也可以加密源码</span></span><br><span class="line">  productionSourceMap: <span class="literal">false</span>, <span class="comment"># 不会生成map文件</span></span><br><span class="line">  devServer: &#123; <span class="comment"># 运行相关</span></span><br><span class="line">    open: <span class="literal">true</span>, <span class="comment"># 运行时自动打开</span></span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">&#x27;/apiurl&#x27;</span>: &#123; <span class="comment"># 设置代理</span></span><br><span class="line">        target: <span class="string">&#x27;http://dev-test-thd-api.faquange.com/&#x27;</span>,</span><br><span class="line">        changeOrigin: <span class="literal">true</span>,</span><br><span class="line">        // secure: <span class="literal">false</span>, <span class="comment"># 如果是http接口，需要配置该参数</span></span><br><span class="line">        pathRewrite: &#123;</span><br><span class="line">          <span class="string">&#x27;^/apiurl&#x27;</span>: <span class="string">&#x27;/&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  css: &#123;</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      css: &#123;&#125;,</span><br><span class="line">        postcss: &#123;</span><br><span class="line">          plugins: [</span><br><span class="line">            require(<span class="string">&#x27;postcss-px2rem&#x27;</span>)(&#123;</span><br><span class="line">              remUnit: 37.5</span><br><span class="line">            &#125;)</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="9-公用-apiurl-组件"><a href="#9-公用-apiurl-组件" class="headerlink" title="9 公用 apiurl 组件"></a>9 公用 apiurl 组件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> path = process.env.******</span><br><span class="line">const urls = &#123;</span><br><span class="line">  ****: `<span class="variable">$&#123;path&#125;</span>***`, // 提交登录</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">export</span> default urls;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Vue-2-cli-2-0安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -278,7 +370,7 @@
 <h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><ol>
 <li>vue create 项目名<br> Vue CLI v4.2.3</li>
 </ol>
-<h3 id="弹出内容解释"><a href="#弹出内容解释" class="headerlink" title="弹出内容解释"></a>弹出内容解释</h3><p>1 Project name vue-cli2         回车<br>2 Project description (A Vue.js project) 是项目的描述，自己可以修改或者使用默认的，我们一般使用默认的直接按回车键进行下一步，<br>3 Author lishihao <a href="mailto:&#108;&#x69;&#x73;&#104;&#105;&#x68;&#x61;&#111;&#64;&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#99;&#x6f;&#109;">&#108;&#x69;&#x73;&#104;&#105;&#x68;&#x61;&#111;&#64;&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#99;&#x6f;&#109;</a>    作者信息</p>
+<h3 id="弹出内容解释"><a href="#弹出内容解释" class="headerlink" title="弹出内容解释"></a>弹出内容解释</h3><p>1 Project name vue-cli2         回车<br>2 Project description (A Vue.js project) 是项目的描述，自己可以修改或者使用默认的，我们一般使用默认的直接按回车键进行下一步，<br>3 Author lishihao <a href="mailto:&#x6c;&#x69;&#115;&#x68;&#105;&#x68;&#x61;&#111;&#64;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#46;&#x63;&#x6f;&#x6d;">&#x6c;&#x69;&#115;&#x68;&#105;&#x68;&#x61;&#111;&#64;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#46;&#x63;&#x6f;&#x6d;</a>    作者信息</p>
 <p>4 Vue build (Use arrow keys)<br>详情 【<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020253015%E3%80%91">https://segmentfault.com/a/1190000020253015】</a><br>Runtime + Compiler: recommended for most users<br>选择— Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere  推荐第二个<br>5 Install vue-router? Yes 路由<br>6 Use ESLint to lint your code? (Y/n) n 语法规范检查<br>7 Set up unit tests No 单元测试<br>8 Setup e2e tests with Nightwatch? No 也是测试<br>9 Should we run <code>npm install</code> for you after the project has been created? (recommended)<br>选择使用npm、还是yarn安装<br>选择— Yes, use NPM<br>Yes,use yarn<br>No I will handle that myself</p>
 <h3 id="文件解释"><a href="#文件解释" class="headerlink" title="文件解释"></a>文件解释</h3><table>
 <thead>
@@ -446,180 +538,6 @@ return resolved</code></pre>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Vue-2-cli-2-0%E5%AE%89%E8%A3%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Vue-3-移动端准备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/">3-移动端准备</a>
-    </h1>
-  
-
-        
-        <a href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.442Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="这边是已cli3-0为例示范"><a href="#这边是已cli3-0为例示范" class="headerlink" title="这边是已cli3.0为例示范"></a>这边是已cli3.0为例示范</h3><h3 id="1-下载-lib-flexible"><a href="#1-下载-lib-flexible" class="headerlink" title="1 下载 lib-flexible"></a>1 下载 lib-flexible</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">指令 : npm i lib-flexible –save</span><br><span class="line">Main.js 添加: import &#39;lib-flexible&#x2F;flexible&#39;</span><br><span class="line">Index.html 修改 &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1, maximum-scale&#x3D;1, minimum-scale&#x3D;1, user-scalable&#x3D;no&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-npm-install-postcss-px2rem-–s-自动转化px插件"><a href="#2-npm-install-postcss-px2rem-–s-自动转化px插件" class="headerlink" title="2 npm install postcss-px2rem –s 自动转化px插件"></a>2 npm install postcss-px2rem –s 自动转化px插件</h3><p><code>Vue.config.js</code> 添加配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">css: &#123;</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      css: &#123;&#125;,</span><br><span class="line">        postcss: &#123;</span><br><span class="line">          plugins: [</span><br><span class="line">            require(<span class="string">&#x27;postcss-px2rem&#x27;</span>)(&#123;</span><br><span class="line">              remUnit: 37.5 <span class="comment"># 根据个人习惯了 ，这里是为了配合Vant使用</span></span><br><span class="line">            &#125;)</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-下载-axios"><a href="#3-下载-axios" class="headerlink" title="3 下载 axios"></a>3 下载 axios</h3><p>  npm install –save axios</p>
-<h3 id="4-下载-CSS-预处理语言"><a href="#4-下载-CSS-预处理语言" class="headerlink" title="4 下载 CSS 预处理语言"></a>4 下载 CSS 预处理语言</h3><p>  这里我们下载less<br>  npm install –g less<br>  这时可以一并把自己的初始化css引入到全局 引入方式：<br>  @import “../less/myLess.less”;</p>
-<h3 id="5-下载-npm-install-fastclick-D"><a href="#5-下载-npm-install-fastclick-D" class="headerlink" title="5 下载 npm install fastclick -D"></a>5 下载 npm install fastclick -D</h3><p>解决 手动点击与真正触发click事件会存在300ms的延迟（ios上面最明显）<br>Main.js 引用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import FastClick from <span class="string">&#x27;fastclick&#x27;</span>;</span><br><span class="line">FastClick.attach(document.body);</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-安装ui库"><a href="#6-安装ui库" class="headerlink" title="6 安装ui库"></a>6 安装ui库</h3><p>安装vant<br>按官网自动引入 <a target="_blank" rel="noopener" href="https://youzan.github.io/vant/#/zh-CN/quickstart">https://youzan.github.io/vant/#/zh-CN/quickstart</a></p>
-<h3 id="7-配置环境-env文件"><a href="#7-配置环境-env文件" class="headerlink" title="7 配置环境 .env文件"></a>7 配置环境 .env文件</h3><p> 详情: 可看 <a target="_blank" rel="noopener" href="https://u8y90p.coding-pages.com/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/">项目相关-.env文件</a></p>
-<p> 创建3个文件 <code>.env.develop</code> <code>.env.development</code> <code>.env.production</code><br>  .env.develop 用于测试环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39; &#x2F;&#x2F; 按照线上环境的配置打包-比如是否hash命名（热更新的感觉）</span><br><span class="line">VUE_APP_CURRENTMODE &#x3D; &#39;testing&#39; &#x2F;&#x2F; 字段，用于识别</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;测试环境地址&#39; &#x2F;&#x2F; 地址，用于接口</span><br></pre></td></tr></table></figure></p>
-<p>  .env.development 用于开发环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;development&#39; &#x2F;&#x2F; 按照测试环境的配置打包</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#x2F;api&#x2F; </span><br></pre></td></tr></table></figure></p>
-<p>  .env.production 用于正式环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39;</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;***&#39;</span><br></pre></td></tr></table></figure></p>
-<h3 id="8-vue-config-js-文件-内容"><a href="#8-vue-config-js-文件-内容" class="headerlink" title="8 vue.config.js 文件 内容"></a>8 vue.config.js 文件 内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  <span class="comment"># 当前路径 = 当前环境 === &#x27;production&#x27; ? 1 : 2</span></span><br><span class="line">  <span class="comment"># 一般可直接publicPath: ./</span></span><br><span class="line">  publicPath: process.env.NODE_ENV === <span class="string">&#x27;production&#x27;</span> ? <span class="string">&#x27;/production-sub-path/&#x27;</span> : <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  outputDir: <span class="string">&#x27;dist&#x27;</span>, <span class="comment"># 打包时生产的目录</span></span><br><span class="line">  assetsDir: <span class="string">&#x27;static&#x27;</span>, <span class="comment"># src中js,css,img文件所生产的 dist/static文件夹里面包含js、css、img、fonts文件夹</span></span><br><span class="line">  <span class="comment"># 当[数组]。包含（当前环境时）</span></span><br><span class="line">  <span class="comment"># lintOnSave: ![&#x27;production&#x27;, &#x27;develop&#x27;].includes(process.env.NODE_ENV),</span></span><br><span class="line">  lintOnSave: <span class="literal">true</span>,  <span class="comment"># 开启 eslint 检测?</span></span><br><span class="line">  filenameHashing: <span class="literal">false</span>, <span class="comment"># 默认在生成的静态资源文件名中包含hash以控制缓存 false:不包含</span></span><br><span class="line">  <span class="comment"># map文件作用 ：项目打包后，代码都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错。也就是说map文件相当于是查看源码的一个东西。如果不需要定位问题，并且不想被看到源码，就把productionSourceMap 置为false，既可以减少包大小，也可以加密源码</span></span><br><span class="line">  productionSourceMap: <span class="literal">false</span>, <span class="comment"># 不会生成map文件</span></span><br><span class="line">  devServer: &#123; <span class="comment"># 运行相关</span></span><br><span class="line">    open: <span class="literal">true</span>, <span class="comment"># 运行时自动打开</span></span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">&#x27;/apiurl&#x27;</span>: &#123; <span class="comment"># 设置代理</span></span><br><span class="line">        target: <span class="string">&#x27;http://dev-test-thd-api.faquange.com/&#x27;</span>,</span><br><span class="line">        changeOrigin: <span class="literal">true</span>,</span><br><span class="line">        // secure: <span class="literal">false</span>, <span class="comment"># 如果是http接口，需要配置该参数</span></span><br><span class="line">        pathRewrite: &#123;</span><br><span class="line">          <span class="string">&#x27;^/apiurl&#x27;</span>: <span class="string">&#x27;/&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  css: &#123;</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      css: &#123;&#125;,</span><br><span class="line">        postcss: &#123;</span><br><span class="line">          plugins: [</span><br><span class="line">            require(<span class="string">&#x27;postcss-px2rem&#x27;</span>)(&#123;</span><br><span class="line">              remUnit: 37.5</span><br><span class="line">            &#125;)</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="9-公用-apiurl-组件"><a href="#9-公用-apiurl-组件" class="headerlink" title="9 公用 apiurl 组件"></a>9 公用 apiurl 组件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> path = process.env.******</span><br><span class="line">const urls = &#123;</span><br><span class="line">  ****: `<span class="variable">$&#123;path&#125;</span>***`, // 提交登录</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">export</span> default urls;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Vue-1-cli-3-0安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Vue-1-cli-3-0%E5%AE%89%E8%A3%85/">1-cli-3.0安装</a>
-    </h1>
-  
-
-        
-        <a href="/Vue-1-cli-3-0%E5%AE%89%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.441Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="1-准备"><a href="#1-准备" class="headerlink" title="1.准备"></a>1.准备</h3><ol>
-<li>npm install -g @vue/cli  安装 最新版的脚手架</li>
-<li>vue –version             检查版本</li>
-</ol>
-<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><ol>
-<li>vue create 项目名<br> Vue CLI v4.2.3</li>
-</ol>
-<h3 id="弹出内容解释"><a href="#弹出内容解释" class="headerlink" title="弹出内容解释"></a>弹出内容解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">1.Please pick a preset:</span><br><span class="line">  default (babel, eslint)   默认 那么就一路回车执行</span><br><span class="line">&gt; Manually select features  手动</span><br><span class="line"></span><br><span class="line">2. Check the features needed for your project: 上下键切换空格选中取消</span><br><span class="line"> (*) Babel			翻译工具.VUE脚手架是es6的大部分浏览器不认识</span><br><span class="line">将脚手架中浏览器不认识的一切东西翻译为浏览器认识的。</span><br><span class="line"> ( ) TypeScript 更严格的javascript，ng框架使用</span><br><span class="line"> ( ) Progressive Web App (PWA) Support</span><br><span class="line"> (*) Router路由和状态管理</span><br><span class="line">&gt;(*) Vuex路由和状态管理</span><br><span class="line"> ( ) CSS Pre-processors css预编译 (稍后会对这里进行配置)</span><br><span class="line"> (*) Linter &#x2F; Formatter</span><br><span class="line"> ( ) Unit Testing单元测试，开发过程中前端对代码进行自运行测试</span><br><span class="line"> ( ) E2E Testing </span><br><span class="line"></span><br><span class="line">3. Use history mode for router? (Requires proper server setupfor index fallback in production) (Y&#x2F;n)n</span><br><span class="line">history模式可去掉地址栏中的#</span><br><span class="line">默认Vue中的路由地址是#&#x2F;相对地址</span><br><span class="line">问题1如果页面中刚好有锚点位置.锚点位置会修改地址栏信息.和vue的#&#x2F;路径冲突</span><br><span class="line">解决1采用history模式的vue路由方式--------不带#的地址方式</span><br><span class="line">问题2不带#的地址.会被误认为是服务端资源地址.而优先交给服务解析.但是VUE的路由.在服务端极有可能没有对应的资源.就会报404 找不到</span><br><span class="line">比如.本想跳VUE带首页.采用history方式不带#的路径挑战</span><br><span class="line">	http:&#x2F;&#x2F;localhost:8080&#x2F;index</span><br><span class="line">		但是浏览器会直接将整个地址给服务端.而不是给vue解析</span><br><span class="line">解决2.请服务端配置一个重定向.</span><br><span class="line">凡是&#x2F;index.htme&#x2F;xxx的地址.服务器端不解析.直接返回给客户端让vue解析</span><br><span class="line">	所以，学习阶段或自己做项目时都不启用history模式都采用默认#&#x2F;的</span><br><span class="line"></span><br><span class="line">4. Pick a linter &#x2F; formatter config:   使用什么css预编译器？</span><br><span class="line">  ESLint with error prevention only  只进行报错提醒</span><br><span class="line"> ESLint + Airbnb config				不严谨模式</span><br><span class="line"> &gt;ESLint + Standard config			正常模式；</span><br><span class="line">  ESLint + Prettier					严格模式；</span><br><span class="line">ESLint: typescript格式验证工具 </span><br><span class="line"></span><br><span class="line">5. Pick additional lint features: (Press &lt;space&gt; to select, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection)代码检查方式</span><br><span class="line">&gt;(*) Lint on save			保存时检查</span><br><span class="line"> ( ) Lint and fix on commit	提交时检查</span><br><span class="line"></span><br><span class="line">6.配置是写在单独的文件还是全部卸载package.json中，这里选择吧第一个，单独文件，便于维护</span><br><span class="line">Where do you prefer placing config for Babel, ESLint, etc.? (Use arrow keys)</span><br><span class="line">&gt; In dedicated config files</span><br><span class="line">  In package.json </span><br><span class="line"></span><br><span class="line">7.现在写的这些配置是否适用于未来项目的创建。这里选择默认不同意</span><br><span class="line">Save this as apreset for future projects?(y&#x2F;n) n</span><br><span class="line">build没了、config没了、自动下载node-model。</span><br><span class="line">如果vue.config.js没了怎么破。</span><br><span class="line">在根目录下创建一个vue.config.js不就行了</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Vue-1-cli-3-0%E5%AE%89%E8%A3%85/">展开全文 >></a>
         </p>
       
 
@@ -836,95 +754,6 @@ return resolved</code></pre>
 
 
   
-    <article id="post-Vscode-2-设置快捷代码块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/">2-设置快捷代码块</a>
-    </h1>
-  
-
-        
-        <a href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.441Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>按下 <code>ctrl + shift + p</code> 输入 <code>用户代码片段</code> </p>
-<p><img src="https://s1.ax1x.com/2020/09/03/wChqmj.png" alt="vscode 设置代码块1"><br>此时  可以看见 当前已有代码片段 和 <code>新建代码片段</code> 点他 然后填入相应内容 </p>
-<p><img src="https://s1.ax1x.com/2020/09/03/wChL0s.png" alt="vscode 设置代码块2"></p>
-<ul>
-<li>书写规范<ul>
-<li>每个字符串元素就代表一行，行与行之间用” , “隔开表示换行。或者使用\n换行</li>
-<li>行内不能使用tab键缩进，只能使用空格或者\t缩进</li>
-<li><code>$0</code> 首次输出位置</li>
-<li><code>$1</code> 使用代码块敲击回车或者tab键后光标定位的位置。<code>$2 $3 $4</code>…表示我们按下tab光标依次出现的位置</li>
-</ul>
-</li>
-</ul>
-<h2 id="1-例：生成vue默认样式"><a href="#1-例：生成vue默认样式" class="headerlink" title="1. 例：生成vue默认样式"></a>1. 例：生成vue默认样式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;Print to console&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>, <span class="comment"># 限制触发使用 如 css</span></span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;vue&quot;</span>, <span class="comment"># 触发的字段 - 直接敲击他使用</span></span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [ <span class="comment"># 生成内容</span></span><br><span class="line">      <span class="string">&quot;&lt;template&gt;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\t&lt;div&gt;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\t&lt;/div&gt;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&lt;/template&gt;\n&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&lt;script&gt;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;export default &#123;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tcomponents: &#123;&#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tprops: &#123;&#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tdata () &#123;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\t\treturn &#123;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\t\t&#125;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\t&#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tfilters: &#123;&#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tcomputed: &#123;&#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\twatch: &#123;&#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tmounted () &#123; &#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tmethods: &#123;&#125;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&#125;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&lt;/script&gt;\n&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&lt;style lang=\&quot;less\&quot; scoped&gt;\n&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&lt;/style&gt;\n&quot;</span>, </span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;vue初始化&quot;</span> <span class="comment"># 描述</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-我的代码片段"><a href="#2-我的代码片段" class="headerlink" title="2. 我的代码片段"></a>2. 我的代码片段</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;Print to console&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;e.target&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;e.target&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;当前点击元素&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;!important&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;!important&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;!important&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;css权重&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;箭头函数&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;javascript,typescript&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;() =&gt; &#123;&#125;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;($1) =&gt; &#123;$2&#125;&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;箭头函数&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;保留小数点后2位&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;.toFixed&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;.toFixed(2$&#123;0&#125;)&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;保留小数点后2位&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;vue$Next&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;$nextTick&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;$nextTick(() =&gt; &#123;$1&#125;)&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;$nextTick&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;$emit()&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;$emit()&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;this.$emit(&#x27;&#x27;, )&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;$emit()&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;跳转&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;a href=&#x27;&#x27; target=&#x27;_self&#x27;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;&lt;a href= target=_self&gt;&lt;a&gt;&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;跳转&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;路由跳转&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;$router.resolve(&#123; path: &#x27;dialog&#x27;, query: query &#125;)params&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;this.$router.resolve(&#123; path: &#x27;dialog&#x27;, query: query &#125;)params&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;路由跳转&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vscode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Vscode-3-插件-格式化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1040,6 +869,177 @@ return resolved</code></pre>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Vscode-3-%E6%8F%92%E4%BB%B6-%E6%A0%BC%E5%BC%8F%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Vscode-2-设置快捷代码块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/">2-设置快捷代码块</a>
+    </h1>
+  
+
+        
+        <a href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.441Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>按下 <code>ctrl + shift + p</code> 输入 <code>用户代码片段</code> </p>
+<p><img src="https://s1.ax1x.com/2020/09/03/wChqmj.png" alt="vscode 设置代码块1"><br>此时  可以看见 当前已有代码片段 和 <code>新建代码片段</code> 点他 然后填入相应内容 </p>
+<p><img src="https://s1.ax1x.com/2020/09/03/wChL0s.png" alt="vscode 设置代码块2"></p>
+<ul>
+<li>书写规范<ul>
+<li>每个字符串元素就代表一行，行与行之间用” , “隔开表示换行。或者使用\n换行</li>
+<li>行内不能使用tab键缩进，只能使用空格或者\t缩进</li>
+<li><code>$0</code> 首次输出位置</li>
+<li><code>$1</code> 使用代码块敲击回车或者tab键后光标定位的位置。<code>$2 $3 $4</code>…表示我们按下tab光标依次出现的位置</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-例：生成vue默认样式"><a href="#1-例：生成vue默认样式" class="headerlink" title="1. 例：生成vue默认样式"></a>1. 例：生成vue默认样式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;Print to console&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>, <span class="comment"># 限制触发使用 如 css</span></span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;vue&quot;</span>, <span class="comment"># 触发的字段 - 直接敲击他使用</span></span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [ <span class="comment"># 生成内容</span></span><br><span class="line">      <span class="string">&quot;&lt;template&gt;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\t&lt;div&gt;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\t&lt;/div&gt;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&lt;/template&gt;\n&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&lt;script&gt;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;export default &#123;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tcomponents: &#123;&#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tprops: &#123;&#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tdata () &#123;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\t\treturn &#123;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\t\t&#125;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\t&#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tfilters: &#123;&#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tcomputed: &#123;&#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\twatch: &#123;&#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tmounted () &#123; &#125;,&quot;</span>,</span><br><span class="line">      <span class="string">&quot;\tmethods: &#123;&#125;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&#125;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&lt;/script&gt;\n&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&lt;style lang=\&quot;less\&quot; scoped&gt;\n&quot;</span>,</span><br><span class="line">      <span class="string">&quot;&lt;/style&gt;\n&quot;</span>, </span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;vue初始化&quot;</span> <span class="comment"># 描述</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-我的代码片段"><a href="#2-我的代码片段" class="headerlink" title="2. 我的代码片段"></a>2. 我的代码片段</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;Print to console&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;e.target&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;e.target&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;当前点击元素&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;!important&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;!important&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;!important&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;css权重&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;箭头函数&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;javascript,typescript&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;() =&gt; &#123;&#125;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;($1) =&gt; &#123;$2&#125;&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;箭头函数&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;保留小数点后2位&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;.toFixed&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;.toFixed(2$&#123;0&#125;)&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;保留小数点后2位&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;vue$Next&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;$nextTick&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;$nextTick(() =&gt; &#123;$1&#125;)&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;$nextTick&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;$emit()&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;$emit()&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;this.$emit(&#x27;&#x27;, )&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;$emit()&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;跳转&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;a href=&#x27;&#x27; target=&#x27;_self&#x27;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;&lt;a href= target=_self&gt;&lt;a&gt;&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;跳转&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;路由跳转&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;$router.resolve(&#123; path: &#x27;dialog&#x27;, query: query &#125;)params&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;this.$router.resolve(&#123; path: &#x27;dialog&#x27;, query: query &#125;)params&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;路由跳转&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vscode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Vue-1-cli-3-0安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Vue-1-cli-3-0%E5%AE%89%E8%A3%85/">1-cli-3.0安装</a>
+    </h1>
+  
+
+        
+        <a href="/Vue-1-cli-3-0%E5%AE%89%E8%A3%85/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.441Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="1-准备"><a href="#1-准备" class="headerlink" title="1.准备"></a>1.准备</h3><ol>
+<li>npm install -g @vue/cli  安装 最新版的脚手架</li>
+<li>vue –version             检查版本</li>
+</ol>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><ol>
+<li>vue create 项目名<br> Vue CLI v4.2.3</li>
+</ol>
+<h3 id="弹出内容解释"><a href="#弹出内容解释" class="headerlink" title="弹出内容解释"></a>弹出内容解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">1.Please pick a preset:</span><br><span class="line">  default (babel, eslint)   默认 那么就一路回车执行</span><br><span class="line">&gt; Manually select features  手动</span><br><span class="line"></span><br><span class="line">2. Check the features needed for your project: 上下键切换空格选中取消</span><br><span class="line"> (*) Babel			翻译工具.VUE脚手架是es6的大部分浏览器不认识</span><br><span class="line">将脚手架中浏览器不认识的一切东西翻译为浏览器认识的。</span><br><span class="line"> ( ) TypeScript 更严格的javascript，ng框架使用</span><br><span class="line"> ( ) Progressive Web App (PWA) Support</span><br><span class="line"> (*) Router路由和状态管理</span><br><span class="line">&gt;(*) Vuex路由和状态管理</span><br><span class="line"> ( ) CSS Pre-processors css预编译 (稍后会对这里进行配置)</span><br><span class="line"> (*) Linter &#x2F; Formatter</span><br><span class="line"> ( ) Unit Testing单元测试，开发过程中前端对代码进行自运行测试</span><br><span class="line"> ( ) E2E Testing </span><br><span class="line"></span><br><span class="line">3. Use history mode for router? (Requires proper server setupfor index fallback in production) (Y&#x2F;n)n</span><br><span class="line">history模式可去掉地址栏中的#</span><br><span class="line">默认Vue中的路由地址是#&#x2F;相对地址</span><br><span class="line">问题1如果页面中刚好有锚点位置.锚点位置会修改地址栏信息.和vue的#&#x2F;路径冲突</span><br><span class="line">解决1采用history模式的vue路由方式--------不带#的地址方式</span><br><span class="line">问题2不带#的地址.会被误认为是服务端资源地址.而优先交给服务解析.但是VUE的路由.在服务端极有可能没有对应的资源.就会报404 找不到</span><br><span class="line">比如.本想跳VUE带首页.采用history方式不带#的路径挑战</span><br><span class="line">	http:&#x2F;&#x2F;localhost:8080&#x2F;index</span><br><span class="line">		但是浏览器会直接将整个地址给服务端.而不是给vue解析</span><br><span class="line">解决2.请服务端配置一个重定向.</span><br><span class="line">凡是&#x2F;index.htme&#x2F;xxx的地址.服务器端不解析.直接返回给客户端让vue解析</span><br><span class="line">	所以，学习阶段或自己做项目时都不启用history模式都采用默认#&#x2F;的</span><br><span class="line"></span><br><span class="line">4. Pick a linter &#x2F; formatter config:   使用什么css预编译器？</span><br><span class="line">  ESLint with error prevention only  只进行报错提醒</span><br><span class="line"> ESLint + Airbnb config				不严谨模式</span><br><span class="line"> &gt;ESLint + Standard config			正常模式；</span><br><span class="line">  ESLint + Prettier					严格模式；</span><br><span class="line">ESLint: typescript格式验证工具 </span><br><span class="line"></span><br><span class="line">5. Pick additional lint features: (Press &lt;space&gt; to select, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection)代码检查方式</span><br><span class="line">&gt;(*) Lint on save			保存时检查</span><br><span class="line"> ( ) Lint and fix on commit	提交时检查</span><br><span class="line"></span><br><span class="line">6.配置是写在单独的文件还是全部卸载package.json中，这里选择吧第一个，单独文件，便于维护</span><br><span class="line">Where do you prefer placing config for Babel, ESLint, etc.? (Use arrow keys)</span><br><span class="line">&gt; In dedicated config files</span><br><span class="line">  In package.json </span><br><span class="line"></span><br><span class="line">7.现在写的这些配置是否适用于未来项目的创建。这里选择默认不同意</span><br><span class="line">Save this as apreset for future projects?(y&#x2F;n) n</span><br><span class="line">build没了、config没了、自动下载node-model。</span><br><span class="line">如果vue.config.js没了怎么破。</span><br><span class="line">在根目录下创建一个vue.config.js不就行了</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Vue-1-cli-3-0%E5%AE%89%E8%A3%85/">展开全文 >></a>
         </p>
       
 
@@ -1575,11 +1575,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1591,11 +1591,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color5">Html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1603,11 +1603,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1639,15 +1639,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1656,6 +1652,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网址</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
