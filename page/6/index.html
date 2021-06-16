@@ -145,6 +145,192 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-npm-npm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/npm-npm/">npm install -S -D 的区别</a>
+    </h1>
+  
+
+        
+        <a href="/npm-npm/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.445Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="一、-S-和-D-的区别-附带-g-说明"><a href="#一、-S-和-D-的区别-附带-g-说明" class="headerlink" title="一、 -S 和 -D 的区别 附带 -g 说明"></a>一、 -S 和 -D 的区别 附带 -g 说明</h3><p><code>npm install module_name -S</code> 即 <code>npm install module_name --save</code><br>会写入package.json 的 dependencies</p>
+<p>npm install module_name -D 即 npm install module_name –save-dev<br>会写入package.json 的 写入devDependencies</p>
+<p><code>npm install --save</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用于线上</span><br><span class="line">(1)会把msbuild包安装到node_modules目录中</span><br><span class="line">(2)会在package.json的dependencies属性下添加msbuild</span><br><span class="line">(3)之后运行npm install命令时，会自动安装msbuild到node_modules目录中</span><br><span class="line">(4)之后运行npm install --production或者注明NODE_ENV变量值为production时，&#96;会&#96;自动安装msbuild到node_modules目录中</span><br></pre></td></tr></table></figure>
+
+<p><code>npm install --save-dev</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用于开发</span><br><span class="line">(1)会把msbuild包安装到node_modules目录中</span><br><span class="line">(2)会在package.json的devDependencies属性下添加msbuild</span><br><span class="line">(3)之后运行npm install命令时，会自动安装msbuild到node_modules目录中</span><br><span class="line">(4)之后运行npm install --production或者注明NODE_ENV变量值为production时，&#96;不会&#96;自动安装msbuild到node_modules目录中</span><br></pre></td></tr></table></figure>
+
+
+<p><code>npm install</code> 本地安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（1）将安装包放在 .&#x2F;node_modules 下（运行 npm 命令时所在的目录），如果没有 node_modules目录，会在当前执行 npm 命令的目录下生成 node_modules 目录。</span><br><span class="line">（2）可以通过 require() 来引入本地安装的包。</span><br></pre></td></tr></table></figure>
+
+<p><code>npm install -g</code> 全局安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1) 将安装包放在 &#x2F;usr&#x2F;local 下或者你 node 的安装目录。</span><br><span class="line">(2)可以直接在命令行里使用。</span><br></pre></td></tr></table></figure>
+
+<h3 id="一-2、-npm-install-与-npm-i-区别-附加-npm-init"><a href="#一-2、-npm-install-与-npm-i-区别-附加-npm-init" class="headerlink" title="一.2、 npm install  与 npm i 区别 附加 npm init"></a>一.2、 npm install  与 npm i 区别 附加 npm init</h3><p>npm i仅仅是npm install的简写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 用npm i安装的模块无法用npm uninstall删除，用npm uninstall i才卸载掉 </span><br><span class="line">2. npm i会帮助检测与当前node版本最匹配的npm包版本号，并匹配出来相互依赖的npm包应该提升的版本号 </span><br><span class="line">3. 部分npm包在当前node版本下无法使用，必须使用建议版本 </span><br><span class="line">4. 安装报错时intall肯定会出现npm-debug.log 文件，npm i不一定</span><br></pre></td></tr></table></figure>
+<p><code>npm init</code>    初始化一个简单的package.json文件，执行该命令后终端会依次询问<br>一般敲个包名 其它回车就好<br>name：包名，默认是文件夹名。<br>version：包的版本，默认是1.0.0，<br>description：包的描述。主要描述你的包是用来做什么的。<br>entry point：包入口文件，默认是Index.js，可以自定义。<br>test command：测试命令，<br>git repository：包的git仓库地址，npm自动读取.git目录作为这一项的默认值。没使用则回车略过。<br>keyword：包的关键词。该项会影响到用户怎样才能搜到你的包，<br>author：作者。例如你的npm账号或者github账号<br>license：开源协议，回车就好。</p>
+<p><code>npm init -y</code> 在init的时候省去了敲回车的步骤，生成默认的package.json</p>
+<h3 id="二、dependencies-与-devDependencies-的区别"><a href="#二、dependencies-与-devDependencies-的区别" class="headerlink" title="二、dependencies 与 devDependencies 的区别"></a>二、dependencies 与 devDependencies 的区别</h3><p><code>dependencies</code> 与 <code>devDependencies</code> 都是在 <code>package.json</code> 中的配置信息。<br><code>devDependencies</code> 里面的插件只用于开发环境，不用于生产环境<br><code>dependencies</code> 是需要发布到生产环境的。</p>
+<h3 id="三、总结："><a href="#三、总结：" class="headerlink" title="三、总结："></a>三、总结：</h3><p><code>devDependencies</code> 的理解：<br>我们在开发一个前端项目的时候，需要使用到webpack或者gulp来构建我们的开发和本地运行环境，这时我们就要安装到devDependencies 里。webpack或者gulp是用来打包压缩代码的工具，在项目实际运行的时候用不到，所以把webpack或者gulp放到devDependencies 中就行了。</p>
+<p><code>dependencies</code> 的理解：<br>我们在项目中用到了element-ui或者mint-ui，在生产环境中运行项目，当然也需要element-ui或者mint-ui，所以我们把element-ui或者mint-ui安装到dependencies中。</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-S</td>
+<td>到dependencies 开发环境</td>
+<td>–save 缩写</td>
+</tr>
+<tr>
+<td>-D</td>
+<td>到devDependencies 开发环境</td>
+<td>–save-dev缩写</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>全局</td>
+<td>不带默认是本地</td>
+</tr>
+<tr>
+<td>install</td>
+<td>-</td>
+<td>缩写 i</td>
+</tr>
+</tbody></table>
+<style>
+table th:first-of-type {
+    width: 240px;
+}
+</style>
+
+<table>
+<thead>
+<tr>
+<th>常用指令</th>
+<th>说明</th>
+<th>详细说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>npm install X</td>
+<td>把X包安装到node_modules目录中</td>
+<td>1.不会修改package.json <br> 2.之后运行npm install 命令时，不会自动安装X</td>
+</tr>
+<tr>
+<td>npm install X -save</td>
+<td>把X包安装至node_modules目录中</td>
+<td>1.会在package.json的dependencies属性中添加X <br> 2.之后运行npm install命令会自动安装X到node_modules中-线上测试时需要使用的包</td>
+</tr>
+<tr>
+<td>npm install X -save-dev <br> === npm install X -D</td>
+<td>把X包安装至node_modules目录中</td>
+<td>1.会在package.json的devDependencies属性中添加X <br>之后运行npm install命令会自动安装X到node_modules中，开发过程时需要使用的包</td>
+</tr>
+<tr>
+<td>npm init</td>
+<td>初始化一个简单的package.json文件</td>
+<td>执行该命令后终端会依次询问 name(必填), version(必填), description 等字段（其它选填）</td>
+</tr>
+<tr>
+<td>npm ls</td>
+<td>查看安装的模块</td>
+<td>-</td>
+</tr>
+<tr>
+<td>npm uninstall</td>
+<td>卸载模块</td>
+<td>卸载node_modules</td>
+</tr>
+<tr>
+<td>npm uninstall i</td>
+<td>卸载npm i 安装的模块</td>
+<td>卸载node_modules</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>npm config get registry</td>
+<td>查看当前下载仓库地址</td>
+<td></td>
+</tr>
+</tbody></table>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">npm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/npm-npm/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Vue-11-vue源码解读" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -287,97 +473,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Vue-10-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-npm-npx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/npm-npx/">npx</a>
-    </h1>
-  
-
-        
-        <a href="/npm-npx/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.445Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>原文 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/jianghaijun4031/p/13231847.html">https://www.cnblogs.com/jianghaijun4031/p/13231847.html</a></p>
-<blockquote>
-<p>针对node_modules目录下.bin下的可执行文件，如果是项目安装而非全局安装，使用时会非常麻烦，npx帮助解决这个问题</p>
-</blockquote>
-<p>npm 从5.2版开始，增加了 npx 命令<br>如果早起版本不能使用可以自己手动安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npx</span><br></pre></td></tr></table></figure>
-
-<p>比如安装了sequelize-cli 管理数据库<br>使用的时候需要这样子调用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;node_modules&#x2F;.bin&#x2F;sequelize-cli db:seed:all</span><br></pre></td></tr></table></figure>
-
-<p>有了npx 之后可以这样子就可以了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize-cli db:seed:all</span><br></pre></td></tr></table></figure>
-
-<p>npx 的原理很简单，就是运行的时候，会到node_modules/.bin路径和环境变量$PATH里面，检查命令是否存在。<br>由于 npx 会检查环境变量$PATH，所以系统命令也可以调用。</p>
-<p>我们把模块安装在内部的目的就是为了避免全局安装模块，升级不方便，各个项目使用不同版本的原因，全局安装本身就不合理<br>当前项目如果不错在的模块通过npx执行会帮你下载到一个临时目录，使用以后会自动删除。<br>通过这一特性，使用不同版本的 node</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx node@0.12.8 index.js</span><br></pre></td></tr></table></figure>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">npm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/npm-npx/">展开全文 >></a>
         </p>
       
 
@@ -1260,11 +1355,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1272,15 +1367,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1289,6 +1380,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1324,11 +1419,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">画图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1337,10 +1436,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
             
             <div class="clearfix"></div>

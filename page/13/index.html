@@ -145,6 +145,288 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Angular-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Angular-1/">1-Angular简介</a>
+    </h1>
+  
+
+        
+        <a href="/Angular-1/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.425Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+            <div>概述</div>
+  <div>环境搭建</div>
+  <div><a href="#title1" target="_self">目录简介</a></div>
+  <div><a href="#title2" target="_self">组件创建</a></div>
+  <div><a href="#title3" target="_self">指令</a></div>
+  <div><a href="#title4" target="_self">管道</a></div>
+  <div><a href="#title5" target="_self">生命周期</a></div>
+
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p> Angular是Google开发的MVVM框架.适合于web mobile desktop等大型领域.是3个框架中最强大最复杂的<br> <a target="_blank" rel="noopener" href="http://www.angular.cn/">www.angular.cn</a></p>
+<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p> Node.js到10.9+<br> ②全局下载AngularCLI脚手架工具<br>  <code>npm  i  -g  @angular/cli</code></p>
+<p>  ng  new  项目名<br>  1- Would you like to add Angular routing / Y<br>  2- Which stylesheet format would you like to use? (Use arrow keys) // css</p>
+<p>  启动默认端口 4200  <a target="_blank" rel="noopener" href="http://127.0.0.1:4200/">http://127.0.0.1:4200/</a></p>
+<h3 id="目录简介"><a href="#目录简介" class="headerlink" title="目录简介"></a><span id="title1">目录简介</span></h3><p>  <strong>angular.json</strong>  项目配置文件<br>  <strong>src/main.ts、src/index.html</strong> 项目入口脚本<br>  <strong>src/app/app.module.ts</strong>    项目主模块<br>  <strong>src/app/app.component.ts/.html/.css</strong>   项目根组件</p>
+<h3 id="组件创建"><a href="#组件创建" class="headerlink" title="组件创建"></a><span id="title2">组件创建</span></h3><p>  效果大概就是和VUE一样创建一个.vue文件<br>  指令模式： <code>ng  generate  component   组件名</code>  或者 <code>ng  g  component  组件名</code> 或者 <code>npx  ng  g  component  组件名</code><br>  ng  generate  component   my01<br>  会创建一个文件夹 包含四个文件<br>  my01.component.css<br>  my01.component.html<br>  my01.component.spec.ts<br>  my01.component.ts<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// my01.component.ts 内容</span></span><br><span class="line">  <span class="keyword">import</span> &#123; Component, OnInit &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Component</span>(&#123; <span class="comment">// 装饰器（Decorator） 本质是一个函数.用于说明一个class的功能和作用</span></span><br><span class="line">    selector: <span class="string">&#x27;app-my01&#x27;</span>, <span class="comment">// 组件对应的html标签</span></span><br><span class="line">    templateUrl: <span class="string">&#x27;./my01.component.html&#x27;</span>, <span class="comment">// 组件的模板</span></span><br><span class="line">    styleUrls: [<span class="string">&#x27;./my01.component.css&#x27;</span>] <span class="comment">// 组件的样式</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> My01Component <span class="keyword">implements</span> OnInit &#123; <span class="comment">// 组件的脚本 将  implements OnInit  删掉</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"></span>) &#123; &#125;</span><br><span class="line"></span><br><span class="line">    ngOnInit(): <span class="built_in">void</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>  会在 app.module.ts 添加代码<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; My01Component &#125; <span class="keyword">from</span> <span class="string">&#x27;./my01/my01.component&#x27;</span>; <span class="comment">// 添加</span></span><br><span class="line"></span><br><span class="line">@NgModule(&#123;</span><br><span class="line">  declarations: [</span><br><span class="line">    AppComponent,</span><br><span class="line">    My01Component <span class="comment">// 添加</span></span><br><span class="line">  ],</span><br></pre></td></tr></table></figure></p>
+<p>  使用 &lt; app-my01 / &gt;11</p>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a><span id="title3">指令</span></h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>组件指令</td>
+<td>是一种有模板/样式的指令 Component  extends  Directive，组件继承自指令，组件是有模板的指令</td>
+<td>&lt; my01 &gt;&lt; /my01 &gt;</td>
+</tr>
+<tr>
+<td>结构型指令</td>
+<td>可以影响当前的DOM结构的指令</td>
+<td>所有结构型指令都以 *开头</td>
+</tr>
+<tr>
+<td>属性型指令</td>
+<td>不会影响DOM结构，只会影响当前元素的特征，如样式</td>
+<td>所有的属性型指令都用 []括起来</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>{ { } }</td>
+<td>内容绑定(大胡子语法)</td>
+<td>html: &lt; &gt; { { name } } &lt; &gt; <br> ts: name=””</td>
+</tr>
+<tr>
+<td>[]=””</td>
+<td>属性</td>
+<td>[ src ] = “ppp”</td>
+</tr>
+<tr>
+<td>(click) = “fn( )”</td>
+<td>事件</td>
+<td>(click) =”add($)” <br>  (click) =”add($event)”</td>
+</tr>
+<tr>
+<td>*ngFor</td>
+<td>循环</td>
+<td>&lt; p *ngFor=”let item of arr; index as i”&gt;{ { item } } + { { i } }&lt;/ p&gt;</td>
+</tr>
+<tr>
+<td>*ngIf</td>
+<td>直接删除了不显示的片段在dom树上</td>
+<td>&lt; *ngIf=”userAge&gt;50”&gt;&lt; &gt; <br> &lt; *ngIf=”userAge&gt;50; else my”&gt;&lt; &gt; <br> &lt; ng-template #my&gt; 如果满足条件，此内容回到对应的ngif中&lt;/ ng-template &gt;</td>
+</tr>
+<tr>
+<td>[ ngSwitch ]<br> *ngSwitchCase<br> *ngSwitchDefault</td>
+<td>选择绑定指令</td>
+<td>&lt; [ngSwitch]=”orderStatus”&gt;<br>&nbsp;&nbsp;&lt; *ngSwitchCase=”10” style=”color: #f00”&gt;1&lt; / &gt;<br>&nbsp;&nbsp;&lt; *ngSwitchCase=”20” style=”color: #0f0”&gt;2&lt;/ &gt;<br>&nbsp;&nbsp;&lt; *ngSwitchDefault&gt;未知状态&lt;/ &gt;<br>&lt;/ &gt;</td>
+</tr>
+<tr>
+<td>[ ngStyle ]</td>
+<td>样式绑定指令</td>
+<td>[ ngStyle ]=”{display: ‘block’, width: myWidth}”</td>
+</tr>
+<tr>
+<td>[ ngClass ]</td>
+<td>样式绑定指令</td>
+<td>[ ngClass ]=”{class1: true, class2: true}”</td>
+</tr>
+<tr>
+<td>[( ngModel) ]=””</td>
+<td>双向数据绑定指令</td>
+<td>[( ngModel )]=”mima” (ngModelChange)=”mimafn()”</td>
+</tr>
+<tr>
+<td>(ngModelChange)=”fn()”</td>
+<td>想监视模型数据的改变</td>
+<td>[( ngModel )]=”mima” (ngModelChange)=”mimafn()”</td>
+</tr>
+</tbody></table>
+<p>双向绑定添加引用 注册</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.module.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; FormsModule &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/forms&#x27;</span>              <span class="comment">//添加此行 导入，双向绑定需要</span></span><br><span class="line"></span><br><span class="line">  imports: [</span><br><span class="line">    BrowserModule,</span><br><span class="line">    AppRoutingModule,</span><br><span class="line">    FormsModule                                           <span class="comment">// 添加此行</span></span><br><span class="line">  ],</span><br></pre></td></tr></table></figure>
+
+
+<p>提示：可使用工具 <code>ng  g  directive 指令名</code> 快速的创建一个指令<br> 生成了2个文件夹<br> CREATE src/app/<code>xx.directive.spec.ts</code> (232 bytes)<br> CREATE src/app/<code>xx.directive.ts</code> (145 bytes)<br> 修改了一个文件夹 UPDATE <code>src/app/app.module.ts</code> (652 bytes)</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 稍微简单的内容 xx.directive.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; Directive, ElementRef &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="meta">@Directive</span>(&#123;</span><br><span class="line">  selector: <span class="string">&#x27;[appXx]&#x27;</span><span class="comment">// 装饰器就是个属性选择器 </span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> XxDirective &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">el: ElementRef</span>) &#123;          <span class="comment">// 声明el的类型为元素类型 // 指代当前指令应用在哪个DOM元素上</span></span><br><span class="line">    <span class="built_in">console</span>.log(el.nativeElement)       <span class="comment">// 带有此自定义属性的元素</span></span><br><span class="line">    el.nativeElement.style.color = <span class="string">&quot;red&quot;</span>  <span class="comment">//改变他们的样式</span></span><br><span class="line">    el.nativeElement.style.border = <span class="string">&quot;1px solid #0f0&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用时</span></span><br><span class="line">&lt; appXx&gt; &lt;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.module.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; XxDirective &#125; <span class="keyword">from</span> <span class="string">&#x27;./xx.directive&#x27;</span>; <span class="comment">// 新增</span></span><br><span class="line">  declarations: [</span><br><span class="line">    AppComponent,</span><br><span class="line">    My01Component,</span><br><span class="line">    XxDirective <span class="comment">// 新增</span></span><br><span class="line">  ],</span><br></pre></td></tr></table></figure>
+
+<h3 id="管道-过滤器"><a href="#管道-过滤器" class="headerlink" title="管道 || 过滤器"></a><span id="title4">管道 || 过滤器</span></h3><p>内置管道</p>
+<p>lowercase：把数据转换为小写形式<br>uppercase：把数据转换为大写形式<br>Titlecase  首字母大写<br>slice：获取字符串或数组中的一部分  slice:0:3 获取前3位<br>json：把对象转换为JSON字符串<br>date：把日期/数字转换为特定格式的日期字符串  date:’yyyy-mm-dd HH:mm:ss’<br>number：数字格式化(每三位加逗号，并指定小数位数)  number:’6.2-2’ 3位一个逗号,小数点前最少6位.小数点后保留两位位  123,123,11<br>currency 把数字以货币形式显示 currency:”￥”   ￥开头</p>
+<p>自定义管道<br><code>ng   g   pipe  管道名</code><br>ng   g   pipe guandao<br>生成了2个文件夹<br>CREATE <code>src/app/guandao.pipe.spec.ts</code> (191 bytes)<br>CREATE <code>src/app/guandao.pipe.ts</code> (219 bytes)<br>修改了一个文件夹 UPDATE <code>src/app/app.module.ts</code> (697 bytes)</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// guandao.pipe.ts 简单性别写法</span></span><br><span class="line"><span class="keyword">import</span> &#123; Pipe, PipeTransform &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Pipe</span>(&#123;</span><br><span class="line">  name: <span class="string">&#x27;guandao&#x27;</span> <span class="comment">// 使用的变量</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> GuandaoPipe &#123;</span><br><span class="line"></span><br><span class="line">  transform(val, lang = <span class="string">&quot;zh&quot;</span>) &#123; <span class="comment">// val管道前的值， 后续为携带参数</span></span><br><span class="line">    <span class="keyword">if</span> (lang == <span class="string">&#x27;zh&#x27;</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (val == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;男&#x27;</span></span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;女&#x27;</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;未知&#x27;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (val == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;male&#x27;</span></span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;female&#x27;</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;unknown&#x27;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">    &lt; &gt;&#123; &#123; sex | guandao:<span class="string">&#x27;ch&#x27;</span>&#125;&#125;&lt;/td&gt;</span><br><span class="line">    &lt; &gt;&#123; &#123; sex | guandao&#125;&#125;&lt;/td&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.module.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; GuandaoPipe &#125; <span class="keyword">from</span> <span class="string">&#x27;./guandao.pipe&#x27;</span>; <span class="comment">// 新增</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  declarations: [</span><br><span class="line">    AppComponent,</span><br><span class="line">    My01Component,</span><br><span class="line">    XxDirective,</span><br><span class="line">    GuandaoPipe  <span class="comment">// 新增</span></span><br><span class="line">  ],</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a><span id="title5">生命周期</span></h3><p><code>constructor</code>( )：构造方法，执行且仅执行一次<br><code>ngOnChanges</code>()：每次输入型属性的值发生改变会调用 （即使没有输入型属性也会调用一次）<br><code>ngOnInit</code>()：相当于mounted组建初始化完成后<br><code>ngDoCheck</code>( )：检测angular无法捕捉的系统事件<br><code>ngAfterContentInit</code>( )：组件内容初始化之后    &lt;&gt;&lt;&gt;<br><code>ngAfterContentChecked</code>()：组件内容发生改变<br><code>ngAfterViewInit</code>( )：组件视图初始化之后        &lt;&gt;&lt;[ title] =”***”&gt;&lt;/&gt;&lt;/&gt;<br><code>ngAfterViewChecked</code>()：组件视图被重新检查后<br><code>ngOnDestroy</code>( )：组件即将从DOM树上销毁，用于释放定时器、取消订阅…执行且仅执行一次 销毁前</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Angular-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Angular-3-组件传参" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Angular-3-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/">3-组件传参</a>
+    </h1>
+  
+
+        
+        <a href="/Angular-3-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.425Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="父子-子父-传参"><a href="#父子-子父-传参" class="headerlink" title="父子 子父 传参"></a>父子 子父 传参</h3><p>父子传参</p>
+<blockquote>
+<p>子组件<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnInit, Input &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>; <span class="comment">// 添加</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="string">&#x27;app-zi&#x27;</span>,</span><br><span class="line">  templateUrl: <span class="string">&#x27;./zi.component.html&#x27;</span>,</span><br><span class="line">  styleUrls: [<span class="string">&#x27;./zi.component.css&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> ZiComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line">  <span class="meta">@Input</span>() <span class="comment">// 添加</span></span><br><span class="line">  userName: <span class="built_in">string</span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123; &#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit(): <span class="built_in">void</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>父组件<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;app-zi [userName]=<span class="string">&quot;abc&quot;</span>&gt;&lt;/app-zi&gt;</span><br><span class="line"><span class="comment">// ts</span></span><br><span class="line">  abc: <span class="built_in">string</span> = <span class="string">&#x27;7777&#x27;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>子父传参</p>
+<blockquote>
+<p>子<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnInit, Input, EventEmitter, Output &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>; <span class="comment">// EventEmitter, Output</span></span><br><span class="line">  <span class="meta">@Output</span>()  <span class="comment">// 需要发射给父组件的事件--输出型属性</span></span><br><span class="line">  uname1 = <span class="keyword">new</span> EventEmitter  <span class="comment">// 事件发射器</span></span><br><span class="line">  doclick()&#123;                <span class="comment">// 点击触发事件</span></span><br><span class="line">    <span class="built_in">this</span>.uname1.emit(<span class="built_in">this</span>.inputt)<span class="comment">//发射自定义事件.携带自己的参数</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>父<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;app-zi  (uname1)=<span class="string">&quot;doCry($event)&quot;</span>&gt;&lt;<span class="regexp">/app-zi&gt; /</span><span class="regexp">/ (uname1)=&quot;doCry($event)&quot;  (子元素声明的事件发射器) = &quot;函数($event)&quot;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ ts</span></span><br><span class="line"><span class="regexp">doCry (e) &#123;</span></span><br><span class="line"><span class="regexp">    console.log(&#x27;获取得到的参数&#x27;,e)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>子组件给父组件传递数据的非标准方式—让父组件可以直接使用子组件对象 相当于vue 的ref</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// html</span></span><br><span class="line">&lt; #myc01&gt;..&lt;/&gt;</span><br><span class="line"><span class="comment">// ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; Component, OnInit, ViewChild &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>; <span class="comment">// ViewChild </span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//static 是静态还是动态？ 就是有没有if或者for</span></span><br><span class="line">  <span class="meta">@ViewChild</span>(<span class="string">&#x27;mySign01&#x27;</span>, &#123; <span class="keyword">static</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">  c1</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">  <span class="comment">// 此时 this.c1 = 当前做了 #mySign01 标记的元素</span></span><br></pre></td></tr></table></figure>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Angular-3-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Angular-2-服务和依赖注入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -202,190 +484,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Angular-2-%E6%9C%8D%E5%8A%A1%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Angular-4-路由" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Angular-4-%E8%B7%AF%E7%94%B1/">4-路由</a>
-    </h1>
-  
-
-        
-        <a href="/Angular-4-%E8%B7%AF%E7%94%B1/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.425Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>一 在根模块引入路由模块，注册路由词典</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; RouterModule &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/router&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; IndexComponent &#125; <span class="keyword">from</span> .....</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routrs = [</span><br><span class="line">  &#123;path: <span class="string">&quot;&quot;</span>, redirectTo:<span class="string">&#x27;index&#x27;</span>, pathMatch:<span class="string">&quot;full&quot;</span>&#125;, <span class="comment">// 没有地址跳转到路由 index</span></span><br><span class="line">  &#123;path: <span class="string">&quot;index&quot;</span>, component:IndexComponent&#125;, </span><br><span class="line">  &#123;path:<span class="string">&quot;product/detail/:pid&quot;</span>,component:ProductDetailComponent&#125;, <span class="comment">// 路由必须写出 product/detail/1 product/detail/2 带参数的样子</span></span><br><span class="line">  &#123;path: <span class="string">&quot;**&quot;</span>, component:IndexComponent&#125;,  <span class="comment">// 什么都不匹配显示</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">	<span class="meta">@NgModule</span>(&#123;</span><br><span class="line">		imports: [</span><br><span class="line">      BrowserModule,</span><br><span class="line">      <span class="comment">//AppRoutingModule, 脚手架提供的  .现在在屏蔽掉.用自己的</span></span><br><span class="line">      RouterModule.forRoot(routes) <span class="comment">// routes 创建的路由词典名</span></span><br><span class="line">    ]</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
-<p>二 在根组件的模板中声明路由组件的占位符</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  // app.component.html</span><br><span class="line"><span class="tag">&lt;<span class="name">router-outlet</span>&gt;</span><span class="tag">&lt;/<span class="name">router-outlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h2><p>一.ts 方式</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Router &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/router&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> My01Component <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line">  contructor( <span class="keyword">private</span> router: Router )&#123; &#125;</span><br><span class="line"></span><br><span class="line">  doCry(e) &#123;</span><br><span class="line">    <span class="built_in">this</span>.router.navigateByUrl( <span class="string">&#x27;index/aaa&#x27;</span> ) <span class="comment">// 跳转路由path</span></span><br><span class="line">  &#125;</span><br><span class="line">  ngOnInit(): <span class="built_in">void</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>二 html 方式</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">any</span> <span class="attr">routerLink</span>=<span class="string">&quot;/product/detail/2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">any</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="获取路由携带的参数"><a href="#获取路由携带的参数" class="headerlink" title="获取路由携带的参数"></a>获取路由携带的参数</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明时</span></span><br><span class="line">  &#123;path:<span class="string">&quot;product/detail/:pid&quot;</span>,component:ProductDetailComponent&#125;, <span class="comment">// 路由必须写出 product/detail/1 product/detail/2 带参数的样子</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 跳转时</span></span><br><span class="line">  &lt;<span class="built_in">any</span> routerLink=<span class="string">&quot;/product/detail/2&quot;</span>&gt;&lt;/<span class="built_in">any</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取时 **.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; ActivatedRoute &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/router&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> ProductDetailComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line">  <span class="keyword">private</span> pid:<span class="built_in">string</span>=<span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> route:ActivatedRoute</span>) &#123; &#125;</span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">  <span class="comment">//组件初始化完成 。读取当前路由地址中的路由参数。据此发起异步请求</span></span><br><span class="line">  <span class="comment">//  this.route.queryParams // 会得到 ***？lid=5</span></span><br><span class="line">  <span class="comment">//  this.route.params//得到 ***/5</span></span><br><span class="line">  <span class="comment">//console.log(this.route.params)</span></span><br><span class="line">    <span class="built_in">this</span>.route.params.subscribe(<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">      <span class="built_in">this</span>.pid=data.pid</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h2><p>指令： <code>ng g guard showei</code></p>
-<p>? Which interfaces would you like to implement? (Press <space> to select, <a> to toggle all, <i> to invert selection) 你想要实现哪些接口<br> (*) CanActivate 可以激活<br> ( ) CanActivateChild 可以激活孩子<br> ( ) CanDeactivate 可以禁用<br> ( ) CanLoad 可以负载<br>新建了两个新文件<br>CREATE <code>src/app/sy.guard.spec.ts</code> (321 bytes)<br>CREATE <code>src/app/sy.guard.ts</code> (455 bytes)</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Injectable &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="comment">// import &#123; CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree &#125; from &#x27;@angular/router&#x27;;</span></span><br><span class="line"><span class="comment">// import &#123; Observable &#125; from &#x27;rxjs&#x27;;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span>(&#123;</span><br><span class="line">  providedIn: <span class="string">&#x27;root&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> SyGuard <span class="keyword">implements</span> CanActivate &#123;</span><br><span class="line">  <span class="comment">// canActivate(</span></span><br><span class="line">  <span class="comment">//   route: ActivatedRouteSnapshot,</span></span><br><span class="line">  <span class="comment">//   state: RouterStateSnapshot): Observable&lt;boolean | UrlTree&gt; | Promise&lt;boolean | UrlTree&gt; | boolean | UrlTree &#123;</span></span><br><span class="line">  <span class="comment">//   return true;</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="keyword">private</span> isUnderMaintenance = <span class="literal">false</span></span><br><span class="line">  canActivate() &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.isUnderMaintenance === <span class="literal">false</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;  <span class="comment">// 那么就可以激活目标路由</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 否则就禁止激活目标路由</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 app.module.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; SystmaintenanceGuard &#125; <span class="keyword">from</span> <span class="string">&#x27;./systmaintenance.guard&#x27;</span>;  <span class="comment">//路由守卫</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  path:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  canActivate: [SystmaintenanceGuard],</span><br><span class="line">  component:ProductlistComponent,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Angular-4-%E8%B7%AF%E7%94%B1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Angular-5-lonic组件库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Angular-5-lonic%E7%BB%84%E4%BB%B6%E5%BA%93/">5-lonic组件库</a>
-    </h1>
-  
-
-        
-        <a href="/Angular-5-lonic%E7%BB%84%E4%BB%B6%E5%BA%93/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.425Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>Ionic是一个基于HTML/CSS/JS技术的，创建混合App的UI组件库技术。底层可以不依赖于任何框架(引入.css和.js就可以运行)，也可以与Vue.js、React、Angular框架整合在一起，作为它们的第三方组件库使用。<br><a target="_blank" rel="noopener" href="https://ionicframework.com/docs/api/grid">https://ionicframework.com/docs/api/grid</a></p>
-<blockquote>
-<p>使用方法：<br>  (1)下载全局脚手架工具<br>    npm  i   -g   ionic<br>  (2)选择一个目录，运行脚手架工具在当前目录下创建一个项目<br>    ionic  start   项目名   blank           -空白项目<br>    ionic  start   项目名   tabs                  -带有底部菜单项目<br>    ionic  start   项目名   sidemenu            -带有左侧菜单项目<br>    创建好项目后会自动调用npm i下载所依赖的第三方模块</p>
-</blockquote>
-<blockquote>
-<p> Ionic的九种主题色——color：&lt; ion-xxx color=”” 此处?只能写9种主题色之一&gt;<br>  <code>Theme &gt; variables.scss</code> 中<br>  primary(蓝白)<br>  secondary(青白)<br>  tertiary(偏紫白)<br>  success(绿白)<br>  warning(黄白)<br>  danger(红白)<br>  dark(黑白)<br>  medium(灰白)<br>  light(亮色)</p>
-</blockquote>
-<blockquote>
-<p>页面布局 官网 =》 左侧结构体<br>  比如<br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ion-app</span>&gt;</span><span class="comment">&lt;!-- 长宽占满屏幕 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ion-header</span>&gt;</span><span class="comment">&lt;!-- 页头 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-toolbar</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ion-title</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">ion-title</span>&gt;</span><span class="comment">&lt;!-- 字体变大.并且位置有变化 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ion-toolbar</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">ion-header</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--padding 属性名.不能给定具体的值 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ion-content</span> <span class="attr">padding</span>&gt;</span><span class="comment">&lt;!-- 主题内容过多时.会出现滚动条 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-grid</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ion-row</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ion-col</span> <span class="attr">size</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&#x27;box&#x27;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;/<span class="name">ion-col</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ion-col</span> <span class="attr">size</span>=<span class="string">&quot;5&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&#x27;box&#x27;</span>&gt;</span>5<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;/<span class="name">ion-col</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ion-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ion-grid</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ion-content</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ion-footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-toolbar</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ion-title</span>&gt;</span>页尾<span class="tag">&lt;/<span class="name">ion-title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ion-toolbar</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ion-footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ion-app</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>轮播<br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ion-slides</span> <span class="attr">pager</span>=<span class="string">&quot;true&quot;</span> #<span class="attr">indexslides</span>&gt;</span><span class="comment">&lt;!-- pager 小点 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ion-slide</span> *<span class="attr">ngFor</span>=<span class="string">&quot;let item of carouselItems&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> [<span class="attr">src</span>]=<span class="string">&quot;&#x27;http://www.codeboy.com/&#x27;+item.img&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ion-slide</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ion-slides</span>&gt;</span></span><br></pre></td></tr></table></figure><br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnInit, ViewChild &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ApiService &#125; <span class="keyword">from</span> <span class="string">&#x27;../api.service&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> IndexComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line"><span class="comment">//轮播广告组件  </span></span><br><span class="line">  <span class="meta">@ViewChild</span> (<span class="string">&quot;indexslides&quot;</span>,&#123;<span class="keyword">static</span>:<span class="literal">true</span>&#125;)</span><br><span class="line">  <span class="keyword">private</span> indexslides</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> api:ApiService</span>)&#123;&#125;</span><br><span class="line">  ngOnInit()&#123;</span><br><span class="line">    <span class="built_in">this</span>.indexslides.startAutoplay() <span class="comment">// 自动播放</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="打包方式"><a href="#打包方式" class="headerlink" title="打包方式"></a>打包方式</h3><blockquote>
-<p>简单<br>  只需要把代码上传到 ionic 的官方网站, ionic就会自动帮助你打包完毕, 把安装包发送回来<br>  登录: <a target="_blank" rel="noopener" href="https://ionicframework.com/login?source=framework-home">https://ionicframework.com/login?source=framework-home</a><br>  按照官方要求: 上传代码包 并 选择创建服务即可: 300元/月<br>复杂<br>  需要下载接近 2G 的环境包, 各种配置安装 在自己电脑上搭建 编译环境(大概率会失败)<br>  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/unofficial/p/4837190.html">https://www.cnblogs.com/unofficial/p/4837190.html</a><br>  此流程 在 React 阶段会使用1天的时间 来搭建编译环境!!</p>
-</blockquote>
-<p>链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1fBHOXYLAHaeSDUw5dpVURg">https://pan.baidu.com/s/1fBHOXYLAHaeSDUw5dpVURg</a> 提取码: iz4f</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Angular-5-lonic%E7%BB%84%E4%BB%B6%E5%BA%93/">展开全文 >></a>
         </p>
       
 
@@ -593,11 +691,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,15 +703,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,6 +716,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,11 +755,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">画图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -670,10 +772,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
             
             <div class="clearfix"></div>

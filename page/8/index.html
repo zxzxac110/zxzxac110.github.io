@@ -145,6 +145,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-React-5-ReactNative路由" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/React-5-ReactNative%E8%B7%AF%E7%94%B1/">5-ReactNative路由</a>
+    </h1>
+  
+
+        
+        <a href="/React-5-ReactNative%E8%B7%AF%E7%94%B1/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.440Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="路由方法一·"><a href="#路由方法一·" class="headerlink" title="路由方法一·"></a>路由方法一·</h3><p>React本身没有路由和导航组件！<br>  如果项目是基于React的Web项目，路由和跳转可以使用React-Router；<br>  ReactNative本身也没有提供路由和导航组件！<br>  如果在RN项目可以使用第三方路由组件：<code>React-Navigation</code><br>  官网：<a target="_blank" rel="noopener" href="https://reactnavigation.org/">https://reactnavigation.org/</a><br>React Navigation是一个基于ReactNative原生App开发的路由和导航组件，在原生App中模拟出了Web浏览器中window.history访问历史记录的“栈式”效果</p>
+<p>1.下载<br><code>npm  i  react-navigation</code><br><code>npm  i  react-native-guesture-handler</code><br><code>npm  i  react-navtive-reanimated</code><br>2 创建页面组件<br>3 声明并注册路由词典</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// App.js</span></span><br><span class="line"><span class="comment">/**创建路由器/导航器 注册给根组件 */</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; createAppContainer,createStackNavigator &#125; <span class="keyword">from</span> <span class="string">&#x27;react-navigation&#x27;</span>  <span class="comment">// 引入</span></span><br><span class="line"><span class="keyword">import</span> LoginScreen <span class="keyword">from</span> <span class="string">&#x27;./src/components/LoginScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> MainScreen <span class="keyword">from</span> <span class="string">&#x27;./src/components/MainScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ProductListScreen <span class="keyword">from</span> <span class="string">&#x27;./src/components/ProductListScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ProductDetailScreen <span class="keyword">from</span> <span class="string">&#x27;./src/components/ProductDetailScreen&#x27;</span>;</span><br><span class="line"><span class="comment">//创建路由器</span></span><br><span class="line"><span class="keyword">let</span> router = createStackNavigator(&#123;</span><br><span class="line">    productList:ProductListScreen,    <span class="comment">//第一个路由即是“首屏内容”</span></span><br><span class="line">    main:MainScreen,</span><br><span class="line">    login:LoginScreen,</span><br><span class="line">    productDetail:ProductDetailScreen</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//注册路由去.导出路由</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> createAppContainer(router)</span><br></pre></td></tr></table></figure>
+
+<p>4.路由跳转</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/view/***.js</span></span><br><span class="line">		<span class="comment">//&lt;LoginScreen navigation=&#123;&#125;&gt;</span></span><br><span class="line">		<span class="comment">//所有的路由组件，在创建时都被注入一个属性navigation</span></span><br><span class="line">		<span class="comment">//组件内部可以使用this.props.navigation访问该属性</span></span><br><span class="line">		<span class="built_in">this</span>.props.navigation.navigate(<span class="string">&#x27;main&#x27;</span>)  <span class="comment">//跳转路由地址</span></span><br><span class="line">		<span class="built_in">this</span>.props.navigation.goBack()         <span class="comment">//返回上一页</span></span><br><span class="line">		<span class="built_in">this</span>.props.navigation.popToTop()	     <span class="comment">//返回首页</span></span><br><span class="line">    <span class="built_in">this</span>.props.navigation.push ()</span><br><span class="line">    <span class="built_in">this</span>.props.navigation.pop()</span><br><span class="line">    <span class="built_in">this</span>.props.navigation.getParam ()      <span class="comment">//获取路由参数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 跳转传参</span></span><br><span class="line">    <span class="built_in">this</span>.props.navigation.navigate(<span class="string">&#x27;页面2&#x27;</span>, &#123; <span class="attr">pid</span>: <span class="number">999</span>, <span class="attr">uname</span>:<span class="string">&#x27;&#x27;</span> &#125; )  <span class="comment">// 页面1：</span></span><br><span class="line">    <span class="keyword">let</span> pid = <span class="built_in">this</span>.props.navigation.getParam(<span class="string">&#x27;pid&#x27;</span>, 默认值) <span class="comment">// 页面2 没有的话就是默认值</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 为每个页面提供头部标题栏内容：</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> ****** <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">			<span class="keyword">static</span>  navigationOptions = &#123;</span><br><span class="line">				title: <span class="string">&#x27;页面标题字&#x27;</span>,</span><br><span class="line">				<span class="comment">//headerTitle:  &lt;Image.../&gt;</span></span><br><span class="line">				<span class="comment">//headerRight:  &lt;Button.../&gt;</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="路由方法二"><a href="#路由方法二" class="headerlink" title="路由方法二"></a>路由方法二</h3><p>1.编译环境OK<br>2.生成项目包:<code> react-native init xueziApp</code><br>3.安装路由模块 和 网页模块<br>  3-1 路由模块官网: <a target="_blank" rel="noopener" href="https://reactnavigation.org/docs/getting-started">https://reactnavigation.org/docs/getting-started</a><br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install @react-navigation&#x2F;native</span><br><span class="line">$ npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-nativecommunity&#x2F;masked-view</span><br><span class="line">$ npm install @react-navigation&#x2F;stack</span><br></pre></td></tr></table></figure><br> 3-2 网页模块:<br>  <a target="_blank" rel="noopener" href="https://github.com/react-native-community/react-native-webview">https://github.com/react-native-community/react-native-webview</a><br>  <a target="_blank" rel="noopener" href="https://github.com/iou90/react-native-autoheight-webview">https://github.com/iou90/react-native-autoheight-webview</a></p>
+<p>  <code>npm i react-native-autoheight-webview react-native-webview</code></p>
+<p>  编译: 先 <code>adb devices</code> 检测模拟器<br>  项目需要替换 gradle 的下载地址为本地地址<br>    <code>npm run android</code> </p>
+<p>示例 不常用 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// App.js</span></span><br><span class="line"><span class="comment">// In App.js in a new project</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; View, Text &#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; NavigationContainer &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createStackNavigator &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/stack&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HomeScreen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">    &lt;View style=&#123;&#123; <span class="attr">flex</span>: <span class="number">1</span>, <span class="attr">alignItems</span>: <span class="string">&#x27;center&#x27;</span>, <span class="attr">justifyContent</span>: <span class="string">&#x27;center&#x27;</span> &#125;&#125;&gt;</span><br><span class="line">      &lt;Text&gt;Home Screen&lt;/Text&gt;</span><br><span class="line">    &lt;/View&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> Stack = createStackNavigator();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">  &lt;NavigationContainer&gt;</span><br><span class="line">    &lt;Stack.Navigator&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Home&quot;</span> component=&#123;HomeScreen&#125; /&gt;</span><br><span class="line">    &lt;/Stack.Navigator&gt;</span><br><span class="line">  &lt;/NavigationContainer&gt;</span><br><span class="line">  );</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+<p>示例 引用组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// In App.js in a new project</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;NavigationContainer&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;createStackNavigator&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/stack&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> LoginScreen <span class="keyword">from</span> <span class="string">&#x27;./screens/LoginScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> MainScreen <span class="keyword">from</span> <span class="string">&#x27;./screens/MainScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ProductsScreen <span class="keyword">from</span> <span class="string">&#x27;./screens/ProductsScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> DetailScreen <span class="keyword">from</span> <span class="string">&#x27;./screens/DetailScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> Stack = createStackNavigator();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;NavigationContainer&gt;</span><br><span class="line">    &lt;Stack.Navigator&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Login&quot;</span> component=&#123;LoginScreen&#125; /&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Main&quot;</span> component=&#123;MainScreen&#125; /&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Products&quot;</span> component=&#123;ProductsScreen&#125; /&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Detail&quot;</span> component=&#123;DetailScreen&#125; /&gt;</span><br><span class="line">    &lt;/Stack.Navigator&gt;</span><br><span class="line">  &lt;/NavigationContainer&gt;</span><br><span class="line">);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/React-5-ReactNative%E8%B7%AF%E7%94%B1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-React-4-ReactNative" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -262,97 +353,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/React-4-ReactNative/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-React-5-ReactNative路由" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/React-5-ReactNative%E8%B7%AF%E7%94%B1/">5-ReactNative路由</a>
-    </h1>
-  
-
-        
-        <a href="/React-5-ReactNative%E8%B7%AF%E7%94%B1/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.440Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="路由方法一·"><a href="#路由方法一·" class="headerlink" title="路由方法一·"></a>路由方法一·</h3><p>React本身没有路由和导航组件！<br>  如果项目是基于React的Web项目，路由和跳转可以使用React-Router；<br>  ReactNative本身也没有提供路由和导航组件！<br>  如果在RN项目可以使用第三方路由组件：<code>React-Navigation</code><br>  官网：<a target="_blank" rel="noopener" href="https://reactnavigation.org/">https://reactnavigation.org/</a><br>React Navigation是一个基于ReactNative原生App开发的路由和导航组件，在原生App中模拟出了Web浏览器中window.history访问历史记录的“栈式”效果</p>
-<p>1.下载<br><code>npm  i  react-navigation</code><br><code>npm  i  react-native-guesture-handler</code><br><code>npm  i  react-navtive-reanimated</code><br>2 创建页面组件<br>3 声明并注册路由词典</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// App.js</span></span><br><span class="line"><span class="comment">/**创建路由器/导航器 注册给根组件 */</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; createAppContainer,createStackNavigator &#125; <span class="keyword">from</span> <span class="string">&#x27;react-navigation&#x27;</span>  <span class="comment">// 引入</span></span><br><span class="line"><span class="keyword">import</span> LoginScreen <span class="keyword">from</span> <span class="string">&#x27;./src/components/LoginScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> MainScreen <span class="keyword">from</span> <span class="string">&#x27;./src/components/MainScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ProductListScreen <span class="keyword">from</span> <span class="string">&#x27;./src/components/ProductListScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ProductDetailScreen <span class="keyword">from</span> <span class="string">&#x27;./src/components/ProductDetailScreen&#x27;</span>;</span><br><span class="line"><span class="comment">//创建路由器</span></span><br><span class="line"><span class="keyword">let</span> router = createStackNavigator(&#123;</span><br><span class="line">    productList:ProductListScreen,    <span class="comment">//第一个路由即是“首屏内容”</span></span><br><span class="line">    main:MainScreen,</span><br><span class="line">    login:LoginScreen,</span><br><span class="line">    productDetail:ProductDetailScreen</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//注册路由去.导出路由</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> createAppContainer(router)</span><br></pre></td></tr></table></figure>
-
-<p>4.路由跳转</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/view/***.js</span></span><br><span class="line">		<span class="comment">//&lt;LoginScreen navigation=&#123;&#125;&gt;</span></span><br><span class="line">		<span class="comment">//所有的路由组件，在创建时都被注入一个属性navigation</span></span><br><span class="line">		<span class="comment">//组件内部可以使用this.props.navigation访问该属性</span></span><br><span class="line">		<span class="built_in">this</span>.props.navigation.navigate(<span class="string">&#x27;main&#x27;</span>)  <span class="comment">//跳转路由地址</span></span><br><span class="line">		<span class="built_in">this</span>.props.navigation.goBack()         <span class="comment">//返回上一页</span></span><br><span class="line">		<span class="built_in">this</span>.props.navigation.popToTop()	     <span class="comment">//返回首页</span></span><br><span class="line">    <span class="built_in">this</span>.props.navigation.push ()</span><br><span class="line">    <span class="built_in">this</span>.props.navigation.pop()</span><br><span class="line">    <span class="built_in">this</span>.props.navigation.getParam ()      <span class="comment">//获取路由参数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 跳转传参</span></span><br><span class="line">    <span class="built_in">this</span>.props.navigation.navigate(<span class="string">&#x27;页面2&#x27;</span>, &#123; <span class="attr">pid</span>: <span class="number">999</span>, <span class="attr">uname</span>:<span class="string">&#x27;&#x27;</span> &#125; )  <span class="comment">// 页面1：</span></span><br><span class="line">    <span class="keyword">let</span> pid = <span class="built_in">this</span>.props.navigation.getParam(<span class="string">&#x27;pid&#x27;</span>, 默认值) <span class="comment">// 页面2 没有的话就是默认值</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 为每个页面提供头部标题栏内容：</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> ****** <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">			<span class="keyword">static</span>  navigationOptions = &#123;</span><br><span class="line">				title: <span class="string">&#x27;页面标题字&#x27;</span>,</span><br><span class="line">				<span class="comment">//headerTitle:  &lt;Image.../&gt;</span></span><br><span class="line">				<span class="comment">//headerRight:  &lt;Button.../&gt;</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h3 id="路由方法二"><a href="#路由方法二" class="headerlink" title="路由方法二"></a>路由方法二</h3><p>1.编译环境OK<br>2.生成项目包:<code> react-native init xueziApp</code><br>3.安装路由模块 和 网页模块<br>  3-1 路由模块官网: <a target="_blank" rel="noopener" href="https://reactnavigation.org/docs/getting-started">https://reactnavigation.org/docs/getting-started</a><br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install @react-navigation&#x2F;native</span><br><span class="line">$ npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-nativecommunity&#x2F;masked-view</span><br><span class="line">$ npm install @react-navigation&#x2F;stack</span><br></pre></td></tr></table></figure><br> 3-2 网页模块:<br>  <a target="_blank" rel="noopener" href="https://github.com/react-native-community/react-native-webview">https://github.com/react-native-community/react-native-webview</a><br>  <a target="_blank" rel="noopener" href="https://github.com/iou90/react-native-autoheight-webview">https://github.com/iou90/react-native-autoheight-webview</a></p>
-<p>  <code>npm i react-native-autoheight-webview react-native-webview</code></p>
-<p>  编译: 先 <code>adb devices</code> 检测模拟器<br>  项目需要替换 gradle 的下载地址为本地地址<br>    <code>npm run android</code> </p>
-<p>示例 不常用 </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// App.js</span></span><br><span class="line"><span class="comment">// In App.js in a new project</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; View, Text &#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; NavigationContainer &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createStackNavigator &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/stack&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HomeScreen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">    &lt;View style=&#123;&#123; <span class="attr">flex</span>: <span class="number">1</span>, <span class="attr">alignItems</span>: <span class="string">&#x27;center&#x27;</span>, <span class="attr">justifyContent</span>: <span class="string">&#x27;center&#x27;</span> &#125;&#125;&gt;</span><br><span class="line">      &lt;Text&gt;Home Screen&lt;/Text&gt;</span><br><span class="line">    &lt;/View&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> Stack = createStackNavigator();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">  &lt;NavigationContainer&gt;</span><br><span class="line">    &lt;Stack.Navigator&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Home&quot;</span> component=&#123;HomeScreen&#125; /&gt;</span><br><span class="line">    &lt;/Stack.Navigator&gt;</span><br><span class="line">  &lt;/NavigationContainer&gt;</span><br><span class="line">  );</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
-<p>示例 引用组件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// In App.js in a new project</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;NavigationContainer&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;createStackNavigator&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/stack&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> LoginScreen <span class="keyword">from</span> <span class="string">&#x27;./screens/LoginScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> MainScreen <span class="keyword">from</span> <span class="string">&#x27;./screens/MainScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ProductsScreen <span class="keyword">from</span> <span class="string">&#x27;./screens/ProductsScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> DetailScreen <span class="keyword">from</span> <span class="string">&#x27;./screens/DetailScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> Stack = createStackNavigator();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;NavigationContainer&gt;</span><br><span class="line">    &lt;Stack.Navigator&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Login&quot;</span> component=&#123;LoginScreen&#125; /&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Main&quot;</span> component=&#123;MainScreen&#125; /&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Products&quot;</span> component=&#123;ProductsScreen&#125; /&gt;</span><br><span class="line">      &lt;Stack.Screen name=<span class="string">&quot;Detail&quot;</span> component=&#123;DetailScreen&#125; /&gt;</span><br><span class="line">    &lt;/Stack.Navigator&gt;</span><br><span class="line">  &lt;/NavigationContainer&gt;</span><br><span class="line">);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/React-5-ReactNative%E8%B7%AF%E7%94%B1/">展开全文 >></a>
         </p>
       
 
@@ -828,6 +828,239 @@
 
 
   
+    <article id="post-Python-2-函数-作用域-封装-继承-多态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/">2-函数,作用域,封装,继承,多态</a>
+    </h1>
+  
+
+        
+        <a href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.438Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>实参列表必须与形参列完全一致<br>但是 可以不给有默认值的形参赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span>(<span class="params">num1, num2 = <span class="number">500</span></span>):</span></span><br><span class="line">  num3 = num1 + num2</span><br><span class="line">  <span class="keyword">return</span> num3   <span class="comment"># 如果没有声明return默认返回的是None</span></span><br><span class="line">result = sum(<span class="number">1000</span>, <span class="number">2000</span>)</span><br><span class="line">print(<span class="string">&#x27;1000和2000的算术和为：&#x27;</span>, result)</span><br></pre></td></tr></table></figure>
+
+<p>如果硬是要函数名义与但是 参数位数不同 使用 星号</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">add</span>(<span class="params"> *args </span>):</span>  <span class="comment"># *表示此参数是可变长度参数——tuple</span></span><br><span class="line">  print(args)</span><br><span class="line">add(<span class="number">10</span>)  <span class="comment"># args: (10,)</span></span><br><span class="line">add(<span class="number">10</span>, <span class="number">20</span>) <span class="comment">#args:(10, 20)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">add</span>(<span class="params"> **args </span>):</span> <span class="comment">#**表示此参数是可变长度参数——dict</span></span><br><span class="line">add() <span class="comment">#args: &#123; &#125;</span></span><br><span class="line">add(n1=<span class="number">10</span>) <span class="comment">#args: &#123;&#x27;n1&#x27;:10&#125;</span></span><br><span class="line">add(n1=<span class="number">10</span>, n2=<span class="number">20</span>, n3=<span class="number">30</span>) <span class="comment">#args:&#123;&#x27;n1&#x27;:10, &#x27;n2&#x27;:20, &#x27;n3&#x27;:30&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>Python中提供了四种作用域：—— L&gt;E&gt;G&gt;B<br>  L：<code>Local</code>，本地/局部作用域，只能在当前函数内使用<br>  E：<code>Enclosing</code>，闭包作用域，由外部函数提供给内部函数使用的变量作用域<br>  G：<code>Global</code>，全局作用域，可以在全局使用；<br>  B：<code>Built-In</code>，内置作用域，是由Python提供的函数和变量，如id()/type()/int()…..<br>如果函数内想修改全局作用域变量值，必须声明：<br><code>global</code>  变量名<br>如果函数内想修改闭包作用域变量值，必须声明：<br><code>nonlocal</code>  变量名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mySum = <span class="number">200</span>   </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>():</span></span><br><span class="line">  <span class="keyword">global</span> mySum   <span class="comment"># 声明此处的mySum是全局变量 没有这句话会报警，因为他找不到局部的mySum</span></span><br><span class="line">  mySum = mySum+<span class="number">1</span></span><br><span class="line">  print(mySum) <span class="comment"># 201</span></span><br><span class="line">add()</span><br><span class="line">print(mySum) <span class="comment"># 201</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="封装-继承-多态"><a href="#封装-继承-多态" class="headerlink" title="封装 继承 多态"></a>封装 继承 多态</h2><blockquote>
+<p>封装</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 说明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span>  类名 :</span></span><br><span class="line">   变量名 = 值</span><br><span class="line">	<span class="function"><span class="keyword">def</span>  <span class="title">__init__</span>(<span class="params">self, 形参列表</span>):</span></span><br><span class="line">		构造方法体</span><br><span class="line">	<span class="function"><span class="keyword">def</span>  成员方法(<span class="params">self</span>):</span><span class="comment">#所有方法的第一个参数都是self</span></span><br><span class="line">		成员方法体</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> :</span></span><br><span class="line">    a = <span class="string">&#x27;7&#x27;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n, s, m</span>) :</span> <span class="comment"># 所有方法第一个参数都是self</span></span><br><span class="line">    self.__ename = n    <span class="comment"># 声明一个私有属性成员</span></span><br><span class="line">    self.salary = s    <span class="comment"># 声明一个属性成员</span></span><br><span class="line">    self.__isMarried = m   <span class="comment"># 声明一个私有属性成员</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#对象内部的方法成员</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>) :</span> <span class="comment"># 所有方法第一个参数都是self</span></span><br><span class="line">    print(<span class="string">&#x27;员工姓名：%s 工资：%f 婚否：%d&#x27;</span>%(self.__ename, self.salary, self.a)</span><br><span class="line"></span><br><span class="line">e1 = Emp(<span class="string">&#x27;丁丁&#x27;</span>,<span class="number">5000</span>,<span class="literal">True</span>)</span><br><span class="line">e1.printInfo() <span class="comment"># 员工姓名：丁丁 工资：5000.000000 婚否：1&#x27;</span></span><br><span class="line"><span class="comment"># print(e1.__ename)   #私有属性不能在类外面使用</span></span><br><span class="line">print(e1.salary) <span class="comment"># 5000</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>继承</p>
+</blockquote>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#说明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span>(<span class="params"> Parent1 </span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, 形参列表</span>):</span></span><br><span class="line">    super().__init__(实参)</span><br><span class="line">    self.xx = xx</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例</span></span><br><span class="line"><span class="comment">#继承： Coder is a Emp</span></span><br><span class="line"><span class="comment">#is a关系就是继承关系</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> :</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n, s</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;一个Emp对象被构建了&#x27;</span>)</span><br><span class="line">    self.ename = n   </span><br><span class="line">    self.salary = s  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;员工姓名：%s 工资：%f&#x27;</span>%(self.ename, self.salary))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coder</span>(<span class="params"> Emp </span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, ename, salary, lang</span>):</span></span><br><span class="line">    super().__init__(ename, salary)  <span class="comment">#子类构造方法内部第一句永远调用父类的构造方法</span></span><br><span class="line">    self.language = lang </span><br><span class="line">    print(<span class="string">&#x27;一个Coder对象被构建了&#x27;</span>)</span><br><span class="line"></span><br><span class="line">c1 = Coder(<span class="string">&#x27;当当&#x27;</span>,<span class="number">8000</span>,<span class="string">&#x27;JS/ES/TS&#x27;</span>)</span><br><span class="line">print(c1.ename) <span class="comment"># 当当</span></span><br><span class="line">print(c1.salary) <span class="comment"># 8000</span></span><br><span class="line">print(c1.language) <span class="comment"># JS/ES/TS</span></span><br><span class="line">c1.printInfo() <span class="comment"># 员工姓名：当当 工资：8000.000000</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>多态<br>  同一个方法，在不同情况下运行结果不同<br>  Python中只有一种：子类覆盖了/重写了父类的同名方法<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> :</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n, s</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;一个Emp对象被构建了&#x27;</span>)</span><br><span class="line">    self.ename = n   </span><br><span class="line">    self.salary = s  </span><br><span class="line"></span><br><span class="line">  <span class="comment">#对象内部的方法成员</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;员工姓名：%s 工资：%f&#x27;</span>%(self.ename, self.salary))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coder</span>(<span class="params"> Emp </span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, ename, salary, lang</span>):</span></span><br><span class="line">    super().__init__(ename, salary) </span><br><span class="line">    self.language = lang </span><br><span class="line">    print(<span class="string">&#x27;一个Coder对象被构建了&#x27;</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#子类继承了printInfo方法，但是觉得不够用，于是重写了/覆盖了父类的同名方法</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>):</span></span><br><span class="line">    print(<span class="string">&#x27;程序员姓名：%s 工资：%f 擅长的语言：%s&#x27;</span>%(self.ename, self.salary, self.language))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#创建程序员对象</span></span><br><span class="line">e1 = Emp(<span class="string">&#x27;当当&#x27;</span>,<span class="number">8000</span>)</span><br><span class="line">e1.printInfo()</span><br><span class="line"></span><br><span class="line">c1 = Coder(<span class="string">&#x27;当当&#x27;</span>,<span class="number">8000</span>,<span class="string">&#x27;JS/ES/TS&#x27;</span>)</span><br><span class="line">c1.printInfo()</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python-6-MySQL连接模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Python-6-MySQL%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%9D%97/">6-MySQL连接模块</a>
+    </h1>
+  
+
+        
+        <a href="/Python-6-MySQL%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.438Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="第三方提供的模块-——-MySQL连接模块-了解-因为推荐使用ORM工具"><a href="#第三方提供的模块-——-MySQL连接模块-了解-因为推荐使用ORM工具" class="headerlink" title="第三方提供的模块 —— MySQL连接模块 (了解) 因为推荐使用ORM工具"></a>第三方提供的模块 —— MySQL连接模块 (了解) 因为推荐使用ORM工具</h3><table>
+<thead>
+<tr>
+<th>解释器</th>
+<th>核心模块</th>
+<th>第三方模块管理工具</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Node.js</td>
+<td>http、querystring、…</td>
+<td>NPM</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>math、random、json…</td>
+<td>Pip</td>
+</tr>
+</tbody></table>
+<p>Pip：是随同Python一同安装的第三方模块包管理工具，功能类似于NPM；默认仓库地址：<code>python.org、pythonhosted.com</code>。PIP常用命令：</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pip  install  模块名</td>
+<td>下载指定模块</td>
+<td>-</td>
+</tr>
+<tr>
+<td>pip  install  -i  非官方模块仓库  模块名</td>
+<td>下载指定模块</td>
+<td>-</td>
+</tr>
+<tr>
+<td>pip  uninstall  模块名</td>
+<td>卸载指定模块</td>
+<td>-</td>
+</tr>
+<tr>
+<td>pip  list</td>
+<td>列出已经安装的所有模块/包</td>
+<td>-</td>
+</tr>
+<tr>
+<td>pip  show  模块名</td>
+<td>显示指定模块的详情</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 id="下载-MySQL连接模块"><a href="#下载-MySQL连接模块" class="headerlink" title="下载 MySQL连接模块**"></a>下载 MySQL连接模块**</h3><p><code>pip  install   mysql-connector-python</code></p>
+<p>或者尝试豆瓣网的仓库：<br>pip  install-i <a target="_blank" rel="noopener" href="http://pypi.douban.com/simple">http://pypi.douban.com/simple</a>  mysql-connector-python<br>阿里云———-<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a><br>中国科技大学—-<a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a><br>豆瓣(douban)—-<a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a><br>清华大学——–<a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a><br>中国科学技术大学-<a target="_blank" rel="noopener" href="http://pypi.mirrors.ustc.edu.cn/simple/">http://pypi.mirrors.ustc.edu.cn/simple/</a></p>
+<p><strong>当然 运行下面程序的时候 需要启动xmapp的mysql 3306 才能访问数据库</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建库</span></span><br><span class="line">  <span class="keyword">from</span> mysql.connector <span class="keyword">import</span> connect <span class="comment"># mysql.connector.connect</span></span><br><span class="line">  sql = <span class="string">&#x27;CREATE DATABASE IF NOT EXISTS web2004 CHARSET=utf8&#x27;</span></span><br><span class="line">  <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  create 创建</span></span><br><span class="line"><span class="string">  database 数据库</span></span><br><span class="line"><span class="string">  if 如果</span></span><br><span class="line"><span class="string">  not 不</span></span><br><span class="line"><span class="string">  exists 存在</span></span><br><span class="line"><span class="string">  charset 编码</span></span><br><span class="line"><span class="string">  &#x27;&#x27;&#x27;</span></span><br><span class="line">  link = connect(host=<span class="string">&#x27;localhost&#x27;</span>, passwd=<span class="string">&quot;&quot;</span>, user=<span class="string">&quot;root&quot;</span>)</span><br><span class="line">  <span class="comment"># (host=&#x27;127.0.0.1&#x27;, port=3306, user=&#x27;root&#x27;, password=&#x27;&#x27;, database=&#x27;xz&#x27;) 进入到了某个库</span></span><br><span class="line">  print(link)</span><br><span class="line">  <span class="comment"># 执行sql</span></span><br><span class="line">  <span class="comment"># 数据库连接link 中有一个 句柄cursor(). 专门负责sql执行</span></span><br><span class="line">  <span class="comment"># cursor(): 连接的控制台</span></span><br><span class="line">  <span class="comment"># execute: 执行</span></span><br><span class="line">  link.cursor().execute(sql)</span><br><span class="line">  link.close() <span class="comment"># 关闭 断开</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建表</span></span><br><span class="line">  <span class="keyword">from</span> mysql.connector <span class="keyword">import</span> connect</span><br><span class="line">  link = connect(</span><br><span class="line">    host=<span class="string">&#x27;localhost&#x27;</span>, <span class="comment"># 地址</span></span><br><span class="line">    port=<span class="number">3306</span>, <span class="comment"># 端口号</span></span><br><span class="line">    user=<span class="string">&#x27;root&#x27;</span>, <span class="comment"># 用户名</span></span><br><span class="line">    passwd=<span class="string">&#x27;&#x27;</span>, <span class="comment"># 密码</span></span><br><span class="line">    database=<span class="string">&quot;web2004&quot;</span> <span class="comment"># 数据库名</span></span><br><span class="line">  )</span><br><span class="line">  print(link)</span><br><span class="line">  sql = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  CREATE TABLE IF NOT EXISTS student(</span></span><br><span class="line"><span class="string">    id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</span></span><br><span class="line"><span class="string">    name VARCHAR(255) NOT NULL,</span></span><br><span class="line"><span class="string">    age TINYINT UNSIGNED NOT NULL,</span></span><br><span class="line"><span class="string">    phone CHAR(11) NOT NULL,</span></span><br><span class="line"><span class="string">    sex TINYINT UNSIGNED NOT NULL</span></span><br><span class="line"><span class="string">  ) CHARSET=utf8</span></span><br><span class="line"><span class="string">  &#x27;&#x27;&#x27;</span></span><br><span class="line">  link.cursor().execute(sql)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据的插入</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">范式:</span></span><br><span class="line"><span class="string">1. INSERT INTO 表 VALUES (值, 值, 值...) 要求 值和字段顺序要一致</span></span><br><span class="line"><span class="string">2. INSERT INTO 表(字段1, 字段2..) VALUES (值1, 值2..) 向指定字段插值</span></span><br><span class="line"><span class="string">3. INSERT INTO 表 VALUES (值1, 值2...), (值1, 值2...), ... 一次性插入多组值</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">from</span> mysql.connector <span class="keyword">import</span> connect</span><br><span class="line">  link = connect(database=<span class="string">&#x27;web2004&#x27;</span>, host=<span class="string">&#x27;localhost&#x27;</span>,port=<span class="number">3306</span>, user=<span class="string">&#x27;root&#x27;</span>, passwd=<span class="string">&quot;&quot;</span>)</span><br><span class="line">  sql = <span class="string">&#x27;INSERT INTO student(name,age,sex,phone) VALUES (%s, %s, %s, %s)&#x27;</span></span><br><span class="line">  args = (<span class="string">&#x27;西西&#x27;</span>, <span class="number">18</span>, <span class="number">0</span>, <span class="string">&#x27;18877889595&#x27;</span>)</span><br><span class="line">  link.cursor().execute(sql, args) <span class="comment"># 参数2: 可选参数, 用来填写占位符对应的值</span></span><br><span class="line">  <span class="comment"># 重要原因: 数据库中的数据 是最宝贵的, 属于最敏感的; 操作这些最敏感的数据时, 要求必须二次确认;</span></span><br><span class="line">  <span class="comment"># 数据敏感操作包含: 增 删 改</span></span><br><span class="line">  link.commit() <span class="comment"># commit: 提交</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删</span></span><br><span class="line">  <span class="keyword">from</span> mysql.connector <span class="keyword">import</span> connect</span><br><span class="line">  link = connect(database=<span class="string">&#x27;web2004&#x27;</span>, host=<span class="string">&#x27;localhost&#x27;</span>,user=<span class="string">&#x27;root&#x27;</span>, port=<span class="number">3306</span>, passwd=<span class="string">&quot;&quot;</span>)</span><br><span class="line">  id = <span class="number">5</span></span><br><span class="line">  sql = <span class="string">&#x27;DELETE FROM student WHERE id&gt;%s&#x27;</span></span><br><span class="line">  args = (<span class="number">5</span>,) <span class="comment"># 元组类型: 仅有一个值 则必须带有逗号结尾</span></span><br><span class="line">  myCursor = link.cursor()</span><br><span class="line">  myCursor.execute(sql, args)</span><br><span class="line">  <span class="comment"># 控制台 cursor() 执行任务之后, 其中包含了任务的反馈信息, 可以读取: 例如 影响的行数</span></span><br><span class="line">  row = myCursor.rowcount</span><br><span class="line">  print(<span class="string">&#x27;删除操作删除了:&#x27;</span>, row, <span class="string">&#x27;条&#x27;</span>) <span class="comment"># 删除操作删除了: 4 条</span></span><br><span class="line">  link.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 改</span></span><br><span class="line">  <span class="keyword">from</span> mysql.connector <span class="keyword">import</span> connect</span><br><span class="line">  link = connect(host=<span class="string">&#x27;localhost&#x27;</span>, port=<span class="number">3306</span>,</span><br><span class="line">  database=<span class="string">&quot;web2004&quot;</span>, user=<span class="string">&#x27;root&#x27;</span>, passwd=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">  <span class="comment"># 修改 id &gt; 4 的 name为 iPhone13</span></span><br><span class="line">  id = <span class="number">4</span></span><br><span class="line">  name = <span class="string">&#x27;iPhone13&#x27;</span></span><br><span class="line">  sql = <span class="string">&#x27;UPDATE student SET name=%s WHERE id&gt;%s&#x27;</span></span><br><span class="line">  args = (name, id)</span><br><span class="line">  myCursor = link.cursor()</span><br><span class="line">  myCursor.execute(sql, args)</span><br><span class="line">  row = myCursor.rowcount <span class="comment"># 执行sql 影响的行数</span></span><br><span class="line">  print(<span class="string">&#x27;更新的条数:&#x27;</span>, row)</span><br><span class="line">  link.commit() <span class="comment"># 提交执行结果</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查</span></span><br><span class="line">  <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  1. SELECT * FROM 表</span></span><br><span class="line"><span class="string">  2. SELECT 字段,字段,字段 as 别名 FROM 表</span></span><br><span class="line"><span class="string">  3. SELECT * FROM 表 WHERE 条件(比较,逻辑,模糊匹配...)</span></span><br><span class="line"><span class="string">  &#x27;&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">from</span> mysql.connector <span class="keyword">import</span> connect</span><br><span class="line">  link = connect(database=<span class="string">&#x27;web2004&#x27;</span>, host=<span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">  port=<span class="number">3306</span>, user=<span class="string">&#x27;root&#x27;</span>, passwd=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">  sql = <span class="string">&#x27;SELECT * FROM student&#x27;</span></span><br><span class="line">  <span class="comment"># 查询操作: 需要读取执行SQL之后的结果</span></span><br><span class="line">  <span class="comment"># dictionary: 参数, 代表结果要求是 字典类型, 即 &#123;字段名: 值&#125; 的结构</span></span><br><span class="line">  myCursor = link.cursor(dictionary=<span class="literal">True</span>)</span><br><span class="line">  myCursor.execute(sql)</span><br><span class="line">  <span class="comment"># 读取执行后的结果: fetch抓取 all全部</span></span><br><span class="line">  res = myCursor.fetchall()</span><br><span class="line">  print(res) <span class="comment"># list类型</span></span><br><span class="line">  <span class="comment"># limit: 限定 1条</span></span><br><span class="line">  sql = <span class="string">&#x27;SELECT * FROM student LIMIT 1&#x27;</span></span><br><span class="line">  myCursor.execute(sql)</span><br><span class="line">  <span class="comment"># fetch: 抓取 one: 一个</span></span><br><span class="line">  res = myCursor.fetchone()</span><br><span class="line">  print(res) <span class="comment"># dict</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Python-6-MySQL%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Python-5-同源模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -987,184 +1220,6 @@
 
 
   
-    <article id="post-Python-3-异常处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Python-3-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">3-异常处理</a>
-    </h1>
-  
-
-        
-        <a href="/Python-3-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.438Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">默认判断异常</span><br><span class="line"><span class="keyword">except</span>  Exception <span class="keyword">as</span>  err:  这个捕捉块必须是最后一个，所有的错误都继承自Exception</span><br><span class="line"><span class="comment">#让用户输入两个数字，程序输出它们的商</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  n1 = input(<span class="string">&#x27;请输入被除数：&#x27;</span>)</span><br><span class="line">  n1 = int(n1)    <span class="comment"># 可能抛出ValueError</span></span><br><span class="line">  n2 = input(<span class="string">&#x27;请输入除数：&#x27;</span>)</span><br><span class="line">  n2 = int(n2)    <span class="comment"># 可能抛出ValueError</span></span><br><span class="line">  result = n1/n2  <span class="comment"># 可能抛出ZeroDivisionError</span></span><br><span class="line">  print(<span class="string">&#x27;%d和%d的商为：%f&#x27;</span>%(n1,n2,result))</span><br><span class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> err:</span><br><span class="line">  <span class="comment">#print(&#x27;您输入了非法的数字&#x27;)</span></span><br><span class="line">  print(err)</span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> err:</span><br><span class="line">  <span class="comment">#print(&#x27;您输入的除数不能为0&#x27;)</span></span><br><span class="line">  print(err)</span><br><span class="line"><span class="keyword">except</span>  Exception <span class="keyword">as</span> err:   </span><br><span class="line">   print(err)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">  print(<span class="string">&#x27;----即将离开可能发生异常的代码块----&#x27;</span>) <span class="comment"># 总是输出</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;====程序运行结束====&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>手动定义异常</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">setAge</span>(<span class="params"> age </span>):</span></span><br><span class="line">  <span class="keyword">if</span> age&gt;=<span class="number">18</span> <span class="keyword">and</span> age&lt;<span class="number">60</span>:</span><br><span class="line">    print(<span class="string">&#x27;年龄合法！正在保存：&#x27;</span>, age)</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">raise</span> Exception(<span class="string">&#x27;年龄非法！无法保存！&#x27;</span>)</span><br><span class="line">  print(<span class="string">&#x27;----setAge即将推出----&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  setAge(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">except</span>  Exception <span class="keyword">as</span> err:</span><br><span class="line">  print(err)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;====程序结束====&#x27;</span>)</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Python-3-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python-2-函数-作用域-封装-继承-多态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/">2-函数,作用域,封装,继承,多态</a>
-    </h1>
-  
-
-        
-        <a href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.438Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>实参列表必须与形参列完全一致<br>但是 可以不给有默认值的形参赋值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span>(<span class="params">num1, num2 = <span class="number">500</span></span>):</span></span><br><span class="line">  num3 = num1 + num2</span><br><span class="line">  <span class="keyword">return</span> num3   <span class="comment"># 如果没有声明return默认返回的是None</span></span><br><span class="line">result = sum(<span class="number">1000</span>, <span class="number">2000</span>)</span><br><span class="line">print(<span class="string">&#x27;1000和2000的算术和为：&#x27;</span>, result)</span><br></pre></td></tr></table></figure>
-
-<p>如果硬是要函数名义与但是 参数位数不同 使用 星号</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">add</span>(<span class="params"> *args </span>):</span>  <span class="comment"># *表示此参数是可变长度参数——tuple</span></span><br><span class="line">  print(args)</span><br><span class="line">add(<span class="number">10</span>)  <span class="comment"># args: (10,)</span></span><br><span class="line">add(<span class="number">10</span>, <span class="number">20</span>) <span class="comment">#args:(10, 20)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">add</span>(<span class="params"> **args </span>):</span> <span class="comment">#**表示此参数是可变长度参数——dict</span></span><br><span class="line">add() <span class="comment">#args: &#123; &#125;</span></span><br><span class="line">add(n1=<span class="number">10</span>) <span class="comment">#args: &#123;&#x27;n1&#x27;:10&#125;</span></span><br><span class="line">add(n1=<span class="number">10</span>, n2=<span class="number">20</span>, n3=<span class="number">30</span>) <span class="comment">#args:&#123;&#x27;n1&#x27;:10, &#x27;n2&#x27;:20, &#x27;n3&#x27;:30&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>Python中提供了四种作用域：—— L&gt;E&gt;G&gt;B<br>  L：<code>Local</code>，本地/局部作用域，只能在当前函数内使用<br>  E：<code>Enclosing</code>，闭包作用域，由外部函数提供给内部函数使用的变量作用域<br>  G：<code>Global</code>，全局作用域，可以在全局使用；<br>  B：<code>Built-In</code>，内置作用域，是由Python提供的函数和变量，如id()/type()/int()…..<br>如果函数内想修改全局作用域变量值，必须声明：<br><code>global</code>  变量名<br>如果函数内想修改闭包作用域变量值，必须声明：<br><code>nonlocal</code>  变量名</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mySum = <span class="number">200</span>   </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>():</span></span><br><span class="line">  <span class="keyword">global</span> mySum   <span class="comment"># 声明此处的mySum是全局变量 没有这句话会报警，因为他找不到局部的mySum</span></span><br><span class="line">  mySum = mySum+<span class="number">1</span></span><br><span class="line">  print(mySum) <span class="comment"># 201</span></span><br><span class="line">add()</span><br><span class="line">print(mySum) <span class="comment"># 201</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="封装-继承-多态"><a href="#封装-继承-多态" class="headerlink" title="封装 继承 多态"></a>封装 继承 多态</h2><blockquote>
-<p>封装</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 说明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span>  类名 :</span></span><br><span class="line">   变量名 = 值</span><br><span class="line">	<span class="function"><span class="keyword">def</span>  <span class="title">__init__</span>(<span class="params">self, 形参列表</span>):</span></span><br><span class="line">		构造方法体</span><br><span class="line">	<span class="function"><span class="keyword">def</span>  成员方法(<span class="params">self</span>):</span><span class="comment">#所有方法的第一个参数都是self</span></span><br><span class="line">		成员方法体</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> :</span></span><br><span class="line">    a = <span class="string">&#x27;7&#x27;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n, s, m</span>) :</span> <span class="comment"># 所有方法第一个参数都是self</span></span><br><span class="line">    self.__ename = n    <span class="comment"># 声明一个私有属性成员</span></span><br><span class="line">    self.salary = s    <span class="comment"># 声明一个属性成员</span></span><br><span class="line">    self.__isMarried = m   <span class="comment"># 声明一个私有属性成员</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#对象内部的方法成员</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>) :</span> <span class="comment"># 所有方法第一个参数都是self</span></span><br><span class="line">    print(<span class="string">&#x27;员工姓名：%s 工资：%f 婚否：%d&#x27;</span>%(self.__ename, self.salary, self.a)</span><br><span class="line"></span><br><span class="line">e1 = Emp(<span class="string">&#x27;丁丁&#x27;</span>,<span class="number">5000</span>,<span class="literal">True</span>)</span><br><span class="line">e1.printInfo() <span class="comment"># 员工姓名：丁丁 工资：5000.000000 婚否：1&#x27;</span></span><br><span class="line"><span class="comment"># print(e1.__ename)   #私有属性不能在类外面使用</span></span><br><span class="line">print(e1.salary) <span class="comment"># 5000</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>继承</p>
-</blockquote>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#说明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span>(<span class="params"> Parent1 </span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, 形参列表</span>):</span></span><br><span class="line">    super().__init__(实参)</span><br><span class="line">    self.xx = xx</span><br></pre></td></tr></table></figure>
-
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例</span></span><br><span class="line"><span class="comment">#继承： Coder is a Emp</span></span><br><span class="line"><span class="comment">#is a关系就是继承关系</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> :</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n, s</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;一个Emp对象被构建了&#x27;</span>)</span><br><span class="line">    self.ename = n   </span><br><span class="line">    self.salary = s  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;员工姓名：%s 工资：%f&#x27;</span>%(self.ename, self.salary))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coder</span>(<span class="params"> Emp </span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, ename, salary, lang</span>):</span></span><br><span class="line">    super().__init__(ename, salary)  <span class="comment">#子类构造方法内部第一句永远调用父类的构造方法</span></span><br><span class="line">    self.language = lang </span><br><span class="line">    print(<span class="string">&#x27;一个Coder对象被构建了&#x27;</span>)</span><br><span class="line"></span><br><span class="line">c1 = Coder(<span class="string">&#x27;当当&#x27;</span>,<span class="number">8000</span>,<span class="string">&#x27;JS/ES/TS&#x27;</span>)</span><br><span class="line">print(c1.ename) <span class="comment"># 当当</span></span><br><span class="line">print(c1.salary) <span class="comment"># 8000</span></span><br><span class="line">print(c1.language) <span class="comment"># JS/ES/TS</span></span><br><span class="line">c1.printInfo() <span class="comment"># 员工姓名：当当 工资：8000.000000</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>多态<br>  同一个方法，在不同情况下运行结果不同<br>  Python中只有一种：子类覆盖了/重写了父类的同名方法<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> :</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n, s</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;一个Emp对象被构建了&#x27;</span>)</span><br><span class="line">    self.ename = n   </span><br><span class="line">    self.salary = s  </span><br><span class="line"></span><br><span class="line">  <span class="comment">#对象内部的方法成员</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;员工姓名：%s 工资：%f&#x27;</span>%(self.ename, self.salary))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coder</span>(<span class="params"> Emp </span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, ename, salary, lang</span>):</span></span><br><span class="line">    super().__init__(ename, salary) </span><br><span class="line">    self.language = lang </span><br><span class="line">    print(<span class="string">&#x27;一个Coder对象被构建了&#x27;</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#子类继承了printInfo方法，但是觉得不够用，于是重写了/覆盖了父类的同名方法</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>):</span></span><br><span class="line">    print(<span class="string">&#x27;程序员姓名：%s 工资：%f 擅长的语言：%s&#x27;</span>%(self.ename, self.salary, self.language))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#创建程序员对象</span></span><br><span class="line">e1 = Emp(<span class="string">&#x27;当当&#x27;</span>,<span class="number">8000</span>)</span><br><span class="line">e1.printInfo()</span><br><span class="line"></span><br><span class="line">c1 = Coder(<span class="string">&#x27;当当&#x27;</span>,<span class="number">8000</span>,<span class="string">&#x27;JS/ES/TS&#x27;</span>)</span><br><span class="line">c1.printInfo()</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
@@ -1266,11 +1321,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1278,15 +1333,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1295,6 +1346,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1330,11 +1385,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">画图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1343,10 +1402,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
             
             <div class="clearfix"></div>

@@ -1418,184 +1418,6 @@
 
 
   
-    <article id="post-Html-3-meta相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Html-3-meta%E7%9B%B8%E5%85%B3/">3-meta相关</a>
-    </h1>
-  
-
-        
-        <a href="/Html-3-meta%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.430Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <table>
-<thead>
-<tr>
-<th>标签</th>
-<th>属性</th>
-<th>说明</th>
-<th>其他</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>meta</td>
-<td></td>
-<td>元数据 定义全局数据</td>
-<td></td>
-</tr>
-<tr>
-<td><code>name</code>=”viewport”</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>http-equiv</code>=</td>
-<td>提供了 content 属性的信息/值的 HTTP 头,可用于模拟一个 HTTP 响应头</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td>content-type 规定文档的字符编码</td>
-<td><code>&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</code></td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td>default-style 规定要使用的预定义的样式表,content 属性的值必须匹配同一文档中的一个 link 元素上的 title 属性的值，或者必须匹配同一文档中的一个 style 元素上的 title 属性的值。</td>
-<td><code>&lt;meta http-equiv=&quot;default-style&quot; content=&quot;the document&#39;s preferred stylesheet&quot;&gt;</code></td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td>refresh 定义文档自动刷新的时间间隔。</td>
-<td><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;300&quot;&gt;</code></td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td>Content-Security-Policy 内容安全政策</td>
-<td><code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;script-src &#39;self&#39; &#39;unsafe-inline&#39;;&quot; /&gt;</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>content</code>=”width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no”</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td>width=device-width, 设置视口宽度为设备宽度</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td>height=device-height 定义视口高度=设备高度</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td>initial-scale=1.0, 设置视口的宽度能否缩放 1.0不能缩放</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td>maximum-scale=1.0, 允许缩放的最大倍率</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td>minimum-scale=1 缩小比例</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td>user-scalable=no  是否允许用户手动缩放 0 不能 默认为yes 取值 no</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Security-Policy&quot;</span> <span class="attr">content</span>=<span class="string">&quot;script-src &#x27;self&#x27; &#x27;unsafe-inline&#x27;;&quot;</span> /&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>script-src：外部脚本<br>style-src：样式表<br>img-src：图像<br>media-src：媒体文件（音频和视频）<br>font-src：字体文件<br>object-src：插件（比如 Flash）<br>child-src：框架<br>frame-ancestors：嵌入的外部资源（比如<code>&lt;frame&gt;、&lt;iframe&gt;、&lt;embed&gt;和&lt;applet&gt;</code>）<br>connect-src：HTTP 连接（通过 XHR、WebSockets、EventSource等）<br>worker-src：worker脚本<br>manifest-src：manifest 文件<br>‘unsafe-inline’：允许执行页面内嵌的&lt;script&gt;标签和事件监听函数<br>unsafe-eval：允许将字符串当作代码执行，比如使用eval、setTimeout、setInterval和Function等函数。<br>nonce值：每次HTTP回应给出一个授权token，页面内嵌脚本必须有这个token，才会执行<br>hash值：列出允许执行的脚本代码的Hash值，页面内嵌脚本的哈希值只有吻合的情况下，才能执行。</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Html</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Html-3-meta%E7%9B%B8%E5%85%B3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-JQuery-jquery" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2208,6 +2030,184 @@
 
 
   
+    <article id="post-Html-3-meta相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Html-3-meta%E7%9B%B8%E5%85%B3/">3-meta相关</a>
+    </h1>
+  
+
+        
+        <a href="/Html-3-meta%E7%9B%B8%E5%85%B3/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.430Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <table>
+<thead>
+<tr>
+<th>标签</th>
+<th>属性</th>
+<th>说明</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>meta</td>
+<td></td>
+<td>元数据 定义全局数据</td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code>=”viewport”</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>http-equiv</code>=</td>
+<td>提供了 content 属性的信息/值的 HTTP 头,可用于模拟一个 HTTP 响应头</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td>content-type 规定文档的字符编码</td>
+<td><code>&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td>default-style 规定要使用的预定义的样式表,content 属性的值必须匹配同一文档中的一个 link 元素上的 title 属性的值，或者必须匹配同一文档中的一个 style 元素上的 title 属性的值。</td>
+<td><code>&lt;meta http-equiv=&quot;default-style&quot; content=&quot;the document&#39;s preferred stylesheet&quot;&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td>refresh 定义文档自动刷新的时间间隔。</td>
+<td><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;300&quot;&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td>Content-Security-Policy 内容安全政策</td>
+<td><code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;script-src &#39;self&#39; &#39;unsafe-inline&#39;;&quot; /&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>content</code>=”width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no”</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td>width=device-width, 设置视口宽度为设备宽度</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td>height=device-height 定义视口高度=设备高度</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td>initial-scale=1.0, 设置视口的宽度能否缩放 1.0不能缩放</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td>maximum-scale=1.0, 允许缩放的最大倍率</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td>minimum-scale=1 缩小比例</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td>user-scalable=no  是否允许用户手动缩放 0 不能 默认为yes 取值 no</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Security-Policy&quot;</span> <span class="attr">content</span>=<span class="string">&quot;script-src &#x27;self&#x27; &#x27;unsafe-inline&#x27;;&quot;</span> /&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>script-src：外部脚本<br>style-src：样式表<br>img-src：图像<br>media-src：媒体文件（音频和视频）<br>font-src：字体文件<br>object-src：插件（比如 Flash）<br>child-src：框架<br>frame-ancestors：嵌入的外部资源（比如<code>&lt;frame&gt;、&lt;iframe&gt;、&lt;embed&gt;和&lt;applet&gt;</code>）<br>connect-src：HTTP 连接（通过 XHR、WebSockets、EventSource等）<br>worker-src：worker脚本<br>manifest-src：manifest 文件<br>‘unsafe-inline’：允许执行页面内嵌的&lt;script&gt;标签和事件监听函数<br>unsafe-eval：允许将字符串当作代码执行，比如使用eval、setTimeout、setInterval和Function等函数。<br>nonce值：每次HTTP回应给出一个授权token，页面内嵌脚本必须有这个token，才会执行<br>hash值：列出允许执行的脚本代码的Hash值，页面内嵌脚本的哈希值只有吻合的情况下，才能执行。</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Html-3-meta%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Html-1-属性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2304,7 +2304,7 @@
 </tr>
 <tr>
 <td>-</td>
-<td><code>href</code>=”1.zip” 下载资源<br> <code>href</code>=”mailto:<a href="mailto:&#x67;&#45;&#99;&#104;&#101;&#x6e;&#103;&#108;&#x69;&#x61;&#110;&#x67;&#64;&#x74;&#101;&#x64;&#117;&#46;&#x63;&#x6e;">&#x67;&#45;&#99;&#104;&#101;&#x6e;&#103;&#108;&#x69;&#x61;&#110;&#x67;&#64;&#x74;&#101;&#x64;&#117;&#46;&#x63;&#x6e;</a>“ 打开电子邮件<br> <code>href</code>=”javascript:alert(1111111)” <code>href</code>=”javascript:show()” 执行js代码<br> <code>href</code>=”#” 回到页面顶部<br> <code>href</code>=”#x” 到id=”x”的元素位置</td>
+<td><code>href</code>=”1.zip” 下载资源<br> <code>href</code>=”mailto:<a href="mailto:&#103;&#x2d;&#x63;&#x68;&#x65;&#x6e;&#x67;&#108;&#105;&#x61;&#x6e;&#x67;&#x40;&#x74;&#x65;&#100;&#117;&#x2e;&#99;&#x6e;">&#103;&#x2d;&#x63;&#x68;&#x65;&#x6e;&#x67;&#108;&#105;&#x61;&#x6e;&#x67;&#x40;&#x74;&#x65;&#100;&#117;&#x2e;&#99;&#x6e;</a>“ 打开电子邮件<br> <code>href</code>=”javascript:alert(1111111)” <code>href</code>=”javascript:show()” 执行js代码<br> <code>href</code>=”#” 回到页面顶部<br> <code>href</code>=”#x” 到id=”x”的元素位置</td>
 <td></td>
 <td></td>
 </tr>
@@ -2964,82 +2964,6 @@
 
 
   
-    <article id="post-Electron-1-Electron简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/">1.Electron简介</a>
-    </h1>
-  
-
-        
-        <a href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.428Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>安装 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node </span><br><span class="line">npm</span><br><span class="line">npm i --save-dev electron  安装 Electron</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Electron</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Flutter-1-flutter下载，安装，配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -3278,19 +3202,95 @@
 
 
   
-    <article id="post-CSS-sass" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Electron-1-Electron简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/CSS-sass/">sass</a>
+      <a class="article-title" href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/">1.Electron简介</a>
     </h1>
   
 
         
-        <a href="/CSS-sass/" class="archive-article-date">
+        <a href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.428Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>安装 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node </span><br><span class="line">npm</span><br><span class="line">npm i --save-dev electron  安装 Electron</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Electron</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-CSS-6-媒体查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/CSS-6-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2/">6-css媒体查询</a>
+    </h1>
+  
+
+        
+        <a href="/CSS-6-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.427Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -3299,35 +3299,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p>一.简介<br><a href="#title1" target="_self">1.安装</a><br><a href="#title2" target="_self">2.文件转化</a><br><a href="#title3" target="_self">3.变量声明</a><br><a href="#title4" target="_self">4.声明函数 / 声明混合器  <code>@mixin</code> <code>@include</code></a><br><a href="#title5" target="_self">5.导入</a><br><a href="#title8" target="_self">6.继承 <code>@extend</code></a><br><a href="#title7" target="_self">7.运算</a><br><a href="#title8" target="_self"> 8.函数，指令</a></p>
-<p>三.例子<br><a href="#title301" target="_self">301. 移动端设置字体大小</a><br><a href="#title301" target="_self">302. 循环声明多个类</a></p>
-<h1 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h1><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">::v-deep div&#123;&#125;`  // 深度选择器</span><br></pre></td></tr></table></figure>
+          <h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><p>  设置视口<br>  <meta name="viewport" content=" width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0 "><br>  在content,编写参数<br>  width=device-width, 设置视口宽度为设备宽度<br>  initial-scale=1.0, 设置视口的宽度能否缩放 1.0不能缩放<br>  maximum-scale=1.0, 允许缩放的最大倍率<br>  user-scalable=0  是否允许用户手动缩放 0 不能</p>
+<p>  常用尺寸：576  768  992  1200<br>  xl &gt;= 1200                  超大屏<br>  992 &lt;= lg &lt; 1200            大屏pc端<br>  768 &lt;= md &lt; 992             中屏  pad端<br>  576 &lt;= sm &lt; 767             小屏phone端<br>  sm &lt; 576                    超小屏<br>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 媒体查询  最小             并且  最大*/</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span><span class="number">768px</span>) <span class="keyword">and</span> (<span class="attribute">max-width:</span><span class="number">991px</span>)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* screen :用于电脑屏幕，平板电脑，智能手机等 */</span></span><br><span class="line"><span class="keyword">@media</span> screen (<span class="attribute">min-width:</span><span class="number">768px</span>) <span class="keyword">and</span> (<span class="attribute">max-width:</span><span class="number">991px</span>)&#123;</span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">@media</span> mediatype <span class="keyword">and</span>|<span class="keyword">not</span>|<span class="keyword">only</span> (media feature) &#123;</span><br><span class="line"></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></p>
 
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p>node-js 8.1 以上安装 32位sass<br>node-js 10.0 以上安装 64位sass</p>
-<ul>
-<li>在线安装scss 在 <code>cmd</code> 控制台打印命令<br>安装 <code>npm install -g node-sass</code><br>查看版本 <code>node-sass -v</code></li>
-</ul>
-<h2 id="2-文件转化"><a href="#2-文件转化" class="headerlink" title="2.文件转化"></a>2.文件转化</h2><p>单文件转换 <code>node-sass scss/01.scss css/01.css</code> 当前路径下的scss中的01.scss 转换为当前目录下的css中的01.css<br>多文件转换 <code>node-sass scss(文件夹名称) -o css(文件夹名称)</code> 当前路径下的scss文件夹中的.sass文件 转换为当前目录下的css文件夹中的.css文件<br>单文件监听 <code>node-sass -w scss/01.scss css/01.css</code> 01.scss内容发生改变，保存的时候，自动转换为01.css<br>多文件夹监听 <code>node-sass -w scss -o  css</code></p>
-<h2 id="3-变量声明"><a href="#3-变量声明" class="headerlink" title="3.变量声明"></a>3.变量声明</h2><pre><code>1-变量声明在&#123;&#125;外，整个scss文件都可以使用这个变量
-2-变量声明在&#123;&#125;内，只用当前样式可以使用此变量
-3-变量重复声明，后声明的变量会覆盖之前声明的，尽量保证变量名称不重复
-4-!default规则：如果此变量在之前已经声明赋值了,那么就使用之前的值，如果此变量之前没生命赋值，就使用现在的值</code></pre>
- <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$my_gray</span>:<span class="number">#666</span>;</span><br><span class="line"><span class="variable">$my_gray</span>:<span class="number">#777</span> !default;</span><br><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">color</span>:<span class="variable">$my_gray</span>&#125; // <span class="number">#666</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-声明函数-声明混合器-mixin-include"><a href="#4-声明函数-声明混合器-mixin-include" class="headerlink" title="4.声明函数 / 声明混合器  @mixin @include"></a>4.声明函数 / 声明混合器  <code>@mixin</code> <code>@include</code></h2><p>声明函数 / 声明混合器  <code>@mixin</code><br>调用函数 / 调用混合器 <code>@include</code></p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> my_border(<span class="variable">$width</span>,<span class="variable">$color</span>)&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="variable">$width</span> solid <span class="variable">$color</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>:<span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>:<span class="number">1px</span> <span class="number">1px</span> <span class="number">1px</span> <span class="number">1px</span> <span class="variable">$color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用 </span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line"> <span class="keyword">@include</span> my_border(<span class="number">10px</span>,<span class="number">#f00</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-导入"><a href="#5-导入" class="headerlink" title="5.导入"></a>5.导入</h2><p>如果一个<code>scss</code>文件以下划线开头，那么这个文件就是一个局部<code>scss</code>文件,在转换成css文件的时候，不会把局部文件进行转换<br>一般情况，我们会把局部文件引入到全局文件(不以下划线开头的)中。<br>导入的语法 <code>@import&quot;dropdown&quot;</code>;<br>文件名叫做 <code>_dropdown.scss</code><br>导入的时候，不写<code>_</code>,不写<code>后缀</code><br>局部文件被导入后，局部文件中样式，会在全局文件转换的css中生成。同时局部文件声明的变量，可以在全局文件中使用。</p>
-<h2 id="6-继承-extend"><a href="#6-继承-extend" class="headerlink" title="6.继承 @extend"></a>6.继承 <code>@extend</code></h2><p> 一个选择器，可以继承另一个选择器的所有样式</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.my-rounded</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#f00</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.rounded-shadow</span>&#123;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span>;</span><br><span class="line">  <span class="keyword">@extend</span> .my-rounded;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 等于</span></span><br><span class="line"><span class="selector-class">.my-rounded</span>, <span class="selector-class">.rounded-shadow</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#f00</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>; &#125;</span><br><span class="line"><span class="selector-class">.rounded-shadow</span> &#123;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span>; &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="7-运算"><a href="#7-运算" class="headerlink" title="7.运算"></a>7.运算</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-tag">p</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">   <span class="comment">// 加法  结果是否有引号.看第一位是否有引号</span></span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;asd&quot;</span>+yahei; <span class="comment">// === content: &quot;asdyahei&quot;;</span></span><br><span class="line">  <span class="attribute">font-family</span>: a+<span class="string">&quot;rial&quot;</span>; <span class="comment">// === font-family: arial;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 减法  写 - 的时候，要在 - 前后加空格</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 乘法 10*10px 得到100px  10px*10px 报错</span></span><br><span class="line">  <span class="attribute">font-size</span>:<span class="number">10</span> * <span class="number">5px</span>; <span class="comment">// ===font-size:150px;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 除法 $width/2 (500px/2) 5px+8px/2px 只有这三种情况才行</span></span><br><span class="line">  <span class="attribute">width</span>:<span class="number">10px</span>/<span class="number">2</span>; <span class="comment">// === width:10px/2;</span></span><br><span class="line">  <span class="attribute">width</span>:(<span class="number">10px</span>/<span class="number">2</span>); <span class="comment">// === width:5px;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// #&#123;&#125;</span></span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;l ate #&#123;50+30&#125; baozis&quot;</span>;<span class="comment">// === l ate 80 baozis</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 转化 </span></span><br><span class="line">  <span class="attribute">width</span>: <span class="number">1px</span>+<span class="number">1in</span>; <span class="comment">// === 97px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-函数，指令"><a href="#8-函数，指令" class="headerlink" title="8.函数，指令"></a>8.函数，指令</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义函数</span></span><br><span class="line"><span class="keyword">@function</span> :(<span class="variable">$a</span>,<span class="variable">$b</span>)&#123;<span class="keyword">@return</span> <span class="variable">$a</span>+<span class="variable">$b</span>;&#125;</span><br><span class="line"><span class="selector-tag">div</span>&#123;&#125; <span class="comment">// = width: 200px;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@function</span> abb(<span class="variable">$n</span>)&#123;</span><br><span class="line">  <span class="variable">$a</span>:<span class="number">60px</span>;</span><br><span class="line">  <span class="variable">$b</span>:<span class="number">10px</span>;</span><br><span class="line">  <span class="keyword">@return</span> <span class="variable">$n</span>*max(<span class="variable">$a</span>,<span class="variable">$b</span>)+<span class="variable">$n</span>*min(<span class="variable">$b</span>,<span class="variable">$a</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>: abb(<span class="number">6</span>); <span class="comment">// === width: 420px;</span></span><br><span class="line">  <span class="attribute">width</span>: add(<span class="number">100px</span>,<span class="number">100px</span>) // === width: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// round($val)        四舍五入  width:round(4.5px)</span></span><br><span class="line"><span class="comment">// ceil($val)         向上取整</span></span><br><span class="line"><span class="comment">// floor($val)        向下取整</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// min($v1,$v2.....)</span></span><br><span class="line"><span class="comment">// max($v1,$v2.....)</span></span><br><span class="line"><span class="comment">// unquote($str)        去掉$str的双引号</span></span><br><span class="line"><span class="comment">// quote($str)          给$str添加双引号</span></span><br><span class="line"><span class="comment">// to_upper_case($str); $str变大写</span></span><br><span class="line"><span class="comment">// to_lower_case($str); $str变小写</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// @if()&#123;&#125;</span></span><br><span class="line"><span class="comment">// @else if()&#123;&#125;</span></span><br><span class="line"><span class="comment">// @else&#123;&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="三-例子"><a href="#三-例子" class="headerlink" title="三.例子"></a>三.例子</h1><h2 id="301-移动端设置字体大小"><a href="#301-移动端设置字体大小" class="headerlink" title="301. 移动端设置字体大小"></a>301. 移动端设置字体大小</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> px2px(<span class="variable">$size</span>)&#123;</span><br><span class="line">  <span class="selector-attr">[data-dpr=&quot;1&quot;]</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="variable">$size</span> * <span class="number">1</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-attr">[data-dpr=&quot;2&quot;]</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="variable">$size</span> * <span class="number">2</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-attr">[data-dpr=&quot;3&quot;]</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="variable">$size</span> * <span class="number">3</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> px2px(<span class="number">12PX</span>); <span class="comment">// 使用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="302-循环声明多个类"><a href="#302-循环声明多个类" class="headerlink" title="302. 循环声明多个类"></a>302. 循环声明多个类</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">1</span> through <span class="number">15</span> &#123;</span><br><span class="line">  <span class="variable">$j</span>: <span class="variable">$i</span> * <span class="number">2</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.mr-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="variable">$i</span>*<span class="number">4px</span> <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.font-</span>#&#123;<span class="variable">$j</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="variable">$i</span>*<span class="number">2px</span> + <span class="number">10px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
       
 
@@ -3351,7 +3325,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/CSS-sass/">展开全文 >></a>
+          <a class="article-more-a" href="/CSS-6-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
         </p>
       
 
@@ -3482,11 +3456,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3494,15 +3468,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3511,6 +3481,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3546,11 +3520,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">画图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3559,10 +3537,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
             
             <div class="clearfix"></div>
