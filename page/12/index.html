@@ -408,19 +408,19 @@
 
 
   
-    <article id="post-CSS-2-css书写规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-CSS-3-css简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/CSS-2-css%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83/">2-css书写规范</a>
+      <a class="article-title" href="/CSS-3-css%E7%AE%80%E4%BB%8B/">3-css简介</a>
     </h1>
   
 
         
-        <a href="/CSS-2-css%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83/" class="archive-article-date">
+        <a href="/CSS-3-css%E7%AE%80%E4%BB%8B/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.426Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -429,392 +429,396 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="一、Css书写顺序"><a href="#一、Css书写顺序" class="headerlink" title="一、Css书写顺序|"></a>一、Css书写顺序|</h3><pre><code>1.位置属性(position, top, right, z-index, display, float等)　
-2.大小(width, height, padding, margin)
-3.文字系列(font, line-height, letter-spacing, color- text-align等)　
-4.背景(background, border等)
-5.其他(animation, transition等)</code></pre>
-<h3 id="二-类名结构明命"><a href="#二-类名结构明命" class="headerlink" title="二 类名结构明命"></a>二 类名结构明命</h3><table>
+          <p>  <a href="#title1" target="_self">1.各种</a><br>  <a href="#title2" target="_self">2.常用选择器（我）</a><br>  <a href="#title3" target="_self">3.css 函数</a><br>  <a href="#title4" target="_self">4.css 变量</a><br>  <a href="#title5" target="_self">5.浏览器支持</a><br>  <a href="#title6" target="_self">6.单位</a><br>  <a href="#title7" target="_self">7.css优化</a><br>  <a href="#title8" target="_self">8.原生自定义组件-我没用过-感觉用处不大</a></p>
+<h2 id="相关网站"><a href="#相关网站" class="headerlink" title="相关网站"></a>相关网站</h2><p>CSS 面试知识点总结 <a target="_blank" rel="noopener" href="https://github.com/CavsZhouyou/Front-End-Interview-Notebook/blob/master/Css/Css.md">https://github.com/CavsZhouyou/Front-End-Interview-Notebook/blob/master/Css/Css.md</a> </p>
+<h2 id="1-各种"><a href="#1-各种" class="headerlink" title="1.各种"></a>1.各种</h2><p>深度选择器 <code> &gt;&gt;&gt; div&#123;&#125;</code><br>css 优先级 <code>!important</code><br>引用 <code>@import &#39;路径&#39;;</code> or <code>link</code></p>
+<h2 id="2-常用选择器（我）"><a href="#2-常用选择器（我）" class="headerlink" title="2.常用选择器（我）"></a>2.常用选择器（我）</h2><table>
 <thead>
 <tr>
-<th>1</th>
-<th>2</th>
+<th>使用</th>
+<th>说明</th>
+<th>版本</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>wrap</td>
-<td>外套、包裹，用于最外层</td>
+<td>滚动条 滚动条样式 chrome，safari，QQ浏览器，360极速</td>
+<td></td>
+<td>1</td>
 </tr>
 <tr>
-<td>wrapper</td>
-<td>外套，用于页面外围控制整体布局宽度</td>
+<td>::-webkit-scrollbar</td>
+<td>整个滚动条的背景</td>
+<td>-</td>
 </tr>
 <tr>
-<td>box</td>
-<td>盒子，容器</td>
+<td>::-webkit-scrollbar-button</td>
+<td>滚动条上方或下方的按钮，单击可上下滚动（横向滚动条单击可左右滚动）</td>
+<td>-</td>
 </tr>
 <tr>
-<td>header</td>
-<td>头部，用于页头部分</td>
+<td>::-webkit-scrollbar-track</td>
+<td>滚动条轨道</td>
+<td>-</td>
 </tr>
 <tr>
-<td>nav</td>
-<td>导航，主导航</td>
+<td>::-webkit-scrollbar-track-piece</td>
+<td>滚动条没有滑块的轨道部分</td>
+<td>-</td>
 </tr>
 <tr>
-<td>main</td>
-<td>主要区域，内容主体</td>
+<td>::-webkit-scrollbar-thumb</td>
+<td>滚动条上的滚动滑块</td>
+<td>-</td>
 </tr>
 <tr>
-<td>content/container</td>
-<td>内容，内容容器</td>
+<td>::-webkit-scrollbar-corner</td>
+<td>当同时有垂直滚动条和水平滚动条时交汇的部分</td>
+<td>-</td>
 </tr>
 <tr>
-<td>sidebar</td>
-<td>侧边栏</td>
+<td>::-webkit-resizer</td>
+<td>某些元素的corner部分的部分样式(例:textarea的可拖动按钮)</td>
+<td>-</td>
 </tr>
 <tr>
-<td>footer</td>
-<td>底部，用于页脚部分</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>left center right</td>
-<td>左中右</td>
+<td>伪类选择器</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>logo</td>
-<td>网站 LOGO 标志</td>
+<td>p<code>:link</code></td>
+<td>未被访问  顺序遵循 爱恨原则 LoVe HAte</td>
+<td>1</td>
 </tr>
 <tr>
-<td>loginbar</td>
-<td>登录条</td>
+<td>p<code>:visited</code></td>
+<td>已被访问的链接  顺序遵循 爱恨原则 LoVe HAte</td>
+<td>1</td>
 </tr>
 <tr>
-<td>regsiter</td>
-<td>注册模块</td>
+<td>p<code>:hover</code></td>
+<td>鼠标悬停元素  顺序遵循 爱恨原则 LoVe HAte</td>
+<td>1</td>
 </tr>
 <tr>
-<td>banner</td>
-<td>广告，用于横幅广告条</td>
+<td>p<code>:active</code></td>
+<td>active    选择活动链接  顺序遵循 爱恨原则 LoVe HAte</td>
+<td>1</td>
 </tr>
 <tr>
-<td>menu</td>
-<td>菜单</td>
+<td>p<code>:focus</code></td>
+<td>获取焦点的元素</td>
+<td>2</td>
 </tr>
 <tr>
-<td>submenu</td>
-<td>子菜单，二级菜单</td>
+<td><code>:root</code></td>
+<td>选择文档的根元素<br> :root {–main-bg-color: yellow;} <br> #div1 {background-color: var(–main-bg-color);}</td>
+<td>3</td>
 </tr>
 <tr>
-<td>top</td>
-<td>顶部</td>
+<td><code>:target</code></td>
+<td>#news:target    选择当前活动的 #news 元素</td>
+<td>3</td>
 </tr>
 <tr>
-<td>topnav</td>
-<td>顶导航</td>
+<td><code>:enabled</code></td>
+<td>input:enabled    选择每个启用的 input 元素</td>
+<td>3</td>
 </tr>
 <tr>
-<td>mainnav</td>
-<td>主导航</td>
+<td><code>:disabled</code></td>
+<td>input:disabled    选择每个禁用的 input 元素</td>
+<td>3</td>
 </tr>
 <tr>
-<td>subnav</td>
-<td>子导航，二级导航</td>
+<td><code>:checked</code></td>
+<td>input:checked    选择每个被选中的 input</td>
+<td>3</td>
 </tr>
 <tr>
-<td>leftsideBar</td>
-<td>左导航</td>
+<td>p<code>:first-letter</code></td>
+<td>选择每个 p 元素的首字母</td>
+<td>1</td>
 </tr>
 <tr>
-<td>bottom</td>
-<td>底部</td>
+<td>p<code>:first-line</code></td>
+<td>选择每个 p 元素的首行 首字符和首行发生冲突时，使用首字符样式</td>
+<td>1</td>
 </tr>
 <tr>
-<td>bottombar</td>
-<td>底部工具栏</td>
+<td>p<code>:first-child</code></td>
+<td>#选择属于父元素的第一个子元素的每个 p 元素</td>
+<td>2</td>
 </tr>
 <tr>
-<td>tool</td>
-<td>工具条</td>
+<td>p<code>:last-child</code></td>
+<td>匹配的元素是属于其父元素的最后一个子元素. 最后一个子元素如果不是符合的选择器 ，那么就不会变化</td>
+<td>3</td>
 </tr>
 <tr>
-<td>shop</td>
-<td>功能区，如购物车、收银台</td>
+<td>p<code>:nth-child(n)</code></td>
+<td>匹配的元素是属于其父元素的第n个子元素，n从1开始，第n个子元素如果不是符合的选择器 ，那么就不会变化</td>
+<td>3</td>
 </tr>
 <tr>
-<td>title</td>
-<td>栏目标题</td>
+<td><code>:empty </code></td>
+<td>匹配没有子元素的元素，内部为空  包括空格 回车 元素 文本</td>
+<td>3</td>
 </tr>
 <tr>
-<td>summary</td>
-<td>摘要</td>
+<td><code>:only-child</code></td>
+<td>匹配属于其父元素的唯一子元素</td>
+<td>3</td>
 </tr>
 <tr>
-<td>hot</td>
-<td>热门热点信息，推荐</td>
+<td><code>:not(p)</code></td>
+<td>选择每个并非p元素的元素</td>
+<td>3</td>
 </tr>
 <tr>
-<td>msg</td>
-<td>提示信息</td>
+<td><code>::selection</code> 必须是两个：</td>
+<td>匹配用户选取内容的样式 注意：只能修改文本颜色，背景颜色</td>
+<td>3</td>
 </tr>
 <tr>
-<td>news</td>
-<td>新闻</td>
+<td>p<code>:before</code></td>
+<td>在元素的内容之前插入内容</td>
+<td>2</td>
 </tr>
 <tr>
-<td>list</td>
-<td>列表，文章列表</td>
+<td>p<code>:after</code></td>
+<td>在元素的内容之后插入内容。ontent中只能添加文本或者url(图片) <br>p:after{content: “”,color:#333}</td>
+<td>2</td>
 </tr>
 <tr>
-<td>piclist</td>
-<td>图片列表</td>
+<td>伪类选择器-不常用</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>newslist</td>
-<td>新闻列表</td>
+<td><code>:first-of-type</code></td>
+<td>选择属于其父元素的首个 p 元素的每个 p 元素</td>
+<td>3</td>
 </tr>
 <tr>
-<td>search-output</td>
-<td>搜索输出</td>
+<td><code>:last-of-type</code></td>
+<td>选择属于其父元素的最后 p&gt; 元素的每个 p 元素</td>
+<td>3</td>
 </tr>
 <tr>
-<td>search-results</td>
-<td>搜索结果</td>
+<td><code>:only-of-type</code></td>
+<td>选择属于其父元素唯一的 p 元素的每个 p 元素</td>
+<td>3</td>
 </tr>
 <tr>
-<td>drop/dropdown</td>
-<td>下拉</td>
+<td><code>:nth-last-child(n)</code></td>
+<td>同上，从最后一个子元素开始计数</td>
+<td>3</td>
 </tr>
 <tr>
-<td>dropmenu/dorpdown-content</td>
-<td>下拉菜单</td>
+<td><code>:nth-of-type(n)</code></td>
+<td>选择属于其父元素第二个 p 元素的每个 p 元素</td>
+<td>3</td>
 </tr>
 <tr>
-<td>scroll</td>
-<td>滚动</td>
+<td><code>:nth-last-of-type(n)</code></td>
+<td>同上，但是从最后一个子元素开始计数</td>
+<td>3</td>
 </tr>
 <tr>
-<td>homepage</td>
-<td>首页</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>subpage</td>
-<td>子页面，二级页面</td>
+<td>兄弟选择器</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>tag</td>
-<td>标签</td>
+<td>选择器1+选择器2{}</td>
+<td>获取紧紧挨在某元素后面的兄弟元素</td>
+<td>-</td>
 </tr>
 <tr>
-<td>tab</td>
-<td>标签页</td>
+<td>选择器1~选择器2{}</td>
+<td>所有选择器1后的选择器2的样式</td>
+<td>2</td>
 </tr>
 <tr>
-<td>tips</td>
-<td>小技巧</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>ranking</td>
-<td>排行</td>
+<td>属性选择器 较少用 效率差</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>vote</td>
-<td>投票</td>
+<td>[id]{color:#ff0}</td>
+<td>所有有ID的标签 颜色变黄 [title] [class] [class=”c1”]都可以选择</td>
+<td>-</td>
 </tr>
 <tr>
-<td>bth</td>
-<td>按钮</td>
+<td>div[id]{}</td>
+<td>DIV 下的ID标签 的样式</td>
+<td>-</td>
 </tr>
 <tr>
-<td>icon</td>
-<td>图标</td>
+<td>[id][class]{}</td>
+<td>有id也有class属性的元素 匹配页面中所有带有[] 和 []属性的元素</td>
+<td>-</td>
 </tr>
 <tr>
-<td>arr/arrow</td>
-<td>箭头</td>
+<td>[attr=va]</td>
+<td>匹配页面中所有带有attr属性并且值为va的元素  [id=”s1”]  [class=”s5”]  [style=”color:#000”]</td>
+<td>-</td>
 </tr>
 <tr>
-<td>status</td>
-<td>状态</td>
+<td>[attr^=va]</td>
+<td>匹配属性值以va开头的元素</td>
+<td>3</td>
 </tr>
 <tr>
-<td>note</td>
-<td>注释</td>
+<td>[attr$=va]</td>
+<td>匹配属性值以va结尾的元素</td>
+<td>3</td>
 </tr>
 <tr>
-<td>skin</td>
-<td>皮肤</td>
+<td>[attr*=va]</td>
+<td>匹配属性值中，有va的元素</td>
+<td>3</td>
 </tr>
 <tr>
-<td>current</td>
-<td>当前的</td>
-</tr>
-<tr>
-<td>active</td>
-<td>活跃的，有效的</td>
-</tr>
-<tr>
-<td>download</td>
-<td>下载</td>
-</tr>
-<tr>
-<td>friendLink</td>
-<td>友情链接</td>
-</tr>
-<tr>
-<td>copyright</td>
-<td>版权信息</td>
-</tr>
-<tr>
-<td>partner</td>
-<td>合作伙伴</td>
-</tr>
-<tr>
-<td>joinus</td>
-<td>加入我们</td>
-</tr>
-<tr>
-<td>sitemap</td>
-<td>网站地图</td>
-</tr>
-<tr>
-<td>siteinfo</td>
-<td>网站信息</td>
-</tr>
-<tr>
-<td>siteinfoLegar</td>
-<td>法律声明</td>
-</tr>
-<tr>
-<td>announcement</td>
-<td>公告</td>
-</tr>
-<tr>
-<td>guild</td>
-<td>指南</td>
-</tr>
-<tr>
-<td>service</td>
-<td>服务</td>
-</tr>
-<tr>
-<td>promotion</td>
-<td>推广</td>
-</tr>
-<tr>
-<td>blog</td>
-<td>博客</td>
-</tr>
-<tr>
-<td>forum</td>
-<td>论坛</td>
-</tr>
-<tr>
-<td>keyword</td>
-<td>关键词</td>
-</tr>
-<tr>
-<td>products</td>
-<td>产品</td>
-</tr>
-<tr>
-<td>products-prices</td>
-<td>产品价格</td>
-</tr>
-<tr>
-<td>products-description</td>
-<td>产品描述</td>
-</tr>
-<tr>
-<td>products-review</td>
-<td>产品评论</td>
-</tr>
-<tr>
-<td>editor-review</td>
-<td>编辑评论</td>
-</tr>
-<tr>
-<td>news-products</td>
-<td>最新产品</td>
-</tr>
-<tr>
-<td>publisher</td>
-<td>生产商</td>
-</tr>
-<tr>
-<td>screenshot</td>
-<td>缩略图</td>
-</tr>
-<tr>
-<td>faqs</td>
-<td>常见问题</td>
-</tr>
-<tr>
-<td>barnding</td>
-<td>商标</td>
-</tr>
-<tr>
-<td>pay</td>
-<td>充值</td>
-</tr>
-<tr>
-<td>reputation</td>
-<td>信誉</td>
+<td>[attr~=va]</td>
+<td>匹配属性值中，有va这个独立单词的元素</td>
+<td>-</td>
 </tr>
 </tbody></table>
-<h3 id="二-常用的文件命名"><a href="#二-常用的文件命名" class="headerlink" title="二 常用的文件命名"></a>二 常用的文件命名</h3><table>
+<h2 id="3-css-函数"><a href="#3-css-函数" class="headerlink" title="3.css 函数"></a>3.css 函数</h2><table>
 <thead>
 <tr>
-<th>1</th>
-<th>2</th>
+<th>-</th>
+<th>示例</th>
+<th>说明</th>
+<th>版本</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>全局样式</td>
-<td>global.css</td>
+<td>calc()</td>
+<td>width: calc(100px - 5px);</td>
+<td>允许计算CSS的属性值。</td>
+<td>3</td>
 </tr>
 <tr>
-<td>布局结构</td>
-<td>layout.css</td>
+<td>attr()</td>
+<td>a:after {content: “ (“ attr(href) “)”;}</td>
+<td>返回选择元素的属性值。</td>
+<td>2</td>
 </tr>
 <tr>
-<td>基本共用</td>
-<td>base.css</td>
+<td>linear-gradient()</td>
+<td>linear-gradient(red, green, blue)</td>
+<td>过渡颜色时常常使用 创建一个线性渐变的图像</td>
+<td>3</td>
 </tr>
 <tr>
-<td>综合样式</td>
-<td>style.css</td>
+<td>radial-gradient()</td>
+<td>radial-gradient(red, green, blue)</td>
+<td>过渡颜色时常常使用 用径向渐变创建图像</td>
+<td>3</td>
 </tr>
 <tr>
-<td>主要的</td>
-<td>master.css</td>
+<td>repeating-linear-gradient()</td>
+<td>repeating-linear-gradient(red, yellow 10%, green 20%)==<br>linear-gradient(red, yellow 10%, green 20%,red 30%, yellow 40%, green 50%…)</td>
+<td>用重复的线性渐变创建图像</td>
+<td>3</td>
 </tr>
 <tr>
-<td>模块</td>
-<td>module.css</td>
+<td>repeating-radial-gradient()</td>
+<td>-</td>
+<td>类似 radial-gradient()，用重复的径向渐变创建图像。</td>
+<td>3</td>
 </tr>
 <tr>
-<td>表单</td>
-<td>forms.css</td>
-</tr>
-<tr>
-<td>主题/网页换肤</td>
-<td>themes.css</td>
-</tr>
-<tr>
-<td>字体</td>
-<td>font.css</td>
-</tr>
-<tr>
-<td>打印</td>
-<td>print.css</td>
-</tr>
-<tr>
-<td>补丁</td>
-<td>mend.css</td>
+<td>var()</td>
+<td>:root {–main-bg-color: yellow;} <br> #div1 {background-color: var(–main-bg-color);}</td>
+<td>用于插入自定义的属性值</td>
+<td>3</td>
 </tr>
 </tbody></table>
+<h2 id="4-css-变量"><a href="#4-css-变量" class="headerlink" title="4.css 变量"></a>4.css 变量</h2><p>CSS中原生的变量定义语法是：–<em>，变量使用语法是：var(–</em>)其中*表示我们的变量名称</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--a</span>: <span class="number">#ff0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="selector-id">#box</span> &#123;</span><br><span class="line">   <span class="attribute">border</span>: <span class="number">10px</span> solid <span class="built_in">var</span>(--a); <span class="comment">/* === border: 10px solid #f00*/</span></span><br><span class="line">   <span class="attribute">color</span>: <span class="built_in">var</span>(--color); <span class="comment">/*现在还不知道 js跑完后 ===  color: #cd0000*/</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>js 声明 获取 css 变量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;box&#x27;</span>)</span><br><span class="line">box.style.setProperty(<span class="string">&#x27;--color&#x27;</span>, <span class="string">&#x27;#cd0000&#x27;</span>); <span class="comment">// 声明</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;获取变量：&#x27;</span>,getComputedStyle(box).getPropertyValue(<span class="string">&#x27;--color&#x27;</span>)) <span class="comment">// 获取</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;获取变量：&#x27;</span>,getComputedStyle(box).getPropertyValue(<span class="string">&#x27;--a&#x27;</span>)) <span class="comment">// 获取</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="5-浏览器支持"><a href="#5-浏览器支持" class="headerlink" title="5.浏览器支持"></a>5.浏览器支持</h2><p>  编写兼容低版本浏览器的写法 叫CSS hack 示例<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-ms-backgtound: #f00</span><br><span class="line">前缀-ms-       <span class="comment">// IE浏览器</span></span><br><span class="line">前缀-moz-      <span class="comment">// firefox 火狐浏览器</span></span><br><span class="line">前缀-webkit-   <span class="comment">// Google Chrome/Safari  谷歌/苹果浏览器</span></span><br><span class="line">前缀-webkit-   <span class="comment">// 浏览器</span></span><br><span class="line">前缀-o-        <span class="comment">// Opera 欧朋浏览器</span></span><br><span class="line">前缀-xv-       <span class="comment">// Opera 欧朋浏览器</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="6-单位"><a href="#6-单位" class="headerlink" title="6.单位"></a>6.单位</h2><table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>px</code></td>
+<td>像素</td>
+<td>常用</td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td>英寸1in=2.54cm</td>
+<td></td>
+</tr>
+<tr>
+<td><code>px</code></td>
+<td>像素</td>
+<td>常用</td>
+</tr>
+<tr>
+<td><code>pt</code></td>
+<td>磅值，多用于字体大小  1pt=1/72in</td>
+<td></td>
+</tr>
+<tr>
+<td><code>cm</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>mm</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>相对父级的百分比</td>
+<td>常用</td>
+</tr>
+<tr>
+<td><code>em</code></td>
+<td>相对于父级元素样式数据乘以的倍数</td>
+<td>看见常用</td>
+</tr>
+<tr>
+<td><code>rem</code></td>
+<td>相对根元素数据乘以的倍数 boot默认1rem=16px 这就相当于根元素html元素*算</td>
+<td>较常用</td>
+</tr>
+</tbody></table>
+<h2 id="7-css优化"><a href="#7-css优化" class="headerlink" title="7.css优化"></a>7.css优化</h2><p>尽量的减少http的请求个数<br>页面的顶部，引入css文件<br>将css和js文件放到外部的独立文件中<br>合并样式(能写群组,就不单写,能用简写方式,就不单独定义属性）<br>缩小样式文件的大小(能重用就重用)<br>减少样式重写<br>避免出现空的href和src<br>选择更优的样式属性值<br>代码压缩</p>
+<h2 id="8-原生自定义组件"><a href="#8-原生自定义组件" class="headerlink" title="8.原生自定义组件"></a>8.原生自定义组件</h2><p>简单的</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">asf-asf</span>&gt;</span>自定义标签，必须有 - ,最好在页面加载后声明<span class="tag">&lt;/<span class="name">asf-asf</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">bbb</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">constructor</span>() &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">super</span>()</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="built_in">this</span>.textContent)</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  <span class="built_in">window</span>.onload = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">    customElements.define(<span class="string">&#x27;zxx-circle&#x27;</span>, aaa);</span></span><br><span class="line"><span class="javascript">    customElements.define(<span class="string">&#x27;asf-asf&#x27;</span>, bbb);</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>复杂的</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">  zxx-circle &#123;</span><br><span class="line">    display: block;</span><br><span class="line">    width: 207px;</span><br><span class="line">    height: 250px;</span><br><span class="line">    color: white;</span><br><span class="line">    background-color: deepskyblue;</span><br><span class="line"><span class="css">    <span class="selector-tag">text-shadow</span>: 1<span class="selector-tag">px</span> 1<span class="selector-tag">px</span> <span class="selector-tag">rgba</span>(0, 0, 0, <span class="selector-class">.5</span>);</span></span><br><span class="line">    padding: 10px;</span><br><span class="line">    text-align: justify;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">zxx-circle</span>&gt;</span>在CSS Shapes布局问世之前，文字像杂志一样的任意形状的排版几乎是不可能的，一直都是用网格、盒子和。<span class="tag">&lt;/<span class="name">zxx-circle</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="class"><span class="keyword">class</span> <span class="title">aaa</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">constructor</span>() &#123;</span></span><br><span class="line"><span class="javascript">        self = <span class="built_in">super</span>();</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> shadow = <span class="built_in">this</span>.attachShadow(&#123;</span></span><br><span class="line"><span class="javascript">          mode: <span class="string">&#x27;open&#x27;</span></span></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="comment">// 文本内容移动到shadow dom元素中</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> style = <span class="built_in">document</span>.createElement(<span class="string">&#x27;style&#x27;</span>);</span></span><br><span class="line">        shadow.appendChild(style);</span><br><span class="line"><span class="javascript">        <span class="comment">// 前后元素</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> before = <span class="built_in">document</span>.createElement(<span class="string">&#x27;zxx-before&#x27;</span>);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> after = <span class="built_in">document</span>.createElement(<span class="string">&#x27;zxx-after&#x27;</span>);</span></span><br><span class="line">        shadow.prepend(after);</span><br><span class="line">        shadow.prepend(before);</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="comment">// 内容</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> content = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span></span><br><span class="line">        shadow.appendChild(content);</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> ro = <span class="keyword">new</span> ResizeObserver(<span class="function"><span class="params">entries</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">for</span> (<span class="keyword">let</span> entry <span class="keyword">of</span> entries) &#123;</span></span><br><span class="line">            self._updateRendering();</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="comment">// 观察当前元素尺寸变化</span></span></span><br><span class="line"><span class="javascript">        ro.observe(<span class="built_in">this</span>);</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      connectedCallback() &#123;</span><br><span class="line"><span class="javascript">        <span class="comment">// 执行渲染更新</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">this</span>._updateRendering();</span></span><br><span class="line">      &#125;</span><br><span class="line">      _updateRendering() &#123;</span><br><span class="line"><span class="javascript">        <span class="comment">// 根据变化的属性，改变组件的UI</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> shadow = <span class="built_in">this</span>.shadowRoot;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> content = shadow.querySelector(<span class="string">&#x27;div&#x27;</span>);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> before = shadow.querySelector(<span class="string">&#x27;zxx-before&#x27;</span>);</span></span><br><span class="line"><span class="javascript">        before.style.height = <span class="string">&#x27;auto&#x27;</span>;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 内容更新</span></span></span><br><span class="line"><span class="javascript">        content.innerHTML = <span class="built_in">this</span>.innerHTML;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 此时内容高度</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> heightContent = <span class="built_in">parseFloat</span>(getComputedStyle(content).height);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> heightBefore = <span class="built_in">parseFloat</span>(getComputedStyle(before).height);</span></span><br><span class="line"></span><br><span class="line">        if (heightContent == 0) &#123;</span><br><span class="line"><span class="javascript">          <span class="keyword">return</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="comment">// 没有设置具体的高度值</span></span></span><br><span class="line">        if (heightBefore == 0 &amp;&amp; heightContent != 0) &#123;</span><br><span class="line"><span class="javascript">          <span class="comment">// 同样面积的椭圆的高度是？</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// s = π×a×b</span></span></span><br><span class="line"><span class="javascript">          <span class="keyword">let</span> height = (<span class="number">2</span> * heightContent * <span class="number">2</span> / <span class="built_in">Math</span>.PI) + <span class="string">&#x27;px&#x27;</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">          <span class="built_in">console</span>.warn(<span class="string">&#x27;&lt;zxx-circle&gt; no height, set it to &#x27;</span> + height + <span class="string">&#x27;!&#x27;</span>);</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.style.height = height;</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        before.removeAttribute(<span class="string">&#x27;style&#x27;</span>);</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 样式设置</span></span></span><br><span class="line"><span class="javascript">        shadow.querySelector(<span class="string">&#x27;style&#x27;</span>).textContent = <span class="string">`:host &#123;</span></span></span><br><span class="line">        border-radius: 50%;</span><br><span class="line">          &#125;</span><br><span class="line">          zxx-before,</span><br><span class="line">          zxx-after &#123;</span><br><span class="line">              width: 50%; min-height: 100%; height: $&#123;heightContent&#125;px;</span><br><span class="line">          &#125;</span><br><span class="line">          zxx-before &#123;</span><br><span class="line">              float: left;</span><br><span class="line">              shape-outside: radial-gradient(farthest-side ellipse at right, transparent 100%, red);</span><br><span class="line">          &#125;</span><br><span class="line">          zxx-after &#123;</span><br><span class="line">              float: right;</span><br><span class="line">              shape-outside: radial-gradient(farthest-side ellipse at left, transparent 100%, red);</span><br><span class="line">          &#125;`;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onload = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      customElements.define(<span class="string">&#x27;asf-asf&#x27;</span>, bbb);</span></span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
         
       
 
@@ -838,7 +842,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/CSS-2-css%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83/">展开全文 >></a>
+          <a class="article-more-a" href="/CSS-3-css%E7%AE%80%E4%BB%8B/">展开全文 >></a>
         </p>
       
 
@@ -2195,19 +2199,19 @@
 
 
   
-    <article id="post-CSS-3-css简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-CSS-2-css书写规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/CSS-3-css%E7%AE%80%E4%BB%8B/">3-css简介</a>
+      <a class="article-title" href="/CSS-2-css%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83/">2-css书写规范</a>
     </h1>
   
 
         
-        <a href="/CSS-3-css%E7%AE%80%E4%BB%8B/" class="archive-article-date">
+        <a href="/CSS-2-css%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.426Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -2216,396 +2220,392 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p>  <a href="#title1" target="_self">1.各种</a><br>  <a href="#title2" target="_self">2.常用选择器（我）</a><br>  <a href="#title3" target="_self">3.css 函数</a><br>  <a href="#title4" target="_self">4.css 变量</a><br>  <a href="#title5" target="_self">5.浏览器支持</a><br>  <a href="#title6" target="_self">6.单位</a><br>  <a href="#title7" target="_self">7.css优化</a><br>  <a href="#title8" target="_self">8.原生自定义组件-我没用过-感觉用处不大</a></p>
-<h2 id="相关网站"><a href="#相关网站" class="headerlink" title="相关网站"></a>相关网站</h2><p>CSS 面试知识点总结 <a target="_blank" rel="noopener" href="https://github.com/CavsZhouyou/Front-End-Interview-Notebook/blob/master/Css/Css.md">https://github.com/CavsZhouyou/Front-End-Interview-Notebook/blob/master/Css/Css.md</a> </p>
-<h2 id="1-各种"><a href="#1-各种" class="headerlink" title="1.各种"></a>1.各种</h2><p>深度选择器 <code> &gt;&gt;&gt; div&#123;&#125;</code><br>css 优先级 <code>!important</code><br>引用 <code>@import &#39;路径&#39;;</code> or <code>link</code></p>
-<h2 id="2-常用选择器（我）"><a href="#2-常用选择器（我）" class="headerlink" title="2.常用选择器（我）"></a>2.常用选择器（我）</h2><table>
-<thead>
-<tr>
-<th>使用</th>
-<th>说明</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>滚动条 滚动条样式 chrome，safari，QQ浏览器，360极速</td>
-<td></td>
-<td>1</td>
-</tr>
-<tr>
-<td>::-webkit-scrollbar</td>
-<td>整个滚动条的背景</td>
-<td>-</td>
-</tr>
-<tr>
-<td>::-webkit-scrollbar-button</td>
-<td>滚动条上方或下方的按钮，单击可上下滚动（横向滚动条单击可左右滚动）</td>
-<td>-</td>
-</tr>
-<tr>
-<td>::-webkit-scrollbar-track</td>
-<td>滚动条轨道</td>
-<td>-</td>
-</tr>
-<tr>
-<td>::-webkit-scrollbar-track-piece</td>
-<td>滚动条没有滑块的轨道部分</td>
-<td>-</td>
-</tr>
-<tr>
-<td>::-webkit-scrollbar-thumb</td>
-<td>滚动条上的滚动滑块</td>
-<td>-</td>
-</tr>
-<tr>
-<td>::-webkit-scrollbar-corner</td>
-<td>当同时有垂直滚动条和水平滚动条时交汇的部分</td>
-<td>-</td>
-</tr>
-<tr>
-<td>::-webkit-resizer</td>
-<td>某些元素的corner部分的部分样式(例:textarea的可拖动按钮)</td>
-<td>-</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>伪类选择器</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>p<code>:link</code></td>
-<td>未被访问  顺序遵循 爱恨原则 LoVe HAte</td>
-<td>1</td>
-</tr>
-<tr>
-<td>p<code>:visited</code></td>
-<td>已被访问的链接  顺序遵循 爱恨原则 LoVe HAte</td>
-<td>1</td>
-</tr>
-<tr>
-<td>p<code>:hover</code></td>
-<td>鼠标悬停元素  顺序遵循 爱恨原则 LoVe HAte</td>
-<td>1</td>
-</tr>
-<tr>
-<td>p<code>:active</code></td>
-<td>active    选择活动链接  顺序遵循 爱恨原则 LoVe HAte</td>
-<td>1</td>
-</tr>
-<tr>
-<td>p<code>:focus</code></td>
-<td>获取焦点的元素</td>
-<td>2</td>
-</tr>
-<tr>
-<td><code>:root</code></td>
-<td>选择文档的根元素<br> :root {–main-bg-color: yellow;} <br> #div1 {background-color: var(–main-bg-color);}</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>:target</code></td>
-<td>#news:target    选择当前活动的 #news 元素</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>:enabled</code></td>
-<td>input:enabled    选择每个启用的 input 元素</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>:disabled</code></td>
-<td>input:disabled    选择每个禁用的 input 元素</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>:checked</code></td>
-<td>input:checked    选择每个被选中的 input</td>
-<td>3</td>
-</tr>
-<tr>
-<td>p<code>:first-letter</code></td>
-<td>选择每个 p 元素的首字母</td>
-<td>1</td>
-</tr>
-<tr>
-<td>p<code>:first-line</code></td>
-<td>选择每个 p 元素的首行 首字符和首行发生冲突时，使用首字符样式</td>
-<td>1</td>
-</tr>
-<tr>
-<td>p<code>:first-child</code></td>
-<td>#选择属于父元素的第一个子元素的每个 p 元素</td>
-<td>2</td>
-</tr>
-<tr>
-<td>p<code>:last-child</code></td>
-<td>匹配的元素是属于其父元素的最后一个子元素. 最后一个子元素如果不是符合的选择器 ，那么就不会变化</td>
-<td>3</td>
-</tr>
-<tr>
-<td>p<code>:nth-child(n)</code></td>
-<td>匹配的元素是属于其父元素的第n个子元素，n从1开始，第n个子元素如果不是符合的选择器 ，那么就不会变化</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>:empty </code></td>
-<td>匹配没有子元素的元素，内部为空  包括空格 回车 元素 文本</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>:only-child</code></td>
-<td>匹配属于其父元素的唯一子元素</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>:not(p)</code></td>
-<td>选择每个并非p元素的元素</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>::selection</code> 必须是两个：</td>
-<td>匹配用户选取内容的样式 注意：只能修改文本颜色，背景颜色</td>
-<td>3</td>
-</tr>
-<tr>
-<td>p<code>:before</code></td>
-<td>在元素的内容之前插入内容</td>
-<td>2</td>
-</tr>
-<tr>
-<td>p<code>:after</code></td>
-<td>在元素的内容之后插入内容。ontent中只能添加文本或者url(图片) <br>p:after{content: “”,color:#333}</td>
-<td>2</td>
-</tr>
-<tr>
-<td>伪类选择器-不常用</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>:first-of-type</code></td>
-<td>选择属于其父元素的首个 p 元素的每个 p 元素</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>:last-of-type</code></td>
-<td>选择属于其父元素的最后 p&gt; 元素的每个 p 元素</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>:only-of-type</code></td>
-<td>选择属于其父元素唯一的 p 元素的每个 p 元素</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>:nth-last-child(n)</code></td>
-<td>同上，从最后一个子元素开始计数</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>:nth-of-type(n)</code></td>
-<td>选择属于其父元素第二个 p 元素的每个 p 元素</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>:nth-last-of-type(n)</code></td>
-<td>同上，但是从最后一个子元素开始计数</td>
-<td>3</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>兄弟选择器</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>选择器1+选择器2{}</td>
-<td>获取紧紧挨在某元素后面的兄弟元素</td>
-<td>-</td>
-</tr>
-<tr>
-<td>选择器1~选择器2{}</td>
-<td>所有选择器1后的选择器2的样式</td>
-<td>2</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>属性选择器 较少用 效率差</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>[id]{color:#ff0}</td>
-<td>所有有ID的标签 颜色变黄 [title] [class] [class=”c1”]都可以选择</td>
-<td>-</td>
-</tr>
-<tr>
-<td>div[id]{}</td>
-<td>DIV 下的ID标签 的样式</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[id][class]{}</td>
-<td>有id也有class属性的元素 匹配页面中所有带有[] 和 []属性的元素</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[attr=va]</td>
-<td>匹配页面中所有带有attr属性并且值为va的元素  [id=”s1”]  [class=”s5”]  [style=”color:#000”]</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[attr^=va]</td>
-<td>匹配属性值以va开头的元素</td>
-<td>3</td>
-</tr>
-<tr>
-<td>[attr$=va]</td>
-<td>匹配属性值以va结尾的元素</td>
-<td>3</td>
-</tr>
-<tr>
-<td>[attr*=va]</td>
-<td>匹配属性值中，有va的元素</td>
-<td>3</td>
-</tr>
-<tr>
-<td>[attr~=va]</td>
-<td>匹配属性值中，有va这个独立单词的元素</td>
-<td>-</td>
-</tr>
-</tbody></table>
-<h2 id="3-css-函数"><a href="#3-css-函数" class="headerlink" title="3.css 函数"></a>3.css 函数</h2><table>
-<thead>
-<tr>
-<th>-</th>
-<th>示例</th>
-<th>说明</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>calc()</td>
-<td>width: calc(100px - 5px);</td>
-<td>允许计算CSS的属性值。</td>
-<td>3</td>
-</tr>
-<tr>
-<td>attr()</td>
-<td>a:after {content: “ (“ attr(href) “)”;}</td>
-<td>返回选择元素的属性值。</td>
-<td>2</td>
-</tr>
-<tr>
-<td>linear-gradient()</td>
-<td>linear-gradient(red, green, blue)</td>
-<td>过渡颜色时常常使用 创建一个线性渐变的图像</td>
-<td>3</td>
-</tr>
-<tr>
-<td>radial-gradient()</td>
-<td>radial-gradient(red, green, blue)</td>
-<td>过渡颜色时常常使用 用径向渐变创建图像</td>
-<td>3</td>
-</tr>
-<tr>
-<td>repeating-linear-gradient()</td>
-<td>repeating-linear-gradient(red, yellow 10%, green 20%)==<br>linear-gradient(red, yellow 10%, green 20%,red 30%, yellow 40%, green 50%…)</td>
-<td>用重复的线性渐变创建图像</td>
-<td>3</td>
-</tr>
-<tr>
-<td>repeating-radial-gradient()</td>
-<td>-</td>
-<td>类似 radial-gradient()，用重复的径向渐变创建图像。</td>
-<td>3</td>
-</tr>
-<tr>
-<td>var()</td>
-<td>:root {–main-bg-color: yellow;} <br> #div1 {background-color: var(–main-bg-color);}</td>
-<td>用于插入自定义的属性值</td>
-<td>3</td>
-</tr>
-</tbody></table>
-<h2 id="4-css-变量"><a href="#4-css-变量" class="headerlink" title="4.css 变量"></a>4.css 变量</h2><p>CSS中原生的变量定义语法是：–<em>，变量使用语法是：var(–</em>)其中*表示我们的变量名称</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--a</span>: <span class="number">#ff0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="selector-id">#box</span> &#123;</span><br><span class="line">   <span class="attribute">border</span>: <span class="number">10px</span> solid <span class="built_in">var</span>(--a); <span class="comment">/* === border: 10px solid #f00*/</span></span><br><span class="line">   <span class="attribute">color</span>: <span class="built_in">var</span>(--color); <span class="comment">/*现在还不知道 js跑完后 ===  color: #cd0000*/</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>js 声明 获取 css 变量</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;box&#x27;</span>)</span><br><span class="line">box.style.setProperty(<span class="string">&#x27;--color&#x27;</span>, <span class="string">&#x27;#cd0000&#x27;</span>); <span class="comment">// 声明</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;获取变量：&#x27;</span>,getComputedStyle(box).getPropertyValue(<span class="string">&#x27;--color&#x27;</span>)) <span class="comment">// 获取</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;获取变量：&#x27;</span>,getComputedStyle(box).getPropertyValue(<span class="string">&#x27;--a&#x27;</span>)) <span class="comment">// 获取</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="5-浏览器支持"><a href="#5-浏览器支持" class="headerlink" title="5.浏览器支持"></a>5.浏览器支持</h2><p>  编写兼容低版本浏览器的写法 叫CSS hack 示例<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-ms-backgtound: #f00</span><br><span class="line">前缀-ms-       <span class="comment">// IE浏览器</span></span><br><span class="line">前缀-moz-      <span class="comment">// firefox 火狐浏览器</span></span><br><span class="line">前缀-webkit-   <span class="comment">// Google Chrome/Safari  谷歌/苹果浏览器</span></span><br><span class="line">前缀-webkit-   <span class="comment">// 浏览器</span></span><br><span class="line">前缀-o-        <span class="comment">// Opera 欧朋浏览器</span></span><br><span class="line">前缀-xv-       <span class="comment">// Opera 欧朋浏览器</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="6-单位"><a href="#6-单位" class="headerlink" title="6.单位"></a>6.单位</h2><table>
+          <h3 id="一、Css书写顺序"><a href="#一、Css书写顺序" class="headerlink" title="一、Css书写顺序|"></a>一、Css书写顺序|</h3><pre><code>1.位置属性(position, top, right, z-index, display, float等)　
+2.大小(width, height, padding, margin)
+3.文字系列(font, line-height, letter-spacing, color- text-align等)　
+4.背景(background, border等)
+5.其他(animation, transition等)</code></pre>
+<h3 id="二-类名结构明命"><a href="#二-类名结构明命" class="headerlink" title="二 类名结构明命"></a>二 类名结构明命</h3><table>
 <thead>
 <tr>
 <th>1</th>
 <th>2</th>
-<th>3</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>px</code></td>
-<td>像素</td>
-<td>常用</td>
+<td>wrap</td>
+<td>外套、包裹，用于最外层</td>
 </tr>
 <tr>
-<td><code>in</code></td>
-<td>英寸1in=2.54cm</td>
-<td></td>
+<td>wrapper</td>
+<td>外套，用于页面外围控制整体布局宽度</td>
 </tr>
 <tr>
-<td><code>px</code></td>
-<td>像素</td>
-<td>常用</td>
+<td>box</td>
+<td>盒子，容器</td>
 </tr>
 <tr>
-<td><code>pt</code></td>
-<td>磅值，多用于字体大小  1pt=1/72in</td>
-<td></td>
+<td>header</td>
+<td>头部，用于页头部分</td>
 </tr>
 <tr>
-<td><code>cm</code></td>
-<td>-</td>
-<td>-</td>
+<td>nav</td>
+<td>导航，主导航</td>
 </tr>
 <tr>
-<td><code>mm</code></td>
-<td>-</td>
-<td>-</td>
+<td>main</td>
+<td>主要区域，内容主体</td>
 </tr>
 <tr>
-<td><code>%</code></td>
-<td>相对父级的百分比</td>
-<td>常用</td>
+<td>content/container</td>
+<td>内容，内容容器</td>
 </tr>
 <tr>
-<td><code>em</code></td>
-<td>相对于父级元素样式数据乘以的倍数</td>
-<td>看见常用</td>
+<td>sidebar</td>
+<td>侧边栏</td>
 </tr>
 <tr>
-<td><code>rem</code></td>
-<td>相对根元素数据乘以的倍数 boot默认1rem=16px 这就相当于根元素html元素*算</td>
-<td>较常用</td>
+<td>footer</td>
+<td>底部，用于页脚部分</td>
+</tr>
+<tr>
+<td>left center right</td>
+<td>左中右</td>
+</tr>
+<tr>
+<td>logo</td>
+<td>网站 LOGO 标志</td>
+</tr>
+<tr>
+<td>loginbar</td>
+<td>登录条</td>
+</tr>
+<tr>
+<td>regsiter</td>
+<td>注册模块</td>
+</tr>
+<tr>
+<td>banner</td>
+<td>广告，用于横幅广告条</td>
+</tr>
+<tr>
+<td>menu</td>
+<td>菜单</td>
+</tr>
+<tr>
+<td>submenu</td>
+<td>子菜单，二级菜单</td>
+</tr>
+<tr>
+<td>top</td>
+<td>顶部</td>
+</tr>
+<tr>
+<td>topnav</td>
+<td>顶导航</td>
+</tr>
+<tr>
+<td>mainnav</td>
+<td>主导航</td>
+</tr>
+<tr>
+<td>subnav</td>
+<td>子导航，二级导航</td>
+</tr>
+<tr>
+<td>leftsideBar</td>
+<td>左导航</td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>底部</td>
+</tr>
+<tr>
+<td>bottombar</td>
+<td>底部工具栏</td>
+</tr>
+<tr>
+<td>tool</td>
+<td>工具条</td>
+</tr>
+<tr>
+<td>shop</td>
+<td>功能区，如购物车、收银台</td>
+</tr>
+<tr>
+<td>title</td>
+<td>栏目标题</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>摘要</td>
+</tr>
+<tr>
+<td>hot</td>
+<td>热门热点信息，推荐</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>提示信息</td>
+</tr>
+<tr>
+<td>news</td>
+<td>新闻</td>
+</tr>
+<tr>
+<td>list</td>
+<td>列表，文章列表</td>
+</tr>
+<tr>
+<td>piclist</td>
+<td>图片列表</td>
+</tr>
+<tr>
+<td>newslist</td>
+<td>新闻列表</td>
+</tr>
+<tr>
+<td>search-output</td>
+<td>搜索输出</td>
+</tr>
+<tr>
+<td>search-results</td>
+<td>搜索结果</td>
+</tr>
+<tr>
+<td>drop/dropdown</td>
+<td>下拉</td>
+</tr>
+<tr>
+<td>dropmenu/dorpdown-content</td>
+<td>下拉菜单</td>
+</tr>
+<tr>
+<td>scroll</td>
+<td>滚动</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td>首页</td>
+</tr>
+<tr>
+<td>subpage</td>
+<td>子页面，二级页面</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>标签</td>
+</tr>
+<tr>
+<td>tab</td>
+<td>标签页</td>
+</tr>
+<tr>
+<td>tips</td>
+<td>小技巧</td>
+</tr>
+<tr>
+<td>ranking</td>
+<td>排行</td>
+</tr>
+<tr>
+<td>vote</td>
+<td>投票</td>
+</tr>
+<tr>
+<td>bth</td>
+<td>按钮</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>图标</td>
+</tr>
+<tr>
+<td>arr/arrow</td>
+<td>箭头</td>
+</tr>
+<tr>
+<td>status</td>
+<td>状态</td>
+</tr>
+<tr>
+<td>note</td>
+<td>注释</td>
+</tr>
+<tr>
+<td>skin</td>
+<td>皮肤</td>
+</tr>
+<tr>
+<td>current</td>
+<td>当前的</td>
+</tr>
+<tr>
+<td>active</td>
+<td>活跃的，有效的</td>
+</tr>
+<tr>
+<td>download</td>
+<td>下载</td>
+</tr>
+<tr>
+<td>friendLink</td>
+<td>友情链接</td>
+</tr>
+<tr>
+<td>copyright</td>
+<td>版权信息</td>
+</tr>
+<tr>
+<td>partner</td>
+<td>合作伙伴</td>
+</tr>
+<tr>
+<td>joinus</td>
+<td>加入我们</td>
+</tr>
+<tr>
+<td>sitemap</td>
+<td>网站地图</td>
+</tr>
+<tr>
+<td>siteinfo</td>
+<td>网站信息</td>
+</tr>
+<tr>
+<td>siteinfoLegar</td>
+<td>法律声明</td>
+</tr>
+<tr>
+<td>announcement</td>
+<td>公告</td>
+</tr>
+<tr>
+<td>guild</td>
+<td>指南</td>
+</tr>
+<tr>
+<td>service</td>
+<td>服务</td>
+</tr>
+<tr>
+<td>promotion</td>
+<td>推广</td>
+</tr>
+<tr>
+<td>blog</td>
+<td>博客</td>
+</tr>
+<tr>
+<td>forum</td>
+<td>论坛</td>
+</tr>
+<tr>
+<td>keyword</td>
+<td>关键词</td>
+</tr>
+<tr>
+<td>products</td>
+<td>产品</td>
+</tr>
+<tr>
+<td>products-prices</td>
+<td>产品价格</td>
+</tr>
+<tr>
+<td>products-description</td>
+<td>产品描述</td>
+</tr>
+<tr>
+<td>products-review</td>
+<td>产品评论</td>
+</tr>
+<tr>
+<td>editor-review</td>
+<td>编辑评论</td>
+</tr>
+<tr>
+<td>news-products</td>
+<td>最新产品</td>
+</tr>
+<tr>
+<td>publisher</td>
+<td>生产商</td>
+</tr>
+<tr>
+<td>screenshot</td>
+<td>缩略图</td>
+</tr>
+<tr>
+<td>faqs</td>
+<td>常见问题</td>
+</tr>
+<tr>
+<td>barnding</td>
+<td>商标</td>
+</tr>
+<tr>
+<td>pay</td>
+<td>充值</td>
+</tr>
+<tr>
+<td>reputation</td>
+<td>信誉</td>
 </tr>
 </tbody></table>
-<h2 id="7-css优化"><a href="#7-css优化" class="headerlink" title="7.css优化"></a>7.css优化</h2><p>尽量的减少http的请求个数<br>页面的顶部，引入css文件<br>将css和js文件放到外部的独立文件中<br>合并样式(能写群组,就不单写,能用简写方式,就不单独定义属性）<br>缩小样式文件的大小(能重用就重用)<br>减少样式重写<br>避免出现空的href和src<br>选择更优的样式属性值<br>代码压缩</p>
-<h2 id="8-原生自定义组件"><a href="#8-原生自定义组件" class="headerlink" title="8.原生自定义组件"></a>8.原生自定义组件</h2><p>简单的</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">asf-asf</span>&gt;</span>自定义标签，必须有 - ,最好在页面加载后声明<span class="tag">&lt;/<span class="name">asf-asf</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">bbb</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">constructor</span>() &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">super</span>()</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="built_in">this</span>.textContent)</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  <span class="built_in">window</span>.onload = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">    customElements.define(<span class="string">&#x27;zxx-circle&#x27;</span>, aaa);</span></span><br><span class="line"><span class="javascript">    customElements.define(<span class="string">&#x27;asf-asf&#x27;</span>, bbb);</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="二-常用的文件命名"><a href="#二-常用的文件命名" class="headerlink" title="二 常用的文件命名"></a>二 常用的文件命名</h3><table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全局样式</td>
+<td>global.css</td>
+</tr>
+<tr>
+<td>布局结构</td>
+<td>layout.css</td>
+</tr>
+<tr>
+<td>基本共用</td>
+<td>base.css</td>
+</tr>
+<tr>
+<td>综合样式</td>
+<td>style.css</td>
+</tr>
+<tr>
+<td>主要的</td>
+<td>master.css</td>
+</tr>
+<tr>
+<td>模块</td>
+<td>module.css</td>
+</tr>
+<tr>
+<td>表单</td>
+<td>forms.css</td>
+</tr>
+<tr>
+<td>主题/网页换肤</td>
+<td>themes.css</td>
+</tr>
+<tr>
+<td>字体</td>
+<td>font.css</td>
+</tr>
+<tr>
+<td>打印</td>
+<td>print.css</td>
+</tr>
+<tr>
+<td>补丁</td>
+<td>mend.css</td>
+</tr>
+</tbody></table>
 
-<p>复杂的</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">  zxx-circle &#123;</span><br><span class="line">    display: block;</span><br><span class="line">    width: 207px;</span><br><span class="line">    height: 250px;</span><br><span class="line">    color: white;</span><br><span class="line">    background-color: deepskyblue;</span><br><span class="line"><span class="css">    <span class="selector-tag">text-shadow</span>: 1<span class="selector-tag">px</span> 1<span class="selector-tag">px</span> <span class="selector-tag">rgba</span>(0, 0, 0, <span class="selector-class">.5</span>);</span></span><br><span class="line">    padding: 10px;</span><br><span class="line">    text-align: justify;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">zxx-circle</span>&gt;</span>在CSS Shapes布局问世之前，文字像杂志一样的任意形状的排版几乎是不可能的，一直都是用网格、盒子和。<span class="tag">&lt;/<span class="name">zxx-circle</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="class"><span class="keyword">class</span> <span class="title">aaa</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">constructor</span>() &#123;</span></span><br><span class="line"><span class="javascript">        self = <span class="built_in">super</span>();</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> shadow = <span class="built_in">this</span>.attachShadow(&#123;</span></span><br><span class="line"><span class="javascript">          mode: <span class="string">&#x27;open&#x27;</span></span></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="comment">// 文本内容移动到shadow dom元素中</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> style = <span class="built_in">document</span>.createElement(<span class="string">&#x27;style&#x27;</span>);</span></span><br><span class="line">        shadow.appendChild(style);</span><br><span class="line"><span class="javascript">        <span class="comment">// 前后元素</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> before = <span class="built_in">document</span>.createElement(<span class="string">&#x27;zxx-before&#x27;</span>);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> after = <span class="built_in">document</span>.createElement(<span class="string">&#x27;zxx-after&#x27;</span>);</span></span><br><span class="line">        shadow.prepend(after);</span><br><span class="line">        shadow.prepend(before);</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="comment">// 内容</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> content = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span></span><br><span class="line">        shadow.appendChild(content);</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> ro = <span class="keyword">new</span> ResizeObserver(<span class="function"><span class="params">entries</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">for</span> (<span class="keyword">let</span> entry <span class="keyword">of</span> entries) &#123;</span></span><br><span class="line">            self._updateRendering();</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="comment">// 观察当前元素尺寸变化</span></span></span><br><span class="line"><span class="javascript">        ro.observe(<span class="built_in">this</span>);</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      connectedCallback() &#123;</span><br><span class="line"><span class="javascript">        <span class="comment">// 执行渲染更新</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">this</span>._updateRendering();</span></span><br><span class="line">      &#125;</span><br><span class="line">      _updateRendering() &#123;</span><br><span class="line"><span class="javascript">        <span class="comment">// 根据变化的属性，改变组件的UI</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> shadow = <span class="built_in">this</span>.shadowRoot;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> content = shadow.querySelector(<span class="string">&#x27;div&#x27;</span>);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> before = shadow.querySelector(<span class="string">&#x27;zxx-before&#x27;</span>);</span></span><br><span class="line"><span class="javascript">        before.style.height = <span class="string">&#x27;auto&#x27;</span>;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 内容更新</span></span></span><br><span class="line"><span class="javascript">        content.innerHTML = <span class="built_in">this</span>.innerHTML;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 此时内容高度</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> heightContent = <span class="built_in">parseFloat</span>(getComputedStyle(content).height);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> heightBefore = <span class="built_in">parseFloat</span>(getComputedStyle(before).height);</span></span><br><span class="line"></span><br><span class="line">        if (heightContent == 0) &#123;</span><br><span class="line"><span class="javascript">          <span class="keyword">return</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="comment">// 没有设置具体的高度值</span></span></span><br><span class="line">        if (heightBefore == 0 &amp;&amp; heightContent != 0) &#123;</span><br><span class="line"><span class="javascript">          <span class="comment">// 同样面积的椭圆的高度是？</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// s = π×a×b</span></span></span><br><span class="line"><span class="javascript">          <span class="keyword">let</span> height = (<span class="number">2</span> * heightContent * <span class="number">2</span> / <span class="built_in">Math</span>.PI) + <span class="string">&#x27;px&#x27;</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">          <span class="built_in">console</span>.warn(<span class="string">&#x27;&lt;zxx-circle&gt; no height, set it to &#x27;</span> + height + <span class="string">&#x27;!&#x27;</span>);</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.style.height = height;</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        before.removeAttribute(<span class="string">&#x27;style&#x27;</span>);</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 样式设置</span></span></span><br><span class="line"><span class="javascript">        shadow.querySelector(<span class="string">&#x27;style&#x27;</span>).textContent = <span class="string">`:host &#123;</span></span></span><br><span class="line">        border-radius: 50%;</span><br><span class="line">          &#125;</span><br><span class="line">          zxx-before,</span><br><span class="line">          zxx-after &#123;</span><br><span class="line">              width: 50%; min-height: 100%; height: $&#123;heightContent&#125;px;</span><br><span class="line">          &#125;</span><br><span class="line">          zxx-before &#123;</span><br><span class="line">              float: left;</span><br><span class="line">              shape-outside: radial-gradient(farthest-side ellipse at right, transparent 100%, red);</span><br><span class="line">          &#125;</span><br><span class="line">          zxx-after &#123;</span><br><span class="line">              float: right;</span><br><span class="line">              shape-outside: radial-gradient(farthest-side ellipse at left, transparent 100%, red);</span><br><span class="line">          &#125;`;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onload = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      customElements.define(<span class="string">&#x27;asf-asf&#x27;</span>, bbb);</span></span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
         
       
 
@@ -2629,7 +2629,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/CSS-3-css%E7%AE%80%E4%BB%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/CSS-2-css%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83/">展开全文 >></a>
         </p>
       
 
@@ -2751,19 +2751,19 @@
 
 
   
-    <article id="post-Angular-3-组件传参" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Angular-2-服务和依赖注入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Angular-3-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/">3-组件传参</a>
+      <a class="article-title" href="/Angular-2-%E6%9C%8D%E5%8A%A1%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">2-服务和依赖注入</a>
     </h1>
   
 
         
-        <a href="/Angular-3-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" class="archive-article-date">
+        <a href="/Angular-2-%E6%9C%8D%E5%8A%A1%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.425Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -2772,22 +2772,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="父子-子父-传参"><a href="#父子-子父-传参" class="headerlink" title="父子 子父 传参"></a>父子 子父 传参</h3><p>父子传参</p>
-<blockquote>
-<p>子组件<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnInit, Input &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>; <span class="comment">// 添加</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="string">&#x27;app-zi&#x27;</span>,</span><br><span class="line">  templateUrl: <span class="string">&#x27;./zi.component.html&#x27;</span>,</span><br><span class="line">  styleUrls: [<span class="string">&#x27;./zi.component.css&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> ZiComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line">  <span class="meta">@Input</span>() <span class="comment">// 添加</span></span><br><span class="line">  userName: <span class="built_in">string</span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123; &#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit(): <span class="built_in">void</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>父组件<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;app-zi [userName]=<span class="string">&quot;abc&quot;</span>&gt;&lt;/app-zi&gt;</span><br><span class="line"><span class="comment">// ts</span></span><br><span class="line">  abc: <span class="built_in">string</span> = <span class="string">&#x27;7777&#x27;</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>子父传参</p>
-<blockquote>
-<p>子<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnInit, Input, EventEmitter, Output &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>; <span class="comment">// EventEmitter, Output</span></span><br><span class="line">  <span class="meta">@Output</span>()  <span class="comment">// 需要发射给父组件的事件--输出型属性</span></span><br><span class="line">  uname1 = <span class="keyword">new</span> EventEmitter  <span class="comment">// 事件发射器</span></span><br><span class="line">  doclick()&#123;                <span class="comment">// 点击触发事件</span></span><br><span class="line">    <span class="built_in">this</span>.uname1.emit(<span class="built_in">this</span>.inputt)<span class="comment">//发射自定义事件.携带自己的参数</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>父<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;app-zi  (uname1)=<span class="string">&quot;doCry($event)&quot;</span>&gt;&lt;<span class="regexp">/app-zi&gt; /</span><span class="regexp">/ (uname1)=&quot;doCry($event)&quot;  (子元素声明的事件发射器) = &quot;函数($event)&quot;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ ts</span></span><br><span class="line"><span class="regexp">doCry (e) &#123;</span></span><br><span class="line"><span class="regexp">    console.log(&#x27;获取得到的参数&#x27;,e)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>子组件给父组件传递数据的非标准方式—让父组件可以直接使用子组件对象 相当于vue 的ref</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// html</span></span><br><span class="line">&lt; #myc01&gt;..&lt;/&gt;</span><br><span class="line"><span class="comment">// ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; Component, OnInit, ViewChild &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>; <span class="comment">// ViewChild </span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//static 是静态还是动态？ 就是有没有if或者for</span></span><br><span class="line">  <span class="meta">@ViewChild</span>(<span class="string">&#x27;mySign01&#x27;</span>, &#123; <span class="keyword">static</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">  c1</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">  <span class="comment">// 此时 this.c1 = 当前做了 #mySign01 标记的元素</span></span><br></pre></td></tr></table></figure>
+          <h3 id="服务和依赖注入"><a href="#服务和依赖注入" class="headerlink" title="服务和依赖注入"></a><span id="title5">服务和依赖注入</span></h3><p><code>Component</code> 组件，仅应该只负责视图，只参与展示；与展示无关的语句都应该剥离出去；例如：做日志、计时、网络数据访问…<br>组件=视图数据+事件监听函数<br><code>Service</code> 服务，就是一个简单的对象，负责执行从组件中剥离的与视图无关的操作，例如：做日志、计时、网络访问….<br>服务=日志+计时+网络请求+格式验证</p>
+<p>在构造方法中声明需要依赖某个对象，且该对象是“可以被注入的(@Injectable)”,那么Angular就会自动创建依赖的对象，并注入给当前构造方法<br>Angular中的依赖注入(DI)是根据构造方法的形参类型来识别的！<br>不放在普通实例方法中；也不根据变量名来识别！</p>
+<p>创建服务： <code>ng   generate  service  服务名</code><br>ng   generate  service  fuWu<br>新增2个文件<br>CREATE <code>src/app/fu-wu.service.spec.ts</code> (348 bytes)<br>CREATE <code>src/app/fu-wu.service.ts</code> (133 bytes)</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Injectable &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="comment">//服务对象都是可以被注入给组件的</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span>(&#123;</span><br><span class="line">  providedIn: <span class="string">&#x27;root&#x27;</span> <span class="comment">// 服务提供者为应用根模块.到处可以用</span></span><br><span class="line">  <span class="comment">// 若服务在根模块中被提供。则可以供给其他模块中的组件使用。否则就只能在当前模块中的组件中使用</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> FuWuService &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;logger+++++++++&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  doLog(content) &#123; <span class="comment">// 接受传递的参数</span></span><br><span class="line">    <span class="keyword">let</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">    <span class="built_in">console</span>.log(now + <span class="string">&#x27;:&#x27;</span> + content) </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ***.ts 要调用的页面</span></span><br><span class="line"><span class="keyword">import</span> &#123; FuWuService &#125; <span class="keyword">from</span> <span class="string">&#x27;../fu-wu.service&#x27;</span>;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  loger = null;</span></span><br><span class="line"><span class="comment">  constructor(obj: FuWuService) &#123;</span></span><br><span class="line"><span class="comment">     console.log(obj)  // 服务</span></span><br><span class="line"><span class="comment">     obj.doLog(this.count) // 这里就调用了方法</span></span><br><span class="line"><span class="comment">    this.loger = obj </span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="comment">// 上述简写  startTime1又是形参.又是变量 </span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> loger:FuWuService</span>)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  add(e) &#123; <span class="comment">// 触发次函数 会触发服务</span></span><br><span class="line">    <span class="built_in">this</span>.count += e;</span><br><span class="line">    <span class="built_in">this</span>.loger.doLog(<span class="string">&#x27;用户购买数量&#x27;</span> + <span class="built_in">this</span>.count) </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="面试题：Angular中的Service可以在哪里被提供-Service的提供者-注入器有哪些？"><a href="#面试题：Angular中的Service可以在哪里被提供-Service的提供者-注入器有哪些？" class="headerlink" title="面试题：Angular中的Service可以在哪里被提供/Service的提供者/注入器有哪些？"></a>面试题：Angular中的Service可以在哪里被提供/Service的提供者/注入器有哪些？</h3><p>方式1：声明服务时提供    根模块中提供的服务对象是整个应用中“单例的”<br> 就是上述指令模式创建的服务<br> <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// **.service.ts</span></span><br><span class="line">   <span class="keyword">import</span> &#123; Injectable &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line">   <span class="meta">@Injectable</span>(&#123;           </span><br><span class="line">     providedIn: <span class="string">&#x27;root&#x27;</span> <span class="comment">// 此处 </span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">export</span>  <span class="keyword">class</span>  FuWuService&#123;  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p> 方式2：在模块中提供     在当前模块中的所有组件共用同一个服务对象<br> <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// **.service.ts</span></span><br><span class="line">    <span class="meta">@Injectable</span>() <span class="comment">// 改成这个样式 。不需要root声明，其他不变</span></span><br><span class="line"><span class="comment">// Add.module.ts中操作</span></span><br><span class="line">    <span class="meta">@NgModule</span>(&#123;</span><br><span class="line">        providers: [ FuWuService ] <span class="comment">// </span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
+<p> 方式3：在组件声明中提供   该服务仅能作用于当前组件，且每个组件都有自己专有的服务对象<br> <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// **.service.ts</span></span><br><span class="line">   <span class="meta">@Injectable</span>() <span class="comment">// 改成这个样式 。不需要root声明，其他不变</span></span><br><span class="line"> <span class="comment">// component.ts中操作</span></span><br><span class="line"> <span class="meta">@Component</span>(&#123;</span><br><span class="line">    selector: <span class="string">&#x27;app-myc01&#x27;</span>,</span><br><span class="line">    template: <span class="string">&#x27;  &#x27;</span>,</span><br><span class="line">    providers: [ FuWuService ] </span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Angular提供的异步请求服务-HttpClient"><a href="#Angular提供的异步请求服务-HttpClient" class="headerlink" title="Angular提供的异步请求服务 HttpClient"></a>Angular提供的异步请求服务 HttpClient</h3><p>  1.在主模块中引入HTTPClientModule模块<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.module.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; HttpClientModule &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/common/http&#x27;</span></span><br><span class="line">imports:[ </span><br><span class="line">  HttpClientModule</span><br><span class="line">  ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure><br>  2.在组件中注入依赖的HTTPClient服务<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; HttpClient &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/common/http&#x27;</span>;</span><br><span class="line"><span class="keyword">class</span> my01Component&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> http:HttpClient</span>)&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  loadProduct()&#123;		<span class="comment">//3)在组件方法中使用被注入的httpClient服务</span></span><br><span class="line">    <span class="built_in">this</span>.http.get(url).subscribe( <span class="function">(<span class="params">res</span>)=&gt;</span>&#123; &#125; )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> body = <span class="string">&#x27;uname=tom&amp;age=20&#x27;</span></span><br><span class="line">    <span class="keyword">let</span> options = &#123;</span><br><span class="line">        headers: &#123; </span><br><span class="line">        <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span> </span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">this</span>.http.post(url, body, options).subscribe(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 
         
       
@@ -2812,7 +2807,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/Angular-3-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/">展开全文 >></a>
+          <a class="article-more-a" href="/Angular-2-%E6%9C%8D%E5%8A%A1%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">展开全文 >></a>
         </p>
       
 
@@ -2959,19 +2954,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2987,11 +2982,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3003,11 +2998,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3019,11 +3014,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
               </li>
             
             <div class="clearfix"></div>

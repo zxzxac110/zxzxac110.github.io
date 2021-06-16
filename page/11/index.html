@@ -145,19 +145,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-JS-103-cookies-storage" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JS-102-js中获取style样式表的4种方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/JS-103-cookies-storage/">103-cookies-storage</a>
+      <a class="article-title" href="/JS-102-js%E4%B8%AD%E8%8E%B7%E5%8F%96style%E6%A0%B7%E5%BC%8F%E8%A1%A8%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95/">103-js中获取style样式表的4种方法</a>
     </h1>
   
 
         
-        <a href="/JS-103-cookies-storage/" class="archive-article-date">
+        <a href="/JS-102-js%E4%B8%AD%E8%8E%B7%E5%8F%96style%E6%A0%B7%E5%BC%8F%E8%A1%A8%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.432Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -166,103 +166,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <table>
-<thead>
-<tr>
-<th>-</th>
-<th>存储大小</th>
-<th>有效时间</th>
-<th>-</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>cookies</td>
-<td>&lt;= 4K</td>
-<td>在设置cookie过期之前一直有效（无论窗口浏览器是否关闭）</td>
-<td>正常情况下，cookies数据会自动传到服务器，服务器也可以写cookie到客户端</td>
-</tr>
-<tr>
-<td>sessionstorage</td>
-<td>5M</td>
-<td>临时保存 数据在当前浏览器关闭后删除 <br>基于每个窗口，有单独的sessionStorage数据</td>
-<td>不会发送数据到服务端</td>
-</tr>
-<tr>
-<td>localstorage</td>
-<td>5M</td>
-<td>持久存储，浏览器关闭后不会丢失除非主动删除</td>
-<td>不会发送数据到服务端</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>-</th>
-<th>代码</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>cookies</td>
-<td>document.cookie=”key=value”</td>
-<td>保存数据 key名 value 值</td>
-</tr>
-<tr>
-<td></td>
-<td>document.cookie</td>
-<td>获取所有cookie字符串形式。需要自己操作一番</td>
-</tr>
-<tr>
-<td>sessionstorage</td>
-<td>.setItem(key,value)</td>
-<td>保存数据 key名 value 值</td>
-</tr>
-<tr>
-<td></td>
-<td>.getItem(key)</td>
-<td>获取数据 key名的值</td>
-</tr>
-<tr>
-<td></td>
-<td>.removeItem(key)</td>
-<td>删除一组数据</td>
-</tr>
-<tr>
-<td></td>
-<td>.clear()</td>
-<td>清空所有数据</td>
-</tr>
-<tr>
-<td></td>
-<td>.length</td>
-<td>个数</td>
-</tr>
-<tr>
-<td>localstorage</td>
-<td>.setItem(key,value)</td>
-<td>保存数据 key名 value 值</td>
-</tr>
-<tr>
-<td></td>
-<td>.getItem(key)</td>
-<td>获取数据 key名的值</td>
-</tr>
-<tr>
-<td></td>
-<td>.removeItem(key)</td>
-<td>删除一组数据</td>
-</tr>
-<tr>
-<td></td>
-<td>.clear()</td>
-<td>清空所有数据</td>
-</tr>
-<tr>
-<td></td>
-<td>.length</td>
-<td>个数</td>
-</tr>
-</tbody></table>
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/qishuixian/article/details/79458483">原文链接</a></p>
+<h3 id="js中style-currentStyle-getComputedStyle-和-getBoundingClientRect-的区别以及获取css操作方法"><a href="#js中style-currentStyle-getComputedStyle-和-getBoundingClientRect-的区别以及获取css操作方法" class="headerlink" title="js中style, currentStyle, getComputedStyle 和 getBoundingClientRect 的区别以及获取css操作方法"></a>js中style, currentStyle, getComputedStyle 和 getBoundingClientRect 的区别以及获取css操作方法</h3><p>在js中,之前我们获取属性大多用的都是<code>ele.style.border</code>这种形式的方法,但是这种方法是有局限性的,该方法只能获取到行内样式,获取不了外部的样式.因为获取外部的样式存在兼容性的问题,</p>
+<ul>
+<li><p>style:<br>各大浏览器都兼容,能设置样式和获取样式,但是获取不了外部样式,如果写了行内没有的样式,返回的是空值<br>写法:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ele.style.attr , ele.style.attr=<span class="string">&quot;值&quot;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>currentStyle:<br>该属性只兼容IE,不兼容火狐和谷歌<br>写法:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ele.currentStyle[<span class="string">&quot;attr&quot;</span>] 或者 ele.currentStyle.attr;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>getComputedStyle<br>注意：currentStyle属性和getComputedStyle属性不能设置属性,只能获取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[0];</span><br><span class="line"><span class="keyword">if</span> ( div.currentStyle ) &#123; // IE上兼容</span><br><span class="line">  console.log( div.currentStyle[<span class="string">&quot;width&quot;</span>] );</span><br><span class="line">&#125; <span class="keyword">else</span> &#123; // 火狐谷歌上兼容</span><br><span class="line"> console.log( window.getComputedStyle( div, null )[<span class="string">&quot;width&quot;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>getBoundingClientRect()<br>返回一个矩形对象，包含四个属性：left、top、right和bottom。分别表示元素各边与页面上边和左边的距离</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var box=document.getElementById(<span class="string">&#x27;box&#x27;</span>); // 获取元素</span><br><span class="line">alert(box.getBoundingClientRect().top); // 元素上边距离页面上边的距离</span><br><span class="line">alert(box.getBoundingClientRect().right); // 元素右边距离页面左边的距离</span><br><span class="line">alert(box.getBoundingClientRect().bottom); // 元素下边距离页面上边的距离</span><br><span class="line">alert(box.getBoundingClientRect().left); // 元素左边距离页面左边的距离</span><br></pre></td></tr></table></figure>
+<p>注意：IE、Firefox3+、Opera9.5、Chrome、Safari支持，在IE中，默认坐标从(2,2)开始计算，导致最终距离比其他浏览器多出两个像素，我们需要做个兼容。<br>document.documentElement.clientTop; // 非IE为0，IE为2<br>document.documentElement.clientLeft; // 非IE为0，IE为2</p>
+</li>
+</ul>
+<p>// 分别加上外边据、内边距、边框和滚动条，用于测试所有浏览器是否一致。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> GetRect (element) &#123;</span><br><span class="line">  var rect = element.getBoundingClientRect();</span><br><span class="line">  var top = document.documentElement.clientTop;</span><br><span class="line">  var left= document.documentElement.clientLeft;</span><br><span class="line">  <span class="built_in">return</span> &#123;</span><br><span class="line">    top : rect.top - top,</span><br><span class="line">    bottom : rect.bottom - top,</span><br><span class="line">    left : rect.left - left,</span><br><span class="line">    right : rect.right - left</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         
       
@@ -287,7 +210,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/JS-103-cookies-storage/">展开全文 >></a>
+          <a class="article-more-a" href="/JS-102-js%E4%B8%AD%E8%8E%B7%E5%8F%96style%E6%A0%B7%E5%BC%8F%E8%A1%A8%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95/">展开全文 >></a>
         </p>
       
 
@@ -1495,131 +1418,6 @@
 
 
   
-    <article id="post-Html-2-相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Html-2-%E7%9B%B8%E5%85%B3/">2-Html相关</a>
-    </h1>
-  
-
-        
-        <a href="/Html-2-%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.430Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <style>
-#table1{
-  width:300px;
-}
- </style> 
-<h6 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h6><div id="table1">
-
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>“</td>
-<td><code>&amp;#34;</code></td>
-<td><code>&amp;quot;</code></td>
-</tr>
-<tr>
-<td>&amp;</td>
-<td><code>&amp;#38;</code></td>
-<td><code>&amp;amp;</code></td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td><code>&amp;#60;</code></td>
-<td><code>&amp;lt;</code></td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td><code>&amp;#62;</code></td>
-<td><code>&amp;gt;</code></td>
-</tr>
-<tr>
-<td>空格</td>
-<td><code>&amp;#160;</code></td>
-<td><code>&amp;nbsp;</code></td>
-</tr>
-</tbody></table>
-</div>   
-
-<h6 id="常用的结构标记"><a href="#常用的结构标记" class="headerlink" title="常用的结构标记"></a>常用的结构标记</h6><p>1.&lt; header &gt;&lt; /header &gt;<br>定义网页的头部，或者某个区域的顶部<br>2.<code>footer</code><br>定义网页的脚部，或者某个区域的底部<br>3.<code>nav</code><br>定义网页导航链接<br>4.<code>section</code><br>定义网页主体内容<br>5.<code>aside</code><br>定义网页侧边栏<br>6.<code>article</code><br>定义与文字相关的内容 比如，论坛，回帖，用户评论….</p>
-<h6 id="设置视口"><a href="#设置视口" class="headerlink" title="设置视口"></a>设置视口</h6><p><a href="/Html-3-meta相关/" target="_self">/Html-3-meta相关/</a><br>  width=device-width, 设置视口宽度为设备宽度<br>  initial-scale=1.0, 设置视口的宽度能否缩放 1.0不能缩放<br>  maximum-scale=1.0, 允许缩放的最大倍率<br>  user-scalable=0  是否允许用户手动缩放 0 不能</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot; width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0 &quot;</span>&gt;</span> </span><br></pre></td></tr></table></figure>
-
-
-
-
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Html</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Html-2-%E7%9B%B8%E5%85%B3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Html-3-meta相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1769,6 +1567,131 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Html-3-meta%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Html-2-相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Html-2-%E7%9B%B8%E5%85%B3/">2-Html相关</a>
+    </h1>
+  
+
+        
+        <a href="/Html-2-%E7%9B%B8%E5%85%B3/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.430Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <style>
+#table1{
+  width:300px;
+}
+ </style> 
+<h6 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h6><div id="table1">
+
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“</td>
+<td><code>&amp;#34;</code></td>
+<td><code>&amp;quot;</code></td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td><code>&amp;#38;</code></td>
+<td><code>&amp;amp;</code></td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td><code>&amp;#60;</code></td>
+<td><code>&amp;lt;</code></td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td><code>&amp;#62;</code></td>
+<td><code>&amp;gt;</code></td>
+</tr>
+<tr>
+<td>空格</td>
+<td><code>&amp;#160;</code></td>
+<td><code>&amp;nbsp;</code></td>
+</tr>
+</tbody></table>
+</div>   
+
+<h6 id="常用的结构标记"><a href="#常用的结构标记" class="headerlink" title="常用的结构标记"></a>常用的结构标记</h6><p>1.&lt; header &gt;&lt; /header &gt;<br>定义网页的头部，或者某个区域的顶部<br>2.<code>footer</code><br>定义网页的脚部，或者某个区域的底部<br>3.<code>nav</code><br>定义网页导航链接<br>4.<code>section</code><br>定义网页主体内容<br>5.<code>aside</code><br>定义网页侧边栏<br>6.<code>article</code><br>定义与文字相关的内容 比如，论坛，回帖，用户评论….</p>
+<h6 id="设置视口"><a href="#设置视口" class="headerlink" title="设置视口"></a>设置视口</h6><p><a href="/Html-3-meta相关/" target="_self">/Html-3-meta相关/</a><br>  width=device-width, 设置视口宽度为设备宽度<br>  initial-scale=1.0, 设置视口的宽度能否缩放 1.0不能缩放<br>  maximum-scale=1.0, 允许缩放的最大倍率<br>  user-scalable=0  是否允许用户手动缩放 0 不能</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot; width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0 &quot;</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Html-2-%E7%9B%B8%E5%85%B3/">展开全文 >></a>
         </p>
       
 
@@ -2381,7 +2304,7 @@
 </tr>
 <tr>
 <td>-</td>
-<td><code>href</code>=”1.zip” 下载资源<br> <code>href</code>=”mailto:<a href="mailto:&#x67;&#x2d;&#x63;&#104;&#101;&#110;&#103;&#x6c;&#105;&#97;&#110;&#x67;&#64;&#116;&#101;&#100;&#117;&#46;&#x63;&#110;">&#x67;&#x2d;&#x63;&#104;&#101;&#110;&#103;&#x6c;&#105;&#97;&#110;&#x67;&#64;&#116;&#101;&#100;&#117;&#46;&#x63;&#110;</a>“ 打开电子邮件<br> <code>href</code>=”javascript:alert(1111111)” <code>href</code>=”javascript:show()” 执行js代码<br> <code>href</code>=”#” 回到页面顶部<br> <code>href</code>=”#x” 到id=”x”的元素位置</td>
+<td><code>href</code>=”1.zip” 下载资源<br> <code>href</code>=”mailto:<a href="mailto:&#103;&#45;&#99;&#x68;&#101;&#x6e;&#x67;&#108;&#x69;&#x61;&#110;&#x67;&#64;&#116;&#101;&#100;&#x75;&#x2e;&#x63;&#x6e;">&#103;&#45;&#99;&#x68;&#101;&#x6e;&#x67;&#108;&#x69;&#x61;&#110;&#x67;&#64;&#116;&#101;&#100;&#x75;&#x2e;&#x63;&#x6e;</a>“ 打开电子邮件<br> <code>href</code>=”javascript:alert(1111111)” <code>href</code>=”javascript:show()” 执行js代码<br> <code>href</code>=”#” 回到页面顶部<br> <code>href</code>=”#x” 到id=”x”的元素位置</td>
 <td></td>
 <td></td>
 </tr>
@@ -3569,19 +3492,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3597,11 +3520,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3613,11 +3536,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3629,11 +3552,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
               </li>
             
             <div class="clearfix"></div>
