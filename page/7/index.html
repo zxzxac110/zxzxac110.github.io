@@ -145,19 +145,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-WeiXIn-ngrok-内网穿透工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-WeiXIn-聊天机器人" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/WeiXIn-ngrok-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7/">ngrok-内网穿透工具</a>
+      <a class="article-title" href="/WeiXIn-%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/">聊天机器人</a>
     </h1>
   
 
         
-        <a href="/WeiXIn-ngrok-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7/" class="archive-article-date">
+        <a href="/WeiXIn-%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.443Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -166,11 +166,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p>其他说明地址网址： <a target="_blank" rel="noopener" href="https://blog.csdn.net/kouryoushine/article/details/89492708">https://blog.csdn.net/kouryoushine/article/details/89492708</a><br>下载地址:   <a target="_blank" rel="noopener" href="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip">https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip</a><br>我的百度网盘/软件/ngrok.exe</p>
-<p>双击打开 输入: <code>ngrok.exe http 8080</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ngrok by @inconshreveable                                       (Ctrl+C to quit)</span><br><span class="line"></span><br><span class="line">Session Status                online</span><br><span class="line">Session Expires               7 hours, 52 minutes</span><br><span class="line">Version                       2.3.25</span><br><span class="line">Region                        United States (us)</span><br><span class="line">Web Interface                 http:&#x2F;&#x2F;127.0.0.1:4040</span><br><span class="line">Forwarding                    http:&#x2F;&#x2F;8f4cc599.ngrok.io -&gt; http:&#x2F;&#x2F;localhost:8080</span><br><span class="line">Forwarding                    https:&#x2F;&#x2F;8f4cc599.ngrok.io -&gt; http:&#x2F;&#x2F;localhost:8080</span><br><span class="line"></span><br><span class="line">Connections                   ttl     opn     rt1     rt5     p50     p90</span><br><span class="line">                              4       0       0.00    0.00    14.97   20.57</span><br><span class="line"></span><br><span class="line">HTTP Requests</span><br><span class="line">-------------</span><br><span class="line"></span><br><span class="line">GET &#x2F;                          200 OK</span><br></pre></td></tr></table></figure>
+          <h3 id="1-申请测试账号"><a href="#1-申请测试账号" class="headerlink" title="1.申请测试账号"></a>1.申请测试账号</h3><p>打开注册的网址：<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login">http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login</a><br>用手机微信扫描网页左边的二维码，然后在手机上确认即可</p>
+<p>appID  自动生成<br>appserect 自动生成</p>
+<p>URL: <a target="_blank" rel="noopener" href="http://b73f439721e4.ngrok.io/">http://b73f439721e4.ngrok.io</a> // 后续手动配置-使用内网穿透-获取本地的域名-<em>当然现在这里是无效的</em><br>Token: weixin1112233 // 后续手动配置 (两个地方用一样的))-<em>当然现在这里是无效的</em></p>
+<p>配置完毕扫下方 二维码关注工作号<br><img src="https://s1.ax1x.com/2020/09/18/wha4x0.png" alt="微信测试号管理"></p>
+<h3 id="2-内网穿透获取域名"><a href="#2-内网穿透获取域名" class="headerlink" title="2.内网穿透获取域名 "></a>2.<a href="/WeiXIn-ngrok-内网穿透工具/" target="_self">内网穿透获取域名 </a></h3><h3 id="3-运行编写的-app-js"><a href="#3-运行编写的-app-js" class="headerlink" title="3.运行编写的 app.js"></a>3.运行编写的 app.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mysql=<span class="built_in">require</span>(<span class="string">&quot;mysql&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> wechat=<span class="built_in">require</span>(<span class="string">&quot;wechat&quot;</span>)</span><br><span class="line"><span class="keyword">var</span> pool=mysql.createPool(&#123;</span><br><span class="line">	host:<span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">	post:<span class="string">&quot;3306&quot;</span>,</span><br><span class="line">	user:<span class="string">&quot;root&quot;</span>,</span><br><span class="line">	password:<span class="string">&quot;&quot;</span>,</span><br><span class="line">	database:<span class="string">&quot;kuming&quot;</span>,</span><br><span class="line">	connectionLimit:<span class="number">25</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> config=&#123;</span><br><span class="line">	appid:<span class="string">&quot;wx0df493fc935e6b3d2&quot;</span>, <span class="comment">// 获取的微信appid - *当然现在这里是无效的*</span></span><br><span class="line">	token:<span class="string">&quot;weixin1112233&quot;</span> <span class="comment">// 同网址里面定义的一样即可 - *当然现在这里是无效的*</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> server=express();</span><br><span class="line">server.listen(<span class="number">4001</span>);</span><br><span class="line">server.get(<span class="string">&quot;/&quot;</span>,wechat(config,<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123; <span class="comment">// 这个我也知道干了啥</span></span><br><span class="line">	res.reply(<span class="string">&quot;963&quot;</span>);</span><br><span class="line">&#125;));</span><br><span class="line">server.post(<span class="string">&quot;/&quot;</span>,wechat(config,<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123; <span class="comment">// 服务务器发送的post请求 #所有聊天内容都是post请求</span></span><br><span class="line">	<span class="keyword">var</span> msg=req.weixin.Content; <span class="comment">// 发送的具体消息</span></span><br><span class="line">	<span class="keyword">if</span>(!msg)&#123;res.reply(<span class="string">&quot;你想说什么&quot;</span>);<span class="keyword">return</span>;&#125; <span class="comment">// 回复</span></span><br><span class="line">	<span class="keyword">var</span> sql=<span class="string">&quot;SELECT a FROM chat WHERE q LIKE concat(&#x27;%&#x27;,?,&#x27;%&#x27;)&quot;</span></span><br><span class="line">	pool.query(sql,[msg],<span class="function">(<span class="params">err,result</span>)=&gt;</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(err)<span class="keyword">throw</span> err;</span><br><span class="line">		<span class="keyword">if</span>(result.length==<span class="number">0</span>)&#123;</span><br><span class="line">			res.reply(<span class="string">&quot;没听懂！&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			res.reply(result[<span class="number">0</span>].a);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<p>附送一个数据库。因为上表中用了数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> kuming;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> chat(</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> PRIMARY <span class="keyword">KEY</span> AUTO_INCREMENT,</span><br><span class="line">  q <span class="built_in">VARCHAR</span>(<span class="number">255</span>),</span><br><span class="line">  a <span class="built_in">VARCHAR</span>(<span class="number">255</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span>  chat <span class="keyword">VALUES</span>(<span class="literal">null</span>,<span class="string">&#x27;问1&#x27;</span>,<span class="string">&#x27;回1&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span>  chat <span class="keyword">VALUES</span>(<span class="literal">null</span>,<span class="string">&#x27;问2&#x27;</span>,<span class="string">&#x27;回2&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span>  chat <span class="keyword">VALUES</span>(<span class="literal">null</span>,<span class="string">&#x27;问3&#x27;</span>,<span class="string">&#x27;回3&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span>  chat <span class="keyword">VALUES</span>(<span class="literal">null</span>,<span class="string">&#x27;问4&#x27;</span>,<span class="string">&#x27;回4&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
-<p>就得到了地址了</p>
+<h3 id="4-效果"><a href="#4-效果" class="headerlink" title="4 效果"></a>4 效果</h3><p>此时 1.运行node app.js  2.内网穿透下，3.对着刚刚发送的公众号发送内容 会得到相应的自动回复</p>
 
         
       
@@ -195,99 +199,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/WeiXIn-ngrok-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Vue-3-移动端准备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/">3-移动端准备</a>
-    </h1>
-  
-
-        
-        <a href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.442Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="这边是已cli3-0为例示范"><a href="#这边是已cli3-0为例示范" class="headerlink" title="这边是已cli3.0为例示范"></a>这边是已cli3.0为例示范</h3><h3 id="1-下载-lib-flexible"><a href="#1-下载-lib-flexible" class="headerlink" title="1 下载 lib-flexible"></a>1 下载 lib-flexible</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">指令 : npm i lib-flexible –save</span><br><span class="line">Main.js 添加: import &#39;lib-flexible&#x2F;flexible&#39;</span><br><span class="line">Index.html 修改 &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1, maximum-scale&#x3D;1, minimum-scale&#x3D;1, user-scalable&#x3D;no&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-npm-install-postcss-px2rem-–s-自动转化px插件"><a href="#2-npm-install-postcss-px2rem-–s-自动转化px插件" class="headerlink" title="2 npm install postcss-px2rem –s 自动转化px插件"></a>2 npm install postcss-px2rem –s 自动转化px插件</h3><p><code>Vue.config.js</code> 添加配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">css: &#123;</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      css: &#123;&#125;,</span><br><span class="line">        postcss: &#123;</span><br><span class="line">          plugins: [</span><br><span class="line">            require(<span class="string">&#x27;postcss-px2rem&#x27;</span>)(&#123;</span><br><span class="line">              remUnit: 37.5 <span class="comment"># 根据个人习惯了 ，这里是为了配合Vant使用</span></span><br><span class="line">            &#125;)</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-下载-axios"><a href="#3-下载-axios" class="headerlink" title="3 下载 axios"></a>3 下载 axios</h3><p>  npm install –save axios</p>
-<h3 id="4-下载-CSS-预处理语言"><a href="#4-下载-CSS-预处理语言" class="headerlink" title="4 下载 CSS 预处理语言"></a>4 下载 CSS 预处理语言</h3><p>  这里我们下载less<br>  npm install –g less<br>  这时可以一并把自己的初始化css引入到全局 引入方式：<br>  @import “../less/myLess.less”;</p>
-<h3 id="5-下载-npm-install-fastclick-D"><a href="#5-下载-npm-install-fastclick-D" class="headerlink" title="5 下载 npm install fastclick -D"></a>5 下载 npm install fastclick -D</h3><p>解决 手动点击与真正触发click事件会存在300ms的延迟（ios上面最明显）<br>Main.js 引用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import FastClick from <span class="string">&#x27;fastclick&#x27;</span>;</span><br><span class="line">FastClick.attach(document.body);</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-安装ui库"><a href="#6-安装ui库" class="headerlink" title="6 安装ui库"></a>6 安装ui库</h3><p>安装vant<br>按官网自动引入 <a target="_blank" rel="noopener" href="https://youzan.github.io/vant/#/zh-CN/quickstart">https://youzan.github.io/vant/#/zh-CN/quickstart</a></p>
-<h3 id="7-配置环境-env文件"><a href="#7-配置环境-env文件" class="headerlink" title="7 配置环境 .env文件"></a>7 配置环境 .env文件</h3><p> 详情: 可看 <a target="_blank" rel="noopener" href="https://u8y90p.coding-pages.com/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/">项目相关-.env文件</a></p>
-<p> 创建3个文件 <code>.env.develop</code> <code>.env.development</code> <code>.env.production</code><br>  .env.develop 用于测试环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39; &#x2F;&#x2F; 按照线上环境的配置打包-比如是否hash命名（热更新的感觉）</span><br><span class="line">VUE_APP_CURRENTMODE &#x3D; &#39;testing&#39; &#x2F;&#x2F; 字段，用于识别</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;测试环境地址&#39; &#x2F;&#x2F; 地址，用于接口</span><br></pre></td></tr></table></figure></p>
-<p>  .env.development 用于开发环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;development&#39; &#x2F;&#x2F; 按照测试环境的配置打包</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#x2F;api&#x2F; </span><br></pre></td></tr></table></figure></p>
-<p>  .env.production 用于正式环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39;</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;***&#39;</span><br></pre></td></tr></table></figure></p>
-<h3 id="8-vue-config-js-文件-内容"><a href="#8-vue-config-js-文件-内容" class="headerlink" title="8 vue.config.js 文件 内容"></a>8 vue.config.js 文件 内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  <span class="comment"># 当前路径 = 当前环境 === &#x27;production&#x27; ? 1 : 2</span></span><br><span class="line">  <span class="comment"># 一般可直接publicPath: ./</span></span><br><span class="line">  publicPath: process.env.NODE_ENV === <span class="string">&#x27;production&#x27;</span> ? <span class="string">&#x27;/production-sub-path/&#x27;</span> : <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  outputDir: <span class="string">&#x27;dist&#x27;</span>, <span class="comment"># 打包时生产的目录</span></span><br><span class="line">  assetsDir: <span class="string">&#x27;static&#x27;</span>, <span class="comment"># src中js,css,img文件所生产的 dist/static文件夹里面包含js、css、img、fonts文件夹</span></span><br><span class="line">  <span class="comment"># 当[数组]。包含（当前环境时）</span></span><br><span class="line">  <span class="comment"># lintOnSave: ![&#x27;production&#x27;, &#x27;develop&#x27;].includes(process.env.NODE_ENV),</span></span><br><span class="line">  lintOnSave: <span class="literal">true</span>,  <span class="comment"># 开启 eslint 检测?</span></span><br><span class="line">  filenameHashing: <span class="literal">false</span>, <span class="comment"># 默认在生成的静态资源文件名中包含hash以控制缓存 false:不包含</span></span><br><span class="line">  <span class="comment"># map文件作用 ：项目打包后，代码都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错。也就是说map文件相当于是查看源码的一个东西。如果不需要定位问题，并且不想被看到源码，就把productionSourceMap 置为false，既可以减少包大小，也可以加密源码</span></span><br><span class="line">  productionSourceMap: <span class="literal">false</span>, <span class="comment"># 不会生成map文件</span></span><br><span class="line">  devServer: &#123; <span class="comment"># 运行相关</span></span><br><span class="line">    open: <span class="literal">true</span>, <span class="comment"># 运行时自动打开</span></span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">&#x27;/apiurl&#x27;</span>: &#123; <span class="comment"># 设置代理</span></span><br><span class="line">        target: <span class="string">&#x27;http://dev-test-thd-api.faquange.com/&#x27;</span>,</span><br><span class="line">        changeOrigin: <span class="literal">true</span>,</span><br><span class="line">        // secure: <span class="literal">false</span>, <span class="comment"># 如果是http接口，需要配置该参数</span></span><br><span class="line">        pathRewrite: &#123;</span><br><span class="line">          <span class="string">&#x27;^/apiurl&#x27;</span>: <span class="string">&#x27;/&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  css: &#123;</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      css: &#123;&#125;,</span><br><span class="line">        postcss: &#123;</span><br><span class="line">          plugins: [</span><br><span class="line">            require(<span class="string">&#x27;postcss-px2rem&#x27;</span>)(&#123;</span><br><span class="line">              remUnit: 37.5</span><br><span class="line">            &#125;)</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="9-公用-apiurl-组件"><a href="#9-公用-apiurl-组件" class="headerlink" title="9 公用 apiurl 组件"></a>9 公用 apiurl 组件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> path = process.env.******</span><br><span class="line">const urls = &#123;</span><br><span class="line">  ****: `<span class="variable">$&#123;path&#125;</span>***`, // 提交登录</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">export</span> default urls;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/">展开全文 >></a>
+          <a class="article-more-a" href="/WeiXIn-%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/">展开全文 >></a>
         </p>
       
 
@@ -346,7 +258,7 @@
 <h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><ol>
 <li>vue create 项目名<br> Vue CLI v4.2.3</li>
 </ol>
-<h3 id="弹出内容解释"><a href="#弹出内容解释" class="headerlink" title="弹出内容解释"></a>弹出内容解释</h3><p>1 Project name vue-cli2         回车<br>2 Project description (A Vue.js project) 是项目的描述，自己可以修改或者使用默认的，我们一般使用默认的直接按回车键进行下一步，<br>3 Author lishihao <a href="mailto:&#108;&#105;&#115;&#104;&#x69;&#104;&#x61;&#x6f;&#64;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#111;&#x6d;">&#108;&#105;&#115;&#104;&#x69;&#104;&#x61;&#x6f;&#64;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#111;&#x6d;</a>    作者信息</p>
+<h3 id="弹出内容解释"><a href="#弹出内容解释" class="headerlink" title="弹出内容解释"></a>弹出内容解释</h3><p>1 Project name vue-cli2         回车<br>2 Project description (A Vue.js project) 是项目的描述，自己可以修改或者使用默认的，我们一般使用默认的直接按回车键进行下一步，<br>3 Author lishihao <a href="mailto:&#108;&#x69;&#115;&#104;&#105;&#104;&#x61;&#111;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#x63;&#x6f;&#x6d;">&#108;&#x69;&#115;&#104;&#105;&#104;&#x61;&#111;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#x63;&#x6f;&#x6d;</a>    作者信息</p>
 <p>4 Vue build (Use arrow keys)<br>详情 【<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020253015%E3%80%91">https://segmentfault.com/a/1190000020253015】</a><br>Runtime + Compiler: recommended for most users<br>选择— Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere  推荐第二个<br>5 Install vue-router? Yes 路由<br>6 Use ESLint to lint your code? (Y/n) n 语法规范检查<br>7 Set up unit tests No 单元测试<br>8 Setup e2e tests with Nightwatch? No 也是测试<br>9 Should we run <code>npm install</code> for you after the project has been created? (recommended)<br>选择使用npm、还是yarn安装<br>选择— Yes, use NPM<br>Yes,use yarn<br>No I will handle that myself</p>
 <h3 id="文件解释"><a href="#文件解释" class="headerlink" title="文件解释"></a>文件解释</h3><table>
 <thead>
@@ -543,20 +455,20 @@ return resolved</code></pre>
 
 
   
-    <article id="post-TS-ts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Vue-3-移动端准备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/TS-ts/">1-ts</a>
+      <a class="article-title" href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/">3-移动端准备</a>
     </h1>
   
 
         
-        <a href="/TS-ts/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.441Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+        <a href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.442Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
       </header>
@@ -564,37 +476,24 @@ return resolved</code></pre>
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="访问修饰符-类型"><a href="#访问修饰符-类型" class="headerlink" title="访问修饰符 类型"></a>访问修饰符 类型</h3><table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public</td>
-<td>默认值！公共成员，可以被任何类使用；class中的方法一般声明为公共的！</td>
-<td>公共 内外都可以用</td>
-</tr>
-<tr>
-<td>private</td>
-<td>私有成员，只能在当前类内部使用；class中的属性一般都应该声明为私有的或被保护的！</td>
-<td>私有自己才可以使用</td>
-</tr>
-<tr>
-<td>protected</td>
-<td>被保护的，只能在当前类内部以及子类中使用</td>
-<td>可以继承 内部和继承者可以访问，使用</td>
-</tr>
-</tbody></table>
-<p>构造方法中的形参前加private/protected/public此形参自动变为一个同名属性，且自动赋值</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> emp&#123;</span><br><span class="line">  <span class="keyword">private</span> age:<span class="built_in">number</span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">age:<span class="built_in">number</span></span>)&#123;</span><br><span class="line">    <span class="built_in">this</span>.age=age</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// ======等于</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> emp&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">privateage:<span class="built_in">number</span></span>)&#123;</span><br><span class="line">  <span class="comment">//此处无需写 this.price = price</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>类型</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">exprot <span class="keyword">class</span> emp &#123;</span><br><span class="line">  <span class="keyword">private</span> num:<span class="built_in">number</span> = <span class="number">500</span> <span class="comment">// 私有 不允许别人修改</span></span><br><span class="line">  name:<span class="built_in">string</span></span><br><span class="line">  isshow:<span class="built_in">boolean</span></span><br><span class="line">  obj:<span class="built_in">object</span></span><br><span class="line">  pro:<span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt; <span class="comment">// 数组 内容只能为数字</span></span><br><span class="line">  pro:<span class="built_in">Array</span>&lt;<span class="built_in">any</span>&gt; <span class="comment">// 数字任意类型</span></span><br><span class="line">  PP: emp <span class="comment">// 自定义服务类型</span></span><br><span class="line">  <span class="keyword">public</span> fun (n1:<span class="built_in">number</span>, n2:<span class="built_in">any</span>):<span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="comment">// public 公共</span></span><br><span class="line">    <span class="comment">// protected 可以继承</span></span><br><span class="line">    <span class="comment">// void 不带return</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="这边是已cli3-0为例示范"><a href="#这边是已cli3-0为例示范" class="headerlink" title="这边是已cli3.0为例示范"></a>这边是已cli3.0为例示范</h3><h3 id="1-下载-lib-flexible"><a href="#1-下载-lib-flexible" class="headerlink" title="1 下载 lib-flexible"></a>1 下载 lib-flexible</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">指令 : npm i lib-flexible –save</span><br><span class="line">Main.js 添加: import &#39;lib-flexible&#x2F;flexible&#39;</span><br><span class="line">Index.html 修改 &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1, maximum-scale&#x3D;1, minimum-scale&#x3D;1, user-scalable&#x3D;no&quot;&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="TS中的新类型：接口-interface-："><a href="#TS中的新类型：接口-interface-：" class="headerlink" title="TS中的新类型：接口(interface)："></a>TS中的新类型：接口(interface)：</h3><p>是一种特殊的class，其中可以声明一个没有方法的方法体；接口被class‘实现implements’—是一种特殊继承 用于规定一个class必须具备/提供特定的方法</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Runnable&#123;</span><br><span class="line">    start();        <span class="comment">//接口中的方法都是没有方法体的</span></span><br><span class="line">    stop();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> car <span class="keyword">implements</span> Runnable&#123; <span class="comment">// 此类型必须具备有Runnable中声明的方法</span></span><br><span class="line">    <span class="comment">//此处要求此类必须具备start/stop两种方法</span></span><br><span class="line">    start()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;...&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    stop()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;...&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-npm-install-postcss-px2rem-–s-自动转化px插件"><a href="#2-npm-install-postcss-px2rem-–s-自动转化px插件" class="headerlink" title="2 npm install postcss-px2rem –s 自动转化px插件"></a>2 npm install postcss-px2rem –s 自动转化px插件</h3><p><code>Vue.config.js</code> 添加配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">css: &#123;</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      css: &#123;&#125;,</span><br><span class="line">        postcss: &#123;</span><br><span class="line">          plugins: [</span><br><span class="line">            require(<span class="string">&#x27;postcss-px2rem&#x27;</span>)(&#123;</span><br><span class="line">              remUnit: 37.5 <span class="comment"># 根据个人习惯了 ，这里是为了配合Vant使用</span></span><br><span class="line">            &#125;)</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-下载-axios"><a href="#3-下载-axios" class="headerlink" title="3 下载 axios"></a>3 下载 axios</h3><p>  npm install –save axios</p>
+<h3 id="4-下载-CSS-预处理语言"><a href="#4-下载-CSS-预处理语言" class="headerlink" title="4 下载 CSS 预处理语言"></a>4 下载 CSS 预处理语言</h3><p>  这里我们下载less<br>  npm install –g less<br>  这时可以一并把自己的初始化css引入到全局 引入方式：<br>  @import “../less/myLess.less”;</p>
+<h3 id="5-下载-npm-install-fastclick-D"><a href="#5-下载-npm-install-fastclick-D" class="headerlink" title="5 下载 npm install fastclick -D"></a>5 下载 npm install fastclick -D</h3><p>解决 手动点击与真正触发click事件会存在300ms的延迟（ios上面最明显）<br>Main.js 引用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import FastClick from <span class="string">&#x27;fastclick&#x27;</span>;</span><br><span class="line">FastClick.attach(document.body);</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-安装ui库"><a href="#6-安装ui库" class="headerlink" title="6 安装ui库"></a>6 安装ui库</h3><p>安装vant<br>按官网自动引入 <a target="_blank" rel="noopener" href="https://youzan.github.io/vant/#/zh-CN/quickstart">https://youzan.github.io/vant/#/zh-CN/quickstart</a></p>
+<h3 id="7-配置环境-env文件"><a href="#7-配置环境-env文件" class="headerlink" title="7 配置环境 .env文件"></a>7 配置环境 .env文件</h3><p> 详情: 可看 <a target="_blank" rel="noopener" href="https://u8y90p.coding-pages.com/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/">项目相关-.env文件</a></p>
+<p> 创建3个文件 <code>.env.develop</code> <code>.env.development</code> <code>.env.production</code><br>  .env.develop 用于测试环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39; &#x2F;&#x2F; 按照线上环境的配置打包-比如是否hash命名（热更新的感觉）</span><br><span class="line">VUE_APP_CURRENTMODE &#x3D; &#39;testing&#39; &#x2F;&#x2F; 字段，用于识别</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;测试环境地址&#39; &#x2F;&#x2F; 地址，用于接口</span><br></pre></td></tr></table></figure></p>
+<p>  .env.development 用于开发环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;development&#39; &#x2F;&#x2F; 按照测试环境的配置打包</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#x2F;api&#x2F; </span><br></pre></td></tr></table></figure></p>
+<p>  .env.production 用于正式环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39;</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;***&#39;</span><br></pre></td></tr></table></figure></p>
+<h3 id="8-vue-config-js-文件-内容"><a href="#8-vue-config-js-文件-内容" class="headerlink" title="8 vue.config.js 文件 内容"></a>8 vue.config.js 文件 内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  <span class="comment"># 当前路径 = 当前环境 === &#x27;production&#x27; ? 1 : 2</span></span><br><span class="line">  <span class="comment"># 一般可直接publicPath: ./</span></span><br><span class="line">  publicPath: process.env.NODE_ENV === <span class="string">&#x27;production&#x27;</span> ? <span class="string">&#x27;/production-sub-path/&#x27;</span> : <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  outputDir: <span class="string">&#x27;dist&#x27;</span>, <span class="comment"># 打包时生产的目录</span></span><br><span class="line">  assetsDir: <span class="string">&#x27;static&#x27;</span>, <span class="comment"># src中js,css,img文件所生产的 dist/static文件夹里面包含js、css、img、fonts文件夹</span></span><br><span class="line">  <span class="comment"># 当[数组]。包含（当前环境时）</span></span><br><span class="line">  <span class="comment"># lintOnSave: ![&#x27;production&#x27;, &#x27;develop&#x27;].includes(process.env.NODE_ENV),</span></span><br><span class="line">  lintOnSave: <span class="literal">true</span>,  <span class="comment"># 开启 eslint 检测?</span></span><br><span class="line">  filenameHashing: <span class="literal">false</span>, <span class="comment"># 默认在生成的静态资源文件名中包含hash以控制缓存 false:不包含</span></span><br><span class="line">  <span class="comment"># map文件作用 ：项目打包后，代码都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错。也就是说map文件相当于是查看源码的一个东西。如果不需要定位问题，并且不想被看到源码，就把productionSourceMap 置为false，既可以减少包大小，也可以加密源码</span></span><br><span class="line">  productionSourceMap: <span class="literal">false</span>, <span class="comment"># 不会生成map文件</span></span><br><span class="line">  devServer: &#123; <span class="comment"># 运行相关</span></span><br><span class="line">    open: <span class="literal">true</span>, <span class="comment"># 运行时自动打开</span></span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">&#x27;/apiurl&#x27;</span>: &#123; <span class="comment"># 设置代理</span></span><br><span class="line">        target: <span class="string">&#x27;http://dev-test-thd-api.faquange.com/&#x27;</span>,</span><br><span class="line">        changeOrigin: <span class="literal">true</span>,</span><br><span class="line">        // secure: <span class="literal">false</span>, <span class="comment"># 如果是http接口，需要配置该参数</span></span><br><span class="line">        pathRewrite: &#123;</span><br><span class="line">          <span class="string">&#x27;^/apiurl&#x27;</span>: <span class="string">&#x27;/&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  css: &#123;</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      css: &#123;&#125;,</span><br><span class="line">        postcss: &#123;</span><br><span class="line">          plugins: [</span><br><span class="line">            require(<span class="string">&#x27;postcss-px2rem&#x27;</span>)(&#123;</span><br><span class="line">              remUnit: 37.5</span><br><span class="line">            &#125;)</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="9-公用-apiurl-组件"><a href="#9-公用-apiurl-组件" class="headerlink" title="9 公用 apiurl 组件"></a>9 公用 apiurl 组件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> path = process.env.******</span><br><span class="line">const urls = &#123;</span><br><span class="line">  ****: `<span class="variable">$&#123;path&#125;</span>***`, // 提交登录</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">export</span> default urls;</span><br></pre></td></tr></table></figure>
         
       
 
@@ -608,7 +507,7 @@ return resolved</code></pre>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ts</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
         		</li>
       		
 		</ul>
@@ -618,7 +517,7 @@ return resolved</code></pre>
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/TS-ts/">展开全文 >></a>
+          <a class="article-more-a" href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/">展开全文 >></a>
         </p>
       
 
@@ -708,6 +607,193 @@ return resolved</code></pre>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Vscode-1-一键执行多个npm指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/">1-一键执行多个npm指令</a>
+    </h1>
+  
+
+        
+        <a href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.441Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="package-lock-json"><a href="#package-lock-json" class="headerlink" title="package-lock.json"></a>package-lock.json</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;声明&quot;</span>: <span class="string">&quot;代码&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="vscode-文件夹"><a href="#vscode-文件夹" class="headerlink" title=".vscode 文件夹"></a>.vscode 文件夹</h3><ul>
+<li>直接创建吧，懒得用vscode触发了</li>
+<li>创建 <code>tasks.json</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">  // 有关 tasks.json 格式的文档，请参见q</span><br><span class="line">  // https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;tasks&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;label&quot;</span>: <span class="string">&quot;BK&quot;</span>, <span class="comment"># 他的名字  被调用时</span></span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;npm&quot;</span>, <span class="comment"># 执行指令</span></span><br><span class="line">      <span class="string">&quot;script&quot;</span>: <span class="string">&quot;bk&quot;</span>, <span class="comment"># 文件夹 package.json - script - 申明的一个属性值</span></span><br><span class="line">      <span class="string">&quot;path&quot;</span>: <span class="string">&quot;BK/&quot;</span>, <span class="comment"># 在 Bk/ 文件下运行</span></span><br><span class="line">      <span class="string">&quot;problemMatcher&quot;</span>: []</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>创建 <code>launch.json</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">  // 悬停以查看现有属性的描述。</span><br><span class="line">  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">      <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;BK&quot;</span>,  <span class="comment"># 显示在调试时的名称</span></span><br><span class="line">      <span class="string">&quot;preLaunchTask&quot;</span>: <span class="string">&quot;BK&quot;</span>  <span class="comment"># 运行的要对应的名称</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vscode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-TS-ts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/TS-ts/">1-ts</a>
+    </h1>
+  
+
+        
+        <a href="/TS-ts/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.441Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="访问修饰符-类型"><a href="#访问修饰符-类型" class="headerlink" title="访问修饰符 类型"></a>访问修饰符 类型</h3><table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public</td>
+<td>默认值！公共成员，可以被任何类使用；class中的方法一般声明为公共的！</td>
+<td>公共 内外都可以用</td>
+</tr>
+<tr>
+<td>private</td>
+<td>私有成员，只能在当前类内部使用；class中的属性一般都应该声明为私有的或被保护的！</td>
+<td>私有自己才可以使用</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>被保护的，只能在当前类内部以及子类中使用</td>
+<td>可以继承 内部和继承者可以访问，使用</td>
+</tr>
+</tbody></table>
+<p>构造方法中的形参前加private/protected/public此形参自动变为一个同名属性，且自动赋值</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> emp&#123;</span><br><span class="line">  <span class="keyword">private</span> age:<span class="built_in">number</span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">age:<span class="built_in">number</span></span>)&#123;</span><br><span class="line">    <span class="built_in">this</span>.age=age</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// ======等于</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> emp&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">privateage:<span class="built_in">number</span></span>)&#123;</span><br><span class="line">  <span class="comment">//此处无需写 this.price = price</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类型</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">exprot <span class="keyword">class</span> emp &#123;</span><br><span class="line">  <span class="keyword">private</span> num:<span class="built_in">number</span> = <span class="number">500</span> <span class="comment">// 私有 不允许别人修改</span></span><br><span class="line">  name:<span class="built_in">string</span></span><br><span class="line">  isshow:<span class="built_in">boolean</span></span><br><span class="line">  obj:<span class="built_in">object</span></span><br><span class="line">  pro:<span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt; <span class="comment">// 数组 内容只能为数字</span></span><br><span class="line">  pro:<span class="built_in">Array</span>&lt;<span class="built_in">any</span>&gt; <span class="comment">// 数字任意类型</span></span><br><span class="line">  PP: emp <span class="comment">// 自定义服务类型</span></span><br><span class="line">  <span class="keyword">public</span> fun (n1:<span class="built_in">number</span>, n2:<span class="built_in">any</span>):<span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="comment">// public 公共</span></span><br><span class="line">    <span class="comment">// protected 可以继承</span></span><br><span class="line">    <span class="comment">// void 不带return</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="TS中的新类型：接口-interface-："><a href="#TS中的新类型：接口-interface-：" class="headerlink" title="TS中的新类型：接口(interface)："></a>TS中的新类型：接口(interface)：</h3><p>是一种特殊的class，其中可以声明一个没有方法的方法体；接口被class‘实现implements’—是一种特殊继承 用于规定一个class必须具备/提供特定的方法</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Runnable&#123;</span><br><span class="line">    start();        <span class="comment">//接口中的方法都是没有方法体的</span></span><br><span class="line">    stop();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> car <span class="keyword">implements</span> Runnable&#123; <span class="comment">// 此类型必须具备有Runnable中声明的方法</span></span><br><span class="line">    <span class="comment">//此处要求此类必须具备start/stop两种方法</span></span><br><span class="line">    start()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;...&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    stop()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;...&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ts</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/TS-ts/">展开全文 >></a>
         </p>
       
 
@@ -963,20 +1049,20 @@ return resolved</code></pre>
 
 
   
-    <article id="post-Vscode-1-一键执行多个npm指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-React-6-RN各种安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/">1-一键执行多个npm指令</a>
+      <a class="article-title" href="/React-6-RN%E5%90%84%E7%A7%8D%E5%AE%89%E8%A3%85/">6-RN各种安装</a>
     </h1>
   
 
         
-        <a href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.441Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+        <a href="/React-6-RN%E5%90%84%E7%A7%8D%E5%AE%89%E8%A3%85/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.440Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
       </header>
@@ -984,13 +1070,257 @@ return resolved</code></pre>
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="package-lock-json"><a href="#package-lock-json" class="headerlink" title="package-lock.json"></a>package-lock.json</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;声明&quot;</span>: <span class="string">&quot;代码&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="vscode-文件夹"><a href="#vscode-文件夹" class="headerlink" title=".vscode 文件夹"></a>.vscode 文件夹</h3><ul>
-<li>直接创建吧，懒得用vscode触发了</li>
-<li>创建 <code>tasks.json</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">  // 有关 tasks.json 格式的文档，请参见q</span><br><span class="line">  // https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;tasks&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;label&quot;</span>: <span class="string">&quot;BK&quot;</span>, <span class="comment"># 他的名字  被调用时</span></span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;npm&quot;</span>, <span class="comment"># 执行指令</span></span><br><span class="line">      <span class="string">&quot;script&quot;</span>: <span class="string">&quot;bk&quot;</span>, <span class="comment"># 文件夹 package.json - script - 申明的一个属性值</span></span><br><span class="line">      <span class="string">&quot;path&quot;</span>: <span class="string">&quot;BK/&quot;</span>, <span class="comment"># 在 Bk/ 文件下运行</span></span><br><span class="line">      <span class="string">&quot;problemMatcher&quot;</span>: []</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>创建 <code>launch.json</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">  // 悬停以查看现有属性的描述。</span><br><span class="line">  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">      <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;BK&quot;</span>,  <span class="comment"># 显示在调试时的名称</span></span><br><span class="line">      <span class="string">&quot;preLaunchTask&quot;</span>: <span class="string">&quot;BK&quot;</span>  <span class="comment"># 运行的要对应的名称</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p>  <a href="#title1" target="_self">1.安装项目1 - 大胆的给他一个垃圾</a><br>  <a href="#title2" target="_self">2.安装项目2</a><br>  <a href="#title3" target="_self">3.运行</a><br>  <a href="#title4" target="_self">4.debug服务</a><br>ReactNative必须手动搭建 编译环境:  <code>https://reactnative.cn/</code><br>如果不成功。。去百度网盘找相应的空项目<br>此例都是以 windows电脑 运行项目到 Android</p>
+<h2 id="1-安装项目1-大胆的给他一个垃圾"><a href="#1-安装项目1-大胆的给他一个垃圾" class="headerlink" title="1.安装项目1 - 大胆的给他一个垃圾"></a>1.安装项目1 - 大胆的给他一个垃圾</h2><p>1.下载并安装全局的RN脚手架<br>        npm  i   -g   react-native-cli<br>2.运行脚手架工具，创建空白项目<br>        react-native  init  项目名  <strong>反正我是卡在这里了。。。</strong><br>3.编译整个项目得到JAVA/OC版的App安装包，安装到真实手机或者模拟手机中<br>    默认是存储在 项目/android\app\build\outputs\apk\debug\app-debug.apk</p>
+<h2 id="2-安装项目2"><a href="#2-安装项目2" class="headerlink" title="2.安装项目2"></a>2.安装项目2</h2><p>  <a href="#subtitle1" target="_self">1.必须安装的依赖有：Node、Python2、JDK 和 Android Studio, 这里Android Studio在后面</a><br>  <a href="#subtitle2" target="_self">2.安装 RN 的脚手架</a><br>  <a href="#subtitle3" target="_self">3.Android Studio</a><br>  <a href="#subtitle4" target="_self">4.模拟器</a><br>  <a href="#subtitle5" target="_self">5.编译项目到模拟器上</a><br>  <a href="#subtitle6" target="_self">6.常见错误</a><br>  <a href="#subtitle7" target="_self">7.取巧的方式</a><br>  <a href="#subtitle8" target="_self">8.注意事项</a><br>  <a href="#subtitle9" target="_self">9.真机调试</a><br>  <a href="#subtitle10" target="_self">10.最后总结</a></p>
+<h5 id="1-必须安装的依赖有：Node、Python2、JDK-和-Android-Studio"><a href="#1-必须安装的依赖有：Node、Python2、JDK-和-Android-Studio" class="headerlink" title="1.必须安装的依赖有：Node、Python2、JDK 和 Android Studio "></a><span id="subtitle1">1.必须安装的依赖有：Node、Python2、JDK 和 Android Studio </span></h5><ul>
+<li><p><code>1-1-Node</code> 要求版本在 : <code>&gt;=12 &amp;&amp; &lt;=12.10</code>  查看版本<code>node -v</code><br>不满足条件的, 需要卸载重新安装: </p>
+<ul>
+<li><p>卸载:  右键点击 -&gt; 左下角win -&gt; 选择 <code>应用和功能</code><br><img src="https://s1.ax1x.com/2020/09/28/0VmthQ.png" alt="RN-卸载node"></p>
+</li>
+<li><p>安装 百度网盘提供的包:   一直下一步到最后即可<br>网盘  ReactNation的相关资料/ReactNative资源/node-v12.10.0-x64</p>
+</li>
+<li><p>安装之后 重启cmd;   再次查看版本号: <code>node -v</code> ;  确保是 <code>12.10</code></p>
 </li>
 </ul>
+</li>
+<li><p><code>1-2-python</code> 目前最新版本是<code>3.8</code>;  但是官方要求是 <code>2.7</code><br> 但是实测后发现: 3.8 并不会报错, 也是可用的!   目前不知道是否有隐藏风险.</p>
+<ul>
+<li>查看当前电脑上的python<br>右键点击 -&gt; 左下角win -&gt; 选择 <code>应用和功能</code><br>版本错误 则卸载!</li>
+<li>安装<br>网盘  ReactNation的相关资料/ReactNative资源/python-2.7.17.amd64<br><img src="https://s1.ax1x.com/2020/09/28/0Vmupd.png" alt="RN-Python安装"></li>
+<li>确认是否安装成功<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C盘中存在此文件夹</span><br><span class="line">C:\Python27</span><br></pre></td></tr></table></figure>
+在卸载中, 可以搜索到 python27<br><img src="https://s1.ax1x.com/2020/09/28/0VmK1A.png" alt="RN-Python安装后查看"></li>
+</ul>
+</li>
+<li><p><code>1-3-java</code>  必须是 1.8   俗称 java8</p>
+<ul>
+<li><p>先确认电脑上是否已安装java  版本是否正确!!   不正确则卸载<br>同样 右键点击 -&gt; 左下角win -&gt; 选择 应用和功能 输入java查看时不是java8</p>
+</li>
+<li><p>安装网盘的 java8<br>安装时, 一路下一步:     不安装默认路径的 <strong>会无法使用</strong><br>网盘  ReactNation的相关资料/ReactNative资源/jdk8u202x64.zip<br>报错:  如果电脑中已经安装过 java8;  则会提示:  <strong>此文件夹部位空. 请选择一个空文件夹</strong></p>
+</li>
+<li><p>可以把报错提示中的文件夹内容<strong>删除即可</strong><br>安装之后, 打开一个<strong>新的 cmd</strong>;  输入<code>java -version</code> 可以看到版本就说明成功了!<br>也可以通过卸载的位置 来查看!</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-安装-RN-的脚手架"><a href="#2-安装-RN-的脚手架" class="headerlink" title="2.安装 RN 的脚手架"></a><span id="subtitle2">2.安装 RN 的脚手架</span></h5><p>确保node为中国镜像: 这样会快一点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查看:</span><br><span class="line">$ npm config get registry</span><br><span class="line">设置:</span><br><span class="line">$ npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org&#x2F;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i -g react-native &#x2F;&#x2F; 安装脚手架</span><br><span class="line">react-native --version &#x2F;&#x2F; 查看版本:</span><br><span class="line">react-native init 包名 &#x2F;&#x2F; 生成项目</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s1.ax1x.com/2020/09/28/0VmJAS.png" alt="RN-生成项目选项"><br>由于网速原因 或者 网络问题很有可能导致包无法下载:<br>百度网盘中已提供 完整的包;  可以直接解压缩使用!<br>网盘  ReactNation的相关资料/ReactNative资源/原始版rn项目包与apk</p>
+<h5 id="3-Android-Studio"><a href="#3-Android-Studio" class="headerlink" title="3.Android Studio"></a><span id="subtitle3">3.Android Studio</span></h5><p>编译到 Android 的apk  需要 编译工具:  <code>Android Studio</code><br>但是此工具比较大;  这里提取了此工具包中 编译用到的内容:<br>网盘  ReactNation的相关资料/ReactNative资源/jANDROID_SDK.zip<br>解压缩放到D盘根目录下:  路径要随着变化; </p>
+<blockquote>
+<p>盘符可以变, 但是后期的设置需要 自行对应变更<br><img src="https://s1.ax1x.com/2020/09/28/0VmM6I.png" alt="RN-安装Android Studio"></p>
+</blockquote>
+<blockquote>
+<p>添加 Android 编译工具的目录路径到 环境变量中:<br><img src="https://s1.ax1x.com/2020/09/28/0VmClR.png" alt="RN-Android路径到环境变量"><br>填写 <strong>ANDROID_HOME</strong><br>点击所有看到的<strong>确定按钮</strong><br><img src="https://s1.ax1x.com/2020/09/28/0Vm9p9.png" alt="RN-Android路径到环境变量-2"><br>重新打开环境变量:   发现已存在记录 就说明已保存<br><img src="https://s1.ax1x.com/2020/09/28/0VmSfJ.png" alt="RN-Android路径到环境变量-查看"><br>添加环境变量:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%ANDROID_HOME%\platform-tools</span><br><span class="line">解释: </span><br><span class="line">%ANDROID_HOME% : 代表使用 刚才设置的 ANDROID_HOME 变量的路径</span><br></pre></td></tr></table></figure><br>  <img src="https://s1.ax1x.com/2020/09/28/0VmYtg.png" alt="RN-添加环境变量"><br>  填写之后, 一路确定;    然后重新打开这里;    看看是不是存在了!<br>    —<br>  WIN7 的 Path 是一个字符串,  他的结构:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">路径1;路径2;路径3;路径4;....</span><br></pre></td></tr></table></figure><br>  <img src="https://s1.ax1x.com/2020/09/28/0Vmch4.png" alt="WIN7添加环境变量-1"><br>  需要在  <strong>变量值</strong>  最末尾添加 :   <strong>;%ANDROID_HOME%\platform-tools</strong><br><img src="https://s1.ax1x.com/2020/09/28/0VmyAU.png" alt="WIN7添加环境变量-2"></p>
+</blockquote>
+<h5 id="4-模拟器"><a href="#4-模拟器" class="headerlink" title="4.模拟器"></a><span id="subtitle4">4.模拟器</span></h5><p>rn开发的软件是 真正的 手机端App.  不是浏览器上执行的 混编App;<br>必须运行在手机端上;</p>
+<p>先<strong>卸载</strong> 旧版本的夜深模拟器<br>卸载:  右键点击 -&gt; 左下角win -&gt; 选择 <code>应用和功能</code><br>安装新版本</p>
+<ul>
+<li>官网:  <a target="_blank" rel="noopener" href="https://www.yeshen.com/">https://www.yeshen.com/</a></li>
+<li>百度网盘上的也可以:  但不是最新版本<br>网盘  ReactNation的相关资料/ReactNative资源/nox_setup_v6.6.1.2_full.exe<br>安装方式: 一直下一步到最后即可!<br>启动后, 可以修改为手机版本<br><img src="https://s1.ax1x.com/2020/09/28/0VmUpj.png" alt="RN-夜神改成手机版本"></li>
+</ul>
+<hr>
+<ul>
+<li><p>替换文件<br>夜深模拟器本身自带的 <code>nox_adb</code> 文件版本与 <code>rn</code> 不同, 会导致运行失败.  需要替换<br>具体步骤:</p>
+</li>
+<li><p>关闭已开启的 夜深模拟器 窗口</p>
+</li>
+<li><p>复制:   <code>D:\ANDROID_SDK\platform-tools\nox_adb.exe</code></p>
+<blockquote>
+<p>到底在哪个盘符  要看你之前解压的位置<br><img src="https://s1.ax1x.com/2020/09/28/0Vma1s.png" alt="RN-夜神替换文件-1"></p>
+</blockquote>
+</li>
+<li><p>粘贴:  </p>
+<ul>
+<li>在桌面上: 右键  夜神模拟器 图标:  选择 <strong>打开文件所在位置</strong><br><img src="https://s1.ax1x.com/2020/09/28/0Vmdcn.png" alt="RN-夜神替换文件-2"></li>
+<li>报错:   文件夹正在使用,  无法替换,  请重试<br>有两种解决方案:<ul>
+<li>通过 任务管理器 -&gt;  在进程中 找到 nox  然后结束即可</li>
+<li>简单粗暴:   <strong>重启电脑</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="5-编译项目到模拟器上"><a href="#5-编译项目到模拟器上" class="headerlink" title="5.编译项目到模拟器上"></a><span id="subtitle5">5.编译项目到模拟器上</span></h5><ul>
+<li><p>在命令行中打开 adb 工具:   用于检测并连接到模拟器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; win + r -&gt; cmd</span><br><span class="line">$ adb devices</span><br></pre></td></tr></table></figure>
+<p>正确状态:   有 <code>daemon started successfully</code> 字样显示</p>
+</li>
+<li><p>常见错误:</p>
+<ul>
+<li><p>adb 不是内部命令</p>
+<ul>
+<li>是 android_sdk 配置部分 没有配置正确导致的;  需要自行查看笔记!</li>
+</ul>
+</li>
+<li><p><strong>adb server version (31) doesn’t  match this client(41):  killing…</strong></p>
+<ul>
+<li>夜深模拟器的 替换操作没有做 导致的!</li>
+</ul>
+</li>
+<li><p>其他问题:  尝试关闭 防火墙<br>控制面板中:  找到防火墙, 关闭防火墙</p>
+</li>
+<li><p>非以上问题: 则需要百度错误  或 尝试先<strong>重启电脑</strong></p>
+</li>
+</ul>
+</li>
+<li><p>打开夜神模拟器, 然后再次执行 <code>adb devices</code><br>出现类似  <code>127.0.0.1：62001 device</code> 就说明检测到了</p>
+</li>
+<li><p>编译之前生成的项目包到 <code>检测到的设置 127.0.0.1：62001</code> 上即可!</p>
+<ul>
+<li><p>网速不好: 需要一个额外操作:<br>网盘  ReactNation的相关资料/ReactNative资源/gradle-6.2-all.zip</p>
+<blockquote>
+<p>编译过程中要下载一个 120M的软件:  地址在外网, 速度通常非常慢<br>  千万不要解压缩, 直接把此文件复制到  <strong>C盘下</strong>:<br>  别的盘也可以, 但是后方的配置要对应修改</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">此文件的地址就是如下地址:</span><br><span class="line">file:&#x2F;&#x2F;&#x2F;C:&#x2F;gradle-6.2-all.zip</span><br></pre></td></tr></table></figure>
+
+<p>用vscode打开之前生成的项目包<br><img src="https://s1.ax1x.com/2020/09/28/0VmiOx.png" alt="RN-gradle-6.2-all-相关"></p>
+</li>
+</ul>
+</li>
+<li><p>见证奇迹的时候, 在<strong>项目的根目录</strong>下打开cmd, 执行编译命令<br>项目所在的目录路径中<strong>不允许存在中文</strong></p>
+<blockquote>
+<p>对网速要求较高, 下载各种包;  如果之前环境有错误都会导致失败!</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run android</span><br></pre></td></tr></table></figure>
+
+<p>编译过程 会弹出一个 node 窗口, 那是服务器!!!!  别给关了!!<br><img src="https://s1.ax1x.com/2020/09/28/0Vm1nP.png" alt="RN-编译弹出窗口-1"><br><img src="https://s1.ax1x.com/2020/09/28/0Vm30f.png" alt="RN-编译弹出窗口-2"></p>
+</li>
+</ul>
+<h5 id="6-常见错误"><a href="#6-常见错误" class="headerlink" title="6.常见错误"></a><span id="subtitle6">6.常见错误</span></h5><ul>
+<li>nox_adb未响应<ul>
+<li>关闭系统防火墙</li>
+</ul>
+</li>
+<li>ERROR: JAVA_HOME<ul>
+<li>java的环境变量不正确,  Java安装不成功!</li>
+<li>到环境变量中查看 是否有  <code>JAVA_HOME</code> 字样,  有就删除掉.</li>
+<li>可能电脑之前配置过 java_home 导致的:   分析不出之前修改过什么;  但是重装系统肯定可以解决</li>
+</ul>
+</li>
+<li><strong>Gradle 6.2 requires Java 8  or later to run.  You are currently using Java 7</strong><ul>
+<li>Java版本不正确,  按照文档的 java 部分进行</li>
+<li>通常是环境变量中, 有额外的设置:   设置了 java7 的目录导致的;  需要检查自己电脑的环境变量</li>
+</ul>
+</li>
+<li>项目所在路径不允许中文</li>
+</ul>
+<h5 id="7-取巧的方式"><a href="#7-取巧的方式" class="headerlink" title="7.取巧的方式"></a><span id="subtitle7">7.取巧的方式</span></h5><p>此方式一定可以运行成功!</p>
+<p>考虑到电脑本身存在:</p>
+<ul>
+<li>网络差:  编译时需要的资源下载慢 或者 无法下载 — 无法编译成功!</li>
+<li>电脑本身环境乱:  你的电脑之前被其他人修改环境变量等内容; 常见是 java</li>
+<li>因为你也猜不到改了什么:  通常只能依赖重装系统来解决问题!!</li>
+</ul>
+<p>正常流程的原理:</p>
+<ul>
+<li>编译项目包中的所有代码 到 apk 文件, 并安装到模拟器上!</li>
+<li>编译过程需要各种软件的支持</li>
+</ul>
+<p>取巧的原理:</p>
+<ul>
+<li><p>把别人编译好的 <code>apk</code> 直接拿来用:  规避所有流程!<br>此apk使用时有要求:  必须是配对使用的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例如: </span><br><span class="line">* 项目包的名字是 &#96;rnApp&#96;  则必须匹配 &#96;rnApp&#96; 打包出来的apk !!!!!!!!!!!!!!!!!</span><br><span class="line">* 百度网盘上提供了 这个apk  在压缩包中:  必须要搭配压缩包中的软件包使用</span><br></pre></td></tr></table></figure>
+
+<p>比如 网盘  ReactNation的相关资料/ReactNative资源/原始版rn项目包与apk.zip   解压出来</p>
+<p>将 项目/android\app\build\outputs\apk\debug\app-debug.apk<br>文件 直接拖拽到 模拟器上 安装成功</p>
+</li>
+</ul>
+<p>开启项目服务器</p>
+<ul>
+<li><p>到项目目录下, 执行 <code>npm start</code></p>
+</li>
+<li><p>在cmd中执行 <code>ipconfig</code> 获取 ip 地址</p>
+<p>有的电脑多网卡,  则需要测试哪个 <code>ipv4</code>地址是正确的!<br><img src="https://s1.ax1x.com/2020/09/28/0VmA0K.png" alt="RN-ip地址的用法"></p>
+</li>
+<li><p>把你测试成功的地址, 填入到模拟器中<br><img src="https://s1.ax1x.com/2020/09/28/0Vmkm6.png" alt="RN-ip地址的用法-2"></p>
+<p>打开端口号的设置<br><img src="https://s1.ax1x.com/2020/09/28/0VmETO.png" alt="RN-ip地址的用法-3"></p>
+<p>把你测试完毕的 ip:端口号 填入此处:  <strong>确定</strong><br><img src="https://s1.ax1x.com/2020/09/28/0VmZkD.png" alt="RN-ip地址的用法-4"></p>
+<p>关闭应用, 重新开启<br><img src="https://s1.ax1x.com/2020/09/28/0VmBn0.png" alt="RN-夜神关闭应用"><br><img src="https://s1.ax1x.com/2020/09/28/0Vm878.png" alt="RN-服务器卡住"></p>
+</li>
+</ul>
+<p>成功的样子:<br>  <img src="https://s1.ax1x.com/2020/09/28/0VmmfH.png" alt="RN-ip地址的用法-成功"></p>
+<h5 id="8-注意事项"><a href="#8-注意事项" class="headerlink" title="8.注意事项"></a><span id="subtitle8">8.注意事项</span></h5><p>  ip地址:  每次重启电脑 都有可能发生变化,  所以此方式需要经常检查ip地址<br>  此报错: 一定是  ip地址设置错误 或者 服务器没启动!<br>  关键词: <strong>(run ‘react-native start’)</strong>   意思是让你启动服务器!<br>  <img src="https://s1.ax1x.com/2020/09/28/0Vmete.png" alt="RN-ip地址的用法-报错"></p>
+<h5 id="9-真机调试"><a href="#9-真机调试" class="headerlink" title="9.真机调试"></a><span id="subtitle9">9.真机调试</span></h5><p>准备好数据线</p>
+<ul>
+<li><p>方式1:  如果你的电脑 和 手机连在同一个路由器下</p>
+<ul>
+<li>就可以按照刚才配置ip的方式来进行操作</li>
+<li>把apk传到 微信文件传输助手然后安装到手机上:  配置ip</li>
+<li>手机上需要 <strong>摇一摇</strong> 才能打开 设置菜单</li>
+</ul>
+</li>
+<li><p>方式2:  适合编译环境OK的同学</p>
+<ul>
+<li><p>手机开启 开发者模式:  不同品牌手机开启方式不同!</p>
+</li>
+<li><p>在设置中:  找到开发者模式选项</p>
+<ul>
+<li>需要开启 USB 调试功能</li>
+<li>小米手机: 要开 <strong>允许USB安装程序</strong></li>
+<li>华为手机必须安装官方提供的软件: <a target="_blank" rel="noopener" href="https://consumer.huawei.com/cn/support/hisuite/">https://consumer.huawei.com/cn/support/hisuite/</a></li>
+</ul>
+</li>
+<li><p>用数据线连接手机和电脑:  此时手机上应该会弹出一个弹出框:  <code>是否允许xxx</code><br><strong>选总是允许</strong></p>
+</li>
+<li><p>如果不弹出提示框:  则在<strong>电脑上执行</strong>以下命令:  <strong>执行之后 重新插入手机</strong><br>有的手机连接数据线之后可能会选择如何连接:  通常选 <strong>传输数据</strong><br>如果还是不弹框:  则百度搜索   <strong>手机型号   真机调试</strong> 例如:  <code>oppo 真机调试</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ adb kill-server</span><br><span class="line">$ adb start-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭模拟器, 然后执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ adb devices  </span><br><span class="line">查看是否检测到了你的手机</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>应该出现   <strong>如果不出现, 就按照上方流程 再来一次!</strong>   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List of devices attached</span><br><span class="line">XXXXXXXXXXXXXXXX device</span><br><span class="line"></span><br><span class="line">错误:  典型的未授权错误; 没有在手机上点击总是允许导致的</span><br><span class="line">XXXXXXXXXXXXXXXX unauthorized</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>到<strong>项目目录下</strong>, 执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run android</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="10-最后总结"><a href="#10-最后总结" class="headerlink" title="10.最后总结"></a><span id="subtitle10">10.最后总结</span></h5><p>项目的运行方式:</p>
+<ul>
+<li>正常编译方式:<ul>
+<li>需要网络 和 计算机环境本身支持<ul>
+<li>网络问题:  换个网, 例如热点</li>
+<li>计算机本身:  大多数是环境变量引起 – 重装系统肯定可以,  成本高;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ip方式<ul>
+<li>一定可以用!!!<br>真机方式: 不同手机做法不一样, 具体百度多一些.</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-运行"><a href="#3-运行" class="headerlink" title="3.运行"></a>3.运行</h2><ul>
+<li><p>编译环境可用</p>
+<ol>
+<li>先打开cmd, 执行 adb devices</li>
+<li>打开模拟器: 再次执行 adb devices</li>
+<li>打开项目包, 根目录下执行: npm run android</li>
+</ol>
+</li>
+<li><p>编译环境不可用<br>使用ip方式: 每日重启电脑 都有可能导致ip变化, 需要重新设置</p>
+<ol>
+<li>打开cmd, 查看ip地址: ipconfig</li>
+<li>确定ip地址, 浏览器输入: ip:8081</li>
+<li>启动项目服务器, 在项目下运行: npm start</li>
+<li>打开模拟器, 打开项目: 设置ip和端口</li>
+</ol>
+</li>
+<li><p>编译环境不可用也可能是</p>
+<ol>
+<li>把 <code>app-debug.apk</code> 拖到夜神或蓝叠模拟器中就可以完成安装.<br>点击apk运行<br>摇一摇<br>输入ip<br>重启app</li>
+<li>第一次使用手机连接服务器时需要设置服务器的地址和端口，方法如下：<br>点击摇一摇<br>弹出设置窗口，点击<code>Dev Settings</code> 一般在最后一个 滑轮滑下去<br>点击选项 <code>Debug server host &amp; port for device</code><br>弹窗输入 <code>ip地址:8081</code> 比如 <code>172.163.100.41:8081</code><br>设置完服务器地址和端口后，重启App，使之连接开发服务器获取最新的App内容<br><img src="https://s1.ax1x.com/2020/09/28/0VOI9e.png" alt="RN-运行1"><br><img src="https://s1.ax1x.com/2020/09/28/0VO4hD.png" alt="RN-运行2"><br><img src="https://s1.ax1x.com/2020/09/28/0VOo1H.png" alt="RN-运行3"></li>
+</ol>
+</li>
+</ul>
+<h2 id="4-debug服务"><a href="#4-debug服务" class="headerlink" title="4.debug服务"></a>4.debug服务</h2><p>开启Debug服务器<br><img src="https://s1.ax1x.com/2020/09/28/0VexkF.png" alt="RN-debug服务"><br><img src="https://s1.ax1x.com/2020/09/28/0VOhtO.png" alt="RN-debug服务-2"><br>在弹出的浏览器上按 F12 可以在后台看到打印结果<br><img src="https://s1.ax1x.com/2020/09/28/0VmP61.png" alt="RN-debug服务效果展示"><br>但是 DEBUG 服务不稳定, 有的时候会造成项目无法运行!<br>严重报错 导致app崩溃, 需要通过后来看报错<br><img src="https://s1.ax1x.com/2020/09/28/0VmQXt.png" alt="RN-报错"></p>
 
         
       
@@ -1005,7 +1335,7 @@ return resolved</code></pre>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vscode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
         		</li>
       		
 		</ul>
@@ -1015,7 +1345,7 @@ return resolved</code></pre>
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/">展开全文 >></a>
+          <a class="article-more-a" href="/React-6-RN%E5%90%84%E7%A7%8D%E5%AE%89%E8%A3%85/">展开全文 >></a>
         </p>
       
 
@@ -1107,89 +1437,6 @@ return resolved</code></pre>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/React-5-ReactNative%E8%B7%AF%E7%94%B1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-React-3-React组件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/React-3-React%E7%BB%84%E4%BB%B6/">3-React组件</a>
-    </h1>
-  
-
-        
-        <a href="/React-3-React%E7%BB%84%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.440Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>React手册中提供了两种创建自定义组件的方式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// (1)function式：简单功能少</span></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">ComponentName</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> jsx;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// (2)class式：复杂功能多</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span>  <span class="title">MyComponent</span>  <span class="keyword">extends</span>  <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    render()&#123;</span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">        <span class="comment">//JSX表达式</span></span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 最后</span></span><br><span class="line">  ReactDOM.render( <span class="xml"><span class="tag">&lt;<span class="name">MyComponent</span> /&gt;</span></span>,  box  )</span><br></pre></td></tr></table></figure>
-
-<p>比如</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 组件名严格要求: 大驼峰命名法 -- 与vue一致</span></span><br><span class="line"><span class="comment">// &lt;InputArea /&gt; 运行时会编译成 InputArea()</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">InputArea</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;span&gt;&#123;props.name&#125;:&lt;/span&gt;</span><br><span class="line">    &lt;input type=<span class="string">&quot;text&quot;</span> /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ReactDOM.render(InputArea(), app) === &lt;InputArea /&gt;</span></span><br><span class="line"><span class="comment">// ReactDOM.render(InputArea(&#123; name: 1 &#125;), app) === &lt;InputArea name=&quot;1&quot;/&gt;</span></span><br><span class="line"><span class="comment">// 复用</span></span><br><span class="line"><span class="keyword">let</span> form = (</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;InputArea name=<span class="string">&quot;用户名&quot;</span> /&gt;</span><br><span class="line">  &lt;InputArea name=<span class="string">&quot;邮箱&quot;</span> /&gt;</span><br><span class="line">  &lt;InputArea name=<span class="string">&quot;密码&quot;</span> /&gt;</span><br><span class="line">  &lt;InputArea name=<span class="string">&quot;手机号&quot;</span> /&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">);</span><br><span class="line">ReactDOM.render(form, app);</span><br></pre></td></tr></table></figure>
-
-<p>完整示例</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ./ 前缀非常重要, 带有此路径前缀 才会识别为 css 文件的引入</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./xxx.css&#x27;</span></span><br><span class="line"><span class="comment">//import &#x27;xxx.css&#x27;  错误写法: vscode认为是引入一个叫 xxx.css 的模块</span></span><br><span class="line"><span class="comment">// 强大的类方式, 要求必须继承父类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ComponentName</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line"><span class="comment">// React: state 和 setState(); 必须通过 setState() 更新数据 才会刷新UI</span></span><br><span class="line">state = &#123;&#125;;</span><br><span class="line"><span class="comment">//父类的构造</span></span><br><span class="line"><span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">  <span class="built_in">this</span>.props = props;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//生命周期: 生 -&gt; 数据更新 -&gt; UI更新 -&gt; 死</span></span><br><span class="line">componentDidMount()&#123; 生 &#125; <span class="comment">// 加载阶段 组件已经加载完成——适合于加载异步数据</span></span><br><span class="line">componentWillUnmount()&#123; 将死 &#125; <span class="comment">// 更新阶段-组件即将卸载，用于清除组件数据，如定时器等</span></span><br><span class="line">componentDidUpdate() &#123; props 和 state 有更新时 &#125; <span class="comment">// 更新阶段-组件更新完成</span></span><br><span class="line">shouldComponentUpdate()&#123; <span class="comment">// 更新阶段-组件应该更新吗？返回true即调用render，否则不调用</span></span><br><span class="line"><span class="comment">// 面试常考: 如何提高渲染效率</span></span><br><span class="line"><span class="comment">// 此函数的返回值将会决定是否要刷新重绘页面: true刷新 false不刷新</span></span><br><span class="line">&#125;</span><br><span class="line">  show () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//普通函数; 事件触发; 其中用了this; -- 必须关注this的指向</span></span><br><span class="line">  show1 () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.state.num)</span><br><span class="line">  &#125;</span><br><span class="line">  show2 = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.state.num)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 循环: 采用原生循环</span></span><br><span class="line">  names = [<span class="string">&#x27;mike&#x27;</span>, <span class="string">&#x27;lucy&#x27;</span>, <span class="string">&#x27;lily&#x27;</span>, <span class="string">&#x27;lisa&#x27;</span>]</span><br><span class="line">  showNames () &#123;</span><br><span class="line">    <span class="comment">// 判断通常配合 state; 因为state的变化 才会导致UI变更</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.state.score &gt;= <span class="number">60</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>面试通过了<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>还需要更努力呦~<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 固定方法: 组件使用时默认调用此方法</span></span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.show&#125;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.show1.bind(this)&#125;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> this.show1()&#125;&gt;点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.show2&#125;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      &#123;this.showNames()&#125;</span></span><br><span class="line"><span class="xml">      &#123;this.showRes()&#125;</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> &#x27;<span class="attr">red</span>&#x27;, <span class="attr">fontSize:</span> &#x27;<span class="attr">18px</span>&#x27; &#125;&#125; &gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;success danger&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;this.state.name&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;this._inputChanged&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.state.name&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 事件触发的 函数, 默认都会接收事件本身做为参数</span></span><br><span class="line">  _inputChanged = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 如果希望通过打印来查看, 则必须调用 event.persist();</span></span><br><span class="line">    event.persist(); <span class="comment">//调用与否 对于下方的 读值无影响, 只影响log打印的结果</span></span><br><span class="line">    <span class="built_in">console</span>.log(event)</span><br><span class="line">    <span class="keyword">let</span> name = event.target.value;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; <span class="attr">name</span>: name &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/React-3-React%E7%BB%84%E4%BB%B6/">展开全文 >></a>
         </p>
       
 
@@ -1316,11 +1563,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1328,7 +1579,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1340,27 +1603,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1368,11 +1611,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1384,23 +1643,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
               </li>
             
             <div class="clearfix"></div>
