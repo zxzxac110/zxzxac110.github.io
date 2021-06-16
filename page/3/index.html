@@ -299,19 +299,19 @@
 
 
   
-    <article id="post-项目相关-15-SPA" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-项目相关-12-webSocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/">15-SPA</a>
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/">12-webSocket</a>
     </h1>
   
 
         
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/" class="archive-article-date">
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -320,19 +320,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p>多页面.会有多个页面.页面之间的跳转实际就是删除当前dom树，新建新的dom树</p>
-<p>Single Page Application  SPA<br><code>单页应用</code>——整个应用中只有一个完整的HTML页面，其它所有的“页面”其实都是一段HTML片段</p>
-<blockquote>
-<p>SPA应用的优点：<br>  (1)DOM树只需要创建一次，“页面切换”只是在切换部分元素<br>  (2)便于实现“过场动画”——多页应用不可能做到</p>
-</blockquote>
-<blockquote>
-<p>SPA应用的不足：<br>  (1)不便于实现SEO优化</p>
-</blockquote>
-<p>SPA应用的核心——路由词典routermodule(把一个地址和一个组件对应起来)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123; path: &#39;index&#39;,  component: ...&#125;</span><br><span class="line">	&#123; path: &#39;product&#x2F;list&#39;,  component: ...&#125;</span><br><span class="line">	&#123; path: &#39;user&#x2F;login&#39;,  component: ...&#125;</span><br><span class="line">	.....</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>/12.HTML5/day6<br>/ls-protogenesis-lx/websocket - 运行chat_app.js</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><pre><code>webSocket工作方式:广播和收听
+    客户端连接到服务器上就不再断开双方都可以随时向对方发送数据</code></pre>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>下载socket.io服务器端第三方模块<br>#npm i socket.io<br>地址下载 <a target="_blank" rel="noopener" href="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js">https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js</a></p>
+<p>服务端<br><strong>X.on()</strong> 接受消息<br><strong>X.emit(名称,内容)</strong> 发送消息<br><strong>connection</strong> 默认登陆触发 事件名称<br><strong>disconnect</strong> 默认对出触发 事件名称</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app=<span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>).createServer();         <span class="comment">// 1.创建一个服务对象</span></span><br><span class="line"><span class="keyword">var</span> io=<span class="built_in">require</span>(<span class="string">&quot;socket.io&quot;</span>)(app);               <span class="comment">// 2.创建一个io对象</span></span><br><span class="line">app.listen(<span class="number">3000</span>)                                <span class="comment">// 3.绑定服务器监听端口 3000</span></span><br><span class="line"><span class="keyword">var</span> clientCount=<span class="number">0</span>;                              <span class="comment">// 4.创建变量 clientCount 客户端数量</span></span><br><span class="line">io.on(<span class="string">&quot;connection&quot;</span>,<span class="function">(<span class="params">socket</span>)=&gt;</span>&#123;                  <span class="comment">// 5.为io对象绑定事件 connection  每次有人访问 都会触发此事件</span></span><br><span class="line">  clientCount++;</span><br><span class="line">  <span class="built_in">console</span>.log(socket.id) <span class="comment">// 具体属性自己百度。反正有个随机唯一的id            </span></span><br><span class="line">  <span class="keyword">var</span> nickname = <span class="string">&quot;user&quot;</span> + clientCount;            <span class="comment">// 创建对应的编号</span></span><br><span class="line">  io.emit(<span class="string">&quot;enter&quot;</span>, nickname + <span class="string">&quot;：上线&quot;</span>)         <span class="comment">// 广播事件 enter 内容nickname+&quot;上线&quot;</span></span><br><span class="line"></span><br><span class="line">  socket.on(<span class="string">&quot;message&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;               <span class="comment">// 接收客户发来事件 message</span></span><br><span class="line">    io.emit(<span class="string">&quot;list&quot;</span>, nickname + <span class="string">&quot; : &quot;</span> + data)  <span class="comment">// 广播事件 list,</span></span><br><span class="line">  &#125;)</span><br><span class="line">  socket.on(<span class="string">&quot;disconnect&quot;</span>, <span class="function">() =&gt;</span> &#123;               <span class="comment">//接收客户离开事件  默认事件 浏览器关闭后触发disconnect事件      </span></span><br><span class="line">    io.emit(<span class="string">&quot;leave&quot;</span>, nickname + <span class="string">&quot; : 退出&quot;</span>)      <span class="comment">// 广播事件 leave</span></span><br><span class="line">  &#125;)                                       </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>SPA应用的原理：框架根据客户端请求的路由地址，异步加载对应的组件内容，替换之前的组件内容。</p>
-
+<p>客服端<br><strong>io(val)</strong> 连接<br><strong>X.on()</strong> 接受消息<br><strong>X.emit(名称,内容)</strong> 发送消息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=<span class="string">&quot;btn&quot;</span>&gt;确认申请&lt;/button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn1&quot;</span>&gt;发送&lt;/button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn2&quot;</span>&gt;退出&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> clientSocket=io(<span class="string">&quot;ws://127.0.0.1:3000&quot;</span>); <span class="comment">// 协议名称 域名 端口号</span></span><br><span class="line">  clientSocket.emit(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;我一上来就说一句话&quot;</span>)        <span class="comment">// 发送到服务器的message 服务的得到了 我一上来就说一句话 并通过 list事件返回</span></span><br><span class="line">  clientSocket.on(<span class="string">&quot;list&quot;</span>,<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;            <span class="comment">// 接收到服务的发过来的 list消息</span></span><br><span class="line">      <span class="built_in">console</span>.log(data) <span class="comment">//输出2 我一上来就说一句话</span></span><br><span class="line">  &#125;)</span><br><span class="line">  clientSocket.on(<span class="string">&quot;enter&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 输出顺序按服务的返回的为准。</span></span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">// 输出1 user1上线</span></span><br><span class="line">  &#125;);</span><br><span class="line">  clientSocket.on(<span class="string">&quot;leave&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 这一步需要关闭别的链接webSocket的网址才能触发</span></span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">//</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.emit(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;用户提交了申请&quot;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn1&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.send(<span class="string">&quot;77777&quot;</span>) <span class="comment">// 触发服务器 message 的事件 =  clientSocket.emit(&quot;message&quot;, &quot;777777&quot;)</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn2&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.close() <span class="comment">// 触发服务器 disconnect 的事件 ！！类似 但不等于 clientSocket.emit(&quot;disconnect&quot;,&quot;&quot;)</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
         
       
 
@@ -356,7 +352,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/">展开全文 >></a>
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/">展开全文 >></a>
         </p>
       
 
@@ -551,19 +547,19 @@
 
 
   
-    <article id="post-项目相关-12-webSocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-项目相关-15-SPA" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/">12-webSocket</a>
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/">15-SPA</a>
     </h1>
   
 
         
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/" class="archive-article-date">
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -572,100 +568,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>/12.HTML5/day6<br>/ls-protogenesis-lx/websocket - 运行chat_app.js</p>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><pre><code>webSocket工作方式:广播和收听
-    客户端连接到服务器上就不再断开双方都可以随时向对方发送数据</code></pre>
-<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>下载socket.io服务器端第三方模块<br>#npm i socket.io<br>地址下载 <a target="_blank" rel="noopener" href="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js">https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js</a></p>
-<p>服务端<br><strong>X.on()</strong> 接受消息<br><strong>X.emit(名称,内容)</strong> 发送消息<br><strong>connection</strong> 默认登陆触发 事件名称<br><strong>disconnect</strong> 默认对出触发 事件名称</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app=<span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>).createServer();         <span class="comment">// 1.创建一个服务对象</span></span><br><span class="line"><span class="keyword">var</span> io=<span class="built_in">require</span>(<span class="string">&quot;socket.io&quot;</span>)(app);               <span class="comment">// 2.创建一个io对象</span></span><br><span class="line">app.listen(<span class="number">3000</span>)                                <span class="comment">// 3.绑定服务器监听端口 3000</span></span><br><span class="line"><span class="keyword">var</span> clientCount=<span class="number">0</span>;                              <span class="comment">// 4.创建变量 clientCount 客户端数量</span></span><br><span class="line">io.on(<span class="string">&quot;connection&quot;</span>,<span class="function">(<span class="params">socket</span>)=&gt;</span>&#123;                  <span class="comment">// 5.为io对象绑定事件 connection  每次有人访问 都会触发此事件</span></span><br><span class="line">  clientCount++;</span><br><span class="line">  <span class="built_in">console</span>.log(socket.id) <span class="comment">// 具体属性自己百度。反正有个随机唯一的id            </span></span><br><span class="line">  <span class="keyword">var</span> nickname = <span class="string">&quot;user&quot;</span> + clientCount;            <span class="comment">// 创建对应的编号</span></span><br><span class="line">  io.emit(<span class="string">&quot;enter&quot;</span>, nickname + <span class="string">&quot;：上线&quot;</span>)         <span class="comment">// 广播事件 enter 内容nickname+&quot;上线&quot;</span></span><br><span class="line"></span><br><span class="line">  socket.on(<span class="string">&quot;message&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;               <span class="comment">// 接收客户发来事件 message</span></span><br><span class="line">    io.emit(<span class="string">&quot;list&quot;</span>, nickname + <span class="string">&quot; : &quot;</span> + data)  <span class="comment">// 广播事件 list,</span></span><br><span class="line">  &#125;)</span><br><span class="line">  socket.on(<span class="string">&quot;disconnect&quot;</span>, <span class="function">() =&gt;</span> &#123;               <span class="comment">//接收客户离开事件  默认事件 浏览器关闭后触发disconnect事件      </span></span><br><span class="line">    io.emit(<span class="string">&quot;leave&quot;</span>, nickname + <span class="string">&quot; : 退出&quot;</span>)      <span class="comment">// 广播事件 leave</span></span><br><span class="line">  &#125;)                                       </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+          <p>多页面.会有多个页面.页面之间的跳转实际就是删除当前dom树，新建新的dom树</p>
+<p>Single Page Application  SPA<br><code>单页应用</code>——整个应用中只有一个完整的HTML页面，其它所有的“页面”其实都是一段HTML片段</p>
+<blockquote>
+<p>SPA应用的优点：<br>  (1)DOM树只需要创建一次，“页面切换”只是在切换部分元素<br>  (2)便于实现“过场动画”——多页应用不可能做到</p>
+</blockquote>
+<blockquote>
+<p>SPA应用的不足：<br>  (1)不便于实现SEO优化</p>
+</blockquote>
+<p>SPA应用的核心——路由词典routermodule(把一个地址和一个组件对应起来)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123; path: &#39;index&#39;,  component: ...&#125;</span><br><span class="line">	&#123; path: &#39;product&#x2F;list&#39;,  component: ...&#125;</span><br><span class="line">	&#123; path: &#39;user&#x2F;login&#39;,  component: ...&#125;</span><br><span class="line">	.....</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<p>客服端<br><strong>io(val)</strong> 连接<br><strong>X.on()</strong> 接受消息<br><strong>X.emit(名称,内容)</strong> 发送消息</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=<span class="string">&quot;btn&quot;</span>&gt;确认申请&lt;/button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn1&quot;</span>&gt;发送&lt;/button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn2&quot;</span>&gt;退出&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> clientSocket=io(<span class="string">&quot;ws://127.0.0.1:3000&quot;</span>); <span class="comment">// 协议名称 域名 端口号</span></span><br><span class="line">  clientSocket.emit(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;我一上来就说一句话&quot;</span>)        <span class="comment">// 发送到服务器的message 服务的得到了 我一上来就说一句话 并通过 list事件返回</span></span><br><span class="line">  clientSocket.on(<span class="string">&quot;list&quot;</span>,<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;            <span class="comment">// 接收到服务的发过来的 list消息</span></span><br><span class="line">      <span class="built_in">console</span>.log(data) <span class="comment">//输出2 我一上来就说一句话</span></span><br><span class="line">  &#125;)</span><br><span class="line">  clientSocket.on(<span class="string">&quot;enter&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 输出顺序按服务的返回的为准。</span></span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">// 输出1 user1上线</span></span><br><span class="line">  &#125;);</span><br><span class="line">  clientSocket.on(<span class="string">&quot;leave&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 这一步需要关闭别的链接webSocket的网址才能触发</span></span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">//</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.emit(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;用户提交了申请&quot;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn1&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.send(<span class="string">&quot;77777&quot;</span>) <span class="comment">// 触发服务器 message 的事件 =  clientSocket.emit(&quot;message&quot;, &quot;777777&quot;)</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn2&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.close() <span class="comment">// 触发服务器 disconnect 的事件 ！！类似 但不等于 clientSocket.emit(&quot;disconnect&quot;,&quot;&quot;)</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-10-跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">10-跨域</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>什么是跨域: 一个域名下的网页，向另一个域名下的服务器请求资源.受浏览器的同源策略控制，禁止发送的</p>
-<p><code>浏览器同源(origin)策略</code>: 也称禁止跨不同源头访问资源<br>        所有浏览器都有一个安全策略: <code>禁止CORS</code><br>        禁止Cross Origin Resources Shareing<br>        浏览器规定: 请求回来的响应数据的响应头中记录的远程url必须和当前网页正在打开的url地址相同！</p>
-<p>浏览器收到数据后:<br>        会用当前地址栏中的<code>url地址和headers中的origin对比</code>！只有协议，域名，端口号完全一致！才允许网页使用数据</p>
-<h3 id="解决对策-1-服务端解决"><a href="#解决对策-1-服务端解决" class="headerlink" title="解决对策 1.服务端解决"></a>解决对策 1.服务端解决</h3><p>让服务端返回响应时，篡改响应头中响应源头的地址,nodejs为例子<br>1 手写<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// res.send(result); // 不要用res.send了</span></span><br><span class="line"><span class="comment">//  res.send其实是一种简写: 等效于 res.writeHead()+res.write(JSON.stringify(result))+res.end()</span></span><br><span class="line">res.writeHead(<span class="number">200</span>,&#123; <span class="comment">//修改头部.200表示成功</span></span><br><span class="line">  <span class="string">&quot;Access-Control-Allow-Origin&quot;</span>:http:<span class="comment">//127.0.0.1:5500</span></span><br><span class="line">                     <span class="comment">//或者：“*” 代表所有</span></span><br><span class="line">&#125;);</span><br><span class="line">res.write(<span class="built_in">JSON</span>.stringify(result)); <span class="comment">//发送的内容</span></span><br><span class="line">res.end(); <span class="comment">//发送</span></span><br><span class="line"><span class="comment">//   写在原来node中代替res.send(result);的作用.每个都要写</span></span><br><span class="line"><span class="comment">//  这样返回的数据，就被伪装成来自127.0.0.1:5500的，就可以通过浏览器的同源策略检查，可正常使用</span></span><br></pre></td></tr></table></figure><br>2 引入插件统一写 (推荐)<br>服务端nodejs安装: <code>npm i -save cors</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js中: </span></span><br><span class="line"><span class="keyword">const</span> cors=<span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>); 引入模块</span><br><span class="line">				</span><br><span class="line"> <span class="comment">//在创建端口listen()之后</span></span><br><span class="line"> app.use(cors(&#123;</span><br><span class="line">     origin:<span class="string">&quot;http://127.0.0.1:5500&quot;</span><span class="comment">//不能用*</span></span><br><span class="line"> &#125;));</span><br><span class="line"> <span class="comment">//中间件。。从此所有响应，自动带Access-Control-Allow-Origin:http://127.0.0.1:5500</span></span><br><span class="line"> <span class="comment">//万一客户端浏览器地址发生变化，只改这里origin一处即可！</span></span><br></pre></td></tr></table></figure>
-<h3 id="解决对策-2-jsonp解决"><a href="#解决对策-2-jsonp解决" class="headerlink" title="解决对策 2.jsonp解决"></a>解决对策 2.jsonp解决</h3><p> jsonp + Promise 只能用于GET请求</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myJsonp</span> (<span class="params">url, obj</span>) </span>&#123; <span class="comment">// 地址，参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> cb = <span class="string">`jsonp<span class="subst">$&#123;<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random() * <span class="number">1000000</span>)&#125;</span>`</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      url += <span class="string">&#x27;&amp;&#x27;</span> + key + <span class="string">&#x27;=&#x27;</span> + obj[key]</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = url + <span class="string">&#x27;&amp;callback=&#x27;</span> + cb <span class="comment">// 地址 + 参数 + 回调函数名 需于后端统一命名</span></span><br><span class="line">    script.id = <span class="string">&#x27;jsonpS&#x27;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">    <span class="built_in">window</span>[cb] = <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> script = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;jsonpS&#x27;</span>);</span><br><span class="line">      <span class="built_in">document</span>.body.removeChild(script);</span><br><span class="line">      <span class="keyword">delete</span> <span class="built_in">window</span>[cb];</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">async</span> a () &#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="keyword">await</span> myJsonp (<span class="string">&#x27;http://dev-test.api.faquange.cn/apppage.php?m=Top&amp;c=getList&#x27;</span>, &#123; <span class="attr">TopCate</span>:<span class="number">1</span> &#125; )</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="解决对策-3-ajax解决"><a href="#解决对策-3-ajax解决" class="headerlink" title="解决对策 3.ajax解决"></a>解决对策 3.ajax解决</h3><p><code>dataType:&quot;jsonp&quot;</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line"> url: <span class="string">&quot;服务端接口地址&quot;</span>, <span class="comment">// http://localhost:3000/users/login</span></span><br><span class="line"> type: <span class="string">&quot;get|post&quot;</span>,</span><br><span class="line"> data: &#123; <span class="attr">uname</span>: <span class="string">&quot;dingding&quot;</span>, <span class="attr">upwd</span>: <span class="string">&quot;123456&quot;</span> &#125;,</span><br><span class="line"> <span class="comment">// &quot;uname=dingding&amp;upwd=123456&quot;,</span></span><br><span class="line"> <span class="comment">// 如果返回json，需要自动JSON.parse()转为js对象</span></span><br><span class="line"> dataType:<span class="string">&quot;json&quot;</span>, <span class="comment">//如果不写需要自己手动调用JSON.parse()</span></span><br><span class="line"> <span class="comment">// dataType:&quot;jsonp&quot; // jsonp 跨域</span></span><br><span class="line"> success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;   <span class="comment">// 与.then2选1</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
+<p>SPA应用的原理：框架根据客户端请求的路由地址，异步加载对应的组件内容，替换之前的组件内容。</p>
 
         
       
@@ -690,7 +604,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">展开全文 >></a>
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-15-SPA/">展开全文 >></a>
         </p>
       
 
@@ -1189,6 +1103,92 @@
 
 
   
+    <article id="post-项目相关-10-跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">10-跨域</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>什么是跨域: 一个域名下的网页，向另一个域名下的服务器请求资源.受浏览器的同源策略控制，禁止发送的</p>
+<p><code>浏览器同源(origin)策略</code>: 也称禁止跨不同源头访问资源<br>        所有浏览器都有一个安全策略: <code>禁止CORS</code><br>        禁止Cross Origin Resources Shareing<br>        浏览器规定: 请求回来的响应数据的响应头中记录的远程url必须和当前网页正在打开的url地址相同！</p>
+<p>浏览器收到数据后:<br>        会用当前地址栏中的<code>url地址和headers中的origin对比</code>！只有协议，域名，端口号完全一致！才允许网页使用数据</p>
+<h3 id="解决对策-1-服务端解决"><a href="#解决对策-1-服务端解决" class="headerlink" title="解决对策 1.服务端解决"></a>解决对策 1.服务端解决</h3><p>让服务端返回响应时，篡改响应头中响应源头的地址,nodejs为例子<br>1 手写<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// res.send(result); // 不要用res.send了</span></span><br><span class="line"><span class="comment">//  res.send其实是一种简写: 等效于 res.writeHead()+res.write(JSON.stringify(result))+res.end()</span></span><br><span class="line">res.writeHead(<span class="number">200</span>,&#123; <span class="comment">//修改头部.200表示成功</span></span><br><span class="line">  <span class="string">&quot;Access-Control-Allow-Origin&quot;</span>:http:<span class="comment">//127.0.0.1:5500</span></span><br><span class="line">                     <span class="comment">//或者：“*” 代表所有</span></span><br><span class="line">&#125;);</span><br><span class="line">res.write(<span class="built_in">JSON</span>.stringify(result)); <span class="comment">//发送的内容</span></span><br><span class="line">res.end(); <span class="comment">//发送</span></span><br><span class="line"><span class="comment">//   写在原来node中代替res.send(result);的作用.每个都要写</span></span><br><span class="line"><span class="comment">//  这样返回的数据，就被伪装成来自127.0.0.1:5500的，就可以通过浏览器的同源策略检查，可正常使用</span></span><br></pre></td></tr></table></figure><br>2 引入插件统一写 (推荐)<br>服务端nodejs安装: <code>npm i -save cors</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js中: </span></span><br><span class="line"><span class="keyword">const</span> cors=<span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>); 引入模块</span><br><span class="line">				</span><br><span class="line"> <span class="comment">//在创建端口listen()之后</span></span><br><span class="line"> app.use(cors(&#123;</span><br><span class="line">     origin:<span class="string">&quot;http://127.0.0.1:5500&quot;</span><span class="comment">//不能用*</span></span><br><span class="line"> &#125;));</span><br><span class="line"> <span class="comment">//中间件。。从此所有响应，自动带Access-Control-Allow-Origin:http://127.0.0.1:5500</span></span><br><span class="line"> <span class="comment">//万一客户端浏览器地址发生变化，只改这里origin一处即可！</span></span><br></pre></td></tr></table></figure>
+<h3 id="解决对策-2-jsonp解决"><a href="#解决对策-2-jsonp解决" class="headerlink" title="解决对策 2.jsonp解决"></a>解决对策 2.jsonp解决</h3><p> jsonp + Promise 只能用于GET请求</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myJsonp</span> (<span class="params">url, obj</span>) </span>&#123; <span class="comment">// 地址，参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> cb = <span class="string">`jsonp<span class="subst">$&#123;<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random() * <span class="number">1000000</span>)&#125;</span>`</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      url += <span class="string">&#x27;&amp;&#x27;</span> + key + <span class="string">&#x27;=&#x27;</span> + obj[key]</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = url + <span class="string">&#x27;&amp;callback=&#x27;</span> + cb <span class="comment">// 地址 + 参数 + 回调函数名 需于后端统一命名</span></span><br><span class="line">    script.id = <span class="string">&#x27;jsonpS&#x27;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">    <span class="built_in">window</span>[cb] = <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> script = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;jsonpS&#x27;</span>);</span><br><span class="line">      <span class="built_in">document</span>.body.removeChild(script);</span><br><span class="line">      <span class="keyword">delete</span> <span class="built_in">window</span>[cb];</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">async</span> a () &#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="keyword">await</span> myJsonp (<span class="string">&#x27;http://dev-test.api.faquange.cn/apppage.php?m=Top&amp;c=getList&#x27;</span>, &#123; <span class="attr">TopCate</span>:<span class="number">1</span> &#125; )</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决对策-3-ajax解决"><a href="#解决对策-3-ajax解决" class="headerlink" title="解决对策 3.ajax解决"></a>解决对策 3.ajax解决</h3><p><code>dataType:&quot;jsonp&quot;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line"> url: <span class="string">&quot;服务端接口地址&quot;</span>, <span class="comment">// http://localhost:3000/users/login</span></span><br><span class="line"> type: <span class="string">&quot;get|post&quot;</span>,</span><br><span class="line"> data: &#123; <span class="attr">uname</span>: <span class="string">&quot;dingding&quot;</span>, <span class="attr">upwd</span>: <span class="string">&quot;123456&quot;</span> &#125;,</span><br><span class="line"> <span class="comment">// &quot;uname=dingding&amp;upwd=123456&quot;,</span></span><br><span class="line"> <span class="comment">// 如果返回json，需要自动JSON.parse()转为js对象</span></span><br><span class="line"> dataType:<span class="string">&quot;json&quot;</span>, <span class="comment">//如果不写需要自己手动调用JSON.parse()</span></span><br><span class="line"> <span class="comment">// dataType:&quot;jsonp&quot; // jsonp 跨域</span></span><br><span class="line"> success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;   <span class="comment">// 与.then2选1</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-项目相关-1-env文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1492,6 +1492,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
               </li>
              
@@ -1500,19 +1504,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1520,11 +1512,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1544,11 +1544,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
               <li class="article-tag-list-item">
