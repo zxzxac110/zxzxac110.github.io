@@ -6,13 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>101.不用try catch，如何机智的捕获错误 | 历史好的博客</title>
+  <title>101.不用try catch，如何机智的捕获错误 | 历史好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言作者： 魔术师卡颂 公号 &#x2F; 卡颂 （本文来自作者投稿）https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;yOxhzfCwmQZLVaN2kVTAoQ 我们知道，React中有个特性Error Boundary，帮助我们在组件发生错误时显示“错误状态”的UI。为了实现这个特性，就一定需要捕获到错误。所以在React源码中，所有用户代码都被包裹在一个方法中执行。类似如下： 1234567fu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="101.不用try catch，如何机智的捕获错误">
 <meta property="og:url" content="http://yoursite.com/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/index.html">
-<meta property="og:site_name" content="历史好的博客">
+<meta property="og:site_name" content="历史好">
 <meta property="og:description" content="前言作者： 魔术师卡颂 公号 &#x2F; 卡颂 （本文来自作者投稿）https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;yOxhzfCwmQZLVaN2kVTAoQ 我们知道，React中有个特性Error Boundary，帮助我们在组件发生错误时显示“错误状态”的UI。为了实现这个特性，就一定需要捕获到错误。所以在React源码中，所有用户代码都被包裹在一个方法中执行。类似如下： 1234567fu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-04T03:51:01.431Z">
@@ -21,7 +21,7 @@
 <meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="历史好的博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="历史好" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -313,18 +313,18 @@
   
 <nav id="article-nav">
   
-    <a href="/JS-1-js%E5%87%BD%E6%95%B0-1/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/JS-102-js%E4%B8%AD%E8%8E%B7%E5%8F%96style%E6%A0%B7%E5%BC%8F%E8%A1%A8%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          1-js函数-1
+          103-js中获取style样式表的4种方法
         
       </div>
     </a>
   
   
-    <a href="/Html-2-%E7%9B%B8%E5%85%B3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2-Html相关</div>
+    <a href="/JS-1-js%E5%87%BD%E6%95%B0-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1-js函数-1</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -469,11 +469,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,7 +485,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,15 +501,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,7 +517,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,7 +525,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,15 +537,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,18 +554,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
             
             <div class="clearfix"></div>

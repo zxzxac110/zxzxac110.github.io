@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>历史好的博客</title>
+  <title>历史好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="没有">
 <meta property="og:type" content="website">
-<meta property="og:title" content="历史好的博客">
+<meta property="og:title" content="历史好">
 <meta property="og:url" content="http://yoursite.com/page/9/index.html">
-<meta property="og:site_name" content="历史好的博客">
+<meta property="og:site_name" content="历史好">
 <meta property="og:description" content="没有">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="前端,历史好,666">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="历史好的博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="历史好" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -145,83 +145,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Python-3-异常处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Python-3-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">3-异常处理</a>
-    </h1>
-  
-
-        
-        <a href="/Python-3-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.438Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">默认判断异常</span><br><span class="line"><span class="keyword">except</span>  Exception <span class="keyword">as</span>  err:  这个捕捉块必须是最后一个，所有的错误都继承自Exception</span><br><span class="line"><span class="comment">#让用户输入两个数字，程序输出它们的商</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  n1 = input(<span class="string">&#x27;请输入被除数：&#x27;</span>)</span><br><span class="line">  n1 = int(n1)    <span class="comment"># 可能抛出ValueError</span></span><br><span class="line">  n2 = input(<span class="string">&#x27;请输入除数：&#x27;</span>)</span><br><span class="line">  n2 = int(n2)    <span class="comment"># 可能抛出ValueError</span></span><br><span class="line">  result = n1/n2  <span class="comment"># 可能抛出ZeroDivisionError</span></span><br><span class="line">  print(<span class="string">&#x27;%d和%d的商为：%f&#x27;</span>%(n1,n2,result))</span><br><span class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> err:</span><br><span class="line">  <span class="comment">#print(&#x27;您输入了非法的数字&#x27;)</span></span><br><span class="line">  print(err)</span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> err:</span><br><span class="line">  <span class="comment">#print(&#x27;您输入的除数不能为0&#x27;)</span></span><br><span class="line">  print(err)</span><br><span class="line"><span class="keyword">except</span>  Exception <span class="keyword">as</span> err:   </span><br><span class="line">   print(err)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">  print(<span class="string">&#x27;----即将离开可能发生异常的代码块----&#x27;</span>) <span class="comment"># 总是输出</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;====程序运行结束====&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>手动定义异常</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">setAge</span>(<span class="params"> age </span>):</span></span><br><span class="line">  <span class="keyword">if</span> age&gt;=<span class="number">18</span> <span class="keyword">and</span> age&lt;<span class="number">60</span>:</span><br><span class="line">    print(<span class="string">&#x27;年龄合法！正在保存：&#x27;</span>, age)</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">raise</span> Exception(<span class="string">&#x27;年龄非法！无法保存！&#x27;</span>)</span><br><span class="line">  print(<span class="string">&#x27;----setAge即将推出----&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  setAge(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">except</span>  Exception <span class="keyword">as</span> err:</span><br><span class="line">  print(err)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;====程序结束====&#x27;</span>)</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Python-3-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Python-5-同源模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -269,6 +192,183 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Python-5-%E5%90%8C%E6%BA%90%E6%A8%A1%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python-2-函数-作用域-封装-继承-多态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/">2-函数,作用域,封装,继承,多态</a>
+    </h1>
+  
+
+        
+        <a href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.438Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>实参列表必须与形参列完全一致<br>但是 可以不给有默认值的形参赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span>(<span class="params">num1, num2 = <span class="number">500</span></span>):</span></span><br><span class="line">  num3 = num1 + num2</span><br><span class="line">  <span class="keyword">return</span> num3   <span class="comment"># 如果没有声明return默认返回的是None</span></span><br><span class="line">result = sum(<span class="number">1000</span>, <span class="number">2000</span>)</span><br><span class="line">print(<span class="string">&#x27;1000和2000的算术和为：&#x27;</span>, result)</span><br></pre></td></tr></table></figure>
+
+<p>如果硬是要函数名义与但是 参数位数不同 使用 星号</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">add</span>(<span class="params"> *args </span>):</span>  <span class="comment"># *表示此参数是可变长度参数——tuple</span></span><br><span class="line">  print(args)</span><br><span class="line">add(<span class="number">10</span>)  <span class="comment"># args: (10,)</span></span><br><span class="line">add(<span class="number">10</span>, <span class="number">20</span>) <span class="comment">#args:(10, 20)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">add</span>(<span class="params"> **args </span>):</span> <span class="comment">#**表示此参数是可变长度参数——dict</span></span><br><span class="line">add() <span class="comment">#args: &#123; &#125;</span></span><br><span class="line">add(n1=<span class="number">10</span>) <span class="comment">#args: &#123;&#x27;n1&#x27;:10&#125;</span></span><br><span class="line">add(n1=<span class="number">10</span>, n2=<span class="number">20</span>, n3=<span class="number">30</span>) <span class="comment">#args:&#123;&#x27;n1&#x27;:10, &#x27;n2&#x27;:20, &#x27;n3&#x27;:30&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>Python中提供了四种作用域：—— L&gt;E&gt;G&gt;B<br>  L：<code>Local</code>，本地/局部作用域，只能在当前函数内使用<br>  E：<code>Enclosing</code>，闭包作用域，由外部函数提供给内部函数使用的变量作用域<br>  G：<code>Global</code>，全局作用域，可以在全局使用；<br>  B：<code>Built-In</code>，内置作用域，是由Python提供的函数和变量，如id()/type()/int()…..<br>如果函数内想修改全局作用域变量值，必须声明：<br><code>global</code>  变量名<br>如果函数内想修改闭包作用域变量值，必须声明：<br><code>nonlocal</code>  变量名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mySum = <span class="number">200</span>   </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>():</span></span><br><span class="line">  <span class="keyword">global</span> mySum   <span class="comment"># 声明此处的mySum是全局变量 没有这句话会报警，因为他找不到局部的mySum</span></span><br><span class="line">  mySum = mySum+<span class="number">1</span></span><br><span class="line">  print(mySum) <span class="comment"># 201</span></span><br><span class="line">add()</span><br><span class="line">print(mySum) <span class="comment"># 201</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="封装-继承-多态"><a href="#封装-继承-多态" class="headerlink" title="封装 继承 多态"></a>封装 继承 多态</h2><blockquote>
+<p>封装</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 说明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span>  类名 :</span></span><br><span class="line">   变量名 = 值</span><br><span class="line">	<span class="function"><span class="keyword">def</span>  <span class="title">__init__</span>(<span class="params">self, 形参列表</span>):</span></span><br><span class="line">		构造方法体</span><br><span class="line">	<span class="function"><span class="keyword">def</span>  成员方法(<span class="params">self</span>):</span><span class="comment">#所有方法的第一个参数都是self</span></span><br><span class="line">		成员方法体</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> :</span></span><br><span class="line">    a = <span class="string">&#x27;7&#x27;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n, s, m</span>) :</span> <span class="comment"># 所有方法第一个参数都是self</span></span><br><span class="line">    self.__ename = n    <span class="comment"># 声明一个私有属性成员</span></span><br><span class="line">    self.salary = s    <span class="comment"># 声明一个属性成员</span></span><br><span class="line">    self.__isMarried = m   <span class="comment"># 声明一个私有属性成员</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#对象内部的方法成员</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>) :</span> <span class="comment"># 所有方法第一个参数都是self</span></span><br><span class="line">    print(<span class="string">&#x27;员工姓名：%s 工资：%f 婚否：%d&#x27;</span>%(self.__ename, self.salary, self.a)</span><br><span class="line"></span><br><span class="line">e1 = Emp(<span class="string">&#x27;丁丁&#x27;</span>,<span class="number">5000</span>,<span class="literal">True</span>)</span><br><span class="line">e1.printInfo() <span class="comment"># 员工姓名：丁丁 工资：5000.000000 婚否：1&#x27;</span></span><br><span class="line"><span class="comment"># print(e1.__ename)   #私有属性不能在类外面使用</span></span><br><span class="line">print(e1.salary) <span class="comment"># 5000</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>继承</p>
+</blockquote>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#说明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span>(<span class="params"> Parent1 </span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, 形参列表</span>):</span></span><br><span class="line">    super().__init__(实参)</span><br><span class="line">    self.xx = xx</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例</span></span><br><span class="line"><span class="comment">#继承： Coder is a Emp</span></span><br><span class="line"><span class="comment">#is a关系就是继承关系</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> :</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n, s</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;一个Emp对象被构建了&#x27;</span>)</span><br><span class="line">    self.ename = n   </span><br><span class="line">    self.salary = s  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;员工姓名：%s 工资：%f&#x27;</span>%(self.ename, self.salary))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coder</span>(<span class="params"> Emp </span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, ename, salary, lang</span>):</span></span><br><span class="line">    super().__init__(ename, salary)  <span class="comment">#子类构造方法内部第一句永远调用父类的构造方法</span></span><br><span class="line">    self.language = lang </span><br><span class="line">    print(<span class="string">&#x27;一个Coder对象被构建了&#x27;</span>)</span><br><span class="line"></span><br><span class="line">c1 = Coder(<span class="string">&#x27;当当&#x27;</span>,<span class="number">8000</span>,<span class="string">&#x27;JS/ES/TS&#x27;</span>)</span><br><span class="line">print(c1.ename) <span class="comment"># 当当</span></span><br><span class="line">print(c1.salary) <span class="comment"># 8000</span></span><br><span class="line">print(c1.language) <span class="comment"># JS/ES/TS</span></span><br><span class="line">c1.printInfo() <span class="comment"># 员工姓名：当当 工资：8000.000000</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>多态<br>  同一个方法，在不同情况下运行结果不同<br>  Python中只有一种：子类覆盖了/重写了父类的同名方法<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> :</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, n, s</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;一个Emp对象被构建了&#x27;</span>)</span><br><span class="line">    self.ename = n   </span><br><span class="line">    self.salary = s  </span><br><span class="line"></span><br><span class="line">  <span class="comment">#对象内部的方法成员</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>) :</span></span><br><span class="line">    print(<span class="string">&#x27;员工姓名：%s 工资：%f&#x27;</span>%(self.ename, self.salary))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coder</span>(<span class="params"> Emp </span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, ename, salary, lang</span>):</span></span><br><span class="line">    super().__init__(ename, salary) </span><br><span class="line">    self.language = lang </span><br><span class="line">    print(<span class="string">&#x27;一个Coder对象被构建了&#x27;</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#子类继承了printInfo方法，但是觉得不够用，于是重写了/覆盖了父类的同名方法</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span>(<span class="params">self</span>):</span></span><br><span class="line">    print(<span class="string">&#x27;程序员姓名：%s 工资：%f 擅长的语言：%s&#x27;</span>%(self.ename, self.salary, self.language))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#创建程序员对象</span></span><br><span class="line">e1 = Emp(<span class="string">&#x27;当当&#x27;</span>,<span class="number">8000</span>)</span><br><span class="line">e1.printInfo()</span><br><span class="line"></span><br><span class="line">c1 = Coder(<span class="string">&#x27;当当&#x27;</span>,<span class="number">8000</span>,<span class="string">&#x27;JS/ES/TS&#x27;</span>)</span><br><span class="line">c1.printInfo()</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Python-2-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Node-js-5-express框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Node-js-5-express%E6%A1%86%E6%9E%B6/">5-express框架-脚手架</a>
+    </h1>
+  
+
+        
+        <a href="/Node-js-5-express%E6%A1%86%E6%9E%B6/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="创建项目-18-webpackss-myapp"><a href="#创建项目-18-webpackss-myapp" class="headerlink" title="创建项目 18.webpackss\myapp"></a>创建项目 18.webpackss\myapp</h3><p><code>npm install express-generator –global</code> 下载express<br><code>express --view=pug myapp</code> 创建项目 myapp<br><code>cd myapp</code> 进入项目目录<br><code>npm install</code> 下载依赖<br><code>npm start </code> 运行</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node J S</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Node-js-5-express%E6%A1%86%E6%9E%B6/">展开全文 >></a>
         </p>
       
 
@@ -366,6 +466,91 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Node-js-4-express%E6%A8%A1%E5%9D%97%E6%A1%86%E6%9E%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Node-js-3-mysql模块和连接池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/">3-mysql模块和连接池</a>
+    </h1>
+  
+
+        
+        <a href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p><a href="#" target="_self">1.mysql模块</a><br><a href="#title1" target="_self">2.连接池</a></p>
+<h3 id="1-mysql模块"><a href="#1-mysql模块" class="headerlink" title="1.mysql模块"></a>1.mysql模块</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 说明</span></span><br><span class="line"><span class="keyword">var</span> connection=mysql.createConnection(&#123;&#125;</span><br><span class="line">  host:<span class="string">&#x27;127.0.0.1&#x27;</span>,<span class="comment">//服务器</span></span><br><span class="line">  port:<span class="string">&#x27;3306&#x27;</span>,<span class="comment">//端口</span></span><br><span class="line">  user: <span class="string">&#x27;root&#x27;</span>,<span class="comment">//用户名</span></span><br><span class="line">  password:<span class="string">&#x27;&#x27;</span>,<span class="comment">//密码</span></span><br><span class="line">  database: <span class="string">&#x27;tedu&#x27;</span><span class="comment">//连接后要使用的数据库</span></span><br><span class="line">&#125;); 创建连接对象，传递连接数据库需要的服务器、端口、用户名、密码、要使用的数据库</span><br><span class="line">connection.connect()  建立连接对象</span><br><span class="line">connection.query(sql, callback)  要执行的SQL语句 , 回调函数-用于获取SQL语句的结果</span><br><span class="line">connection.end()  执行完所有的SQL语句，关闭连接</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需要使用到的mysql</span></span><br><span class="line">SET NAMES UTF8;</span><br><span class="line">DROP DATABASE IF EXISTS tedu;</span><br><span class="line">CREATE DATABASE tedu CHARSET=UTF8;</span><br><span class="line">USE tedu;</span><br><span class="line"></span><br><span class="line">CREATE TABLE emp(eid INT,</span><br><span class="line">               ename VARCHAR(<span class="number">40</span>),</span><br><span class="line">              sex BOOL,</span><br><span class="line">               birthday DATETIME,</span><br><span class="line">               salary DECIMAL(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">               deptId VARCHAR(<span class="number">40</span>) );</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">1</span>,<span class="string">&#x27;张三1&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2018-12-12 12:12&#x27;</span>,<span class="number">111.11</span>,<span class="number">20</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">3</span>,<span class="string">&#x27;张三3&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2015-2-12 12:12&#x27;</span>,<span class="number">333.33</span>,<span class="number">20</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">4</span>,<span class="string">&#x27;张三4&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2014-3-13 12:12&#x27;</span>,<span class="number">444.44</span>,<span class="number">10</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">5</span>,<span class="string">&#x27;张三5&#x27;</span>,<span class="string">&#x27;0&#x27;</span>,<span class="string">&#x27;2012-4-14 12:12&#x27;</span>,<span class="number">555.55</span>,<span class="number">30</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">6</span>,<span class="string">&#x27;张三6&#x27;</span>,<span class="string">&#x27;0&#x27;</span>,<span class="string">&#x27;2018-5-15 12:12&#x27;</span>,<span class="number">666.66</span>,<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例子</span></span><br><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>);<span class="comment">//引入MYSQL模块</span></span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;<span class="comment">//创建连接对象</span></span><br><span class="line">  <span class="comment">// host:&#x27;127.0.0.1&#x27;,//服务器</span></span><br><span class="line">  <span class="comment">// port:&#x27;3306&#x27;,//端口</span></span><br><span class="line">  user: <span class="string">&#x27;root&#x27;</span>,<span class="comment">//用户名</span></span><br><span class="line">  <span class="comment">// password:&#x27;&#x27;,//密码</span></span><br><span class="line">  database: <span class="string">&#x27;tedu&#x27;</span><span class="comment">//连接后要使用的数据库</span></span><br><span class="line">&#125;);</span><br><span class="line">connection.connect()<span class="comment">// 建立连接对象</span></span><br><span class="line">connection.query(<span class="string">&#x27;SELECT*FROM emp WHERE eid=1&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;<span class="comment">//有错误 ，丢出来</span></span><br><span class="line">  <span class="built_in">console</span>.log(res)<span class="comment">// 查询res得到 []</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">&#x27;DELETE FROM emp WHERE eid=5&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(res)<span class="comment">// res.affectedRows: 1,删除成功。为0则失败</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">&#x27;INSERT INTO emp VALUES(?,?,?,?,?,?)&#x27;</span>, [<span class="literal">null</span>, <span class="string">&#x27;sss&#x27;</span>, <span class="number">1</span>, <span class="string">&#x27;1999-5-5&#x27;</span>, <span class="number">5000</span>, <span class="number">20</span>], <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(res);<span class="comment">// res.affectedRows: 1,添加成功。为0则失败</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">`UPDATE emp SET ename=&#x27;ssss&#x27;  WHERE eid=3`</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(res);<span class="comment">// res.affectedRows: 1,修改。为0则失败</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">connection.end(); <span class="comment">// 执行完所有的SQL语句，关闭连接</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-使用连接池"><a href="#2-使用连接池" class="headerlink" title="2.使用连接池"></a><span id="title1">2.使用连接池</span></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以使用单独文件 然后导入导出</span></span><br><span class="line"><span class="comment">// module.exports = pool 导出连接池</span></span><br><span class="line"><span class="comment">// const pool = require(&#x27;../pool.js&#x27;)引用链接池</span></span><br><span class="line"> <span class="keyword">const</span> mysql=<span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line"> <span class="keyword">const</span> pool=mysql.createPool(&#123;<span class="comment">//创建连接池对象</span></span><br><span class="line">    host:<span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">    port:<span class="string">&#x27;3306&#x27;</span>,</span><br><span class="line">    user:<span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    password:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    database:<span class="string">&#x27;tedu&#x27;</span>,</span><br><span class="line">    connectionLimit:<span class="number">15</span> <span class="comment">// 使用数据库设置连接池的大小 connectionLimit，默认是15</span></span><br><span class="line">	&#125;);</span><br><span class="line"> pool.query(<span class="string">&#x27;SELECT*FROM emp WHERE eid=?&#x27;</span>,[<span class="number">1</span>],<span class="function"><span class="keyword">function</span>(<span class="params">e,b</span>)</span>&#123; <span class="comment">// eid=站位符号. 后面数组替代站位符号。可以防止SQL注入</span></span><br><span class="line">  <span class="keyword">if</span>(e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(b);<span class="comment">//对象结果</span></span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<p>使用导入导出模式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pool.js</span></span><br><span class="line"> <span class="keyword">const</span> mysql=<span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line"> <span class="keyword">const</span> pool=mysql.createPool(&#123;<span class="comment">//创建连接池对象</span></span><br><span class="line">   host:<span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">   port:<span class="string">&#x27;3306&#x27;</span>,</span><br><span class="line">   user:<span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">   password:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">   database:<span class="string">&#x27;tedu&#x27;</span>,</span><br><span class="line">   connectionLimit:<span class="number">15</span> <span class="comment">// 使用数据库设置连接池的大小 connectionLimit，默认是15</span></span><br><span class="line">&#125;);</span><br><span class="line"> <span class="built_in">module</span>.exports = pool 导出连接池</span><br><span class="line"> <span class="comment">// routes/user.js</span></span><br><span class="line"> <span class="keyword">const</span> pool = <span class="built_in">require</span>(<span class="string">&#x27;../pool.js&#x27;</span>) <span class="comment">// 引用链接池</span></span><br><span class="line"> <span class="comment">// 然后各种操作</span></span><br><span class="line"> pool.query(<span class="string">&#x27;SELECT*FROM emp WHERE eid=?&#x27;</span>,[<span class="number">1</span>],<span class="function"><span class="keyword">function</span>(<span class="params">e,b</span>)</span>&#123; <span class="comment">// eid=站位符号. 后面数组替代站位符号。可以防止SQL注入</span></span><br><span class="line">   <span class="keyword">if</span>(e) <span class="keyword">throw</span> e;</span><br><span class="line">   <span class="built_in">console</span>.log(b);<span class="comment">//对象结果</span></span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node J S</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/">展开全文 >></a>
         </p>
       
 
@@ -500,167 +685,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Node-js-2-%E5%90%84%E7%A7%8D%E6%A8%A1%E5%9D%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Node-js-3-mysql模块和连接池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/">3-mysql模块和连接池</a>
-    </h1>
-  
-
-        
-        <a href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p><a href="#" target="_self">1.mysql模块</a><br><a href="#title1" target="_self">2.连接池</a></p>
-<h3 id="1-mysql模块"><a href="#1-mysql模块" class="headerlink" title="1.mysql模块"></a>1.mysql模块</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 说明</span></span><br><span class="line"><span class="keyword">var</span> connection=mysql.createConnection(&#123;&#125;</span><br><span class="line">  host:<span class="string">&#x27;127.0.0.1&#x27;</span>,<span class="comment">//服务器</span></span><br><span class="line">  port:<span class="string">&#x27;3306&#x27;</span>,<span class="comment">//端口</span></span><br><span class="line">  user: <span class="string">&#x27;root&#x27;</span>,<span class="comment">//用户名</span></span><br><span class="line">  password:<span class="string">&#x27;&#x27;</span>,<span class="comment">//密码</span></span><br><span class="line">  database: <span class="string">&#x27;tedu&#x27;</span><span class="comment">//连接后要使用的数据库</span></span><br><span class="line">&#125;); 创建连接对象，传递连接数据库需要的服务器、端口、用户名、密码、要使用的数据库</span><br><span class="line">connection.connect()  建立连接对象</span><br><span class="line">connection.query(sql, callback)  要执行的SQL语句 , 回调函数-用于获取SQL语句的结果</span><br><span class="line">connection.end()  执行完所有的SQL语句，关闭连接</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需要使用到的mysql</span></span><br><span class="line">SET NAMES UTF8;</span><br><span class="line">DROP DATABASE IF EXISTS tedu;</span><br><span class="line">CREATE DATABASE tedu CHARSET=UTF8;</span><br><span class="line">USE tedu;</span><br><span class="line"></span><br><span class="line">CREATE TABLE emp(eid INT,</span><br><span class="line">               ename VARCHAR(<span class="number">40</span>),</span><br><span class="line">              sex BOOL,</span><br><span class="line">               birthday DATETIME,</span><br><span class="line">               salary DECIMAL(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">               deptId VARCHAR(<span class="number">40</span>) );</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">1</span>,<span class="string">&#x27;张三1&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2018-12-12 12:12&#x27;</span>,<span class="number">111.11</span>,<span class="number">20</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">3</span>,<span class="string">&#x27;张三3&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2015-2-12 12:12&#x27;</span>,<span class="number">333.33</span>,<span class="number">20</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">4</span>,<span class="string">&#x27;张三4&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2014-3-13 12:12&#x27;</span>,<span class="number">444.44</span>,<span class="number">10</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">5</span>,<span class="string">&#x27;张三5&#x27;</span>,<span class="string">&#x27;0&#x27;</span>,<span class="string">&#x27;2012-4-14 12:12&#x27;</span>,<span class="number">555.55</span>,<span class="number">30</span>);</span><br><span class="line">INSERT INTO emp VALUES(<span class="number">6</span>,<span class="string">&#x27;张三6&#x27;</span>,<span class="string">&#x27;0&#x27;</span>,<span class="string">&#x27;2018-5-15 12:12&#x27;</span>,<span class="number">666.66</span>,<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例子</span></span><br><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>);<span class="comment">//引入MYSQL模块</span></span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;<span class="comment">//创建连接对象</span></span><br><span class="line">  <span class="comment">// host:&#x27;127.0.0.1&#x27;,//服务器</span></span><br><span class="line">  <span class="comment">// port:&#x27;3306&#x27;,//端口</span></span><br><span class="line">  user: <span class="string">&#x27;root&#x27;</span>,<span class="comment">//用户名</span></span><br><span class="line">  <span class="comment">// password:&#x27;&#x27;,//密码</span></span><br><span class="line">  database: <span class="string">&#x27;tedu&#x27;</span><span class="comment">//连接后要使用的数据库</span></span><br><span class="line">&#125;);</span><br><span class="line">connection.connect()<span class="comment">// 建立连接对象</span></span><br><span class="line">connection.query(<span class="string">&#x27;SELECT*FROM emp WHERE eid=1&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;<span class="comment">//有错误 ，丢出来</span></span><br><span class="line">  <span class="built_in">console</span>.log(res)<span class="comment">// 查询res得到 []</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">&#x27;DELETE FROM emp WHERE eid=5&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(res)<span class="comment">// res.affectedRows: 1,删除成功。为0则失败</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">&#x27;INSERT INTO emp VALUES(?,?,?,?,?,?)&#x27;</span>, [<span class="literal">null</span>, <span class="string">&#x27;sss&#x27;</span>, <span class="number">1</span>, <span class="string">&#x27;1999-5-5&#x27;</span>, <span class="number">5000</span>, <span class="number">20</span>], <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(res);<span class="comment">// res.affectedRows: 1,添加成功。为0则失败</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">`UPDATE emp SET ename=&#x27;ssss&#x27;  WHERE eid=3`</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(res);<span class="comment">// res.affectedRows: 1,修改。为0则失败</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">connection.end(); <span class="comment">// 执行完所有的SQL语句，关闭连接</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-使用连接池"><a href="#2-使用连接池" class="headerlink" title="2.使用连接池"></a><span id="title1">2.使用连接池</span></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以使用单独文件 然后导入导出</span></span><br><span class="line"><span class="comment">// module.exports = pool 导出连接池</span></span><br><span class="line"><span class="comment">// const pool = require(&#x27;../pool.js&#x27;)引用链接池</span></span><br><span class="line"> <span class="keyword">const</span> mysql=<span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line"> <span class="keyword">const</span> pool=mysql.createPool(&#123;<span class="comment">//创建连接池对象</span></span><br><span class="line">    host:<span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">    port:<span class="string">&#x27;3306&#x27;</span>,</span><br><span class="line">    user:<span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    password:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    database:<span class="string">&#x27;tedu&#x27;</span>,</span><br><span class="line">    connectionLimit:<span class="number">15</span> <span class="comment">// 使用数据库设置连接池的大小 connectionLimit，默认是15</span></span><br><span class="line">	&#125;);</span><br><span class="line"> pool.query(<span class="string">&#x27;SELECT*FROM emp WHERE eid=?&#x27;</span>,[<span class="number">1</span>],<span class="function"><span class="keyword">function</span>(<span class="params">e,b</span>)</span>&#123; <span class="comment">// eid=站位符号. 后面数组替代站位符号。可以防止SQL注入</span></span><br><span class="line">  <span class="keyword">if</span>(e) <span class="keyword">throw</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(b);<span class="comment">//对象结果</span></span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
-<p>使用导入导出模式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pool.js</span></span><br><span class="line"> <span class="keyword">const</span> mysql=<span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line"> <span class="keyword">const</span> pool=mysql.createPool(&#123;<span class="comment">//创建连接池对象</span></span><br><span class="line">   host:<span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">   port:<span class="string">&#x27;3306&#x27;</span>,</span><br><span class="line">   user:<span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">   password:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">   database:<span class="string">&#x27;tedu&#x27;</span>,</span><br><span class="line">   connectionLimit:<span class="number">15</span> <span class="comment">// 使用数据库设置连接池的大小 connectionLimit，默认是15</span></span><br><span class="line">&#125;);</span><br><span class="line"> <span class="built_in">module</span>.exports = pool 导出连接池</span><br><span class="line"> <span class="comment">// routes/user.js</span></span><br><span class="line"> <span class="keyword">const</span> pool = <span class="built_in">require</span>(<span class="string">&#x27;../pool.js&#x27;</span>) <span class="comment">// 引用链接池</span></span><br><span class="line"> <span class="comment">// 然后各种操作</span></span><br><span class="line"> pool.query(<span class="string">&#x27;SELECT*FROM emp WHERE eid=?&#x27;</span>,[<span class="number">1</span>],<span class="function"><span class="keyword">function</span>(<span class="params">e,b</span>)</span>&#123; <span class="comment">// eid=站位符号. 后面数组替代站位符号。可以防止SQL注入</span></span><br><span class="line">   <span class="keyword">if</span>(e) <span class="keyword">throw</span> e;</span><br><span class="line">   <span class="built_in">console</span>.log(b);<span class="comment">//对象结果</span></span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node J S</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Node-js-5-express框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Node-js-5-express%E6%A1%86%E6%9E%B6/">5-express框架-脚手架</a>
-    </h1>
-  
-
-        
-        <a href="/Node-js-5-express%E6%A1%86%E6%9E%B6/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="创建项目-18-webpackss-myapp"><a href="#创建项目-18-webpackss-myapp" class="headerlink" title="创建项目 18.webpackss\myapp"></a>创建项目 18.webpackss\myapp</h3><p><code>npm install express-generator –global</code> 下载express<br><code>express --view=pug myapp</code> 创建项目 myapp<br><code>cd myapp</code> 进入项目目录<br><code>npm install</code> 下载依赖<br><code>npm start </code> 运行</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node J S</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Node-js-5-express%E6%A1%86%E6%9E%B6/">展开全文 >></a>
         </p>
       
 
@@ -1770,11 +1794,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1782,7 +1810,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1790,15 +1826,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1810,7 +1842,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1818,7 +1850,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1826,15 +1862,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1843,18 +1879,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
             
             <div class="clearfix"></div>

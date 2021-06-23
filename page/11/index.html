@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>历史好的博客</title>
+  <title>历史好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="没有">
 <meta property="og:type" content="website">
-<meta property="og:title" content="历史好的博客">
+<meta property="og:title" content="历史好">
 <meta property="og:url" content="http://yoursite.com/page/11/index.html">
-<meta property="og:site_name" content="历史好的博客">
+<meta property="og:site_name" content="历史好">
 <meta property="og:description" content="没有">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="前端,历史好,666">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="历史好的博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="历史好" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -145,19 +145,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-JS-103-cookies-storage" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JS-102-js中获取style样式表的4种方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/JS-103-cookies-storage/">103-cookies-storage</a>
+      <a class="article-title" href="/JS-102-js%E4%B8%AD%E8%8E%B7%E5%8F%96style%E6%A0%B7%E5%BC%8F%E8%A1%A8%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95/">103-js中获取style样式表的4种方法</a>
     </h1>
   
 
         
-        <a href="/JS-103-cookies-storage/" class="archive-article-date">
+        <a href="/JS-102-js%E4%B8%AD%E8%8E%B7%E5%8F%96style%E6%A0%B7%E5%BC%8F%E8%A1%A8%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.432Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -166,103 +166,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <table>
-<thead>
-<tr>
-<th>-</th>
-<th>存储大小</th>
-<th>有效时间</th>
-<th>-</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>cookies</td>
-<td>&lt;= 4K</td>
-<td>在设置cookie过期之前一直有效（无论窗口浏览器是否关闭）</td>
-<td>正常情况下，cookies数据会自动传到服务器，服务器也可以写cookie到客户端</td>
-</tr>
-<tr>
-<td>sessionstorage</td>
-<td>5M</td>
-<td>临时保存 数据在当前浏览器关闭后删除 <br>基于每个窗口，有单独的sessionStorage数据</td>
-<td>不会发送数据到服务端</td>
-</tr>
-<tr>
-<td>localstorage</td>
-<td>5M</td>
-<td>持久存储，浏览器关闭后不会丢失除非主动删除</td>
-<td>不会发送数据到服务端</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>-</th>
-<th>代码</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>cookies</td>
-<td>document.cookie=”key=value”</td>
-<td>保存数据 key名 value 值</td>
-</tr>
-<tr>
-<td></td>
-<td>document.cookie</td>
-<td>获取所有cookie字符串形式。需要自己操作一番</td>
-</tr>
-<tr>
-<td>sessionstorage</td>
-<td>.setItem(key,value)</td>
-<td>保存数据 key名 value 值</td>
-</tr>
-<tr>
-<td></td>
-<td>.getItem(key)</td>
-<td>获取数据 key名的值</td>
-</tr>
-<tr>
-<td></td>
-<td>.removeItem(key)</td>
-<td>删除一组数据</td>
-</tr>
-<tr>
-<td></td>
-<td>.clear()</td>
-<td>清空所有数据</td>
-</tr>
-<tr>
-<td></td>
-<td>.length</td>
-<td>个数</td>
-</tr>
-<tr>
-<td>localstorage</td>
-<td>.setItem(key,value)</td>
-<td>保存数据 key名 value 值</td>
-</tr>
-<tr>
-<td></td>
-<td>.getItem(key)</td>
-<td>获取数据 key名的值</td>
-</tr>
-<tr>
-<td></td>
-<td>.removeItem(key)</td>
-<td>删除一组数据</td>
-</tr>
-<tr>
-<td></td>
-<td>.clear()</td>
-<td>清空所有数据</td>
-</tr>
-<tr>
-<td></td>
-<td>.length</td>
-<td>个数</td>
-</tr>
-</tbody></table>
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/qishuixian/article/details/79458483">原文链接</a></p>
+<h3 id="js中style-currentStyle-getComputedStyle-和-getBoundingClientRect-的区别以及获取css操作方法"><a href="#js中style-currentStyle-getComputedStyle-和-getBoundingClientRect-的区别以及获取css操作方法" class="headerlink" title="js中style, currentStyle, getComputedStyle 和 getBoundingClientRect 的区别以及获取css操作方法"></a>js中style, currentStyle, getComputedStyle 和 getBoundingClientRect 的区别以及获取css操作方法</h3><p>在js中,之前我们获取属性大多用的都是<code>ele.style.border</code>这种形式的方法,但是这种方法是有局限性的,该方法只能获取到行内样式,获取不了外部的样式.因为获取外部的样式存在兼容性的问题,</p>
+<ul>
+<li><p>style:<br>各大浏览器都兼容,能设置样式和获取样式,但是获取不了外部样式,如果写了行内没有的样式,返回的是空值<br>写法:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ele.style.attr , ele.style.attr=<span class="string">&quot;值&quot;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>currentStyle:<br>该属性只兼容IE,不兼容火狐和谷歌<br>写法:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ele.currentStyle[<span class="string">&quot;attr&quot;</span>] 或者 ele.currentStyle.attr;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>getComputedStyle<br>注意：currentStyle属性和getComputedStyle属性不能设置属性,只能获取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[0];</span><br><span class="line"><span class="keyword">if</span> ( div.currentStyle ) &#123; // IE上兼容</span><br><span class="line">  console.log( div.currentStyle[<span class="string">&quot;width&quot;</span>] );</span><br><span class="line">&#125; <span class="keyword">else</span> &#123; // 火狐谷歌上兼容</span><br><span class="line"> console.log( window.getComputedStyle( div, null )[<span class="string">&quot;width&quot;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>getBoundingClientRect()<br>返回一个矩形对象，包含四个属性：left、top、right和bottom。分别表示元素各边与页面上边和左边的距离</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var box=document.getElementById(<span class="string">&#x27;box&#x27;</span>); // 获取元素</span><br><span class="line">alert(box.getBoundingClientRect().top); // 元素上边距离页面上边的距离</span><br><span class="line">alert(box.getBoundingClientRect().right); // 元素右边距离页面左边的距离</span><br><span class="line">alert(box.getBoundingClientRect().bottom); // 元素下边距离页面上边的距离</span><br><span class="line">alert(box.getBoundingClientRect().left); // 元素左边距离页面左边的距离</span><br></pre></td></tr></table></figure>
+<p>注意：IE、Firefox3+、Opera9.5、Chrome、Safari支持，在IE中，默认坐标从(2,2)开始计算，导致最终距离比其他浏览器多出两个像素，我们需要做个兼容。<br>document.documentElement.clientTop; // 非IE为0，IE为2<br>document.documentElement.clientLeft; // 非IE为0，IE为2</p>
+</li>
+</ul>
+<p>// 分别加上外边据、内边距、边框和滚动条，用于测试所有浏览器是否一致。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> GetRect (element) &#123;</span><br><span class="line">  var rect = element.getBoundingClientRect();</span><br><span class="line">  var top = document.documentElement.clientTop;</span><br><span class="line">  var left= document.documentElement.clientLeft;</span><br><span class="line">  <span class="built_in">return</span> &#123;</span><br><span class="line">    top : rect.top - top,</span><br><span class="line">    bottom : rect.bottom - top,</span><br><span class="line">    left : rect.left - left,</span><br><span class="line">    right : rect.right - left</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         
       
@@ -287,7 +210,114 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/JS-103-cookies-storage/">展开全文 >></a>
+          <a class="article-more-a" href="/JS-102-js%E4%B8%AD%E8%8E%B7%E5%8F%96style%E6%A0%B7%E5%BC%8F%E8%A1%A8%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JS-101-不用try-catch，如何机智的捕获错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/">101.不用try catch，如何机智的捕获错误</a>
+    </h1>
+  
+
+        
+        <a href="/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.431Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作者： 魔术师卡颂 公号 / 卡颂 （本文来自作者投稿）<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/yOxhzfCwmQZLVaN2kVTAoQ">https://mp.weixin.qq.com/s/yOxhzfCwmQZLVaN2kVTAoQ</a></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>我们知道，<code>React</code>中有个特性<code>Error Boundary</code>，帮助我们在组件发生错误时显示“错误状态”的UI。<br>为了实现这个特性，就一定需要捕获到错误。<br>所以在<code>React</code>源码中，所有用户代码都被包裹在一个方法中执行。<br>类似如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapper</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    func();</span><br><span class="line">  &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    <span class="comment">// ...处理错误</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>比如触发<code>componentDidMount</code>时：<br><code>wrapper(componentDidMount)</code>;<br>本来一切都很完美，但是React作为世界级前端框架，受众广泛，凡事都讲究做到极致。<br>这不，有人提<code>issue</code>：<br>你们这样在<code>try catch</code>中执行用户代码会让浏览器调试工具的<code>Pause on exceptions</code>失效。</p>
+<p>Pause on exceptions是什么？<br>他是浏览器调试工具source面板的一个功能。</p>
+<p>开启该功能后，在运行时遇到会抛出错误的代码，代码的执行会自动停在该行，就像在该行打了断点一样。<br>比如，执行如下代码，并开启该功能：<br>let a = c;<br>代码的执行会在该行暂停。</p>
+<p>这个功能可以很方便的帮我们发现未捕获的错误发生的位置。<br>但是，当React将用户代码包裹在try catch后，即使代码抛出错误，也会被catch。<br>Pause on exceptions无法在抛出错误的用户代码处暂停，因为error已经被React catch了。<br>除非我们进一步开启Pause on caught exceptions。</p>
+<p>开启该功能，使代码在捕获的错误发生的位置暂停。<br>如何解决</p>
+<p>对用户来说，我写在componentDidMount中的代码明明未捕获错误，可是错误发生时Pause on exceptions却失效了，确实有些让人困惑。<br>所以，在生产环境，React继续使用try catch实现wrapper。<br>而在开发环境，为了更好的调试体验，需要重新实现一套try catch机制，包含如下功能：<br>捕获用户代码抛出的错误，使Error Boundary功能正常运行<br>不捕获用户代码抛出的错误，使Pause on exceptions不失效<br>这看似矛盾的功能，React如何机智的实现呢？<br>如何“捕获”错误</p>
+<p>让我们先实现第一点：捕获用户代码抛出的错误。<br>但是不能使用try catch，因为这会让Pause on exceptions失效。<br>解决办法是：监听window的error事件。<br>根据GlobalEventHandlers.onerror MDN[1]，该事件可以监听到两类错误：<br>js运行时错误（包括语法错误）。window会触发ErrorEvent接口的error事件<br>资源（如&lt; img &gt;或&lt; script &gt;）加载失败错误。加载资源的元素会触发Event接口的error事件，可以在window上捕获该错误<br>实现开发环境使用的wrapperDev：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 开发环境wrapper</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperDev</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleWindowError</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 收集错误交给Error Boundary处理</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">  func();</span><br><span class="line">  <span class="built_in">window</span>.removeEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当func执行时抛出错误，会被handleWindowError处理。<br>但是，对比生产环境wrapperPrd内func抛出的错误会被catch，不会影响后续代码执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperPrd</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    func();</span><br><span class="line">  &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    <span class="comment">// ...处理错误</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>开发环境func内如果抛出错误，代码的执行会中断。<br>比如执行如下代码，finish会被打印。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wrapperPrd(<span class="function">() =&gt;</span> &#123;<span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="number">123</span>)&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;finish&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>但是执行如下代码，代码执行中断，finish不会被打印。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wrapperDev(<span class="function">() =&gt;</span> &#123;<span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="number">123</span>)&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;finish&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>如何在不捕获用户代码抛出错误的前提下，又能让后续代码的执行不中断呢？</p>
+<h4 id="如何让代码执行不中断"><a href="#如何让代码执行不中断" class="headerlink" title="如何让代码执行不中断"></a>如何让代码执行不中断</h4><p>答案是：通过<code>dispatchEvent</code>触发事件回调，在回调中调用用户代码。<br>根据<code>EventTarget.dispatchEvent MDN</code>[2]：<br>不同于DOM节点触发的事件（比如<code>click</code>事件）回调是由<code>event loop</code>异步触发。<br>通过<code>dispatchEvent</code>触发的事件是同步触发，并且在事件回调中抛出的错误不会影响dispatchEvent的调用者（caller）。<br>让我们继续改造<code>wrapperDev</code>。</p>
+<p>首先创建虚构的DOM节点、事件对象、虚构的事件类型：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建虚构的DOM节点</span></span><br><span class="line"><span class="keyword">const</span> fakeNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;fake&#x27;</span>);</span><br><span class="line"><span class="comment">// 创建event</span></span><br><span class="line"><span class="keyword">const</span> event = <span class="built_in">document</span>.createEvent(<span class="string">&#x27;Event&#x27;</span>);</span><br><span class="line"><span class="comment">// 创建虚构的event类型</span></span><br><span class="line"><span class="keyword">const</span> evtType = <span class="string">&#x27;fake-event&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>初始化事件对象，监听事件。在事件回调中调用用户代码。触发事件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callCallback</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  fakeNode.removeEventListener(evtType, callCallback, <span class="literal">false</span>); </span><br><span class="line">  func();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听虚构的事件类型</span></span><br><span class="line">fakeNode.addEventListener(evtType, callCallback, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化事件</span></span><br><span class="line">event.initEvent(evtType, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发事件</span></span><br><span class="line">fakeNode.dispatchEvent(event);</span><br></pre></td></tr></table></figure>
+<p>完整流程如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperDev</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleWindowError</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 收集错误交给Error Boundary处理</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">callCallback</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    fakeNode.removeEventListener(evtType, callCallback, <span class="literal">false</span>); </span><br><span class="line">    func();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> event = <span class="built_in">document</span>.createEvent(<span class="string">&#x27;Event&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> fakeNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;fake&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> evtType = <span class="string">&#x27;fake-event&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">  fakeNode.addEventListener(evtType, callCallback, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">  event.initEvent(evtType, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  fakeNode.dispatchEvent(event);</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">window</span>.removeEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当我们调用：<br><code>wrapperDev(() =&gt; &#123;throw Error(123)&#125;)</code><br>会依次执行：<br>1.dispatchEvent触发事件回调callCallback<br>2.在callCallback内执行到throw Error(123)，抛出错误<br>3.callCallback执行中断，但调用他的函数会继续执行。<br>E4.rror(123)被window error handler捕获用于Error Boundary<br>其中步骤2使Pause on exceptions不会失效。<br>步骤3、4使得错误被捕获，且不会阻止后续代码执行，模拟了try catch的效果。<br>总结</p>
+<p>不得不说，<code>React</code>这波操作真细啊。<br>我们实现的迷你<code>wrapper</code>还有很多不足，比如：<br>没有针对不同浏览器的兼容<br>没有考虑其他代码也触发<code>window error handler</code></p>
+<p>[1]<br>GlobalEventHandlers.onerror MDN: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror">https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror</a><br>[2]<br>EventTarget.dispatchEvent MDN: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent">https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent</a><br>[3]<br>这里: <a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/master/packages/shared/invokeGuardedCallbackImpl.js#L63-L237">https://github.com/facebook/react/blob/master/packages/shared/invokeGuardedCallbackImpl.js#L63-L237</a></p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/">展开全文 >></a>
         </p>
       
 
@@ -1388,238 +1418,6 @@
 
 
   
-    <article id="post-JS-101-不用try-catch，如何机智的捕获错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/">101.不用try catch，如何机智的捕获错误</a>
-    </h1>
-  
-
-        
-        <a href="/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.431Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作者： 魔术师卡颂 公号 / 卡颂 （本文来自作者投稿）<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/yOxhzfCwmQZLVaN2kVTAoQ">https://mp.weixin.qq.com/s/yOxhzfCwmQZLVaN2kVTAoQ</a></p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>我们知道，<code>React</code>中有个特性<code>Error Boundary</code>，帮助我们在组件发生错误时显示“错误状态”的UI。<br>为了实现这个特性，就一定需要捕获到错误。<br>所以在<code>React</code>源码中，所有用户代码都被包裹在一个方法中执行。<br>类似如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapper</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    func();</span><br><span class="line">  &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    <span class="comment">// ...处理错误</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>比如触发<code>componentDidMount</code>时：<br><code>wrapper(componentDidMount)</code>;<br>本来一切都很完美，但是React作为世界级前端框架，受众广泛，凡事都讲究做到极致。<br>这不，有人提<code>issue</code>：<br>你们这样在<code>try catch</code>中执行用户代码会让浏览器调试工具的<code>Pause on exceptions</code>失效。</p>
-<p>Pause on exceptions是什么？<br>他是浏览器调试工具source面板的一个功能。</p>
-<p>开启该功能后，在运行时遇到会抛出错误的代码，代码的执行会自动停在该行，就像在该行打了断点一样。<br>比如，执行如下代码，并开启该功能：<br>let a = c;<br>代码的执行会在该行暂停。</p>
-<p>这个功能可以很方便的帮我们发现未捕获的错误发生的位置。<br>但是，当React将用户代码包裹在try catch后，即使代码抛出错误，也会被catch。<br>Pause on exceptions无法在抛出错误的用户代码处暂停，因为error已经被React catch了。<br>除非我们进一步开启Pause on caught exceptions。</p>
-<p>开启该功能，使代码在捕获的错误发生的位置暂停。<br>如何解决</p>
-<p>对用户来说，我写在componentDidMount中的代码明明未捕获错误，可是错误发生时Pause on exceptions却失效了，确实有些让人困惑。<br>所以，在生产环境，React继续使用try catch实现wrapper。<br>而在开发环境，为了更好的调试体验，需要重新实现一套try catch机制，包含如下功能：<br>捕获用户代码抛出的错误，使Error Boundary功能正常运行<br>不捕获用户代码抛出的错误，使Pause on exceptions不失效<br>这看似矛盾的功能，React如何机智的实现呢？<br>如何“捕获”错误</p>
-<p>让我们先实现第一点：捕获用户代码抛出的错误。<br>但是不能使用try catch，因为这会让Pause on exceptions失效。<br>解决办法是：监听window的error事件。<br>根据GlobalEventHandlers.onerror MDN[1]，该事件可以监听到两类错误：<br>js运行时错误（包括语法错误）。window会触发ErrorEvent接口的error事件<br>资源（如&lt; img &gt;或&lt; script &gt;）加载失败错误。加载资源的元素会触发Event接口的error事件，可以在window上捕获该错误<br>实现开发环境使用的wrapperDev：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 开发环境wrapper</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperDev</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleWindowError</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 收集错误交给Error Boundary处理</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">  func();</span><br><span class="line">  <span class="built_in">window</span>.removeEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当func执行时抛出错误，会被handleWindowError处理。<br>但是，对比生产环境wrapperPrd内func抛出的错误会被catch，不会影响后续代码执行。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperPrd</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    func();</span><br><span class="line">  &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    <span class="comment">// ...处理错误</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>开发环境func内如果抛出错误，代码的执行会中断。<br>比如执行如下代码，finish会被打印。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wrapperPrd(<span class="function">() =&gt;</span> &#123;<span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="number">123</span>)&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;finish&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>但是执行如下代码，代码执行中断，finish不会被打印。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wrapperDev(<span class="function">() =&gt;</span> &#123;<span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="number">123</span>)&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;finish&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>如何在不捕获用户代码抛出错误的前提下，又能让后续代码的执行不中断呢？</p>
-<h4 id="如何让代码执行不中断"><a href="#如何让代码执行不中断" class="headerlink" title="如何让代码执行不中断"></a>如何让代码执行不中断</h4><p>答案是：通过<code>dispatchEvent</code>触发事件回调，在回调中调用用户代码。<br>根据<code>EventTarget.dispatchEvent MDN</code>[2]：<br>不同于DOM节点触发的事件（比如<code>click</code>事件）回调是由<code>event loop</code>异步触发。<br>通过<code>dispatchEvent</code>触发的事件是同步触发，并且在事件回调中抛出的错误不会影响dispatchEvent的调用者（caller）。<br>让我们继续改造<code>wrapperDev</code>。</p>
-<p>首先创建虚构的DOM节点、事件对象、虚构的事件类型：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建虚构的DOM节点</span></span><br><span class="line"><span class="keyword">const</span> fakeNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;fake&#x27;</span>);</span><br><span class="line"><span class="comment">// 创建event</span></span><br><span class="line"><span class="keyword">const</span> event = <span class="built_in">document</span>.createEvent(<span class="string">&#x27;Event&#x27;</span>);</span><br><span class="line"><span class="comment">// 创建虚构的event类型</span></span><br><span class="line"><span class="keyword">const</span> evtType = <span class="string">&#x27;fake-event&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>初始化事件对象，监听事件。在事件回调中调用用户代码。触发事件：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callCallback</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  fakeNode.removeEventListener(evtType, callCallback, <span class="literal">false</span>); </span><br><span class="line">  func();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听虚构的事件类型</span></span><br><span class="line">fakeNode.addEventListener(evtType, callCallback, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化事件</span></span><br><span class="line">event.initEvent(evtType, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发事件</span></span><br><span class="line">fakeNode.dispatchEvent(event);</span><br></pre></td></tr></table></figure>
-<p>完整流程如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperDev</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleWindowError</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 收集错误交给Error Boundary处理</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">callCallback</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    fakeNode.removeEventListener(evtType, callCallback, <span class="literal">false</span>); </span><br><span class="line">    func();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> event = <span class="built_in">document</span>.createEvent(<span class="string">&#x27;Event&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> fakeNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;fake&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> evtType = <span class="string">&#x27;fake-event&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">  fakeNode.addEventListener(evtType, callCallback, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">  event.initEvent(evtType, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  fakeNode.dispatchEvent(event);</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">window</span>.removeEventListener(<span class="string">&#x27;error&#x27;</span>, handleWindowError);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当我们调用：<br><code>wrapperDev(() =&gt; &#123;throw Error(123)&#125;)</code><br>会依次执行：<br>1.dispatchEvent触发事件回调callCallback<br>2.在callCallback内执行到throw Error(123)，抛出错误<br>3.callCallback执行中断，但调用他的函数会继续执行。<br>E4.rror(123)被window error handler捕获用于Error Boundary<br>其中步骤2使Pause on exceptions不会失效。<br>步骤3、4使得错误被捕获，且不会阻止后续代码执行，模拟了try catch的效果。<br>总结</p>
-<p>不得不说，<code>React</code>这波操作真细啊。<br>我们实现的迷你<code>wrapper</code>还有很多不足，比如：<br>没有针对不同浏览器的兼容<br>没有考虑其他代码也触发<code>window error handler</code></p>
-<p>[1]<br>GlobalEventHandlers.onerror MDN: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror">https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror</a><br>[2]<br>EventTarget.dispatchEvent MDN: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent">https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent</a><br>[3]<br>这里: <a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/master/packages/shared/invokeGuardedCallbackImpl.js#L63-L237">https://github.com/facebook/react/blob/master/packages/shared/invokeGuardedCallbackImpl.js#L63-L237</a></p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/JS-101-%E4%B8%8D%E7%94%A8try-catch%EF%BC%8C%E5%A6%82%E4%BD%95%E6%9C%BA%E6%99%BA%E7%9A%84%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Html-2-相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Html-2-%E7%9B%B8%E5%85%B3/">2-Html相关</a>
-    </h1>
-  
-
-        
-        <a href="/Html-2-%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.430Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <style>
-#table1{
-  width:300px;
-}
- </style> 
-<h6 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h6><div id="table1">
-
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>“</td>
-<td><code>&amp;#34;</code></td>
-<td><code>&amp;quot;</code></td>
-</tr>
-<tr>
-<td>&amp;</td>
-<td><code>&amp;#38;</code></td>
-<td><code>&amp;amp;</code></td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td><code>&amp;#60;</code></td>
-<td><code>&amp;lt;</code></td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td><code>&amp;#62;</code></td>
-<td><code>&amp;gt;</code></td>
-</tr>
-<tr>
-<td>空格</td>
-<td><code>&amp;#160;</code></td>
-<td><code>&amp;nbsp;</code></td>
-</tr>
-</tbody></table>
-</div>   
-
-<h6 id="常用的结构标记"><a href="#常用的结构标记" class="headerlink" title="常用的结构标记"></a>常用的结构标记</h6><p>1.&lt; header &gt;&lt; /header &gt;<br>定义网页的头部，或者某个区域的顶部<br>2.<code>footer</code><br>定义网页的脚部，或者某个区域的底部<br>3.<code>nav</code><br>定义网页导航链接<br>4.<code>section</code><br>定义网页主体内容<br>5.<code>aside</code><br>定义网页侧边栏<br>6.<code>article</code><br>定义与文字相关的内容 比如，论坛，回帖，用户评论….</p>
-<h6 id="设置视口"><a href="#设置视口" class="headerlink" title="设置视口"></a>设置视口</h6><p><a href="/Html-3-meta相关/" target="_self">/Html-3-meta相关/</a><br>  width=device-width, 设置视口宽度为设备宽度<br>  initial-scale=1.0, 设置视口的宽度能否缩放 1.0不能缩放<br>  maximum-scale=1.0, 允许缩放的最大倍率<br>  user-scalable=0  是否允许用户手动缩放 0 不能</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot; width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0 &quot;</span>&gt;</span> </span><br></pre></td></tr></table></figure>
-
-
-
-
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Html</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Html-2-%E7%9B%B8%E5%85%B3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-JQuery-jquery" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2285,6 +2083,131 @@
 
 
   
+    <article id="post-Html-2-相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Html-2-%E7%9B%B8%E5%85%B3/">2-Html相关</a>
+    </h1>
+  
+
+        
+        <a href="/Html-2-%E7%9B%B8%E5%85%B3/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.430Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <style>
+#table1{
+  width:300px;
+}
+ </style> 
+<h6 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h6><div id="table1">
+
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“</td>
+<td><code>&amp;#34;</code></td>
+<td><code>&amp;quot;</code></td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td><code>&amp;#38;</code></td>
+<td><code>&amp;amp;</code></td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td><code>&amp;#60;</code></td>
+<td><code>&amp;lt;</code></td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td><code>&amp;#62;</code></td>
+<td><code>&amp;gt;</code></td>
+</tr>
+<tr>
+<td>空格</td>
+<td><code>&amp;#160;</code></td>
+<td><code>&amp;nbsp;</code></td>
+</tr>
+</tbody></table>
+</div>   
+
+<h6 id="常用的结构标记"><a href="#常用的结构标记" class="headerlink" title="常用的结构标记"></a>常用的结构标记</h6><p>1.&lt; header &gt;&lt; /header &gt;<br>定义网页的头部，或者某个区域的顶部<br>2.<code>footer</code><br>定义网页的脚部，或者某个区域的底部<br>3.<code>nav</code><br>定义网页导航链接<br>4.<code>section</code><br>定义网页主体内容<br>5.<code>aside</code><br>定义网页侧边栏<br>6.<code>article</code><br>定义与文字相关的内容 比如，论坛，回帖，用户评论….</p>
+<h6 id="设置视口"><a href="#设置视口" class="headerlink" title="设置视口"></a>设置视口</h6><p><a href="/Html-3-meta相关/" target="_self">/Html-3-meta相关/</a><br>  width=device-width, 设置视口宽度为设备宽度<br>  initial-scale=1.0, 设置视口的宽度能否缩放 1.0不能缩放<br>  maximum-scale=1.0, 允许缩放的最大倍率<br>  user-scalable=0  是否允许用户手动缩放 0 不能</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot; width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0 &quot;</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Html-2-%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Html-1-属性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2381,7 +2304,7 @@
 </tr>
 <tr>
 <td>-</td>
-<td><code>href</code>=”1.zip” 下载资源<br> <code>href</code>=”mailto:<a href="mailto:&#103;&#x2d;&#x63;&#104;&#x65;&#110;&#103;&#x6c;&#x69;&#97;&#x6e;&#103;&#x40;&#116;&#101;&#100;&#x75;&#46;&#99;&#110;">&#103;&#x2d;&#x63;&#104;&#x65;&#110;&#103;&#x6c;&#x69;&#97;&#x6e;&#103;&#x40;&#116;&#101;&#100;&#x75;&#46;&#99;&#110;</a>“ 打开电子邮件<br> <code>href</code>=”javascript:alert(1111111)” <code>href</code>=”javascript:show()” 执行js代码<br> <code>href</code>=”#” 回到页面顶部<br> <code>href</code>=”#x” 到id=”x”的元素位置</td>
+<td><code>href</code>=”1.zip” 下载资源<br> <code>href</code>=”mailto:<a href="mailto:&#x67;&#x2d;&#x63;&#x68;&#x65;&#110;&#x67;&#108;&#105;&#97;&#x6e;&#x67;&#x40;&#116;&#x65;&#100;&#117;&#46;&#x63;&#x6e;">&#x67;&#x2d;&#x63;&#x68;&#x65;&#110;&#x67;&#108;&#105;&#97;&#x6e;&#x67;&#x40;&#116;&#x65;&#100;&#117;&#46;&#x63;&#x6e;</a>“ 打开电子邮件<br> <code>href</code>=”javascript:alert(1111111)” <code>href</code>=”javascript:show()” 执行js代码<br> <code>href</code>=”#” 回到页面顶部<br> <code>href</code>=”#x” 到id=”x”的元素位置</td>
 <td></td>
 <td></td>
 </tr>
@@ -3041,82 +2964,6 @@
 
 
   
-    <article id="post-Electron-1-Electron简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/">1.Electron简介</a>
-    </h1>
-  
-
-        
-        <a href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.428Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>安装 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node </span><br><span class="line">npm</span><br><span class="line">npm i --save-dev electron  安装 Electron</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Electron</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Flutter-1-flutter下载，安装，配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -3355,19 +3202,95 @@
 
 
   
-    <article id="post-CSS-sass" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Electron-1-Electron简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/CSS-sass/">sass</a>
+      <a class="article-title" href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/">1.Electron简介</a>
     </h1>
   
 
         
-        <a href="/CSS-sass/" class="archive-article-date">
+        <a href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.428Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>安装 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node </span><br><span class="line">npm</span><br><span class="line">npm i --save-dev electron  安装 Electron</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Electron</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-CSS-6-媒体查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/CSS-6-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2/">6-css媒体查询</a>
+    </h1>
+  
+
+        
+        <a href="/CSS-6-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.427Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -3376,35 +3299,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p>一.简介<br><a href="#title1" target="_self">1.安装</a><br><a href="#title2" target="_self">2.文件转化</a><br><a href="#title3" target="_self">3.变量声明</a><br><a href="#title4" target="_self">4.声明函数 / 声明混合器  <code>@mixin</code> <code>@include</code></a><br><a href="#title5" target="_self">5.导入</a><br><a href="#title8" target="_self">6.继承 <code>@extend</code></a><br><a href="#title7" target="_self">7.运算</a><br><a href="#title8" target="_self"> 8.函数，指令</a></p>
-<p>三.例子<br><a href="#title301" target="_self">301. 移动端设置字体大小</a><br><a href="#title301" target="_self">302. 循环声明多个类</a></p>
-<h1 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h1><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">::v-deep div&#123;&#125;`  // 深度选择器</span><br></pre></td></tr></table></figure>
+          <h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><p>  设置视口<br>  <meta name="viewport" content=" width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0 "><br>  在content,编写参数<br>  width=device-width, 设置视口宽度为设备宽度<br>  initial-scale=1.0, 设置视口的宽度能否缩放 1.0不能缩放<br>  maximum-scale=1.0, 允许缩放的最大倍率<br>  user-scalable=0  是否允许用户手动缩放 0 不能</p>
+<p>  常用尺寸：576  768  992  1200<br>  xl &gt;= 1200                  超大屏<br>  992 &lt;= lg &lt; 1200            大屏pc端<br>  768 &lt;= md &lt; 992             中屏  pad端<br>  576 &lt;= sm &lt; 767             小屏phone端<br>  sm &lt; 576                    超小屏<br>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 媒体查询  最小             并且  最大*/</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span><span class="number">768px</span>) <span class="keyword">and</span> (<span class="attribute">max-width:</span><span class="number">991px</span>)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* screen :用于电脑屏幕，平板电脑，智能手机等 */</span></span><br><span class="line"><span class="keyword">@media</span> screen (<span class="attribute">min-width:</span><span class="number">768px</span>) <span class="keyword">and</span> (<span class="attribute">max-width:</span><span class="number">991px</span>)&#123;</span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">@media</span> mediatype <span class="keyword">and</span>|<span class="keyword">not</span>|<span class="keyword">only</span> (media feature) &#123;</span><br><span class="line"></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></p>
 
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p>node-js 8.1 以上安装 32位sass<br>node-js 10.0 以上安装 64位sass</p>
-<ul>
-<li>在线安装scss 在 <code>cmd</code> 控制台打印命令<br>安装 <code>npm install -g node-sass</code><br>查看版本 <code>node-sass -v</code></li>
-</ul>
-<h2 id="2-文件转化"><a href="#2-文件转化" class="headerlink" title="2.文件转化"></a>2.文件转化</h2><p>单文件转换 <code>node-sass scss/01.scss css/01.css</code> 当前路径下的scss中的01.scss 转换为当前目录下的css中的01.css<br>多文件转换 <code>node-sass scss(文件夹名称) -o css(文件夹名称)</code> 当前路径下的scss文件夹中的.sass文件 转换为当前目录下的css文件夹中的.css文件<br>单文件监听 <code>node-sass -w scss/01.scss css/01.css</code> 01.scss内容发生改变，保存的时候，自动转换为01.css<br>多文件夹监听 <code>node-sass -w scss -o  css</code></p>
-<h2 id="3-变量声明"><a href="#3-变量声明" class="headerlink" title="3.变量声明"></a>3.变量声明</h2><pre><code>1-变量声明在&#123;&#125;外，整个scss文件都可以使用这个变量
-2-变量声明在&#123;&#125;内，只用当前样式可以使用此变量
-3-变量重复声明，后声明的变量会覆盖之前声明的，尽量保证变量名称不重复
-4-!default规则：如果此变量在之前已经声明赋值了,那么就使用之前的值，如果此变量之前没生命赋值，就使用现在的值</code></pre>
- <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$my_gray</span>:<span class="number">#666</span>;</span><br><span class="line"><span class="variable">$my_gray</span>:<span class="number">#777</span> !default;</span><br><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">color</span>:<span class="variable">$my_gray</span>&#125; // <span class="number">#666</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-声明函数-声明混合器-mixin-include"><a href="#4-声明函数-声明混合器-mixin-include" class="headerlink" title="4.声明函数 / 声明混合器  @mixin @include"></a>4.声明函数 / 声明混合器  <code>@mixin</code> <code>@include</code></h2><p>声明函数 / 声明混合器  <code>@mixin</code><br>调用函数 / 调用混合器 <code>@include</code></p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> my_border(<span class="variable">$width</span>,<span class="variable">$color</span>)&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="variable">$width</span> solid <span class="variable">$color</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>:<span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>:<span class="number">1px</span> <span class="number">1px</span> <span class="number">1px</span> <span class="number">1px</span> <span class="variable">$color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用 </span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line"> <span class="keyword">@include</span> my_border(<span class="number">10px</span>,<span class="number">#f00</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-导入"><a href="#5-导入" class="headerlink" title="5.导入"></a>5.导入</h2><p>如果一个<code>scss</code>文件以下划线开头，那么这个文件就是一个局部<code>scss</code>文件,在转换成css文件的时候，不会把局部文件进行转换<br>一般情况，我们会把局部文件引入到全局文件(不以下划线开头的)中。<br>导入的语法 <code>@import&quot;dropdown&quot;</code>;<br>文件名叫做 <code>_dropdown.scss</code><br>导入的时候，不写<code>_</code>,不写<code>后缀</code><br>局部文件被导入后，局部文件中样式，会在全局文件转换的css中生成。同时局部文件声明的变量，可以在全局文件中使用。</p>
-<h2 id="6-继承-extend"><a href="#6-继承-extend" class="headerlink" title="6.继承 @extend"></a>6.继承 <code>@extend</code></h2><p> 一个选择器，可以继承另一个选择器的所有样式</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.my-rounded</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#f00</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.rounded-shadow</span>&#123;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span>;</span><br><span class="line">  <span class="keyword">@extend</span> .my-rounded;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 等于</span></span><br><span class="line"><span class="selector-class">.my-rounded</span>, <span class="selector-class">.rounded-shadow</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#f00</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>; &#125;</span><br><span class="line"><span class="selector-class">.rounded-shadow</span> &#123;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span>; &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="7-运算"><a href="#7-运算" class="headerlink" title="7.运算"></a>7.运算</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-tag">p</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">   <span class="comment">// 加法  结果是否有引号.看第一位是否有引号</span></span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;asd&quot;</span>+yahei; <span class="comment">// === content: &quot;asdyahei&quot;;</span></span><br><span class="line">  <span class="attribute">font-family</span>: a+<span class="string">&quot;rial&quot;</span>; <span class="comment">// === font-family: arial;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 减法  写 - 的时候，要在 - 前后加空格</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 乘法 10*10px 得到100px  10px*10px 报错</span></span><br><span class="line">  <span class="attribute">font-size</span>:<span class="number">10</span> * <span class="number">5px</span>; <span class="comment">// ===font-size:150px;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 除法 $width/2 (500px/2) 5px+8px/2px 只有这三种情况才行</span></span><br><span class="line">  <span class="attribute">width</span>:<span class="number">10px</span>/<span class="number">2</span>; <span class="comment">// === width:10px/2;</span></span><br><span class="line">  <span class="attribute">width</span>:(<span class="number">10px</span>/<span class="number">2</span>); <span class="comment">// === width:5px;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// #&#123;&#125;</span></span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;l ate #&#123;50+30&#125; baozis&quot;</span>;<span class="comment">// === l ate 80 baozis</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 转化 </span></span><br><span class="line">  <span class="attribute">width</span>: <span class="number">1px</span>+<span class="number">1in</span>; <span class="comment">// === 97px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-函数，指令"><a href="#8-函数，指令" class="headerlink" title="8.函数，指令"></a>8.函数，指令</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义函数</span></span><br><span class="line"><span class="keyword">@function</span> :(<span class="variable">$a</span>,<span class="variable">$b</span>)&#123;<span class="keyword">@return</span> <span class="variable">$a</span>+<span class="variable">$b</span>;&#125;</span><br><span class="line"><span class="selector-tag">div</span>&#123;&#125; <span class="comment">// = width: 200px;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@function</span> abb(<span class="variable">$n</span>)&#123;</span><br><span class="line">  <span class="variable">$a</span>:<span class="number">60px</span>;</span><br><span class="line">  <span class="variable">$b</span>:<span class="number">10px</span>;</span><br><span class="line">  <span class="keyword">@return</span> <span class="variable">$n</span>*max(<span class="variable">$a</span>,<span class="variable">$b</span>)+<span class="variable">$n</span>*min(<span class="variable">$b</span>,<span class="variable">$a</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>: abb(<span class="number">6</span>); <span class="comment">// === width: 420px;</span></span><br><span class="line">  <span class="attribute">width</span>: add(<span class="number">100px</span>,<span class="number">100px</span>) // === width: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// round($val)        四舍五入  width:round(4.5px)</span></span><br><span class="line"><span class="comment">// ceil($val)         向上取整</span></span><br><span class="line"><span class="comment">// floor($val)        向下取整</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// min($v1,$v2.....)</span></span><br><span class="line"><span class="comment">// max($v1,$v2.....)</span></span><br><span class="line"><span class="comment">// unquote($str)        去掉$str的双引号</span></span><br><span class="line"><span class="comment">// quote($str)          给$str添加双引号</span></span><br><span class="line"><span class="comment">// to_upper_case($str); $str变大写</span></span><br><span class="line"><span class="comment">// to_lower_case($str); $str变小写</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// @if()&#123;&#125;</span></span><br><span class="line"><span class="comment">// @else if()&#123;&#125;</span></span><br><span class="line"><span class="comment">// @else&#123;&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="三-例子"><a href="#三-例子" class="headerlink" title="三.例子"></a>三.例子</h1><h2 id="301-移动端设置字体大小"><a href="#301-移动端设置字体大小" class="headerlink" title="301. 移动端设置字体大小"></a>301. 移动端设置字体大小</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> px2px(<span class="variable">$size</span>)&#123;</span><br><span class="line">  <span class="selector-attr">[data-dpr=&quot;1&quot;]</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="variable">$size</span> * <span class="number">1</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-attr">[data-dpr=&quot;2&quot;]</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="variable">$size</span> * <span class="number">2</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-attr">[data-dpr=&quot;3&quot;]</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="variable">$size</span> * <span class="number">3</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> px2px(<span class="number">12PX</span>); <span class="comment">// 使用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="302-循环声明多个类"><a href="#302-循环声明多个类" class="headerlink" title="302. 循环声明多个类"></a>302. 循环声明多个类</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">1</span> through <span class="number">15</span> &#123;</span><br><span class="line">  <span class="variable">$j</span>: <span class="variable">$i</span> * <span class="number">2</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.mr-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="variable">$i</span>*<span class="number">4px</span> <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.font-</span>#&#123;<span class="variable">$j</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="variable">$i</span>*<span class="number">2px</span> + <span class="number">10px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
       
 
@@ -3428,7 +3325,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/CSS-sass/">展开全文 >></a>
+          <a class="article-more-a" href="/CSS-6-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
         </p>
       
 
@@ -3555,11 +3452,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3567,7 +3468,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3575,15 +3484,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3595,7 +3500,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3603,7 +3508,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3611,15 +3520,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3628,18 +3537,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
             
             <div class="clearfix"></div>

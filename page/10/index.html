@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>历史好的博客</title>
+  <title>历史好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="没有">
 <meta property="og:type" content="website">
-<meta property="og:title" content="历史好的博客">
+<meta property="og:title" content="历史好">
 <meta property="og:url" content="http://yoursite.com/page/10/index.html">
-<meta property="og:site_name" content="历史好的博客">
+<meta property="og:site_name" content="历史好">
 <meta property="og:description" content="没有">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="前端,历史好,666">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="历史好的博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="历史好" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -144,6 +144,198 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-JS-6-运算符号" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/JS-6-%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%B7/">6-运算符号</a>
+    </h1>
+  
+
+        
+        <a href="/JS-6-%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%B7/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.435Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="转化"><a href="#转化" class="headerlink" title="转化"></a>转化</h3><table>
+<thead>
+<tr>
+<th>类型/转换后类型</th>
+<th>数字(Number())</th>
+<th>字符(tostring())</th>
+<th>布尔(Boolean())</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(Number)数字</td>
+<td>数字</td>
+<td>字符</td>
+<td>除了<code>0</code> <code>false</code> <code>null</code> <code>undefined</code> <code>NaN</code> <code>&#39;&#39;</code> 其他都为true</td>
+</tr>
+<tr>
+<td>(String)字符</td>
+<td>能转得转掉，开头就不能转就NaN</td>
+<td>字符</td>
+<td></td>
+</tr>
+<tr>
+<td>(Boolean)布尔</td>
+<td>1 0</td>
+<td>字符</td>
+<td></td>
+</tr>
+<tr>
+<td>undefined</td>
+<td>NaN</td>
+<td>报警</td>
+<td></td>
+</tr>
+<tr>
+<td>null</td>
+<td>0</td>
+<td>报警</td>
+<td></td>
+</tr>
+<tr>
+<td>NaN</td>
+<td>NaN</td>
+<td>‘NaN’</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><table>
+<thead>
+<tr>
+<th align="center">+/-</th>
+<th align="center">数字</th>
+<th align="center">字符</th>
+<th align="center">布尔</th>
+<th align="center">undefined</th>
+<th align="center">null</th>
+<th align="center">NaN</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">数字</td>
+<td align="center">数字/数字</td>
+<td align="center">字符/数字或者NaN</td>
+<td align="center">数字/数字</td>
+<td align="center">NaN/NaN</td>
+<td align="center">数字/数字</td>
+<td align="center">NaN/NaN</td>
+</tr>
+<tr>
+<td align="center">字符</td>
+<td align="center">字符/数字或者NaN</td>
+<td align="center">字符串/NAN</td>
+<td align="center">字符叠加/NaN</td>
+<td align="center">字符叠加/NaN</td>
+<td align="center">字符叠加/能转数字就为数字,不能就是NaN</td>
+<td align="center">字符叠加/NaN</td>
+</tr>
+<tr>
+<td align="center">布尔</td>
+<td align="center">数字/数字</td>
+<td align="center">字符串/数字或者NAN</td>
+<td align="center">数字/数字</td>
+<td align="center">NaN/NaN</td>
+<td align="center">数字/数字</td>
+<td align="center">NaN/NaN</td>
+</tr>
+<tr>
+<td align="center">undefined</td>
+<td align="center">NaN/NaN</td>
+<td align="center">字符叠加/NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">NaN/NaN</td>
+</tr>
+<tr>
+<td align="center">null</td>
+<td align="center">数字/数字</td>
+<td align="center">字符叠加/数字或者NaN</td>
+<td align="center">数字/数字</td>
+<td align="center">NaN/NaN</td>
+<td align="center">0 / 0</td>
+<td align="center">NaN/NaN</td>
+</tr>
+<tr>
+<td align="center">NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">字符叠加/NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">NaN/NaN</td>
+<td align="center">NaN/NaN</td>
+</tr>
+</tbody></table>
+<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p>在执行运算的时候，计算机会把数据转成二进制进行运算。<br>1 10 11  100  101  110  111  1000  1001  1010<br>100110 = 100000 + 100 + 10 = 32  + 4 + 2<br>25 = 16 + 8 + 1 = 10000 + 1000 + 1 = 11001<br>按位与<code>&amp;</code>       二进制位数相比 上下两位都是1，结果是1，否则是0    将数转化为2进制 然后比较相同位数（10位于10位比）<br>按位或<code>|</code>     二进制位数相比 上下两位含有1，结果是1，否则是0<br>按位异或<code>^</code>    二进制位数相比 上下两位不同为1，相同为0<br>按位右移<code>&gt;&gt;</code>    删除二进制的最后一位或者多位，每次缩小到原来的一半或者更多。<br>按位左移<code>&lt;&lt;</code>   在二进制的最后添加0，成倍增加</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>&amp;<span class="number">5</span>); <span class="comment">// 011 和101比 得到001 即10进制的1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">7</span>&amp;<span class="number">13</span>);<span class="comment">// 0111 和1101 得到0101 即10进制的5  </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>|<span class="number">5</span>);<span class="comment">//011  和101比 得到111 即7</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>^<span class="number">5</span>);<span class="comment">//011  和101比 得到110  即6</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>&gt;&gt;<span class="number">1</span>);<span class="comment">//5转成2进制101.右移1位删除最后一位 得到10 即 2 </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">40</span>&gt;&gt;<span class="number">1</span>);<span class="comment">//101000  10100 即20</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">40</span>&gt;&gt;<span class="number">2</span>);<span class="comment">//101000 移动2位 删除最后两位 1010 即10</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>&lt;&lt;<span class="number">2</span>);<span class="comment">//101,添加一位  10100即20</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>空字符串 优先会转化为字符串，次级转化数字0<br>null==undefined    true<br>null===undefined   false</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/JS-6-%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%B7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-JS-5-dombom" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -773,198 +965,6 @@
 
 
   
-    <article id="post-JS-6-运算符号" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/JS-6-%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%B7/">6-运算符号</a>
-    </h1>
-  
-
-        
-        <a href="/JS-6-%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%B7/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.435Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="转化"><a href="#转化" class="headerlink" title="转化"></a>转化</h3><table>
-<thead>
-<tr>
-<th>类型/转换后类型</th>
-<th>数字(Number())</th>
-<th>字符(tostring())</th>
-<th>布尔(Boolean())</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>(Number)数字</td>
-<td>数字</td>
-<td>字符</td>
-<td>除了<code>0</code> <code>false</code> <code>null</code> <code>undefined</code> <code>NaN</code> <code>&#39;&#39;</code> 其他都为true</td>
-</tr>
-<tr>
-<td>(String)字符</td>
-<td>能转得转掉，开头就不能转就NaN</td>
-<td>字符</td>
-<td></td>
-</tr>
-<tr>
-<td>(Boolean)布尔</td>
-<td>1 0</td>
-<td>字符</td>
-<td></td>
-</tr>
-<tr>
-<td>undefined</td>
-<td>NaN</td>
-<td>报警</td>
-<td></td>
-</tr>
-<tr>
-<td>null</td>
-<td>0</td>
-<td>报警</td>
-<td></td>
-</tr>
-<tr>
-<td>NaN</td>
-<td>NaN</td>
-<td>‘NaN’</td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><table>
-<thead>
-<tr>
-<th align="center">+/-</th>
-<th align="center">数字</th>
-<th align="center">字符</th>
-<th align="center">布尔</th>
-<th align="center">undefined</th>
-<th align="center">null</th>
-<th align="center">NaN</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">数字</td>
-<td align="center">数字/数字</td>
-<td align="center">字符/数字或者NaN</td>
-<td align="center">数字/数字</td>
-<td align="center">NaN/NaN</td>
-<td align="center">数字/数字</td>
-<td align="center">NaN/NaN</td>
-</tr>
-<tr>
-<td align="center">字符</td>
-<td align="center">字符/数字或者NaN</td>
-<td align="center">字符串/NAN</td>
-<td align="center">字符叠加/NaN</td>
-<td align="center">字符叠加/NaN</td>
-<td align="center">字符叠加/能转数字就为数字,不能就是NaN</td>
-<td align="center">字符叠加/NaN</td>
-</tr>
-<tr>
-<td align="center">布尔</td>
-<td align="center">数字/数字</td>
-<td align="center">字符串/数字或者NAN</td>
-<td align="center">数字/数字</td>
-<td align="center">NaN/NaN</td>
-<td align="center">数字/数字</td>
-<td align="center">NaN/NaN</td>
-</tr>
-<tr>
-<td align="center">undefined</td>
-<td align="center">NaN/NaN</td>
-<td align="center">字符叠加/NaN</td>
-<td align="center">NaN/NaN</td>
-<td align="center">NaN/NaN</td>
-<td align="center">NaN/NaN</td>
-<td align="center">NaN/NaN</td>
-</tr>
-<tr>
-<td align="center">null</td>
-<td align="center">数字/数字</td>
-<td align="center">字符叠加/数字或者NaN</td>
-<td align="center">数字/数字</td>
-<td align="center">NaN/NaN</td>
-<td align="center">0 / 0</td>
-<td align="center">NaN/NaN</td>
-</tr>
-<tr>
-<td align="center">NaN</td>
-<td align="center">NaN/NaN</td>
-<td align="center">字符叠加/NaN</td>
-<td align="center">NaN/NaN</td>
-<td align="center">NaN/NaN</td>
-<td align="center">NaN/NaN</td>
-<td align="center">NaN/NaN</td>
-</tr>
-</tbody></table>
-<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p>在执行运算的时候，计算机会把数据转成二进制进行运算。<br>1 10 11  100  101  110  111  1000  1001  1010<br>100110 = 100000 + 100 + 10 = 32  + 4 + 2<br>25 = 16 + 8 + 1 = 10000 + 1000 + 1 = 11001<br>按位与<code>&amp;</code>       二进制位数相比 上下两位都是1，结果是1，否则是0    将数转化为2进制 然后比较相同位数（10位于10位比）<br>按位或<code>|</code>     二进制位数相比 上下两位含有1，结果是1，否则是0<br>按位异或<code>^</code>    二进制位数相比 上下两位不同为1，相同为0<br>按位右移<code>&gt;&gt;</code>    删除二进制的最后一位或者多位，每次缩小到原来的一半或者更多。<br>按位左移<code>&lt;&lt;</code>   在二进制的最后添加0，成倍增加</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>&amp;<span class="number">5</span>); <span class="comment">// 011 和101比 得到001 即10进制的1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">7</span>&amp;<span class="number">13</span>);<span class="comment">// 0111 和1101 得到0101 即10进制的5  </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>|<span class="number">5</span>);<span class="comment">//011  和101比 得到111 即7</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>^<span class="number">5</span>);<span class="comment">//011  和101比 得到110  即6</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>&gt;&gt;<span class="number">1</span>);<span class="comment">//5转成2进制101.右移1位删除最后一位 得到10 即 2 </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">40</span>&gt;&gt;<span class="number">1</span>);<span class="comment">//101000  10100 即20</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">40</span>&gt;&gt;<span class="number">2</span>);<span class="comment">//101000 移动2位 删除最后两位 1010 即10</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>&lt;&lt;<span class="number">2</span>);<span class="comment">//101,添加一位  10100即20</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>空字符串 优先会转化为字符串，次级转化数字0<br>null==undefined    true<br>null===undefined   false</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/JS-6-%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-JS-2-js函数-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1127,106 +1127,6 @@
 
 
   
-    <article id="post-JS-107-树结构相关操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/JS-107-%E6%A0%91%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/">107.树结构相关操作</a>
-    </h1>
-  
-
-        
-        <a href="/JS-107-%E6%A0%91%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.434Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>一.循环遍历<br><a href="#title1" target="_self">1.广度优先遍历</a><br><a href="#title2" target="_self">2.深度优先遍历递归-先序遍历</a><br><a href="#title3" target="_self">3.深度优先遍历递归-后序遍历</a><br><a href="#title4" target="_self">4.深度优先循环-先序</a><br><a href="#title5" target="_self">5.深度优先循环-后序</a><br>二.列表和树结构相互转换<br><a href="#title201" target="_self">201.列表结构转树结构</a><br><a href="#title202" target="_self">202.树结构转列表结构-后序</a><br>三.查找<br><a href="#title301" target="_self">301.查找节点</a><br><a href="#title302" target="_self">302.查找节点路径</a><br><a href="#title303" target="_self">303.查找多条节点路径-所有符合要求的节点路径</a></p>
-<p>首先声明下 树结构 表结构的数据<br>后续操作都是根据这些数据来的</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tree = [</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点1&#x27;</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="string">&#x27;1-1&#x27;</span>,</span><br><span class="line">        title: <span class="string">&#x27;节点1-1&#x27;</span>,</span><br><span class="line">        children: [</span><br><span class="line">          &#123;</span><br><span class="line">            id: <span class="string">&#x27;1-1-1&#x27;</span>,</span><br><span class="line">            title: <span class="string">&#x27;节点1-1-1&#x27;</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            id: <span class="string">&#x27;1-1-2&#x27;</span>,</span><br><span class="line">            title: <span class="string">&#x27;节点1-1-2&#x27;</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="string">&#x27;1-2&#x27;</span>,</span><br><span class="line">        title: <span class="string">&#x27;节点1-2&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;2&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点2&#x27;</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="string">&#x27;2-1&#x27;</span>,</span><br><span class="line">        title: <span class="string">&#x27;节点2-1&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"><span class="keyword">let</span> list = [</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点1&#x27;</span>,</span><br><span class="line">    parentId: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;1-1&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点1-1&#x27;</span>,</span><br><span class="line">    parentId: <span class="string">&#x27;1&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;1-1-1&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点1-1-1&#x27;</span>,</span><br><span class="line">    parentId: <span class="string">&#x27;1-1&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;1-2&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点1-2&#x27;</span>,</span><br><span class="line">    parentId: <span class="string">&#x27;1&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;2&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点2&#x27;</span>,</span><br><span class="line">    parentId: <span class="string">&#x27;&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;2-1&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点2-1&#x27;</span>,</span><br><span class="line">    parentId: <span class="string">&#x27;2&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<h1 id="一-循环遍历"><a href="#一-循环遍历" class="headerlink" title="一. 循环遍历"></a>一. 循环遍历</h1><h2 id="1-广度优先遍历"><a href="#1-广度优先遍历" class="headerlink" title="1.广度优先遍历"></a>1.广度优先遍历</h2><p>广度优先的思路是，维护一个队列，队列的初始值为树结构根节点组成的列表，重复执行以下步骤直到队列为空</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeForeach</span>(<span class="params">tree, func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> node, list = [...tree]</span><br><span class="line">  <span class="keyword">while</span> (node = list.shift()) &#123; <span class="comment">// 删除数组第一个值 并将删除的值复制给 node</span></span><br><span class="line">    func(node)</span><br><span class="line">    node.children &amp;&amp; list.push(...node.children) <span class="comment">// 如果有children 那么就添加进去</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">treeForeach(tree, <span class="function"><span class="params">node</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(node.title) &#125;) <span class="comment">// 节点1 节点2 节点1-1 节点1-2 节点2-1</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-深度优先遍历递归-先序遍历"><a href="#2-深度优先遍历递归-先序遍历" class="headerlink" title="2.深度优先遍历递归-先序遍历"></a>2.深度优先遍历递归-先序遍历</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeForeach1</span>(<span class="params">tree, func</span>) </span>&#123;</span><br><span class="line">  tree.forEach(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    func(data)</span><br><span class="line">    data.children &amp;&amp; treeForeach(data.children, func) <span class="comment">// 遍历子树</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">treeForeach1(tree, <span class="function"><span class="params">node</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(node.title) &#125;) <span class="comment">// 节点1  节点1-1 节点1-2 节点2 节点2-1</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3-深度优先遍历递归-后序遍历"><a href="#3-深度优先遍历递归-后序遍历" class="headerlink" title="3.深度优先遍历递归-后序遍历"></a>3.深度优先遍历递归-后序遍历</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeForeach2</span>(<span class="params">tree, func</span>) </span>&#123;</span><br><span class="line">  tree.forEach(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    data.children &amp;&amp; treeForeach(data.children, func) <span class="comment">// 遍历子树</span></span><br><span class="line">    func(data)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">treeForeach2(tree, <span class="function"><span class="params">node</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(node.title) &#125;) <span class="comment">// 节点1-1 节点1-2 节点1 节点2-1 节点2 </span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-深度优先循环-先序"><a href="#4-深度优先循环-先序" class="headerlink" title="4.深度优先循环-先序"></a>4.深度优先循环-先序</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeForeach3</span>(<span class="params">tree, func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> node, list = [...tree]</span><br><span class="line">  <span class="keyword">while</span> (node = list.shift()) &#123;</span><br><span class="line">    func(node)</span><br><span class="line">    node.children &amp;&amp; list.unshift(...node.children)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-深度优先循环-后序"><a href="#5-深度优先循环-后序" class="headerlink" title="5.深度优先循环-后序"></a>5.深度优先循环-后序</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeForeach4</span>(<span class="params">tree, func</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> node, list = [...tree], i = <span class="number">0</span> <span class="comment">// i 下标</span></span><br><span class="line">      <span class="keyword">while</span> (node = list[i]) &#123;</span><br><span class="line">        <span class="keyword">let</span> childCount = node.children ? node.children.length : <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> (!childCount || node.children[childCount - <span class="number">1</span>] === list[i - <span class="number">1</span>]) &#123; <span class="comment">// 没有孩子 或者 他的最后一个孩子 === 上一步操作的数据时（i-1） 只操作自己</span></span><br><span class="line">          func(node)</span><br><span class="line">          i++</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          list.splice(i, <span class="number">0</span>, ...node.children) <span class="comment">// 在之前插入一个</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">treeForeach4(tree, <span class="function"><span class="params">node</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(node.title) &#125;) <span class="comment">// 节点1-1 节点1-2 节点1 节点2-1 节点2 </span></span><br></pre></td></tr></table></figure>
-
-<h1 id="二-列表和树结构相互转换"><a href="#二-列表和树结构相互转换" class="headerlink" title="二. 列表和树结构相互转换"></a>二. 列表和树结构相互转换</h1><h2 id="201-列表结构转树结构"><a href="#201-列表结构转树结构" class="headerlink" title="201.列表结构转树结构"></a>201.列表结构转树结构</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">listToTree</span>(<span class="params">list</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> info = list.reduce(<span class="function">(<span class="params">map, node</span>) =&gt;</span> &#123; <span class="comment">// 得到id 属性名的对象集合</span></span><br><span class="line">    map[node.id] = node</span><br><span class="line">    node.children = []</span><br><span class="line">    <span class="keyword">return</span> map</span><br><span class="line">  &#125;, &#123;&#125;)</span><br><span class="line">  <span class="keyword">return</span> list.filter(<span class="function"><span class="params">node</span> =&gt;</span> &#123; <span class="comment">// 过滤 复制 </span></span><br><span class="line">    info[node.parentId] &amp;&amp; info[node.parentId].children.push(node)</span><br><span class="line">    <span class="keyword">return</span> !node.parentId</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(listToTree(list))</span><br></pre></td></tr></table></figure>
-
-<h2 id="202-树结构转列表结构"><a href="#202-树结构转列表结构" class="headerlink" title="202.树结构转列表结构"></a>202.树结构转列表结构</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeToList</span>(<span class="params">tree, result = [], level = <span class="number">0</span></span>) </span>&#123;</span><br><span class="line">  tree.forEach(<span class="function"><span class="params">node</span> =&gt;</span> &#123;</span><br><span class="line">    result.push(node)</span><br><span class="line">    node.level = level + <span class="number">1</span></span><br><span class="line">    node.children &amp;&amp; treeToList(node.children, result, level + <span class="number">1</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 循环实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeToList</span>(<span class="params">tree</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> node, result = tree.map(<span class="function"><span class="params">node</span> =&gt;</span> &#123; node.level = <span class="number">1</span>; <span class="keyword">return</span> node &#125;)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; result.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!result[i].children) <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">let</span> list = result[i].children.map(<span class="function"><span class="params">node</span> =&gt;</span> (node.level = result[i].level + <span class="number">1</span>, node))</span><br><span class="line">    result.splice(i + <span class="number">1</span>, <span class="number">0</span>, ...list)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="三-查找"><a href="#三-查找" class="headerlink" title="三.查找"></a>三.查找</h1><h2 id="301-查找节点"><a href="#301-查找节点" class="headerlink" title="301.查找节点"></a>301.查找节点</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeFind</span>(<span class="params">tree, func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> data <span class="keyword">of</span> tree) &#123;</span><br><span class="line">    <span class="keyword">if</span> (func(data)) <span class="keyword">return</span> data</span><br><span class="line">    <span class="keyword">if</span> (data.children) &#123;</span><br><span class="line">      <span class="keyword">const</span> res = treeFind(data.children, func)</span><br><span class="line">      <span class="keyword">if</span> (res) <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(treeFind(tree, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="keyword">return</span> data.id === <span class="string">&#x27;1-1-2&#x27;</span> &#125;))</span><br></pre></td></tr></table></figure>
-
-<h2 id="302-查找节点路径"><a href="#302-查找节点路径" class="headerlink" title="302.查找节点路径"></a>302.查找节点路径</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeFindPath</span>(<span class="params">tree, func, path = []</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!tree) <span class="keyword">return</span> []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> data <span class="keyword">of</span> tree) &#123;</span><br><span class="line">    path.push(data.id) <span class="comment">// 添加</span></span><br><span class="line">    <span class="keyword">if</span> (func(data)) <span class="keyword">return</span> path</span><br><span class="line">    <span class="keyword">if</span> (data.children) &#123;</span><br><span class="line">      <span class="keyword">const</span> findChildren = treeFindPath(data.children, func, path)</span><br><span class="line">      <span class="keyword">if</span> (findChildren.length) <span class="keyword">return</span> findChildren</span><br><span class="line">    &#125;</span><br><span class="line">    path.pop() <span class="comment">// 移除</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> []</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(treeFindPath(tree, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="keyword">return</span> data.id === <span class="string">&#x27;1-1-2&#x27;</span> &#125;))</span><br></pre></td></tr></table></figure>
-
-<h2 id="303-查找多条节点路径-所有符合要求的节点路径"><a href="#303-查找多条节点路径-所有符合要求的节点路径" class="headerlink" title="303.查找多条节点路径-所有符合要求的节点路径"></a>303.查找多条节点路径-所有符合要求的节点路径</h2><p>思路与查找节点路径相似 找到后并不是return 而是存起来  最后统一return</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeFindPath2</span>(<span class="params">tree, func, path = [], result = []</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> data <span class="keyword">of</span> tree) &#123;</span><br><span class="line">    path.push(data.id)</span><br><span class="line">    func(data) &amp;&amp; result.push([...path])</span><br><span class="line">    data.children &amp;&amp; treeFindPath2(data.children, func, path, result)</span><br><span class="line">    path.pop()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(treeFindPath2(tree, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="keyword">return</span> data.id === <span class="string">&#x27;1-1-2&#x27;</span> &#125;))</span><br></pre></td></tr></table></figure>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/JS-107-%E6%A0%91%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-JS-3-js自用方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1358,6 +1258,106 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/JS-3-js%E8%87%AA%E7%94%A8%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JS-107-树结构相关操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/JS-107-%E6%A0%91%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/">107.树结构相关操作</a>
+    </h1>
+  
+
+        
+        <a href="/JS-107-%E6%A0%91%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.434Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>一.循环遍历<br><a href="#title1" target="_self">1.广度优先遍历</a><br><a href="#title2" target="_self">2.深度优先遍历递归-先序遍历</a><br><a href="#title3" target="_self">3.深度优先遍历递归-后序遍历</a><br><a href="#title4" target="_self">4.深度优先循环-先序</a><br><a href="#title5" target="_self">5.深度优先循环-后序</a><br>二.列表和树结构相互转换<br><a href="#title201" target="_self">201.列表结构转树结构</a><br><a href="#title202" target="_self">202.树结构转列表结构-后序</a><br>三.查找<br><a href="#title301" target="_self">301.查找节点</a><br><a href="#title302" target="_self">302.查找节点路径</a><br><a href="#title303" target="_self">303.查找多条节点路径-所有符合要求的节点路径</a></p>
+<p>首先声明下 树结构 表结构的数据<br>后续操作都是根据这些数据来的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tree = [</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点1&#x27;</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="string">&#x27;1-1&#x27;</span>,</span><br><span class="line">        title: <span class="string">&#x27;节点1-1&#x27;</span>,</span><br><span class="line">        children: [</span><br><span class="line">          &#123;</span><br><span class="line">            id: <span class="string">&#x27;1-1-1&#x27;</span>,</span><br><span class="line">            title: <span class="string">&#x27;节点1-1-1&#x27;</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            id: <span class="string">&#x27;1-1-2&#x27;</span>,</span><br><span class="line">            title: <span class="string">&#x27;节点1-1-2&#x27;</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="string">&#x27;1-2&#x27;</span>,</span><br><span class="line">        title: <span class="string">&#x27;节点1-2&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;2&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点2&#x27;</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="string">&#x27;2-1&#x27;</span>,</span><br><span class="line">        title: <span class="string">&#x27;节点2-1&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"><span class="keyword">let</span> list = [</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点1&#x27;</span>,</span><br><span class="line">    parentId: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;1-1&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点1-1&#x27;</span>,</span><br><span class="line">    parentId: <span class="string">&#x27;1&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;1-1-1&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点1-1-1&#x27;</span>,</span><br><span class="line">    parentId: <span class="string">&#x27;1-1&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;1-2&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点1-2&#x27;</span>,</span><br><span class="line">    parentId: <span class="string">&#x27;1&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;2&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点2&#x27;</span>,</span><br><span class="line">    parentId: <span class="string">&#x27;&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="string">&#x27;2-1&#x27;</span>,</span><br><span class="line">    title: <span class="string">&#x27;节点2-1&#x27;</span>,</span><br><span class="line">    parentId: <span class="string">&#x27;2&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h1 id="一-循环遍历"><a href="#一-循环遍历" class="headerlink" title="一. 循环遍历"></a>一. 循环遍历</h1><h2 id="1-广度优先遍历"><a href="#1-广度优先遍历" class="headerlink" title="1.广度优先遍历"></a>1.广度优先遍历</h2><p>广度优先的思路是，维护一个队列，队列的初始值为树结构根节点组成的列表，重复执行以下步骤直到队列为空</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeForeach</span>(<span class="params">tree, func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> node, list = [...tree]</span><br><span class="line">  <span class="keyword">while</span> (node = list.shift()) &#123; <span class="comment">// 删除数组第一个值 并将删除的值复制给 node</span></span><br><span class="line">    func(node)</span><br><span class="line">    node.children &amp;&amp; list.push(...node.children) <span class="comment">// 如果有children 那么就添加进去</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">treeForeach(tree, <span class="function"><span class="params">node</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(node.title) &#125;) <span class="comment">// 节点1 节点2 节点1-1 节点1-2 节点2-1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-深度优先遍历递归-先序遍历"><a href="#2-深度优先遍历递归-先序遍历" class="headerlink" title="2.深度优先遍历递归-先序遍历"></a>2.深度优先遍历递归-先序遍历</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeForeach1</span>(<span class="params">tree, func</span>) </span>&#123;</span><br><span class="line">  tree.forEach(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    func(data)</span><br><span class="line">    data.children &amp;&amp; treeForeach(data.children, func) <span class="comment">// 遍历子树</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">treeForeach1(tree, <span class="function"><span class="params">node</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(node.title) &#125;) <span class="comment">// 节点1  节点1-1 节点1-2 节点2 节点2-1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-深度优先遍历递归-后序遍历"><a href="#3-深度优先遍历递归-后序遍历" class="headerlink" title="3.深度优先遍历递归-后序遍历"></a>3.深度优先遍历递归-后序遍历</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeForeach2</span>(<span class="params">tree, func</span>) </span>&#123;</span><br><span class="line">  tree.forEach(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    data.children &amp;&amp; treeForeach(data.children, func) <span class="comment">// 遍历子树</span></span><br><span class="line">    func(data)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">treeForeach2(tree, <span class="function"><span class="params">node</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(node.title) &#125;) <span class="comment">// 节点1-1 节点1-2 节点1 节点2-1 节点2 </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-深度优先循环-先序"><a href="#4-深度优先循环-先序" class="headerlink" title="4.深度优先循环-先序"></a>4.深度优先循环-先序</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeForeach3</span>(<span class="params">tree, func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> node, list = [...tree]</span><br><span class="line">  <span class="keyword">while</span> (node = list.shift()) &#123;</span><br><span class="line">    func(node)</span><br><span class="line">    node.children &amp;&amp; list.unshift(...node.children)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-深度优先循环-后序"><a href="#5-深度优先循环-后序" class="headerlink" title="5.深度优先循环-后序"></a>5.深度优先循环-后序</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeForeach4</span>(<span class="params">tree, func</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> node, list = [...tree], i = <span class="number">0</span> <span class="comment">// i 下标</span></span><br><span class="line">      <span class="keyword">while</span> (node = list[i]) &#123;</span><br><span class="line">        <span class="keyword">let</span> childCount = node.children ? node.children.length : <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> (!childCount || node.children[childCount - <span class="number">1</span>] === list[i - <span class="number">1</span>]) &#123; <span class="comment">// 没有孩子 或者 他的最后一个孩子 === 上一步操作的数据时（i-1） 只操作自己</span></span><br><span class="line">          func(node)</span><br><span class="line">          i++</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          list.splice(i, <span class="number">0</span>, ...node.children) <span class="comment">// 在之前插入一个</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">treeForeach4(tree, <span class="function"><span class="params">node</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(node.title) &#125;) <span class="comment">// 节点1-1 节点1-2 节点1 节点2-1 节点2 </span></span><br></pre></td></tr></table></figure>
+
+<h1 id="二-列表和树结构相互转换"><a href="#二-列表和树结构相互转换" class="headerlink" title="二. 列表和树结构相互转换"></a>二. 列表和树结构相互转换</h1><h2 id="201-列表结构转树结构"><a href="#201-列表结构转树结构" class="headerlink" title="201.列表结构转树结构"></a>201.列表结构转树结构</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">listToTree</span>(<span class="params">list</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> info = list.reduce(<span class="function">(<span class="params">map, node</span>) =&gt;</span> &#123; <span class="comment">// 得到id 属性名的对象集合</span></span><br><span class="line">    map[node.id] = node</span><br><span class="line">    node.children = []</span><br><span class="line">    <span class="keyword">return</span> map</span><br><span class="line">  &#125;, &#123;&#125;)</span><br><span class="line">  <span class="keyword">return</span> list.filter(<span class="function"><span class="params">node</span> =&gt;</span> &#123; <span class="comment">// 过滤 复制 </span></span><br><span class="line">    info[node.parentId] &amp;&amp; info[node.parentId].children.push(node)</span><br><span class="line">    <span class="keyword">return</span> !node.parentId</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(listToTree(list))</span><br></pre></td></tr></table></figure>
+
+<h2 id="202-树结构转列表结构"><a href="#202-树结构转列表结构" class="headerlink" title="202.树结构转列表结构"></a>202.树结构转列表结构</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeToList</span>(<span class="params">tree, result = [], level = <span class="number">0</span></span>) </span>&#123;</span><br><span class="line">  tree.forEach(<span class="function"><span class="params">node</span> =&gt;</span> &#123;</span><br><span class="line">    result.push(node)</span><br><span class="line">    node.level = level + <span class="number">1</span></span><br><span class="line">    node.children &amp;&amp; treeToList(node.children, result, level + <span class="number">1</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 循环实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeToList</span>(<span class="params">tree</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> node, result = tree.map(<span class="function"><span class="params">node</span> =&gt;</span> &#123; node.level = <span class="number">1</span>; <span class="keyword">return</span> node &#125;)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; result.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!result[i].children) <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">let</span> list = result[i].children.map(<span class="function"><span class="params">node</span> =&gt;</span> (node.level = result[i].level + <span class="number">1</span>, node))</span><br><span class="line">    result.splice(i + <span class="number">1</span>, <span class="number">0</span>, ...list)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="三-查找"><a href="#三-查找" class="headerlink" title="三.查找"></a>三.查找</h1><h2 id="301-查找节点"><a href="#301-查找节点" class="headerlink" title="301.查找节点"></a>301.查找节点</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeFind</span>(<span class="params">tree, func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> data <span class="keyword">of</span> tree) &#123;</span><br><span class="line">    <span class="keyword">if</span> (func(data)) <span class="keyword">return</span> data</span><br><span class="line">    <span class="keyword">if</span> (data.children) &#123;</span><br><span class="line">      <span class="keyword">const</span> res = treeFind(data.children, func)</span><br><span class="line">      <span class="keyword">if</span> (res) <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(treeFind(tree, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="keyword">return</span> data.id === <span class="string">&#x27;1-1-2&#x27;</span> &#125;))</span><br></pre></td></tr></table></figure>
+
+<h2 id="302-查找节点路径"><a href="#302-查找节点路径" class="headerlink" title="302.查找节点路径"></a>302.查找节点路径</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeFindPath</span>(<span class="params">tree, func, path = []</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!tree) <span class="keyword">return</span> []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> data <span class="keyword">of</span> tree) &#123;</span><br><span class="line">    path.push(data.id) <span class="comment">// 添加</span></span><br><span class="line">    <span class="keyword">if</span> (func(data)) <span class="keyword">return</span> path</span><br><span class="line">    <span class="keyword">if</span> (data.children) &#123;</span><br><span class="line">      <span class="keyword">const</span> findChildren = treeFindPath(data.children, func, path)</span><br><span class="line">      <span class="keyword">if</span> (findChildren.length) <span class="keyword">return</span> findChildren</span><br><span class="line">    &#125;</span><br><span class="line">    path.pop() <span class="comment">// 移除</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> []</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(treeFindPath(tree, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="keyword">return</span> data.id === <span class="string">&#x27;1-1-2&#x27;</span> &#125;))</span><br></pre></td></tr></table></figure>
+
+<h2 id="303-查找多条节点路径-所有符合要求的节点路径"><a href="#303-查找多条节点路径-所有符合要求的节点路径" class="headerlink" title="303.查找多条节点路径-所有符合要求的节点路径"></a>303.查找多条节点路径-所有符合要求的节点路径</h2><p>思路与查找节点路径相似 找到后并不是return 而是存起来  最后统一return</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeFindPath2</span>(<span class="params">tree, func, path = [], result = []</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> data <span class="keyword">of</span> tree) &#123;</span><br><span class="line">    path.push(data.id)</span><br><span class="line">    func(data) &amp;&amp; result.push([...path])</span><br><span class="line">    data.children &amp;&amp; treeFindPath2(data.children, func, path, result)</span><br><span class="line">    path.pop()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(treeFindPath2(tree, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="keyword">return</span> data.id === <span class="string">&#x27;1-1-2&#x27;</span> &#125;))</span><br></pre></td></tr></table></figure>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/JS-107-%E6%A0%91%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/">展开全文 >></a>
         </p>
       
 
@@ -1995,19 +1995,19 @@
 
 
   
-    <article id="post-JS-102-js中获取style样式表的4种方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JS-103-cookies-storage" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/JS-102-js%E4%B8%AD%E8%8E%B7%E5%8F%96style%E6%A0%B7%E5%BC%8F%E8%A1%A8%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95/">103-js中获取style样式表的4种方法</a>
+      <a class="article-title" href="/JS-103-cookies-storage/">103-cookies-storage</a>
     </h1>
   
 
         
-        <a href="/JS-102-js%E4%B8%AD%E8%8E%B7%E5%8F%96style%E6%A0%B7%E5%BC%8F%E8%A1%A8%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95/" class="archive-article-date">
+        <a href="/JS-103-cookies-storage/" class="archive-article-date">
   	<time datetime="2021-02-04T03:51:01.432Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
 </a>
         
@@ -2016,26 +2016,103 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/qishuixian/article/details/79458483">原文链接</a></p>
-<h3 id="js中style-currentStyle-getComputedStyle-和-getBoundingClientRect-的区别以及获取css操作方法"><a href="#js中style-currentStyle-getComputedStyle-和-getBoundingClientRect-的区别以及获取css操作方法" class="headerlink" title="js中style, currentStyle, getComputedStyle 和 getBoundingClientRect 的区别以及获取css操作方法"></a>js中style, currentStyle, getComputedStyle 和 getBoundingClientRect 的区别以及获取css操作方法</h3><p>在js中,之前我们获取属性大多用的都是<code>ele.style.border</code>这种形式的方法,但是这种方法是有局限性的,该方法只能获取到行内样式,获取不了外部的样式.因为获取外部的样式存在兼容性的问题,</p>
-<ul>
-<li><p>style:<br>各大浏览器都兼容,能设置样式和获取样式,但是获取不了外部样式,如果写了行内没有的样式,返回的是空值<br>写法:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ele.style.attr , ele.style.attr=<span class="string">&quot;值&quot;</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>currentStyle:<br>该属性只兼容IE,不兼容火狐和谷歌<br>写法:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ele.currentStyle[<span class="string">&quot;attr&quot;</span>] 或者 ele.currentStyle.attr;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>getComputedStyle<br>注意：currentStyle属性和getComputedStyle属性不能设置属性,只能获取</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[0];</span><br><span class="line"><span class="keyword">if</span> ( div.currentStyle ) &#123; // IE上兼容</span><br><span class="line">  console.log( div.currentStyle[<span class="string">&quot;width&quot;</span>] );</span><br><span class="line">&#125; <span class="keyword">else</span> &#123; // 火狐谷歌上兼容</span><br><span class="line"> console.log( window.getComputedStyle( div, null )[<span class="string">&quot;width&quot;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>getBoundingClientRect()<br>返回一个矩形对象，包含四个属性：left、top、right和bottom。分别表示元素各边与页面上边和左边的距离</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var box=document.getElementById(<span class="string">&#x27;box&#x27;</span>); // 获取元素</span><br><span class="line">alert(box.getBoundingClientRect().top); // 元素上边距离页面上边的距离</span><br><span class="line">alert(box.getBoundingClientRect().right); // 元素右边距离页面左边的距离</span><br><span class="line">alert(box.getBoundingClientRect().bottom); // 元素下边距离页面上边的距离</span><br><span class="line">alert(box.getBoundingClientRect().left); // 元素左边距离页面左边的距离</span><br></pre></td></tr></table></figure>
-<p>注意：IE、Firefox3+、Opera9.5、Chrome、Safari支持，在IE中，默认坐标从(2,2)开始计算，导致最终距离比其他浏览器多出两个像素，我们需要做个兼容。<br>document.documentElement.clientTop; // 非IE为0，IE为2<br>document.documentElement.clientLeft; // 非IE为0，IE为2</p>
-</li>
-</ul>
-<p>// 分别加上外边据、内边距、边框和滚动条，用于测试所有浏览器是否一致。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> GetRect (element) &#123;</span><br><span class="line">  var rect = element.getBoundingClientRect();</span><br><span class="line">  var top = document.documentElement.clientTop;</span><br><span class="line">  var left= document.documentElement.clientLeft;</span><br><span class="line">  <span class="built_in">return</span> &#123;</span><br><span class="line">    top : rect.top - top,</span><br><span class="line">    bottom : rect.bottom - top,</span><br><span class="line">    left : rect.left - left,</span><br><span class="line">    right : rect.right - left</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+          <table>
+<thead>
+<tr>
+<th>-</th>
+<th>存储大小</th>
+<th>有效时间</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cookies</td>
+<td>&lt;= 4K</td>
+<td>在设置cookie过期之前一直有效（无论窗口浏览器是否关闭）</td>
+<td>正常情况下，cookies数据会自动传到服务器，服务器也可以写cookie到客户端</td>
+</tr>
+<tr>
+<td>sessionstorage</td>
+<td>5M</td>
+<td>临时保存 数据在当前浏览器关闭后删除 <br>基于每个窗口，有单独的sessionStorage数据</td>
+<td>不会发送数据到服务端</td>
+</tr>
+<tr>
+<td>localstorage</td>
+<td>5M</td>
+<td>持久存储，浏览器关闭后不会丢失除非主动删除</td>
+<td>不会发送数据到服务端</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cookies</td>
+<td>document.cookie=”key=value”</td>
+<td>保存数据 key名 value 值</td>
+</tr>
+<tr>
+<td></td>
+<td>document.cookie</td>
+<td>获取所有cookie字符串形式。需要自己操作一番</td>
+</tr>
+<tr>
+<td>sessionstorage</td>
+<td>.setItem(key,value)</td>
+<td>保存数据 key名 value 值</td>
+</tr>
+<tr>
+<td></td>
+<td>.getItem(key)</td>
+<td>获取数据 key名的值</td>
+</tr>
+<tr>
+<td></td>
+<td>.removeItem(key)</td>
+<td>删除一组数据</td>
+</tr>
+<tr>
+<td></td>
+<td>.clear()</td>
+<td>清空所有数据</td>
+</tr>
+<tr>
+<td></td>
+<td>.length</td>
+<td>个数</td>
+</tr>
+<tr>
+<td>localstorage</td>
+<td>.setItem(key,value)</td>
+<td>保存数据 key名 value 值</td>
+</tr>
+<tr>
+<td></td>
+<td>.getItem(key)</td>
+<td>获取数据 key名的值</td>
+</tr>
+<tr>
+<td></td>
+<td>.removeItem(key)</td>
+<td>删除一组数据</td>
+</tr>
+<tr>
+<td></td>
+<td>.clear()</td>
+<td>清空所有数据</td>
+</tr>
+<tr>
+<td></td>
+<td>.length</td>
+<td>个数</td>
+</tr>
+</tbody></table>
 
         
       
@@ -2060,7 +2137,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/JS-102-js%E4%B8%AD%E8%8E%B7%E5%8F%96style%E6%A0%B7%E5%BC%8F%E8%A1%A8%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/JS-103-cookies-storage/">展开全文 >></a>
         </p>
       
 
@@ -2187,11 +2264,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2199,7 +2280,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2207,15 +2296,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2227,7 +2312,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2235,7 +2320,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2243,15 +2332,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2260,18 +2349,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
             
             <div class="clearfix"></div>
