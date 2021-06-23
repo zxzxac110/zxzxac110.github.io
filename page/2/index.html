@@ -1185,6 +1185,87 @@
 
 
   
+    <article id="post-项目相关-7-兼容性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-7-%E5%85%BC%E5%AE%B9%E6%80%A7/">7-兼容性</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-7-%E5%85%BC%E5%AE%B9%E6%80%A7/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.454Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="vue解决ie9的兼容问题-未验证"><a href="#vue解决ie9的兼容问题-未验证" class="headerlink" title="vue解决ie9的兼容问题 未验证"></a>vue解决ie9的兼容问题 未验证</h3><blockquote>
+<p>当vue遇见ie9的时候，部署到服务器之后，打开居然是一片空白，vue是支持ie9的，这个时候就需要来一波兼容了<br>  1、首先npm install –save babel-polyfill<br>  2、然后在main.js中的最前面引入babel-polyfill<br>  import ‘babel-polyfill’<br>  3、在index.html 加入以下代码（非必须）<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge,chrome&#x3D;1&quot;&gt;</span><br></pre></td></tr></table></figure><br>  4、在config中的webpack.base.conf.js中,修改编译配置<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">entry:&#123;</span><br><span class="line">app:[&#39;babel-polyfill&#39;,&#39;.&#x2F;src&#x2F;main.js&#39;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>  本地文件：E:\www\svn\project\vue_manage_test</p>
+</blockquote>
+<blockquote>
+<p>当然，如果你只用到了 axios 对 promise进行兼容，可以只用 es6-promise<br>  <code>npm install es6-promise --save</code><br>  在 main.js 中的最前面引入<br>  <code>import &#39;es6-promise/auto&#39;</code><br>  完成以上配置，ie9兼容就完成了<br>  解决vue在ie9中的兼容问题 <a target="_blank" rel="noopener" href="https://blog.csdn.net/landl_ww/article/details/79149461">https://blog.csdn.net/landl_ww/article/details/79149461</a></p>
+</blockquote>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-7-%E5%85%BC%E5%AE%B9%E6%80%A7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-项目相关-8-抓包-anyproxy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1273,87 +1354,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-8-%E6%8A%93%E5%8C%85-anyproxy/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-7-兼容性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-7-%E5%85%BC%E5%AE%B9%E6%80%A7/">7-兼容性</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-7-%E5%85%BC%E5%AE%B9%E6%80%A7/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.454Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="vue解决ie9的兼容问题-未验证"><a href="#vue解决ie9的兼容问题-未验证" class="headerlink" title="vue解决ie9的兼容问题 未验证"></a>vue解决ie9的兼容问题 未验证</h3><blockquote>
-<p>当vue遇见ie9的时候，部署到服务器之后，打开居然是一片空白，vue是支持ie9的，这个时候就需要来一波兼容了<br>  1、首先npm install –save babel-polyfill<br>  2、然后在main.js中的最前面引入babel-polyfill<br>  import ‘babel-polyfill’<br>  3、在index.html 加入以下代码（非必须）<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge,chrome&#x3D;1&quot;&gt;</span><br></pre></td></tr></table></figure><br>  4、在config中的webpack.base.conf.js中,修改编译配置<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">entry:&#123;</span><br><span class="line">app:[&#39;babel-polyfill&#39;,&#39;.&#x2F;src&#x2F;main.js&#39;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>  本地文件：E:\www\svn\project\vue_manage_test</p>
-</blockquote>
-<blockquote>
-<p>当然，如果你只用到了 axios 对 promise进行兼容，可以只用 es6-promise<br>  <code>npm install es6-promise --save</code><br>  在 main.js 中的最前面引入<br>  <code>import &#39;es6-promise/auto&#39;</code><br>  完成以上配置，ie9兼容就完成了<br>  解决vue在ie9中的兼容问题 <a target="_blank" rel="noopener" href="https://blog.csdn.net/landl_ww/article/details/79149461">https://blog.csdn.net/landl_ww/article/details/79149461</a></p>
-</blockquote>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-7-%E5%85%BC%E5%AE%B9%E6%80%A7/">展开全文 >></a>
         </p>
       
 
@@ -1527,105 +1527,6 @@
 
 
   
-    <article id="post-项目相关-2-icon-svg图标" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-2-icon-svg%E5%9B%BE%E6%A0%87/">2-优雅使用icon svg图标</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-2-icon-svg%E5%9B%BE%E6%A0%87/" class="archive-article-date">
-  	<time datetime="2021-02-04T03:51:01.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <ul>
-<li><p>1 安装插件 npm install svg-sprite-loader -D</p>
-</li>
-<li><p>2 创建组件 components/svgIcon.vue</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;svg :class=<span class="string">&quot;svgClass&quot;</span> aria-hidden=<span class="string">&quot;true&quot;</span>&gt;</span><br><span class="line">    &lt;use :xlink:href=<span class="string">&quot;iconName&quot;</span>/&gt;</span><br><span class="line">  &lt;/svg&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="built_in">export</span> default &#123;</span><br><span class="line">    name: <span class="string">&#x27;svgIcon&#x27;</span>,</span><br><span class="line">    props: &#123;</span><br><span class="line">      iconClass: &#123;</span><br><span class="line">        <span class="built_in">type</span>: String,</span><br><span class="line">        required: <span class="literal">true</span></span><br><span class="line">      &#125;,</span><br><span class="line">      className: &#123;</span><br><span class="line">        <span class="built_in">type</span>: String,</span><br><span class="line">        default: <span class="string">&#x27;&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">      <span class="function"><span class="title">iconName</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> `<span class="comment">#icon-$&#123;this.iconClass&#125;`</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function"><span class="title">svgClass</span></span>() &#123;</span><br><span class="line">        <span class="keyword">if</span> (this.className) &#123;</span><br><span class="line">          <span class="built_in">return</span> <span class="string">&#x27;svg-icon &#x27;</span> + this.className</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">return</span> <span class="string">&#x27;svg-icon&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"> </span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">  .svg-icon &#123;</span><br><span class="line">    width: 1em;</span><br><span class="line">    height: 1em;</span><br><span class="line">    vertical-align: -0.18em;</span><br><span class="line">    fill: currentColor;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>3 创建 插件 plugins/icon.js</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import Vue from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">import SvgIcon from <span class="string">&#x27;@/components/svgIcon&#x27;</span>// svg组件</span><br><span class="line"></span><br><span class="line">// register globally</span><br><span class="line">Vue.component(<span class="string">&#x27;svg-icon&#x27;</span>, SvgIcon)</span><br><span class="line"></span><br><span class="line">const requireAll = requireContext =&gt; requireContext.keys().map(requireContext)</span><br><span class="line">const req = require.context(<span class="string">&#x27;../svgs&#x27;</span>, <span class="literal">false</span>, /\.svg$/)</span><br><span class="line">const iconMap = requireAll(req)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>4 mian.js 中引用改插件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import <span class="string">&#x27;./plugins/icon&#x27;</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>5 创建svg图片文件 src/svgs/…</p>
-</li>
-<li><p>6 vue.config.js 中添加配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const path = require(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">function</span> resolve (dir) &#123;</span><br><span class="line"> <span class="built_in">return</span> path.join(__dirname, dir)</span><br><span class="line">&#125;</span><br><span class="line"> chainWebpack: config =&gt; &#123;</span><br><span class="line"> config.module</span><br><span class="line">      .rule(<span class="string">&#x27;svg&#x27;</span>)</span><br><span class="line">      .exclude.add(resolve(<span class="string">&#x27;src/svgs&#x27;</span>))// svgs文件目录</span><br><span class="line">      .end()</span><br><span class="line"></span><br><span class="line"> config.module</span><br><span class="line">      .rule(<span class="string">&#x27;svgs&#x27;</span>)// svgs文件目录</span><br><span class="line">      .<span class="built_in">test</span>(/\.svg$/)</span><br><span class="line">      .include.add(resolve(<span class="string">&#x27;src/svgs&#x27;</span>))// svgs文件目录</span><br><span class="line">      .end()</span><br><span class="line">      .use(<span class="string">&#x27;svg-sprite-loader&#x27;</span>)</span><br><span class="line">      .loader(<span class="string">&#x27;svg-sprite-loader&#x27;</span>)</span><br><span class="line">      .options(&#123;</span><br><span class="line"> symbolId: <span class="string">&#x27;icon-[name]&#x27;</span></span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6.2 配置webpack.base.conf.js中的规则 - 未实验 - 网上寻找 - cli2.0</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line"> ...其他代码省略</span><br><span class="line"> module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      ...其他代码省略</span><br><span class="line">      &#123; &#x2F;&#x2F; 这个花括号中都是新增的规则</span><br><span class="line">        test: &#x2F;\.svg$&#x2F;,</span><br><span class="line">        loader: &#39;svg-sprite-loader&#39;,</span><br><span class="line">        include: [path.resolve(__dirname, &quot;..&#x2F;src&#x2F;icons&quot;)], &#x2F;&#x2F; 确保这个路径正确</span><br><span class="line">        options: &#123;</span><br><span class="line">          symbolId: &#39;icon-[name]&#39;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123; &#x2F;&#x2F; 这个规则中新增了exclude这一行</span><br><span class="line">        test: &#x2F;\.(png|jpe?g|gif|svg)(\?.*)?$&#x2F;,</span><br><span class="line">        exclude: [path.resolve(__dirname, &quot;..&#x2F;src&#x2F;icons&quot;)], &#x2F;&#x2F; 确保这个路径正确</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: &#39;url-loader&#39;,</span><br><span class="line">          query: &#123;</span><br><span class="line">            limit: 10000,</span><br><span class="line">            name: &#39;imgs&#x2F;[name]--[folder].[ext]&#39;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
-<li><p>7 使用 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg-icon :icon-class=<span class="string">&quot;&quot;</span>&gt;&lt;/svg-icon&gt;</span><br><span class="line">// icon-class = svg文件名</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-2-icon-svg%E5%9B%BE%E6%A0%87/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-项目相关-3-eslint" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1713,6 +1614,105 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-3-eslint/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-项目相关-2-icon-svg图标" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-2-icon-svg%E5%9B%BE%E6%A0%87/">2-优雅使用icon svg图标</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-2-icon-svg%E5%9B%BE%E6%A0%87/" class="archive-article-date">
+  	<time datetime="2021-02-04T03:51:01.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <ul>
+<li><p>1 安装插件 npm install svg-sprite-loader -D</p>
+</li>
+<li><p>2 创建组件 components/svgIcon.vue</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;svg :class=<span class="string">&quot;svgClass&quot;</span> aria-hidden=<span class="string">&quot;true&quot;</span>&gt;</span><br><span class="line">    &lt;use :xlink:href=<span class="string">&quot;iconName&quot;</span>/&gt;</span><br><span class="line">  &lt;/svg&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="built_in">export</span> default &#123;</span><br><span class="line">    name: <span class="string">&#x27;svgIcon&#x27;</span>,</span><br><span class="line">    props: &#123;</span><br><span class="line">      iconClass: &#123;</span><br><span class="line">        <span class="built_in">type</span>: String,</span><br><span class="line">        required: <span class="literal">true</span></span><br><span class="line">      &#125;,</span><br><span class="line">      className: &#123;</span><br><span class="line">        <span class="built_in">type</span>: String,</span><br><span class="line">        default: <span class="string">&#x27;&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">      <span class="function"><span class="title">iconName</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> `<span class="comment">#icon-$&#123;this.iconClass&#125;`</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function"><span class="title">svgClass</span></span>() &#123;</span><br><span class="line">        <span class="keyword">if</span> (this.className) &#123;</span><br><span class="line">          <span class="built_in">return</span> <span class="string">&#x27;svg-icon &#x27;</span> + this.className</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">return</span> <span class="string">&#x27;svg-icon&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"> </span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">  .svg-icon &#123;</span><br><span class="line">    width: 1em;</span><br><span class="line">    height: 1em;</span><br><span class="line">    vertical-align: -0.18em;</span><br><span class="line">    fill: currentColor;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>3 创建 插件 plugins/icon.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import Vue from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">import SvgIcon from <span class="string">&#x27;@/components/svgIcon&#x27;</span>// svg组件</span><br><span class="line"></span><br><span class="line">// register globally</span><br><span class="line">Vue.component(<span class="string">&#x27;svg-icon&#x27;</span>, SvgIcon)</span><br><span class="line"></span><br><span class="line">const requireAll = requireContext =&gt; requireContext.keys().map(requireContext)</span><br><span class="line">const req = require.context(<span class="string">&#x27;../svgs&#x27;</span>, <span class="literal">false</span>, /\.svg$/)</span><br><span class="line">const iconMap = requireAll(req)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4 mian.js 中引用改插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import <span class="string">&#x27;./plugins/icon&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5 创建svg图片文件 src/svgs/…</p>
+</li>
+<li><p>6 vue.config.js 中添加配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const path = require(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">function</span> resolve (dir) &#123;</span><br><span class="line"> <span class="built_in">return</span> path.join(__dirname, dir)</span><br><span class="line">&#125;</span><br><span class="line"> chainWebpack: config =&gt; &#123;</span><br><span class="line"> config.module</span><br><span class="line">      .rule(<span class="string">&#x27;svg&#x27;</span>)</span><br><span class="line">      .exclude.add(resolve(<span class="string">&#x27;src/svgs&#x27;</span>))// svgs文件目录</span><br><span class="line">      .end()</span><br><span class="line"></span><br><span class="line"> config.module</span><br><span class="line">      .rule(<span class="string">&#x27;svgs&#x27;</span>)// svgs文件目录</span><br><span class="line">      .<span class="built_in">test</span>(/\.svg$/)</span><br><span class="line">      .include.add(resolve(<span class="string">&#x27;src/svgs&#x27;</span>))// svgs文件目录</span><br><span class="line">      .end()</span><br><span class="line">      .use(<span class="string">&#x27;svg-sprite-loader&#x27;</span>)</span><br><span class="line">      .loader(<span class="string">&#x27;svg-sprite-loader&#x27;</span>)</span><br><span class="line">      .options(&#123;</span><br><span class="line"> symbolId: <span class="string">&#x27;icon-[name]&#x27;</span></span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.2 配置webpack.base.conf.js中的规则 - 未实验 - 网上寻找 - cli2.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line"> ...其他代码省略</span><br><span class="line"> module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      ...其他代码省略</span><br><span class="line">      &#123; &#x2F;&#x2F; 这个花括号中都是新增的规则</span><br><span class="line">        test: &#x2F;\.svg$&#x2F;,</span><br><span class="line">        loader: &#39;svg-sprite-loader&#39;,</span><br><span class="line">        include: [path.resolve(__dirname, &quot;..&#x2F;src&#x2F;icons&quot;)], &#x2F;&#x2F; 确保这个路径正确</span><br><span class="line">        options: &#123;</span><br><span class="line">          symbolId: &#39;icon-[name]&#39;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123; &#x2F;&#x2F; 这个规则中新增了exclude这一行</span><br><span class="line">        test: &#x2F;\.(png|jpe?g|gif|svg)(\?.*)?$&#x2F;,</span><br><span class="line">        exclude: [path.resolve(__dirname, &quot;..&#x2F;src&#x2F;icons&quot;)], &#x2F;&#x2F; 确保这个路径正确</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: &#39;url-loader&#39;,</span><br><span class="line">          query: &#123;</span><br><span class="line">            limit: 10000,</span><br><span class="line">            name: &#39;imgs&#x2F;[name]--[folder].[ext]&#39;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li><p>7 使用 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg-icon :icon-class=<span class="string">&quot;&quot;</span>&gt;&lt;/svg-icon&gt;</span><br><span class="line">// icon-class = svg文件名</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-2-icon-svg%E5%9B%BE%E6%A0%87/">展开全文 >></a>
         </p>
       
 
@@ -1839,19 +1839,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1859,11 +1847,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color5">Html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1879,7 +1867,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1887,7 +1875,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1895,11 +1887,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1907,7 +1895,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1919,11 +1911,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
             
             <div class="clearfix"></div>
