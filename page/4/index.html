@@ -150,6 +150,627 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-软件工具-nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-nginx/">nginx</a>
+    </h1>
+  
+
+        
+        <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-nginx/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>有接触过  稍微记录一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">根目录</span><br><span class="line">└─nginx                       </span><br><span class="line">    │  pull.sh   &#x2F;&#x2F; 只需要执行pull.sh 即可完成打包到测试环境的步骤</span><br><span class="line">    │  域名.conf &#x2F;&#x2F; 比如 www.baidu.com.conf</span><br></pre></td></tr></table></figure>
+
+<p>编写 nginx 配置文件 <code>域名.conf</code></p>
+<p>翻译参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/feiyuanxing/p/4668818.html">https://www.cnblogs.com/feiyuanxing/p/4668818.html</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  server_name q.qinba.cn; <span class="comment">// 域名</span></span><br><span class="line"></span><br><span class="line">  root /data/www/qunguangguang-admin-vue/dist;  <span class="comment">// 文件目录 我们一般是在 www/项目名称/打包文件</span></span><br><span class="line">  index index.html; <span class="comment">// 访问文件</span></span><br><span class="line"></span><br><span class="line">  error_page <span class="number">404</span> /<span class="number">404.</span>html;</span><br><span class="line"></span><br><span class="line">  location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123; <span class="comment">// 所有的图片文件</span></span><br><span class="line">    expires <span class="number">30</span>d;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// ~ 正则表达式 区分大小写的正则匹配</span></span><br><span class="line">  location ~ .*\.(js|css)$ &#123; <span class="comment">// 所有的js css文件</span></span><br><span class="line">    expires <span class="number">1</span>h;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  error_log /data/log/openresty/q.qinba.cn_error.log warn; <span class="comment">// 生成日志文件地址 我们一般是在 openresty/域名._error.log warn</span></span><br><span class="line">  access_log /data/log/openresty/q.qinba.cn_access.log domain_access_log; <span class="comment">// 生成日志文件地址 我们一般是在 openresty/域名._access.log domain_access_log</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 其它例子</span></span><br><span class="line">  location /editor &#123; <span class="comment">// 满足127.0.0.1/editor 的请求</span></span><br><span class="line">    alias /data/www/editor; <span class="comment">// 定义指定位置的替换 满足条件会返回data/www/editor目录下的文件</span></span><br><span class="line">    try_files $uri $uri/ /index.html;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  location / &#123;  <span class="comment">// 满足127.0.0.1/ 的请求</span></span><br><span class="line">    try_files $uri $uri/ /index.html;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>编写 <code>pull.sh</code> 自动拉取操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">cd /home/www/q-admin-vue <span class="comment">// 到指定目录</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;<span class="number">1.</span><span class="number">.2</span>&#125; <span class="comment">// 拉取代码 循环2次</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  git checkout develop</span><br><span class="line"> </span><br><span class="line">  git reset --hard</span><br><span class="line"></span><br><span class="line">  git submodule foreach git pull origin master</span><br><span class="line"></span><br><span class="line">  git submodule update --init --recursive</span><br><span class="line"></span><br><span class="line">  git pull origin develop</span><br><span class="line"></span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">lerna bootstrap <span class="comment">// 等同于NPM I </span></span><br><span class="line"></span><br><span class="line">/usr/bin/node ./node_modules/.bin/vue-cli-service build --mode develop <span class="comment">// 执行打包指令 --mode develop 测试</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将除了 这两个文件 的 其他文件 从 home /移动到 /data</span></span><br><span class="line"><span class="comment">// 目的 防止在打包过程中 用户访问会出现访问不到的场景</span></span><br><span class="line"><span class="comment">// 使用移动的方式 会是一瞬间的事 用户察觉不到</span></span><br><span class="line">rsync --<span class="keyword">delete</span> --exclude <span class="string">&quot;node_modules&quot;</span> --exclude <span class="string">&quot;.git&quot;</span> -avz /home/www/qunguangguang-admin-vue/ <span class="regexp">/data/</span>www/qunguangguang-admin-vue</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-nginx/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-软件工具-git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-git/">git</a>
+    </h1>
+  
+
+        
+        <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-git/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h1 id="一-说明"><a href="#一-说明" class="headerlink" title="一.说明"></a>一.说明</h1><p>git 管理软件 <code>Sourcetree</code><br>git 管理软件  <code>GitHub Desktop</code></p>
+<p>git 指令有很多 这边我只说我有用到并且会用的指令</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git log</td>
+<td>查看所有commit信息</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git init</td>
+<td>初始化仓库</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git reset –hard **</td>
+<td>回退到 ** 版本</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git pull</td>
+<td>拉取最新版本</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git pull origin **</td>
+<td>拉取远程**分支的最新版本</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git add .</td>
+<td>保存所有文件到缓存区</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git rm</td>
+<td>取消已经add的文件</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git config –global user.name “姓名”</td>
+<td>设置姓名</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git config –global user.email “邮箱”</td>
+<td>设置邮箱</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>切换分支</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git checkout 分支名</td>
+<td>切换到选择的分支名</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git checkout -b  分支名</td>
+<td>从当前分支 切出一个分支 并到你切出的分支里去</td>
+<td>创建新分支</td>
+</tr>
+<tr>
+<td>git checkout – 文件路径</td>
+<td>恢复一个文件到上次提交之后的状态</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>删除分支</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git branch</td>
+<td>查看分支</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git branch -d **</td>
+<td>删除本地**分支</td>
+<td>-</td>
+</tr>
+<tr>
+<td>`git branch</td>
+<td>grep -v ‘master’</td>
+<td>xargs git branch -D`</td>
+</tr>
+<tr>
+<td>`git branch</td>
+<td>grep ‘lsh/add’</td>
+<td>xargs git branch -D`</td>
+</tr>
+<tr>
+<td>git push origin –delete **</td>
+<td>删除远程**分支</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>提交</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git commit -m “这是一次提交”</td>
+<td>提交一次备注为”这是一次提交”的版本</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git commit –amend -m “修改上一次提交的内容”</td>
+<td>push后再修改 会要先执行pull在push造成两条修改内容一样但备注不一样的修改记录</td>
+<td>不要修改已经被发布的提交</td>
+</tr>
+<tr>
+<td><code>git commit -m</code> 后，又修改<code>git add</code> 然后<code>git comman --amend &quot;&quot;</code></td>
+<td>可以将此次修改内容和上次的合在一起 只产生一条修改记录</td>
+<td>不要修改已经被发布的提交</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>stash相关</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git stash</td>
+<td>将未提交的修改到stash</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git stash pop</td>
+<td>从stash中恢复最后一次暂存的修改，并从stash中删除这条记录(apply则不会执行删除)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git stash apply stash@{0}</td>
+<td>暂时恢复 stash的[0]的记录</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git stash drop stash@{0}</td>
+<td>回退暂时恢复的修改</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git stash list</td>
+<td>查看stash列表</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git stash clear</td>
+<td>删除所有stash列表中的内容</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git stash drop stash@{0}</td>
+<td>删除stash列表中第一个</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>diff 比较</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git diff origin/master</td>
+<td>比较当前文字和 origin/master 的内容变化</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git diff origin/master  –stat</td>
+<td>比较当前分支和 origin/master 的文件变化-只显示文件</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git diff 分支..分支</td>
+<td>比较两个分支的区别</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>合并</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git merge **</td>
+<td>当前分支 合并 ** 的内容变化</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git merge –abort</td>
+<td>取消此次合并-在合并为完成前</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>git cherry-pick **</code></td>
+<td>合并某次commit改变的内容</td>
+<td>** = log 查看的 版本值</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>remote</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git remote -v</td>
+<td>添加一个远程仓库</td>
+<td></td>
+</tr>
+<tr>
+<td>git remote add origin   远程仓库地址</td>
+<td>设置远程仓库地址</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>reset 回退</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git reset</td>
+<td>放弃本地修改 回退到上次提交的版本</td>
+<td></td>
+</tr>
+<tr>
+<td>git reset –hard 分支名</td>
+<td>放弃本地修改 回退到 分支名 一致的版本</td>
+<td></td>
+</tr>
+<tr>
+<td>git reset –hard 35090b3</td>
+<td>回退到 log 信息这个时候</td>
+<td></td>
+</tr>
+<tr>
+<td>git reset –keep 5090b</td>
+<td>回退版本 并保留当前未提交的本地修改</td>
+<td></td>
+</tr>
+<tr>
+<td>git revert 2cd3623b597252d32407179577fa12cfeb87ab63</td>
+<td>回滚此次修改（比如 先<code>a1</code>次 将 <code>123 改成 456</code>. 后a2次将 <code>777 改成 888</code> <code>revert a1或者a2</code> 只会回滚<code>a1或者a2</code>的修改）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em>子模块相关</em></td>
+<td><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/100214931">https://zhuanlan.zhihu.com/p/100214931</a></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>一 添加子模块</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>git submodule add</code> 子模块仓库地址</td>
+<td>添加子仓库到当前项目</td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>添加子仓库到当前项目<br>此时多出一个文件夹是子项目内容  一个<code>.gitmodules</code>文件,这个配置文件中保存了子仓库项目的URL和在主仓库目录下的映射关系</td>
+<td></td>
+</tr>
+<tr>
+<td><code>git submodule update --init --recursive</code></td>
+<td>初始化子模块（下载最新）</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>二 克隆含有子项目的仓库</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>方法一：</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>git submodule init</code></td>
+<td>用来初始化本地配置文件,也就是向.git/config文件中写入了子模块的信息</td>
+<td></td>
+</tr>
+<tr>
+<td><code>git submodule update</code></td>
+<td>从子仓库中抓取所有的数据找到父级仓库对应的那次子仓库的提交id并且检出到父项目的目录中</td>
+<td></td>
+</tr>
+<tr>
+<td>方法二：</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>git clone --recursive</code></td>
+<td>Git会自动帮我们递归去拉取我们所有的父仓库和子仓库的相关内容。</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>三 提交代码</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>先提交子仓库 后提交父仓库</td>
+<td>对每个子仓库进行了提交,然后父级仓库就会记录下每个子仓库的提交,然后正常提交父级仓库即可</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>四 拉取代码</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>先拉取子 后拉取父</td>
+<td>对每个子仓库进行了提交,然后父级仓库就会记录下每个子仓库的提交,然后正常提交父级仓库即可</td>
+<td></td>
+</tr>
+<tr>
+<td><code>git submodule foreach git pull origin master</code></td>
+<td>对所有的子仓库执行<code>foreach</code> 后跟的代码，比如此处就是 对所有子仓库拉取<code>master</code>上最新代码</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>五 删除子模块</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git submodule deinit</td>
+<td>完全地删除一个子模块</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="二-各种示例"><a href="#二-各种示例" class="headerlink" title="二.各种示例"></a>二.各种示例</h1><h2 id="1-回滚"><a href="#1-回滚" class="headerlink" title="1.回滚"></a>1.回滚</h2><p>  <code>git reset --hard  b498237e6dc1fc4861c79d3314d07285995b</code><br>  强制提交：<code>git push -f origin develop</code></p>
+<h2 id="2-比较时忽略默认文件"><a href="#2-比较时忽略默认文件" class="headerlink" title="2.比较时忽略默认文件"></a>2.比较时忽略默认文件</h2><p>比较时忽略默认文件<br>执行命令 <code>git config diff.nodiff.command true</code><br>项目根目录添加 <code>.gitattributes</code> 文件 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public/dist/**/* diff=nodiff <span class="comment"># public/dist/ diff=nodiff会不生效，所以只能通过通配符来设置，设置为public/dist/**/* diff=nodiff</span></span><br></pre></td></tr></table></figure>
+<p>  这时我们就可以连起来理解了，当我们运行<code>git diff</code>命令的时候，git就会读取<code>.gitattributes</code>的配置，<br>  然后发现遇到向匹配的文件的时候，需要执行<code>nodiff</code>指令，而<code>nodiff</code>指令被我们此前配置成了true 直接返回true，于是，就直接“跳过”了。</p>
+<h2 id="3-提交已有的tag"><a href="#3-提交已有的tag" class="headerlink" title="3.提交已有的tag"></a>3.提交已有的tag</h2><p>比如现在有个 tag v1.0.1<br>  分支  aaa 有修改 要提交的 v1.0.1</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">1.</span> 创建标签 </span><br><span class="line">  git tag v1<span class="number">.0</span><span class="number">.1</span>-light   <span class="comment">// 创建轻量标签</span></span><br><span class="line">  git tag -a v1<span class="number">.0</span><span class="number">.1</span> -m <span class="string">&quot;这是备注信息&quot;</span> <span class="comment">// 创建带备注标签(推荐)</span></span><br><span class="line"><span class="comment">// 2. 提交内容</span></span><br><span class="line">  git tag -a v1<span class="number">.0</span><span class="number">.1</span> loglogloglog -m <span class="string">&quot;这是备注信息&quot;</span> <span class="comment">// 针对特定commit版本SHA创建标签</span></span><br><span class="line"><span class="comment">// 3. 删除标签 </span></span><br><span class="line">  git tag -d v1<span class="number">.0</span><span class="number">.0</span> <span class="comment">// 删除标签(本地) 如果你本地有v1.0.1 那么要先删除然后创建</span></span><br><span class="line">  git push origin --<span class="keyword">delete</span> <span class="number">1.0</span><span class="number">.0</span> <span class="comment">// 删除标签(远程)</span></span><br><span class="line"><span class="comment">// 4. 提交</span></span><br><span class="line">  git push origin v1<span class="number">.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-初次提交本地库到远程库"><a href="#4-初次提交本地库到远程库" class="headerlink" title="4.初次提交本地库到远程库"></a>4.初次提交本地库到远程库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git init                // 初始化git项目</span><br><span class="line">git checkout -b master  新建一个master分支</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;&quot;</span></span><br><span class="line">git remote add origin   远程仓库地址</span><br><span class="line">git remote -v           查看当前连接的远程库地址</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-提交忽略文件"><a href="#5-提交忽略文件" class="headerlink" title="5.提交忽略文件"></a>5.提交忽略文件</h2><p>在做第一次提交之前，首先应该定义好这个忽略文件列表<code>.gitignore</code><br>内容写法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">path/to/file.ext              <span class="comment"># 忽略一个特定的文件</span></span><br><span class="line">filename.ext                  <span class="comment"># 忽略项目下所有这个名字的文件</span></span><br><span class="line"> *.ext                        <span class="comment"># 忽略项目下所有这个类型的文件：例如</span></span><br><span class="line">path/to/folder/*              <span class="comment"># 忽略一个特定目录下的所用文件：例如　</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-gitHub静态访问地址"><a href="#6-gitHub静态访问地址" class="headerlink" title="6.gitHub静态访问地址"></a>6.gitHub静态访问地址</h2><p>1.查看当前项目的静态访问地址<br> 首先你的保证你项目有<code>index.html</code>。一般VUE文件需要的是打包后的文件<br> 进入项目<br> 上面选择 <code>Settings</code>   左侧默认是 <code>Options</code><br> 拉倒底部的位置，找到<code>GitHub Pages</code><br> 下拉选框 选择 <code>master</code> 分支 然后点击 <code>save</code> 保存 那么 <code>GitHub Pages</code> 下发一点会出现一个地址 https:/???/???/.<br> 这是你就可以使用https:/???/???/index  || https:/???/???/dist/index.html 访问了 </p>
+<h2 id="7-github-配置ssh-免密码"><a href="#7-github-配置ssh-免密码" class="headerlink" title="7.github 配置ssh/免密码"></a>7.github 配置ssh/免密码</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/D2073307388/article/details/108834061">https://blog.csdn.net/D2073307388/article/details/108834061</a><br>1 生成.ssh的文件夹,里面是id_ras私钥和id_rsa.pub公钥<br>2 登录你的github<code>点击头像</code>会出来一个列表找到<code>Settings</code>然后点进去,在左侧的目录里会有一个<code>SSH and GPG keys</code>的选项,点进去然后创建一个<code>New SSH key</code><br>然后找到你的公钥<code>id_rsa.pub</code>用记事本打开,全部复制里面的内容,之后添加到你的key输入框里面,title可以随便命名,最后点击<code>Add SSH key</code>,就完成啦<br>3 再次提交还是要输入密码那是因为用的是https而不是ssh，更新origin为ssh格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote remove origin</span><br><span class="line">git remote add origin ssh地址</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="8-push推送多个git地址"><a href="#8-push推送多个git地址" class="headerlink" title="8.push推送多个git地址"></a>8.push推送多个git地址</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url --add origin 地址 <span class="comment">//给origin添加一个远程push地址，这样一次push就能同时push到两个地址上面</span></span><br><span class="line"></span><br><span class="line">git remote -v <span class="comment">//查看是否多了一条push地址（这个可不执行）</span></span><br><span class="line"></span><br><span class="line">git push origin master -f <span class="comment">// 如果第一次推不上去代码，可以使用强推的方式</span></span><br><span class="line"></span><br><span class="line">git remote set-url --<span class="keyword">delete</span> origin 地址 <span class="comment">// 删除一个远程地址</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="20-了解但我没用过的"><a href="#20-了解但我没用过的" class="headerlink" title="20.了解但我没用过的"></a>20.了解但我没用过的</h2><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git fetch 分支</td>
+<td>指抓取 不合并</td>
+<td>-</td>
+</tr>
+<tr>
+<td>rebase 比merge复杂的合并 会改写你的记录历史</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git rebase branch-分支</td>
+<td>合并分支</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git rebase –abort</td>
+<td>退出合并</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git rebase –continue</td>
+<td>解除冲突后继续重置</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h1 id="三-提交规范"><a href="#三-提交规范" class="headerlink" title="三.提交规范"></a>三.提交规范</h1><ul>
+<li>feat 增加新功能</li>
+<li>fix 修复问题/BUG</li>
+<li>style 代码风格相关无影响运行结果的</li>
+<li>perf 优化/性能提升</li>
+<li>refactor 重构</li>
+<li>revert 撤销修改</li>
+<li>test 测试相关</li>
+<li>docs 文档/注释</li>
+<li>chore 依赖更新/脚手架配置修改等</li>
+<li>workflow 工作流改进</li>
+<li>ci 持续集成</li>
+<li>types 类型定义文件更改</li>
+<li>wip 开发中</li>
+</ul>
+<h1 id="四-问题"><a href="#四-问题" class="headerlink" title="四.问题"></a>四.问题</h1><h2 id="1-git-提交-报错没有权限"><a href="#1-git-提交-报错没有权限" class="headerlink" title="1. git 提交 报错没有权限"></a>1. git 提交 报错没有权限</h2><p>  1.确定ssh配置是否有问题。 ssh -T 路径 是否成功 成功的情况下<br>  2.成功的情况下 卸载git 重新安装 有个配置项要改成 使用外部的sshkey而不是内置的sshkey</p>
+<h2 id="2-阿里云克隆失败"><a href="#2-阿里云克隆失败" class="headerlink" title="2. 阿里云克隆失败"></a>2. 阿里云克隆失败</h2><p> 1.确定 凭据管理器 里面登入信息是不是本人的<br> 2.确定 ssh 公钥配置<br> 3.克隆https的方式克隆</p>
+<h2 id="3-阿里云克隆失败"><a href="#3-阿里云克隆失败" class="headerlink" title="3. 阿里云克隆失败"></a>3. 阿里云克隆失败</h2><p><code>id_rsa</code> 同级目录新建<code>config</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">HostKeyAlgorithms +ssh-rsa</span><br><span class="line">PubkeyAcceptedKeyTypes +ssh-rsa</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-git/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-软件工具-软件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -269,19 +890,19 @@
 
 
   
-    <article id="post-画图-echarts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-软件工具-抓包-anyproxy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E7%94%BB%E5%9B%BE-echarts/">echarts</a>
+      <a class="article-title" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-%E6%8A%93%E5%8C%85-anyproxy/">抓包</a>
     </h1>
   
 
         
-        <a href="/%E7%94%BB%E5%9B%BE-echarts/" class="archive-article-date">
+        <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-%E6%8A%93%E5%8C%85-anyproxy/" class="archive-article-date">
   	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
 </a>
         
@@ -290,10 +911,23 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p>第三方绘图库<br>1.<a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/download.html">下载echarts库文件</a></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> &lt; div id=<span class="string">&quot;main&quot;</span> style=<span class="string">&quot;width:500px;height:400px&quot;</span>&gt;&lt;<span class="regexp">/div&gt; /</span><span class="regexp">/ 容器</span></span><br><span class="line"><span class="regexp"> &lt; script src=&quot;echarts.js&quot;&gt;&lt;/</span>script&gt; <span class="comment">// 引入插件</span></span><br><span class="line"> <span class="keyword">var</span> main = <span class="built_in">document</span>.getElementById(<span class="string">&quot;main&quot;</span>); <span class="comment">// 获取容器并且创建echarts对象</span></span><br><span class="line"> <span class="keyword">var</span> mychart = echarts.init(main);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> option = &#123; <span class="comment">// 创建配置项(柱状统计图)</span></span><br><span class="line">   title:&#123;<span class="attr">text</span>:<span class="string">&quot;echarts 入门示例&quot;</span>&#125;    			<span class="comment">// 顶部标题</span></span><br><span class="line">   xAxis:&#123;<span class="attr">data</span>:[<span class="string">&quot;第一季度&quot;</span>,<span class="string">&quot;第二季度&quot;</span>,<span class="string">&quot;第三季度&quot;</span>,<span class="string">&quot;第四季度&quot;</span>]&#125;, <span class="comment">// x轴数据</span></span><br><span class="line">   yAxis:&#123;&#125;,  								<span class="comment">// y轴数据(空)</span></span><br><span class="line">   series:[</span><br><span class="line">     &#123;</span><br><span class="line">       type:<span class="string">&quot;bar&quot;</span>,<span class="attr">data</span>:[<span class="number">1005</span>,<span class="number">1053</span>,<span class="number">1012</span>,<span class="number">1355</span>] <span class="comment">// type:&quot;bar&quot; 指绘图像类型 bar line pie .....    bar柱状 line折线 pie饼状</span></span><br><span class="line">     &#125;,</span><br><span class="line">     &#123;</span><br><span class="line">       type:<span class="string">&quot;line&quot;</span>,<span class="attr">data</span>:[<span class="number">1005</span>,<span class="number">1053</span>,<span class="number">1012</span>,<span class="number">1355</span>]</span><br><span class="line">     &#125;</span><br><span class="line">   ] </span><br><span class="line"> &#125;</span><br><span class="line"> mychart.setOption(option); <span class="comment">// 将配置项添加mychart对</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>  <a href="/study/echarts/easyDemonstration" target="_self">简单示例</a></p>
+          <h1 id="一-anyproxy"><a href="#一-anyproxy" class="headerlink" title="一.anyproxy"></a>一.anyproxy</h1><h2 id="1-前置条件"><a href="#1-前置条件" class="headerlink" title="1.前置条件"></a>1.前置条件</h2><p> 1.手机 和 电脑 是同一局域网，或者本机启动一个热点<br> 2.https请求 需要 手机 扫电脑端打开的网页的 二维码 安装证书</p>
+<h2 id="2-电脑操作"><a href="#2-电脑操作" class="headerlink" title="2.电脑操作"></a>2.电脑操作</h2><p>  0.<code>npm install -g anyproxy</code><br>  1.运行 <code>anyproxy –i</code> 开启<br>  2.运行 <code>ipconfig</code>  获得 无线局域网适配器 WLAN: IPv4 地址<br>  3.浏览器打开 本机+另一个端口号<br>    <code>http://127.0.0.1:8002/</code>  || <code>http://localhost:8002/</code></p>
+<h2 id="3-手机操作"><a href="#3-手机操作" class="headerlink" title="3.手机操作"></a>3.手机操作</h2><p>  WIFi<br>  -&gt; 配置代理<br>  -&gt; 手动<br>  -&gt; 填入主机名<code>IPv4 地址</code> 端口号<code>8001</code></p>
+<h1 id="2-fiddler"><a href="#2-fiddler" class="headerlink" title="2.fiddler"></a>2.fiddler</h1><p>参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/yyhh/p/5140852.html">https://www.cnblogs.com/yyhh/p/5140852.html</a></p>
+<h2 id="1-工具"><a href="#1-工具" class="headerlink" title="1.工具"></a>1.工具</h2><p>fiddlersetup.exe     -  工具  我的网盘 或者  <a target="_blank" rel="noopener" href="http://www.telerik.com/fiddler">http://www.telerik.com/fiddler</a><br>fiddlercertmaker.exe -  https 证书</p>
+<h2 id="2-软件配置"><a href="#2-软件配置" class="headerlink" title="2.软件配置"></a>2.软件配置</h2><p>左上角工具栏 <code>tools</code>  =&gt; <code>Fiddler Options</code> 出现弹框选项 =&gt; 出现弹框中选项 <code>Connectione</code> </p>
+<p>1.Fiddler listens on port: 填入端口号比如 8888 </p>
+<p>2.选项全部打钩<br>  其中选项 allow remote computer to connect 选项 等于<br>  浏览器internet选项 =&gt; 局域网（LAH）设置 =&gt; 代理设置 中<br>  HTTP(H) 127.0.0.1 8888<br>  安全(S) 127.0.0.1 8888</p>
+<p>3.出现弹框中选项 <code>HTTPS</code> 选项全部打钩<br>  其中 Decrypt HTTPS Traffic 安装证书</p>
+<h2 id="3-手机操作-1"><a href="#3-手机操作-1" class="headerlink" title="3.手机操作"></a>3.手机操作</h2><p>1.连接同一wift 配置手动代理<br>  如果不能链接同一wifi 那么<br>  电脑 打开移动热点（可在编辑处修改网络名称 和网络频带 已更好的找到这个热点）  手机连接电脑的移动热点 然后配置手动代理</p>
+<p>2.浏览器访问配置的手动代理 下载<code>Fiddler的证书</code>，点击访问内容中的<code>FiddlerRoot certificate</code></p>
+<h2 id="4-遇到的问题"><a href="#4-遇到的问题" class="headerlink" title="4.遇到的问题"></a>4.遇到的问题</h2><p> <strong>1.No root certificate was found. Have you enabled HTTPS traffic decryption in Fiddler yet?</strong><br>  等等一系列错误可以尝试<br>  请打开Fiddler的证书解密模式（Fiddler 设置解密HTTPS的网络数据） 安装证书<br>  就是 找到下载处 到下载的插件 文件夹  点击打开 然后安装一下就好了</p>
+<h2 id="5-软件界面功能说明"><a href="#5-软件界面功能说明" class="headerlink" title="5.软件界面功能说明"></a>5.软件界面功能说明</h2><p>1.左侧点击相应请求链接  右侧 上方是请求的内容<br>                    右侧 下方是响应的内容 </p>
+<p>2.<code>TextView</code> 或者 <code>SyntaxView</code> 中点击 出现的提示  即可出现HTML scc内容</p>
+<p>3.右上 鼠标悬浮在 <code>Online</code> 处 可以看到 当前IP地址</p>
+<p>4.左上 <code>File</code> =&gt; <code>Capture Traffic F12</code> 是否开启 可以点击左下 <code>capturing 图标</code> 开启关闭 默认开启</p>
+<h1 id="3-微信抓包小程序代码"><a href="#3-微信抓包小程序代码" class="headerlink" title="3.微信抓包小程序代码"></a>3.微信抓包小程序代码</h1><p>  在我的百度网盘里面了</p>
 
         
       
@@ -308,7 +942,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">画图</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件工具</a>
         		</li>
       		
 		</ul>
@@ -318,534 +952,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-echarts/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-画图-canvas" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E7%94%BB%E5%9B%BE-canvas/">canvas</a>
-    </h1>
-  
-
-        
-        <a href="/%E7%94%BB%E5%9B%BE-canvas/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <style>
-  table tr th:nth-child(3){
-    width: 90px !important;
-  }
-  table tr th:first-child{
-    width: 350px !important;
-  }
-</style>
-
-<h2 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h2><p> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Basic_animations">更多api参考内容</a><br> 2D位图用像素点组成图形 特点:不可以放大或缩小，颜色细腻<br> 注意</p>
-<blockquote>
-<p> 1.画布宽度和高度只能通过js 或者标签属性来赋值<br>    2.样式要写在绘制之前才能改变绘制的样式<br>    3.绘制的东西不会超过画布的大小</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>代码</th>
-<th>说明</th>
-<th>-</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>dom.getContext(&quot;2d&quot;)</code></td>
-<td>获取画布对象</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.strokeRect(x,y,w,h)</code></td>
-<td>绘制<strong>空心矩形</strong> x,y矩形左上角位置 w,h 短形宽度和高度</td>
-<td>样式如下</td>
-</tr>
-<tr>
-<td><code>ctx.strokeText(str,x,y)</code></td>
-<td>绘制<strong>空心文本</strong> x,y文本左上角位置 str 文案</td>
-<td>样式如下</td>
-</tr>
-<tr>
-<td>—-<code>ctx.strokeStyle = &quot;#47227b&quot;</code></td>
-<td>设置空心样式</td>
-<td>空心样式</td>
-</tr>
-<tr>
-<td>—-<code>ctx.lineWidth = 1</code></td>
-<td>设置空心宽度</td>
-<td>空心宽度</td>
-</tr>
-<tr>
-<td><code>ctx.fillRect(x,y,w,h)</code></td>
-<td>绘制<strong>实心矩形</strong> x,y矩形左上角位置 w,h 短形宽度和高度</td>
-<td>样式如下</td>
-</tr>
-<tr>
-<td><code>ctx.fillText(str,x,y)</code></td>
-<td>绘制<strong>实心文本</strong> x,y文本左上角位置 str 文案</td>
-<td>样式如下</td>
-</tr>
-<tr>
-<td>—-<code>ctx.fillStyle = &quot;#47227b&quot;</code></td>
-<td>设置实心填充样式</td>
-<td>实心样式</td>
-</tr>
-<tr>
-<td>—-<code>ctx.globalAlpha = 0.5</code></td>
-<td>透明度</td>
-<td>通用</td>
-</tr>
-<tr>
-<td>—-<code>ctx.font</code></td>
-<td>字体与大小</td>
-<td>字体</td>
-</tr>
-<tr>
-<td>—-<code>ctx.textBaseline = &quot;alphabetic&quot;</code></td>
-<td>指定文本基线位置[“alphabetic”,”top”,”bottom”,Middle，Hanging]<br>基线/上/下/中/悬挂 正常思维使用bottom。默认是alphabetic</td>
-<td>-</td>
-</tr>
-<tr>
-<td>—-<code>ctx.measureText(str)</code></td>
-<td>获取此时绘制 str 文本的宽度对象 {width:}</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.clearRect(x,y,w,h)</code></td>
-<td>清除一个矩形范围内所有元素 xy位置,wh范围</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.moveTo(x,y)</code></td>
-<td>移动到指定点-只移动不画</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.lineTo(x,y)</code></td>
-<td>画到指定点-又移又画</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.arc(350, 100, 15, 0, 2 * Math.PI,true)</code></td>
-<td>画圆-又移又画 中心点x y坐标 半径 开始角 结束角 方向</td>
-<td><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_arc.asp">角度参考</a></td>
-</tr>
-<tr>
-<td><code>ctx.closePath(x,y)</code></td>
-<td>闭合当前路径.从终点画到起点</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.stroke()</code></td>
-<td><strong>描边 绘制</strong></td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.drawImage(img,x,y,w,h))</code></td>
-<td>绘制<strong>图片</strong> 图片,xy坐标,宽高，<br>框高不写为原图大小</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.rotate(50 * Math.PI / 180)</code></td>
-<td>旋转 旋转50度，写于绘制之前！！</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.translate(x,y)</code></td>
-<td>将画布轴点(原点)移到指定位置,默认是画布中心</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.save(x,y)</code></td>
-<td>保存画笔状态</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>ctx.restore(x,y)</code></td>
-<td>恢复画笔状态</td>
-<td>-</td>
-</tr>
-<tr>
-<td>var g = <code>ctx.createLinearGradient(x1,y1,x2,y2)</code></td>
-<td><strong>创建渐变对象</strong> x1,y1开始坐标，x2,y2结束坐标</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>g.addColorStop(offset,color)</code></td>
-<td><strong>渐变对象添加颜色点</strong> 进度(跟动画一样,小数写法) 结束颜色</td>
-<td>-</td>
-</tr>
-</tbody></table>
-<p> html 内容：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;c3&quot;</span> <span class="attr">width</span>=<span class="string">&quot;1000&quot;</span> <span class="attr">height</span>=<span class="string">&quot;1000&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure><br> js内容 绘制矩形空心 和实心</p>
-<pre><code class="js">var c3 = document.getElementById(&quot;c3&quot;); // 获取画布
-var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指定画笔对象[上下文对象]
-// 矩形
-   ctx.strokeStyle = &quot;#47227b&quot;; // 设置空心边框样式
-   ctx.lineWidth = 1; // 设置空心边框宽度
-   ctx.strokeRect(5,5,50,50); //  绘制空心矩形 x,y矩形左上角位置 w,h 短形宽度和高度
-// 矩形
-   ctx.fillStyle = &quot;#47227b&quot;;// 设置实心填充样式
-   ctx.fillRect(60,5,50,50); // 绘制实心矩形
-// 字体
-   ctx.globalAlpha = 0.5 // 透明度
-   ctx.font = &quot;19px SimHei&quot;; // 字体与大小
-   ctx.textBaseline = &quot;alphabetic&quot;;     // 指定文本基线位置[&quot;alphabetic&quot;,&quot;top&quot;,&quot;bottom&quot;,Middle，Hanging]基线/上/下/中/悬挂 正常思维使用bottom。默认是alphabetic
-   ctx.fillText(str,x,y);
-   ctx.strokeText(str,x,y); 
-// 3角
-   ctx.beginPath(); // 开始新路径
-   ctx.moveTo(100,100); // 移动到指定点
-   ctx.lineTo(150,100); // 画到指定点
-   ctx.lineTo(150,150);
-   ctx.closePath(); // 闭合当前路径.终点到起点
-   ctx.stroke(); // 描边
-// 圆，半圆 
-   ctx.beginPath();        // 开始新路径
-   // ctx.moveTo(265,200);    // 移动到指定点
-   ctx.arc(250, 200, 15, 180 * Math.PI / 180, 2 * Math.PI);// 画半圆
-   ctx.stroke();           // 描边
-   ctx.beginPath();        // 开始新路径
-   ctx.moveTo(365, 100);    // 移动到指定点
-   ctx.arc(350, 100, 15, 0, 2 * Math.PI);// 画整圆
-   ctx.stroke();           // 描边
-// 画图
-   var p3 = new Image();
-   p3.src = &quot;x.png&quot;;
-   p.onload = function () &#123; // 图片加载完成后
-     ctx.drawImage(p3,x,y);   // x,y 左上角位置(原始大小图片)
-     ctx.drawImage(p3,x,y,w,h); // w,h 图片大小
-     ctx.rotate(50 * Math.PI / 180);
-     ctx.drawImage(p,0,0);   //画出旋转了15度的图
-   &#125;
-// 示例2个不停选择的图片涉及技术-旋转，保存状态，画图，移动远点
-   var deg1=0,deg2=0;                      //创建变量保存飞机旋转角度
-   p.onload=function()&#123;                    //下载完毕执行函数
-       var time=setInterval(function()&#123;    //定时器 模拟旋转状态
-           ctx.clearRect(-500,-500,1000,1000)
-
-           ctx.save();                     //保存画笔状态
-           ctx.translate(100,200)          //平移原点
-           deg1+=4                        //变量累计角度
-           ctx.rotate(deg1*Math.PI/180)    //旋转角度
-           ctx.drawImage(p,0-100,0-50)     //绘制飞机图片200*100大小
-           ctx.restore()                   //恢复画笔状态
-
-           ctx.save();                         //保存画笔状态 2
-           ctx.translate(300,200)              //平移原点2
-           deg2+=8                            //累计角度2
-           ctx.rotate(deg2*Math.PI/180)        //旋转角度2
-           ctx.drawImage(p,0-100,0-50)         //绘制飞机图片200*100大小2
-           ctx.restore()                       //恢复画笔状态 2
-       &#125;,100/6)
-   &#125;
- // 创建 渐变颜色的 矩形
-     var g = ctx.createLinearGradient(0, 0, 1000, 1000);
-     g.addColorStop(0, &#39;#f00&#39;);
-     g.addColorStop(1, &#39;#00f&#39;);
-     ctx.fillStyle = g;
-     ctx.strokeStyle = g;
-     ctx.fillRect(0, 0, 1000, 100);</code></pre>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">画图</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-canvas/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-画图-svg" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E7%94%BB%E5%9B%BE-svg/">svg</a>
-    </h1>
-  
-
-        
-        <a href="/%E7%94%BB%E5%9B%BE-svg/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>  <a href="#title1" target="_self">1.html 内容</a><br>  <a href="#js" target="_self">2.使用js创造</a><br>  <a href="#title3" target="_self">3.html实例</a></p>
-<p>2D矢量图 可以无限放大或缩小不会失真,颜色不够丰富</p>
-<blockquote>
-<p>1:svg图形中属性是可以通过css设置<br>   2:svg动态创建元素</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>内含标签</th>
-<th>说明</th>
-<th>-</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>circle</td>
-<td>-</td>
-<td>绘制圆形</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>cx</code>=</td>
-<td>x轴位置</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>cy</code>=”</td>
-<td>y轴位置</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>r</code>=</td>
-<td>半径</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>fill</code>=</td>
-<td>填充颜色</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stroke</code></td>
-<td>边框颜色</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>fill-opacity</code></td>
-<td>填充透明度</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stroke-opacity</code></td>
-<td>边框透明度</td>
-</tr>
-<tr>
-<td>line</td>
-<td><code>x1</code>=”” <code>y1</code>=”” <code>x2</code>=”” <code>y2</code>=””</td>
-<td>直线</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stroke</code>=”#f00”</td>
-<td>颜色</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stroke-width</code>=”15”</td>
-<td>线宽度</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stroke-linecap</code>=”round”</td>
-<td>线两端样式round圆角 square方角</td>
-</tr>
-<tr>
-<td>polyline</td>
-<td>-</td>
-<td>折线</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>points</code>=”250,200 300,200 300,300 250,200”</td>
-<td>一组坐标</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stroke</code>=</td>
-<td>边线颜色</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>fill</code>=</td>
-<td>填充颜色</td>
-</tr>
-<tr>
-<td>text</td>
-<td><code>x</code>=”起点” <code>y</code>=”起点”</td>
-<td>文字  &gt; 标签文字写在这里 &lt;</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>font-size</code>=””</td>
-<td>字体大小</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>fill</code>=””</td>
-<td>颜色</td>
-</tr>
-<tr>
-<td>image</td>
-<td><code>x</code>=”起点” <code>y</code>=”起点”</td>
-<td>图片</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>xlink:href</code>=”地址”</td>
-<td>图片url</td>
-</tr>
-<tr>
-<td>linearGradient</td>
-<td><code>id</code>=”g3” <code>x1</code>=”0%” <code>y1</code>=”0%” <code>x2</code>=”100%” <code>y2</code>=”0%”</td>
-<td>声明渐变对象 包裹着stop标签 使用 原颜色=”#f00”都可改成  =”url(#g3)”</td>
-</tr>
-<tr>
-<td>stop</td>
-<td>-</td>
-<td>声明渐变对象 写在linearGradient标签中 多个</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>offset</code>=”0%”</td>
-<td>颜色点位置</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stop-color</code>=”red”</td>
-<td>颜色点位置的颜色</td>
-</tr>
-<tr>
-<td>filter</td>
-<td><code>id</code>=”f3”</td>
-<td>滤镜 包裹着<code>滤镜</code>标签  任意绘制标签添加 <code>filter=url(#f3)</code> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/filter">更多滤镜标签</a></td>
-</tr>
-<tr>
-<td>feGaussianBlur</td>
-<td><code>stdDeviation</code>=”3”</td>
-<td>高斯模糊滤镜  写在filter标签中</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>stdDeviation</code>=”3”</td>
-<td>定义模糊量</td>
-</tr>
-</tbody></table>
-<p>  <span id="title1">1.html 内容：</span><br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">id</span>=<span class="string">&quot;s3&quot;</span> <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">height</span>=<span class="string">&quot;800&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 定义特性对象 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">defs</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 渐变对象 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">linearGradient</span> <span class="attr">id</span>=<span class="string">&quot;g3&quot;</span> <span class="attr">x1</span>=<span class="string">&quot;0%&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;0%&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;0%&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">&quot;0%&quot;</span> <span class="attr">stop-color</span>=<span class="string">&quot;red&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">stop-color</span>=<span class="string">&quot;yellow&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">linearGradient</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 滤镜 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter</span> <span class="attr">id</span>=<span class="string">&quot;f3&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">feGaussianBlur</span> <span class="attr">stdDeviation</span>=<span class="string">&quot;3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">feGaussianBlur</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">defs</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 圆 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">&quot;50&quot;</span> <span class="attr">cy</span>=<span class="string">&quot;50&quot;</span> <span class="attr">r</span>=<span class="string">&quot;10&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;#f00&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;#00f&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 直线 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">line</span> <span class="attr">x1</span>=<span class="string">&quot;100&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;50&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;200&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;50&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;#f00&quot;</span> <span class="attr">stroke-width</span>=<span class="string">&quot;15&quot;</span> <span class="attr">stroke-linecap</span>=<span class="string">&quot;round&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">line</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 文字 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">font-size</span>=<span class="string">&quot;30&quot;</span> <span class="attr">x</span>=<span class="string">&quot;200&quot;</span> <span class="attr">y</span>=<span class="string">&quot;50&quot;</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 图片 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">image</span> <span class="attr">xlink:href</span>=<span class="string">&quot;https://www.gravatar.com/avatar/ffaaae1be811e26b8ecfee91a76ae077?s=46&amp;d=identicon&quot;</span> <span class="attr">x</span>=<span class="string">&quot;250&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">y</span>=<span class="string">&quot;50&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 直线使用渐变对象 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">line</span> <span class="attr">x1</span>=<span class="string">&quot;300&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;20&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;600&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;50&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;url(#g3)&quot;</span> <span class="attr">stroke-width</span>=<span class="string">&quot;15&quot;</span> <span class="attr">stroke-linecap</span>=<span class="string">&quot;round&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">line</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 文字使用滤镜 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">font-size</span>=<span class="string">&quot;30&quot;</span> <span class="attr">x</span>=<span class="string">&quot;600&quot;</span> <span class="attr">y</span>=<span class="string">&quot;50&quot;</span> <span class="attr">filter</span>=<span class="string">url(#f3)</span>&gt;</span>使用滤镜<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 折线--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">&quot;250,200 300,200 300,300 250,200&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;#0f0&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;#ddd&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 折线绘制五角心 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">&quot;320,300 480,300 350,400 400,240 450,400 320,300&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;url(#g3)&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;url(#g3)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure><br>  <span id="js">2.使用js创造</span></p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 首先页面要有一个 svg元素 假设id=&quot;a&quot;</span></span><br><span class="line"> <span class="comment">// 1 动态拼接</span></span><br><span class="line">  <span class="keyword">var</span> html = <span class="string">`&lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;10&quot; fill=&quot;#f00&quot; stroke=&quot;#00f&quot;&gt;&lt;/circle&gt;`</span></span><br><span class="line">  <span class="built_in">document</span>.getElementById(a3).innerHTML = html</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.svg创建对象方法</span></span><br><span class="line">  <span class="keyword">var</span> c = <span class="built_in">document</span>.createElementNS(<span class="string">&quot;http://www.w3.org/2000/svg&quot;</span>,<span class="string">&quot;circle&quot;</span>); <span class="comment">// svg地址 内放置内部的标签</span></span><br><span class="line">      c.setAttribute(<span class="string">&quot;r&quot;</span>,<span class="number">100</span>);   <span class="comment">// 添加属性只能用核心DOM函数实现.不能用html DOM使用 不能使用 c.r = 100;</span></span><br><span class="line">  <span class="keyword">var</span> r = c.getAttribute(<span class="string">&quot;r&quot;</span>); <span class="comment">// 获取</span></span><br><span class="line">      svg.appendChild(c);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.2 循环30次---画30个圆</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="number">31</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="built_in">document</span>.createElementNS(<span class="string">&quot;http://www.w3.org/2000/svg&quot;</span>, <span class="string">&quot;circle&quot;</span>);</span><br><span class="line">    c.setAttribute(<span class="string">&quot;r&quot;</span>, i + <span class="built_in">Math</span>.random() * <span class="number">20</span>);</span><br><span class="line">    c.setAttribute(<span class="string">&quot;cx&quot;</span>, i + <span class="built_in">Math</span>.random() * <span class="number">400</span>);</span><br><span class="line">    c.setAttribute(<span class="string">&quot;cy&quot;</span>, i + <span class="built_in">Math</span>.random() * <span class="number">400</span>);</span><br><span class="line">    <span class="keyword">var</span> rgb = <span class="string">`rgb(<span class="subst">$&#123;i + <span class="built_in">Math</span>.random() * <span class="number">200</span>&#125;</span>,<span class="subst">$&#123;i + <span class="built_in">Math</span>.random() * <span class="number">200</span>&#125;</span>,<span class="subst">$&#123;i + <span class="built_in">Math</span>.random() * <span class="number">200</span>&#125;</span>)`</span></span><br><span class="line">    c.setAttribute(<span class="string">&quot;fill&quot;</span>, rgb);</span><br><span class="line">    s3.appendChild(c);</span><br><span class="line">  &#125;   </span><br></pre></td></tr></table></figure>
-
-<p><span id="title3">3.html实例：</span></p>
-<blockquote>
-<p><svg id="s3" width="800" height="400"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="red"></stop><stop offset="100%" stop-color="yellow"></stop></linearGradient><filter id="f3"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs><circle cx="50" cy="50" r="10" fill="#f00" stroke="#00f"></circle><line x1="100" y1="50" x2="200" y2="50" stroke="#f00" stroke-width="15" stroke-linecap="round"></line><text font-size="30" x="200" y="50">文字</text><image xlink:href="https://www.gravatar.com/avatar/ffaaae1be811e26b8ecfee91a76ae077?s=46&d=identicon" x="250"      y="50"></image><line x1="300" y1="20" x2="600" y2="50" stroke="url(#g3)" stroke-width="15" stroke-linecap="round"></line><text font-size="30" x="600" y="50" filter=url(#f3)>使用滤镜</text><polyline points="250,200 300,200 300,300 250,200" stroke="#0f0" fill="#ddd"></polyline><polyline points="320,300 480,300 350,400 400,240 450,400 320,300" stroke="url(#g3)" fill="url(#g3)"></polyline></svg></p>
-</blockquote>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">画图</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-svg/">展开全文 >></a>
+          <a class="article-more-a" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-%E6%8A%93%E5%8C%85-anyproxy/">展开全文 >></a>
         </p>
       
 
@@ -933,6 +1040,93 @@ var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指
       
         <p class="article-more-link">
           <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-项目相关-10-跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">10-跨域</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>什么是跨域: 一个域名下的网页，向另一个域名下的服务器请求资源.受浏览器的同源策略控制，禁止发送的</p>
+<p><code>浏览器同源(origin)策略</code>: 也称禁止跨不同源头访问资源<br>        所有浏览器都有一个安全策略: <code>禁止CORS</code><br>        禁止Cross Origin Resources Shareing<br>        浏览器规定: 请求回来的响应数据的响应头中记录的远程url必须和当前网页正在打开的url地址相同！</p>
+<p>浏览器收到数据后:<br>        会用当前地址栏中的<code>url地址和headers中的origin对比</code>！只有协议，域名，端口号完全一致！才允许网页使用数据</p>
+<h2 id="1-服务端解决跨域"><a href="#1-服务端解决跨域" class="headerlink" title="1.服务端解决跨域"></a>1.服务端解决跨域</h2><p>让服务端返回响应时，篡改响应头中响应源头的地址,nodejs为例子<br>1 手写<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// res.send(result); // 不要用res.send了</span></span><br><span class="line"><span class="comment">//  res.send其实是一种简写: 等效于 res.writeHead()+res.write(JSON.stringify(result))+res.end()</span></span><br><span class="line">res.writeHead(<span class="number">200</span>,&#123; <span class="comment">//修改头部.200表示成功</span></span><br><span class="line">  <span class="string">&quot;Access-Control-Allow-Origin&quot;</span>:http:<span class="comment">//127.0.0.1:5500</span></span><br><span class="line">                     <span class="comment">//或者：“*” 代表所有</span></span><br><span class="line">&#125;);</span><br><span class="line">res.write(<span class="built_in">JSON</span>.stringify(result)); <span class="comment">//发送的内容</span></span><br><span class="line">res.end(); <span class="comment">//发送</span></span><br><span class="line"><span class="comment">//   写在原来node中代替res.send(result);的作用.每个都要写</span></span><br><span class="line"><span class="comment">//  这样返回的数据，就被伪装成来自127.0.0.1:5500的，就可以通过浏览器的同源策略检查，可正常使用</span></span><br></pre></td></tr></table></figure><br>2 引入插件统一写 (推荐)<br>服务端nodejs安装: <code>npm i -save cors</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js中: </span></span><br><span class="line"><span class="keyword">const</span> cors=<span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>); 引入模块</span><br><span class="line">				</span><br><span class="line"> <span class="comment">//在创建端口listen()之后</span></span><br><span class="line"> app.use(cors(&#123;</span><br><span class="line">     origin:<span class="string">&quot;http://127.0.0.1:5500&quot;</span><span class="comment">//不能用*</span></span><br><span class="line"> &#125;));</span><br><span class="line"> <span class="comment">//中间件。。从此所有响应，自动带Access-Control-Allow-Origin:http://127.0.0.1:5500</span></span><br><span class="line"> <span class="comment">//万一客户端浏览器地址发生变化，只改这里origin一处即可！</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-jsonp解决跨域"><a href="#2-jsonp解决跨域" class="headerlink" title="2.jsonp解决跨域"></a>2.jsonp解决跨域</h2><p> jsonp + Promise 只能用于GET请求</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myJsonp</span> (<span class="params">url, obj</span>) </span>&#123; <span class="comment">// 地址，参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> cb = <span class="string">`jsonp<span class="subst">$&#123;<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random() * <span class="number">1000000</span>)&#125;</span>`</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      url += <span class="string">&#x27;&amp;&#x27;</span> + key + <span class="string">&#x27;=&#x27;</span> + obj[key]</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = url + <span class="string">&#x27;&amp;callback=&#x27;</span> + cb <span class="comment">// 地址 + 参数 + 回调函数名 需于后端统一命名</span></span><br><span class="line">    script.id = <span class="string">&#x27;jsonpS&#x27;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">    <span class="built_in">window</span>[cb] = <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> script = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;jsonpS&#x27;</span>);</span><br><span class="line">      <span class="built_in">document</span>.body.removeChild(script);</span><br><span class="line">      <span class="keyword">delete</span> <span class="built_in">window</span>[cb];</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">async</span> a () &#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="keyword">await</span> myJsonp (<span class="string">&#x27;http://dev-test.api.faquange.cn/apppage.php?m=Top&amp;c=getList&#x27;</span>, &#123; <span class="attr">TopCate</span>:<span class="number">1</span> &#125; )</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-ajax解决跨域"><a href="#3-ajax解决跨域" class="headerlink" title="3.ajax解决跨域"></a>3.ajax解决跨域</h2><p><code>dataType:&quot;jsonp&quot;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line"> url: <span class="string">&quot;服务端接口地址&quot;</span>, <span class="comment">// http://localhost:3000/users/login</span></span><br><span class="line"> type: <span class="string">&quot;get|post&quot;</span>,</span><br><span class="line"> data: &#123; <span class="attr">uname</span>: <span class="string">&quot;dingding&quot;</span>, <span class="attr">upwd</span>: <span class="string">&quot;123456&quot;</span> &#125;,</span><br><span class="line"> <span class="comment">// &quot;uname=dingding&amp;upwd=123456&quot;,</span></span><br><span class="line"> <span class="comment">// 如果返回json，需要自动JSON.parse()转为js对象</span></span><br><span class="line"> dataType:<span class="string">&quot;json&quot;</span>, <span class="comment">//如果不写需要自己手动调用JSON.parse()</span></span><br><span class="line"> <span class="comment">// dataType:&quot;jsonp&quot; // jsonp 跨域</span></span><br><span class="line"> success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;   <span class="comment">// 与.then2选1</span></span><br><span class="line"> &#125;</span><br><span class="line"> &#125;).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">展开全文 >></a>
         </p>
       
 
@@ -1125,185 +1319,6 @@ var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指
 
 
   
-    <article id="post-项目相关-13-Webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/">13-Webpack</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>中文网站：<a target="_blank" rel="noopener" href="https://www.webpackjs.com/">https://www.webpackjs.com/</a></p>
-<p><strong>概念</strong>：webpack是一个javaScript应用程序的静态模块打包器.当webpack处理应用程序的时候.它会递归的构建一个关系依赖图.其中就包含应用程序需要的每一个模块（js.css.图片）.最后将所有的这些模块打包成一个资源包（bundle）文件</p>
-<p><strong>用途</strong>：资源打包后，再供客户端一次性加载，只需要请求一个文件,减少请求次数和请求数据总大小，从而提高访问效率。</p>
-<p>注意：<br>Webpack本身用于打包静态资源，通常的使用场景是：项目初步开发完成后，运行Webpack(是一个NPM扩展包)，把需要处理的静态资源打包，把得到的打包文件和HTML文件一起发布到WEB服务器(可以是Node/PHP/Java等)上供客户端访问。</p>
-<ul>
-<li>18.webpackss\webpack-myapp</li>
-</ul>
-<h3 id="使用过程"><a href="#使用过程" class="headerlink" title="使用过程"></a>使用过程</h3><p>1.创建客户端项目，编写<code>HTML/CSS/JS/</code>图片等文件</p>
-<p>2.创建项目的描述文件：<code>package.json</code><br>npm  init</p>
-<p>3.下载webpack及其依赖的模块，并添加为当前项目的 开发阶段依赖模块<br><code>npm install webpack --save-dev</code></p>
-<p>4.创建编写webpack主配置文件<br>add <code>webpack.config.js</code> 于 <code>package.json</code>在同级</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置文件.将来会被nodejs运行 所以用Nodejs的导出方式</span></span><br><span class="line"><span class="built_in">module</span>.exports=&#123; </span><br><span class="line">    mode:<span class="string">&#x27;development&#x27;</span>,         <span class="comment">// 运行模式：开发模式</span></span><br><span class="line">    <span class="comment">//mode:&#x27;production&#x27;         // 产品模式.会对代码进行压缩.打包过程会慢</span></span><br><span class="line">    entry:<span class="string">&#x27;./src/js/index2.js&#x27;</span>,  <span class="comment">//入口,入口文件.从哪个文件开始打包</span></span><br><span class="line">    output:&#123;                    <span class="comment">//出口文件.打包后输出的文件.要求使用绝对路径</span></span><br><span class="line">        path:__dirname+<span class="string">&#x27;/dist&#x27;</span>, <span class="comment">//目录.dist文件后续会自动创建</span></span><br><span class="line">        filename:<span class="string">&#x27;bundle.js&#x27;</span>    <span class="comment">//文件名称</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//3.加载器.默认情况下.webpacks只能打包JS文件.如果想打包其他格式文件需要有对应的加载器（loader）</span></span><br><span class="line">    <span class="built_in">module</span>:&#123;</span><br><span class="line">        rules:[</span><br><span class="line">            <span class="comment">//检查如果模块以css结尾的话.那么就使用指定的加载器</span></span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.css$/</span>, <span class="comment">// 正则判断文件名后缀</span></span><br><span class="line">                use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>] <span class="comment">//  npm install style-loader css-loader  --save-dev</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.scss$/</span>,</span><br><span class="line">                use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;sass-loader&#x27;</span>] <span class="comment">// npm install sass-loader node-sass --save-dev</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;   <span class="comment">//图片和字体的文件名后缀</span></span><br><span class="line">                test:<span class="regexp">/\.jpg|gif|png|bmp|eot|ttf|woff|woff2|svg$/</span>,</span><br><span class="line">                use:<span class="string">&#x27;url-loader?limit=25600&#x27;</span>  <span class="comment">//limit 大小 1024*25kb  npm install file-loader url-loader --save-dev</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins:[] <span class="comment">// 插件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>5.运行webpack，根据主配置文件对静态资源进行打包</p>
-<p>Nodejs 运行 webpack 文件<br><code>node  ./node_modules/webpack/bin/webpack.js</code></p>
-<p>或者配置为<br><code>scripts： &quot;build&quot;: &quot;webpack&quot;</code>，用 <code>npm  run  build</code>方式运行</p>
-<p>如果输入报错.先输入 <code>npm install webpack-cli –global</code>或<code>npm install webpack-cli --save-dev</code><br>再输入webpack</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-10-跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">10-跨域</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>什么是跨域: 一个域名下的网页，向另一个域名下的服务器请求资源.受浏览器的同源策略控制，禁止发送的</p>
-<p><code>浏览器同源(origin)策略</code>: 也称禁止跨不同源头访问资源<br>        所有浏览器都有一个安全策略: <code>禁止CORS</code><br>        禁止Cross Origin Resources Shareing<br>        浏览器规定: 请求回来的响应数据的响应头中记录的远程url必须和当前网页正在打开的url地址相同！</p>
-<p>浏览器收到数据后:<br>        会用当前地址栏中的<code>url地址和headers中的origin对比</code>！只有协议，域名，端口号完全一致！才允许网页使用数据</p>
-<h2 id="1-服务端解决跨域"><a href="#1-服务端解决跨域" class="headerlink" title="1.服务端解决跨域"></a>1.服务端解决跨域</h2><p>让服务端返回响应时，篡改响应头中响应源头的地址,nodejs为例子<br>1 手写<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// res.send(result); // 不要用res.send了</span></span><br><span class="line"><span class="comment">//  res.send其实是一种简写: 等效于 res.writeHead()+res.write(JSON.stringify(result))+res.end()</span></span><br><span class="line">res.writeHead(<span class="number">200</span>,&#123; <span class="comment">//修改头部.200表示成功</span></span><br><span class="line">  <span class="string">&quot;Access-Control-Allow-Origin&quot;</span>:http:<span class="comment">//127.0.0.1:5500</span></span><br><span class="line">                     <span class="comment">//或者：“*” 代表所有</span></span><br><span class="line">&#125;);</span><br><span class="line">res.write(<span class="built_in">JSON</span>.stringify(result)); <span class="comment">//发送的内容</span></span><br><span class="line">res.end(); <span class="comment">//发送</span></span><br><span class="line"><span class="comment">//   写在原来node中代替res.send(result);的作用.每个都要写</span></span><br><span class="line"><span class="comment">//  这样返回的数据，就被伪装成来自127.0.0.1:5500的，就可以通过浏览器的同源策略检查，可正常使用</span></span><br></pre></td></tr></table></figure><br>2 引入插件统一写 (推荐)<br>服务端nodejs安装: <code>npm i -save cors</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js中: </span></span><br><span class="line"><span class="keyword">const</span> cors=<span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>); 引入模块</span><br><span class="line">				</span><br><span class="line"> <span class="comment">//在创建端口listen()之后</span></span><br><span class="line"> app.use(cors(&#123;</span><br><span class="line">     origin:<span class="string">&quot;http://127.0.0.1:5500&quot;</span><span class="comment">//不能用*</span></span><br><span class="line"> &#125;));</span><br><span class="line"> <span class="comment">//中间件。。从此所有响应，自动带Access-Control-Allow-Origin:http://127.0.0.1:5500</span></span><br><span class="line"> <span class="comment">//万一客户端浏览器地址发生变化，只改这里origin一处即可！</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-jsonp解决跨域"><a href="#2-jsonp解决跨域" class="headerlink" title="2.jsonp解决跨域"></a>2.jsonp解决跨域</h2><p> jsonp + Promise 只能用于GET请求</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myJsonp</span> (<span class="params">url, obj</span>) </span>&#123; <span class="comment">// 地址，参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> cb = <span class="string">`jsonp<span class="subst">$&#123;<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random() * <span class="number">1000000</span>)&#125;</span>`</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      url += <span class="string">&#x27;&amp;&#x27;</span> + key + <span class="string">&#x27;=&#x27;</span> + obj[key]</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = url + <span class="string">&#x27;&amp;callback=&#x27;</span> + cb <span class="comment">// 地址 + 参数 + 回调函数名 需于后端统一命名</span></span><br><span class="line">    script.id = <span class="string">&#x27;jsonpS&#x27;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">    <span class="built_in">window</span>[cb] = <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> script = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;jsonpS&#x27;</span>);</span><br><span class="line">      <span class="built_in">document</span>.body.removeChild(script);</span><br><span class="line">      <span class="keyword">delete</span> <span class="built_in">window</span>[cb];</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">async</span> a () &#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="keyword">await</span> myJsonp (<span class="string">&#x27;http://dev-test.api.faquange.cn/apppage.php?m=Top&amp;c=getList&#x27;</span>, &#123; <span class="attr">TopCate</span>:<span class="number">1</span> &#125; )</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-ajax解决跨域"><a href="#3-ajax解决跨域" class="headerlink" title="3.ajax解决跨域"></a>3.ajax解决跨域</h2><p><code>dataType:&quot;jsonp&quot;</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line"> url: <span class="string">&quot;服务端接口地址&quot;</span>, <span class="comment">// http://localhost:3000/users/login</span></span><br><span class="line"> type: <span class="string">&quot;get|post&quot;</span>,</span><br><span class="line"> data: &#123; <span class="attr">uname</span>: <span class="string">&quot;dingding&quot;</span>, <span class="attr">upwd</span>: <span class="string">&quot;123456&quot;</span> &#125;,</span><br><span class="line"> <span class="comment">// &quot;uname=dingding&amp;upwd=123456&quot;,</span></span><br><span class="line"> <span class="comment">// 如果返回json，需要自动JSON.parse()转为js对象</span></span><br><span class="line"> dataType:<span class="string">&quot;json&quot;</span>, <span class="comment">//如果不写需要自己手动调用JSON.parse()</span></span><br><span class="line"> <span class="comment">// dataType:&quot;jsonp&quot; // jsonp 跨域</span></span><br><span class="line"> success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;   <span class="comment">// 与.then2选1</span></span><br><span class="line"> &#125;</span><br><span class="line"> &#125;).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-项目相关-14-模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1458,6 +1473,98 @@ var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指
 
 
   
+    <article id="post-项目相关-13-Webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/">13-Webpack</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>中文网站：<a target="_blank" rel="noopener" href="https://www.webpackjs.com/">https://www.webpackjs.com/</a></p>
+<p><strong>概念</strong>：webpack是一个javaScript应用程序的静态模块打包器.当webpack处理应用程序的时候.它会递归的构建一个关系依赖图.其中就包含应用程序需要的每一个模块（js.css.图片）.最后将所有的这些模块打包成一个资源包（bundle）文件</p>
+<p><strong>用途</strong>：资源打包后，再供客户端一次性加载，只需要请求一个文件,减少请求次数和请求数据总大小，从而提高访问效率。</p>
+<p>注意：<br>Webpack本身用于打包静态资源，通常的使用场景是：项目初步开发完成后，运行Webpack(是一个NPM扩展包)，把需要处理的静态资源打包，把得到的打包文件和HTML文件一起发布到WEB服务器(可以是Node/PHP/Java等)上供客户端访问。</p>
+<ul>
+<li>18.webpackss\webpack-myapp</li>
+</ul>
+<h3 id="使用过程"><a href="#使用过程" class="headerlink" title="使用过程"></a>使用过程</h3><p>1.创建客户端项目，编写<code>HTML/CSS/JS/</code>图片等文件</p>
+<p>2.创建项目的描述文件：<code>package.json</code><br>npm  init</p>
+<p>3.下载webpack及其依赖的模块，并添加为当前项目的 开发阶段依赖模块<br><code>npm install webpack --save-dev</code></p>
+<p>4.创建编写webpack主配置文件<br>add <code>webpack.config.js</code> 于 <code>package.json</code>在同级</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置文件.将来会被nodejs运行 所以用Nodejs的导出方式</span></span><br><span class="line"><span class="built_in">module</span>.exports=&#123; </span><br><span class="line">    mode:<span class="string">&#x27;development&#x27;</span>,         <span class="comment">// 运行模式：开发模式</span></span><br><span class="line">    <span class="comment">//mode:&#x27;production&#x27;         // 产品模式.会对代码进行压缩.打包过程会慢</span></span><br><span class="line">    entry:<span class="string">&#x27;./src/js/index2.js&#x27;</span>,  <span class="comment">//入口,入口文件.从哪个文件开始打包</span></span><br><span class="line">    output:&#123;                    <span class="comment">//出口文件.打包后输出的文件.要求使用绝对路径</span></span><br><span class="line">        path:__dirname+<span class="string">&#x27;/dist&#x27;</span>, <span class="comment">//目录.dist文件后续会自动创建</span></span><br><span class="line">        filename:<span class="string">&#x27;bundle.js&#x27;</span>    <span class="comment">//文件名称</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//3.加载器.默认情况下.webpacks只能打包JS文件.如果想打包其他格式文件需要有对应的加载器（loader）</span></span><br><span class="line">    <span class="built_in">module</span>:&#123;</span><br><span class="line">        rules:[</span><br><span class="line">            <span class="comment">//检查如果模块以css结尾的话.那么就使用指定的加载器</span></span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.css$/</span>, <span class="comment">// 正则判断文件名后缀</span></span><br><span class="line">                use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>] <span class="comment">//  npm install style-loader css-loader  --save-dev</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.scss$/</span>,</span><br><span class="line">                use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;sass-loader&#x27;</span>] <span class="comment">// npm install sass-loader node-sass --save-dev</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;   <span class="comment">//图片和字体的文件名后缀</span></span><br><span class="line">                test:<span class="regexp">/\.jpg|gif|png|bmp|eot|ttf|woff|woff2|svg$/</span>,</span><br><span class="line">                use:<span class="string">&#x27;url-loader?limit=25600&#x27;</span>  <span class="comment">//limit 大小 1024*25kb  npm install file-loader url-loader --save-dev</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins:[] <span class="comment">// 插件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.运行webpack，根据主配置文件对静态资源进行打包</p>
+<p>Nodejs 运行 webpack 文件<br><code>node  ./node_modules/webpack/bin/webpack.js</code></p>
+<p>或者配置为<br><code>scripts： &quot;build&quot;: &quot;webpack&quot;</code>，用 <code>npm  run  build</code>方式运行</p>
+<p>如果输入报错.先输入 <code>npm install webpack-cli –global</code>或<code>npm install webpack-cli --save-dev</code><br>再输入webpack</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
@@ -1563,7 +1670,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1571,15 +1678,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1588,10 +1699,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node J S</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1627,15 +1734,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vue3.0</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1644,6 +1747,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1659,6 +1766,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
@@ -1668,10 +1779,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">

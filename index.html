@@ -304,82 +304,6 @@
 
 
   
-    <article id="post-Vue-8-main" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Vue-8-main/">8-main.js</a>
-    </h1>
-  
-
-        
-        <a href="/Vue-8-main/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span> <span class="comment">// 各种引入</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;./router&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;lib-flexible/flexible&#x27;</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"><span class="keyword">import</span> FastClick <span class="keyword">from</span> <span class="string">&#x27;fastclick&#x27;</span></span><br><span class="line"><span class="keyword">import</span> fzajax <span class="keyword">from</span> <span class="string">&#x27;./assets/scripts/ajax&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./assets/scripts/vant&#x27;</span></span><br><span class="line"></span><br><span class="line">FastClick.attach(<span class="built_in">document</span>.body) </span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span>  <span class="comment">// </span></span><br><span class="line">Vue.prototype.$axios = axios <span class="comment">// 各种挂载 工具 方法</span></span><br><span class="line">Vue.prototype.fzajax = fzajax <span class="comment">// </span></span><br><span class="line">Vue.use(*****) <span class="comment">// 各种挂载 插件 使用use必须符合 对象 || 函数 ,对象必须包含install字段函数</span></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123; <span class="comment">// 全局路由拦截器</span></span><br><span class="line">  <span class="built_in">document</span>.title = to.name</span><br><span class="line">  next()</span><br><span class="line">  <span class="comment">// const role = store.getters.getHswuUser || &#123;&#125; // sign验证</span></span><br><span class="line">  <span class="comment">// if (!role.Sign &amp;&amp; to.path !== &#x27;/login&#x27;) &#123;</span></span><br><span class="line">  <span class="comment">//   next(&#x27;/login&#x27;)</span></span><br><span class="line">  <span class="comment">// &#125; else if (</span></span><br><span class="line">  <span class="comment">//   to.path === &#x27;/login&#x27; &amp;&amp;</span></span><br><span class="line">  <span class="comment">//   typeof role.Sign !== &#x27;undefined&#x27; &amp;&amp;</span></span><br><span class="line">  <span class="comment">//   role.Sign.length &gt; 0</span></span><br><span class="line">  <span class="comment">// ) &#123; // 如果已登录并且跳转页面为登录页面</span></span><br><span class="line">  <span class="comment">//   next(&#x27;/vant/row&#x27;)</span></span><br><span class="line">  <span class="comment">// &#125; else &#123;</span></span><br><span class="line">  <span class="comment">//   next()</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">window</span>.wVue = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App) <span class="comment">// 创建 HTML 跟组件app render渲染出来到html页面上 此处app = app.vue</span></span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>) <span class="comment">// 挂载到index.html中的#app</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Vue-8-main/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Vue-7-路由router" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -503,6 +427,82 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Vue-7-%E8%B7%AF%E7%94%B1router/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Vue-8-main" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Vue-8-main/">8-main.js</a>
+    </h1>
+  
+
+        
+        <a href="/Vue-8-main/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span> <span class="comment">// 各种引入</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;./router&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;lib-flexible/flexible&#x27;</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"><span class="keyword">import</span> FastClick <span class="keyword">from</span> <span class="string">&#x27;fastclick&#x27;</span></span><br><span class="line"><span class="keyword">import</span> fzajax <span class="keyword">from</span> <span class="string">&#x27;./assets/scripts/ajax&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./assets/scripts/vant&#x27;</span></span><br><span class="line"></span><br><span class="line">FastClick.attach(<span class="built_in">document</span>.body) </span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span>  <span class="comment">// </span></span><br><span class="line">Vue.prototype.$axios = axios <span class="comment">// 各种挂载 工具 方法</span></span><br><span class="line">Vue.prototype.fzajax = fzajax <span class="comment">// </span></span><br><span class="line">Vue.use(*****) <span class="comment">// 各种挂载 插件 使用use必须符合 对象 || 函数 ,对象必须包含install字段函数</span></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123; <span class="comment">// 全局路由拦截器</span></span><br><span class="line">  <span class="built_in">document</span>.title = to.name</span><br><span class="line">  next()</span><br><span class="line">  <span class="comment">// const role = store.getters.getHswuUser || &#123;&#125; // sign验证</span></span><br><span class="line">  <span class="comment">// if (!role.Sign &amp;&amp; to.path !== &#x27;/login&#x27;) &#123;</span></span><br><span class="line">  <span class="comment">//   next(&#x27;/login&#x27;)</span></span><br><span class="line">  <span class="comment">// &#125; else if (</span></span><br><span class="line">  <span class="comment">//   to.path === &#x27;/login&#x27; &amp;&amp;</span></span><br><span class="line">  <span class="comment">//   typeof role.Sign !== &#x27;undefined&#x27; &amp;&amp;</span></span><br><span class="line">  <span class="comment">//   role.Sign.length &gt; 0</span></span><br><span class="line">  <span class="comment">// ) &#123; // 如果已登录并且跳转页面为登录页面</span></span><br><span class="line">  <span class="comment">//   next(&#x27;/vant/row&#x27;)</span></span><br><span class="line">  <span class="comment">// &#125; else &#123;</span></span><br><span class="line">  <span class="comment">//   next()</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">window</span>.wVue = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App) <span class="comment">// 创建 HTML 跟组件app render渲染出来到html页面上 此处app = app.vue</span></span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>) <span class="comment">// 挂载到index.html中的#app</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Vue-8-main/">展开全文 >></a>
         </p>
       
 
@@ -1934,7 +1934,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1942,15 +1942,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1959,10 +1963,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node J S</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1998,15 +1998,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vue3.0</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2015,6 +2011,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2030,6 +2030,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
@@ -2039,10 +2043,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">

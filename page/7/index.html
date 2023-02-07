@@ -150,19 +150,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Vscode-1-一键执行多个npm指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-TS-索引类型等内置工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/">1-一键执行多个npm指令</a>
+      <a class="article-title" href="/TS-%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B%E7%AD%89%E5%86%85%E7%BD%AE%E5%B7%A5%E5%85%B7/">索引类型等内置工具</a>
     </h1>
   
 
         
-        <a href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/" class="archive-article-date">
+        <a href="/TS-%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B%E7%AD%89%E5%86%85%E7%BD%AE%E5%B7%A5%E5%85%B7/" class="archive-article-date">
   	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
 </a>
         
@@ -171,14 +171,140 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="package-lock-json"><a href="#package-lock-json" class="headerlink" title="package-lock.json"></a>package-lock.json</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;声明&quot;</span>: <span class="string">&quot;代码&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+          <h2 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在对象中获取一些属性的值，然后建立对应的集合。</span></span><br><span class="line"><span class="comment">// T[K]表示对象T的属性K所表示的类型，在上述例子中，T[K][] 表示变量T取属性K的值的数组</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getValues</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">person: T, keys: K[]</span>): <span class="title">T</span>[<span class="title">K</span>][] </span>&#123; </span><br><span class="line">  <span class="keyword">return</span> keys.map(<span class="function"><span class="params">key</span> =&gt;</span> person[key]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Person &#123;   </span><br><span class="line">    name: <span class="built_in">string</span>;  </span><br><span class="line">    age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person: Person = &#123;   </span><br><span class="line">    name: <span class="string">&#x27;musion&#x27;</span>,   </span><br><span class="line">    age: <span class="number">35</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getValues(person, [<span class="string">&#x27;name&#x27;</span>]) <span class="comment">// [&#x27;musion&#x27;]</span></span><br><span class="line">getValues(person, [<span class="string">&#x27;gender&#x27;</span>]) <span class="comment">// 报错：</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="vscode-文件夹"><a href="#vscode-文件夹" class="headerlink" title=".vscode 文件夹"></a>.vscode 文件夹</h3><ul>
-<li>直接创建吧，懒得用vscode触发了</li>
-<li>创建 <code>tasks.json</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">  // 有关 tasks.json 格式的文档，请参见q</span><br><span class="line">  // https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;tasks&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;label&quot;</span>: <span class="string">&quot;BK&quot;</span>, <span class="comment"># 他的名字  被调用时</span></span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;npm&quot;</span>, <span class="comment"># 执行指令</span></span><br><span class="line">      <span class="string">&quot;script&quot;</span>: <span class="string">&quot;bk&quot;</span>, <span class="comment"># 文件夹 package.json - script - 申明的一个属性值</span></span><br><span class="line">      <span class="string">&quot;path&quot;</span>: <span class="string">&quot;BK/&quot;</span>, <span class="comment"># 在 Bk/ 文件下运行</span></span><br><span class="line">      <span class="string">&quot;problemMatcher&quot;</span>: []</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>创建 <code>launch.json</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">  // 悬停以查看现有属性的描述。</span><br><span class="line">  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">      <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;BK&quot;</span>,  <span class="comment"># 显示在调试时的名称</span></span><br><span class="line">      <span class="string">&quot;preLaunchTask&quot;</span>: <span class="string">&quot;BK&quot;</span>  <span class="comment"># 运行的要对应的名称</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<h2 id="映射类型"><a href="#映射类型" class="headerlink" title="映射类型"></a>映射类型</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 映射类型</span></span><br><span class="line"><span class="comment">// 根据旧的类型创建出新的类型, 我们称之为映射类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> TestInterface&#123;  </span><br><span class="line">    name:<span class="built_in">string</span>,   </span><br><span class="line">    age:<span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1 ------------------</span></span><br><span class="line"><span class="comment">// 首先通过 keyof T 拿到 T 的所有属性名，</span></span><br><span class="line"><span class="comment">// 我们可以通过+/-来指定添加还是删除</span></span><br><span class="line"><span class="comment">// 然后使用 in 进行遍历，将值赋给 P，</span></span><br><span class="line"><span class="comment">// 最后通过 T[P] 取得相应的属性值的类。中间的 +? 号，用于将所有属性变为可选。</span></span><br><span class="line"><span class="comment">// 如果是-? 就是讲以前的可选改成必选</span></span><br><span class="line"><span class="keyword">type</span> OptionalTestInterface&lt;T&gt; = &#123; </span><br><span class="line">  [p <span class="keyword">in</span> keyof T]+?:T[p]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> newTestInterface = OptionalTestInterface&lt;TestInterface&gt;</span><br><span class="line"><span class="comment">// type newTestInterface = &#123;</span></span><br><span class="line"><span class="comment">//    name?:string,</span></span><br><span class="line"><span class="comment">//    age?:number</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 ------------加上只读</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">type</span> OptionalTestInterface&lt;T&gt; = &#123;</span><br><span class="line"> +<span class="keyword">readonly</span> [p <span class="keyword">in</span> keyof T]+?:T[p]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> newTestInterface = OptionalTestInterface&lt;TestInterface&gt;</span><br><span class="line"><span class="comment">// type newTestInterface = &#123;</span></span><br><span class="line"><span class="comment">//   readonly name?:string,</span></span><br><span class="line"><span class="comment">//   readonly age?:number</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h2><h3 id="Partial"><a href="#Partial" class="headerlink" title="Partial"></a><span id="Partial">Partial</span></h3><p><code>Partial&lt;T&gt;</code><br>将类型的属性变成可选 只支持第一层属性 </p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> TestInterface&#123;  </span><br><span class="line">    name:<span class="built_in">string</span>,   </span><br><span class="line">    age:<span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// type Partial&lt;T&gt; = &#123; </span></span><br><span class="line"><span class="comment">//   [P in keyof T]?: T[P];</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"><span class="keyword">type</span> newTestInterface = Partial&lt;TestInterface&gt;;</span><br><span class="line"><span class="keyword">var</span> a: newTestInterface = &#123;</span><br><span class="line">  name: <span class="string">&quot;666&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">/// &#123; name:666 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="DeepPartial"><a href="#DeepPartial" class="headerlink" title="DeepPartial"></a><span id="DeepPartial">DeepPartial</span></h3><p><code>DeepPartial&lt;T&gt;</code><br>将类型的属性变成可选 支持多层属性</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type DeepPartial&lt;T&gt; = &#123;   </span></span><br><span class="line"><span class="comment">//     [U in keyof T]?: T[U] extends object    </span></span><br><span class="line"><span class="comment">//       ? DeepPartial&lt;T[U]&gt;   </span></span><br><span class="line"><span class="comment">//       : T[U]</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"><span class="keyword">type</span> PartialedWindow = DeepPartial&lt;T&gt;; <span class="comment">// 现在T上所有属性都变成了可选啦</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Required"><a href="#Required" class="headerlink" title="Required"></a><span id="Required">Required</span></h3><p><code>Required&lt;T&gt;</code><br>将类型的属性变成必选</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type Required&lt;T&gt; = &#123;    </span></span><br><span class="line"><span class="comment">//     [P in keyof T]-?: T[P] </span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"><span class="keyword">type</span> PartialedWindow = Required&lt;T&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Readonly"><a href="#Readonly" class="headerlink" title="Readonly"></a><span id="Readonly">Readonly</span></h3><p><code>Readonly&lt;T&gt;</code><br>将类型的属性变成只读属性</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type Readonly&lt;T&gt; = &#123; </span></span><br><span class="line"><span class="comment">//  readonly [P in keyof T]: T[P];</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"><span class="keyword">type</span> PartialedWindow = Readonly&lt;T&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pick"><a href="#Pick" class="headerlink" title="Pick"></a><span id="Pick">Pick</span></h3><p><code>Pick&lt;T,k&gt;</code><br>从某个类型中挑出一些属性出来</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type Pick&lt;T, K extends keyof T&gt; = &#123;  </span></span><br><span class="line"><span class="comment">//     [P in K]: T[P];</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"><span class="keyword">interface</span> TestInterface&#123;  </span><br><span class="line">    name:<span class="built_in">string</span>,   </span><br><span class="line">    age:<span class="built_in">number</span>,</span><br><span class="line">    gender:<span class="built_in">number</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> TodoPreview = Pick&lt;TestInterface, <span class="string">&quot;name&quot;</span> | <span class="string">&quot;age&quot;</span>&gt;;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">const</span> you: TodoPreview = &#123; </span><br><span class="line">  name: <span class="string">&quot;Clean room&quot;</span>, </span><br><span class="line">  age: <span class="number">7</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Record"><a href="#Record" class="headerlink" title="Record"></a><span id="Record">Record</span></h3><p><code>Record&lt;K, T&gt;</code><br>将 K 中所有的属性的值转化为 T 类型。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type Record&lt;K extends keyof any, T&gt; = &#123;   </span></span><br><span class="line"><span class="comment">//     [P in K]: T;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"><span class="keyword">interface</span> PageInfo &#123; </span><br><span class="line">  title: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Page = <span class="string">&quot;home&quot;</span> | <span class="string">&quot;about&quot;</span> | <span class="string">&quot;contact&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> x: Record&lt;Page, PageInfo&gt; = &#123; </span><br><span class="line">  about: &#123; title: <span class="string">&quot;111&quot;</span> &#125;,  </span><br><span class="line">  contact: &#123; title: <span class="string">&quot;111&quot;</span> &#125;,  </span><br><span class="line">  home: &#123; title: <span class="string">&quot;111&quot;</span> &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ReturnType"><a href="#ReturnType" class="headerlink" title="ReturnType"></a><span id="ReturnType">ReturnType</span></h3><p><code>ReturnType&lt;T&gt;</code><br>用来得到一个函数的返回值类型</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// infer在这里用于提取函数类型的返回值类型。ReturnType&lt;T&gt; 只是将 infer R 从参数位置移动到返回值位置，因此此时 R 即是表示待推断的返回值类型。</span></span><br><span class="line"><span class="comment">// type ReturnType&lt;T extends (...args: any[]) =&gt; any&gt; = T extends ( </span></span><br><span class="line"><span class="comment">//   ...args: any[]</span></span><br><span class="line"><span class="comment">// ) =&gt; infer R  </span></span><br><span class="line"><span class="comment">//   ? R </span></span><br><span class="line"><span class="comment">//   : any;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Func = <span class="function">(<span class="params">value: <span class="built_in">number</span></span>) =&gt;</span> <span class="built_in">string</span>;</span><br><span class="line"><span class="keyword">const</span> foo: ReturnType&lt;Func&gt; = <span class="string">&quot;1&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Exclude"><a href="#Exclude" class="headerlink" title="Exclude"></a><span id="Exclude">Exclude</span></h3><p><code>Exclude&lt;T, U&gt;</code><br>将某个类型中属于另一个的类型移除掉。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果 T 能赋值给 U 类型的话，那么就会返回 never 类型，否则返回 T 类型。最终实现的效果就是将 T 中某些属于 U 的类型移除掉。</span></span><br><span class="line"><span class="comment">//  type Exclude&lt;T, U&gt; = T extends U ? never : T; </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T1 = Exclude&lt;<span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span> | <span class="string">&quot;c&quot;</span>, <span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span>&gt;; <span class="comment">// &quot;c&quot;</span></span><br><span class="line"><span class="keyword">type</span> T2 = Exclude&lt;<span class="built_in">string</span> | <span class="built_in">number</span> | (<span class="function">() =&gt;</span> <span class="built_in">void</span>), <span class="built_in">Function</span>&gt;; <span class="comment">// string | number</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Extract"><a href="#Extract" class="headerlink" title="Extract"></a><span id="Extract">Extract</span></h3><p><code>Extract&lt;T, U&gt;</code><br>从 T 中提取出 U。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type Extract&lt;T, U&gt; = T extends U ? T : never;</span></span><br><span class="line"><span class="keyword">type</span> T0 = Extract&lt;<span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span> | <span class="string">&quot;c&quot;</span>, <span class="string">&quot;a&quot;</span> | <span class="string">&quot;f&quot;</span>&gt;; <span class="comment">// &quot;a&quot;</span></span><br><span class="line"><span class="keyword">type</span> T1 = Extract&lt;<span class="built_in">string</span> | <span class="built_in">number</span> | (<span class="function">() =&gt;</span> <span class="built_in">void</span>), <span class="built_in">Function</span>&gt;; <span class="comment">// () =&gt;void</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Omit"><a href="#Omit" class="headerlink" title="Omit"></a><span id="Omit">Omit</span></h3><p><code>Omit&lt;T, K extends keyof any&gt;</code><br>使用 T 类型中除了 K 类型的所有属性，来构造一个新的类型。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type Omit&lt;T, K extends keyof any&gt; = Pick&lt;T, Exclude&lt;keyof T, K&gt;&gt;;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Todo &#123; </span><br><span class="line">  title: <span class="built_in">string</span>; </span><br><span class="line">  description: <span class="built_in">string</span>; </span><br><span class="line">  completed: <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> TodoPreview = Omit&lt;Todo, <span class="string">&#x27;&#x27;</span>&gt;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todo: TodoPreview = &#123;  </span><br><span class="line">  title: <span class="string">&quot;Clean room&quot;</span>, </span><br><span class="line">  completed: <span class="literal">false</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="NonNullable"><a href="#NonNullable" class="headerlink" title="NonNullable"></a><span id="NonNullable">NonNullable</span></h3><p><code>NonNullable&lt;T&gt;</code><br>用来过滤类型中的 null 及 undefined 类型。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type NonNullable&lt;T&gt; = T extends null | undefined ? never : T;</span></span><br><span class="line"><span class="keyword">type</span> T0 = NonNullable&lt;<span class="built_in">string</span> | <span class="built_in">number</span> | <span class="literal">undefined</span>&gt;; <span class="comment">// string | number</span></span><br><span class="line"><span class="keyword">type</span> T1 = NonNullable&lt;<span class="built_in">string</span>[] | <span class="literal">null</span> | <span class="literal">undefined</span>&gt;; <span class="comment">// string[]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a><span id="Parameters">Parameters</span></h3><p><code>Parameters&lt;T&gt;</code><br> 用于获得函数的参数类型组成的元组类型。<br> <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  type Parameters&lt;T extends (...args: any) =&gt; any&gt; = T extends (...args: infer P) =&gt; any? P : never;</span></span><br><span class="line"><span class="keyword">type</span> A = Parameters&lt;<span class="function">() =&gt;</span><span class="built_in">void</span>&gt;; <span class="comment">// []</span></span><br><span class="line"><span class="keyword">type</span> B = Parameters&lt;<span class="keyword">typeof</span> <span class="built_in">Array</span>.isArray&gt;; <span class="comment">// [any]</span></span><br><span class="line"><span class="keyword">type</span> C = Parameters&lt;<span class="keyword">typeof</span> <span class="built_in">parseInt</span>&gt;; <span class="comment">// [string, (number | undefined)?]</span></span><br><span class="line"><span class="keyword">type</span> D = Parameters&lt;<span class="keyword">typeof</span> <span class="built_in">Math</span>.max&gt;; <span class="comment">// number[]</span></span><br></pre></td></tr></table></figure></p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ts</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/TS-%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B%E7%AD%89%E5%86%85%E7%BD%AE%E5%B7%A5%E5%85%B7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Vscode-4-快捷键" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Vscode-4-%E5%BF%AB%E6%8D%B7%E9%94%AE/">4-快捷键</a>
+    </h1>
+  
+
+        
+        <a href="/Vscode-4-%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>alt+z</td>
+<td>文字自动换行</td>
+</tr>
+<tr>
+<td>ctrl + k &amp;&amp; ctrl + j</td>
+<td>展开所有代码</td>
+</tr>
+<tr>
+<td>ctrl + k &amp;&amp; ctrl + 0</td>
+<td>折叠所有代码</td>
+</tr>
+</tbody></table>
 
         
       
@@ -203,7 +329,94 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/">展开全文 >></a>
+          <a class="article-more-a" href="/Vscode-4-%E5%BF%AB%E6%8D%B7%E9%94%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Vscode-2-设置快捷代码块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/">2-设置快捷代码块</a>
+    </h1>
+  
+
+        
+        <a href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>按下 <code>ctrl + shift + p</code> 输入 <code>用户代码片段</code> </p>
+<p><img src="https://s1.ax1x.com/2020/09/03/wChqmj.png" alt="vscode 设置代码块1"><br>此时  可以看见 当前已有代码片段 和 <code>新建代码片段</code> 点他 然后填入相应内容 </p>
+<p><img src="https://s1.ax1x.com/2020/09/03/wChL0s.png" alt="vscode 设置代码块2"></p>
+<ul>
+<li>书写规范<ul>
+<li>每个字符串元素就代表一行，行与行之间用” , “隔开表示换行。或者使用\n换行</li>
+<li>行内不能使用tab键缩进，只能使用空格或者\t缩进</li>
+<li><code>$0</code> 首次输出位置</li>
+<li><code>$1</code> 使用代码块敲击回车或者tab键后光标定位的位置。<code>$2 $3 $4</code>…表示我们按下tab光标依次出现的位置</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-我的代码片段"><a href="#2-我的代码片段" class="headerlink" title="2. 我的代码片段"></a>2. 我的代码片段</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;vue2.0&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;vue&quot;</span>,</span><br><span class="line">      <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;&lt;template&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t&lt;div&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;new Page&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t&lt;/div&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;/template&gt;\n&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;script&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;export default &#123;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tcomponents: &#123;&#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tprops: &#123;&#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tdata () &#123;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t\treturn &#123;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t\t&#125;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t&#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tfilters: &#123;&#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tcomputed: &#123;&#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\twatch: &#123;&#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tmounted () &#123; &#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tmethods: &#123;&#125;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&#125;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;/script&gt;\n&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;style lang=\&quot;less\&quot; scoped&gt;\n&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;/style&gt;\n&quot;</span>,</span><br><span class="line">      ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;vue2.0初始化&quot;</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">&quot;vue3.0&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;vue3.0&quot;</span>,</span><br><span class="line">      <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;&lt;template&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t&lt;div&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;new Page&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t&lt;/div&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;/template&gt;\n&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;script lang=\&quot;ts\&quot; setup&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;import &#123; ref, reactive, withDefaults, Ref, nextTick, computed, defineEmits, defineProps, defineExpose, onMounted, watch, &#125; from &#x27;vue&#x27;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;import &#123; useRoute, useRouter &#125; from \&quot;vue-router\&quot;;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;import &#123; useAuthStore &#125; from \&quot;@/store/auth\&quot; \/\/ vuex&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\/\/ porp&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const props = withDefaults(defineProps&lt;&#123;&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\turl: string,&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\tcontactItem: Record&lt;string, any&gt;,&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\tzIndex?: number,&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\tmodelValue: Array&lt;string | null | undefined&gt;,&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\tlabel: string | undefined&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&#125;&gt;(), &#123; \/\/ 初始值&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\turl: &#x27;&#x27;,&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\tcontactItem: () =&gt; (&#123;&#125;),&quot;</span></span><br><span class="line">          <span class="string">&quot;\tzIndex: 10000,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&#125;)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const router = useRouter();&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const route = useRoute();&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const authStore = useAuthStore()&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const domRef = ref(null)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const num = ref(1)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const state = reactive(&#123;&quot;</span>,</span><br><span class="line">          <span class="string">&quot;count: 6&quot;</span>,</span><br><span class="line">          <span class="string">&quot;&#125;)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\/\/ 计算属性 vuex&quot;</span> ,</span><br><span class="line">        <span class="string">&quot;const getMesssageUserInfoSwitch = computed(() =&gt; &#123;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;return appStore.messsageUserInfoSwitch&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&#125;)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\/\/ 监听&quot;</span>,</span><br><span class="line">        <span class="string">&quot;watch(num, (count, prevCount) =&gt; &#123; &#125;)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;watch(() =&gt; state.count, (count, prevCount) =&gt; &#123; &#125;)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\/\/$emit&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const emit = defineEmits&lt;&#123;&quot;</span>,</span><br><span class="line">          <span class="string">&quot;(e: &#x27;toggle&#x27;, v: string, v2: Record&lt;string, any&gt;): void&quot;</span>,</span><br><span class="line">          <span class="string">&quot;(e: &#x27;submit&#x27;, v: Record&lt;string, any&gt;): void&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&#125;&gt;()&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\/\/ methods&quot;</span>,</span><br><span class="line">        <span class="string">&quot;function fun() &#123;&quot;</span>,</span><br><span class="line">          <span class="string">&quot;router.push(&#123; path: &#x27;/&#x27; &#125;) \/\/ 跳转路由&quot;</span>,</span><br><span class="line">          <span class="string">&quot;console.log(route.query) \/\/ 获取地址栏参数&quot;</span>,</span><br><span class="line">          <span class="string">&quot;emit(&#x27;submit&#x27;, &#123;&#125;) \/\/ 使用emit&quot;</span>,</span><br><span class="line">          <span class="string">&quot;domRef.value.xxx() \/\/ 使用子组件导出的数据defineExpose&quot;</span>,</span><br><span class="line">          <span class="string">&quot;&#125;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\/\/ 导出&quot;</span>,</span><br><span class="line">        <span class="string">&quot;defineExpose(&#123;&quot;</span>,</span><br><span class="line">          <span class="string">&quot;num&quot;</span>,</span><br><span class="line">          <span class="string">&quot;&#125;)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;/script&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;style lang=\&quot;scss\&quot; scoped&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;/style&gt;&quot;</span>,</span><br><span class="line">      ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;vue3.0初始化&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;etarget&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;e.target&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;e.target&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;当前点击元素&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;!important&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;!important&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;!important&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;css权重&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;保留小数点后2位&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;.toFixed&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;.toFixed(2$&#123;0&#125;)&quot;</span></span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;保留小数点后2位&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;跳转&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;a href=&#x27;&#x27; target=&#x27;_self&#x27;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;&lt;a href= target=_self&gt;&lt;a&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;跳转&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;primary&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;primary&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;primary&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;主要的&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;include&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;include&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;include&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;接口传值参数&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;sortable&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;sortable&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;sortable&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;列表是否排序&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;Record&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;Record&lt;string, any&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;Record&lt;string, any&gt;&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;类型-对象类型&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;vue$Next&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;$nextTick&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;$nextTick(() =&gt; &#123;$1&#125;)&quot;</span></span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;$nextTick&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;$emit()&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;$emit()&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;this.$emit(&#x27;&#x27;, )&quot;</span></span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;$emit()&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;$router&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;$router.resolve(&#123; path: &#x27;dialog&#x27;, query: query &#125;)params&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;$router.resolve(&#123; path: &#x27;dialog&#x27;, query: query &#125;)params&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;路由跳转&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vscode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/">展开全文 >></a>
         </p>
       
 
@@ -421,188 +634,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Vscode-3-%E6%8F%92%E4%BB%B6-%E6%A0%BC%E5%BC%8F%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Vscode-2-设置快捷代码块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/">2-设置快捷代码块</a>
-    </h1>
-  
-
-        
-        <a href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>按下 <code>ctrl + shift + p</code> 输入 <code>用户代码片段</code> </p>
-<p><img src="https://s1.ax1x.com/2020/09/03/wChqmj.png" alt="vscode 设置代码块1"><br>此时  可以看见 当前已有代码片段 和 <code>新建代码片段</code> 点他 然后填入相应内容 </p>
-<p><img src="https://s1.ax1x.com/2020/09/03/wChL0s.png" alt="vscode 设置代码块2"></p>
-<ul>
-<li>书写规范<ul>
-<li>每个字符串元素就代表一行，行与行之间用” , “隔开表示换行。或者使用\n换行</li>
-<li>行内不能使用tab键缩进，只能使用空格或者\t缩进</li>
-<li><code>$0</code> 首次输出位置</li>
-<li><code>$1</code> 使用代码块敲击回车或者tab键后光标定位的位置。<code>$2 $3 $4</code>…表示我们按下tab光标依次出现的位置</li>
-</ul>
-</li>
-</ul>
-<h2 id="2-我的代码片段"><a href="#2-我的代码片段" class="headerlink" title="2. 我的代码片段"></a>2. 我的代码片段</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;vue2.0&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;vue&quot;</span>,</span><br><span class="line">      <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;&lt;template&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t&lt;div&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;new Page&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t&lt;/div&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;/template&gt;\n&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;script&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;export default &#123;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tcomponents: &#123;&#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tprops: &#123;&#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tdata () &#123;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t\treturn &#123;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t\t&#125;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t&#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tfilters: &#123;&#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tcomputed: &#123;&#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\twatch: &#123;&#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tmounted () &#123; &#125;,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\tmethods: &#123;&#125;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&#125;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;/script&gt;\n&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;style lang=\&quot;less\&quot; scoped&gt;\n&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;/style&gt;\n&quot;</span>,</span><br><span class="line">      ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;vue2.0初始化&quot;</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">&quot;vue3.0&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;vue3.0&quot;</span>,</span><br><span class="line">      <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;&lt;template&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t&lt;div&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;new Page&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\t&lt;/div&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;/template&gt;\n&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;script lang=\&quot;ts\&quot; setup&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;import &#123; ref, reactive, withDefaults, Ref, nextTick, computed, defineEmits, defineProps, defineExpose, onMounted, watch, &#125; from &#x27;vue&#x27;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;import &#123; useRoute, useRouter &#125; from \&quot;vue-router\&quot;;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;import &#123; useAuthStore &#125; from \&quot;@/store/auth\&quot; \/\/ vuex&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\/\/ porp&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const props = withDefaults(defineProps&lt;&#123;&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\turl: string,&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\tcontactItem: Record&lt;string, any&gt;,&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\tzIndex?: number,&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\tmodelValue: Array&lt;string | null | undefined&gt;,&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\tlabel: string | undefined&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&#125;&gt;(), &#123; \/\/ 初始值&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\turl: &#x27;&#x27;,&quot;</span>,</span><br><span class="line">          <span class="string">&quot;\tcontactItem: () =&gt; (&#123;&#125;),&quot;</span></span><br><span class="line">          <span class="string">&quot;\tzIndex: 10000,&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&#125;)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const router = useRouter();&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const route = useRoute();&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const authStore = useAuthStore()&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const domRef = ref(null)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const num = ref(1)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const state = reactive(&#123;&quot;</span>,</span><br><span class="line">          <span class="string">&quot;count: 6&quot;</span>,</span><br><span class="line">          <span class="string">&quot;&#125;)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\/\/ 计算属性 vuex&quot;</span> ,</span><br><span class="line">        <span class="string">&quot;const getMesssageUserInfoSwitch = computed(() =&gt; &#123;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;return appStore.messsageUserInfoSwitch&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&#125;)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\/\/ 监听&quot;</span>,</span><br><span class="line">        <span class="string">&quot;watch(num, (count, prevCount) =&gt; &#123; &#125;)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;watch(() =&gt; state.count, (count, prevCount) =&gt; &#123; &#125;)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\/\/$emit&quot;</span>,</span><br><span class="line">        <span class="string">&quot;const emit = defineEmits&lt;&#123;&quot;</span>,</span><br><span class="line">          <span class="string">&quot;(e: &#x27;toggle&#x27;, v: string, v2: Record&lt;string, any&gt;): void&quot;</span>,</span><br><span class="line">          <span class="string">&quot;(e: &#x27;submit&#x27;, v: Record&lt;string, any&gt;): void&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&#125;&gt;()&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\/\/ methods&quot;</span>,</span><br><span class="line">        <span class="string">&quot;function fun() &#123;&quot;</span>,</span><br><span class="line">          <span class="string">&quot;router.push(&#123; path: &#x27;/&#x27; &#125;) \/\/ 跳转路由&quot;</span>,</span><br><span class="line">          <span class="string">&quot;console.log(route.query) \/\/ 获取地址栏参数&quot;</span>,</span><br><span class="line">          <span class="string">&quot;emit(&#x27;submit&#x27;, &#123;&#125;) \/\/ 使用emit&quot;</span>,</span><br><span class="line">          <span class="string">&quot;domRef.value.xxx() \/\/ 使用子组件导出的数据defineExpose&quot;</span>,</span><br><span class="line">          <span class="string">&quot;&#125;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;\/\/ 导出&quot;</span>,</span><br><span class="line">        <span class="string">&quot;defineExpose(&#123;&quot;</span>,</span><br><span class="line">          <span class="string">&quot;num&quot;</span>,</span><br><span class="line">          <span class="string">&quot;&#125;)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;/script&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;style lang=\&quot;scss\&quot; scoped&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;/style&gt;&quot;</span>,</span><br><span class="line">      ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;vue3.0初始化&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;etarget&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;e.target&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;e.target&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;当前点击元素&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;!important&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;!important&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;!important&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;css权重&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;保留小数点后2位&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;.toFixed&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;.toFixed(2$&#123;0&#125;)&quot;</span></span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;保留小数点后2位&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;跳转&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;a href=&#x27;&#x27; target=&#x27;_self&#x27;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;&lt;a href= target=_self&gt;&lt;a&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;跳转&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;primary&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;primary&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;primary&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;主要的&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;include&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;include&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;include&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;接口传值参数&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;sortable&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;sortable&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;sortable&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;列表是否排序&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;Record&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;Record&lt;string, any&gt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;Record&lt;string, any&gt;&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;类型-对象类型&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;vue$Next&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;$nextTick&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;$nextTick(() =&gt; &#123;$1&#125;)&quot;</span></span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;$nextTick&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;$emit()&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;$emit()&quot;</span>,</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;this.$emit(&#x27;&#x27;, )&quot;</span></span><br><span class="line">        ],</span><br><span class="line">          <span class="string">&quot;description&quot;</span>: <span class="string">&quot;$emit()&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;$router&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;$router.resolve(&#123; path: &#x27;dialog&#x27;, query: query &#125;)params&quot;</span>,</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;$router.resolve(&#123; path: &#x27;dialog&#x27;, query: query &#125;)params&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;路由跳转&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vscode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Vscode-2-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%A0%81%E5%9D%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Vscode-4-快捷键" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Vscode-4-%E5%BF%AB%E6%8D%B7%E9%94%AE/">4-快捷键</a>
-    </h1>
-  
-
-        
-        <a href="/Vscode-4-%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>alt+z</td>
-<td>文字自动换行</td>
-</tr>
-<tr>
-<td>ctrl + k &amp;&amp; ctrl + j</td>
-<td>展开所有代码</td>
-</tr>
-<tr>
-<td>ctrl + k &amp;&amp; ctrl + 0</td>
-<td>折叠所有代码</td>
-</tr>
-</tbody></table>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vscode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Vscode-4-%E5%BF%AB%E6%8D%B7%E9%94%AE/">展开全文 >></a>
         </p>
       
 
@@ -896,110 +927,6 @@
 
 
   
-    <article id="post-UniApp-3-uniappApp打包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/UniApp-3-uniappApp%E6%89%93%E5%8C%85/">3.uniappApp打包</a>
-    </h1>
-  
-
-        
-        <a href="/UniApp-3-uniappApp%E6%89%93%E5%8C%85/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="本地打包"><a href="#本地打包" class="headerlink" title="本地打包"></a>本地打包</h2><h3 id="一-相关依赖"><a href="#一-相关依赖" class="headerlink" title="一.相关依赖"></a>一.相关依赖</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_54498884/article/details/123617030">https://blog.csdn.net/weixin_54498884/article/details/123617030</a><br>|名词|版本|查看| 下载地址 |<br>| :– | :– | :– | :– |<br>| HBuilder X | 3.4.7 | 帮助-历次更新说明 | <a target="_blank" rel="noopener" href="https://www.dcloud.io/hbuilderx.html">下载地址</a> |<br>| Android Studio | - | - | <a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/index.html">下载地址</a>  |</p>
-<p><strong>uni-app的应用标识AppID</strong> = <code>开发者中心 - 配置信息APPID</code>  = <code>打包生成目录</code> = 这里现在等于<code>__UNI__DDC0EBA</code></p>
-<p><strong>Android包名</strong>  = 这里现在等于<code>io.dcloud.liuzhixiang_app</code><br><strong>Android证书签名SHA1</strong><br><strong>iOS BundleId</strong> = 这里现在等于 <code>io.dcloud.liuzhixiang_app</code></p>
-<h3 id="二-App离线SDK下载"><a href="#二-App离线SDK下载" class="headerlink" title="二.App离线SDK下载"></a>二.App离线SDK下载</h3><p>复制提取码后进入百度云直接下载最新版压缩包  <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1qxxUqh9ifF7mfJ4T46NB4Q#list/path=%2F">下载地址</a><br>解压 记住 目录</p>
-<p><code>E:\BaiduNetdiskDownload\Android离线打包SDK\3.4.14\Android-SDK@3.4.14.81352_20220608\HBuilder-Integrate-AS</code></p>
-<p>目录一定要换位置更换一下<br>否则 as 可能会找不到 <code>Generate signed Bundle or APK</code><br><code>d:\my\uni\HBuilder-Integrate-AS</code></p>
-<h3 id="三-生成本地打包APP资源"><a href="#三-生成本地打包APP资源" class="headerlink" title="三.生成本地打包APP资源"></a>三.生成本地打包APP资源</h3><p>HBuilderX - 发行 - 点击原生App-本地打包 - 生成本地打包资源<br>打包完毕进入文件<br><code>项目\unpackage\resources\__UNI__DDC0EBA</code></p>
-<h3 id="四-申请Appkey"><a href="#四-申请Appkey" class="headerlink" title="四.申请Appkey"></a>四.申请Appkey</h3><p><a target="_blank" rel="noopener" href="https://dev.dcloud.net.cn/app/index?type=0">HBuilder开发者中心</a><br>点击想要离线打包的项目 -<br>进入到项目的详情页 -<br>点击菜单栏的离线打包Key管理<br>勾选打包的平台，自定义Android包名，输入Android 证书签名SHA1，最后点击保存即可生成AppKey。<br>iOS：c33bda05e074f68**<strong><strong>**</strong></strong><br>Android：584ac5d15865281278c8******</p>
-<h5 id="Android-证书签名"><a href="#Android-证书签名" class="headerlink" title="Android 证书签名"></a>Android 证书签名</h5><p>参考 <a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/article/35777">https://ask.dcloud.net.cn/article/35777</a></p>
-<p>Oracle官方下载jre安装包：<a target="_blank" rel="noopener" href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a><br>需要登录才能下载</p>
-<p>最下面 选择 <code>x64 Compressed Archive 76.84 MB jre-8u333-windows-x64.tar.gz</code></p>
-<p>安装到 <code>C:\Program Files\Java\jre1.8.0_333</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">d:   <span class="comment">// 切换工作目录到D:路径</span></span><br><span class="line">set PATH=%PATH%;<span class="string">&quot;C:\Program Files\Java\jre1.8.0_333\bin&quot;</span> <span class="comment">// 将jre命令添加到临时环境变量中</span></span><br><span class="line">keytool -genkey -alias a(证书别名) -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">36500</span>(有效期天) -keystore test.keystore(证书文件名称) <span class="comment">// 生成签名证书</span></span><br><span class="line">keytool -list -v -keystore test.keystore   <span class="comment">// 查看证书 里面就会得到相应的信息</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>创建证书</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">λ keytool -genkey -alias liuzhixiang -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">36500</span> -keystore liuzhixiang.keystore</span><br><span class="line">输入密钥库口令:</span><br><span class="line">再次输入新口令:</span><br><span class="line">您的名字与姓氏是什么?</span><br><span class="line">  [Unknown]:  刘</span><br><span class="line">您的组织单位名称是什么?</span><br><span class="line">  [Unknown]:  魔方</span><br><span class="line">您的组织名称是什么?</span><br><span class="line">  [Unknown]:  魔方</span><br><span class="line">您所在的城市或区域名称是什么?</span><br><span class="line">  [Unknown]:  长沙</span><br><span class="line">您所在的省/市/自治区名称是什么?</span><br><span class="line">  [Unknown]:  湖南</span><br><span class="line">该单位的双字母国家/地区代码是什么?</span><br><span class="line">  [Unknown]:  CN</span><br><span class="line">CN=刘, OU=魔方, O=魔方, L=长沙, ST=湖南, C=CN是否正确?</span><br><span class="line">  [否]:  y</span><br><span class="line"></span><br><span class="line">输入 &lt;liuzhixiang&gt; 的密钥口令</span><br><span class="line">        (如果和密钥库口令相同, 按回车):</span><br><span class="line"></span><br><span class="line">Warning:</span><br><span class="line">JKS 密钥库使用专用格式。建议使用 <span class="string">&quot;keytool -importkeystore -srckeystore liuzhixiang.keystore -destkeystore liuzhixia</span></span><br><span class="line"><span class="string">ng.keystore -deststoretype pkcs12&quot;</span> 迁移到行业标准格式 PKCS12。</span><br></pre></td></tr></table></figure>
-
-<h3 id="五-打包"><a href="#五-打包" class="headerlink" title="五.打包"></a>五.打包</h3><p>1.使用 <code>Android Studio</code> 打开 <code>HBuilder-Integrate-AS</code>(二.App离线SDK下载) 文件<br>2.替换 <code>simpleDemo\src\main\assets\apps</code>内容为 <code>项目\unpackage\resources</code>内容 (三.生成本地打包APP资源)<br>3.将<code>simpleDemo\src\main\assets\data\dcloud_control.xml</code> 修改 appid=”__UNI__DDC0EBA” (_三.生成本地打包APP资源的包名_UNI__DDC0EBA)<br>4.将<code>simpleDemo\src\main\Androidmanifest.xml</code>文件，将android:value替换为之前准备( 四.申请Appkey)Appkey，将package更换为Android包名<br>5.将<code>simpleDemo\src\main\res\values\strings.xml</code>文件，输入自己应用想要的应用名称<code>&lt;string name=&quot;app_name&quot;&gt;应用名称&lt;/string&gt;</code><br>6.<code>simpleDemo\build.gradle</code>文件，填入Android包名和大版本号和小版本号<br>可通过在<code>simpleDemo\src\main\assets\apps\__UNI__B0DA83E\www\manifest.json</code>文件查看版本号信息</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">applicationId <span class="string">&quot;io.dcloud.liuzhixiang_app&quot;</span> Android包名</span><br><span class="line">versionCode <span class="number">110</span> 大版本号 <span class="comment">// version.code</span></span><br><span class="line">versionName <span class="string">&quot;1.0.0&quot;</span>小版本号 <span class="comment">// version.name</span></span><br><span class="line"><span class="string">&quot;id&quot;</span>:<span class="string">&quot;__UNI__DDC0EBA&quot;</span>, </span><br><span class="line"><span class="string">&quot;name&quot;</span>:<span class="string">&quot;刘志祥&quot;</span>, <span class="string">&quot;version&quot;</span>:</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>:</span><br><span class="line">  <span class="string">&quot;1.0.0&quot;</span>, <span class="string">&quot;code&quot;</span>:</span><br><span class="line">  <span class="string">&quot;100&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<p>7.点击<code>Android Studio</code> 编辑器上方的 <code>build</code> <code>Generate  Signed Bundle / APK</code><br>勾选 <code>APK</code><br>填入 Android平台签名证书(.keystore)的证书路径、 <code>D:\liuzhixiang.keystore</code><br>证书秘钥 <code>创建证书时填写的秘钥</code><br>证书别名 <code>liuzhixiang</code><br>打包密码 <code>这里我填的是 创建证书时填写的秘钥</code><br>8.成功 <code>simpleDemo\release\****.apk文件</code></p>
-<h3 id="六-问题"><a href="#六-问题" class="headerlink" title="六.问题"></a>六.问题</h3><h6 id="1-手机报警-本应用使用HBuilderX-3-1-12-或对应的cli版本编译，而手机端SDK版本是3-1-13，不匹配的版本可能造成应用异常"><a href="#1-手机报警-本应用使用HBuilderX-3-1-12-或对应的cli版本编译，而手机端SDK版本是3-1-13，不匹配的版本可能造成应用异常" class="headerlink" title="1.手机报警 本应用使用HBuilderX 3.1.12 或对应的cli版本编译，而手机端SDK版本是3.1.13，不匹配的版本可能造成应用异常"></a>1.手机报警 本应用使用HBuilderX 3.1.12 或对应的cli版本编译，而手机端SDK版本是3.1.13，不匹配的版本可能造成应用异常</h6><p>解决办法<br>1、比较简单的就是全部升级，保持HBuilderX、自定义基座、cli项目编译器都是最新版。</p>
-<p>2、无视问题 在<code>manifest.json``源码视图</code>新增</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;app-plus&quot;</span>: &#123;  </span><br><span class="line">    <span class="string">&quot;compatible&quot;</span>: &#123;  </span><br><span class="line">        <span class="string">&quot;ignoreVersion&quot;</span>: <span class="literal">true</span> <span class="comment">//true表示忽略版本检查提示框，HBuilderX1.9.0及以上版本支持  </span></span><br><span class="line">    &#125;,  </span><br><span class="line">    <span class="comment">//....  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="2-修改打包-apk名称"><a href="#2-修改打包-apk名称" class="headerlink" title="2.修改打包.apk名称"></a>2.修改打包.apk名称</h6><p><code>simpleDemo\build.gradle</code>新增</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">  ...</span><br><span class="line">      applicationVariants.all &#123; variant -&gt;</span><br><span class="line">        variant.outputs.all &#123; output -&gt;</span><br><span class="line">            def outputFile &#x3D; output.outputFile</span><br><span class="line">            def fileName</span><br><span class="line">            if (outputFile !&#x3D; null &amp;&amp; outputFile.name.endsWith(&#39;.apk&#39;)) &#123;</span><br><span class="line">                if (variant.buildType.name.equals(&#39;release&#39;)) &#123;&#x2F;&#x2F;如果是release包</span><br><span class="line">                    fileName &#x3D; &quot;anjian_release_v$&#123;defaultConfig.versionName&#125;.apk&quot;</span><br><span class="line">                &#125; else if (variant.buildType.name.equals(&#39;debug&#39;)) &#123;&#x2F;&#x2F;如果是debug包</span><br><span class="line">                    fileName &#x3D; &quot;anjian_debug_v$&#123;defaultConfig.versionName&#125;.apk&quot;</span><br><span class="line">                &#125;</span><br><span class="line">                outputFileName &#x3D; fileName</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="七-todo"><a href="#七-todo" class="headerlink" title="七.todo"></a>七.todo</h3><p>ios包 <a target="_blank" rel="noopener" href="https://blog.csdn.net/jiciqiang/article/details/124149596">https://blog.csdn.net/jiciqiang/article/details/124149596</a></p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">uniapp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/UniApp-3-uniappApp%E6%89%93%E5%8C%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Vue-1-cli-3-0安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1178,6 +1105,110 @@
 
 
   
+    <article id="post-UniApp-3-uniappApp打包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/UniApp-3-uniappApp%E6%89%93%E5%8C%85/">3.uniappApp打包</a>
+    </h1>
+  
+
+        
+        <a href="/UniApp-3-uniappApp%E6%89%93%E5%8C%85/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="本地打包"><a href="#本地打包" class="headerlink" title="本地打包"></a>本地打包</h2><h3 id="一-相关依赖"><a href="#一-相关依赖" class="headerlink" title="一.相关依赖"></a>一.相关依赖</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_54498884/article/details/123617030">https://blog.csdn.net/weixin_54498884/article/details/123617030</a><br>|名词|版本|查看| 下载地址 |<br>| :– | :– | :– | :– |<br>| HBuilder X | 3.4.7 | 帮助-历次更新说明 | <a target="_blank" rel="noopener" href="https://www.dcloud.io/hbuilderx.html">下载地址</a> |<br>| Android Studio | - | - | <a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/index.html">下载地址</a>  |</p>
+<p><strong>uni-app的应用标识AppID</strong> = <code>开发者中心 - 配置信息APPID</code>  = <code>打包生成目录</code> = 这里现在等于<code>__UNI__DDC0EBA</code></p>
+<p><strong>Android包名</strong>  = 这里现在等于<code>io.dcloud.liuzhixiang_app</code><br><strong>Android证书签名SHA1</strong><br><strong>iOS BundleId</strong> = 这里现在等于 <code>io.dcloud.liuzhixiang_app</code></p>
+<h3 id="二-App离线SDK下载"><a href="#二-App离线SDK下载" class="headerlink" title="二.App离线SDK下载"></a>二.App离线SDK下载</h3><p>复制提取码后进入百度云直接下载最新版压缩包  <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1qxxUqh9ifF7mfJ4T46NB4Q#list/path=%2F">下载地址</a><br>解压 记住 目录</p>
+<p><code>E:\BaiduNetdiskDownload\Android离线打包SDK\3.4.14\Android-SDK@3.4.14.81352_20220608\HBuilder-Integrate-AS</code></p>
+<p>目录一定要换位置更换一下<br>否则 as 可能会找不到 <code>Generate signed Bundle or APK</code><br><code>d:\my\uni\HBuilder-Integrate-AS</code></p>
+<h3 id="三-生成本地打包APP资源"><a href="#三-生成本地打包APP资源" class="headerlink" title="三.生成本地打包APP资源"></a>三.生成本地打包APP资源</h3><p>HBuilderX - 发行 - 点击原生App-本地打包 - 生成本地打包资源<br>打包完毕进入文件<br><code>项目\unpackage\resources\__UNI__DDC0EBA</code></p>
+<h3 id="四-申请Appkey"><a href="#四-申请Appkey" class="headerlink" title="四.申请Appkey"></a>四.申请Appkey</h3><p><a target="_blank" rel="noopener" href="https://dev.dcloud.net.cn/app/index?type=0">HBuilder开发者中心</a><br>点击想要离线打包的项目 -<br>进入到项目的详情页 -<br>点击菜单栏的离线打包Key管理<br>勾选打包的平台，自定义Android包名，输入Android 证书签名SHA1，最后点击保存即可生成AppKey。<br>iOS：c33bda05e074f68**<strong><strong>**</strong></strong><br>Android：584ac5d15865281278c8******</p>
+<h5 id="Android-证书签名"><a href="#Android-证书签名" class="headerlink" title="Android 证书签名"></a>Android 证书签名</h5><p>参考 <a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/article/35777">https://ask.dcloud.net.cn/article/35777</a></p>
+<p>Oracle官方下载jre安装包：<a target="_blank" rel="noopener" href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a><br>需要登录才能下载</p>
+<p>最下面 选择 <code>x64 Compressed Archive 76.84 MB jre-8u333-windows-x64.tar.gz</code></p>
+<p>安装到 <code>C:\Program Files\Java\jre1.8.0_333</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">d:   <span class="comment">// 切换工作目录到D:路径</span></span><br><span class="line">set PATH=%PATH%;<span class="string">&quot;C:\Program Files\Java\jre1.8.0_333\bin&quot;</span> <span class="comment">// 将jre命令添加到临时环境变量中</span></span><br><span class="line">keytool -genkey -alias a(证书别名) -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">36500</span>(有效期天) -keystore test.keystore(证书文件名称) <span class="comment">// 生成签名证书</span></span><br><span class="line">keytool -list -v -keystore test.keystore   <span class="comment">// 查看证书 里面就会得到相应的信息</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>创建证书</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">λ keytool -genkey -alias liuzhixiang -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">36500</span> -keystore liuzhixiang.keystore</span><br><span class="line">输入密钥库口令:</span><br><span class="line">再次输入新口令:</span><br><span class="line">您的名字与姓氏是什么?</span><br><span class="line">  [Unknown]:  刘</span><br><span class="line">您的组织单位名称是什么?</span><br><span class="line">  [Unknown]:  魔方</span><br><span class="line">您的组织名称是什么?</span><br><span class="line">  [Unknown]:  魔方</span><br><span class="line">您所在的城市或区域名称是什么?</span><br><span class="line">  [Unknown]:  长沙</span><br><span class="line">您所在的省/市/自治区名称是什么?</span><br><span class="line">  [Unknown]:  湖南</span><br><span class="line">该单位的双字母国家/地区代码是什么?</span><br><span class="line">  [Unknown]:  CN</span><br><span class="line">CN=刘, OU=魔方, O=魔方, L=长沙, ST=湖南, C=CN是否正确?</span><br><span class="line">  [否]:  y</span><br><span class="line"></span><br><span class="line">输入 &lt;liuzhixiang&gt; 的密钥口令</span><br><span class="line">        (如果和密钥库口令相同, 按回车):</span><br><span class="line"></span><br><span class="line">Warning:</span><br><span class="line">JKS 密钥库使用专用格式。建议使用 <span class="string">&quot;keytool -importkeystore -srckeystore liuzhixiang.keystore -destkeystore liuzhixia</span></span><br><span class="line"><span class="string">ng.keystore -deststoretype pkcs12&quot;</span> 迁移到行业标准格式 PKCS12。</span><br></pre></td></tr></table></figure>
+
+<h3 id="五-打包"><a href="#五-打包" class="headerlink" title="五.打包"></a>五.打包</h3><p>1.使用 <code>Android Studio</code> 打开 <code>HBuilder-Integrate-AS</code>(二.App离线SDK下载) 文件<br>2.替换 <code>simpleDemo\src\main\assets\apps</code>内容为 <code>项目\unpackage\resources</code>内容 (三.生成本地打包APP资源)<br>3.将<code>simpleDemo\src\main\assets\data\dcloud_control.xml</code> 修改 appid=”__UNI__DDC0EBA” (_三.生成本地打包APP资源的包名_UNI__DDC0EBA)<br>4.将<code>simpleDemo\src\main\Androidmanifest.xml</code>文件，将android:value替换为之前准备( 四.申请Appkey)Appkey，将package更换为Android包名<br>5.将<code>simpleDemo\src\main\res\values\strings.xml</code>文件，输入自己应用想要的应用名称<code>&lt;string name=&quot;app_name&quot;&gt;应用名称&lt;/string&gt;</code><br>6.<code>simpleDemo\build.gradle</code>文件，填入Android包名和大版本号和小版本号<br>可通过在<code>simpleDemo\src\main\assets\apps\__UNI__B0DA83E\www\manifest.json</code>文件查看版本号信息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">applicationId <span class="string">&quot;io.dcloud.liuzhixiang_app&quot;</span> Android包名</span><br><span class="line">versionCode <span class="number">110</span> 大版本号 <span class="comment">// version.code</span></span><br><span class="line">versionName <span class="string">&quot;1.0.0&quot;</span>小版本号 <span class="comment">// version.name</span></span><br><span class="line"><span class="string">&quot;id&quot;</span>:<span class="string">&quot;__UNI__DDC0EBA&quot;</span>, </span><br><span class="line"><span class="string">&quot;name&quot;</span>:<span class="string">&quot;刘志祥&quot;</span>, <span class="string">&quot;version&quot;</span>:</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>:</span><br><span class="line">  <span class="string">&quot;1.0.0&quot;</span>, <span class="string">&quot;code&quot;</span>:</span><br><span class="line">  <span class="string">&quot;100&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>7.点击<code>Android Studio</code> 编辑器上方的 <code>build</code> <code>Generate  Signed Bundle / APK</code><br>勾选 <code>APK</code><br>填入 Android平台签名证书(.keystore)的证书路径、 <code>D:\liuzhixiang.keystore</code><br>证书秘钥 <code>创建证书时填写的秘钥</code><br>证书别名 <code>liuzhixiang</code><br>打包密码 <code>这里我填的是 创建证书时填写的秘钥</code><br>8.成功 <code>simpleDemo\release\****.apk文件</code></p>
+<h3 id="六-问题"><a href="#六-问题" class="headerlink" title="六.问题"></a>六.问题</h3><h6 id="1-手机报警-本应用使用HBuilderX-3-1-12-或对应的cli版本编译，而手机端SDK版本是3-1-13，不匹配的版本可能造成应用异常"><a href="#1-手机报警-本应用使用HBuilderX-3-1-12-或对应的cli版本编译，而手机端SDK版本是3-1-13，不匹配的版本可能造成应用异常" class="headerlink" title="1.手机报警 本应用使用HBuilderX 3.1.12 或对应的cli版本编译，而手机端SDK版本是3.1.13，不匹配的版本可能造成应用异常"></a>1.手机报警 本应用使用HBuilderX 3.1.12 或对应的cli版本编译，而手机端SDK版本是3.1.13，不匹配的版本可能造成应用异常</h6><p>解决办法<br>1、比较简单的就是全部升级，保持HBuilderX、自定义基座、cli项目编译器都是最新版。</p>
+<p>2、无视问题 在<code>manifest.json``源码视图</code>新增</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;app-plus&quot;</span>: &#123;  </span><br><span class="line">    <span class="string">&quot;compatible&quot;</span>: &#123;  </span><br><span class="line">        <span class="string">&quot;ignoreVersion&quot;</span>: <span class="literal">true</span> <span class="comment">//true表示忽略版本检查提示框，HBuilderX1.9.0及以上版本支持  </span></span><br><span class="line">    &#125;,  </span><br><span class="line">    <span class="comment">//....  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-修改打包-apk名称"><a href="#2-修改打包-apk名称" class="headerlink" title="2.修改打包.apk名称"></a>2.修改打包.apk名称</h6><p><code>simpleDemo\build.gradle</code>新增</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">  ...</span><br><span class="line">      applicationVariants.all &#123; variant -&gt;</span><br><span class="line">        variant.outputs.all &#123; output -&gt;</span><br><span class="line">            def outputFile &#x3D; output.outputFile</span><br><span class="line">            def fileName</span><br><span class="line">            if (outputFile !&#x3D; null &amp;&amp; outputFile.name.endsWith(&#39;.apk&#39;)) &#123;</span><br><span class="line">                if (variant.buildType.name.equals(&#39;release&#39;)) &#123;&#x2F;&#x2F;如果是release包</span><br><span class="line">                    fileName &#x3D; &quot;anjian_release_v$&#123;defaultConfig.versionName&#125;.apk&quot;</span><br><span class="line">                &#125; else if (variant.buildType.name.equals(&#39;debug&#39;)) &#123;&#x2F;&#x2F;如果是debug包</span><br><span class="line">                    fileName &#x3D; &quot;anjian_debug_v$&#123;defaultConfig.versionName&#125;.apk&quot;</span><br><span class="line">                &#125;</span><br><span class="line">                outputFileName &#x3D; fileName</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="七-todo"><a href="#七-todo" class="headerlink" title="七.todo"></a>七.todo</h3><p>ios包 <a target="_blank" rel="noopener" href="https://blog.csdn.net/jiciqiang/article/details/124149596">https://blog.csdn.net/jiciqiang/article/details/124149596</a></p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">uniapp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/UniApp-3-uniappApp%E6%89%93%E5%8C%85/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
@@ -1283,7 +1314,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1291,15 +1322,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1308,10 +1343,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node J S</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1347,15 +1378,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vue3.0</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1364,6 +1391,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1379,6 +1410,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
@@ -1388,10 +1423,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">

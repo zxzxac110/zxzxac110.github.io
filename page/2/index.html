@@ -711,6 +711,612 @@
 
 
   
+    <article id="post-画图-echarts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E7%94%BB%E5%9B%BE-echarts/">echarts</a>
+    </h1>
+  
+
+        
+        <a href="/%E7%94%BB%E5%9B%BE-echarts/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>第三方绘图库<br>1.<a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/download.html">下载echarts库文件</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> &lt; div id=<span class="string">&quot;main&quot;</span> style=<span class="string">&quot;width:500px;height:400px&quot;</span>&gt;&lt;<span class="regexp">/div&gt; /</span><span class="regexp">/ 容器</span></span><br><span class="line"><span class="regexp"> &lt; script src=&quot;echarts.js&quot;&gt;&lt;/</span>script&gt; <span class="comment">// 引入插件</span></span><br><span class="line"> <span class="keyword">var</span> main = <span class="built_in">document</span>.getElementById(<span class="string">&quot;main&quot;</span>); <span class="comment">// 获取容器并且创建echarts对象</span></span><br><span class="line"> <span class="keyword">var</span> mychart = echarts.init(main);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> option = &#123; <span class="comment">// 创建配置项(柱状统计图)</span></span><br><span class="line">   title:&#123;<span class="attr">text</span>:<span class="string">&quot;echarts 入门示例&quot;</span>&#125;    			<span class="comment">// 顶部标题</span></span><br><span class="line">   xAxis:&#123;<span class="attr">data</span>:[<span class="string">&quot;第一季度&quot;</span>,<span class="string">&quot;第二季度&quot;</span>,<span class="string">&quot;第三季度&quot;</span>,<span class="string">&quot;第四季度&quot;</span>]&#125;, <span class="comment">// x轴数据</span></span><br><span class="line">   yAxis:&#123;&#125;,  								<span class="comment">// y轴数据(空)</span></span><br><span class="line">   series:[</span><br><span class="line">     &#123;</span><br><span class="line">       type:<span class="string">&quot;bar&quot;</span>,<span class="attr">data</span>:[<span class="number">1005</span>,<span class="number">1053</span>,<span class="number">1012</span>,<span class="number">1355</span>] <span class="comment">// type:&quot;bar&quot; 指绘图像类型 bar line pie .....    bar柱状 line折线 pie饼状</span></span><br><span class="line">     &#125;,</span><br><span class="line">     &#123;</span><br><span class="line">       type:<span class="string">&quot;line&quot;</span>,<span class="attr">data</span>:[<span class="number">1005</span>,<span class="number">1053</span>,<span class="number">1012</span>,<span class="number">1355</span>]</span><br><span class="line">     &#125;</span><br><span class="line">   ] </span><br><span class="line"> &#125;</span><br><span class="line"> mychart.setOption(option); <span class="comment">// 将配置项添加mychart对</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>  <a href="/study/echarts/easyDemonstration" target="_self">简单示例</a></p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">画图</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-echarts/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-画图-canvas" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E7%94%BB%E5%9B%BE-canvas/">canvas</a>
+    </h1>
+  
+
+        
+        <a href="/%E7%94%BB%E5%9B%BE-canvas/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <style>
+  table tr th:nth-child(3){
+    width: 90px !important;
+  }
+  table tr th:first-child{
+    width: 350px !important;
+  }
+</style>
+
+<h2 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h2><p> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Basic_animations">更多api参考内容</a><br> 2D位图用像素点组成图形 特点:不可以放大或缩小，颜色细腻<br> 注意</p>
+<blockquote>
+<p> 1.画布宽度和高度只能通过js 或者标签属性来赋值<br>    2.样式要写在绘制之前才能改变绘制的样式<br>    3.绘制的东西不会超过画布的大小</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>说明</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>dom.getContext(&quot;2d&quot;)</code></td>
+<td>获取画布对象</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>ctx.strokeRect(x,y,w,h)</code></td>
+<td>绘制<strong>空心矩形</strong> x,y矩形左上角位置 w,h 短形宽度和高度</td>
+<td>样式如下</td>
+</tr>
+<tr>
+<td><code>ctx.strokeText(str,x,y)</code></td>
+<td>绘制<strong>空心文本</strong> x,y文本左上角位置 str 文案</td>
+<td>样式如下</td>
+</tr>
+<tr>
+<td>—-<code>ctx.strokeStyle = &quot;#47227b&quot;</code></td>
+<td>设置空心样式</td>
+<td>空心样式</td>
+</tr>
+<tr>
+<td>—-<code>ctx.lineWidth = 1</code></td>
+<td>设置空心宽度</td>
+<td>空心宽度</td>
+</tr>
+<tr>
+<td><code>ctx.fillRect(x,y,w,h)</code></td>
+<td>绘制<strong>实心矩形</strong> x,y矩形左上角位置 w,h 短形宽度和高度</td>
+<td>样式如下</td>
+</tr>
+<tr>
+<td><code>ctx.fillText(str,x,y)</code></td>
+<td>绘制<strong>实心文本</strong> x,y文本左上角位置 str 文案</td>
+<td>样式如下</td>
+</tr>
+<tr>
+<td>—-<code>ctx.fillStyle = &quot;#47227b&quot;</code></td>
+<td>设置实心填充样式</td>
+<td>实心样式</td>
+</tr>
+<tr>
+<td>—-<code>ctx.globalAlpha = 0.5</code></td>
+<td>透明度</td>
+<td>通用</td>
+</tr>
+<tr>
+<td>—-<code>ctx.font</code></td>
+<td>字体与大小</td>
+<td>字体</td>
+</tr>
+<tr>
+<td>—-<code>ctx.textBaseline = &quot;alphabetic&quot;</code></td>
+<td>指定文本基线位置[“alphabetic”,”top”,”bottom”,Middle，Hanging]<br>基线/上/下/中/悬挂 正常思维使用bottom。默认是alphabetic</td>
+<td>-</td>
+</tr>
+<tr>
+<td>—-<code>ctx.measureText(str)</code></td>
+<td>获取此时绘制 str 文本的宽度对象 {width:}</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>ctx.clearRect(x,y,w,h)</code></td>
+<td>清除一个矩形范围内所有元素 xy位置,wh范围</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>ctx.moveTo(x,y)</code></td>
+<td>移动到指定点-只移动不画</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>ctx.lineTo(x,y)</code></td>
+<td>画到指定点-又移又画</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>ctx.arc(350, 100, 15, 0, 2 * Math.PI,true)</code></td>
+<td>画圆-又移又画 中心点x y坐标 半径 开始角 结束角 方向</td>
+<td><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_arc.asp">角度参考</a></td>
+</tr>
+<tr>
+<td><code>ctx.closePath(x,y)</code></td>
+<td>闭合当前路径.从终点画到起点</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>ctx.stroke()</code></td>
+<td><strong>描边 绘制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>ctx.drawImage(img,x,y,w,h))</code></td>
+<td>绘制<strong>图片</strong> 图片,xy坐标,宽高，<br>框高不写为原图大小</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>ctx.rotate(50 * Math.PI / 180)</code></td>
+<td>旋转 旋转50度，写于绘制之前！！</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>ctx.translate(x,y)</code></td>
+<td>将画布轴点(原点)移到指定位置,默认是画布中心</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>ctx.save(x,y)</code></td>
+<td>保存画笔状态</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>ctx.restore(x,y)</code></td>
+<td>恢复画笔状态</td>
+<td>-</td>
+</tr>
+<tr>
+<td>var g = <code>ctx.createLinearGradient(x1,y1,x2,y2)</code></td>
+<td><strong>创建渐变对象</strong> x1,y1开始坐标，x2,y2结束坐标</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>g.addColorStop(offset,color)</code></td>
+<td><strong>渐变对象添加颜色点</strong> 进度(跟动画一样,小数写法) 结束颜色</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<p> html 内容：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;c3&quot;</span> <span class="attr">width</span>=<span class="string">&quot;1000&quot;</span> <span class="attr">height</span>=<span class="string">&quot;1000&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure><br> js内容 绘制矩形空心 和实心</p>
+<pre><code class="js">var c3 = document.getElementById(&quot;c3&quot;); // 获取画布
+var ctx = c3.getContext(&quot;2d&quot;); // 通过画布元素获取画布中指定画笔对象[上下文对象]
+// 矩形
+   ctx.strokeStyle = &quot;#47227b&quot;; // 设置空心边框样式
+   ctx.lineWidth = 1; // 设置空心边框宽度
+   ctx.strokeRect(5,5,50,50); //  绘制空心矩形 x,y矩形左上角位置 w,h 短形宽度和高度
+// 矩形
+   ctx.fillStyle = &quot;#47227b&quot;;// 设置实心填充样式
+   ctx.fillRect(60,5,50,50); // 绘制实心矩形
+// 字体
+   ctx.globalAlpha = 0.5 // 透明度
+   ctx.font = &quot;19px SimHei&quot;; // 字体与大小
+   ctx.textBaseline = &quot;alphabetic&quot;;     // 指定文本基线位置[&quot;alphabetic&quot;,&quot;top&quot;,&quot;bottom&quot;,Middle，Hanging]基线/上/下/中/悬挂 正常思维使用bottom。默认是alphabetic
+   ctx.fillText(str,x,y);
+   ctx.strokeText(str,x,y); 
+// 3角
+   ctx.beginPath(); // 开始新路径
+   ctx.moveTo(100,100); // 移动到指定点
+   ctx.lineTo(150,100); // 画到指定点
+   ctx.lineTo(150,150);
+   ctx.closePath(); // 闭合当前路径.终点到起点
+   ctx.stroke(); // 描边
+// 圆，半圆 
+   ctx.beginPath();        // 开始新路径
+   // ctx.moveTo(265,200);    // 移动到指定点
+   ctx.arc(250, 200, 15, 180 * Math.PI / 180, 2 * Math.PI);// 画半圆
+   ctx.stroke();           // 描边
+   ctx.beginPath();        // 开始新路径
+   ctx.moveTo(365, 100);    // 移动到指定点
+   ctx.arc(350, 100, 15, 0, 2 * Math.PI);// 画整圆
+   ctx.stroke();           // 描边
+// 画图
+   var p3 = new Image();
+   p3.src = &quot;x.png&quot;;
+   p.onload = function () &#123; // 图片加载完成后
+     ctx.drawImage(p3,x,y);   // x,y 左上角位置(原始大小图片)
+     ctx.drawImage(p3,x,y,w,h); // w,h 图片大小
+     ctx.rotate(50 * Math.PI / 180);
+     ctx.drawImage(p,0,0);   //画出旋转了15度的图
+   &#125;
+// 示例2个不停选择的图片涉及技术-旋转，保存状态，画图，移动远点
+   var deg1=0,deg2=0;                      //创建变量保存飞机旋转角度
+   p.onload=function()&#123;                    //下载完毕执行函数
+       var time=setInterval(function()&#123;    //定时器 模拟旋转状态
+           ctx.clearRect(-500,-500,1000,1000)
+
+           ctx.save();                     //保存画笔状态
+           ctx.translate(100,200)          //平移原点
+           deg1+=4                        //变量累计角度
+           ctx.rotate(deg1*Math.PI/180)    //旋转角度
+           ctx.drawImage(p,0-100,0-50)     //绘制飞机图片200*100大小
+           ctx.restore()                   //恢复画笔状态
+
+           ctx.save();                         //保存画笔状态 2
+           ctx.translate(300,200)              //平移原点2
+           deg2+=8                            //累计角度2
+           ctx.rotate(deg2*Math.PI/180)        //旋转角度2
+           ctx.drawImage(p,0-100,0-50)         //绘制飞机图片200*100大小2
+           ctx.restore()                       //恢复画笔状态 2
+       &#125;,100/6)
+   &#125;
+ // 创建 渐变颜色的 矩形
+     var g = ctx.createLinearGradient(0, 0, 1000, 1000);
+     g.addColorStop(0, &#39;#f00&#39;);
+     g.addColorStop(1, &#39;#00f&#39;);
+     ctx.fillStyle = g;
+     ctx.strokeStyle = g;
+     ctx.fillRect(0, 0, 1000, 100);</code></pre>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">画图</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-canvas/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-画图-svg" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E7%94%BB%E5%9B%BE-svg/">svg</a>
+    </h1>
+  
+
+        
+        <a href="/%E7%94%BB%E5%9B%BE-svg/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>  <a href="#title1" target="_self">1.html 内容</a><br>  <a href="#js" target="_self">2.使用js创造</a><br>  <a href="#title3" target="_self">3.html实例</a></p>
+<p>2D矢量图 可以无限放大或缩小不会失真,颜色不够丰富</p>
+<blockquote>
+<p>1:svg图形中属性是可以通过css设置<br>   2:svg动态创建元素</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>内含标签</th>
+<th>说明</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>circle</td>
+<td>-</td>
+<td>绘制圆形</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>cx</code>=</td>
+<td>x轴位置</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>cy</code>=”</td>
+<td>y轴位置</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>r</code>=</td>
+<td>半径</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>fill</code>=</td>
+<td>填充颜色</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stroke</code></td>
+<td>边框颜色</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>fill-opacity</code></td>
+<td>填充透明度</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stroke-opacity</code></td>
+<td>边框透明度</td>
+</tr>
+<tr>
+<td>line</td>
+<td><code>x1</code>=”” <code>y1</code>=”” <code>x2</code>=”” <code>y2</code>=””</td>
+<td>直线</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stroke</code>=”#f00”</td>
+<td>颜色</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stroke-width</code>=”15”</td>
+<td>线宽度</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stroke-linecap</code>=”round”</td>
+<td>线两端样式round圆角 square方角</td>
+</tr>
+<tr>
+<td>polyline</td>
+<td>-</td>
+<td>折线</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>points</code>=”250,200 300,200 300,300 250,200”</td>
+<td>一组坐标</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stroke</code>=</td>
+<td>边线颜色</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>fill</code>=</td>
+<td>填充颜色</td>
+</tr>
+<tr>
+<td>text</td>
+<td><code>x</code>=”起点” <code>y</code>=”起点”</td>
+<td>文字  &gt; 标签文字写在这里 &lt;</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>font-size</code>=””</td>
+<td>字体大小</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>fill</code>=””</td>
+<td>颜色</td>
+</tr>
+<tr>
+<td>image</td>
+<td><code>x</code>=”起点” <code>y</code>=”起点”</td>
+<td>图片</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>xlink:href</code>=”地址”</td>
+<td>图片url</td>
+</tr>
+<tr>
+<td>linearGradient</td>
+<td><code>id</code>=”g3” <code>x1</code>=”0%” <code>y1</code>=”0%” <code>x2</code>=”100%” <code>y2</code>=”0%”</td>
+<td>声明渐变对象 包裹着stop标签 使用 原颜色=”#f00”都可改成  =”url(#g3)”</td>
+</tr>
+<tr>
+<td>stop</td>
+<td>-</td>
+<td>声明渐变对象 写在linearGradient标签中 多个</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>offset</code>=”0%”</td>
+<td>颜色点位置</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stop-color</code>=”red”</td>
+<td>颜色点位置的颜色</td>
+</tr>
+<tr>
+<td>filter</td>
+<td><code>id</code>=”f3”</td>
+<td>滤镜 包裹着<code>滤镜</code>标签  任意绘制标签添加 <code>filter=url(#f3)</code> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/filter">更多滤镜标签</a></td>
+</tr>
+<tr>
+<td>feGaussianBlur</td>
+<td><code>stdDeviation</code>=”3”</td>
+<td>高斯模糊滤镜  写在filter标签中</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>stdDeviation</code>=”3”</td>
+<td>定义模糊量</td>
+</tr>
+</tbody></table>
+<p>  <span id="title1">1.html 内容：</span><br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">id</span>=<span class="string">&quot;s3&quot;</span> <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">height</span>=<span class="string">&quot;800&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 定义特性对象 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">defs</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 渐变对象 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">linearGradient</span> <span class="attr">id</span>=<span class="string">&quot;g3&quot;</span> <span class="attr">x1</span>=<span class="string">&quot;0%&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;0%&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;0%&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">&quot;0%&quot;</span> <span class="attr">stop-color</span>=<span class="string">&quot;red&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">stop-color</span>=<span class="string">&quot;yellow&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">linearGradient</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 滤镜 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter</span> <span class="attr">id</span>=<span class="string">&quot;f3&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">feGaussianBlur</span> <span class="attr">stdDeviation</span>=<span class="string">&quot;3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">feGaussianBlur</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">defs</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 圆 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">&quot;50&quot;</span> <span class="attr">cy</span>=<span class="string">&quot;50&quot;</span> <span class="attr">r</span>=<span class="string">&quot;10&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;#f00&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;#00f&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 直线 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">line</span> <span class="attr">x1</span>=<span class="string">&quot;100&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;50&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;200&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;50&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;#f00&quot;</span> <span class="attr">stroke-width</span>=<span class="string">&quot;15&quot;</span> <span class="attr">stroke-linecap</span>=<span class="string">&quot;round&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">line</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 文字 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">font-size</span>=<span class="string">&quot;30&quot;</span> <span class="attr">x</span>=<span class="string">&quot;200&quot;</span> <span class="attr">y</span>=<span class="string">&quot;50&quot;</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 图片 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">image</span> <span class="attr">xlink:href</span>=<span class="string">&quot;https://www.gravatar.com/avatar/ffaaae1be811e26b8ecfee91a76ae077?s=46&amp;d=identicon&quot;</span> <span class="attr">x</span>=<span class="string">&quot;250&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">y</span>=<span class="string">&quot;50&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 直线使用渐变对象 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">line</span> <span class="attr">x1</span>=<span class="string">&quot;300&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;20&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;600&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;50&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;url(#g3)&quot;</span> <span class="attr">stroke-width</span>=<span class="string">&quot;15&quot;</span> <span class="attr">stroke-linecap</span>=<span class="string">&quot;round&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">line</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 文字使用滤镜 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">font-size</span>=<span class="string">&quot;30&quot;</span> <span class="attr">x</span>=<span class="string">&quot;600&quot;</span> <span class="attr">y</span>=<span class="string">&quot;50&quot;</span> <span class="attr">filter</span>=<span class="string">url(#f3)</span>&gt;</span>使用滤镜<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 折线--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">&quot;250,200 300,200 300,300 250,200&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;#0f0&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;#ddd&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 折线绘制五角心 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">&quot;320,300 480,300 350,400 400,240 450,400 320,300&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;url(#g3)&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;url(#g3)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure><br>  <span id="js">2.使用js创造</span></p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 首先页面要有一个 svg元素 假设id=&quot;a&quot;</span></span><br><span class="line"> <span class="comment">// 1 动态拼接</span></span><br><span class="line">  <span class="keyword">var</span> html = <span class="string">`&lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;10&quot; fill=&quot;#f00&quot; stroke=&quot;#00f&quot;&gt;&lt;/circle&gt;`</span></span><br><span class="line">  <span class="built_in">document</span>.getElementById(a3).innerHTML = html</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.svg创建对象方法</span></span><br><span class="line">  <span class="keyword">var</span> c = <span class="built_in">document</span>.createElementNS(<span class="string">&quot;http://www.w3.org/2000/svg&quot;</span>,<span class="string">&quot;circle&quot;</span>); <span class="comment">// svg地址 内放置内部的标签</span></span><br><span class="line">      c.setAttribute(<span class="string">&quot;r&quot;</span>,<span class="number">100</span>);   <span class="comment">// 添加属性只能用核心DOM函数实现.不能用html DOM使用 不能使用 c.r = 100;</span></span><br><span class="line">  <span class="keyword">var</span> r = c.getAttribute(<span class="string">&quot;r&quot;</span>); <span class="comment">// 获取</span></span><br><span class="line">      svg.appendChild(c);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.2 循环30次---画30个圆</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="number">31</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="built_in">document</span>.createElementNS(<span class="string">&quot;http://www.w3.org/2000/svg&quot;</span>, <span class="string">&quot;circle&quot;</span>);</span><br><span class="line">    c.setAttribute(<span class="string">&quot;r&quot;</span>, i + <span class="built_in">Math</span>.random() * <span class="number">20</span>);</span><br><span class="line">    c.setAttribute(<span class="string">&quot;cx&quot;</span>, i + <span class="built_in">Math</span>.random() * <span class="number">400</span>);</span><br><span class="line">    c.setAttribute(<span class="string">&quot;cy&quot;</span>, i + <span class="built_in">Math</span>.random() * <span class="number">400</span>);</span><br><span class="line">    <span class="keyword">var</span> rgb = <span class="string">`rgb(<span class="subst">$&#123;i + <span class="built_in">Math</span>.random() * <span class="number">200</span>&#125;</span>,<span class="subst">$&#123;i + <span class="built_in">Math</span>.random() * <span class="number">200</span>&#125;</span>,<span class="subst">$&#123;i + <span class="built_in">Math</span>.random() * <span class="number">200</span>&#125;</span>)`</span></span><br><span class="line">    c.setAttribute(<span class="string">&quot;fill&quot;</span>, rgb);</span><br><span class="line">    s3.appendChild(c);</span><br><span class="line">  &#125;   </span><br></pre></td></tr></table></figure>
+
+<p><span id="title3">3.html实例：</span></p>
+<blockquote>
+<p><svg id="s3" width="800" height="400"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="red"></stop><stop offset="100%" stop-color="yellow"></stop></linearGradient><filter id="f3"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs><circle cx="50" cy="50" r="10" fill="#f00" stroke="#00f"></circle><line x1="100" y1="50" x2="200" y2="50" stroke="#f00" stroke-width="15" stroke-linecap="round"></line><text font-size="30" x="200" y="50">文字</text><image xlink:href="https://www.gravatar.com/avatar/ffaaae1be811e26b8ecfee91a76ae077?s=46&d=identicon" x="250"      y="50"></image><line x1="300" y1="20" x2="600" y2="50" stroke="url(#g3)" stroke-width="15" stroke-linecap="round"></line><text font-size="30" x="600" y="50" filter=url(#f3)>使用滤镜</text><polyline points="250,200 300,200 300,300 250,200" stroke="#0f0" fill="#ddd"></polyline><polyline points="320,300 480,300 350,400 400,240 450,400 320,300" stroke="url(#g3)" fill="url(#g3)"></polyline></svg></p>
+</blockquote>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">画图</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E7%94%BB%E5%9B%BE-svg/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-杂项-1-算法复杂度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -813,302 +1419,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-1-%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-杂项-3-浏览器是如何调度进程和线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-3-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E8%B0%83%E5%BA%A6%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/">3-浏览器是如何调度进程和线程</a>
-    </h1>
-  
-
-        
-        <a href="/%E6%9D%82%E9%A1%B9-3-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E8%B0%83%E5%BA%A6%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>借鉴 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/G4RRw4jBhCtCK_bZpmU0iw">https://mp.weixin.qq.com/s/G4RRw4jBhCtCK_bZpmU0iw</a></p>
-<p>进程：CPU 进行资源分配的基本单位<br>线程：CPU 调度的最小单位</p>
-<p>这是进程和线程最官方也是最常见的两个定义，但是这两个概念太抽象了，很难以理解。<br>通俗一点讲：<br>进程可以描述为一个应用程序的执行程序，<br>线程则是进程内部用来执行某个部分的程序。</p>
-<p>做个简单的比喻：<em>进程=火车，线程=车厢</em></p>
-<ul>
-<li>线程在进程下行进（单纯的车厢无法运行）</li>
-<li>一个进程可以包含多个线程（一辆火车可以有多个车厢）</li>
-<li>不同进程间数据很难共享（一辆火车上的乘客很难换到另外一辆火车，比如站点换乘）</li>
-<li>同一进程下不同线程间数据很易共享（A车厢换到B车厢很容易）</li>
-<li>进程要比线程消耗更多的计算机资源（采用多列火车相比多个车厢更耗资源）</li>
-<li>进程间不会相互影响，一个线程挂掉将导致整个进程挂掉（一列火车不会影响到另外一列火车，但是如果一列火车上中间的一节车厢着火了，将影响到所有车厢）</li>
-<li>进程可以拓展到多机，进程最多适合多核（不同火车可以开在多个轨道上，同一火车的车厢不能在行进的不同的轨道上）</li>
-<li>进程使用的内存地址可以上锁，即一个线程使用某些共享内存时，其他线程必须等它结束，才能使用这一块内存。（比如火车上的洗手间）－”互斥锁”</li>
-<li>进程使用的内存地址可以限定使用量（比如火车上的餐厅，最多只允许多少人进入，如果满了需要在门口等，等有人出来了才能进去）－“信号量”</li>
-</ul>
-<h2 id="应用程序如何调度进程和线程"><a href="#应用程序如何调度进程和线程" class="headerlink" title="应用程序如何调度进程和线程"></a>应用程序如何调度进程和线程</h2><p>当一个应用程序启动时，一个进程就被创建了。应用程序可能会创建一些线程帮助它完成某些工作，但这不是必须的。操作系统会划分出一部分内存给这个进程，当前应用程序的所有状态都将保存在这个私有的内存空间中。</p>
-<p>当你关闭应用时，进程也就自动蒸发掉了，操作系统会将先前被占用的内存空间释放掉。</p>
-<p>一个程序并不一定只有一个进程，进程可以让操作系统再另起一个进程去处理不同的任务。当这种情况发生时，新的进程又将占据一块内存空间。当两个进程需要通信时，它们进行进程间通讯。</p>
-<p>许多应用程序都被设计成以这种方式进行工作，所以当其中一个进程挂掉时，它可以在其他进程仍然运行的时候直接重启。</p>
-<h2 id="多进程和多线程"><a href="#多进程和多线程" class="headerlink" title="多进程和多线程"></a>多进程和多线程</h2><p>理解了上面的内容，我们再来重新梳理多进程和多线程的概念：</p>
-<ul>
-<li>多进程：多进程指的是在同一个时间里，同一个计算机系统中如果允许两个或两个以上的进程处于运行状态。多进程带来的好处是明显的，比如你可以听歌的同时，打开编辑器敲代码，编辑器和听歌软件的进程之间丝毫不会相互干扰。</li>
-<li>多线程是指程序中包含多个执行流，即在一个程序中可以同时运行多个不同的线程来执行不同的任务，也就是说允许单个程序创建多个并行执行的线程来完成各自的任务。</li>
-</ul>
-<h2 id="Chrome-的多进程架构"><a href="#Chrome-的多进程架构" class="headerlink" title="Chrome 的多进程架构"></a>Chrome 的多进程架构</h2><p>由于浏览器本身没有统一的规范，不同的浏览器之间的架构可能完全不同，在浏览器刚被设计出来的时候，那时的网页非常的简单，每个网页的资源占有率是非常低的，因此一个进程处理多个网页时可行的。然后在今天，大量网页变得日益复杂。把所有网页都放进一个进程的浏览器面临在健壮性，响应速度，安全性方面的挑战，所以大部分现代浏览器都是多进程的。</p>
-<p>任务管理器 进程中找到 谷歌<code>Chrome</code>浏览器 会发现是一个多进程的架构<br>我们打开一个浏览器时会启动多个不同的进程协助浏览器将页面为我们呈现出来：</p>
-<ul>
-<li>浏览器进程<br>浏览器最核心的进程，负责管理各个标签页的创建和销毁、页面显示和功能（前进，后退，收藏等）、网络资源的管理，下载等。</li>
-<li>插件进程<br>负责每个第三方插件的使用，每个第三方插件使用时候都会创建一个对应的进程、这可以避免第三方插件crash影响整个浏览器、也方便使用沙盒模型隔离插件进程，提高浏览器稳定性</li>
-<li>GPU进程<br>负责3D绘制和硬件加速</li>
-<li>渲染进程<br>浏览器会为每个窗口分配一个渲染进程、也就是我们常说的浏览器内核，这可以避免单个<code>page crash</code>影响整个浏览器。</li>
-</ul>
-<h2 id="浏览器内核的多线程"><a href="#浏览器内核的多线程" class="headerlink" title="浏览器内核的多线程"></a>浏览器内核的多线程</h2><p>浏览器内核就是浏览器渲染进程，从接收下载文件后再到呈现整个页面的过程，由浏览器渲染进程负责。浏览器内核是多线程的，在内核控制下各线程相互配合以保持同步，一个浏览器通常由以下常驻线程组成：</p>
-<ul>
-<li>GUI 渲染线程<br>GUI 渲染线程负责渲染浏览器界面 HTML 元素,当界面需要重绘(Repaint)或由于某种操作引发回流(reflow)时,该线程就会执行</li>
-<li>定时触发器线程<br>浏览器定时计数器并不是由 JavaScript 引擎计数的, 因为 JavaScript 引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确, 因此通过单独线程来计时并触发定时是更为合理的方案。</li>
-<li>事件触发线程<br>当一个事件被触发时该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理。这些事件可以是当前执行的代码块如定时任务、也可来自浏览器内核的其他线程如鼠标点击、AJAX异步请求等，但由于JS的单线程关系所有这些事件都得排队等待JS引擎处理。</li>
-<li>异步http请求线程<br>在XMLHttpRequest在连接后是通过浏览器新开一个线程请求， 将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件放到 JavaScript引擎的处理队列中等待处理。</li>
-<li>JavaScript 引擎线程<br>Javascript 引擎，也可以称为JS内核，主要负责处理 Javascript 脚本程序，例如V8引擎。Javascript 引擎线程理所当然是负责解析 Javascript 脚本，运行代码。</li>
-</ul>
-<p>由于 JavaScript 是可操纵 DOM 的，如果在修改这些元素属性同时渲染界面（即 JavaScript 线程和UI线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。因此为了防止渲染出现不可预期的结果，浏览器设置 GUI 渲染线程与 JavaScript 引擎为互斥的关系，当 JavaScript 引擎执行时 GUI 线程会被挂起， GUI 更新会被保存在一个队列中等到引擎线程空闲时立即被执行。</p>
-<h2 id="JavaScript-为何设计成单线程"><a href="#JavaScript-为何设计成单线程" class="headerlink" title="JavaScript 为何设计成单线程"></a>JavaScript 为何设计成单线程</h2><p>为什么 JavaScript 不设计成多个线程呢？这样不是效率更高？</p>
-<p>作为浏览器脚本语言， <em>JavaScript 的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题</em>。比如，假定 JavaScript 同时有两个线程，一个线程在某个 DOM 节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？</p>
-<p>所以，为了避免复杂性，从一诞生， JavaScript 就是单线程，这已经成了这门语言的核心特征，将来也不会改变。</p>
-<h2 id="WebWorker-多线程？"><a href="#WebWorker-多线程？" class="headerlink" title="WebWorker 多线程？"></a>WebWorker 多线程？</h2><p>Web Worker为Web内容在后台线程中运行脚本提供了一种简单的方法。线程可以执行任务而不干扰用户界面</p>
-<p>那么既然 JavaScript 本身被设计为单线程，为何还会有像 WebWorker 这样的多线程 API 呢？我们来看一下 WebWorker 的核心特点就明白了：</p>
-<p>创建 Worker 时， JS 引擎向浏览器申请开一个子线程（子线程是浏览器开的，完全受主线程控制，而且不能操作DOM）<br>JS 引擎线程与 worker 线程间通过特定的方式通信（postMessage API，需要通过序列化对象来与线程交互特定的数据）<br>所以 WebWorker 并不违背 JS引擎是单线程的 这一初衷，其主要用途是用来减轻cpu密集型计算类逻辑的负担。</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-3-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E8%B0%83%E5%BA%A6%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-杂项-2-算法解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-2-%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/">2-算法解析</a>
-    </h1>
-  
-
-        
-        <a href="/%E6%9D%82%E9%A1%B9-2-%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>原网址 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/jW3-icYQaJVITCYi730iIw">https://mp.weixin.qq.com/s/jW3-icYQaJVITCYi730iIw</a></p>
-<h2 id="todo-再看-不知道在说什么了…"><a href="#todo-再看-不知道在说什么了…" class="headerlink" title="todo 再看 不知道在说什么了…."></a>todo 再看 不知道在说什么了….</h2><h3 id="前言前言"><a href="#前言前言" class="headerlink" title="前言前言"></a>前言前言</h3><p>问题:给定一个无序的整数数组，找到其中最长上升子序列的长度。</p>
-<blockquote>
-<p>输入: [10,9,2,5,3,7,101,18] 输出: 4<br>  解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。</p>
-</blockquote>
-<p>首先，我们需要对基本的概念进行了解和区分：</p>
-<ul>
-<li>子串：一定是连续的</li>
-<li>子序列：子序列不要求连续 例如：[6, 9, 12] 是 [1, 3, 6, 8, 9, 10, 12] 的一个子序列</li>
-<li>上升/递增子序列：一定是严格上升/递增的子序列<br>注意：子序列中元素的相对顺序必须保持在原始数组中的相对顺序</li>
-</ul>
-<h4 id="1-动态规划"><a href="#1-动态规划" class="headerlink" title="1.动态规划"></a>1.动态规划</h4><p>*当我们遍历<code>nums[i]</code>时，需要同时对比已经遍历过的 n<code>ums[j]</code><br>*如果<code> nums[i] &gt; nums[j]，nums[i]</code> 就可以加入到序列 <code>nums[j]</code> 的最后，长度就是 <code>dp[j] + 1</code><br>注：<code>(0 &lt;= j &lt; i) (nums[j] &lt; nums[i])</code><br>时间复杂度：<code>O(n^2)</code><br>空间复杂度：<code>O(n)</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> lengthOfLIS = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> n = nums.length;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> dp = <span class="keyword">new</span> <span class="built_in">Array</span>(n).fill(<span class="number">1</span>); <span class="comment">// 数组 [1,1,1,1....]</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] &lt; nums[i]) &#123; <span class="comment">// 遇到比当前下标数字小的内容</span></span><br><span class="line">                dp[i] = <span class="built_in">Math</span>.max(dp[i], dp[j] + <span class="number">1</span>); <span class="comment">// 将上次统计的数字+1 然后和当前数字比较大小</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.max(...dp) <span class="comment">// 取最大值</span></span><br><span class="line">&#125;</span><br><span class="line">lengthOfLIS(<span class="number">10</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>,<span class="number">18</span>)</span><br><span class="line"><span class="comment">// i = 0  dp = [1,1,1,1,1,1,1,]</span></span><br><span class="line"><span class="comment">// 1 同上</span></span><br><span class="line"><span class="comment">// 2 同上</span></span><br><span class="line"><span class="comment">// 3 [1,1,1,2,1,1,1,1]</span></span><br><span class="line"><span class="comment">// 4 [1,1,1,2,2,1,1,1]</span></span><br><span class="line"><span class="comment">// 5 [1,1,1,2,2,3,1,1]</span></span><br><span class="line"><span class="comment">// 6 [1,1,1,2,2,3,4,1]</span></span><br><span class="line"><span class="comment">// 7 [1,1,1,2,2,3,4,4]</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-贪心-二分查找"><a href="#2-贪心-二分查找" class="headerlink" title="2.贪心 + 二分查找"></a>2.贪心 + 二分查找</h4><p>这里再结合本题理解一下贪心思想，同样是长度为 2 的序列，[1,2] 一定比 [1,4] 好，因为它更有潜力。换句话说，我们想要组成最长的递增子序列， 就要让这个子序列中上升的尽可能的慢，这样才能更长。<br><strong>注意：</strong>这种方式被替换后组成的新数组不一定是解法一中正确结果的数组，但长度是一样的，不影响我们对此题求解。<br>时间复杂度：<code>O(nlogn)</code><br>空间复杂度：<code>O(n)</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> lengthOfLIS = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = nums.length;</span><br><span class="line">    <span class="keyword">if</span> (len &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> len;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> tails = [nums[<span class="number">0</span>]];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i] &gt; tails[tails.length - <span class="number">1</span>]) &#123; <span class="comment">// 当前遍历元素 nums[i] 大于 前一个递增子序列的 尾元素时，追加到后面即可</span></span><br><span class="line">            tails.push(nums[i]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 否则，查找递增 子序列中 第一个大于当前值 的元素，用当前遍历元素 nums[i] 替换它</span></span><br><span class="line">            <span class="comment">// 递增序列，可以使用二分查找</span></span><br><span class="line">            <span class="keyword">let</span> left = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">let</span> right = tails.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">                <span class="keyword">let</span> mid = (left + right) &gt;&gt; <span class="number">1</span>; <span class="comment">// 按位右移 将数字转成2进制 去掉最后一位 然后转为10进制 相当于 Math.floor(值/2)  40 &gt;&gt; 1 == 20</span></span><br><span class="line">                <span class="keyword">if</span> (tails[mid] &lt; nums[i]) &#123;</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    right = mid;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            tails[left] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tails.length;</span><br><span class="line">&#125;;</span><br><span class="line">lengthOfLIS(<span class="number">10</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>,<span class="number">18</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">12</span>,<span class="number">1</span>)</span><br><span class="line"><span class="comment">// i = 0 tails = [10]</span></span><br><span class="line"><span class="comment">// 1 [9]</span></span><br><span class="line"><span class="comment">// 2 [2]</span></span><br><span class="line"><span class="comment">// 3 [2,5]</span></span><br><span class="line"><span class="comment">// 4 [2,3]</span></span><br><span class="line"><span class="comment">// 5 [2,3,7]</span></span><br><span class="line"><span class="comment">// 6 [2,3,7,101]</span></span><br><span class="line"><span class="comment">// 7 [2,3,7,18]</span></span><br><span class="line"><span class="comment">// 8 [2,3,5,18]</span></span><br><span class="line"><span class="comment">// 9 [2,3,5,8]</span></span><br><span class="line"><span class="comment">// 10 [2,3,5,8,12]</span></span><br><span class="line"><span class="comment">// 11 [1,3,5,8,12]</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>我们思考一个问题：Diff 算法的目的是什么？<br>「为了减少 DOM 操作的性能开销，我们要尽可能的复用 DOM 元素。所以我们需要判断出是否有节点需要移动，应该如何移动以及找出那些需要被添加或删除的节点。」</p>
-<p>首先我们要搞清楚，核心算法的的位置。核心算法其实是当新旧 children 都是多个子节点的时候才会触发。<br>下面这段代码就是 Vue3 的 DOM Diff 核心算法<br>他返回的是 当前正确结果的数组下标合集 比如 <code>getSequence([1,3,5,7,2,4,6])</code> 会得到 <code>[0,4,5,6]</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// packages/runtime-core/src/renderer.ts</span></span><br><span class="line">function getSequence(arr: number[]): number[] &#123;</span><br><span class="line">  <span class="keyword">const</span> p = arr.slice() <span class="comment">// 起到深拷贝作用</span></span><br><span class="line">  <span class="keyword">const</span> result = [<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">let</span> i, j, u, v, c</span><br><span class="line">  <span class="keyword">const</span> len = arr.length</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> arrI = arr[i]</span><br><span class="line">    <span class="keyword">if</span> (arrI !== <span class="number">0</span>) &#123; <span class="comment">// 排除等于 0 的情况</span></span><br><span class="line">      j = result[result.length - <span class="number">1</span>]</span><br><span class="line">      <span class="keyword">if</span> (arr[j] &lt; arrI) &#123;  <span class="comment">// 当前数字与result最后一项对于于arr的数字 进行比较</span></span><br><span class="line">        p[i] = j <span class="comment">// 最后一项与 p 对应的索引进行对应</span></span><br><span class="line">        result.push(i)</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// arrI 比 arr[j] 小，使用二分查找找到后替换它</span></span><br><span class="line">      <span class="comment">// 定义二分查找区间</span></span><br><span class="line">      u = <span class="number">0</span></span><br><span class="line">      v = result.length - <span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> (u &lt; v) &#123;<span class="comment">// 开启二分查找</span></span><br><span class="line">        c = ((u + v) / <span class="number">2</span>) | <span class="number">0</span> <span class="comment">// 按位或| 二进制位数相比 上下两位含有1，结果是1，否则是0 (3|5);//011  和101比 得到111 即7</span></span><br><span class="line">        <span class="keyword">if</span> (arr[result[c]] &lt; arrI) &#123;</span><br><span class="line">          u = c + <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          v = c</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (arrI &lt; arr[result[u]]) &#123; <span class="comment">// 比较 =&gt; 替换 当前数字 与 result二分查找结果项对于arr的数字</span></span><br><span class="line">        <span class="keyword">if</span> (u &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          p[i] = result[u - <span class="number">1</span>]  <span class="comment">// 正确的结果</span></span><br><span class="line">        &#125;</span><br><span class="line">        result[u] = i <span class="comment">// 有可能替换会导致结果不正确，需要一个新数组 p 记录正确的结果</span></span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">// i = 0 result = [0] p = [10,9,2,5,3,7,101,18,5,8,12,1]</span></span><br><span class="line"><span class="comment">// 1 [1] p同上</span></span><br><span class="line"><span class="comment">// 2 [2] p同上</span></span><br><span class="line"><span class="comment">// 3 [2,3] [10,9,2,2..其他同上]</span></span><br><span class="line"><span class="comment">// 4 [2,4] [10,9,2,2,2..] u = 1</span></span><br><span class="line"><span class="comment">// 5 [2,4,5] [10,9,2,2,2,4..]</span></span><br><span class="line"><span class="comment">// 6 [2,4,5,6] [10,9,2,2,2,4,5...]</span></span><br><span class="line"><span class="comment">// 7 [2,4,5,7] [10,9,2,2,2,4,5,5,8,12,1](修改p[7] = 5) u = 3</span></span><br><span class="line"><span class="comment">// 8 [2,4,8,7] [10,9,2,2,2,4,5,4,8,12,1] u = 2</span></span><br><span class="line"><span class="comment">// 9 [2,4,8,9] [10,9,2,2,2,4,5,4,8,12,1](修改p[8] = 8) u = 3 </span></span><br><span class="line"><span class="comment">// 10 [2,4,8,9,10] [10,9,2,2,2,4,5,4,8,9,1]</span></span><br><span class="line"><span class="comment">// 11 [11,4,8,9,10] [10,9,2,2,2,4,5,4,8,9,1] u = 0 v = 0 到此步为止 result对应arr里的值 = 上述贪心的 tails</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  u = result.length <span class="comment">// 5</span></span><br><span class="line">  v = result[u - <span class="number">1</span>] <span class="comment">// 10</span></span><br><span class="line">  <span class="keyword">while</span> (u-- &gt; <span class="number">0</span>) &#123; <span class="comment">// 倒叙回溯 用 p 覆盖 result 进而找到最终正确的索引</span></span><br><span class="line">    result[u] = v <span class="comment">//</span></span><br><span class="line">    v = p[v]</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// u = 4 result = [11,4,8,9,10] v = 9</span></span><br><span class="line"><span class="comment">// u = 3 result = [11,4,8,9,10] v = 8</span></span><br><span class="line"><span class="comment">// u = 2 result = [11,4,8,9,10] v = 4</span></span><br><span class="line"><span class="comment">// u = 1 result = [2,4,8,9,10] v = 2</span></span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line">getSequence([<span class="number">10</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>,<span class="number">18</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">12</span>,<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<p>结尾这个diff让我头晕脑胀，，，反正结果是比 贪心 + 二分查找  多了 当前<strong>正确结果的数组下标合集</strong> 而 贪心 只能获取长度 不能获取正确的数组合集</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-2-%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-杂项-tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-tree/">tree</a>
-    </h1>
-  
-
-        
-        <a href="/%E6%9D%82%E9%A1%B9-tree/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h2><p>创建文件列表，将所有文件以树的形式列出来</p>
-<p>获取结构百度下 <code>tree</code> 就好了或者<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qianduanjingying/p/6064058.html">戳这里</a></p>
-<p><code>tree /f &gt; tree.txt</code> 获取所有文件和目录 生成 tree.txt文件</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-tree/">展开全文 >></a>
         </p>
       
 
@@ -1243,7 +1553,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1251,15 +1561,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1268,10 +1582,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node J S</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1307,15 +1617,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vue3.0</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1324,6 +1630,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1339,6 +1649,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
@@ -1348,10 +1662,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">

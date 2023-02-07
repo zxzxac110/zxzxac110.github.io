@@ -150,19 +150,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Html-1-属性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Electron-1-Electron简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Html-1-%E5%B1%9E%E6%80%A7/">1-Html属性</a>
+      <a class="article-title" href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/">1.Electron简介</a>
     </h1>
   
 
         
-        <a href="/Html-1-%E5%B1%9E%E6%80%A7/" class="archive-article-date">
+        <a href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/" class="archive-article-date">
   	<time datetime="2022-10-24T03:30:10.023Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
 </a>
         
@@ -171,687 +171,49 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <style>
-  .alphabet {
-    text-align:center;
-    display:flex;
-  }
-  .alphabet a {
-    width: 20px;
-  }
-  table tr th:nth-child(2){
-    width: 500px !important;
-  }
-  table tr th:first-child{
-    width: 130px !important;
-  }
-</style>
-<div class="alphabet">
-  <a href="#a" target="_self">A</a>
-  <a href="#b" target="_self">B</a>
-  <a href="#c" target="_self">C</a>
-  <a href="#d" target="_self">D</a>
-  <a href="#e" target="_self">E</a>
-  <a href="#f" target="_self">F</a>
-  <a href="#g" target="_self">G</a>
-</div>
-<div class="alphabet">
-  <a href="#h" target="_self">H</a>
-  <a href="#i" target="_self">I</a>
-  <a href="#j" target="_self">J</a>
-  <a href="#k" target="_self">K</a>
-  <a href="#l" target="_self">L</a>
-  <a href="#m" target="_self">M</a>
-  <a href="#n" target="_self">N</a>
-</div>
-<div class="alphabet">
-  <a href="#o" target="_self">O</a>
-  <a href="#p" target="_self">P</a>
-  <a href="#q" target="_self">Q</a>
-  <a href="#q"></a>
-  <a href="#r" target="_self">R</a>
-  <a href="#s" target="_self">S</a>
-  <a href="#t" target="_self">T</a>
-</div>
-<div class="alphabet">
-  <a href="#u" target="_self">U</a>
-  <a href="#v" target="_self">V</a>
-  <a href="#w" target="_self">W</a>
-  <a href="#w"></a>
-  <a href="#x" target="_self">X</a>
-  <a href="#y" target="_self">Y</a>
-  <a href="#z" target="_self">Z</a>
-</div>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>electron 有两种打包方式，<br><code>electron-packager</code> 简单方便 真套壳<br><code>electron-builder</code> 官方推荐e,但是较为麻烦，初学者建议先用 支持压缩包和安装包（nsis支持写脚本)，源码会打包成asar，会有一个打包前的文件夹。<br>…</p>
+<p>我的<br><a target="_blank" rel="noopener" href="https://github.com/zxzxac110/lsh-electron">https://github.com/zxzxac110/lsh-electron</a><br>已经不知道干了啥了 <code>electron-forge</code></p>
+<p>2022<br><a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#105;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#109;">&#103;&#x69;&#x74;&#x40;&#x67;&#105;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#109;</a>:zxzxac110/lsh-electron2.git<br>使用<code>electron-packager</code><br>自定义客户端图标 桌面图标 隐藏头部菜单 跨域</p>
+<h1 id="一-electron-packager"><a href="#一-electron-packager" class="headerlink" title="一.electron-packager"></a>一.electron-packager</h1><p><a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#x6d;">&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#x6d;</a>:zxzxac110/lsh-electron2.git</p>
+<p>[<a target="_blank" rel="noopener" href="https://developer.51cto.com/article/627670.html]">https://developer.51cto.com/article/627670.html]</a></p>
+<p>克隆 <code>git clone https://github.com/electron/electron-quick-start</code></p>
+<p>初始化 <code>npm install</code> 如果报警 使用cnpm 安装 <code>npm install cnpm -g --registry=https://registry.npm.taobao.org</code></p>
+<p>运行 <code>npm start</code></p>
+<h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><ul>
+<li><p><code>npm install electron-packager --save-dev</code></p>
+</li>
+<li><p>修改  <code>package.json</code></p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">&quot;pack&quot;</span>: <span class="string">&quot;electron-packager . testexe --platform=win32 --arch=x64  --out=./out --asar --app-version=0.0.1&quot;</span></span><br><span class="line">  <span class="string">&quot;packagerWin64&quot;</span>: <span class="string">&quot;electron-packager ./ &#x27;项目&#x27; --platform=win32 --arch=x64 --out ./project --app-version 1.0.0 --overwrite --icon=./static/assets/img/favicon.ico --asar&quot;</span>,</span><br><span class="line">  <span class="comment">//                                  打包后项目名词        win64位                 打包后文件夹       版本          删除原有文件重新打包     打包文件的图标             加密</span></span><br><span class="line">  <span class="string">&quot;packagerWin32&quot;</span>: <span class="string">&quot;electron-packager ./ &#x27;项目&#x27; --platform=win32 --arch=ia32 --out ./project --app-version 1.0.0 --overwrite --icon=./static/assets/img/favicon.ico --asar&quot;</span>,</span><br><span class="line">  <span class="string">&quot;packagerMAC&quot;</span>: <span class="string">&quot;electron-packager ./ &#x27;项目&#x27; --platform=darwin --arch=x64 --out ./project --app-version 1.0.0 --overwrite --extra-resource=./res/2.dat --extra-resource=./res/1.dat --icon=./static/assets/img/favicon.icns&quot;</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">//  --platform=win32 --arch=x64 win64位包</span></span><br><span class="line"><span class="comment">//   --out=./out  打包后文件</span></span><br><span class="line"><span class="comment">// --app-version 1.0.0 版本</span></span><br><span class="line"><span class="comment">// --overwrite 表示，如果本地有之前的打包文件，会删除原有文件，重新生成新的打包文件</span></span><br><span class="line"><span class="comment">// --icon=./static/assets/img/favicon.icns&quot; 表示打包文件的图标 icns/ico</span></span><br><span class="line"><span class="comment">// --extra-resource=./res/1.dat 表示加载的第三方文件，有关加载第三方文件的细节比较多，我在系列三回答</span></span><br><span class="line"><span class="comment">// --asar 简单来说，就是会把文件打包到一个加密文件包里，这样就不容易被解析到源码。具体分析见electron官网 ：</span></span><br></pre></td></tr></table></figure>
 
-<table>
-<thead>
-<tr>
-<th>标签</th>
-<th>熟悉/示例/说明</th>
-<th>说明</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><span id="a" class="blue--text">AAAA</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>a</td>
-<td>href 链接的路径，必须写 不然不会有链接的功能<br> target 打开页面的方式 <br> 取值：<code>_blank</code>  默认值，在新页面打开网页 <br> <code>_self</code>在当前页面中打开新网页</td>
-<td>链接</td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>href</code>=”1.zip” 下载资源<br> <code>href</code>=”mailto:<a href="mailto:&#103;&#x2d;&#x63;&#x68;&#x65;&#110;&#103;&#x6c;&#x69;&#x61;&#x6e;&#103;&#x40;&#x74;&#101;&#x64;&#x75;&#x2e;&#99;&#110;">&#103;&#x2d;&#x63;&#x68;&#x65;&#110;&#103;&#x6c;&#x69;&#x61;&#x6e;&#103;&#x40;&#x74;&#101;&#x64;&#x75;&#x2e;&#99;&#110;</a>“ 打开电子邮件<br> <code>href</code>=”javascript:alert(1111111)” <code>href</code>=”javascript:show()” 执行js代码<br> <code>href</code>=”#” 回到页面顶部<br> <code>href</code>=”#x” 到id=”x”的元素位置</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>audio</td>
-<td>默认audio不可见，如果添加controls属性可见<br> 属性方法事件大多数与<a href="#video" target="_self">video</a>相同</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>音频</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="b" class="blue--text">BBBB</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>b</td>
-<td>-</td>
-<td>加粗</td>
-<td></td>
-</tr>
-<tr>
-<td>br</td>
-<td>-</td>
-<td>换行 回车</td>
-<td></td>
-</tr>
-<tr>
-<td><span id="c" class="blue--text">CCCC</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>canvas</td>
-<td>&lt; canvas id=”c3” width=”500” height=”400” &gt;&lt; /canvas &gt;</td>
-<td>画布:画布宽度和高度只能通过js 或者标签属性来赋值-<a href="/画图-canvas/" target="_self">具体操作方法</a></td>
-<td></td>
-</tr>
-<tr>
-<td>circle</td>
-<td>&lt; svg &gt;&lt; circle <code>cx</code>=”x轴位置” <code>cy</code>=”y轴位置” <code>r</code>=”半径” <code>fill</code>=”填充颜色” <code>stroke</code>=”边框颜色” <code>fill-opacity</code>=”填充透明度” <code>stroke-opacity</code>=”边框透明度”&gt;</circle >&lt; svg &gt;</td>
-<td>绘制圆形 写在<a href="#svg" target="_self">svg</a></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="d" class="blue--text">DDDD</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="datalist">datalist</span></td>
-<td>&lt; input id=”myCar” list=”cars” / &gt;<br>&lt; datalist id=”cars” &gt;<br>&lt; option value=”BMW” &gt;<br>&lt; option value=”Ford” &gt;<br> &lt; /datalist &gt;</td>
-<td>建议列表</td>
-<td>html5</td>
-</tr>
-<tr>
-<td><span id="defs">defs</span></td>
-<td>-</td>
-<td>定义特效对象 写在<a href="#svg" target="_self">svg</a></td>
-<td></td>
-</tr>
-<tr>
-<td>del</td>
-<td>-</td>
-<td>删除线</td>
-<td></td>
-</tr>
-<tr>
-<td>div</td>
-<td>-</td>
-<td>块元素</td>
-<td></td>
-</tr>
-<tr>
-<td>dl</td>
-<td>-</td>
-<td>定义列表-进行解释说明的时候，使用定义列表</td>
-<td></td>
-</tr>
-<tr>
-<td>dt</td>
-<td>-</td>
-<td>要解释说明的名词。写于<code>dl</code>中</td>
-<td></td>
-</tr>
-<tr>
-<td>dd</td>
-<td>-</td>
-<td>要解释说明的名词。写于<code>dl</code>中</td>
-<td></td>
-</tr>
-<tr>
-<td><span id="e" class="blue--text">EEEE</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>em</td>
-<td>-</td>
-<td>斜体</td>
-<td></td>
-</tr>
-<tr>
-<td>embed</td>
-<td>height    设置嵌入内容的高度<br> src    嵌入内容的 URL<br> type 定义嵌入内容的类型<br> width<br></td>
-<td>标签定义嵌入的内容，比如插件</td>
-<td>html5</td>
-</tr>
-<tr>
-<td><span id="f" class="blue--text">FFFF</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>fieldset</td>
-<td>&lt; fieldset &gt; &lt; <a href="#legend" target="_self">legend</a> &gt;标题&lt; /legend &gt; 内容  &lt; /fieldset &gt;</td>
-<td>控件分组-出现类似卡片的玩意</td>
-<td></td>
-</tr>
-<tr>
-<td>filter</td>
-<td>id=”” <br>中间的内容标签又很多种 具体查看 <a target="_blank" rel="noopener" href="https://www.runoob.com/svg/svg-filters-intro.html">具体操作方法</a></td>
-<td>声明滤镜  写在<a href="#svg" target="_self">svg</a> 中 <br>&lt; filter id=”f3”&gt;<br>&lt; feGaussianBlur stdDeviation=”3” &gt;&lt; /feGaussianBlur &gt;<br>&lt; /filter&gt;<br>例子为 高斯模糊滤镜，stdDeviation：定义模糊量 。使用 添加属性 <code>filter=url(#id值)</code></td>
-<td></td>
-</tr>
-<tr>
-<td>form</td>
-<td>-</td>
-<td>表单</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>action=””</td>
-<td>(接口url)如果没有值，默认提交给本页</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>method=””</td>
-<td>定义表单提交方式 <code>get</code>  <code>post</code> <code>delete</code> <code>put</code>…</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>enctype=””</td>
-<td>允许将什么样的数据提交给服务器 <br> 取值：1.<code>application/x-www-form-urlencoded</code> 默认值，允许将任意字符提交给服务器(文件除外)<br> 2.<code>text/plain</code> 允许提交普通字符给服务器<br> 3.<code>multipart/form-data</code> 允许提交文件给服务器<br></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="g" class="blue--text">GGGG</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="h" class="blue--text">HHHH</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>h1-h6</td>
-<td>-</td>
-<td>用于标题</td>
-<td></td>
-</tr>
-<tr>
-<td>hr</td>
-<td>-</td>
-<td>水平分割线</td>
-<td></td>
-</tr>
-<tr>
-<td>html</td>
-<td>-</td>
-<td>表示网页的开始和结束</td>
-<td></td>
-</tr>
-<tr>
-<td><span id="i" class="blue--text">IIII</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>i</td>
-<td>-</td>
-<td>斜体</td>
-<td></td>
-</tr>
-<tr>
-<td>iframe</td>
-<td>src 路径<br> width <br> height <br> frameborder 0/1 是否显示边框<br> scrolling yes/no/auto 是否显示滚动条</td>
-<td>元素会创建包含另外一个文档的<code>内联框架</code></td>
-<td></td>
-</tr>
-<tr>
-<td>input</td>
-<td><code>type</code>=”text” 类型<br> <code>maxlength</code>=”1” 指定输入的最大长度<br> <code>readonly</code> 无值属性，只能读，不能写，可以提交<br> <code>placeholder</code> 占位提示符.<br> <code>name</code>=”” 为控件定义名称提，供给服务器端使用（name必须写）属性必须对应后台获取的值 {name:value}<br> <code>value</code>=”” 控件的值，传递给服务器的值 例外，对于按钮来说，value是设置按钮显示的内容<br> <code>disabled</code> 禁用，不能修改值，也不能提交&lt;</td>
-<td>输入框</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td><code>list</code>= 绑定<a href="#datalist" target="_self">datalist</a>推荐列表的id值-html5<br> <code>autofocus</code> 自动获取焦点<br> <code>form</code>= form表单id 规定内容属于一个或多个表单<br> <code>maxlength</code>=<code>minlength</code>=字符串最大长度<br> <code>max</code>=<code>min</code>=数字最大值与最小值<br> <code>required</code>不能为空<br> <code>pattern</code>=正则表达式&lt;</td>
-<td></td>
-<td>html5</td>
-</tr>
-<tr>
-<td></td>
-<td>type=”<code>text</code>“ 文本框<br> type=”<code>password</code>“ 密码框<br> type=”<code>submit</code>“ 提交按钮<br> type=”<code>button</code> “普通按钮<br> type=”<code>reset</code> “ 重置按钮 将当前表单的内容恢复到初始化状态</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>type=”<code>hidden</code>“ 隐藏域 想把数据提交给服务器，但是不想展示给用户看</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>type=”<code>radio</code>“ 单选按钮 <br><code>checked</code></td>
-<td>必须有value属性，不然传递值永远是on<br> 必须有name 才能有单选效果<br> <code>checked</code> 设置默认被选中项，无值属性</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>type=”<code>checkbox</code>“ 复选按钮 <br><code>checked</code></td>
-<td>name属性必须是数组name=”hobby[]”<br> 必须有value属性，不然传递值永远是on<br> checked 设置默认被选中项，无值属性<br> 属性 name除了定义控件名称之外，还起到分组的作用<br> checked 设置默认被选中项，无值属性</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>type=”<code>file</code>“ 文件选择框<br> <code>multiple</code></td>
-<td>1.必须使用post方法提交 因文件已一般不会小于2kb<br> 2.需要把form的enctype属性，设置为multipart/form-data<br>name属性必须是数组name=”hobby[]”<br>post发放提交，无法在地址栏显示<br><code>multiple</code> 设置 无值属性，选择多个文件</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>type=”<code>email</code>“ name=”email” 邮箱，提交的时候验证@及@后面有一个字节<br> type=”<code>search</code>“ name=”search” 搜索类型，自带快速清除功能<br> type=”<code>url</code>“ name=”url” url类型验证，提交的时候验证有http://开头<br> type=”<code>tel</code>“ name=”tel” 电话号码，移动端使用时，弹出虚拟键盘<br> type=”<code>number</code>“ max=”10” min=”5” step=”2” 数字类型 最大 最小 步长<br> type=”<code>range</code>“ max=”20” min=”16” step=”2” 范围类型滑动块 同上<br> type=”<code>color</code>“ 颜色类型<br> type=”<code>date</code>“  日期类型，提供了一个日期选择控件<br> type=”<code>month</code>“ 月份类型，提供了一个月份选择控件<br> type=”<code>week</code>“ 周类型</td>
-<td>html5</td>
-</tr>
-<tr>
-<td>image</td>
-<td>&lt; image xlink:href=”图片路径” x=”左上角” y=”左上角” &gt;&lt; /image &gt;</td>
-<td>绘制图片 写在<a href="#svg" target="_self">svg</a></td>
-<td></td>
-</tr>
-<tr>
-<td>img/</td>
-<td>src=”图片资源路径”<br> title：鼠标悬停时，显示的文字<br> alt:图片加载错误时，显示的文字<br> width:设置图片的宽<br> height：设置图片的高</td>
-<td>图片<br> 注意：如果设置的宽高比，与原始图片宽高比不一致，会出现图片的失真。解决图片的失真，宽高属性，只写一个，另外一个不写自适应</td>
-<td></td>
-</tr>
-<tr>
-<td><span id="j" class="blue--text">JJJJ</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="k" class="blue--text">KKKK</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="l" class="blue--text">LLLL</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>label</td>
-<td><code>for</code>=”” 填入ID  点击label文本，被关联的控件会被点中</td>
-<td>定义标注</td>
-<td></td>
-</tr>
-<tr>
-<td>li</td>
-<td>-</td>
-<td>用于ol和ul中</td>
-<td></td>
-</tr>
-<tr>
-<td>line</td>
-<td>&lt; line x1=”起点x” y1=”起点y” x2=”终点x” y2=”终点y” stroke=”颜色” stroke-width=”宽度” stroke-linecap=”两端形状 square/round” &gt;&lt; /line &gt;</td>
-<td>绘制直线 写在<a href="#svg" target="_self">svg</a><br>&lt; line x1=”100” y1=”50” x2=”200” y2=”50” stroke=”#f00” stroke-width=”15” stroke-linecap=”round” &gt;&lt; /line &gt;</td>
-<td></td>
-</tr>
-<tr>
-<td><span id="legend">legend</span></td>
-<td>写于fieldset中 fieldset的标题</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>linearGradient</td>
-<td><code>id</code>= <code>x1</code>= <code>y1</code>= <code>x2</code>= <code>y2</code>= <code>offser</code>= <code>stop-color</code>=</td>
-<td>声明线性渐变对象 写在<a href="#svg" target="_self">svg</a>的<a href="#defs" target="_self">defs</a> <br>&lt; linearGradient id=”g3” x1=”0%” y1=”0%” x2=”100%” y2=”0%” &gt;<br>&lt; stop offset=”0%” stop-color=”red” &gt;&lt;/ stop&gt;<br>&lt; stop offset=”100%” stop-color=”yellow” &gt;&lt;/ stop&gt;<br>&lt; /linearGradient &gt;<br> 使用 在SVG中 将原本的颜色属性url(#id值) 如：<code>fill=&quot;#f00&quot;</code>改成<code>fill=&quot;url(#g3)&quot;</code></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="m" class="blue--text">MMMM</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>meta</td>
-<td><a href="/Html-3-meta相关/" target="_self">/Html-3-meta相关/</a></td>
-<td>元数据 定义全局数据</td>
-<td></td>
-</tr>
-<tr>
-<td>meter</td>
-<td><code>min</code>=”最小值” <br> <code>max</code>=”最大值”<br>  <code>value</code>=”当前值”<br> <code>low</code>=”低值数”<br>  <code>high</code>=”高值数”<br>  <code>optimum</code>=”推荐数”</td>
-<td>刻度尺类似(手机电池)<meter min="100" max="200" value="130" low="110" high="160" optimum="150"></meter><br> &lt; meter min=”100” max=”200” value=”130” low=”110” high=”160” optimum=”150” &gt;&lt; /meter &gt;</td>
-<td></td>
-</tr>
-<tr>
-<td><span id="n" class="blue--text">NNNN</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="o" class="blue--text">OOOO</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>ol</td>
-<td>type=”” 标识项的类型  1/a/A/i/I<br> start=””  标识项的起始数字</td>
-<td>有序列表</td>
-<td></td>
-</tr>
-<tr>
-<td>output</td>
-<td>-</td>
-<td>-</td>
-<td>html5</td>
-</tr>
-<tr>
-<td><span id="option">option<span></td>
-<td><code>selected</code> 默认选中<br> <code>disabled</code> 禁用<br> <code>label</code>    显示内容，也可以直接写在标签中奖<br> <code>value</code>    值</td>
-<td>写于 <code>select</code> 中</td>
-<td></td>
-</tr>
-<tr>
-<td><span id="p" class="blue--text">PPPP</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>p</td>
-<td>-</td>
-<td>段落</td>
-<td></td>
-</tr>
-<tr>
-<td>polyline</td>
-<td>&lt; polyline points=”折线坐标” stroke=”线颜色” fill=”线包裹区域颜色” &gt;&lt; /polyline &gt;</td>
-<td>绘制折线 写在<a href="#svg" target="_self">svg</a><br>&lt; polyline points=”250,200 300,200 300,300 250,200” stroke=”#0f0” fill=”#ddd” &gt;&lt; /polyline &gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>pre</td>
-<td>-</td>
-<td>保存了在编写代码时手动输入的回车和空格效果 单独成行</td>
-<td></td>
-</tr>
-<tr>
-<td>progress</td>
-<td>&lt; progress &gt;&lt; /progress &gt; 一直在左右位移的进度条<br> &lt; progress value=”22” max=”100” &gt;&lt; /progress &gt; 有最大值 当前值的进度条</td>
-<td>进度条</td>
-<td>HTML5</td>
-</tr>
-<tr>
-<td><span id="q" class="blue--text">QQQQ</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="r" class="blue--text">RRRR</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="s" class="blue--text">SSSS</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>s</td>
-<td>-</td>
-<td>删除线</td>
-<td></td>
-</tr>
-<tr>
-<td>select</td>
-<td><code>disabled</code> 禁用 <br> <code>multiple</code>    规定可选择多个选项。<br> <code>name</code>=<br> <code>required</code>    规定文本区域是必填的<code>-html5</code><br> <code>size</code>=1    规定下拉列表中可见选项的数目。默认值为1,&gt;1的时候，是滚动选择框</td>
-<td>选择框<br> select = option.value <code>||</code> option的内容 <br> <a href="#option" target="_self">option</a></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="source">source</span></td>
-<td><code>media</code>    媒体资源的类型<br> <code>src</code>    地址<br> <code>type</code><br> 用于视频：<code>video/ogg``video/mp4``video/webm</code><br> —用于音频：<code>audio/ogg``audio/mpeg</code></td>
-<td>多份源文件的音频/视频播放器。<br> &lt; audio controls&gt;<br> &lt; source src=”horse.ogg” type=”audio/ogg” &gt;<br> &lt; source src=”horse.mp3” type=”audio/mpeg” &gt;<br> Your browser does not support the audio element.<br> &lt; /audio &gt;</td>
-<td>html5</td>
-</tr>
-<tr>
-<td>strong</td>
-<td>-</td>
-<td>加粗</td>
-<td></td>
-</tr>
-<tr>
-<td>span</td>
-<td>-</td>
-<td>行内元素-不允许写入块元素</td>
-<td></td>
-</tr>
-<tr>
-<td>sub</td>
-<td>-</td>
-<td>下标-我也不晓得他们的意义。。</td>
-<td></td>
-</tr>
-<tr>
-<td>sup</td>
-<td>-</td>
-<td>上标-我也不晓得他们的意义。。</td>
-<td></td>
-</tr>
-<tr>
-<td><span id="svg">svg</span></td>
-<td>id=”” width=”” height=”” version=”版本号” xmlns=”???”</td>
-<td>绘制svg-<a href="/画图-svg/" target="_self">具体操作方法</a></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="t" class="blue--text">TTTT</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>table</td>
-<td><code>border</code>=”2px”-边框尺寸<br> <code>width</code>=”200px”-<br> <code>height</code>=”200px”-<br> <code>align</code>=”center”-<br> <code>bgcolor</code>=”yellow”-背景颜色<br> <code>bordercolor</code>=”red”-边框颜色<br> <code>cellpadding</code>=”10px” 设置表格内边距 边框到内容的距离(以左和上为准)<br> <code>cellspacing</code>=”10px” 设置表格的外边距 边框到边框的距离<br></td>
-<td>表格 被嵌套的表格，只能放在td中 th中都不能放</td>
-<td></td>
-</tr>
-<tr>
-<td>caption</td>
-<td>-</td>
-<td>设置表格标题，必须紧跟 <code>table</code></td>
-<td></td>
-</tr>
-<tr>
-<td>tr</td>
-<td>align 设置当前行内容的水平对齐方式<br> valign: top/middle/bottom 设置当前行内容垂直对齐方式<br> bgcolor=”yellow” 设置当前行的背景颜色</td>
-<td>表格 行</td>
-<td></td>
-</tr>
-<tr>
-<td>td</td>
-<td>width=”70px”<br> height=”70px”<br> align=”right”<br> valign=”top/middle/bottom”<br> bgcolor=”blue”<br> <code>colspan</code> 跨列，列合并<br> <code>rowspan</code> 跨行，行合并</td>
-<td>表格单元格</td>
-<td></td>
-</tr>
-<tr>
-<td>th</td>
-<td>同tr</td>
-<td>加粗,居中表格单元格</td>
-<td></td>
-</tr>
-<tr>
-<td>thead</td>
-<td>同tr</td>
-<td>行分组,默认不可见–表头 一般写列的标题</td>
-<td></td>
-</tr>
-<tr>
-<td>tbody</td>
-<td>同tr</td>
-<td>行分组,默认不可见–表主体 内容</td>
-<td></td>
-</tr>
-<tr>
-<td>tfoot</td>
-<td>同tr</td>
-<td>行分组,默认不可见–表脚 总结.计算公式</td>
-<td></td>
-</tr>
-<tr>
-<td>tfoot</td>
-<td>同tr</td>
-<td>行分组,默认不可见–表脚 总结.计算公式</td>
-<td></td>
-</tr>
-<tr>
-<td>text</td>
-<td>&lt; text font-size=”字体大小” x=”起点” y=”起点” filter=”滤镜url” fill=”颜色” &gt;文案&lt; /text &gt;</td>
-<td>绘制文字 写在<a href="#svg" target="_self">svg</a><br>&lt; text font-size=”30” x=”30” y=”80” filter=”url(#g3)” fill=”red” &gt;文案&lt; /text &gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>textarea</td>
-<td><code>cols</code>=”5” <code>rows</code>=”3” 调整大小 允许写入横竖数目。根据计算机硬件的不同，不准确</td>
-<td>多行文本域</td>
-<td></td>
-</tr>
-<tr>
-<td><span id="u" class="blue--text">UUUU</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>u</td>
-<td>-</td>
-<td>下划线</td>
-<td></td>
-</tr>
-<tr>
-<td>ul</td>
-<td>type=”disc” 默认值，实心圆<br> type=”circle 空心圆<br> type=”square 实心小方块<br> type=”none不显示标识</td>
-<td>无序列表</td>
-<td></td>
-</tr>
-<tr>
-<td><span id="v" class="blue--text">VVVV</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="video" class="blue--text">video</span></td>
-<td><code>autoplay</code> 自动播放视频大多数浏览器此功能禁用<br> <code>controls</code> 显示播放控件原生组件.兼容性差<br> <code>height</code> <br> <code>loop</code> 循环播放<br> <code>muted</code> 静音播放<br> <code>poster</code> 规定视频下载时显示的图像，或者在用户点击播放按钮前显示的图像<br> <code>preload</code>    预加载策略（方式）使用 “autoplay”，则忽略该属性 <br> —<code>nono</code> 不预加载任何数据<br> —<code>matadata</code> 只预加载元数据 元数据：视频时长.视频第一帧画面.视频高宽<br> —<code>auto</code> 预加载元数据和一顶时长视频（默认）<br> <code>src</code> <br> <code>width</code></td>
-<td>视频<br> &lt; video src=”movie.ogg” controls=”controls” &gt;<br> 您的浏览器不支持 video 标签。<br> &lt; /video &gt;<br> 相关：<a href="#source" target="_self" >source</a></td>
-<td>html5</td>
-</tr>
-<tr>
-<td></td>
-<td>js相关</td>
-<td>dom.<code>play()</code> 播放视频<br> dom.<code>pause()</code>;暂停播放<br> dom.<code>volume</code> 控制音量 (0~1)<br> dom.<code>playbackRate</code> 播放速率大于1快放小于1慢播<br> dom.<code>paused</code>  当前视频是否处理暂停状态(布尔值)<br></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>事件</td>
-<td><code>canplaythrough</code> 当前视频加载结束可以播放事件<br> 值 dom.<code>duration</code> 获取视频时长<br> <code>ended</code> 视频播放结束触发事件<br> <code>timeupdate</code>    视频正在播放可以触发多次事件<br> 值 dom.<code>currentTime</code> 当前播放时间点<br></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="w" class="blue--text">WWWW</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="x" class="blue--text">XXXX</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="y" class="blue--text">YYYY</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><span id="z" class="blue--text">ZZZZ</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>!doctype html</td>
-<td>-</td>
-<td>文档类型声明</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>未完待续~ </p>
+<ul>
+<li><code>set ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/</code> – 解决直接 输入打包指令慢的问题</li>
+<li><code>delete  ELECTRON_MIRROR=https://cdn.npm.taobao.org/dist/electron/</code> – 如果有问题 可以删除镜像</li>
+<li><code>npm run pack</code></li>
+</ul>
+<h1 id="二-electron-builder"><a href="#二-electron-builder" class="headerlink" title="二.electron-builder"></a>二.electron-builder</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/388415620">https://zhuanlan.zhihu.com/p/388415620</a></p>
+<!-- npm i --save-dev electron  安装 Electron -->
+<p><code>npm install electron -g</code></p>
+<p><code>vue add electron-builder</code> 选择 13.0 如果不成功 重新 npm i</p>
+<h2 id="2-1-vite-vue3-electron-builder"><a href="#2-1-vite-vue3-electron-builder" class="headerlink" title="2.1 vite + vue3 + electron-builder"></a>2.1 vite + vue3 + electron-builder</h2><p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/263205.html">https://www.jb51.net/article/263205.html</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm install cnpm -g --registry=https:<span class="comment">//registry.npm.taobao.org </span></span><br><span class="line"><span class="comment">// 打包</span></span><br><span class="line">cnpm  i electron --dev </span><br><span class="line">cnpm  i vue-cli-plugin-electron-builder --dev</span><br><span class="line">cnpm  i electron-devtools-installer --dev</span><br><span class="line"></span><br><span class="line"><span class="comment">// 热更新</span></span><br><span class="line">cnpm  i concurrently -D</span><br><span class="line">cnpm  i wait-on -D</span><br></pre></td></tr></table></figure>
+
+<h1 id="三-技巧-amp-问题"><a href="#三-技巧-amp-问题" class="headerlink" title="三.技巧&amp;问题"></a>三.技巧&amp;问题</h1><h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p>在main文件夹下的index.js里添加</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mainWindow = <span class="keyword">new</span> BrowserWindow(&#123;</span><br><span class="line">    ...</span><br><span class="line">    webPreferences: &#123;</span><br><span class="line">      nodeIntegration: <span class="literal">true</span>,</span><br><span class="line">     webSecurity: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="隐藏菜单"><a href="#隐藏菜单" class="headerlink" title="隐藏菜单"></a>隐藏菜单</h3><p>main.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; app, BrowserWindow, Menu &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createWindow</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Create the browser window.</span></span><br><span class="line">  Menu.setApplicationMenu(<span class="literal">null</span>)</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="fs-promises"><a href="#fs-promises" class="headerlink" title="fs/promises"></a>fs/promises</h3><p> <code>fs/promises</code> 没找到<br> node版本低了 用高一点的试试看</p>
+<h3 id="打包不成功"><a href="#打包不成功" class="headerlink" title="打包不成功"></a>打包不成功</h3><p><code>cannot resolve https://cdn.npmmirror.com/binaries/electron/13.2.3/electron-v13.2.3-win32-x64.zip: status code 404 github.com/develar/app-builder/pkg/download.(*Downloader).follow</code></p>
+<p><code>npm config edit</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">registry&#x3D;https:&#x2F;&#x2F;registry.npmmirror.com</span><br><span class="line">electron_mirror&#x3D;https:&#x2F;&#x2F;cdn.npmmirror.com&#x2F;binaries&#x2F;electron&#x2F;</span><br><span class="line">electron_builder_binaries_mirror&#x3D;https:&#x2F;&#x2F;npmmirror.com&#x2F;mirrors&#x2F;electron-builder-binaries&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p> 然后关闭该窗口，重启命令行，删除node_modules文件夹，并重新安装依赖即可</p>
+<p>还是不行可以尝试升级版本 <code>&quot;electron&quot;: &quot;^13.5.1&quot;,</code></p>
+<p><a target="_blank" rel="noopener" href="https://www.bookstack.cn/read/electronjs-8.2.0-zh/api-browser-window.md">https://www.bookstack.cn/read/electronjs-8.2.0-zh/api-browser-window.md</a></p>
+<p>拖拽<br> 父元素设置 -webkit-app-region： drag,  - 支持拖拽<br> 子元素 -webkit-app-region： no-drag 即可 - 不支持拖拽</p>
 
         
       
@@ -866,7 +228,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Html</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Electron</a>
         		</li>
       		
 		</ul>
@@ -876,364 +238,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/Html-1-%E5%B1%9E%E6%80%A7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Html-2-相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Html-2-%E7%9B%B8%E5%85%B3/">2-Html相关</a>
-    </h1>
-  
-
-        
-        <a href="/Html-2-%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.023Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><div style="width:300px;">
-
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>“</td>
-<td><code>&amp;#34;</code></td>
-<td><code>&amp;quot;</code></td>
-</tr>
-<tr>
-<td>&amp;</td>
-<td><code>&amp;#38;</code></td>
-<td><code>&amp;amp;</code></td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td><code>&amp;#60;</code></td>
-<td><code>&amp;lt;</code></td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td><code>&amp;#62;</code></td>
-<td><code>&amp;gt;</code></td>
-</tr>
-<tr>
-<td>空格</td>
-<td><code>&amp;#160;</code></td>
-<td><code>&amp;nbsp;</code></td>
-</tr>
-</tbody></table>
-</div>   
-
-<h2 id="常用的结构标记"><a href="#常用的结构标记" class="headerlink" title="常用的结构标记"></a>常用的结构标记</h2><p>1.&lt; header &gt;&lt; /header &gt;<br>定义网页的头部，或者某个区域的顶部<br>2.<code>footer</code><br>定义网页的脚部，或者某个区域的底部<br>3.<code>nav</code><br>定义网页导航链接<br>4.<code>section</code><br>定义网页主体内容<br>5.<code>aside</code><br>定义网页侧边栏<br>6.<code>article</code><br>定义与文字相关的内容 比如，论坛，回帖，用户评论….</p>
-<h2 id="设置视口"><a href="#设置视口" class="headerlink" title="设置视口"></a>设置视口</h2><p><a href="/Html-3-meta相关/" target="_self">/Html-3-meta相关/</a><br>  width=device-width, 设置视口宽度为设备宽度<br>  initial-scale=1.0, 设置视口的宽度能否缩放 1.0不能缩放<br>  maximum-scale=1.0, 允许缩放的最大倍率<br>  user-scalable=0  是否允许用户手动缩放 0 不能</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot; width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0 &quot;</span>&gt;</span> </span><br></pre></td></tr></table></figure>
-
-
-
-
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Html</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Html-2-%E7%9B%B8%E5%85%B3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Html-3-meta相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Html-3-meta%E7%9B%B8%E5%85%B3/">3-meta相关</a>
-    </h1>
-  
-
-        
-        <a href="/Html-3-meta%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.023Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p><code>meta</code><br>元数据 定义全局数据</p>
-<table>
-<thead>
-<tr>
-<th align="left">标签</th>
-<th align="left">属性</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>name</strong>=”viewport”</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><strong>http-equiv</strong></td>
-<td align="left">提供了 content 属性的信息/值的 HTTP 头,可用于模拟一个 HTTP 响应头</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">content-type 规定文档的字符编码</td>
-<td align="left"><code>&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</code></td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">default-style 规定要使用的预定义的样式表,content 属性的值必须匹配同一文档中的一个 link 元素上的 title 属性的值，或者必须匹配同一文档中的一个 style 元素上的 title 属性的值。</td>
-<td align="left"><code>&lt;meta http-equiv=&quot;default-style&quot; content=&quot;the document&#39;s preferred stylesheet&quot;&gt;</code></td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">refresh 定义文档自动刷新的时间间隔。</td>
-<td align="left"><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;300&quot;&gt;</code></td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">Content-Security-Policy 内容安全政策</td>
-<td align="left"><code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;script-src &#39;self&#39; &#39;unsafe-inline&#39;;&quot; /&gt;</code></td>
-</tr>
-<tr>
-<td align="left"><strong>content</strong></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">width=device-width, 设置视口宽度为设备宽度</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">height=device-height 定义视口高度=设备高度</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">initial-scale=1.0, 设置视口的宽度能否缩放 1.0不能缩放</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">maximum-scale=1.0, 允许缩放的最大倍率</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">minimum-scale=1 缩小比例</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">user-scalable=no</td>
-<td align="left">是否允许用户手动缩放 0 不能 默认为yes 取值 no</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">script-src</td>
-<td align="left">外部脚本</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">style-src</td>
-<td align="left">样式表</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">img-src</td>
-<td align="left">图像</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">media-src</td>
-<td align="left">媒体文件（音频和视频）</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">font-src</td>
-<td align="left">字体文件</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">object-src</td>
-<td align="left">插件（比如 Flash）</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">child-src</td>
-<td align="left">框架</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">frame-ancestors</td>
-<td align="left">嵌入的外部资源（比如<code>&lt;frame&gt;、&lt;iframe&gt;、&lt;embed&gt;和&lt;applet&gt;</code>）</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">connect-src</td>
-<td align="left">HTTP 连接（通过 XHR、WebSockets、EventSource等）</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">worker-src</td>
-<td align="left">worker脚本</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">manifest-src</td>
-<td align="left">manifest 文件</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">‘unsafe-inline’</td>
-<td align="left">允许执行页面内嵌的&lt;script&gt;标签和事件监听函数</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">unsafe-eval</td>
-<td align="left">允许将字符串当作代码执行，比如使用eval、setTimeout、setInterval和Function等函数。</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">nonce值</td>
-<td align="left">每次HTTP回应给出一个授权token，页面内嵌脚本必须有这个token，才会执行</td>
-</tr>
-<tr>
-<td align="left">-</td>
-<td align="left">hash值</td>
-<td align="left">列出允许执行的脚本代码的Hash值，页面内嵌脚本的哈希值只有吻合的情况下，才能执行。</td>
-</tr>
-</tbody></table>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 移动端设置时间 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 引入图片不显示 图片防盗链问题 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;referrer&quot;</span> <span class="attr">content</span>=<span class="string">&quot;never&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Security-Policy&quot;</span> <span class="attr">content</span>=<span class="string">&quot;script-src &#x27;self&#x27; &#x27;unsafe-inline&#x27;;&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Html</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Html-3-meta%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+          <a class="article-more-a" href="/Electron-1-Electron%E7%AE%80%E4%BB%8B/">展开全文 >></a>
         </p>
       
 
@@ -3718,6 +2723,353 @@
 
 
   
+    <article id="post-CSS-sass" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/CSS-sass/">sass</a>
+    </h1>
+  
+
+        
+        <a href="/CSS-sass/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.023Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h1 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h1><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;2.scss&quot;</span> ;</span><br><span class="line"></span><br><span class="line">::v-deep div&#123;&#125;  // 深度选择器</span><br><span class="line">::v-deep(div) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p>node-js 8.1 以上安装 32位sass<br>node-js 10.0 以上安装 64位sass</p>
+<ul>
+<li>在线安装scss 在 <code>cmd</code> 控制台打印命令<br>安装 <code>npm install -g node-sass</code><br>查看版本 <code>node-sass -v</code></li>
+</ul>
+<p>cnpm install node-sass –save-dev       //安装node-sass<br>cnpm install sass-loader –save-dev         //安装依赖包sass-loader<br>cnpm install style-loader –save-dev        //安装style-loader<br>npm install <a href="mailto:&#x73;&#97;&#115;&#115;&#x2d;&#x6c;&#111;&#97;&#x64;&#x65;&#x72;&#x40;&#55;&#46;&#x33;&#46;&#x31;">&#x73;&#97;&#115;&#115;&#x2d;&#x6c;&#111;&#97;&#x64;&#x65;&#x72;&#x40;&#55;&#46;&#x33;&#46;&#x31;</a> –save-dev</p>
+<h2 id="2-文件转化"><a href="#2-文件转化" class="headerlink" title="2.文件转化"></a>2.文件转化</h2><p>单文件转换 <code>node-sass scss/01.scss css/01.css</code> 当前路径下的scss中的01.scss 转换为当前目录下的css中的01.css<br>多文件转换 <code>node-sass scss(文件夹名称) -o css(文件夹名称)</code> 当前路径下的scss文件夹中的.sass文件 转换为当前目录下的css文件夹中的.css文件<br>单文件监听 <code>node-sass -w scss/01.scss css/01.css</code> 01.scss内容发生改变，保存的时候，自动转换为01.css<br>多文件夹监听 <code>node-sass -w scss -o  css</code></p>
+<h2 id="3-变量声明"><a href="#3-变量声明" class="headerlink" title="3.变量声明"></a>3.变量声明</h2><pre><code>1-变量声明在&#123;&#125;外，整个scss文件都可以使用这个变量
+2-变量声明在&#123;&#125;内，只用当前样式可以使用此变量
+3-变量重复声明，后声明的变量会覆盖之前声明的，尽量保证变量名称不重复
+4-!default规则：如果此变量在之前已经声明赋值了,那么就使用之前的值，如果此变量之前没生命赋值，就使用现在的值</code></pre>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$my_gray</span>:<span class="number">#666</span>;</span><br><span class="line"><span class="variable">$my_gray</span>:<span class="number">#777</span> !default;</span><br><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">color</span>:<span class="variable">$my_gray</span>&#125; // <span class="number">#666</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-声明函数-声明混合器-mixin-include"><a href="#4-声明函数-声明混合器-mixin-include" class="headerlink" title="4.声明函数 / 声明混合器  @mixin @include"></a>4.声明函数 / 声明混合器  <code>@mixin</code> <code>@include</code></h2><p>声明函数 / 声明混合器  <code>@mixin</code><br>声明函数 / 声明混合器  <code>@function</code> 可以有return 值<br>调用函数 / 调用混合器 <code>@include</code></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> my_border(<span class="variable">$width</span>,<span class="variable">$color</span>)&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="variable">$width</span> solid <span class="variable">$color</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>:<span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>:<span class="number">1px</span> <span class="number">1px</span> <span class="number">1px</span> <span class="number">1px</span> <span class="variable">$color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用 </span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line"> <span class="keyword">@include</span> my_border(<span class="number">10px</span>,<span class="number">#f00</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-导入"><a href="#5-导入" class="headerlink" title="5.导入"></a>5.导入</h2><p>如果一个<code>scss</code>文件以下划线开头，那么这个文件就是一个局部<code>scss</code>文件,在转换成css文件的时候，不会把局部文件进行转换<br>一般情况，我们会把局部文件引入到全局文件(不以下划线开头的)中。<br>导入的语法 <code>@import&quot;dropdown&quot;</code>;<br>文件名叫做 <code>_dropdown.scss</code><br>导入的时候，不写<code>_</code>,不写<code>后缀</code><br>局部文件被导入后，局部文件中样式，会在全局文件转换的css中生成。同时局部文件声明的变量，可以在全局文件中使用。</p>
+<h2 id="6-继承-extend"><a href="#6-继承-extend" class="headerlink" title="6.继承 @extend"></a>6.继承 <code>@extend</code></h2><p> 一个选择器，可以继承另一个选择器的所有样式</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.my-rounded</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#f00</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.rounded-shadow</span>&#123;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span>;</span><br><span class="line">  <span class="keyword">@extend</span> .my-rounded;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 等于</span></span><br><span class="line"><span class="selector-class">.my-rounded</span>, <span class="selector-class">.rounded-shadow</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#f00</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>; &#125;</span><br><span class="line"><span class="selector-class">.rounded-shadow</span> &#123;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-运算"><a href="#7-运算" class="headerlink" title="7.运算"></a>7.运算</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-tag">p</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">   <span class="comment">// 加法  结果是否有引号.看第一位是否有引号</span></span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;asd&quot;</span>+yahei; <span class="comment">// === content: &quot;asdyahei&quot;;</span></span><br><span class="line">  <span class="attribute">font-family</span>: a+<span class="string">&quot;rial&quot;</span>; <span class="comment">// === font-family: arial;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 减法  写 - 的时候，要在 - 前后加空格</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 乘法 10*10px 得到100px  10px*10px 报错</span></span><br><span class="line">  <span class="attribute">font-size</span>:<span class="number">10</span> * <span class="number">5px</span>; <span class="comment">// ===font-size:150px;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 除法 $width/2 (500px/2) 5px+8px/2px 只有这三种情况才行</span></span><br><span class="line">  <span class="attribute">width</span>:<span class="number">10px</span>/<span class="number">2</span>; <span class="comment">// === width:10px/2;</span></span><br><span class="line">  <span class="attribute">width</span>:(<span class="number">10px</span>/<span class="number">2</span>); <span class="comment">// === width:5px;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// #&#123;&#125;</span></span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;l ate #&#123;50+30&#125; baozis&quot;</span>;<span class="comment">// === l ate 80 baozis</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 转化 </span></span><br><span class="line">  <span class="attribute">width</span>: <span class="number">1px</span>+<span class="number">1in</span>; <span class="comment">// === 97px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-函数，指令"><a href="#8-函数，指令" class="headerlink" title="8.函数，指令"></a>8.函数，指令</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义函数</span></span><br><span class="line"><span class="keyword">@function</span> :(<span class="variable">$a</span>,<span class="variable">$b</span>)&#123;<span class="keyword">@return</span> <span class="variable">$a</span>+<span class="variable">$b</span>;&#125;</span><br><span class="line"><span class="selector-tag">div</span>&#123;&#125; <span class="comment">// = width: 200px;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@function</span> abb(<span class="variable">$n</span>)&#123;</span><br><span class="line">  <span class="variable">$a</span>:<span class="number">60px</span>;</span><br><span class="line">  <span class="variable">$b</span>:<span class="number">10px</span>;</span><br><span class="line">  <span class="keyword">@return</span> <span class="variable">$n</span>*max(<span class="variable">$a</span>,<span class="variable">$b</span>)+<span class="variable">$n</span>*min(<span class="variable">$b</span>,<span class="variable">$a</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>: abb(<span class="number">6</span>); <span class="comment">// === width: 420px;</span></span><br><span class="line">  <span class="attribute">width</span>: add(<span class="number">100px</span>,<span class="number">100px</span>) // === width: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// round($val)        四舍五入  width:round(4.5px)</span></span><br><span class="line"><span class="comment">// ceil($val)         向上取整</span></span><br><span class="line"><span class="comment">// floor($val)        向下取整</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// min($v1,$v2.....)</span></span><br><span class="line"><span class="comment">// max($v1,$v2.....)</span></span><br><span class="line"><span class="comment">// unquote($str)        去掉$str的双引号</span></span><br><span class="line"><span class="comment">// quote($str)          给$str添加双引号</span></span><br><span class="line"><span class="comment">// to_upper_case($str); $str变大写</span></span><br><span class="line"><span class="comment">// to_lower_case($str); $str变小写</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// @if()&#123;&#125;</span></span><br><span class="line"><span class="comment">// @else if()&#123;&#125;</span></span><br><span class="line"><span class="comment">// @else&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="二-例子"><a href="#二-例子" class="headerlink" title="二.例子"></a>二.例子</h1><h2 id="1-移动端设置字体大小"><a href="#1-移动端设置字体大小" class="headerlink" title="1. 移动端设置字体大小"></a>1. 移动端设置字体大小</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> px2px(<span class="variable">$size</span>)&#123;</span><br><span class="line">  <span class="selector-attr">[data-dpr=&quot;1&quot;]</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="variable">$size</span> * <span class="number">1</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-attr">[data-dpr=&quot;2&quot;]</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="variable">$size</span> * <span class="number">2</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-attr">[data-dpr=&quot;3&quot;]</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="variable">$size</span> * <span class="number">3</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> px2px(<span class="number">12PX</span>); <span class="comment">// 使用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-循环声明多个类"><a href="#2-循环声明多个类" class="headerlink" title="2. 循环声明多个类"></a>2. 循环声明多个类</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">1</span> through <span class="number">15</span> &#123;</span><br><span class="line">  <span class="variable">$j</span>: <span class="variable">$i</span> * <span class="number">2</span> + <span class="number">10</span>;</span><br><span class="line">  <span class="selector-class">.font-</span>#&#123;<span class="variable">$j</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="variable">$i</span>*<span class="number">2px</span> + <span class="number">10px</span> <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.br-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="variable">$i</span>*<span class="number">2px</span> <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.line-height-</span>#&#123;<span class="variable">$j</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="variable">$i</span>*<span class="number">2px</span> + <span class="number">10px</span> <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.mr-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.ml-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.mt-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.mb-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.mx-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.my-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.ma-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.pr-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.pl-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.pt-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.pb-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.px-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.py-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.pa-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="variable">$i</span>*<span class="number">4px</span>  <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="101-常见问题"><a href="#101-常见问题" class="headerlink" title="101.常见问题"></a>101.常见问题</h2><p>下载失败问题 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/piaoxuewuming/p/15572036.html">https://www.cnblogs.com/piaoxuewuming/p/15572036.html</a></p>
+<h2 id="vue-scss-主题"><a href="#vue-scss-主题" class="headerlink" title="vue scss 主题"></a>vue scss 主题</h2><p>永远是第一次加载的颜色<br>建议使用另一种方式</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$header-color</span>: <span class="number">#f00</span></span><br><span class="line">.white &#123;  <span class="variable">$header-color</span>: <span class="number">#fff</span> &#125;</span><br><span class="line">.blue &#123;  <span class="variable">$header-color</span>: <span class="number">#ff0</span> &#125;</span><br><span class="line">/* 使用 </span><br><span class="line"> </span><br><span class="line">*/</span><br><span class="line">.header &#123;</span><br><span class="line">  color: <span class="variable">$header-color</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好的</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// themes/theme-white.scss</span></span><br><span class="line"><span class="variable">$white</span>: (</span><br><span class="line">  header-bg: <span class="number">#fff</span>,</span><br><span class="line">  header-color: <span class="number">#fff</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">// themes/theme-blue.scss</span><br><span class="line"><span class="variable">$blue</span>: (</span><br><span class="line">  header-bg: <span class="number">#f00</span>,</span><br><span class="line">  header-color: <span class="number">#f00</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//  themes/theme.scss</span><br><span class="line">@import <span class="string">&#x27;./theme-white&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;./theme-blue&#x27;</span>;</span><br><span class="line"><span class="variable">$themes</span>: (</span><br><span class="line"> white: <span class="variable">$white</span>,</span><br><span class="line">  blue:<span class="variable">$blue</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">@mixin</span> themify(<span class="variable">$themes</span>: <span class="variable">$themes</span>) &#123;</span><br><span class="line"> <span class="selector-class">.theme</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">@each</span> <span class="variable">$theme-name</span>, <span class="variable">$map</span> in <span class="variable">$themes</span> &#123;</span><br><span class="line">  <span class="comment">// .theme-#&#123;$theme-name&#125; &#123;</span></span><br><span class="line">  #&#123;&#x27;.theme-&#x27; + $theme-name&#125; &#123;</span><br><span class="line">   <span class="variable">$theme-map</span>: () !global;</span><br><span class="line">   <span class="keyword">@each</span> <span class="variable">$key</span>, <span class="variable">$value</span> in <span class="variable">$map</span> &#123;</span><br><span class="line">    <span class="variable">$theme-map</span>: map-merge(</span><br><span class="line">     <span class="variable">$theme-map</span>,</span><br><span class="line">     (</span><br><span class="line">      <span class="variable">$key</span>: <span class="variable">$value</span>,</span><br><span class="line">     )</span><br><span class="line">    ) !global;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">@content</span>;</span><br><span class="line">   <span class="variable">$theme-map</span>: null !global;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@function</span> t(<span class="variable">$key</span>) &#123;</span><br><span class="line"> <span class="keyword">@return</span> map-get(<span class="variable">$theme-map</span>, <span class="variable">$key</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 xxx.vue</span></span><br><span class="line"><span class="comment">// 使用 theme-white 主题</span></span><br><span class="line">&lt;t-header class=&quot;theme theme-white&quot;&gt;&lt;/t-header&gt;</span><br><span class="line"><span class="comment">// 使用 theme-blue 主题</span></span><br><span class="line">&lt;t-header class=&quot;theme theme-blue&quot;&gt;&lt;/t-header&gt;</span><br><span class="line">  <span class="keyword">@import</span> <span class="string">&quot;./themes/theme&quot;</span>;</span><br><span class="line">  <span class="selector-class">.main-frame</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="keyword">@include</span> themify() &#123;</span><br><span class="line">      <span class="selector-class">.t-header</span> &#123;</span><br><span class="line">        <span class="attribute">background</span>: t(<span class="string">&#x27;header-bg&#x27;</span>);</span><br><span class="line">        <span class="attribute">color</span>: t(<span class="string">&#x27;header-color&#x27;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/CSS-sass/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Flutter-1-flutter下载，安装，配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Flutter-1-flutter%E4%B8%8B%E8%BD%BD%EF%BC%8C%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE/">1-flutter下载，安装，配置</a>
+    </h1>
+  
+
+        
+        <a href="/Flutter-1-flutter%E4%B8%8B%E8%BD%BD%EF%BC%8C%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.023Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="相关网址"><a href="#相关网址" class="headerlink" title="相关网址"></a>相关网址</h2><table>
+<thead>
+<tr>
+<th>介绍</th>
+<th>网址</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>中文文档</td>
+<td><a target="_blank" rel="noopener" href="https://flutter.cn/docs/get-started/install/windows">https://flutter.cn/docs/get-started/install/windows</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>又一个中文文档</td>
+<td><a target="_blank" rel="noopener" href="https://flutterchina.club/tutorials/layout">https://flutterchina.club/tutorials/layout</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Flutter 导入 import ‘package:english_words/english_words.dart’报错</td>
+<td><a target="_blank" rel="noopener" href="https://blog.csdn.net/Swust_Zeng_zhuo_K/article/details/84259396">https://blog.csdn.net/Swust_Zeng_zhuo_K/article/details/84259396</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>dome</td>
+<td><a target="_blank" rel="noopener" href="https://flutter.github.io/samples/#">https://flutter.github.io/samples/#</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>dome1</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/OpenFlutter/Flutter-Notebook">https://github.com/OpenFlutter/Flutter-Notebook</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>各种例子</td>
+<td><a target="_blank" rel="noopener" href="https://flutter.github.io/samples/gallery.html">https://flutter.github.io/samples/gallery.html</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>简书</td>
+<td><a target="_blank" rel="noopener" href="https://www.jianshu.com/nb/22976660">https://www.jianshu.com/nb/22976660</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>一些组件介绍</td>
+<td><a target="_blank" rel="noopener" href="https://book.flutterchina.club/chapter3/input_and_form.html">https://book.flutterchina.club/chapter3/input_and_form.html</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>自带的一些icons图标</td>
+<td><a target="_blank" rel="noopener" href="https://www.aliyue.net/9310.html">https://www.aliyue.net/9310.html</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>组件库</td>
+<td><a target="_blank" rel="noopener" href="http://laomengit.com/flutter/widgets/Padding.html">http://laomengit.com/flutter/widgets/Padding.html</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>视频</td>
+<td><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JE411e7Tu?p=2">https://www.bilibili.com/video/BV1JE411e7Tu?p=2</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>入门</td>
+<td><a target="_blank" rel="noopener" href="https://book.flutterchina.club/chapter4/alignment.html">https://book.flutterchina.club/chapter4/alignment.html</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>icon 速查</td>
+<td><a target="_blank" rel="noopener" href="https://api.flutter.dev/flutter/material/Icons-class.html">https://api.flutter.dev/flutter/material/Icons-class.html</a></td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h2 id="一-Flutter-SDK-下载"><a href="#一-Flutter-SDK-下载" class="headerlink" title="一.Flutter SDK 下载"></a>一.Flutter SDK 下载</h2><p>最新（截至20201110）<a target="_blank" rel="noopener" href="https://storage.flutter-io.cn/flutter_infra/releases/stable/windows/flutter_windows_1.22.3-stable.zip">flutter_windows_1.22.3-stable.zip</a><br>历史版本: <a target="_blank" rel="noopener" href="https://flutter.cn/docs/development/tools/sdk/releases">https://flutter.cn/docs/development/tools/sdk/releases</a></p>
+<p>这里我们使用 <code>flutter_windows_1.22.3-stable.zip</code><br>请勿将 Flutter 安装在需要高权限的文件夹内，例如 <code>C:\Program Files\</code>。<br>这里我们讲他装入 <code>c:/src/flutter</code> 下<br>找到 flutter 目录中的 <code>flutter_console.bat</code> 文件，双击执行该批处理脚本。<br>这是 我们可以在弹出的窗口 输入 Flutter 指令  比如 <code>flutter doctor</code> 查看是否安装成功</p>
+<h2 id="二-配置环境变量"><a href="#二-配置环境变量" class="headerlink" title="二.配置环境变量"></a>二.配置环境变量</h2><p>win10系统  </p>
+<ul>
+<li>开始菜单的搜索功能键入 &gt; 控制面板 &gt; 系统和安全 &gt; 系统 &gt; 左侧高级系统设置 &gt; 环境变量</li>
+<li>开始菜单的搜索功能键入“env”， &gt; 编辑系统的环境变量 &gt; 环境变量</li>
+<li>在 系统变量 检查是否有 Path 这个条目<br>  如果存在，直接把 <code>flutter\bin</code> 目录的完整路径以 ; 作为分隔加到已有的值后面。<br>  如果不存在的话，在用户环境变量中创建一个新的 Path 变量，然后将 <code>flutter\bin 所在的完整路径作为新变量的值</code>。<br>注意！</li>
+<li>你需要关闭和重新启动已经打开的各个控制台窗口，这样下次启动控制台时才能访问到刚才修改的变量。</li>
+<li>如果不成功试试将用户变量 也添加这个 Path 条目</li>
+<li>如果不成功 试试使用浏览（位于删除按钮的上方）的方式 将给 psth 添加内容 而不是用手敲的方式</li>
+<li><code>win + r</code>  输入 <code>cmd</code> 执行 <code>flutter doctor</code> 查看是否安装成功<br>  出现下方内容就是成功了 对于 X 和 ！ 项目可以先无视 后面会有将<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Doctor summary (to see all details, run flutter doctor -v):</span><br><span class="line">[√] Flutter (Channel stable, 1.22.3, on Microsoft Windows [Version 10.0.18363.1139], locale zh-CN)</span><br><span class="line">[X] Android toolchain - develop for Android devices</span><br><span class="line">    X Unable to locate Android SDK.</span><br><span class="line">      Install Android Studio from: https:&#x2F;&#x2F;developer.android.com&#x2F;studio&#x2F;index.html</span><br><span class="line">      On first launch it will assist you in installing the Android SDK components.</span><br><span class="line">      (or visit https:&#x2F;&#x2F;flutter.dev&#x2F;docs&#x2F;get-started&#x2F;install&#x2F;windows#android-setup for detailed instructions).</span><br><span class="line">      If the Android SDK has been installed to a custom location, set ANDROID_SDK_ROOT to that location.</span><br><span class="line">      You may also want to add it to your PATH environment variable.</span><br><span class="line"></span><br><span class="line">[!] Android Studio (not installed)</span><br><span class="line">[!] Connected device</span><br><span class="line">    ! No devices available</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="三-Flutter配置国内镜像（非常重要，除非你一直保持翻墙）-不然会经常卡住"><a href="#三-Flutter配置国内镜像（非常重要，除非你一直保持翻墙）-不然会经常卡住" class="headerlink" title="三.Flutter配置国内镜像（非常重要，除非你一直保持翻墙） 不然会经常卡住"></a>三.Flutter配置国内镜像（非常重要，除非你一直保持翻墙） 不然会经常卡住</h2><p>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/897a78aec874">https://www.jianshu.com/p/897a78aec874</a><br>还是刚刚配置环境变量的地方，在用户变量中配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">变量名                        值</span><br><span class="line">FLUTTER_STORAGE_BASE_URL: https:&#x2F;&#x2F;storage.flutter-io.cn</span><br><span class="line">PUB_HOSTED_URL: https:&#x2F;&#x2F;pub.flutter-io.cn</span><br></pre></td></tr></table></figure>
+<p>或者 cmd 操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set PUB_HOSTED_URL&#x3D;https:&#x2F;&#x2F;pub.flutter-io.cn</span><br><span class="line">set FLUTTER_STORAGE_BASE_URL&#x3D;https:&#x2F;&#x2F;storage.flutter-io.cn</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-flutter-指令"><a href="#四-flutter-指令" class="headerlink" title="四.flutter 指令"></a>四.flutter 指令</h2><p><a target="_blank" rel="noopener" href="https://flutter.cn/docs/reference/flutter-cli">https://flutter.cn/docs/reference/flutter-cli</a></p>
+<table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flutter</td>
+<td>列出所有的命令</td>
+</tr>
+<tr>
+<td>flutter    create  项目</td>
+<td>创建项目</td>
+</tr>
+<tr>
+<td>flutter run lib/main.dart</td>
+<td>运行项目</td>
+</tr>
+<tr>
+<td>flutter help</td>
+<td>查看具体命令的帮助信息</td>
+</tr>
+<tr>
+<td>flutter devices</td>
+<td>查看可用设备</td>
+</tr>
+<tr>
+<td>flutter doctor</td>
+<td>查看是否还需要安装其它依赖</td>
+</tr>
+<tr>
+<td>flutter doctor -v</td>
+<td>查看详细信息</td>
+</tr>
+<tr>
+<td>flutter channel</td>
+<td>查看 Flutter SDK 所有分支</td>
+</tr>
+<tr>
+<td>flutter channel stable</td>
+<td>切换分支</td>
+</tr>
+<tr>
+<td>flutter upgrade</td>
+<td>升级 Flutter SDK（此命令会同时更新 Flutter SDK 和你的 Flutter 项目依赖包）</td>
+</tr>
+<tr>
+<td>flutter packages get</td>
+<td>获取项目所有的依赖包（只更新项目依赖包，不包括 Flutter SDK）</td>
+</tr>
+<tr>
+<td>flutter packages upgrade</td>
+<td>获取项目所有依赖包的最新版本（只更新项目依赖包，不包括 Flutter SDK）</td>
+</tr>
+<tr>
+<td>flutter build apk</td>
+<td></td>
+</tr>
+<tr>
+<td>flutter build ios</td>
+<td></td>
+</tr>
+<tr>
+<td>flutter analyze</td>
+<td>分析项目代码</td>
+</tr>
+</tbody></table>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Flutter</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Flutter-1-flutter%E4%B8%8B%E8%BD%BD%EF%BC%8C%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/10/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/">Next &amp;raquo;</a>
@@ -3823,7 +3175,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3831,15 +3183,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3848,10 +3204,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node J S</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3887,15 +3239,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vue3.0</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3904,6 +3252,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3919,6 +3271,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
@@ -3928,10 +3284,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">

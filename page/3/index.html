@@ -150,6 +150,224 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-杂项-2-算法解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-2-%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/">2-算法解析</a>
+    </h1>
+  
+
+        
+        <a href="/%E6%9D%82%E9%A1%B9-2-%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>原网址 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/jW3-icYQaJVITCYi730iIw">https://mp.weixin.qq.com/s/jW3-icYQaJVITCYi730iIw</a></p>
+<h2 id="todo-再看-不知道在说什么了…"><a href="#todo-再看-不知道在说什么了…" class="headerlink" title="todo 再看 不知道在说什么了…."></a>todo 再看 不知道在说什么了….</h2><h3 id="前言前言"><a href="#前言前言" class="headerlink" title="前言前言"></a>前言前言</h3><p>问题:给定一个无序的整数数组，找到其中最长上升子序列的长度。</p>
+<blockquote>
+<p>输入: [10,9,2,5,3,7,101,18] 输出: 4<br>  解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。</p>
+</blockquote>
+<p>首先，我们需要对基本的概念进行了解和区分：</p>
+<ul>
+<li>子串：一定是连续的</li>
+<li>子序列：子序列不要求连续 例如：[6, 9, 12] 是 [1, 3, 6, 8, 9, 10, 12] 的一个子序列</li>
+<li>上升/递增子序列：一定是严格上升/递增的子序列<br>注意：子序列中元素的相对顺序必须保持在原始数组中的相对顺序</li>
+</ul>
+<h4 id="1-动态规划"><a href="#1-动态规划" class="headerlink" title="1.动态规划"></a>1.动态规划</h4><p>*当我们遍历<code>nums[i]</code>时，需要同时对比已经遍历过的 n<code>ums[j]</code><br>*如果<code> nums[i] &gt; nums[j]，nums[i]</code> 就可以加入到序列 <code>nums[j]</code> 的最后，长度就是 <code>dp[j] + 1</code><br>注：<code>(0 &lt;= j &lt; i) (nums[j] &lt; nums[i])</code><br>时间复杂度：<code>O(n^2)</code><br>空间复杂度：<code>O(n)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> lengthOfLIS = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> n = nums.length;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> dp = <span class="keyword">new</span> <span class="built_in">Array</span>(n).fill(<span class="number">1</span>); <span class="comment">// 数组 [1,1,1,1....]</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] &lt; nums[i]) &#123; <span class="comment">// 遇到比当前下标数字小的内容</span></span><br><span class="line">                dp[i] = <span class="built_in">Math</span>.max(dp[i], dp[j] + <span class="number">1</span>); <span class="comment">// 将上次统计的数字+1 然后和当前数字比较大小</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.max(...dp) <span class="comment">// 取最大值</span></span><br><span class="line">&#125;</span><br><span class="line">lengthOfLIS(<span class="number">10</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>,<span class="number">18</span>)</span><br><span class="line"><span class="comment">// i = 0  dp = [1,1,1,1,1,1,1,]</span></span><br><span class="line"><span class="comment">// 1 同上</span></span><br><span class="line"><span class="comment">// 2 同上</span></span><br><span class="line"><span class="comment">// 3 [1,1,1,2,1,1,1,1]</span></span><br><span class="line"><span class="comment">// 4 [1,1,1,2,2,1,1,1]</span></span><br><span class="line"><span class="comment">// 5 [1,1,1,2,2,3,1,1]</span></span><br><span class="line"><span class="comment">// 6 [1,1,1,2,2,3,4,1]</span></span><br><span class="line"><span class="comment">// 7 [1,1,1,2,2,3,4,4]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-贪心-二分查找"><a href="#2-贪心-二分查找" class="headerlink" title="2.贪心 + 二分查找"></a>2.贪心 + 二分查找</h4><p>这里再结合本题理解一下贪心思想，同样是长度为 2 的序列，[1,2] 一定比 [1,4] 好，因为它更有潜力。换句话说，我们想要组成最长的递增子序列， 就要让这个子序列中上升的尽可能的慢，这样才能更长。<br><strong>注意：</strong>这种方式被替换后组成的新数组不一定是解法一中正确结果的数组，但长度是一样的，不影响我们对此题求解。<br>时间复杂度：<code>O(nlogn)</code><br>空间复杂度：<code>O(n)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> lengthOfLIS = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = nums.length;</span><br><span class="line">    <span class="keyword">if</span> (len &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> len;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> tails = [nums[<span class="number">0</span>]];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i] &gt; tails[tails.length - <span class="number">1</span>]) &#123; <span class="comment">// 当前遍历元素 nums[i] 大于 前一个递增子序列的 尾元素时，追加到后面即可</span></span><br><span class="line">            tails.push(nums[i]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 否则，查找递增 子序列中 第一个大于当前值 的元素，用当前遍历元素 nums[i] 替换它</span></span><br><span class="line">            <span class="comment">// 递增序列，可以使用二分查找</span></span><br><span class="line">            <span class="keyword">let</span> left = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">let</span> right = tails.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">                <span class="keyword">let</span> mid = (left + right) &gt;&gt; <span class="number">1</span>; <span class="comment">// 按位右移 将数字转成2进制 去掉最后一位 然后转为10进制 相当于 Math.floor(值/2)  40 &gt;&gt; 1 == 20</span></span><br><span class="line">                <span class="keyword">if</span> (tails[mid] &lt; nums[i]) &#123;</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    right = mid;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            tails[left] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tails.length;</span><br><span class="line">&#125;;</span><br><span class="line">lengthOfLIS(<span class="number">10</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>,<span class="number">18</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">12</span>,<span class="number">1</span>)</span><br><span class="line"><span class="comment">// i = 0 tails = [10]</span></span><br><span class="line"><span class="comment">// 1 [9]</span></span><br><span class="line"><span class="comment">// 2 [2]</span></span><br><span class="line"><span class="comment">// 3 [2,5]</span></span><br><span class="line"><span class="comment">// 4 [2,3]</span></span><br><span class="line"><span class="comment">// 5 [2,3,7]</span></span><br><span class="line"><span class="comment">// 6 [2,3,7,101]</span></span><br><span class="line"><span class="comment">// 7 [2,3,7,18]</span></span><br><span class="line"><span class="comment">// 8 [2,3,5,18]</span></span><br><span class="line"><span class="comment">// 9 [2,3,5,8]</span></span><br><span class="line"><span class="comment">// 10 [2,3,5,8,12]</span></span><br><span class="line"><span class="comment">// 11 [1,3,5,8,12]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>我们思考一个问题：Diff 算法的目的是什么？<br>「为了减少 DOM 操作的性能开销，我们要尽可能的复用 DOM 元素。所以我们需要判断出是否有节点需要移动，应该如何移动以及找出那些需要被添加或删除的节点。」</p>
+<p>首先我们要搞清楚，核心算法的的位置。核心算法其实是当新旧 children 都是多个子节点的时候才会触发。<br>下面这段代码就是 Vue3 的 DOM Diff 核心算法<br>他返回的是 当前正确结果的数组下标合集 比如 <code>getSequence([1,3,5,7,2,4,6])</code> 会得到 <code>[0,4,5,6]</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// packages/runtime-core/src/renderer.ts</span></span><br><span class="line">function getSequence(arr: number[]): number[] &#123;</span><br><span class="line">  <span class="keyword">const</span> p = arr.slice() <span class="comment">// 起到深拷贝作用</span></span><br><span class="line">  <span class="keyword">const</span> result = [<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">let</span> i, j, u, v, c</span><br><span class="line">  <span class="keyword">const</span> len = arr.length</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> arrI = arr[i]</span><br><span class="line">    <span class="keyword">if</span> (arrI !== <span class="number">0</span>) &#123; <span class="comment">// 排除等于 0 的情况</span></span><br><span class="line">      j = result[result.length - <span class="number">1</span>]</span><br><span class="line">      <span class="keyword">if</span> (arr[j] &lt; arrI) &#123;  <span class="comment">// 当前数字与result最后一项对于于arr的数字 进行比较</span></span><br><span class="line">        p[i] = j <span class="comment">// 最后一项与 p 对应的索引进行对应</span></span><br><span class="line">        result.push(i)</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// arrI 比 arr[j] 小，使用二分查找找到后替换它</span></span><br><span class="line">      <span class="comment">// 定义二分查找区间</span></span><br><span class="line">      u = <span class="number">0</span></span><br><span class="line">      v = result.length - <span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> (u &lt; v) &#123;<span class="comment">// 开启二分查找</span></span><br><span class="line">        c = ((u + v) / <span class="number">2</span>) | <span class="number">0</span> <span class="comment">// 按位或| 二进制位数相比 上下两位含有1，结果是1，否则是0 (3|5);//011  和101比 得到111 即7</span></span><br><span class="line">        <span class="keyword">if</span> (arr[result[c]] &lt; arrI) &#123;</span><br><span class="line">          u = c + <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          v = c</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (arrI &lt; arr[result[u]]) &#123; <span class="comment">// 比较 =&gt; 替换 当前数字 与 result二分查找结果项对于arr的数字</span></span><br><span class="line">        <span class="keyword">if</span> (u &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          p[i] = result[u - <span class="number">1</span>]  <span class="comment">// 正确的结果</span></span><br><span class="line">        &#125;</span><br><span class="line">        result[u] = i <span class="comment">// 有可能替换会导致结果不正确，需要一个新数组 p 记录正确的结果</span></span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">// i = 0 result = [0] p = [10,9,2,5,3,7,101,18,5,8,12,1]</span></span><br><span class="line"><span class="comment">// 1 [1] p同上</span></span><br><span class="line"><span class="comment">// 2 [2] p同上</span></span><br><span class="line"><span class="comment">// 3 [2,3] [10,9,2,2..其他同上]</span></span><br><span class="line"><span class="comment">// 4 [2,4] [10,9,2,2,2..] u = 1</span></span><br><span class="line"><span class="comment">// 5 [2,4,5] [10,9,2,2,2,4..]</span></span><br><span class="line"><span class="comment">// 6 [2,4,5,6] [10,9,2,2,2,4,5...]</span></span><br><span class="line"><span class="comment">// 7 [2,4,5,7] [10,9,2,2,2,4,5,5,8,12,1](修改p[7] = 5) u = 3</span></span><br><span class="line"><span class="comment">// 8 [2,4,8,7] [10,9,2,2,2,4,5,4,8,12,1] u = 2</span></span><br><span class="line"><span class="comment">// 9 [2,4,8,9] [10,9,2,2,2,4,5,4,8,12,1](修改p[8] = 8) u = 3 </span></span><br><span class="line"><span class="comment">// 10 [2,4,8,9,10] [10,9,2,2,2,4,5,4,8,9,1]</span></span><br><span class="line"><span class="comment">// 11 [11,4,8,9,10] [10,9,2,2,2,4,5,4,8,9,1] u = 0 v = 0 到此步为止 result对应arr里的值 = 上述贪心的 tails</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  u = result.length <span class="comment">// 5</span></span><br><span class="line">  v = result[u - <span class="number">1</span>] <span class="comment">// 10</span></span><br><span class="line">  <span class="keyword">while</span> (u-- &gt; <span class="number">0</span>) &#123; <span class="comment">// 倒叙回溯 用 p 覆盖 result 进而找到最终正确的索引</span></span><br><span class="line">    result[u] = v <span class="comment">//</span></span><br><span class="line">    v = p[v]</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// u = 4 result = [11,4,8,9,10] v = 9</span></span><br><span class="line"><span class="comment">// u = 3 result = [11,4,8,9,10] v = 8</span></span><br><span class="line"><span class="comment">// u = 2 result = [11,4,8,9,10] v = 4</span></span><br><span class="line"><span class="comment">// u = 1 result = [2,4,8,9,10] v = 2</span></span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line">getSequence([<span class="number">10</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>,<span class="number">18</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">12</span>,<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<p>结尾这个diff让我头晕脑胀，，，反正结果是比 贪心 + 二分查找  多了 当前<strong>正确结果的数组下标合集</strong> 而 贪心 只能获取长度 不能获取正确的数组合集</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-2-%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-杂项-3-浏览器是如何调度进程和线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-3-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E8%B0%83%E5%BA%A6%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/">3-浏览器是如何调度进程和线程</a>
+    </h1>
+  
+
+        
+        <a href="/%E6%9D%82%E9%A1%B9-3-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E8%B0%83%E5%BA%A6%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>借鉴 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/G4RRw4jBhCtCK_bZpmU0iw">https://mp.weixin.qq.com/s/G4RRw4jBhCtCK_bZpmU0iw</a></p>
+<p>进程：CPU 进行资源分配的基本单位<br>线程：CPU 调度的最小单位</p>
+<p>这是进程和线程最官方也是最常见的两个定义，但是这两个概念太抽象了，很难以理解。<br>通俗一点讲：<br>进程可以描述为一个应用程序的执行程序，<br>线程则是进程内部用来执行某个部分的程序。</p>
+<p>做个简单的比喻：<em>进程=火车，线程=车厢</em></p>
+<ul>
+<li>线程在进程下行进（单纯的车厢无法运行）</li>
+<li>一个进程可以包含多个线程（一辆火车可以有多个车厢）</li>
+<li>不同进程间数据很难共享（一辆火车上的乘客很难换到另外一辆火车，比如站点换乘）</li>
+<li>同一进程下不同线程间数据很易共享（A车厢换到B车厢很容易）</li>
+<li>进程要比线程消耗更多的计算机资源（采用多列火车相比多个车厢更耗资源）</li>
+<li>进程间不会相互影响，一个线程挂掉将导致整个进程挂掉（一列火车不会影响到另外一列火车，但是如果一列火车上中间的一节车厢着火了，将影响到所有车厢）</li>
+<li>进程可以拓展到多机，进程最多适合多核（不同火车可以开在多个轨道上，同一火车的车厢不能在行进的不同的轨道上）</li>
+<li>进程使用的内存地址可以上锁，即一个线程使用某些共享内存时，其他线程必须等它结束，才能使用这一块内存。（比如火车上的洗手间）－”互斥锁”</li>
+<li>进程使用的内存地址可以限定使用量（比如火车上的餐厅，最多只允许多少人进入，如果满了需要在门口等，等有人出来了才能进去）－“信号量”</li>
+</ul>
+<h2 id="应用程序如何调度进程和线程"><a href="#应用程序如何调度进程和线程" class="headerlink" title="应用程序如何调度进程和线程"></a>应用程序如何调度进程和线程</h2><p>当一个应用程序启动时，一个进程就被创建了。应用程序可能会创建一些线程帮助它完成某些工作，但这不是必须的。操作系统会划分出一部分内存给这个进程，当前应用程序的所有状态都将保存在这个私有的内存空间中。</p>
+<p>当你关闭应用时，进程也就自动蒸发掉了，操作系统会将先前被占用的内存空间释放掉。</p>
+<p>一个程序并不一定只有一个进程，进程可以让操作系统再另起一个进程去处理不同的任务。当这种情况发生时，新的进程又将占据一块内存空间。当两个进程需要通信时，它们进行进程间通讯。</p>
+<p>许多应用程序都被设计成以这种方式进行工作，所以当其中一个进程挂掉时，它可以在其他进程仍然运行的时候直接重启。</p>
+<h2 id="多进程和多线程"><a href="#多进程和多线程" class="headerlink" title="多进程和多线程"></a>多进程和多线程</h2><p>理解了上面的内容，我们再来重新梳理多进程和多线程的概念：</p>
+<ul>
+<li>多进程：多进程指的是在同一个时间里，同一个计算机系统中如果允许两个或两个以上的进程处于运行状态。多进程带来的好处是明显的，比如你可以听歌的同时，打开编辑器敲代码，编辑器和听歌软件的进程之间丝毫不会相互干扰。</li>
+<li>多线程是指程序中包含多个执行流，即在一个程序中可以同时运行多个不同的线程来执行不同的任务，也就是说允许单个程序创建多个并行执行的线程来完成各自的任务。</li>
+</ul>
+<h2 id="Chrome-的多进程架构"><a href="#Chrome-的多进程架构" class="headerlink" title="Chrome 的多进程架构"></a>Chrome 的多进程架构</h2><p>由于浏览器本身没有统一的规范，不同的浏览器之间的架构可能完全不同，在浏览器刚被设计出来的时候，那时的网页非常的简单，每个网页的资源占有率是非常低的，因此一个进程处理多个网页时可行的。然后在今天，大量网页变得日益复杂。把所有网页都放进一个进程的浏览器面临在健壮性，响应速度，安全性方面的挑战，所以大部分现代浏览器都是多进程的。</p>
+<p>任务管理器 进程中找到 谷歌<code>Chrome</code>浏览器 会发现是一个多进程的架构<br>我们打开一个浏览器时会启动多个不同的进程协助浏览器将页面为我们呈现出来：</p>
+<ul>
+<li>浏览器进程<br>浏览器最核心的进程，负责管理各个标签页的创建和销毁、页面显示和功能（前进，后退，收藏等）、网络资源的管理，下载等。</li>
+<li>插件进程<br>负责每个第三方插件的使用，每个第三方插件使用时候都会创建一个对应的进程、这可以避免第三方插件crash影响整个浏览器、也方便使用沙盒模型隔离插件进程，提高浏览器稳定性</li>
+<li>GPU进程<br>负责3D绘制和硬件加速</li>
+<li>渲染进程<br>浏览器会为每个窗口分配一个渲染进程、也就是我们常说的浏览器内核，这可以避免单个<code>page crash</code>影响整个浏览器。</li>
+</ul>
+<h2 id="浏览器内核的多线程"><a href="#浏览器内核的多线程" class="headerlink" title="浏览器内核的多线程"></a>浏览器内核的多线程</h2><p>浏览器内核就是浏览器渲染进程，从接收下载文件后再到呈现整个页面的过程，由浏览器渲染进程负责。浏览器内核是多线程的，在内核控制下各线程相互配合以保持同步，一个浏览器通常由以下常驻线程组成：</p>
+<ul>
+<li>GUI 渲染线程<br>GUI 渲染线程负责渲染浏览器界面 HTML 元素,当界面需要重绘(Repaint)或由于某种操作引发回流(reflow)时,该线程就会执行</li>
+<li>定时触发器线程<br>浏览器定时计数器并不是由 JavaScript 引擎计数的, 因为 JavaScript 引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确, 因此通过单独线程来计时并触发定时是更为合理的方案。</li>
+<li>事件触发线程<br>当一个事件被触发时该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理。这些事件可以是当前执行的代码块如定时任务、也可来自浏览器内核的其他线程如鼠标点击、AJAX异步请求等，但由于JS的单线程关系所有这些事件都得排队等待JS引擎处理。</li>
+<li>异步http请求线程<br>在XMLHttpRequest在连接后是通过浏览器新开一个线程请求， 将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件放到 JavaScript引擎的处理队列中等待处理。</li>
+<li>JavaScript 引擎线程<br>Javascript 引擎，也可以称为JS内核，主要负责处理 Javascript 脚本程序，例如V8引擎。Javascript 引擎线程理所当然是负责解析 Javascript 脚本，运行代码。</li>
+</ul>
+<p>由于 JavaScript 是可操纵 DOM 的，如果在修改这些元素属性同时渲染界面（即 JavaScript 线程和UI线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。因此为了防止渲染出现不可预期的结果，浏览器设置 GUI 渲染线程与 JavaScript 引擎为互斥的关系，当 JavaScript 引擎执行时 GUI 线程会被挂起， GUI 更新会被保存在一个队列中等到引擎线程空闲时立即被执行。</p>
+<h2 id="JavaScript-为何设计成单线程"><a href="#JavaScript-为何设计成单线程" class="headerlink" title="JavaScript 为何设计成单线程"></a>JavaScript 为何设计成单线程</h2><p>为什么 JavaScript 不设计成多个线程呢？这样不是效率更高？</p>
+<p>作为浏览器脚本语言， <em>JavaScript 的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题</em>。比如，假定 JavaScript 同时有两个线程，一个线程在某个 DOM 节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？</p>
+<p>所以，为了避免复杂性，从一诞生， JavaScript 就是单线程，这已经成了这门语言的核心特征，将来也不会改变。</p>
+<h2 id="WebWorker-多线程？"><a href="#WebWorker-多线程？" class="headerlink" title="WebWorker 多线程？"></a>WebWorker 多线程？</h2><p>Web Worker为Web内容在后台线程中运行脚本提供了一种简单的方法。线程可以执行任务而不干扰用户界面</p>
+<p>那么既然 JavaScript 本身被设计为单线程，为何还会有像 WebWorker 这样的多线程 API 呢？我们来看一下 WebWorker 的核心特点就明白了：</p>
+<p>创建 Worker 时， JS 引擎向浏览器申请开一个子线程（子线程是浏览器开的，完全受主线程控制，而且不能操作DOM）<br>JS 引擎线程与 worker 线程间通过特定的方式通信（postMessage API，需要通过序列化对象来与线程交互特定的数据）<br>所以 WebWorker 并不违背 JS引擎是单线程的 这一初衷，其主要用途是用来减轻cpu密集型计算类逻辑的负担。</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-3-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E8%B0%83%E5%BA%A6%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-杂项-win软链接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -197,6 +415,84 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-win%E8%BD%AF%E9%93%BE%E6%8E%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-杂项-tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-tree/">tree</a>
+    </h1>
+  
+
+        
+        <a href="/%E6%9D%82%E9%A1%B9-tree/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h2><p>创建文件列表，将所有文件以树的形式列出来</p>
+<p>获取结构百度下 <code>tree</code> 就好了或者<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qianduanjingying/p/6064058.html">戳这里</a></p>
+<p><code>tree /f &gt; tree.txt</code> 获取所有文件和目录 生成 tree.txt文件</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-tree/">展开全文 >></a>
         </p>
       
 
@@ -565,83 +861,6 @@
 
 
   
-    <article id="post-杂项-编码类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/">编码类型</a>
-    </h1>
-  
-
-        
-        <a href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h2><p>1)如何存储英文字符<br><code>ASCII</code>: 总共有128个,对所有的英文字母和符号进行编码<br><code>Latin-1</code>: 总共有256，兼容<code>ASCII</code>码，同时对欧洲符号进行了编码，<code>mysql</code>默认使用这种编码。</p>
-<p>(2)如何存储中文字符<br><code>GB2312</code>:对常用的6千多汉字进行编码，兼容<code>ASCII</code>码<br><code>GBK</code>: 对2万多汉字进行了编码，兼容<code>GB2312</code><br><code>BIG5</code>: 台湾繁体字编码，兼容<code>ASCII</code>码<br><code>Unicode</code>: 对世界上主流的国家常用的语言进行了编码，<code>兼容ASCII</code>，不兼容<code>GB2312,GBK,BIG5</code>，具体分为<code>UTF-8，UTF-16，UTF-32</code>存储方案</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-网址-网址" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -887,7 +1106,7 @@
 </tr>
 <tr>
 <td align="left"><code>抽奖 转盘 老虎机</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://100px.net/demo/grid.html">https://100px.net/demo/grid.html</a>  <a href="mailto:&#103;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#46;&#99;&#111;&#x6d;">&#103;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#46;&#99;&#111;&#x6d;</a>:buuing/lucky-canvas.git</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://100px.net/demo/grid.html">https://100px.net/demo/grid.html</a>  <a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#98;&#46;&#99;&#x6f;&#x6d;">&#103;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#98;&#46;&#99;&#x6f;&#x6d;</a>:buuing/lucky-canvas.git</td>
 <td align="left"></td>
 </tr>
 </tbody></table>
@@ -946,19 +1165,19 @@
 
 
   
-    <article id="post-软件工具-git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-杂项-编码类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-git/">git</a>
+      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/">编码类型</a>
     </h1>
   
 
         
-        <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-git/" class="archive-article-date">
+        <a href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
   	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
 </a>
         
@@ -967,644 +1186,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h1 id="一-说明"><a href="#一-说明" class="headerlink" title="一.说明"></a>一.说明</h1><p>git 管理软件 <code>Sourcetree</code><br>git 管理软件  <code>GitHub Desktop</code></p>
-<p>git 指令有很多 这边我只说我有用到并且会用的指令</p>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>说明</th>
-<th>-</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git log</td>
-<td>查看所有commit信息</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git init</td>
-<td>初始化仓库</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git reset –hard **</td>
-<td>回退到 ** 版本</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git pull</td>
-<td>拉取最新版本</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git pull origin **</td>
-<td>拉取远程**分支的最新版本</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git add .</td>
-<td>保存所有文件到缓存区</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git rm</td>
-<td>取消已经add的文件</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git config –global user.name “姓名”</td>
-<td>设置姓名</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git config –global user.email “邮箱”</td>
-<td>设置邮箱</td>
-<td>-</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>切换分支</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>git checkout 分支名</td>
-<td>切换到选择的分支名</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git checkout -b  分支名</td>
-<td>从当前分支 切出一个分支 并到你切出的分支里去</td>
-<td>创建新分支</td>
-</tr>
-<tr>
-<td>git checkout – 文件路径</td>
-<td>恢复一个文件到上次提交之后的状态</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>删除分支</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>git branch</td>
-<td>查看分支</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git branch -d **</td>
-<td>删除本地**分支</td>
-<td>-</td>
-</tr>
-<tr>
-<td>`git branch</td>
-<td>grep -v ‘master’</td>
-<td>xargs git branch -D`</td>
-</tr>
-<tr>
-<td>`git branch</td>
-<td>grep ‘lsh/add’</td>
-<td>xargs git branch -D`</td>
-</tr>
-<tr>
-<td>git push origin –delete **</td>
-<td>删除远程**分支</td>
-<td>-</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>提交</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>git commit -m “这是一次提交”</td>
-<td>提交一次备注为”这是一次提交”的版本</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git commit –amend -m “修改上一次提交的内容”</td>
-<td>push后再修改 会要先执行pull在push造成两条修改内容一样但备注不一样的修改记录</td>
-<td>不要修改已经被发布的提交</td>
-</tr>
-<tr>
-<td><code>git commit -m</code> 后，又修改<code>git add</code> 然后<code>git comman --amend &quot;&quot;</code></td>
-<td>可以将此次修改内容和上次的合在一起 只产生一条修改记录</td>
-<td>不要修改已经被发布的提交</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>stash相关</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>git stash</td>
-<td>将未提交的修改到stash</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git stash pop</td>
-<td>从stash中恢复最后一次暂存的修改，并从stash中删除这条记录(apply则不会执行删除)</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git stash apply stash@{0}</td>
-<td>暂时恢复 stash的[0]的记录</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git stash drop stash@{0}</td>
-<td>回退暂时恢复的修改</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git stash list</td>
-<td>查看stash列表</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git stash clear</td>
-<td>删除所有stash列表中的内容</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git stash drop stash@{0}</td>
-<td>删除stash列表中第一个</td>
-<td>-</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>diff 比较</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>git diff origin/master</td>
-<td>比较当前文字和 origin/master 的内容变化</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git diff origin/master  –stat</td>
-<td>比较当前分支和 origin/master 的文件变化-只显示文件</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git diff 分支..分支</td>
-<td>比较两个分支的区别</td>
-<td>-</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>合并</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>git merge **</td>
-<td>当前分支 合并 ** 的内容变化</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git merge –abort</td>
-<td>取消此次合并-在合并为完成前</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>git cherry-pick **</code></td>
-<td>合并某次commit改变的内容</td>
-<td>** = log 查看的 版本值</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>remote</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>git remote -v</td>
-<td>添加一个远程仓库</td>
-<td></td>
-</tr>
-<tr>
-<td>git remote add origin   远程仓库地址</td>
-<td>设置远程仓库地址</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>reset 回退</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>git reset</td>
-<td>放弃本地修改 回退到上次提交的版本</td>
-<td></td>
-</tr>
-<tr>
-<td>git reset –hard 分支名</td>
-<td>放弃本地修改 回退到 分支名 一致的版本</td>
-<td></td>
-</tr>
-<tr>
-<td>git reset –hard 35090b3</td>
-<td>回退到 log 信息这个时候</td>
-<td></td>
-</tr>
-<tr>
-<td>git reset –keep 5090b</td>
-<td>回退版本 并保留当前未提交的本地修改</td>
-<td></td>
-</tr>
-<tr>
-<td>git revert 2cd3623b597252d32407179577fa12cfeb87ab63</td>
-<td>回滚此次修改（比如 先<code>a1</code>次 将 <code>123 改成 456</code>. 后a2次将 <code>777 改成 888</code> <code>revert a1或者a2</code> 只会回滚<code>a1或者a2</code>的修改）</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><em>子模块相关</em></td>
-<td><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/100214931">https://zhuanlan.zhihu.com/p/100214931</a></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>一 添加子模块</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>git submodule add</code> 子模块仓库地址</td>
-<td>添加子仓库到当前项目</td>
-<td></td>
-</tr>
-<tr>
-<td>???</td>
-<td>添加子仓库到当前项目<br>此时多出一个文件夹是子项目内容  一个<code>.gitmodules</code>文件,这个配置文件中保存了子仓库项目的URL和在主仓库目录下的映射关系</td>
-<td></td>
-</tr>
-<tr>
-<td><code>git submodule update --init --recursive</code></td>
-<td>初始化子模块（下载最新）</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>二 克隆含有子项目的仓库</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>方法一：</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>git submodule init</code></td>
-<td>用来初始化本地配置文件,也就是向.git/config文件中写入了子模块的信息</td>
-<td></td>
-</tr>
-<tr>
-<td><code>git submodule update</code></td>
-<td>从子仓库中抓取所有的数据找到父级仓库对应的那次子仓库的提交id并且检出到父项目的目录中</td>
-<td></td>
-</tr>
-<tr>
-<td>方法二：</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>git clone --recursive</code></td>
-<td>Git会自动帮我们递归去拉取我们所有的父仓库和子仓库的相关内容。</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>三 提交代码</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>先提交子仓库 后提交父仓库</td>
-<td>对每个子仓库进行了提交,然后父级仓库就会记录下每个子仓库的提交,然后正常提交父级仓库即可</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>四 拉取代码</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>先拉取子 后拉取父</td>
-<td>对每个子仓库进行了提交,然后父级仓库就会记录下每个子仓库的提交,然后正常提交父级仓库即可</td>
-<td></td>
-</tr>
-<tr>
-<td><code>git submodule foreach git pull origin master</code></td>
-<td>对所有的子仓库执行<code>foreach</code> 后跟的代码，比如此处就是 对所有子仓库拉取<code>master</code>上最新代码</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>五 删除子模块</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>git submodule deinit</td>
-<td>完全地删除一个子模块</td>
-<td></td>
-</tr>
-</tbody></table>
-<h1 id="二-各种示例"><a href="#二-各种示例" class="headerlink" title="二.各种示例"></a>二.各种示例</h1><h2 id="1-回滚"><a href="#1-回滚" class="headerlink" title="1.回滚"></a>1.回滚</h2><p>  <code>git reset --hard  b498237e6dc1fc4861c79d3314d07285995b</code><br>  强制提交：<code>git push -f origin develop</code></p>
-<h2 id="2-比较时忽略默认文件"><a href="#2-比较时忽略默认文件" class="headerlink" title="2.比较时忽略默认文件"></a>2.比较时忽略默认文件</h2><p>比较时忽略默认文件<br>执行命令 <code>git config diff.nodiff.command true</code><br>项目根目录添加 <code>.gitattributes</code> 文件 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public/dist/**/* diff=nodiff <span class="comment"># public/dist/ diff=nodiff会不生效，所以只能通过通配符来设置，设置为public/dist/**/* diff=nodiff</span></span><br></pre></td></tr></table></figure>
-<p>  这时我们就可以连起来理解了，当我们运行<code>git diff</code>命令的时候，git就会读取<code>.gitattributes</code>的配置，<br>  然后发现遇到向匹配的文件的时候，需要执行<code>nodiff</code>指令，而<code>nodiff</code>指令被我们此前配置成了true 直接返回true，于是，就直接“跳过”了。</p>
-<h2 id="3-提交已有的tag"><a href="#3-提交已有的tag" class="headerlink" title="3.提交已有的tag"></a>3.提交已有的tag</h2><p>比如现在有个 tag v1.0.1<br>  分支  aaa 有修改 要提交的 v1.0.1</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">1.</span> 创建标签 </span><br><span class="line">  git tag v1<span class="number">.0</span><span class="number">.1</span>-light   <span class="comment">// 创建轻量标签</span></span><br><span class="line">  git tag -a v1<span class="number">.0</span><span class="number">.1</span> -m <span class="string">&quot;这是备注信息&quot;</span> <span class="comment">// 创建带备注标签(推荐)</span></span><br><span class="line"><span class="comment">// 2. 提交内容</span></span><br><span class="line">  git tag -a v1<span class="number">.0</span><span class="number">.1</span> loglogloglog -m <span class="string">&quot;这是备注信息&quot;</span> <span class="comment">// 针对特定commit版本SHA创建标签</span></span><br><span class="line"><span class="comment">// 3. 删除标签 </span></span><br><span class="line">  git tag -d v1<span class="number">.0</span><span class="number">.0</span> <span class="comment">// 删除标签(本地) 如果你本地有v1.0.1 那么要先删除然后创建</span></span><br><span class="line">  git push origin --<span class="keyword">delete</span> <span class="number">1.0</span><span class="number">.0</span> <span class="comment">// 删除标签(远程)</span></span><br><span class="line"><span class="comment">// 4. 提交</span></span><br><span class="line">  git push origin v1<span class="number">.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-初次提交本地库到远程库"><a href="#4-初次提交本地库到远程库" class="headerlink" title="4.初次提交本地库到远程库"></a>4.初次提交本地库到远程库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git init                // 初始化git项目</span><br><span class="line">git checkout -b master  新建一个master分支</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;&quot;</span></span><br><span class="line">git remote add origin   远程仓库地址</span><br><span class="line">git remote -v           查看当前连接的远程库地址</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-提交忽略文件"><a href="#5-提交忽略文件" class="headerlink" title="5.提交忽略文件"></a>5.提交忽略文件</h2><p>在做第一次提交之前，首先应该定义好这个忽略文件列表<code>.gitignore</code><br>内容写法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">path/to/file.ext              <span class="comment"># 忽略一个特定的文件</span></span><br><span class="line">filename.ext                  <span class="comment"># 忽略项目下所有这个名字的文件</span></span><br><span class="line"> *.ext                        <span class="comment"># 忽略项目下所有这个类型的文件：例如</span></span><br><span class="line">path/to/folder/*              <span class="comment"># 忽略一个特定目录下的所用文件：例如　</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-gitHub静态访问地址"><a href="#6-gitHub静态访问地址" class="headerlink" title="6.gitHub静态访问地址"></a>6.gitHub静态访问地址</h2><p>1.查看当前项目的静态访问地址<br> 首先你的保证你项目有<code>index.html</code>。一般VUE文件需要的是打包后的文件<br> 进入项目<br> 上面选择 <code>Settings</code>   左侧默认是 <code>Options</code><br> 拉倒底部的位置，找到<code>GitHub Pages</code><br> 下拉选框 选择 <code>master</code> 分支 然后点击 <code>save</code> 保存 那么 <code>GitHub Pages</code> 下发一点会出现一个地址 https:/???/???/.<br> 这是你就可以使用https:/???/???/index  || https:/???/???/dist/index.html 访问了 </p>
-<h2 id="7-github-配置ssh-免密码"><a href="#7-github-配置ssh-免密码" class="headerlink" title="7.github 配置ssh/免密码"></a>7.github 配置ssh/免密码</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/D2073307388/article/details/108834061">https://blog.csdn.net/D2073307388/article/details/108834061</a><br>1 生成.ssh的文件夹,里面是id_ras私钥和id_rsa.pub公钥<br>2 登录你的github<code>点击头像</code>会出来一个列表找到<code>Settings</code>然后点进去,在左侧的目录里会有一个<code>SSH and GPG keys</code>的选项,点进去然后创建一个<code>New SSH key</code><br>然后找到你的公钥<code>id_rsa.pub</code>用记事本打开,全部复制里面的内容,之后添加到你的key输入框里面,title可以随便命名,最后点击<code>Add SSH key</code>,就完成啦<br>3 再次提交还是要输入密码那是因为用的是https而不是ssh，更新origin为ssh格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote remove origin</span><br><span class="line">git remote add origin ssh地址</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="8-push推送多个git地址"><a href="#8-push推送多个git地址" class="headerlink" title="8.push推送多个git地址"></a>8.push推送多个git地址</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url --add origin 地址 <span class="comment">//给origin添加一个远程push地址，这样一次push就能同时push到两个地址上面</span></span><br><span class="line"></span><br><span class="line">git remote -v <span class="comment">//查看是否多了一条push地址（这个可不执行）</span></span><br><span class="line"></span><br><span class="line">git push origin master -f <span class="comment">// 如果第一次推不上去代码，可以使用强推的方式</span></span><br><span class="line"></span><br><span class="line">git remote set-url --<span class="keyword">delete</span> origin 地址 <span class="comment">// 删除一个远程地址</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="20-了解但我没用过的"><a href="#20-了解但我没用过的" class="headerlink" title="20.了解但我没用过的"></a>20.了解但我没用过的</h2><table>
-<thead>
-<tr>
-<th>指令</th>
-<th>说明</th>
-<th>-</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>git fetch 分支</td>
-<td>指抓取 不合并</td>
-<td>-</td>
-</tr>
-<tr>
-<td>rebase 比merge复杂的合并 会改写你的记录历史</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>git rebase branch-分支</td>
-<td>合并分支</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git rebase –abort</td>
-<td>退出合并</td>
-<td>-</td>
-</tr>
-<tr>
-<td>git rebase –continue</td>
-<td>解除冲突后继续重置</td>
-<td>-</td>
-</tr>
-</tbody></table>
-<h1 id="三-提交规范"><a href="#三-提交规范" class="headerlink" title="三.提交规范"></a>三.提交规范</h1><ul>
-<li>feat 增加新功能</li>
-<li>fix 修复问题/BUG</li>
-<li>style 代码风格相关无影响运行结果的</li>
-<li>perf 优化/性能提升</li>
-<li>refactor 重构</li>
-<li>revert 撤销修改</li>
-<li>test 测试相关</li>
-<li>docs 文档/注释</li>
-<li>chore 依赖更新/脚手架配置修改等</li>
-<li>workflow 工作流改进</li>
-<li>ci 持续集成</li>
-<li>types 类型定义文件更改</li>
-<li>wip 开发中</li>
-</ul>
-<h1 id="四-问题"><a href="#四-问题" class="headerlink" title="四.问题"></a>四.问题</h1><h2 id="1-git-提交-报错没有权限"><a href="#1-git-提交-报错没有权限" class="headerlink" title="1. git 提交 报错没有权限"></a>1. git 提交 报错没有权限</h2><p>  1.确定ssh配置是否有问题。 ssh -T 路径 是否成功 成功的情况下<br>  2.成功的情况下 卸载git 重新安装 有个配置项要改成 使用外部的sshkey而不是内置的sshkey</p>
-<h2 id="2-阿里云克隆失败"><a href="#2-阿里云克隆失败" class="headerlink" title="2. 阿里云克隆失败"></a>2. 阿里云克隆失败</h2><p> 1.确定 凭据管理器 里面登入信息是不是本人的<br> 2.确定 ssh 公钥配置<br> 3.克隆https的方式克隆</p>
-<h2 id="3-阿里云克隆失败"><a href="#3-阿里云克隆失败" class="headerlink" title="3. 阿里云克隆失败"></a>3. 阿里云克隆失败</h2><p><code>id_rsa</code> 同级目录新建<code>config</code> 文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">HostKeyAlgorithms +ssh-rsa</span><br><span class="line">PubkeyAcceptedKeyTypes +ssh-rsa</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-git/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-软件工具-nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-nginx/">nginx</a>
-    </h1>
-  
-
-        
-        <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-nginx/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>有接触过  稍微记录一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">根目录</span><br><span class="line">└─nginx                       </span><br><span class="line">    │  pull.sh   &#x2F;&#x2F; 只需要执行pull.sh 即可完成打包到测试环境的步骤</span><br><span class="line">    │  域名.conf &#x2F;&#x2F; 比如 www.baidu.com.conf</span><br></pre></td></tr></table></figure>
-
-<p>编写 nginx 配置文件 <code>域名.conf</code></p>
-<p>翻译参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/feiyuanxing/p/4668818.html">https://www.cnblogs.com/feiyuanxing/p/4668818.html</a></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  server_name q.qinba.cn; <span class="comment">// 域名</span></span><br><span class="line"></span><br><span class="line">  root /data/www/qunguangguang-admin-vue/dist;  <span class="comment">// 文件目录 我们一般是在 www/项目名称/打包文件</span></span><br><span class="line">  index index.html; <span class="comment">// 访问文件</span></span><br><span class="line"></span><br><span class="line">  error_page <span class="number">404</span> /<span class="number">404.</span>html;</span><br><span class="line"></span><br><span class="line">  location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123; <span class="comment">// 所有的图片文件</span></span><br><span class="line">    expires <span class="number">30</span>d;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// ~ 正则表达式 区分大小写的正则匹配</span></span><br><span class="line">  location ~ .*\.(js|css)$ &#123; <span class="comment">// 所有的js css文件</span></span><br><span class="line">    expires <span class="number">1</span>h;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  error_log /data/log/openresty/q.qinba.cn_error.log warn; <span class="comment">// 生成日志文件地址 我们一般是在 openresty/域名._error.log warn</span></span><br><span class="line">  access_log /data/log/openresty/q.qinba.cn_access.log domain_access_log; <span class="comment">// 生成日志文件地址 我们一般是在 openresty/域名._access.log domain_access_log</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 其它例子</span></span><br><span class="line">  location /editor &#123; <span class="comment">// 满足127.0.0.1/editor 的请求</span></span><br><span class="line">    alias /data/www/editor; <span class="comment">// 定义指定位置的替换 满足条件会返回data/www/editor目录下的文件</span></span><br><span class="line">    try_files $uri $uri/ /index.html;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  location / &#123;  <span class="comment">// 满足127.0.0.1/ 的请求</span></span><br><span class="line">    try_files $uri $uri/ /index.html;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>编写 <code>pull.sh</code> 自动拉取操作</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">cd /home/www/q-admin-vue <span class="comment">// 到指定目录</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;<span class="number">1.</span><span class="number">.2</span>&#125; <span class="comment">// 拉取代码 循环2次</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  git checkout develop</span><br><span class="line"> </span><br><span class="line">  git reset --hard</span><br><span class="line"></span><br><span class="line">  git submodule foreach git pull origin master</span><br><span class="line"></span><br><span class="line">  git submodule update --init --recursive</span><br><span class="line"></span><br><span class="line">  git pull origin develop</span><br><span class="line"></span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">lerna bootstrap <span class="comment">// 等同于NPM I </span></span><br><span class="line"></span><br><span class="line">/usr/bin/node ./node_modules/.bin/vue-cli-service build --mode develop <span class="comment">// 执行打包指令 --mode develop 测试</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将除了 这两个文件 的 其他文件 从 home /移动到 /data</span></span><br><span class="line"><span class="comment">// 目的 防止在打包过程中 用户访问会出现访问不到的场景</span></span><br><span class="line"><span class="comment">// 使用移动的方式 会是一瞬间的事 用户察觉不到</span></span><br><span class="line">rsync --<span class="keyword">delete</span> --exclude <span class="string">&quot;node_modules&quot;</span> --exclude <span class="string">&quot;.git&quot;</span> -avz /home/www/qunguangguang-admin-vue/ <span class="regexp">/data/</span>www/qunguangguang-admin-vue</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-nginx/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-软件工具-抓包-anyproxy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-%E6%8A%93%E5%8C%85-anyproxy/">抓包</a>
-    </h1>
-  
-
-        
-        <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-%E6%8A%93%E5%8C%85-anyproxy/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h1 id="一-anyproxy"><a href="#一-anyproxy" class="headerlink" title="一.anyproxy"></a>一.anyproxy</h1><h2 id="1-前置条件"><a href="#1-前置条件" class="headerlink" title="1.前置条件"></a>1.前置条件</h2><p> 1.手机 和 电脑 是同一局域网，或者本机启动一个热点<br> 2.https请求 需要 手机 扫电脑端打开的网页的 二维码 安装证书</p>
-<h2 id="2-电脑操作"><a href="#2-电脑操作" class="headerlink" title="2.电脑操作"></a>2.电脑操作</h2><p>  0.<code>npm install -g anyproxy</code><br>  1.运行 <code>anyproxy –i</code> 开启<br>  2.运行 <code>ipconfig</code>  获得 无线局域网适配器 WLAN: IPv4 地址<br>  3.浏览器打开 本机+另一个端口号<br>    <code>http://127.0.0.1:8002/</code>  || <code>http://localhost:8002/</code></p>
-<h2 id="3-手机操作"><a href="#3-手机操作" class="headerlink" title="3.手机操作"></a>3.手机操作</h2><p>  WIFi<br>  -&gt; 配置代理<br>  -&gt; 手动<br>  -&gt; 填入主机名<code>IPv4 地址</code> 端口号<code>8001</code></p>
-<h1 id="2-fiddler"><a href="#2-fiddler" class="headerlink" title="2.fiddler"></a>2.fiddler</h1><p>参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/yyhh/p/5140852.html">https://www.cnblogs.com/yyhh/p/5140852.html</a></p>
-<h2 id="1-工具"><a href="#1-工具" class="headerlink" title="1.工具"></a>1.工具</h2><p>fiddlersetup.exe     -  工具  我的网盘 或者  <a target="_blank" rel="noopener" href="http://www.telerik.com/fiddler">http://www.telerik.com/fiddler</a><br>fiddlercertmaker.exe -  https 证书</p>
-<h2 id="2-软件配置"><a href="#2-软件配置" class="headerlink" title="2.软件配置"></a>2.软件配置</h2><p>左上角工具栏 <code>tools</code>  =&gt; <code>Fiddler Options</code> 出现弹框选项 =&gt; 出现弹框中选项 <code>Connectione</code> </p>
-<p>1.Fiddler listens on port: 填入端口号比如 8888 </p>
-<p>2.选项全部打钩<br>  其中选项 allow remote computer to connect 选项 等于<br>  浏览器internet选项 =&gt; 局域网（LAH）设置 =&gt; 代理设置 中<br>  HTTP(H) 127.0.0.1 8888<br>  安全(S) 127.0.0.1 8888</p>
-<p>3.出现弹框中选项 <code>HTTPS</code> 选项全部打钩<br>  其中 Decrypt HTTPS Traffic 安装证书</p>
-<h2 id="3-手机操作-1"><a href="#3-手机操作-1" class="headerlink" title="3.手机操作"></a>3.手机操作</h2><p>1.连接同一wift 配置手动代理<br>  如果不能链接同一wifi 那么<br>  电脑 打开移动热点（可在编辑处修改网络名称 和网络频带 已更好的找到这个热点）  手机连接电脑的移动热点 然后配置手动代理</p>
-<p>2.浏览器访问配置的手动代理 下载<code>Fiddler的证书</code>，点击访问内容中的<code>FiddlerRoot certificate</code></p>
-<h2 id="4-遇到的问题"><a href="#4-遇到的问题" class="headerlink" title="4.遇到的问题"></a>4.遇到的问题</h2><p> <strong>1.No root certificate was found. Have you enabled HTTPS traffic decryption in Fiddler yet?</strong><br>  等等一系列错误可以尝试<br>  请打开Fiddler的证书解密模式（Fiddler 设置解密HTTPS的网络数据） 安装证书<br>  就是 找到下载处 到下载的插件 文件夹  点击打开 然后安装一下就好了</p>
-<h2 id="5-软件界面功能说明"><a href="#5-软件界面功能说明" class="headerlink" title="5.软件界面功能说明"></a>5.软件界面功能说明</h2><p>1.左侧点击相应请求链接  右侧 上方是请求的内容<br>                    右侧 下方是响应的内容 </p>
-<p>2.<code>TextView</code> 或者 <code>SyntaxView</code> 中点击 出现的提示  即可出现HTML scc内容</p>
-<p>3.右上 鼠标悬浮在 <code>Online</code> 处 可以看到 当前IP地址</p>
-<p>4.左上 <code>File</code> =&gt; <code>Capture Traffic F12</code> 是否开启 可以点击左下 <code>capturing 图标</code> 开启关闭 默认开启</p>
-<h1 id="3-微信抓包小程序代码"><a href="#3-微信抓包小程序代码" class="headerlink" title="3.微信抓包小程序代码"></a>3.微信抓包小程序代码</h1><p>  在我的百度网盘里面了</p>
+          <h2 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h2><p>1)如何存储英文字符<br><code>ASCII</code>: 总共有128个,对所有的英文字母和符号进行编码<br><code>Latin-1</code>: 总共有256，兼容<code>ASCII</code>码，同时对欧洲符号进行了编码，<code>mysql</code>默认使用这种编码。</p>
+<p>(2)如何存储中文字符<br><code>GB2312</code>:对常用的6千多汉字进行编码，兼容<code>ASCII</code>码<br><code>GBK</code>: 对2万多汉字进行了编码，兼容<code>GB2312</code><br><code>BIG5</code>: 台湾繁体字编码，兼容<code>ASCII</code>码<br><code>Unicode</code>: 对世界上主流的国家常用的语言进行了编码，<code>兼容ASCII</code>，不兼容<code>GB2312,GBK,BIG5</code>，具体分为<code>UTF-8，UTF-16，UTF-32</code>存储方案</p>
 
         
       
@@ -1619,7 +1202,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件工具</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
         		</li>
       		
 		</ul>
@@ -1629,7 +1212,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-%E6%8A%93%E5%8C%85-anyproxy/">展开全文 >></a>
+          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
         </p>
       
 
@@ -1764,7 +1347,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1772,15 +1355,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1789,10 +1376,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node J S</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1828,15 +1411,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vue3.0</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1845,6 +1424,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1860,6 +1443,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
@@ -1869,10 +1456,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
