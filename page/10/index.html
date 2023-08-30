@@ -150,19 +150,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-WeiXIn-连接微信sdk-分享" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-UniApp-1-uniapp开始" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/WeiXIn-%E8%BF%9E%E6%8E%A5%E5%BE%AE%E4%BF%A1sdk-%E5%88%86%E4%BA%AB/">连接微信sdk-分享</a>
+      <a class="article-title" href="/UniApp-1-uniapp%E5%BC%80%E5%A7%8B/">1.uniapp开始</a>
     </h1>
   
 
         
-        <a href="/WeiXIn-%E8%BF%9E%E6%8E%A5%E5%BE%AE%E4%BF%A1sdk-%E5%88%86%E4%BA%AB/" class="archive-article-date">
+        <a href="/UniApp-1-uniapp%E5%BC%80%E5%A7%8B/" class="archive-article-date">
   	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
 </a>
         
@@ -171,34 +171,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="一-申请测试号"><a href="#一-申请测试号" class="headerlink" title="一 申请测试号"></a>一 申请测试号</h3><p>打开注册的网址：<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login">http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login</a><br>登录<br>记录 <code>appID</code> <code>appsecret</code><br>填入 <code>js接口安全域名</code> 可以你本地运行的服务器，然后使用2.<a href="/WeiXIn-ngrok-内网穿透工具/" target="_self">内网穿透获取域名 </a><em>不需要填入协议！</em><br><em>测试号需要关注此公众号</em>，但是正式的时候不需要<br><img src="https://s1.ax1x.com/2020/09/18/whUsAJ.png" alt="微信sdk测试配置"></p>
-<h3 id="二-可以直接使用的服务端脚本-测试"><a href="#二-可以直接使用的服务端脚本-测试" class="headerlink" title="二 可以直接使用的服务端脚本-测试"></a>二 可以直接使用的服务端脚本-测试</h3><p>一般 你就修改下 app.js 中的端口号 和 jssdk/config.js 中的配置数据</p>
-<ol>
-<li>创建文件 app.js<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> sign = <span class="built_in">require</span>(<span class="string">&#x27;./jssdk/sign&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">&#x27;./jssdk/config&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> callWeiXin = <span class="built_in">require</span>(<span class="string">&#x27;./jssdk/callWeiXin&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> express();</span><br><span class="line">app.listen(<span class="number">4001</span>);</span><br><span class="line"></span><br><span class="line">app.use(express.static(<span class="string">&#x27;./public&#x27;</span>));</span><br><span class="line">app.use(express.static(__dirname+<span class="string">&quot;/static/&quot;</span>));</span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</span><br><span class="line">    res.header(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;*&quot;</span>);</span><br><span class="line">    res.header(<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>, <span class="string">&quot;Origin, X-Requested-With, Content-Type, Accept&quot;</span>);</span><br><span class="line">    res.header(<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>,<span class="string">&quot;PUT,POST,GET,DELETE,OPTIONS&quot;</span>);</span><br><span class="line">    res.header(<span class="string">&quot;X-Powered-By&quot;</span>,<span class="string">&#x27;nodejs-weixin&#x27;</span>)</span><br><span class="line">    <span class="comment">// res.header(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;);</span></span><br><span class="line">    next();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/sign&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</span><br><span class="line">    callWeiXin.get(config.appid, config.secret, <span class="function"><span class="keyword">function</span>(<span class="params">err, access_token, ticket</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(err) &#123;</span><br><span class="line">        <span class="keyword">return</span> res.status(<span class="number">500</span>).json(&#123;<span class="attr">code</span>: <span class="number">500</span>&#125;);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> url = req.protocol + <span class="string">&#x27;://&#x27;</span> + req.get(<span class="string">&#x27;host&#x27;</span>) + req.originalUrl;</span><br><span class="line">        url = req.headers[<span class="string">&#x27;referer&#x27;</span>] || <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> index = url.indexOf(<span class="string">&quot;#&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(index &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="comment">// url = url.split(0, index);</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// url = encodeURIComponent(url);</span></span><br><span class="line">        <span class="keyword">var</span> signText = sign(ticket, url);</span><br><span class="line">        signText.appId = config.appid;</span><br><span class="line">        res.json(signText);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>2 - jssdk/sign.js 文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> createNonceStr = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.random().toString(<span class="number">36</span>).substr(<span class="number">2</span>, <span class="number">15</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> createTimestamp = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">parseInt</span>(<span class="keyword">new</span> <span class="built_in">Date</span>().getTime() / <span class="number">1000</span>) + <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> raw = <span class="function"><span class="keyword">function</span> (<span class="params">args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> keys = <span class="built_in">Object</span>.keys(args);</span><br><span class="line">  keys = keys.sort()</span><br><span class="line">  <span class="keyword">var</span> newArgs = &#123;&#125;;</span><br><span class="line">  keys.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">    newArgs[key.toLowerCase()] = args[key];</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> string = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> newArgs) &#123;</span><br><span class="line">    string += <span class="string">&#x27;&amp;&#x27;</span> + k + <span class="string">&#x27;=&#x27;</span> + newArgs[k];</span><br><span class="line">  &#125;</span><br><span class="line">  string = string.substr(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> string;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@synopsis </span>签名算法 </span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param </span>jsapi_ticket 用于签名的 jsapi_ticket</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param </span>url 用于签名的 url ，注意必须动态获取，不能 hardcode</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@returns</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> sign = <span class="function"><span class="keyword">function</span> (<span class="params">jsapi_ticket, url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> ret = &#123;</span><br><span class="line">    jsapi_ticket: jsapi_ticket,</span><br><span class="line">    nonceStr: createNonceStr(),</span><br><span class="line">    timestamp: createTimestamp(),</span><br><span class="line">    url: url</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">var</span> string = raw(ret);</span><br><span class="line">      jsSHA = <span class="built_in">require</span>(<span class="string">&#x27;jssha&#x27;</span>);</span><br><span class="line">      shaObj = <span class="keyword">new</span> jsSHA(string, <span class="string">&#x27;TEXT&#x27;</span>);</span><br><span class="line">  ret.signature = shaObj.getHash(<span class="string">&#x27;SHA-1&#x27;</span>, <span class="string">&#x27;HEX&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> ret;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = sign;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>3 - jssdk/config.js 文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  appid: <span class="string">&#x27;wx0df**********&#x27;</span>, <span class="comment">//</span></span><br><span class="line">  port: <span class="number">4001</span>,  <span class="comment">// 端口号</span></span><br><span class="line">  secret: <span class="string">&#x27;a31******&#x27;</span> <span class="comment">//</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>4 - jssdk/callWeiXin.js 文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">&#x27;request&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> ACCESS_TOKEN_API = <span class="string">&#x27;https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=APPID_VALUE&amp;secret=SECRET_VALUE&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> TICKET_API = <span class="string">&#x27;https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN_VALUE&amp;type=jsapi&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> access_token = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> expire = <span class="number">7200000</span>;</span><br><span class="line"><span class="keyword">var</span> accessTokenGetTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">var</span> ticket = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> get = <span class="function"><span class="keyword">function</span>(<span class="params">appid, secret, cb</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//get token with appid and secret</span></span><br><span class="line">  getAccessToken(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err) &#123;</span><br><span class="line">      <span class="keyword">return</span> cb(err)</span><br><span class="line">    &#125;</span><br><span class="line">    getTicket(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(err) &#123;</span><br><span class="line">        <span class="keyword">return</span> cb(err);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      cb(<span class="literal">null</span>, access_token, ticket);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getAccessToken</span>(<span class="params">atcb</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//check is this access_token expire</span></span><br><span class="line">    <span class="keyword">if</span>(access_token &amp;&amp; <span class="keyword">new</span> <span class="built_in">Date</span>().getTime() - accessTokenGetTime.getTime() &lt; expire) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;get access_token from local cache&#x27;</span>);</span><br><span class="line">      <span class="keyword">return</span> atcb(<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//get from weixin</span></span><br><span class="line">    request.get(ACCESS_TOKEN_API.replace(<span class="string">&#x27;APPID_VALUE&#x27;</span>, appid).replace(<span class="string">&#x27;SECRET_VALUE&#x27;</span>, secret), <span class="function"><span class="keyword">function</span>(<span class="params">err, response, body</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(err) &#123;</span><br><span class="line">        <span class="keyword">return</span> atcb(err);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">        body = <span class="built_in">JSON</span>.parse(body);</span><br><span class="line">      &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">        <span class="keyword">return</span> atcb(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;json from weixin con NOT parse, body: &#x27;</span> + body));</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(!body.access_token) &#123;</span><br><span class="line">        <span class="keyword">return</span> atcb(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;can NOT get access_toke from weixin server.&#x27;</span>));</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        access_token = body.access_token;</span><br><span class="line">        accessTokenGetTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(body.expire) expire = <span class="built_in">Number</span>(body.expire)*<span class="number">1000</span>;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;get access_token from weixin server&#x27;</span>);</span><br><span class="line">      atcb(<span class="literal">null</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getTicket</span>(<span class="params">tcb</span>)</span>&#123;</span><br><span class="line">    request.get(TICKET_API.replace(<span class="string">&#x27;ACCESS_TOKEN_VALUE&#x27;</span>, access_token), <span class="function"><span class="keyword">function</span>(<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(err) &#123;</span><br><span class="line">        <span class="keyword">return</span> tcb(err);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">        body = <span class="built_in">JSON</span>.parse(body);</span><br><span class="line">      &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">        <span class="keyword">return</span> tcb(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;json from weixin con NOT parse, body: &#x27;</span> + body));</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;body, typeof: &#x27;</span>, body, <span class="keyword">typeof</span> body);</span><br><span class="line">      <span class="keyword">if</span>(<span class="string">&#x27;ok&#x27;</span> === body.errmsg &amp;&amp; body.ticket) &#123;</span><br><span class="line">        ticket = body.ticket;</span><br><span class="line">        <span class="keyword">return</span> tcb(<span class="literal">null</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> tcb(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;get ticket failed&#x27;</span>));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">exports</span>.get = get;</span><br></pre></td></tr></table></figure>
-
-<h3 id="三-可以直接使用的客户端脚本-测试"><a href="#三-可以直接使用的客户端脚本-测试" class="headerlink" title="三 可以直接使用的客户端脚本-测试"></a>三 可以直接使用的客户端脚本-测试</h3><p>注意修改<br>1 - <code>link: &#39;http://b73f439721e4.ngrok.io/index_location.html&#39;</code>, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致<br>2 - 上线 <code>debug: true</code>,要更改成 <code>false</code><br>3 -  wx.on***() 如果需要验证成功后触发就直接写在wx.ready(() =&gt; {}); 里面，<br>  // 如果是点击按钮后触发 就直接写在点击函数体内<br>  // 这里 我们把它放入在ready里面吧  放入点击事件我发现延迟非常大<br>4 - 创建文件 index_location.html</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;http://res.wx.qq.com/open/js/jweixin-1.0.0.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;jquery.js&quot;</span>&gt;&lt;<span class="regexp">/script&gt; /</span><span class="regexp">/这里jq 文件只用到了点击事件 你可以改成原生 </span></span><br><span class="line"><span class="regexp">&lt;button id=&quot;btnLocation&quot;&gt;获取当前位置的经纬度信息&lt;/</span>button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btnScan&quot;</span>&gt;扫一扫&lt;/button&gt;</span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  $.get(<span class="string">&#x27;/sign&#x27;</span>).then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//配置jssdk</span></span><br><span class="line">    wx.config(&#123;</span><br><span class="line">      debug: <span class="literal">true</span>,</span><br><span class="line">      appId: data.appId,</span><br><span class="line">      timestamp: data.timestamp,</span><br><span class="line">      nonceStr: data.nonceStr,</span><br><span class="line">      signature: data.signature,</span><br><span class="line">      jsApiList: [<span class="string">&#x27;getLocation&#x27;</span>, <span class="string">&#x27;scanQRCode&#x27;</span>, <span class="string">&#x27;onMenuShareTimeline&#x27;</span>]</span><br><span class="line">    &#125;);</span><br><span class="line">    wx.ready(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      alert(<span class="string">&#x27;wx ready&#x27;</span>)</span><br><span class="line">      wx.onMenuShareTimeline(&#123;</span><br><span class="line">        title: <span class="string">&#x27;51活动&#x27;</span>, <span class="comment">// 分享标题</span></span><br><span class="line">        link: <span class="string">&#x27;http://2f69c0dc4b0a.ngrok.io/index_location.html&#x27;</span>, <span class="comment">// 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致</span></span><br><span class="line">        imgUrl: <span class="string">&#x27;https://dss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=615747069,3563100519&amp;fm=218&amp;app=92&amp;f=JPEG?w=121&amp;h=75&amp;s=BFEA7A23DE5C74CE42FCC5DB000050B1&#x27;</span>, <span class="comment">// 分享图标</span></span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="comment">// 用户确认分享后执行的回调函数</span></span><br><span class="line">          alert(<span class="string">&#x27;分享成功&#x27;</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        cancel: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="comment">// 用户取消分享后执行的回调函数</span></span><br><span class="line">          alert(<span class="string">&#x27;分享取消&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    wx.error(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;err&#x27;</span>, res)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// $(&#x27;#btnLocation&#x27;).click(() =&gt; &#123; // 未测试</span></span><br><span class="line"><span class="comment">//   alert(&#x27;俺妞妞被按下了&#x27;);</span></span><br><span class="line"><span class="comment">//   wx.getLocation(&#123;</span></span><br><span class="line"><span class="comment">//     type: &#x27;wgs84&#x27;, // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入&#x27;gcj02&#x27;</span></span><br><span class="line"><span class="comment">//     error: function (e) &#123; alert(e); &#125;,</span></span><br><span class="line"><span class="comment">//     success: function (res) &#123;</span></span><br><span class="line"><span class="comment">//       var latitude = res.latitude;</span></span><br><span class="line"><span class="comment">//       alert(&#x27;go&#x27; + latitude);</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">//   &#125;);</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// $(&#x27;#btnScan&#x27;).click(() =&gt; &#123; // 未测试</span></span><br><span class="line"><span class="comment">//   wx.scanQRCode(&#123;</span></span><br><span class="line"><span class="comment">//     needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，</span></span><br><span class="line"><span class="comment">//     scanType: [&quot;qrCode&quot;, &quot;barCode&quot;], // 可以指定扫二维码还是一维码，默认二者都有</span></span><br><span class="line"><span class="comment">//     success: function (res) &#123;</span></span><br><span class="line"><span class="comment">//       var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果</span></span><br><span class="line"><span class="comment">//       alert(result);</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">//   &#125;);</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="四-执行"><a href="#四-执行" class="headerlink" title="四 执行"></a>四 执行</h3><p>1 启动服务端脚本 node app.js<br>2 输入网址 <a target="_blank" rel="noopener" href="http://2f69c0dc4b0a.ngrok.io/index_location.html">http://2f69c0dc4b0a.ngrok.io/index_location.html</a> === 你分享标题的link === 穿透的域名 + 路径<br>3 分享盆友圈 即可发现改动</p>
-<p>当然有些插件要自己安装才能运行。可以直接在我的资料里运行<br>服务端 13.WEIXIN\day7\weixin_dy\weixin_dy\04_jssdk_location.js<br>客服端 13.WEIXIN\day7\weixin_dy\weixin_dy\static\index_location.html</p>
-<h3 id="五-vue-使用"><a href="#五-vue-使用" class="headerlink" title="五 vue 使用"></a>五 vue 使用</h3><p>下载 <code>npm install weixin-js-sdk</code></p>
-<p>1 main.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> WX <span class="keyword">from</span> <span class="string">&#x27;./assets/scripts/wx.js&#x27;</span></span><br><span class="line">Vue.prototype.WX = WX;</span><br><span class="line">router.afterEach(<span class="function">(<span class="params">to, <span class="keyword">from</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 微信分享前初始化 wxConfig</span></span><br><span class="line">  WX.initConfig(location.href.split(<span class="string">&#x27;#&#x27;</span>)[<span class="number">0</span>]) </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>2 /assets/scripts/wx.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx <span class="keyword">from</span> <span class="string">&#x27;weixin-js-sdk&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="keyword">async</span> initConfig (url) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="regexp">/micromessenger/i</span>.test(navigator.userAgent)) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果是 iOS 设备，则使用第一次进入App时的 URL 去请求 wxConfig，不然的话会导致 iOS 中分享的链接不对</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="regexp">/(iPhone|iPad|iPod|iOS)/i</span>.test(navigator.userAgent)) &#123;</span><br><span class="line">      <span class="comment">// 记录第一次进入时的链接，iOS 分享时需要用到</span></span><br><span class="line">      <span class="keyword">if</span> (!wVue.$store.state.theFirstLink) &#123;</span><br><span class="line">        wVue.$store.commit(<span class="string">&#x27;setTheFirstLink&#x27;</span>, url)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        url = wVue.$store.state.theFirstLink</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// let res = await wVue.jsonpRequest(&#x27;getShareSignInfo&#x27;, &#123;Link: &#x27;url&#x27;&#125;, &#x27;getShareSignInfo&#x27;)</span></span><br><span class="line">    <span class="comment">// wVue.$axios(&#123;</span></span><br><span class="line">    <span class="comment">//   　　method: &#x27;get&#x27;,</span></span><br><span class="line">    <span class="comment">//   　　url: &#x27;http://dev-h5api.qizhongzui.cn/proxy.php?m=Goods&amp;c=getShareSignInfo&amp;Link=&#x27;+ location.href.split(&#x27;#&#x27;)[0] + &#x27;&amp;,</span></span><br><span class="line">    <span class="comment">//   // 　　data:&#123; url:location.href.split(&#x27;#&#x27;)[0] &#125; //向服务端提供授权url参数，并且不需要#后面的部分</span></span><br><span class="line">    <span class="comment">//   &#125;).then((res)=&gt;&#123;</span></span><br><span class="line">    wx.config(&#123;</span><br><span class="line">      debug: <span class="literal">false</span>,</span><br><span class="line">      appId: <span class="string">&#x27;wx2abbd78b37794cc2&#x27;</span>,</span><br><span class="line">      nonceStr: <span class="string">&#x27;ebc83a47768111f433d1a4cd821c641c&#x27;</span>,</span><br><span class="line">      signature: <span class="string">&#x27;4fd3f5b803eeba97471b089cd517219d569dc3d3&#x27;</span>,</span><br><span class="line">      timestamp: <span class="string">&#x27;1589181198&#x27;</span>,</span><br><span class="line">      jsApiList: [<span class="string">&#x27;checkJsApi&#x27;</span>,<span class="string">&#x27;getLocation&#x27;</span>,<span class="string">&#x27;openAddredd&#x27;</span>,<span class="string">&#x27;onMenuShareAppMessage&#x27;</span>,<span class="string">&#x27;onMenuShareTimeline&#x27;</span>,<span class="string">&#x27;openLocation&#x27;</span>] <span class="comment">// 必填，需要使用的JS接口列表，所有JS接口列表见附录2</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// &#125;)</span></span><br><span class="line">  &#125;,</span><br><span class="line">  share (obj, fn) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="regexp">/micromessenger/i</span>.test(navigator.userAgent)) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 默认分享链接，比如说应用首页</span></span><br><span class="line">    <span class="keyword">let</span> shareUrl = location.origin + <span class="string">&#x27;/&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> (obj.link) &#123;</span><br><span class="line">      shareUrl = obj.link</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> shareTitle = <span class="string">&#x27;默认分享标题&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> (obj.title) &#123;</span><br><span class="line">      shareTitle = obj.title</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> shareDesc = <span class="string">&#x27;默认分享内容&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> (obj.desc) &#123;</span><br><span class="line">      shareDesc = obj.desc</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> shareImg = <span class="string">&#x27;默认分享图片地址&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> (obj.imgUrl) &#123;</span><br><span class="line">      shareImg = obj.imgUrl</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    wx.ready(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行</span></span><br><span class="line">      <span class="comment">// 在 weixin-js-sdk 1.4 之后，分享到朋友和朋友圈要分别使用 updateAppMessageShareData，updateTimelineShareData</span></span><br><span class="line">      <span class="comment">// 这里为了兼容老版本的微信，所以把以前的老版本的方法也写上</span></span><br><span class="line">      wx.onMenuShareAppMessage(&#123; <span class="comment">// 分享给朋友，此方法即将被废弃，改用 updateAppMessageShareData</span></span><br><span class="line">        title: shareTitle,</span><br><span class="line">        desc: shareDesc,</span><br><span class="line">        link: shareUrl,</span><br><span class="line">        imgUrl: shareImg, <span class="comment">// 分享图标</span></span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">&#x27;onMenuShareAppMessage分享成功&#x27;</span>)</span><br><span class="line">          fn()</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      wx.onMenuShareTimeline(&#123; <span class="comment">// 分享到朋友圈，此方法即将被废弃，改用 updateTimelineShareData</span></span><br><span class="line">        title: shareTitle,</span><br><span class="line">        link: shareUrl,</span><br><span class="line">        imgUrl: shareImg, <span class="comment">// 分享图标</span></span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">&#x27;onMenuShareTimeline分享成功&#x27;</span>)</span><br><span class="line">          fn()</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    wx.error(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>3 要分享的页面.vue</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mounte d() &#123;</span><br><span class="line">  <span class="built_in">this</span>.WX.share(&#123;&#125;, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">888</span>) <span class="comment">// 回调函数</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p>安装 HBuilderX[<a target="_blank" rel="noopener" href="https://www.dcloud.io/hbuilderx.html]">https://www.dcloud.io/hbuilderx.html]</a><br>安装 微信开发者工具<br>安装 HBuilderX内置插件<br>     顶部菜单【工具】 插件安装  安装<code>git</code> <code>内置终端</code></p>
+<h2 id="2-创建"><a href="#2-创建" class="headerlink" title="2.创建"></a>2.创建</h2><h2 id="3-设置"><a href="#3-设置" class="headerlink" title="3.设置"></a>3.设置</h2><h3 id="3-1-选择主题"><a href="#3-1-选择主题" class="headerlink" title="3.1 选择主题"></a>3.1 选择主题</h3><p>点击顶部菜单【工具】【主题】，选择酷黑</p>
+<h3 id="3-2-自定义主题"><a href="#3-2-自定义主题" class="headerlink" title="3.2 自定义主题"></a>3.2 自定义主题</h3><p>修改备注 为绿色 <a target="_blank" rel="noopener" href="https://hx.dcloud.net.cn/Tutorial/themes">https://hx.dcloud.net.cn/Tutorial/themes</a><br>工具 设置 源码视图  cv 下面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;editor.tokenColorCustomizations&quot;: &#123;</span><br><span class="line">    &quot;[Monokai]&quot;: &#123;</span><br><span class="line">        &quot;rules&quot;:[</span><br><span class="line">					&#123;</span><br><span class="line">						   &quot;scope&quot;: [</span><br><span class="line">						        &quot;punctuation.definition.comment&quot;,&quot;comment&quot;</span><br><span class="line">						    ],</span><br><span class="line">						    &quot;settings&quot;: &#123;</span><br><span class="line">						        &quot;foreground&quot;: &quot;#6a8a35&quot;</span><br><span class="line">						    &#125;</span><br><span class="line">					&#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-运行"><a href="#4-运行" class="headerlink" title="4.运行"></a>4.运行</h2><p>点击顶部菜单 <code>运行</code> - 到浏览器</p>
+<p>点击顶部菜单 <code>运行</code> - 到微信小程序<br>弹出窗口设置<code>微信开发者工具</code>路径<br>微信开发者工具 - 设置 - 安全 - 打开服务端</p>
+<h2 id="5-发布"><a href="#5-发布" class="headerlink" title="5.发布"></a>5.发布</h2><h3 id="发布h5"><a href="#发布h5" class="headerlink" title="发布h5"></a>发布h5</h3><p>查看官网[<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/quickstart-hx.html#%E5%8F%91%E5%B8%83%E4%B8%BAH5]">https://uniapp.dcloud.io/quickstart-hx.html#发布为H5]</a><br>记得登录 <code>manifest.json</code> 基础配置是否有 <code>appid</code> </p>
+<h3 id="发布微信小程序"><a href="#发布微信小程序" class="headerlink" title="发布微信小程序"></a>发布微信小程序</h3><p>非常简单<br>查看官网[<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/quickstart-hx.html#%E5%8F%91%E5%B8%83uni-app]">https://uniapp.dcloud.io/quickstart-hx.html#%E5%8F%91%E5%B8%83uni-app]</a></p>
+<h2 id="4-问题"><a href="#4-问题" class="headerlink" title="4.问题"></a>4.问题</h2><h6 id="1-提示没有sass-去插件市场安装又提示-网络问题"><a href="#1-提示没有sass-去插件市场安装又提示-网络问题" class="headerlink" title="1.提示没有sass 去插件市场安装又提示 网络问题"></a>1.提示没有sass 去插件市场安装又提示 网络问题</h6><pre><code>  解决 直接点击提示下方链接安装</code></pre>
 
         
       
@@ -213,7 +194,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">WeiXIn</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">uniapp</a>
         		</li>
       		
 		</ul>
@@ -223,7 +204,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/WeiXIn-%E8%BF%9E%E6%8E%A5%E5%BE%AE%E4%BF%A1sdk-%E5%88%86%E4%BA%AB/">展开全文 >></a>
+          <a class="article-more-a" href="/UniApp-1-uniapp%E5%BC%80%E5%A7%8B/">展开全文 >></a>
         </p>
       
 
@@ -253,19 +234,19 @@
 
 
   
-    <article id="post-npm-npm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-UniApp-2-uniapp编写" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/npm-npm/">npm</a>
+      <a class="article-title" href="/UniApp-2-uniapp%E7%BC%96%E5%86%99/">1.uniapp开始</a>
     </h1>
   
 
         
-        <a href="/npm-npm/" class="archive-article-date">
+        <a href="/UniApp-2-uniapp%E7%BC%96%E5%86%99/" class="archive-article-date">
   	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
 </a>
         
@@ -274,101 +255,517 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <style>
-table th:first-of-type {
- width: 240px;
-}
-</style>
+          <p>##</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903999984893966">https://juejin.cn/post/6844903999984893966</a></p>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">├─ common&#x2F;              # 公用工具库文件</span><br><span class="line">├─ components&#x2F;          # uni-app组件目录</span><br><span class="line">│  ├─ comp-a.vue        # 可复用的a组件</span><br><span class="line">├─ hybrid&#x2F;              # 存放本地网页的目录</span><br><span class="line">├─ pages&#x2F;               # 业务页面文件存放的目录</span><br><span class="line">│  ├─ home&#x2F;            </span><br><span class="line">│  │  ├─ index.vue      # home页面</span><br><span class="line">│  ├─ list&#x2F;            </span><br><span class="line">│  │  ├─ index.vue      # list页面</span><br><span class="line">├─ platforms&#x2F;           # 存放各平台专用页面的目录</span><br><span class="line">├─ static               # 存放应用引用静态资源（如图片、视频等）的目录，注意：静态资源只能存放于此</span><br><span class="line">├─ unpackage&#x2F;           # 打包目录</span><br><span class="line">├─ wxcomponents&#x2F;        # 存放小程序组件的目录</span><br><span class="line">├─ App.vue              #  应用配置，用来配置App全局样式以及监听</span><br><span class="line">├─ main.js              # Vue初始化入口文件</span><br><span class="line">├─ manifest.json        # 配置应用名称、appid、logo、版本等打包信息</span><br><span class="line">├─ package.json         # 配置页面路由、导航条、选项卡等页面类信息</span><br></pre></td></tr></table></figure>
 
-<h2 id="api"><a href="#api" class="headerlink" title="api"></a>api</h2><table>
+<h2 id="ui"><a href="#ui" class="headerlink" title="ui"></a>ui</h2><h3 id="uView"><a href="#uView" class="headerlink" title="uView"></a>uView</h3><p><a target="_blank" rel="noopener" href="https://www.uviewui.com/components/install.html">https://www.uviewui.com/components/install.html</a><br>参考官网 安装  配置<br>微信小程序基础库需要设置在2.19.2及以上</p>
+<h2 id="对比小程序写法异同"><a href="#对比小程序写法异同" class="headerlink" title="对比小程序写法异同"></a>对比小程序写法异同</h2><h3 id="wxs"><a href="#wxs" class="headerlink" title="wxs"></a>wxs</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// wx</span></span><br><span class="line">&lt;wxs <span class="built_in">module</span>=<span class="string">&quot;tools&quot;</span> src=<span class="string">&quot;@/utils/filter.wxs&quot;</span>/&gt;</span><br><span class="line"><span class="comment">// uni</span></span><br><span class="line">&lt;sctipt <span class="built_in">module</span>=<span class="string">&quot;tools&quot;</span> src=<span class="string">&quot;@/utils/filter.wxs&quot;</span> lang=<span class="string">&quot;wxs&quot;</span>&gt;&lt;/sctipt&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="uniApp-默认页面布局"><a href="#uniApp-默认页面布局" class="headerlink" title="uniApp 默认页面布局"></a>uniApp 默认页面布局</h3><h4 id="1-默认头部-uview自定义tabbar-剩余部分撑满-滚动"><a href="#1-默认头部-uview自定义tabbar-剩余部分撑满-滚动" class="headerlink" title="1.默认头部 + uview自定义tabbar + 剩余部分撑满 滚动"></a>1.默认头部 + uview自定义tabbar + 剩余部分撑满 滚动</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;page-main&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scroll-view</span> <span class="attr">scroll-y</span>=<span class="string">&quot;true&quot;</span> <span class="attr">style</span>=<span class="string">&quot;height:100%;&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 最大高度：剩余部分 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 溢出 滚动 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">scroll-view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 自定义tabbar --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">v-tab-bar</span> <span class="attr">class</span>=<span class="string">&quot;朋友圈display:none即可&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">v-tab-bar</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">page</span> &#123; <span class="comment">/* 不要使用scoped 否则小程序不生效 */</span></span></span><br><span class="line"><span class="css">  <span class="selector-tag">background</span>: <span class="selector-id">#f5f5f5</span>;</span></span><br><span class="line">  height: 100%;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-class">.main</span> &#123;</span></span><br><span class="line">  display: flex;</span><br><span class="line">  flex-flow: column;</span><br><span class="line">  height: 100%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="css"><span class="selector-class">.page-main</span> &#123;</span></span><br><span class="line">  overflow: hidden;</span><br><span class="line">  flex: 1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-自定义头部-uview自定义tabbar-剩余部分撑满-滚动"><a href="#2-自定义头部-uview自定义tabbar-剩余部分撑满-滚动" class="headerlink" title="2.自定义头部 + uview自定义tabbar + 剩余部分撑满 滚动"></a>2.自定义头部 + uview自定义tabbar + 剩余部分撑满 滚动</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 等等。。。可以编写很多不跟随滚动内容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;page-main&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scroll-view</span> <span class="attr">scroll-y</span>=<span class="string">&quot;true&quot;</span> <span class="attr">style</span>=<span class="string">&quot;height:100%;&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 最大高度：剩余部分 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 溢出 滚动 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">scroll-view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 自定义tabbar --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">v-tab-bar</span>&gt;</span><span class="tag">&lt;/<span class="name">v-tab-bar</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-class">.main</span> &#123;</span></span><br><span class="line">  display: flex;</span><br><span class="line">  flex-flow: column;</span><br><span class="line"><span class="css">  <span class="selector-tag">height</span>: 100<span class="selector-tag">vh</span>; <span class="comment">/* 100% 都可以*/</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="css"><span class="selector-class">.page-main</span> &#123;</span></span><br><span class="line">  overflow: hidden;</span><br><span class="line">  flex: 1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">uniapp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/UniApp-2-uniapp%E7%BC%96%E5%86%99/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-UniApp-3-uniappApp打包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/UniApp-3-uniappApp%E6%89%93%E5%8C%85/">3.uniappApp打包</a>
+    </h1>
+  
+
+        
+        <a href="/UniApp-3-uniappApp%E6%89%93%E5%8C%85/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="本地打包"><a href="#本地打包" class="headerlink" title="本地打包"></a>本地打包</h2><h3 id="一-相关依赖"><a href="#一-相关依赖" class="headerlink" title="一.相关依赖"></a>一.相关依赖</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_54498884/article/details/123617030">https://blog.csdn.net/weixin_54498884/article/details/123617030</a><br>|名词|版本|查看| 下载地址 |<br>| :– | :– | :– | :– |<br>| HBuilder X | 3.4.7 | 帮助-历次更新说明 | <a target="_blank" rel="noopener" href="https://www.dcloud.io/hbuilderx.html">下载地址</a> |<br>| Android Studio | - | - | <a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/index.html">下载地址</a>  |</p>
+<p><strong>uni-app的应用标识AppID</strong> = <code>开发者中心 - 配置信息APPID</code>  = <code>打包生成目录</code> = 这里现在等于<code>__UNI__DDC0EBA</code></p>
+<p><strong>Android包名</strong>  = 这里现在等于<code>io.dcloud.liuzhixiang_app</code><br><strong>Android证书签名SHA1</strong><br><strong>iOS BundleId</strong> = 这里现在等于 <code>io.dcloud.liuzhixiang_app</code></p>
+<h3 id="二-App离线SDK下载"><a href="#二-App离线SDK下载" class="headerlink" title="二.App离线SDK下载"></a>二.App离线SDK下载</h3><p>复制提取码后进入百度云直接下载最新版压缩包  <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1qxxUqh9ifF7mfJ4T46NB4Q#list/path=%2F">下载地址</a><br>解压 记住 目录</p>
+<p><code>E:\BaiduNetdiskDownload\Android离线打包SDK\3.4.14\Android-SDK@3.4.14.81352_20220608\HBuilder-Integrate-AS</code></p>
+<p>目录一定要换位置更换一下<br>否则 as 可能会找不到 <code>Generate signed Bundle or APK</code><br><code>d:\my\uni\HBuilder-Integrate-AS</code></p>
+<h3 id="三-生成本地打包APP资源"><a href="#三-生成本地打包APP资源" class="headerlink" title="三.生成本地打包APP资源"></a>三.生成本地打包APP资源</h3><p>HBuilderX - 发行 - 点击原生App-本地打包 - 生成本地打包资源<br>打包完毕进入文件<br><code>项目\unpackage\resources\__UNI__DDC0EBA</code></p>
+<h3 id="四-申请Appkey"><a href="#四-申请Appkey" class="headerlink" title="四.申请Appkey"></a>四.申请Appkey</h3><p><a target="_blank" rel="noopener" href="https://dev.dcloud.net.cn/app/index?type=0">HBuilder开发者中心</a><br>点击想要离线打包的项目 -<br>进入到项目的详情页 -<br>点击菜单栏的离线打包Key管理<br>勾选打包的平台，自定义Android包名，输入Android 证书签名SHA1，最后点击保存即可生成AppKey。<br>iOS：c33bda05e074f68**<strong><strong>**</strong></strong><br>Android：584ac5d15865281278c8******</p>
+<h5 id="Android-证书签名"><a href="#Android-证书签名" class="headerlink" title="Android 证书签名"></a>Android 证书签名</h5><p>参考 <a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/article/35777">https://ask.dcloud.net.cn/article/35777</a></p>
+<p>Oracle官方下载jre安装包：<a target="_blank" rel="noopener" href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a><br>需要登录才能下载</p>
+<p>最下面 选择 <code>x64 Compressed Archive 76.84 MB jre-8u333-windows-x64.tar.gz</code></p>
+<p>安装到 <code>C:\Program Files\Java\jre1.8.0_333</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">d:   <span class="comment">// 切换工作目录到D:路径</span></span><br><span class="line">set PATH=%PATH%;<span class="string">&quot;C:\Program Files\Java\jre1.8.0_333\bin&quot;</span> <span class="comment">// 将jre命令添加到临时环境变量中</span></span><br><span class="line">keytool -genkey -alias a(证书别名) -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">36500</span>(有效期天) -keystore test.keystore(证书文件名称) <span class="comment">// 生成签名证书</span></span><br><span class="line">keytool -list -v -keystore test.keystore   <span class="comment">// 查看证书 里面就会得到相应的信息</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>创建证书</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">λ keytool -genkey -alias liuzhixiang -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">36500</span> -keystore liuzhixiang.keystore</span><br><span class="line">输入密钥库口令:</span><br><span class="line">再次输入新口令:</span><br><span class="line">您的名字与姓氏是什么?</span><br><span class="line">  [Unknown]:  刘</span><br><span class="line">您的组织单位名称是什么?</span><br><span class="line">  [Unknown]:  魔方</span><br><span class="line">您的组织名称是什么?</span><br><span class="line">  [Unknown]:  魔方</span><br><span class="line">您所在的城市或区域名称是什么?</span><br><span class="line">  [Unknown]:  长沙</span><br><span class="line">您所在的省/市/自治区名称是什么?</span><br><span class="line">  [Unknown]:  湖南</span><br><span class="line">该单位的双字母国家/地区代码是什么?</span><br><span class="line">  [Unknown]:  CN</span><br><span class="line">CN=刘, OU=魔方, O=魔方, L=长沙, ST=湖南, C=CN是否正确?</span><br><span class="line">  [否]:  y</span><br><span class="line"></span><br><span class="line">输入 &lt;liuzhixiang&gt; 的密钥口令</span><br><span class="line">        (如果和密钥库口令相同, 按回车):</span><br><span class="line"></span><br><span class="line">Warning:</span><br><span class="line">JKS 密钥库使用专用格式。建议使用 <span class="string">&quot;keytool -importkeystore -srckeystore liuzhixiang.keystore -destkeystore liuzhixia</span></span><br><span class="line"><span class="string">ng.keystore -deststoretype pkcs12&quot;</span> 迁移到行业标准格式 PKCS12。</span><br></pre></td></tr></table></figure>
+
+<h3 id="五-打包"><a href="#五-打包" class="headerlink" title="五.打包"></a>五.打包</h3><p>1.使用 <code>Android Studio</code> 打开 <code>HBuilder-Integrate-AS</code>(二.App离线SDK下载) 文件<br>2.替换 <code>simpleDemo\src\main\assets\apps</code>内容为 <code>项目\unpackage\resources</code>内容 (三.生成本地打包APP资源)<br>3.将<code>simpleDemo\src\main\assets\data\dcloud_control.xml</code> 修改 appid=”__UNI__DDC0EBA” (_三.生成本地打包APP资源的包名_UNI__DDC0EBA)<br>4.将<code>simpleDemo\src\main\Androidmanifest.xml</code>文件，将android:value替换为之前准备( 四.申请Appkey)Appkey，将package更换为Android包名<br>5.将<code>simpleDemo\src\main\res\values\strings.xml</code>文件，输入自己应用想要的应用名称<code>&lt;string name=&quot;app_name&quot;&gt;应用名称&lt;/string&gt;</code><br>6.<code>simpleDemo\build.gradle</code>文件，填入Android包名和大版本号和小版本号<br>可通过在<code>simpleDemo\src\main\assets\apps\__UNI__B0DA83E\www\manifest.json</code>文件查看版本号信息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">applicationId <span class="string">&quot;io.dcloud.liuzhixiang_app&quot;</span> Android包名</span><br><span class="line">versionCode <span class="number">110</span> 大版本号 <span class="comment">// version.code</span></span><br><span class="line">versionName <span class="string">&quot;1.0.0&quot;</span>小版本号 <span class="comment">// version.name</span></span><br><span class="line"><span class="string">&quot;id&quot;</span>:<span class="string">&quot;__UNI__DDC0EBA&quot;</span>, </span><br><span class="line"><span class="string">&quot;name&quot;</span>:<span class="string">&quot;刘志祥&quot;</span>, <span class="string">&quot;version&quot;</span>:</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>:</span><br><span class="line">  <span class="string">&quot;1.0.0&quot;</span>, <span class="string">&quot;code&quot;</span>:</span><br><span class="line">  <span class="string">&quot;100&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>7.点击<code>Android Studio</code> 编辑器上方的 <code>build</code> <code>Generate  Signed Bundle / APK</code><br>勾选 <code>APK</code><br>填入 Android平台签名证书(.keystore)的证书路径、 <code>D:\liuzhixiang.keystore</code><br>证书秘钥 <code>创建证书时填写的秘钥</code><br>证书别名 <code>liuzhixiang</code><br>打包密码 <code>这里我填的是 创建证书时填写的秘钥</code><br>8.成功 <code>simpleDemo\release\****.apk文件</code></p>
+<h3 id="六-问题"><a href="#六-问题" class="headerlink" title="六.问题"></a>六.问题</h3><h6 id="1-手机报警-本应用使用HBuilderX-3-1-12-或对应的cli版本编译，而手机端SDK版本是3-1-13，不匹配的版本可能造成应用异常"><a href="#1-手机报警-本应用使用HBuilderX-3-1-12-或对应的cli版本编译，而手机端SDK版本是3-1-13，不匹配的版本可能造成应用异常" class="headerlink" title="1.手机报警 本应用使用HBuilderX 3.1.12 或对应的cli版本编译，而手机端SDK版本是3.1.13，不匹配的版本可能造成应用异常"></a>1.手机报警 本应用使用HBuilderX 3.1.12 或对应的cli版本编译，而手机端SDK版本是3.1.13，不匹配的版本可能造成应用异常</h6><p>解决办法<br>1、比较简单的就是全部升级，保持HBuilderX、自定义基座、cli项目编译器都是最新版。</p>
+<p>2、无视问题 在<code>manifest.json``源码视图</code>新增</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;app-plus&quot;</span>: &#123;  </span><br><span class="line">    <span class="string">&quot;compatible&quot;</span>: &#123;  </span><br><span class="line">        <span class="string">&quot;ignoreVersion&quot;</span>: <span class="literal">true</span> <span class="comment">//true表示忽略版本检查提示框，HBuilderX1.9.0及以上版本支持  </span></span><br><span class="line">    &#125;,  </span><br><span class="line">    <span class="comment">//....  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-修改打包-apk名称"><a href="#2-修改打包-apk名称" class="headerlink" title="2.修改打包.apk名称"></a>2.修改打包.apk名称</h6><p><code>simpleDemo\build.gradle</code>新增</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">  ...</span><br><span class="line">      applicationVariants.all &#123; variant -&gt;</span><br><span class="line">        variant.outputs.all &#123; output -&gt;</span><br><span class="line">            def outputFile &#x3D; output.outputFile</span><br><span class="line">            def fileName</span><br><span class="line">            if (outputFile !&#x3D; null &amp;&amp; outputFile.name.endsWith(&#39;.apk&#39;)) &#123;</span><br><span class="line">                if (variant.buildType.name.equals(&#39;release&#39;)) &#123;&#x2F;&#x2F;如果是release包</span><br><span class="line">                    fileName &#x3D; &quot;anjian_release_v$&#123;defaultConfig.versionName&#125;.apk&quot;</span><br><span class="line">                &#125; else if (variant.buildType.name.equals(&#39;debug&#39;)) &#123;&#x2F;&#x2F;如果是debug包</span><br><span class="line">                    fileName &#x3D; &quot;anjian_debug_v$&#123;defaultConfig.versionName&#125;.apk&quot;</span><br><span class="line">                &#125;</span><br><span class="line">                outputFileName &#x3D; fileName</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="七-todo"><a href="#七-todo" class="headerlink" title="七.todo"></a>七.todo</h3><p>ios包 <a target="_blank" rel="noopener" href="https://blog.csdn.net/jiciqiang/article/details/124149596">https://blog.csdn.net/jiciqiang/article/details/124149596</a></p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">uniapp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/UniApp-3-uniappApp%E6%89%93%E5%8C%85/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-UniApp-问题汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/UniApp-%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">1.问题汇总</a>
+    </h1>
+  
+
+        
+        <a href="/UniApp-%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <p>#</p>
+<div class="mydiv">
+<a>1.显示滚动条</a>
+<a>2.指令绑定变量</a>
+<a>3.下拉刷新</a>
+<a>ui库问题</a>
+</div>
+<style>.mydiv a {display:block;width:100%;}</style>
+
+<h3 id="1-显示滚动条"><a href="#1-显示滚动条" class="headerlink" title="1.显示滚动条"></a>1.显示滚动条</h3><p>uniapp 默认隐藏了滚动条<br>选择屏蔽他的滚动条<br>全局搜索 <code>-webkit-scrollbar</code></p>
+<p>屏蔽下面内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 隐藏scroll-view的滚动条</span></span><br><span class="line"><span class="comment">// ::-webkit-scrollbar &#123;</span></span><br><span class="line"><span class="comment">//     display: none;  </span></span><br><span class="line"><span class="comment">//     width: 0 !important;  </span></span><br><span class="line"><span class="comment">//     height: 0 !important;  </span></span><br><span class="line"><span class="comment">//     -webkit-appearance: none;  </span></span><br><span class="line"><span class="comment">//     background: transparent;  </span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-指令绑定变量"><a href="#2-指令绑定变量" class="headerlink" title="2.指令绑定变量"></a>2.指令绑定变量</h3><p>不要使用 v-if=”(list || []).length”<br>使用     v-if=”list &amp;&amp; list.length”<br>否则微信小程序端会报警</p>
+<h3 id="3-下拉刷新"><a href="#3-下拉刷新" class="headerlink" title="3.下拉刷新"></a>3.下拉刷新</h3><p>使用 scroll-view + refresher-enabled 下拉刷新 会产生很多html层级 样式问题<br>推荐能用page</p>
+<h3 id="4-获取元素"><a href="#4-获取元素" class="headerlink" title="4.获取元素"></a>4.获取元素</h3><p>在生命周期内避免直接使用 <code>this.$refs</code><br>使用   <code>this.$nextTick</code> 回调</p>
+<h3 id="scroll-view"><a href="#scroll-view" class="headerlink" title="scroll-view"></a>scroll-view</h3><p><code>scroll-view</code> 有<code>@scroll</code> 并且有需要置顶事件时 <code>scrollTop = 0</code><br><code>scrollTop</code> 需要赋值 <code>:scrollTop=xxx</code>  置顶时 <code>scrollTop = 0</code> 才会生效</p>
+<h3 id="ui库问题"><a href="#ui库问题" class="headerlink" title="ui库问题"></a>ui库问题</h3><h4 id="1-u-sticky"><a href="#1-u-sticky" class="headerlink" title="1.u-sticky"></a>1.u-sticky</h4><p>使用 <code>scroll-view</code> + <code>u-sticky</code> 在H5端吸顶异常</p>
+<p>1.因为在 H5端 customNavHeight 自定义导航栏 ui库默认认为是44 把他清0就好了<br>2.内置内容使用容器包裹<br>3.分割线不要使用 <code>height:1rpx;</code> 使用 <code>border-bottom:1rpx;</code>不然会导致吸顶误差</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;scroll-view scroll-y&gt;</span><br><span class="line">  &lt;view&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;u-sticky customNavHeight&#x3D;&quot;0&quot;&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;scroll-view&gt;</span><br></pre></td></tr></table></figure>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">问题汇总</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/UniApp-%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Vscode-1-一键执行多个npm指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/">1-一键执行多个npm指令</a>
+    </h1>
+  
+
+        
+        <a href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="package-lock-json"><a href="#package-lock-json" class="headerlink" title="package-lock.json"></a>package-lock.json</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;声明&quot;</span>: <span class="string">&quot;代码&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="vscode-文件夹"><a href="#vscode-文件夹" class="headerlink" title=".vscode 文件夹"></a>.vscode 文件夹</h3><ul>
+<li>直接创建吧，懒得用vscode触发了</li>
+<li>创建 <code>tasks.json</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">  // 有关 tasks.json 格式的文档，请参见q</span><br><span class="line">  // https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;tasks&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;label&quot;</span>: <span class="string">&quot;BK&quot;</span>, <span class="comment"># 他的名字  被调用时</span></span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;npm&quot;</span>, <span class="comment"># 执行指令</span></span><br><span class="line">      <span class="string">&quot;script&quot;</span>: <span class="string">&quot;bk&quot;</span>, <span class="comment"># 文件夹 package.json - script - 申明的一个属性值</span></span><br><span class="line">      <span class="string">&quot;path&quot;</span>: <span class="string">&quot;BK/&quot;</span>, <span class="comment"># 在 Bk/ 文件下运行</span></span><br><span class="line">      <span class="string">&quot;problemMatcher&quot;</span>: []</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>创建 <code>launch.json</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">  // 悬停以查看现有属性的描述。</span><br><span class="line">  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">      <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;BK&quot;</span>,  <span class="comment"># 显示在调试时的名称</span></span><br><span class="line">      <span class="string">&quot;preLaunchTask&quot;</span>: <span class="string">&quot;BK&quot;</span>  <span class="comment"># 运行的要对应的名称</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vscode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Vscode-1-%E4%B8%80%E9%94%AE%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AAnpm%E6%8C%87%E4%BB%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Vscode-3-插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Vscode-3-%E6%8F%92%E4%BB%B6/">3-插件</a>
+    </h1>
+  
+
+        
+        <a href="/Vscode-3-%E6%8F%92%E4%BB%B6/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h2><table>
 <thead>
 <tr>
-<th>常用指令</th>
-<th>说明</th>
-<th>详细说明</th>
+<th>名称</th>
+<th>作用</th>
+<th>操作步骤</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>npm install X</code></td>
-<td>把X包安装到node_modules目录中</td>
-<td>1.不会修改package.json <br> 2.之后运行npm install 命令时，不会自动安装X</td>
+<td><strong>常用</strong></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td><code>npm install X -save</code></td>
-<td>把X包安装至node_modules目录中</td>
-<td>1.会在package.json的dependencies属性中添加X <br> 2.之后运行npm install命令会自动安装X到node_modules中-线上测试时需要使用的包</td>
-</tr>
-<tr>
-<td><code>npm install X -save-dev</code> <br><code>npm install X -D</code></td>
-<td>把X包安装至node_modules目录中</td>
-<td>1.会在package.json的devDependencies属性中添加X <br>之后运行npm install命令会自动安装X到node_modules中，开发过程时需要使用的包</td>
-</tr>
-<tr>
-<td>npm ls</td>
-<td>查看安装的模块</td>
+<td>Auto Close Tag</td>
+<td>自动闭合标签</td>
 <td>-</td>
 </tr>
 <tr>
-<td>npm uninstall</td>
-<td>卸载模块</td>
-<td>卸载node_modules</td>
+<td>Auto Rename Tag</td>
+<td>修改标签同步修改另一对应标签</td>
+<td>-</td>
 </tr>
 <tr>
-<td>npm uninstall i</td>
-<td>卸载npm i 安装的模块</td>
-<td>卸载node_modules</td>
+<td>Bracket Pair Colorizer</td>
+<td>给括号加上不同的颜色</td>
+<td>-</td>
 </tr>
 <tr>
-<td>npm config get registry</td>
-<td>查看当前下载仓库地址</td>
+<td>Chinese (Simplified) Language Pack for Visual Studio Code</td>
+<td>适用于 VS Code 的中文（简体）语言包</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Code Spell Checker</td>
+<td>检查单词拼写是否错误,<br>对于拼音（比如 xigua ）那么就需要手动加入白名单才能取消报警(鼠标悬停 - 快速修复 - add to workspace set)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>css Peek</td>
+<td>可以样式具体内容</td>
+<td>类名右键 =&gt; Go to Definition</td>
+</tr>
+<tr>
+<td>DotENV</td>
+<td>.env文件高亮</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ESLint</td>
+<td>代码风格</td>
+<td>-</td>
+</tr>
+<tr>
+<td>GitLens</td>
+<td>一行代码的更改历史和更改人员</td>
+<td>-</td>
+</tr>
+<tr>
+<td>intelliSense for CSS class names in HTML</td>
+<td>把项目中 css 文件里的名称智能提示在 html 中</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Live Server</td>
+<td>打开html文件，生成静态服务器。可对于打包文件，在路径正确的情况。生成端口号打开。避开谷歌不允许访问本地文件的错误。</td>
+<td>页面鼠标右击 =&gt; Live Server</td>
+</tr>
+<tr>
+<td>open in browser</td>
+<td>打开html文件</td>
+<td>页面鼠标右击 =&gt; open in default browser</td>
+</tr>
+<tr>
+<td>path-alias</td>
+<td>导入组件的时候，使用别名路径提示</td>
 <td></td>
 </tr>
 <tr>
-<td><code>devDependencies</code></td>
-<td><code>package.json</code> 中的配置信息，<strong>开发环境</strong></td>
+<td>Prettier - Code formatter</td>
+<td>格式化</td>
 <td></td>
 </tr>
 <tr>
-<td><code>dependencies</code></td>
-<td><code>package.json</code> 中的配置信息，<strong>生产环境</strong></td>
+<td>prettier eslint</td>
+<td>根据项目内 .eslint 格式化</td>
 <td></td>
 </tr>
 <tr>
-<td><code>-S</code> <code>--save</code></td>
-<td>下载到 到 dependencies 开发环境</td>
+<td>Markdown Preview Enhanced</td>
+<td>markdown编辑和预览</td>
+<td>右击 ——&gt; 打开侧边预览</td>
+</tr>
+<tr>
+<td>Vetur</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td><code>-D</code></td>
-<td>下载到 到 devDependencies 生产环境</td>
+<td>Volar</td>
+<td>Vue Language Features (Volar) vue3.0格式化插件 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/401160130">https://zhuanlan.zhihu.com/p/401160130</a>  vue3.0 尽量不要和Vetur一起使用</td>
 <td></td>
 </tr>
 <tr>
-<td><code>-g</code></td>
-<td>下载到 到全局 不带的默认是本地</td>
+<td>别名路径跳转</td>
+<td>当你在开发页面时, 想点击别名路径导入的组件时</td>
+<td>右击插件–》扩展设置–》路径映射在settinas.json中编辑<br><code>&quot;alias-skip.mappings&quot;: &#123;&quot;~@/&quot;: &quot;/src&quot;,&quot;views&quot;: &quot;/src/views&quot;,&#125;,</code></td>
+</tr>
+<tr>
 <td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>其他</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Debugger for Chrome</td>
+<td>映射vscode上的断点到chrome上，方便调试</td>
+<td>-</td>
+</tr>
+<tr>
+<td>SVG Viewer</td>
+<td>查看svg图片</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Code Runner</td>
+<td>可以直接执行 C, C++, Java, JS, PHP, Python, Perl, Ruby, Go, Lua, Groovy, PowerShell, CMD, BASH, F#, C#, VBScript, TypeScript, CoffeeScript,</td>
+<td>-</td>
 </tr>
 </tbody></table>
-<h2 id="1-npm-init"><a href="#1-npm-init" class="headerlink" title="1.npm init"></a>1.npm init</h2><p>初始化一个简单的package.json文件，执行该命令后终端会依次询问<br>一般敲个包名 其它回车就好</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">name：包名，默认是文件夹名。(必填)</span><br><span class="line">version：包的版本，默认是1.0.0，(必填)</span><br><span class="line">description：包的描述。主要描述你的包是用来做什么的。</span><br><span class="line">entry point：包入口文件，默认是Index.js，可以自定义。</span><br><span class="line">test command：测试命令，</span><br><span class="line">git repository：包的git仓库地址，npm自动读取.git目录作为这一项的默认值。没使用则回车略过。</span><br><span class="line">keyword：包的关键词。该项会影响到用户怎样才能搜到你的包，</span><br><span class="line">author：作者。例如你的npm账号或者github账号</span><br><span class="line">license：开源协议，回车就好。</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="2-npm-init-y"><a href="#2-npm-init-y" class="headerlink" title="2.npm init -y"></a>2.npm init -y</h2><p>在<code>npm init</code>的时候省去了敲回车的步骤，生成默认的package.json</p>
-<h2 id="3-dependencies与devDependencies"><a href="#3-dependencies与devDependencies" class="headerlink" title="3.dependencies与devDependencies"></a>3.dependencies与devDependencies</h2><p>都是在 <code>package.json</code> 中的配置信息。</p>
-<p>devDependencies <strong>开发环境</strong><br>对应安装指令 <code>npm install X -S</code> <code>npm install X --save</code><br>安装一些用于生产环境的插件比如：<code>less</code></p>
-<p>dependencies <strong>生产环境</strong><br>对应安装指令 <code>npm install X -D</code> <code>npm install X --save-dev</code><br>安装一些用于生产环境的插件比如：<code>element-ui</code></p>
-<h2 id="4-npm-install与npm-i"><a href="#4-npm-install与npm-i" class="headerlink" title="4.npm install与npm i"></a>4.npm install与npm i</h2><p><code>npm i</code> 仅仅是 <code>npm install</code> 的简写</p>
-<ol>
-<li>用 npm i 安装的模块无法用 npm uninstall 删除，用 npm uninstall i 才卸载掉</li>
-<li>npm i 会帮助检测与当前 node 版本最匹配的 npm 包版本号，并匹配出来相互依赖的 npm 包应该提升的版本号</li>
-<li>部分 npm 包在当前 node 版本下无法使用，必须使用建议版本</li>
-<li>安装报错时 intall 肯定会出现 npm-debug.log 文件，npm i 不一定</li>
-</ol>
-<h2 id="5-npm-install-X"><a href="#5-npm-install-X" class="headerlink" title="5.npm install X"></a>5.npm install X</h2><p><strong>本地安装</strong><br>1.将安装包放在 ./node_modules 下（运行 npm 命令时所在的目录），如果没有 node_modules目录，会在当前执行 npm 命令的目录下生成 node_modules 目录。<br>2.可以通过 require() 来引入本地安装的包。</p>
-<h2 id="6-npm-install-X-g"><a href="#6-npm-install-X-g" class="headerlink" title="6.npm install X -g"></a>6.npm install X -g</h2><p><strong>全局安装</strong><br>1.将安装包放在 /usr/local 下 或者你的 node 的安装目录。<br>2.可以直接在命令行里使用。</p>
-<h2 id="7-npm-install-X-S"><a href="#7-npm-install-X-S" class="headerlink" title="7.npm install X -S"></a>7.npm install X -S</h2><p><code>npm install module_name -S</code> 即 <code>npm install module_name --save</code><br>会写入 package.json 的 <strong>dependencies 生产环境</strong><br>1.会把 msbuild 包安装到 node_modules 目录中<br>2.会在 package.json 的 <strong>dependencies</strong> 属性下添加 msbuild<br>3.之后运行 npm install 命令时，会自动安装 msbuild 到 node_modules 目录中<br>4.之后运行 npm install –production 或者注明 NODE_ENV 变量值为 production 时，<strong>会</strong>自动安装 msbuild 到 node_modules 目录中</p>
-<h2 id="8-npm-install-X-D"><a href="#8-npm-install-X-D" class="headerlink" title="8.npm install X -D"></a>8.npm install X -D</h2><p><code>npm install module_name -D</code> 即 <code>npm install module_name --save-dev</code><br>会写入 package.json 的 写入 <strong>devDependencies 开发环境</strong><br>1.会把 msbuild 包安装到 node_modules 目录中<br>2.会在 package.json 的 <strong>devDependencies</strong> 属性下添加 msbuild<br>3.之后运行 npm install 命令时，会自动安装 msbuild 到 node_modules 目录中<br>4.之后运行 npm install –production 或者注明 NODE_ENV 变量值为 production 时，<strong>不会</strong>自动安装 msbuild 到 node_modules 目录中</p>
-<h2 id="淘宝源"><a href="#淘宝源" class="headerlink" title="淘宝源"></a>淘宝源</h2><p><code>npm install cnpm -g --registry=https://registry.npm.taobao.org</code></p>
 
         
       
@@ -383,7 +780,7 @@ table th:first-of-type {
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">指令</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vscode</a>
         		</li>
       		
 		</ul>
@@ -393,7 +790,7 @@ table th:first-of-type {
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/npm-npm/">展开全文 >></a>
+          <a class="article-more-a" href="/Vscode-3-%E6%8F%92%E4%BB%B6/">展开全文 >></a>
         </p>
       
 
@@ -423,19 +820,19 @@ table th:first-of-type {
 
 
   
-    <article id="post-npm-npx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Vscode-4-快捷键" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/npm-npx/">npx</a>
+      <a class="article-title" href="/Vscode-4-%E5%BF%AB%E6%8D%B7%E9%94%AE/">4-快捷键</a>
     </h1>
   
 
         
-        <a href="/npm-npx/" class="archive-article-date">
+        <a href="/Vscode-4-%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="archive-article-date">
   	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
 </a>
         
@@ -444,180 +841,26 @@ table th:first-of-type {
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>原文 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/jianghaijun4031/p/13231847.html">https://www.cnblogs.com/jianghaijun4031/p/13231847.html</a></p>
-<blockquote>
-<p>针对node_modules目录下.bin下的可执行文件，如果是项目安装而非全局安装，使用时会非常麻烦，npx帮助解决这个问题</p>
-</blockquote>
-<p>npm 从5.2版开始，增加了 npx 命令<br>如果早起版本不能使用可以自己手动安装<br><code>npm install -g npx</code></p>
-<p>比如安装了sequelize-cli 管理数据库<br>使用的时候需要这样子调用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;node_modules&#x2F;.bin&#x2F;sequelize-cli db:seed:all</span><br></pre></td></tr></table></figure>
-
-<p>有了npx 之后可以这样子就可以了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize-cli db:seed:all</span><br></pre></td></tr></table></figure>
-
-<p>npx 的原理很简单，就是运行的时候，会到 node_modules/.bin 路径和环境变量 $PATH 里面，检查命令是否存在。<br>由于 npx 会检查环境变量 $PATH，所以系统命令也可以调用。</p>
-<p>我们把模块安装在内部的目的就是为了避免全局安装模块，升级不方便，各个项目使用不同版本的原因，全局安装本身就不合理<br>当前项目如果不错在的模块通过npx执行会帮你下载到一个临时目录，使用以后会自动删除。<br>通过这一特性，使用不同版本的 node</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx node@0.12.8 index.js</span><br></pre></td></tr></table></figure>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">指令</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/npm-npx/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-npm-nvm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/npm-nvm/">nvm</a>
-    </h1>
-  
-
-        
-        <a href="/npm-nvm/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>nvm是一个nodejs的版本管理工具。通过它可以安装和切换不同版本的nodejs</p>
-<p>原文 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/gaozejie/p/10689742.html">https://www.cnblogs.com/gaozejie/p/10689742.html</a></p>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>下载 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/releases">https://github.com/coreybutler/nvm-windows/releases</a><br><code>nvm-setup.zip</code> - 安装版，推荐使用<br>下载完毕 傻瓜操作 一路点击下去 记得点击 <code>i accept the agreement</code></p>
-<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><table>
+          <table>
 <thead>
 <tr>
-<th align="left"></th>
-<th align="left">说明</th>
-<th align="left">示例</th>
+<th>1</th>
+<th>2</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">nvm list [available]</td>
-<td align="left">查看本地安装的所有版本；有可选参数available，显示所有可下载的版本。 list可简化为ls。</td>
-<td align="left"><code>npm list</code></td>
+<td>alt+z</td>
+<td>文字自动换行</td>
 </tr>
 <tr>
-<td align="left">nvm install 版本</td>
-<td align="left">安装，命令中的版本号可自定义，具体参考命令1查询出来的列表</td>
-<td align="left"><code>nvm install 11.13.0</code></td>
+<td>ctrl + k &amp;&amp; ctrl + j</td>
+<td>展开所有代码</td>
 </tr>
 <tr>
-<td align="left">nvm use 版本</td>
-<td align="left">使用特定版本,切换到特定版本</td>
-<td align="left"><code>nvm use 11.13.0</code></td>
-</tr>
-<tr>
-<td align="left">nvm uninstall 版本</td>
-<td align="left">卸载特定版本</td>
-<td align="left"><code>nvm uninstall 11.13.0</code></td>
-</tr>
-<tr>
-<td align="left">nvm version</td>
-<td align="left">显示nvm版本。version可简化为v。</td>
-<td align="left"><code>npm -v</code></td>
-</tr>
-<tr>
-<td align="left">nvm arch</td>
-<td align="left">显示node是运行在32位还是64位。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">nvm install <version> [arch]</td>
-<td align="left">安装node， version是特定版本也可以是最新稳定版本latest。可选参数arch指定安装32位还是64位版本，默认是系统位数。可以添加–insecure绕过远程服务器的SSL。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">nvm on</td>
-<td align="left">开启node.js版本管理。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">nvm off</td>
-<td align="left">关闭node.js版本管理。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">nvm proxy [url]</td>
-<td align="left">设置下载代理。不加可选参数url，显示当前代理。将url设置为none则移除代理。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">nvm node_mirror [url]</td>
-<td align="left">设置node镜像。默认是<a target="_blank" rel="noopener" href="https://nodejs.org/dist/%E3%80%82%E5%A6%82%E6%9E%9C%E4%B8%8D%E5%86%99url%EF%BC%8C%E5%88%99%E4%BD%BF%E7%94%A8%E9%BB%98%E8%AE%A4url%E3%80%82%E8%AE%BE%E7%BD%AE%E5%90%8E%E5%8F%AF%E8%87%B3%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95settings.txt">https://nodejs.org/dist/。如果不写url，则使用默认url。设置后可至安装目录settings.txt</a>文件查看，也可直接在该文件操作。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">nvm npm_mirror [url]</td>
-<td align="left">设置npm镜像。<a target="_blank" rel="noopener" href="https://github.com/npm/cli/archive/%E3%80%82%E5%A6%82%E6%9E%9C%E4%B8%8D%E5%86%99url%EF%BC%8C%E5%88%99%E4%BD%BF%E7%94%A8%E9%BB%98%E8%AE%A4url%E3%80%82%E8%AE%BE%E7%BD%AE%E5%90%8E%E5%8F%AF%E8%87%B3%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95settings.txt">https://github.com/npm/cli/archive/。如果不写url，则使用默认url。设置后可至安装目录settings.txt</a>文件查看，也可直接在该文件操作。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">nvm use [version] [arch]</td>
-<td align="left">使用制定版本node。可指定32/64位。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">nvm root [path]</td>
-<td align="left">设置存储不同版本node的目录。如果未设置，默认使用当前目录。</td>
-<td align="left"></td>
+<td>ctrl + k &amp;&amp; ctrl + 0</td>
+<td>折叠所有代码</td>
 </tr>
 </tbody></table>
-<h2 id="使用nvm-升级-npm-版本"><a href="#使用nvm-升级-npm-版本" class="headerlink" title="使用nvm 升级 npm 版本"></a>使用nvm 升级 npm 版本</h2><p>1.去官网找到要升级到的npm 对应的node版本下载<br><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/releases/">https://nodejs.org/zh-cn/download/releases/</a><br>比如升级npm到 <code>v7.21.0</code> 下载 <code>node-v16.6.0-win-x64.zip</code></p>
-<p>2.将下载的安装包里的 node_modules/npm 替换到 当前node版本对应的 node_modules/npm</p>
-<p>3.npm -v 查看</p>
 
         
       
@@ -632,7 +875,7 @@ table th:first-of-type {
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">指令</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vscode</a>
         		</li>
       		
 		</ul>
@@ -642,7 +885,7 @@ table th:first-of-type {
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/npm-nvm/">展开全文 >></a>
+          <a class="article-more-a" href="/Vscode-4-%E5%BF%AB%E6%8D%B7%E9%94%AE/">展开全文 >></a>
         </p>
       
 
@@ -672,19 +915,19 @@ table th:first-of-type {
 
 
   
-    <article id="post-npm-sh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Vue-10-组件传参" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/npm-sh/">sh</a>
+      <a class="article-title" href="/Vue-10-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/">10-组件传参</a>
     </h1>
   
 
         
-        <a href="/npm-sh/" class="archive-article-date">
+        <a href="/Vue-10-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" class="archive-article-date">
   	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
 </a>
         
@@ -693,182 +936,27 @@ table th:first-of-type {
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><p>| |  | 示例 |<br>| :- | :- |<br>| read | 输入 | |<br>| echo | 打印 | |<br>read -p “选择模式:” x<br> ${x}<br>使用 <code>sh xxxx.sh</code>即可运行脚本</p>
-<h3 id="详细解释"><a href="#详细解释" class="headerlink" title="详细解释"></a>详细解释</h3><h4 id="read：输入"><a href="#read：输入" class="headerlink" title="read：输入"></a>read：输入</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#read</span></span><br><span class="line"><span class="comment">#-d[输入结束字符]</span></span><br><span class="line"><span class="comment">#-p[&quot;提示语句&quot;]</span></span><br><span class="line"><span class="comment">#-n[字符个数]</span></span><br><span class="line"><span class="comment">#-t[等待时间]</span></span><br><span class="line"><span class="comment">#-s[不回显]</span></span><br><span class="line"><span class="comment">#-a [数组名]</span></span><br><span class="line"><span class="built_in">read</span> x <span class="comment"># 输入一个数据（整数，浮点数，字符，字符串等）</span></span><br><span class="line"><span class="built_in">read</span> -n 10 x <span class="comment"># 限定输入数据长度</span></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">&quot;请输入:&quot;</span> x <span class="comment"># 输出提示信息并输入数据</span></span><br><span class="line"><span class="built_in">read</span> -sp <span class="string">&quot;请输入密码：&quot;</span> x <span class="comment"># 输入密码</span></span><br><span class="line"><span class="built_in">read</span> x y z <span class="comment"># 输入多个数据</span></span><br><span class="line"><span class="built_in">read</span> -a x; <span class="built_in">echo</span> <span class="variable">$&#123;x[0]&#125;</span> <span class="variable">$&#123;x[1]&#125;</span> <span class="variable">$&#123;x[2]&#125;</span> <span class="comment"># 输入多个数据</span></span><br><span class="line"><span class="built_in">read</span> -d x  <span class="comment"># 一直输入，直到输入x,结束</span></span><br><span class="line"><span class="built_in">read</span> -t 10 <span class="comment"># 说明：给用户10s的输入时间，时间到了或回车，就停止</span></span><br></pre></td></tr></table></figure>
+          <h2 id="父子"><a href="#父子" class="headerlink" title="父子"></a>父子</h2> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父</span></span><br><span class="line">&lt; empty :aaa=<span class="string">&quot;msg&quot;</span> &gt; &lt; / empty &gt;</span><br><span class="line">...</span><br><span class="line">data () &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    msg: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子</span></span><br><span class="line">props: &#123;       </span><br><span class="line">  msg: &#123;            </span><br><span class="line">      type: toString,                </span><br><span class="line">      <span class="keyword">default</span>: <span class="string">&#x27;&#x27;</span>            </span><br><span class="line">  &#125;        </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
-<h4 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># if</span></span><br><span class="line"><span class="keyword">if</span>  条件1 || 条件2</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"> 执行</span><br><span class="line"><span class="keyword">elif</span> [ <span class="variable">$a</span> -gt <span class="variable">$b</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"> 执行</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"> 执行</span><br><span class="line"><span class="keyword">fi</span>                             <span class="comment"># 别忘了这个结尾</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 逻辑短路</span></span><br><span class="line">[ <span class="variable">$a</span> ] &amp;&amp; <span class="built_in">echo</span> 1  <span class="comment"># a有值 输出1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3目</span></span><br><span class="line">[ <span class="variable">$a</span> ] &amp;&amp; <span class="built_in">echo</span> 1 || <span class="built_in">echo</span> 2 <span class="comment"># a有值 输出1 没有输出 2</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -f  file ]   <span class="comment"># 如果文件存在</span></span><br><span class="line"><span class="keyword">if</span> [ -d ...   ]   <span class="comment"># 如果目录存在</span></span><br><span class="line"><span class="keyword">if</span> [ -s file  ]   <span class="comment"># 如果文件存在且非空 </span></span><br><span class="line"><span class="keyword">if</span> [ -r file  ]   <span class="comment"># 如果文件存在且可读</span></span><br><span class="line"><span class="keyword">if</span> [ -w file  ]   <span class="comment"># 如果文件存在且可写</span></span><br><span class="line"><span class="keyword">if</span> [ -x file  ]   <span class="comment"># 如果文件存在且可执行   </span></span><br><span class="line"><span class="comment"># 整数变量表达式</span></span><br><span class="line"><span class="keyword">if</span> [ int1 -eq int2 ]      <span class="comment"># 如果int1等于int2</span></span><br><span class="line"><span class="keyword">if</span> [ int1 -ne int2 ]      <span class="comment"># 如果不等于</span></span><br><span class="line"><span class="keyword">if</span> [ int1 -ge int2 ]      <span class="comment"># 如果&gt;=</span></span><br><span class="line"><span class="keyword">if</span> [ int1 -gt int2 ]      <span class="comment"># 如果&gt;</span></span><br><span class="line"><span class="keyword">if</span> [ int1 -le int2 ]      <span class="comment"># 如果&lt;=</span></span><br><span class="line"><span class="keyword">if</span> [ int1 -lt int2 ]      <span class="comment"># 如果&lt;</span></span><br><span class="line"><span class="comment"># 字符串变量表达式</span></span><br><span class="line"><span class="keyword">if</span>  [ <span class="variable">$a</span> = <span class="variable">$b</span> ]           <span class="comment"># 如果a等于b</span></span><br><span class="line"><span class="keyword">if</span>  [ <span class="variable">$a</span> !=  <span class="variable">$b</span> ]         <span class="comment"># 如果a不等于b     </span></span><br><span class="line"><span class="keyword">if</span>  [ -z <span class="variable">$a</span>  ]            <span class="comment"># 如果a 为空</span></span><br><span class="line"><span class="keyword">if</span>  [ <span class="variable">$a</span> ]                <span class="comment"># 如果a 非空，返回0 (和-n类似)    </span></span><br></pre></td></tr></table></figure>
+<h2 id="子父"><a href="#子父" class="headerlink" title="子父"></a>子父</h2>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父</span></span><br><span class="line">&lt; empty @aaa=<span class="string">&quot;aaa&quot;</span> &gt; &lt; / empty &gt;</span><br><span class="line">aaa (data) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(aaa) <span class="comment">// &#123;a:123&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 子</span></span><br><span class="line">函数 () &#123;</span><br><span class="line">  <span class="built_in">this</span>.$emit(<span class="string">&#x27;aaa&#x27;</span>, &#123;<span class="attr">a</span>:<span class="number">123</span>&#125;)</span><br><span class="line">  <span class="comment">// 使用 this.$emit(&#x27;update:foo&#x27;, newValue)</span></span><br><span class="line">  <span class="comment">// 父组件会自动调用 thsi.foo = newValue 而不需要声明函数@</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  直接赋值时禁止在 等号=两端添加空格</span></span><br><span class="line">a=1 <span class="comment"># 直接赋值时禁止在 </span></span><br><span class="line"><span class="variable">$&#123;a:=&#x27;默认值&#x27;&#125;</span> <span class="comment"># a等于空的时候 执行a=默认值</span></span><br></pre></td></tr></table></figure>
-
-<p>####</p>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># fun # 报警</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">fun</span></span> () &#123;</span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$1</span> <span class="variable">$2</span> <span class="comment"># 打印变量1 变量2</span></span><br><span class="line">&#125;</span><br><span class="line">fun</span><br><span class="line">fun $变量1 $变量1</span><br></pre></td></tr></table></figure>
-
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h5 id="1"><a href="#1" class="headerlink" title="1"></a>1</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home  <span class="comment">## 进入到当前目录下的 /home</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..2&#125;  <span class="comment">## 执行两次操作</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  git checkout develop</span><br><span class="line"></span><br><span class="line">  git pull origin develop</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">/usr/bin/node ./node_modules/.bin/vue-cli-service build --mode develop</span><br><span class="line"></span><br><span class="line">rsync --delete --exclude <span class="string">&quot;node_modules&quot;</span> --exclude <span class="string">&quot;.git&quot;</span> -avz /home/www/qunguangguang-admin-vue/ /data/www/qunguangguang-admin-vue</span><br></pre></td></tr></table></figure>
-
-<h3 id="git提交"><a href="#git提交" class="headerlink" title="git提交"></a>git提交</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 默认模式 实现步骤</span></span><br><span class="line"><span class="comment">### git add .</span></span><br><span class="line"><span class="comment">### git commit -m &quot;xxx 或者 &#x27;update&#x27;&quot; </span></span><br><span class="line"><span class="comment">### git push origin &quot;xxx 或者 &#x27;当前所在分支&#x27;&quot;</span></span><br><span class="line"><span class="comment">### git checkout develop</span></span><br><span class="line"><span class="comment">### git merge &quot;xxx 或者 &#x27;当前所在分支&#x27;&quot;</span></span><br><span class="line"><span class="comment">### git push origin develop</span></span><br><span class="line"><span class="comment">### git checkout &quot;xxx 或者 &#x27;当前所在分支&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">getBranch</span></span>() &#123; <span class="comment"># 获取分支名称</span></span><br><span class="line">  <span class="built_in">read</span> -p <span class="string">&quot;请输入分支名称:&quot;</span> branch</span><br><span class="line">  <span class="variable">$&#123;branch:=`git rev-parse --abbrev-ref HEAD`&#125;</span> <span class="comment"># 如果 branch 是空的 取当前所在分支</span></span><br><span class="line">  <span class="comment"># if [ -z $branch ] # 如果 branch 是空的</span></span><br><span class="line">  <span class="comment"># then</span></span><br><span class="line">  <span class="comment">#   getBranch # 重新获取分支名称</span></span><br><span class="line">  <span class="comment"># else </span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&#x27;当前分支：&#x27;</span><span class="variable">$branch</span></span><br><span class="line">  <span class="built_in">return</span> <span class="variable">$branch</span></span><br><span class="line">  <span class="comment"># fi # if结束语</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">submit</span></span>() &#123; <span class="comment"># 提交</span></span><br><span class="line">  git add .</span><br><span class="line"></span><br><span class="line">  <span class="built_in">read</span> -p <span class="string">&quot;commit:&quot;</span> commit</span><br><span class="line">  <span class="variable">$&#123;commit:=&quot;update&quot;&#125;</span></span><br><span class="line">  git commit -m <span class="variable">$commit</span></span><br><span class="line"></span><br><span class="line">  getBranch</span><br><span class="line">  git push origin <span class="variable">$branch</span></span><br><span class="line">  git checkout develop</span><br><span class="line">  git merge <span class="variable">$branch</span></span><br><span class="line">  git pull origin develop</span><br><span class="line">  git push origin develop</span><br><span class="line">  git checkout <span class="variable">$branch</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">&quot;请输入模式:&quot;</span> x</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$x</span> = <span class="string">&#x27;0&#x27;</span> ]] <span class="comment"># 使用两个括号 解决 x为空时的问题</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"> <span class="built_in">echo</span> <span class="string">&#x27;模式0&#x27;</span></span><br><span class="line"><span class="keyword">elif</span> [[ <span class="variable">$x</span> = <span class="string">&#x27;1&#x27;</span> ]]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"> <span class="built_in">echo</span> <span class="string">&#x27;模式1&#x27;</span></span><br><span class="line"><span class="keyword">else</span>  <span class="comment"># 默认  提交一个分支 合并到develop 提交develop 切换到一个分支</span></span><br><span class="line"> <span class="built_in">echo</span> <span class="string">&#x27;当前模式：默认模式&#x27;</span></span><br><span class="line"> submit</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">指令</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/npm-sh/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo-1-Hexo-使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexo-1-Hexo-%E4%BD%BF%E7%94%A8/">一.Hexo 使用</a>
-    </h1>
-  
-
-        
-        <a href="/hexo-1-Hexo-%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p> 以下是个人体会，具体可以参考 <a target="_blank" rel="noopener" href="https://easyhexo.com/1-Hexo-install-and-config/">https://easyhexo.com/1-Hexo-install-and-config/</a></p>
-<h2 id="一-安装"><a href="#一-安装" class="headerlink" title="一.安装"></a>一.安装</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://git-scm.com/download/win">git</a> 反正我是在某某软件管理下的</li>
-<li><a target="_blank" rel="noopener" href="https://nodejs.org/en/">node.js</a></li>
-<li>安装 Hexo <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="二-配置"><a href="#二-配置" class="headerlink" title="二.配置"></a>二.配置</h2><ol>
-<li>新建文件夹</li>
-<li>往这个文件夹安装Hexo<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;文件夹名&gt;</span><br></pre></td></tr></table></figure></li>
-<li>配置<br><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">Hexo官方文档</a><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// _config.yml 文件</span></span><br><span class="line"><span class="comment">// Site</span></span><br><span class="line">title:</span><br><span class="line">subtitle:</span><br><span class="line">description:</span><br><span class="line">keywords:</span><br><span class="line">author:</span><br><span class="line">language:</span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">title</td>
-<td align="left">网站标题</td>
-</tr>
-<tr>
-<td align="left">subtitle</td>
-<td align="left">网站副标题</td>
-</tr>
-<tr>
-<td align="left">description</td>
-<td align="left">网站描述</td>
-</tr>
-<tr>
-<td align="left">keywords</td>
-<td align="left">网站关键词</td>
-</tr>
-<tr>
-<td align="left">author</td>
-<td align="left">作者名字</td>
-</tr>
-<tr>
-<td align="left">language</td>
-<td align="left">网站使用的语言</td>
-</tr>
-<tr>
-<td align="left">timezone</td>
-<td align="left">网站时区：详见时区列表</td>
-</tr>
-</tbody></table>
-<h2 id="三-部署"><a href="#三-部署" class="headerlink" title="三.部署"></a>三.部署</h2><ul>
-<li>因为会有持续优化 详见部署章节</li>
-</ul>
-<h2 id="四-持续集成（自动发布）"><a href="#四-持续集成（自动发布）" class="headerlink" title="四.持续集成（自动发布）"></a>四.持续集成（自动发布）</h2><ol>
-<li><p>注册 Travis CI 账号，绑定 GitHub 账户<br>首先，我们到 Travis CI 官网，用自己的 GitHub 账户直接关联登录，并允许 Travis CI 查看自己的公有仓库。<br>然后我们到 <a target="_blank" rel="noopener" href="https://travis-ci.org/account/repositories">Travis CI</a> 账户页面 开启我们的博客仓库。如图。<br><img src="/img/hexo/travisCl.png" alt="Image text"></p>
-</li>
-<li><p>克隆项目地址到本地<br>此时 我们刚刚那个项目因为已经被更新了一次，并且会有冲突。把它删了，重新克隆以下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 克隆项目到本地</span></span><br><span class="line">git <span class="built_in">clone</span> `git地址`</span><br><span class="line"><span class="comment"># 创建并切换到 hexo 分支</span></span><br><span class="line">git checkout -b hexo</span><br></pre></td></tr></table></figure>
-
-<p>将 <code>hexo</code> 分支下所有内容删除 只保留 <code>.git</code> 目录<br>cv 刚开始创建的 hexo 源码文件到此目录下并提交到 hexo 分支</p>
-<p>此时git 分支结构</p>
+<h2 id="非父子"><a href="#非父子" class="headerlink" title="非父子"></a>非父子</h2><ul>
+<li><p>使用发布订阅模式</p>
 <ul>
-<li><code>hexo</code> hexo 源码文件</li>
-<li><code>master</code> 项目静态输出文件（即 <code>public</code> 文件下内容）</li>
+<li><p>1.新建一个js文件   然后引入vue  实例化vue  最后暴露这个实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// components/bus.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> bus = <span class="keyword">new</span> Vue();</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> bus;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.组件a-接收参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;span&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;span&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Bus from &#39;..&#x2F;components&#x2F;bus.js&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      name: &#39;2&#39;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    let _this &#x3D; this</span><br><span class="line">    Bus.$on(&#39;send&#39;, (data) &#x3D;&gt; &#123;</span><br><span class="line">      _this.name &#x3D; data</span><br><span class="line">      console.log(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.组件b-传递参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;a&quot;&gt;点击&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Bus from &#39;..&#x2F;common&#x2F;bus.js&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">  methods: &#123;</span><br><span class="line">    a()&#123;</span><br><span class="line">      Bus.$emit(&#39;send&#39;, &#39;33333333333&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
-<li><p>配置<br>创建 <code>.travis.yml</code> 配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">language: node_js <span class="comment"># 编译语言、环境</span></span><br><span class="line">sudo: required <span class="comment"># 需要管理员权限</span></span><br><span class="line">dist: xenial <span class="comment"># 指定 CI 系统版本为 Ubuntu16.04 LTS</span></span><br><span class="line">node_js: stable <span class="comment">#Node.js 版本</span></span><br><span class="line">branches:</span><br><span class="line">  only:</span><br><span class="line">    - hexo <span class="comment"># 只有 hexo 分支检出更改才触发 CI</span></span><br><span class="line">before_install: </span><br><span class="line">  - <span class="built_in">export</span> TZ=<span class="string">&#x27;Asia/Shanghai&#x27;</span> <span class="comment">#配置时区为东八区 UTC+8</span></span><br><span class="line">  - npm install hexo-cli <span class="comment"># 安装 hexo</span></span><br><span class="line"><span class="comment">#  - sudo apt-get install libpng16-dev # 安装 libpng16-dev CI 编译出现相关报错时请取消注释</span></span><br><span class="line">install:</span><br><span class="line">  - npm install <span class="comment"># 安装依赖</span></span><br><span class="line">script: <span class="comment"># 执行脚本，清除缓存，生成静态文件</span></span><br><span class="line">  - hexo clean</span><br><span class="line">  - hexo generate</span><br><span class="line">deploy:</span><br><span class="line">  provider: pages</span><br><span class="line">  skip_cleanup: <span class="literal">true</span> <span class="comment"># 跳过清理</span></span><br><span class="line">  local_dir: public <span class="comment"># 需要推送到 GitHub 的静态文件目录 </span></span><br><span class="line">  name: <span class="variable">$GIT_NAME</span> <span class="comment"># 用户名变量</span></span><br><span class="line">  email: <span class="variable">$GIT_EMAIL</span> <span class="comment"># 用户邮箱变量</span></span><br><span class="line">  github_token: <span class="variable">$GITHUB_TOKEN</span> <span class="comment"># GitHub Token 变量</span></span><br><span class="line">  keep-history: <span class="literal">true</span> <span class="comment"># 保持推送记录，以增量提交的方式</span></span><br><span class="line">  target-branch: master <span class="comment"># 推送的目标分支 local_dir-&gt;&gt;master 分支</span></span><br><span class="line">  on:</span><br><span class="line">    branch: hexo <span class="comment"># 工作分支</span></span><br></pre></td></tr></table></figure>
-
-<p>在 Travis CI 中配置变量<br>此时 我们刚刚配置的文件中有3个变量</p>
-<ul>
-<li><code>$GIT_NAME</code> ： git 用户名</li>
-<li><code>$GIT_EMAIL</code> ： git 用户邮箱</li>
-<li><code>$GITHUB_TOKEN</code> ：GitHub 通行证 (token) 字符串</li>
+<li><p>使用vuex就不多说了</p>
+</li>
 </ul>
-<p>前两项可以通过 终端命令输入指令查看</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name</span><br><span class="line">git config --global user.email</span><br></pre></td></tr></table></figure>
-
-<p>最后一项需要：<br>访问 <a target="_blank" rel="noopener" href="https://github.com/settings/tokens">GitHub 账户设置 &gt; Tokens</a><br>生成新 Token: Generate new token<br>填入 Token 描述，并给予 Token 第一项 repo 的全部权限<br>话不多说 看图<br><img src="/img/hexo/git-token.png" alt="新建Token"></p>
-<ul>
-<li>依次填入<br><img src="/img/hexo/git_token2.png" alt="新建Token"></li>
-<li>下滑 确认后 将生成的 Token 复制，保存（生成 Token 的页面只有一次机会看见，请保存妥当。）</li>
-<li>在 Travis CI 仓库配置中，将三个变量填入设置（位于 Settings &gt; Environment Variables 处并保存：<br>这时就算完成了   每次提交 <code>hexo</code> 分支代码后 就会同步更新</li>
-</ul>
-</li>
-</ol>
 
         
       
@@ -883,7 +971,7 @@ table th:first-of-type {
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
         		</li>
       		
 		</ul>
@@ -893,7 +981,7 @@ table th:first-of-type {
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/hexo-1-Hexo-%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/Vue-10-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/">展开全文 >></a>
         </p>
       
 
@@ -923,19 +1011,19 @@ table th:first-of-type {
 
 
   
-    <article id="post-hexo-2-Hexo-使用-备注版本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Vue-11-vue源码解读" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/hexo-2-Hexo-%E4%BD%BF%E7%94%A8-%E5%A4%87%E6%B3%A8%E7%89%88%E6%9C%AC/">二.Hexo 使用-备注版本</a>
+      <a class="article-title" href="/Vue-11-vue%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">11-vue源码解读</a>
     </h1>
   
 
         
-        <a href="/hexo-2-Hexo-%E4%BD%BF%E7%94%A8-%E5%A4%87%E6%B3%A8%E7%89%88%E6%9C%AC/" class="archive-article-date">
+        <a href="/Vue-11-vue%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/" class="archive-article-date">
   	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
 </a>
         
@@ -944,18 +1032,7 @@ table th:first-of-type {
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo server 本地运行</span><br><span class="line">hexo clean  清空public 文件</span><br><span class="line">hexo deploy 部署</span><br><span class="line">提示 hexo 不存在 可以使用 npx hexo xxx</span><br></pre></td></tr></table></figure>
-
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-部署hexo时出现ERROR-Deployer-not-found-Git"><a href="#1-部署hexo时出现ERROR-Deployer-not-found-Git" class="headerlink" title="1.部署hexo时出现ERROR Deployer not found: Git"></a>1.部署hexo时出现ERROR Deployer not found: Git</h2><p>先执行 <code>npm install hexo-deployer-git –save</code><br>然后执行 <code>hexo d</code> </p>
-<h2 id="token-设置时-需要对勾项"><a href="#token-设置时-需要对勾项" class="headerlink" title="token 设置时 需要对勾项"></a>token 设置时 需要对勾项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public_repo Access public repositories</span><br><span class="line">repo:invite Access repository invitations</span><br><span class="line">security_events Read and write security events</span><br></pre></td></tr></table></figure>
-
-<h2 id="jq报错"><a href="#jq报错" class="headerlink" title="jq报错"></a>jq报错</h2><p> 将 <code>./themes/landscape/layout/_partial/after-footer.ejs</code> 文件中对应引JQ的部分改成</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://libs.baidu.com/jquery/1.7.2/jquery.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p>获取结构百度下 <code>tree</code> 就好了或者<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qianduanjingying/p/6064058.html">戳这里</a><br>tree /f &gt; tree.txt<br>获取所有文件和目录 生成 tree.txt文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">+---.deploy_git                 <span class="comment">#</span></span><br><span class="line">+---node_modules                <span class="comment"># 依赖</span></span><br><span class="line">+---public                      <span class="comment"># 静态资源</span></span><br><span class="line">+---scaffolds                   <span class="comment">#</span></span><br><span class="line">+---<span class="built_in">source</span>                      <span class="comment"># </span></span><br><span class="line">   \---_posts                   <span class="comment"># 写东西的文件</span></span><br><span class="line">\---themes                      <span class="comment"># 主题文件夹 具体操作可以按你当前配置的主题相关信息来变化</span></span><br><span class="line">    \---landscape               <span class="comment"># 默认主题，不多解释</span></span><br><span class="line">        +---languages</span><br><span class="line">        +---layout</span><br><span class="line">        |   +---_partial</span><br><span class="line">        |   |   \---post</span><br><span class="line">        |   \---_widget</span><br><span class="line">        +---scripts</span><br><span class="line">        \---<span class="built_in">source</span></span><br><span class="line">            +---css</span><br><span class="line">            |   +---fonts</span><br><span class="line">            |   +---images      <span class="comment"># 图片</span></span><br><span class="line">            |   +---_partial</span><br><span class="line">            |   \---_util</span><br><span class="line">            +---fancybox</span><br><span class="line">            |   \---helpers</span><br><span class="line">            \---js              <span class="comment"># js引用文件</span></span><br><span class="line">    \---yilia                   <span class="comment"># 当前主题，不多解释</span></span><br><span class="line">+---_config.yml                  <span class="comment"># 配置文件</span></span><br><span class="line">+---.gitignore                   <span class="comment"># git忽略文件</span></span><br><span class="line">+---.travis                      <span class="comment"># Travis CI 脚本文件（自动部署）</span></span><br><span class="line">+---db                           <span class="comment">#</span></span><br><span class="line">+---package-lock.json            <span class="comment">#</span></span><br><span class="line">+---package                      <span class="comment">#</span></span><br></pre></td></tr></table></figure>
-
-
+          所查看的内容还在优化中。。。
         
       
 
@@ -969,7 +1046,7 @@ table th:first-of-type {
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
         		</li>
       		
 		</ul>
@@ -979,7 +1056,7 @@ table th:first-of-type {
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/hexo-2-Hexo-%E4%BD%BF%E7%94%A8-%E5%A4%87%E6%B3%A8%E7%89%88%E6%9C%AC/">展开全文 >></a>
+          <a class="article-more-a" href="/Vue-11-vue%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">展开全文 >></a>
         </p>
       
 
@@ -1009,19 +1086,19 @@ table th:first-of-type {
 
 
   
-    <article id="post-hexo-3-Hexo-主题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Vue-12-打包相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/hexo-3-Hexo-%E4%B8%BB%E9%A2%98/">三.Hexo 主题</a>
+      <a class="article-title" href="/Vue-12-%E6%89%93%E5%8C%85%E7%9B%B8%E5%85%B3/">12-vue杂项</a>
     </h1>
   
 
         
-        <a href="/hexo-3-Hexo-%E4%B8%BB%E9%A2%98/" class="archive-article-date">
+        <a href="/Vue-12-%E6%89%93%E5%8C%85%E7%9B%B8%E5%85%B3/" class="archive-article-date">
   	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
 </a>
         
@@ -1030,20 +1107,9 @@ table th:first-of-type {
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9f794db64f42">https://www.jianshu.com/p/9f794db64f42</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia">yilia</a></p>
-<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><ol>
-<li>克隆改项目 git clone 地址</li>
-<li>放入 <code>themes</code> 文件夹下</li>
-<li>引用  修改 <code>根目录/_config.yml</code> 文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: 刚刚放入 themes 中的 文件名</span><br></pre></td></tr></table></figure></li>
-<li>支持 tags<br>修改 根目录 <code>_config.yml</code> 添加配置</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tag_dir: tags <span class="comment"># 标签</span></span><br><span class="line">archive_dir: archives <span class="comment"># 归档</span></span><br><span class="line">category_dir: categories <span class="comment"># 分类</span></span><br><span class="line">code_dir: downloads/code</span><br></pre></td></tr></table></figure>
-
-<p>使用 .md 文件头部添加 当前标题 和 tags</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">---</span><br><span class="line">  title: Hexo 主题</span><br><span class="line">  tags: </span><br><span class="line"><span class="bullet">      -</span> Hexo</span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="使用主题地址具体配置"><a href="#使用主题地址具体配置" class="headerlink" title="使用主题地址具体配置"></a>使用主题地址具体配置</h2><p>修改 <code>themes/yilia/_config.yml</code><br>借鉴 <a target="_blank" rel="noopener" href="https://github.com/litten/BlogBackup/blob/master/themes/yilia/_config.yml">https://github.com/litten/BlogBackup/blob/master/themes/yilia/_config.yml</a></p>
+          <h3 id="1-使用命令打包"><a href="#1-使用命令打包" class="headerlink" title="1.使用命令打包"></a>1.使用命令打包</h3><p>一般来算 <code>npm run build</code> 是写的 <code>vue-cli-service build</code><br>但是后端打包使用脚本运行时有时会出现BUG 所以使用路径 <code>./node_modules/.bin/vue-cli-service build</code> 也会又打包效果</p>
+<p>那么 打测试包<br><code>npm run test</code> 打测试包的时候<br><code>npm run test : &#39;vue-cli-service build --mode develop&#39;</code> 脚本执行  <code>./node_modules/.bin/vue-cli-service build --mode develop</code></p>
+<h3 id="2-问题"><a href="#2-问题" class="headerlink" title="2.问题"></a>2.问题</h3><h4 id="3-打包后不显示报警-不出现页面"><a href="#3-打包后不显示报警-不出现页面" class="headerlink" title="3.打包后不显示报警 不出现页面"></a>3.打包后不显示报警 不出现页面</h4><p> 可能是路由 <code>mode: &#39;history&#39;</code> hash 模式原因。屏蔽或者作出对应的配置就好了</p>
 
         
       
@@ -1058,7 +1124,7 @@ table th:first-of-type {
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
         		</li>
       		
 		</ul>
@@ -1068,227 +1134,7 @@ table th:first-of-type {
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/hexo-3-Hexo-%E4%B8%BB%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo-5-Hexo-部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexo-5-Hexo-%E9%83%A8%E7%BD%B2/">五.Hexo 部署</a>
-    </h1>
-  
-
-        
-        <a href="/hexo-5-Hexo-%E9%83%A8%E7%BD%B2/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="一-部署到GIT"><a href="#一-部署到GIT" class="headerlink" title="一.部署到GIT"></a>一.部署到GIT</h2><ol>
-<li><p>注册<a target="_blank" rel="noopener" href="https://github.com/">GitHub</a></p>
-</li>
-<li><p>新建仓库 格式为 <code>用户名.github.io</code> 并记录仓库地址</p>
-</li>
-<li><p>安装部署插件</p>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-server --save</span><br><span class="line"><span class="comment">// 注：首次使用GIT需要配置用户信息</span></span><br><span class="line">git config --<span class="built_in">global</span> user.name <span class="string">&quot;你的用户名&quot;</span></span><br><span class="line">git config --<span class="built_in">global</span> user.email <span class="string">&quot;你的邮箱&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>提交前准备<br>手动创建 <code>.gitignore</code> 文件 并输入内容</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_modules/ <span class="comment"># 不提交此文件夹下的文件 </span></span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>提交</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 由于 GitHub Pages 的限制， 只允许将静态文件托管在仓库的 master 分支。</span></span><br><span class="line">  git add .</span><br><span class="line">  git commit -m <span class="string">&quot;初始化&quot;</span></span><br><span class="line">  git push </span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>继续配置 <code>.config_yml</code> 文件</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git <span class="comment"># 类型填git</span></span><br><span class="line">  repo: &lt;repository url&gt; <span class="comment"># 你的Github仓库地址</span></span><br><span class="line">  branch: master <span class="comment"># 分支名称。默认填写 master 如果您使用的是 GitHub ，程序会尝试自动检测。</span></span><br><span class="line">  messag</span><br><span class="line">  e: <span class="comment"># 提交信息可以自定义，不填的则默认为提交时间</span></span><br></pre></td></tr></table></figure>
-
-<ol start="7">
-<li>发布</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -g <span class="comment"># 这里就会改变你的 maser 分支的内容了</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="二-部署到CODING"><a href="#二-部署到CODING" class="headerlink" title="二.部署到CODING"></a>二.部署到CODING</h2><p>主要用到 coding静态文件<br>但是由于 coding 改版 不在支持免费的静态文件<br>以下内容仅供参考</p>
-<ol>
-<li><p><a target="_blank" rel="noopener" href="https://coding.net/">CODING</a> 注册账号</p>
-</li>
-<li><p>新建仓库 <code>用户名.coding.me</code>  （<code>选：devops 项目， 下方下载 serverless 全栈 web 应用 Vue.js</code>）</p>
-</li>
-<li><p>具体配置同 <code>部署到GIT</code></p>
-</li>
-<li><p>配置站点 <code>_config.yml</code> 文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"><span class="built_in">type</span>: git <span class="comment"># 类型填 git</span></span><br><span class="line">repo:</span><br><span class="line">  github: &lt;github repository url&gt; <span class="comment"># 你的 GitHub 仓库地址</span></span><br><span class="line">  coding: &lt;coding repository url&gt; <span class="comment"># 你的 coding 仓库地址</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>发布操作</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注意事项<br> 第一次发布会有弹窗输入 账号密码<br>  账号密码为  右上角图标 -&gt; 个人设置 -&gt;<br>  用户头像下:<br>  用户名: 手机号/服务邮箱<br>  密码：  服务密码</p>
-<p>  如何静态资源访问:<br>   自己创建的没有一些目录 安照官方文档操作后：<br>   官方文档<a target="_blank" rel="noopener" href="https://help.coding.net/docs/start/project.html#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">https://help.coding.net/docs/start/project.html#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE</a><br>   代码左侧： 持续部署 -&gt; 静态网站 -&gt; 设置 一一填入 -&gt; 得到地址 访问即可<br>   如果你没有找到 <code>持续部署</code> 按照官网重新创建一个项目即可</p>
-</li>
-</ol>
-<h3 id="自动化部署到CODING"><a href="#自动化部署到CODING" class="headerlink" title="自动化部署到CODING"></a>自动化部署到CODING</h3><pre><code>不会。。。自己默默 hexo d -g 吧。。。。。</code></pre>
-<h2 id="三-部署到gitee"><a href="#三-部署到gitee" class="headerlink" title="三.部署到gitee"></a>三.部署到gitee</h2><p>新建仓库<br>配置ssh<br>gitee静态页面…要实名 身份证<br><code>_config.yml</code> 新增</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">&#x27;git&#x27;</span></span><br><span class="line">  <span class="attr">repo:</span> </span><br><span class="line">    <span class="attr">github:</span> <span class="string">&#x27;******&#x27;</span></span><br><span class="line">    <span class="attr">gitee:</span> <span class="string">&#x27;git@gitee.com****&#x27;</span> </span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span> <span class="comment"># 分支名称。默认填写 master 如果您使用的是 GitHub ，程序会尝试自动检测。</span></span><br></pre></td></tr></table></figure>
-
-<p>正常使用  hexo clean &amp;&amp; hexo d -g 即可部署代码</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/hexo-5-Hexo-%E9%83%A8%E7%BD%B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo-4-Hexo-评论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexo-4-Hexo-%E8%AF%84%E8%AE%BA/">四.Hexo 评论</a>
-    </h1>
-  
-
-        
-        <a href="/hexo-4-Hexo-%E8%AF%84%E8%AE%BA/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="一-yilia主题"><a href="#一-yilia主题" class="headerlink" title="一.yilia主题"></a>一.yilia主题</h2><p>yilia主题 使用gitalk</p>
-<p>1.修改 <code>yilia/layout/_partial/article.ejs</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">添加已下代码 ---</span><br><span class="line">&lt;% <span class="keyword">if</span> (theme.gitalk.enable)&#123; %&gt;</span><br><span class="line">  &lt;%- partial(<span class="string">&#x27;post/gitalk&#x27;</span>, &#123;</span><br><span class="line">    key: post.slug,</span><br><span class="line">    title: post.title,</span><br><span class="line">    url: config.url+url_for(post.path)</span><br><span class="line">  &#125;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line">--- 添加已上代码</span><br><span class="line">&lt;% <span class="keyword">if</span> (theme.gitment_owner &amp;&amp; theme.gitment_repo &amp;&amp;theme.gitment_oauth &amp;&amp; theme.gitment_oauth.client_id &amp;&amp; theme.gitment_oauth.client_secret)&#123; %&gt;</span><br><span class="line">&lt;%- partial(<span class="string">&#x27;post/gitment&#x27;</span>, &#123;</span><br><span class="line">    key: post.slug,</span><br><span class="line">    title: post.title,</span><br><span class="line">    url: config.url+url_for(post.path)</span><br><span class="line">  &#125;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.新建 <code>yilia/layout/_partial/post/gitalk.ejs</code> 内容如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;gitalk-container&quot;</span> style=<span class="string">&quot;padding: 0px 30px 0px 30px;&quot;</span>&gt;&lt;/div&gt; </span><br><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css&quot;</span>&gt;</span><br><span class="line">&lt;script src=<span class="string">&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line"><span class="keyword">if</span>(&lt;%=theme.gitalk.enable%&gt;)&#123;</span><br><span class="line">	var gitalk = new Gitalk(&#123;</span><br><span class="line">  	clientID: <span class="string">&#x27;&lt;%=theme.gitalk.ClientID%&gt;&#x27;</span>,</span><br><span class="line">  	clientSecret: <span class="string">&#x27;&lt;%=theme.gitalk.ClientSecret%&gt;&#x27;</span>,</span><br><span class="line">  	repo: <span class="string">&#x27;&lt;%=theme.gitalk.repo%&gt;&#x27;</span>,</span><br><span class="line">  	owner: <span class="string">&#x27;&lt;%=theme.gitalk.githubID%&gt;&#x27;</span>,</span><br><span class="line">  	admin: [<span class="string">&#x27;&lt;%=theme.gitalk.adminUser%&gt;&#x27;</span>],</span><br><span class="line">  	id: <span class="string">&#x27;&lt;%= page.date %&gt;&#x27;</span>,</span><br><span class="line">  	distractionFreeMode: <span class="string">&#x27;&lt;%=theme.gitalk.distractionFreeMode%&gt;&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line">gitalk.render(<span class="string">&#x27;gitalk-container&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>修改 <code>yilia\source-src\css\comment.scss</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#disqus_thread, .duoshuo, .cloud-tie-wrapper, #SOHUCS, #gitment-ctn , #gitalk-container &#123;</span><br><span class="line">	padding: 0 30px !important;</span><br><span class="line">	min-height: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#SOHUCS &#123;</span><br><span class="line">	#SOHU_MAIN .module-cmt-list .block-cont-gw &#123;</span><br><span class="line">		border-bottom: 1px dashed #c8c8c8 !important;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>4.修改 <code>yilia/_config.yml</code><br>添加如下代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#gitalk评论</span></span><br><span class="line">gitalk:</span><br><span class="line">  <span class="built_in">enable</span>:  <span class="literal">true</span> <span class="comment"># 是否启用</span></span><br><span class="line">  githubID: zxzxac110 <span class="comment"># github 用户ID</span></span><br><span class="line">  repo: zxzxac110.github.io <span class="comment"># 仓库 内容添加在 此项目的issues中</span></span><br><span class="line">  ClientID:   <span class="comment"># id</span></span><br><span class="line">  ClientSecret:   <span class="comment"># id</span></span><br><span class="line">  adminUser: zxzxac110 <span class="comment"># 评论初始化账户(GitHub ID)</span></span><br><span class="line">  distractionFreeMode: <span class="literal">true</span> <span class="comment"># 是否开启分心自由模式 也就是免打扰</span></span><br></pre></td></tr></table></figure>
-
-<p>5.github 授权 获取 <code>ClientID</code> 和 <code>ClientSecret</code><br>  授权地址<a target="_blank" rel="noopener" href="https://github.com/settings/applications/new">https://github.com/settings/applications/new</a></p>
-<p>  Application name 名称 随意填写 自己能分辨就好<br>  Homepage URL     访问地址<br>  Application description 描述<br>  Authorization callback URL 访问地址</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/hexo-4-Hexo-%E8%AF%84%E8%AE%BA/">展开全文 >></a>
+          <a class="article-more-a" href="/Vue-12-%E6%89%93%E5%8C%85%E7%9B%B8%E5%85%B3/">展开全文 >></a>
         </p>
       
 
@@ -1320,7 +1166,7 @@ table th:first-of-type {
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1419,11 +1265,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1443,7 +1289,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1451,7 +1297,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1459,15 +1305,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1476,6 +1318,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1495,11 +1341,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指令</a>
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">dome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1507,11 +1353,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">指令</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1519,7 +1365,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1527,7 +1377,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1536,6 +1390,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
             
             <div class="clearfix"></div>

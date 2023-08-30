@@ -16,7 +16,7 @@
 <meta property="og:description" content=".alphabet a {padding-right:20px;}     数据请求相关   1.原生简单ajax   2.原生JSONP 跨域请求   其他   2.数组的筛选   3.数组全等于比较   4.设备是否为pc端   5.开启关闭全屏   6.获取浏览器版本   7.加减乘除不精确的解决方法   8.地址栏参数转 对象形式   9.动态修改标题   9.小数点后两位 金额   10">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-24T03:30:10.023Z">
-<meta property="article:modified_time" content="2022-12-16T03:14:31.454Z">
+<meta property="article:modified_time" content="2023-07-28T05:35:02.527Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
@@ -190,7 +190,7 @@
   <a href="#title10" target="_self">10.对象取值 默认值 避免undefined.xxx</a>
   <a href="#title11" target="_self">11.数组插入</a>
   <a href="#title12" target="_self">12.数组内容替换位置</a>
-  <a href="#title12" target="_self">13.定时器同步执行</a>
+  <a href="#title12" target="_self">13.定时器同步执行,强制等待</a>
 
   <div>页面相关</div>
   <a href="#title101" target="_self">1.轻提示</a>
@@ -266,7 +266,8 @@
 
 <h2 id="4-手写简单-rem适配"><a href="#4-手写简单-rem适配" class="headerlink" title="4.手写简单 rem适配"></a>4.手写简单 rem适配</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">; (<span class="function"><span class="keyword">function</span> (<span class="params">c, d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> e = <span class="built_in">document</span>.documentElement || <span class="built_in">document</span>.body,</span><br><span class="line">    a = <span class="string">&quot;orientationchange&quot;</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="string">&quot;orientationchange&quot;</span> : <span class="string">&quot;resize&quot;</span>,</span><br><span class="line">    b = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">var</span> f = e.clientWidth; e.style.fontSize = (f &gt;= <span class="number">750</span>) ? <span class="string">&quot;100px&quot;</span> : <span class="number">100</span> * (f / <span class="number">750</span>) + <span class="string">&quot;px&quot;</span> &#125;;</span><br><span class="line">  b();</span><br><span class="line">  c.addEventListener(a, b, <span class="literal">false</span>)&#125;</span><br><span class="line">)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
 
-<h2 id="5-滚动条滚动动画"><a href="#5-滚动条滚动动画" class="headerlink" title="5.滚动条滚动动画"></a>5.滚动条滚动动画</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scrollYAnimation</span> (<span class="params">curY, y</span>) </span>&#123; <span class="comment">// 当前位置 最终位置</span></span><br><span class="line">  <span class="keyword">if</span> (curY !== y) &#123;</span><br><span class="line">    <span class="keyword">let</span> differ = <span class="built_in">Math</span>.abs(curY - y)</span><br><span class="line">    <span class="keyword">let</span> _curY = curY</span><br><span class="line">    requestAnimationFrame(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> step = <span class="built_in">Math</span>.ceil(differ / <span class="number">10</span>)</span><br><span class="line">      <span class="keyword">if</span> (curY &gt; y) &#123;</span><br><span class="line">        _curY -= step;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        _curY += step;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, curY);</span><br><span class="line">      <span class="keyword">if</span> (differ &gt; <span class="number">10</span> || differ &lt; <span class="number">-10</span>) &#123;</span><br><span class="line">        scrollYAnimation(_curY, y);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, y);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-滚动条滚动动画"><a href="#5-滚动条滚动动画" class="headerlink" title="5.滚动条滚动动画"></a>5.滚动条滚动动画</h2><p>慢慢滚动到指定位置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scrollYAnimation</span> (<span class="params">curY, y</span>) </span>&#123; <span class="comment">// 当前位置 最终位置</span></span><br><span class="line">  <span class="keyword">if</span> (curY !== y) &#123;</span><br><span class="line">    <span class="keyword">let</span> differ = <span class="built_in">Math</span>.abs(curY - y)</span><br><span class="line">    <span class="keyword">let</span> _curY = curY</span><br><span class="line">    requestAnimationFrame(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> step = <span class="built_in">Math</span>.ceil(differ / <span class="number">10</span>)</span><br><span class="line">      <span class="keyword">if</span> (curY &gt; y) &#123;</span><br><span class="line">        _curY -= step;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        _curY += step;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, curY);</span><br><span class="line">      <span class="keyword">if</span> (differ &gt; <span class="number">10</span> || differ &lt; <span class="number">-10</span>) &#123;</span><br><span class="line">        scrollYAnimation(_curY, y);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, y);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="built_in">document</span></span><br><span class="line">    .querySelector(<span class="string">&#x27;.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default&#x27;</span>)</span><br><span class="line">    ?.scrollTo(&#123; <span class="attr">top</span>: <span class="number">0</span>, <span class="attr">behavior</span>: <span class="string">&#x27;smooth&#x27;</span> &#125;)</span><br></pre></td></tr></table></figure>
 
 <h1 id="四-感觉有用"><a href="#四-感觉有用" class="headerlink" title="四.感觉有用"></a>四.感觉有用</h1><h2 id="1-手写-Object-keys"><a href="#1-手写-Object-keys" class="headerlink" title="1.手写 Object.keys()"></a>1.手写 Object.keys()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">keys = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">Object</span>.wwwwww = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> hasOwnProperty = <span class="built_in">Object</span>.prototype.hasOwnProperty,</span><br><span class="line">      hasDontEnumBug = !(&#123; <span class="attr">toString</span>: <span class="literal">null</span> &#125;).propertyIsEnumerable(<span class="string">&#x27;toString&#x27;</span>),</span><br><span class="line">      dontEnums = [</span><br><span class="line">        <span class="string">&#x27;toString&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;toLocaleString&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;valueOf&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;hasOwnProperty&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;isPrototypeOf&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;propertyIsEnumerable&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;constructor&#x27;</span></span><br><span class="line">      ],</span><br><span class="line">      dontEnumsLength = dontEnums.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">&#x27;object&#x27;</span> &amp;&amp; <span class="keyword">typeof</span> obj !== <span class="string">&#x27;function&#x27;</span> || obj === <span class="literal">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">&#x27;Object.keys called on non-object&#x27;</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> result = [];</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span> (hasOwnProperty.call(obj, prop)) result.push(prop);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (hasDontEnumBug) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; dontEnumsLength; i++) &#123;</span><br><span class="line">          <span class="keyword">if</span> (hasOwnProperty.call(obj, dontEnums[i])) result.push(dontEnums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;使用Object.wwwwww(对象)进行低版本的对象变数组然后循环 使他=== Object.keys()&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -396,18 +397,18 @@
   
 <nav id="article-nav">
   
-    <a href="/JS-107-%E6%A0%91%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/JS-2-js%E5%87%BD%E6%95%B0-2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          107.树结构相关操作
+          2-js函数-2
         
       </div>
     </a>
   
   
-    <a href="/JS-2-js%E5%87%BD%E6%95%B0-2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2-js函数-2</div>
+    <a href="/JS-4-js%E4%BA%8B%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">4-js事件</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -556,11 +557,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,7 +581,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,7 +589,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,15 +597,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,6 +610,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,11 +633,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指令</a>
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">dome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,11 +645,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">指令</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,7 +657,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -664,7 +669,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,6 +682,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
             
             <div class="clearfix"></div>

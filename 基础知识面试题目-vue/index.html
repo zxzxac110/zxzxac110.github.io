@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.生命周期   api 说明 说明    beforeCreate 比否可瑞特 创建前 在实例初始化之前调。没有this,vue实例还没创建   created 可瑞推特 创建后 实例初始化之后调用   beforeMount 比否忙特 挂载前 获取不到DOM元素   mounted 芒推特 挂载后 可以获取元素，并进行操作   beforeUpdate 视图层数据更新前调用 可以获取到DOM">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-24T03:30:10.054Z">
-<meta property="article:modified_time" content="2022-10-24T03:30:10.054Z">
+<meta property="article:modified_time" content="2023-03-02T02:08:10.619Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -294,7 +294,12 @@
 <p>4.改进的TypeScript支持，编辑器能提供强有力的类型检查和错误及警告</p>
 </blockquote>
 <h2 id="6-插槽"><a href="#6-插槽" class="headerlink" title="6.插槽"></a>6.插槽</h2><p>默认插槽 声明：slot标签声明 使用：直接在标签之间定义的内容<br>具名插槽 声明：slot标签 + name=字符串 声明 使用：在标签之间的 <code>&lt;template #name定义字段&gt;</code>的内容<br>作用域插槽 声明：slot标签 + :绑定参数 声明 使用：在标签之间的  <code>&lt;template #name定义字段或者default=&quot;字段&quot;&gt;</code> 的内容 其中 字段.绑定参数 === 子组件绑定的参数</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 声明 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">&quot;footer2&quot;</span> <span class="attr">:name1</span>=<span class="string">&quot;name&quot;</span> <span class="attr">:name2</span>=<span class="string">&quot;name2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 使用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">child</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> #<span class="attr">footer2</span>=<span class="string">&quot;scope&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用具名插槽获取绑定的内容&#123;&#123;scope&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- scope === &#123;name1,name2&#125; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 声明 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">&quot;footer2&quot;</span> <span class="attr">:name1</span>=<span class="string">&quot;name&quot;</span> <span class="attr">:name2</span>=<span class="string">&quot;name2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 使用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">child</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> #<span class="attr">footer2</span>=<span class="string">&quot;scope&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用具名插槽获取绑定的内容&#123;&#123;scope&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- scope === &#123;name1,name2&#125; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其它仅供参考写法</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 声明 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span>默认的默认插槽内容<span class="tag">&lt;/<span class="name">slot</span>&gt;</span> <span class="comment">&lt;!-- 默认插槽 + 默认内容 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">&quot;footer&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span> <span class="comment">&lt;!-- 具名插槽 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">&quot;footer2&quot;</span> <span class="attr">:name1</span>=<span class="string">&quot;name&quot;</span> <span class="attr">:name2</span>=<span class="string">&quot;name2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span> <span class="comment">&lt;!-- 具名插槽 + 作用域插槽--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">&quot;footer3&quot;</span> <span class="attr">v-bind</span>=<span class="string">&quot;obj&quot;</span> <span class="attr">:data</span>=<span class="string">&quot;666&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span> <span class="comment">&lt;!-- 具名插槽 + 作用域插槽--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 使用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">child</span>&gt;</span> </span><br><span class="line">    <span class="comment">&lt;!-- 这4种写法是一样的 - 使用单纯的具名插槽 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:footer</span>&gt;</span> <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用具名插槽<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="tag">&lt;/<span class="name">template</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> #<span class="attr">footer</span>&gt;</span> <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用具名插槽<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">slot</span>=<span class="string">&quot;footer&quot;</span>&gt;</span> <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用具名插槽<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="tag">&lt;/<span class="name">template</span>&gt;</span> <span class="comment">&lt;!-- 2.6.0 起被废弃 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">slot</span>=<span class="string">&quot;footer&quot;</span>&gt;</span>具名插槽<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- 2.6.0 起被废弃 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> #<span class="attr">footer2</span>=<span class="string">&quot;scope&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用具名插槽获取绑定的内容&#123;&#123;scope&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- scope === &#123;name1,name2&#125; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> #<span class="attr">footer3</span>=<span class="string">&quot;scope&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用具名插槽获取绑定的内容&#123;&#123;scope&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- Object.assign(&#123;data:666,obj&#125;) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 使用默认插槽 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> #<span class="attr">default</span>=<span class="string">&quot;scope&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用 默认 插槽获取绑定的内容&#123;&#123;scope&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">slot</span>=<span class="string">&quot;default&quot;</span> <span class="attr">slot-scope</span>=<span class="string">&quot;scope&quot;</span>&gt;</span>  <span class="comment">&lt;!-- 2.6.0 起被废弃 slot=&quot;default&quot;时可以省略不写--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用默认 插槽获取绑定的内容&#123;&#123;scope&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">slot</span>=<span class="string">&quot;default&quot;</span> <span class="attr">slot-scope</span>=<span class="string">&quot;scope&quot;</span> &gt;</span>使用默认 插槽获取绑定的内容&#123;&#123;scope&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- 2.6.0 起被废弃 slot=&quot;default&quot;时可以省略不写--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
 
 <h2 id="7-双向绑定"><a href="#7-双向绑定" class="headerlink" title="7.双向绑定"></a>7.双向绑定</h2><p>vue数据的双向绑定是通过数据劫持结合发布者-订阅者模式的方式来实现的。<br>其核心就是通过Object.defineProperty()方法设置set和get函数来实现数据的劫持，<br>在数据变化时发布消息给订阅者，触发相应的监听回调。也就是说数据和视图同步，数据发生变化，视图跟着变化，视图变化，数据也随之发生改变；</p>
 
@@ -412,18 +417,18 @@
   
 <nav id="article-nav">
   
-    <a href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE-%E7%BB%BC%E5%90%88/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE-js/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          1-综合
+          js
         
       </div>
     </a>
   
   
-    <a href="/%E6%8F%92%E4%BB%B6%E7%9B%B8%E5%85%B3-101-vue-draggable/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">101-vue-拖拽排序</div>
+    <a href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE-%E7%BB%BC%E5%90%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1-综合</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -572,11 +577,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,7 +601,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,7 +609,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,15 +617,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,6 +630,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,11 +653,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指令</a>
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">dome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,11 +665,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">指令</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,7 +677,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,7 +689,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -689,6 +702,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
             
             <div class="clearfix"></div>

@@ -16,9 +16,10 @@
 <meta property="og:description" content="前言中文文档android studio  简称 AS 一.下载 1.下载地址 http:&#x2F;&#x2F;www.android-studio.org&#x2F;index.php&#x2F;download&#x2F;hisversion Windows推荐下载  android-studio-bundle-162.3934792-windows.exe包含 Android SDK（推荐） 这个版本 一路下载安装   有些选项 因为有两">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190611133648771.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTc2NjEz,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s1.ax1x.com/2023/04/03/pphWFPI.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2019040721341378.png">
 <meta property="article:published_time" content="2022-10-24T03:30:10.023Z">
-<meta property="article:modified_time" content="2022-10-24T03:30:10.023Z">
+<meta property="article:modified_time" content="2023-04-06T03:53:35.463Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
@@ -192,14 +193,14 @@
 </li>
 </ul>
 <ul>
-<li><p>2.官网最新<br> 1 android studio:  <a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio">https://developer.android.google.cn/studio</a><br>  傻瓜式安装</p>
-<p> 2 android sdk 这一套玩意放入我的网盘里面去了。<br>  下载 放入某个目录 比如<code>C:\Users\44814\AppData\Local\Android\Sdk</code></p>
+<li><p>2.官网最新-推荐<br> 1 android studio:  <a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio">https://developer.android.google.cn/studio</a><br>  傻瓜式安装 应用市场也有</p>
+<p> 2 android sdk 这一套玩意放入我的网盘里面去了。// 3.2个G。。还是用编辑器安装吧<br>  下载 放入某个目录 比如<code>C:\Users\44814\AppData\Local\Android\Sdk</code></p>
 <p> 3 Android Studio -&gt; File-&gt; Settings -&gt; Android SDK<br>   他会提示你已有 android sdk 只进行更新 </p>
 <p> 4 下载SDK Platforms<br>   Android Studio -&gt; File-&gt; Settings -&gt; Android SDK -&gt; SDK Platforms<br>   挑一个版本下载</p>
 <p> 5.下载SDK Tools<br>  Android Studio -&gt; File-&gt; Settings -&gt; Android SDK -&gt; SDK Tools<br>   Android Emulator<br>   Android SDK platform-Tools</p>
 </li>
 </ul>
-<h2 id="二-编辑工具设定"><a href="#二-编辑工具设定" class="headerlink" title="二.编辑工具设定"></a>二.编辑工具设定</h2><p>中文文档 <a target="_blank" rel="noopener" href="https://flutter.cn/docs/get-started/editor?tab=androidstudio">https://flutter.cn/docs/get-started/editor?tab=androidstudio</a> 这里还有其他编辑工具的设定<br>这里 因为他推荐使用 <code>Android Studio</code> 所以 我们用 <code>Android Studio</code></p>
+<h2 id="二-编辑工具设定"><a href="#二-编辑工具设定" class="headerlink" title="二.编辑工具设定"></a>二.编辑工具设定</h2><p><img src="https://s1.ax1x.com/2023/04/03/pphWFPI.png" alt="编辑工具设定"><br>中文文档 <a target="_blank" rel="noopener" href="https://flutter.cn/docs/get-started/editor?tab=androidstudio">https://flutter.cn/docs/get-started/editor?tab=androidstudio</a> 这里还有其他编辑工具的设定<br>这里 因为他推荐使用 <code>Android Studio</code> 所以 我们用 <code>Android Studio</code></p>
 <ol>
 <li>打开插件设置 点击 file &gt; settings &gt; 弹出窗口左侧选则 Plugins &gt; 搜索Flutter</li>
 <li>然后选择 Flutter 插件并点击 安装。</li>
@@ -217,17 +218,11 @@
 <p>创建时卡住？<br>重试 或着检查 在 <a href="/Flutter-1-flutter下载，安装，配置/#title3">flutter国内镜像</a> 时的参数有没有配好</p>
 <h2 id="四-配置-Android-设备"><a href="#四-配置-Android-设备" class="headerlink" title="四.配置 Android 设备"></a>四.配置 Android 设备</h2><p>参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/abracadabraa/article/details/104437961">https://blog.csdn.net/abracadabraa/article/details/104437961</a></p>
 <ul>
-<li><p>1- 配置adb环境变量</p>
-<ul>
-<li>查看自己Android Studio配置的sdk路径 是否有 一般都到这步了 该有的都有了</li>
-<li>高级系统设置 &gt; 环境变量 &gt;<br>新建一个系统变量命名为 <code>Android_Home</code> ,<br>内容为用英文分号隔开的sdk地址和sdk文件夹下的platform-tools地址，记得末尾用英文分号结尾<br>比如<code>D:\ruanjian\sdk;D:\ruanjian\sdk\platform-tools;</code> <code>C:\Users\44814\AppData\Local\Android\Sdk;C:\Users\44814\AppData\Local\Android\Sdk\platform-tools</code></li>
-<li>命令行窗口，输入adb 有内容就成功了</li>
-<li>失败就重新配置一下 系统变量 或者使用 浏览的方式添加  或者在path中加入相应的路径</li>
-</ul>
+<li><p>1- 配置adb环境变量<br>*1 查看自己Android Studio配置的sdk路径 是否有 一般都到这步了 该有的都有了<br>*2 高级系统设置 &gt; 环境变量 &gt; 用户变量 &gt;C:\src\amdroid-sdk\platform-tools<br>*3 可跳过直接执行4，4失败在考虑此方法高级系统设置 &gt; 环境变量 &gt;<br>新建一个系统变量命名为 <code>Android_Home</code> ,<br>内容为用英文分号隔开的sdk地址和sdk文件夹下的platform-tools地址，记得末尾用英文分号结尾<br>比如<code>D:\ruanjian\sdk;D:\ruanjian\sdk\platform-tools;</code> <code>C:\Users\44814\AppData\Local\Android\Sdk;C:\Users\44814\AppData\Local\Android\Sdk\platform-tools</code><br>*4 命令行窗口，输入adb 有内容就成功了<br>*5 失败就重新配置一下 系统变量 或者使用 浏览的方式添加  或者在path中加入相应的路径</p>
 </li>
 <li><p>2- 配置USB Driver<br>  在Android Studio SDK中下载USB Driver<br>  <img src="https://img-blog.csdnimg.cn/2019040721341378.png" alt="配置USB Driver"><br>  傻瓜式操作下载</p>
 </li>
-<li><p>3-更新驱动程序<br>电脑菜单搜索 &gt; 设备管理器 &gt; 其他设备  &gt; 有个带感叹号的 HDB in &gt; 右击点击 更新驱动程序 &gt; 弹窗 浏览我的计算机以查找驱动程序软件 &gt; 浏览 当前 <code>你的安卓sdk路径\sdk\extras\goodle/usb_driver</code> &gt;<br>下一步 默认是选则了所有设备 &gt; 下一步 &gt; 从磁盘安装 &gt; 制造商文件复制来源”处，选择SDK路径下的“extras/google/usb_driver/android_winusb.inf”，点确定 &gt; 弹出警告弹窗点是 &gt; 完成关闭它 &gt;<br>会在设备管理器的最上刚显示 LAPTOP-T5QLJRDH/android 就告一段落了。</p>
+<li><p>3-更新驱动程序<br>电脑菜单搜索 &gt; 设备管理器 &gt; 其他设备  &gt; 有个带感叹号的 HDB in &gt; 右击点击 更新驱动程序 &gt; 弹窗 浏览我的计算机以查找驱动程序软件 &gt; 浏览 当前 <code>你的安卓sdk路径\sdk\extras\goodle/usb_driver</code> &gt;<br>下一步 默认是选则了所有设备 &gt; 下一步 &gt; 从磁盘安装 &gt; 制造商文件复制来源”处，选择SDK路径下的“extras/google/usb_driver/android_winusb.inf”，点确定 &gt; 弹出警告弹窗点是 &gt; 完成关闭它 &gt;<br>会在设备管理器的最上方显示 LAPTOP-T5QLJRDH/android 就告一段落了。</p>
 </li>
 <li><p>4-手机开启 usb 调试 个个手机开启方式不同  请百度<br>然后链接 电脑 选则传输文件  对于它的弹窗点授权</p>
 </li>
@@ -394,18 +389,18 @@
   
 <nav id="article-nav">
   
-    <a href="/Flutter-1-flutter%E4%B8%8B%E8%BD%BD%EF%BC%8C%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/CSS-sass/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          1-flutter下载，安装，配置
+          sass
         
       </div>
     </a>
   
   
-    <a href="/Flutter-3-flutter%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">3-flutter问题汇总1</div>
+    <a href="/Flutter-3-%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3.遇到的问题和解决</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -554,11 +549,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,7 +573,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,7 +581,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,15 +589,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,6 +602,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,11 +625,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指令</a>
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">dome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,11 +637,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">指令</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -654,7 +649,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,7 +661,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,6 +674,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
             
             <div class="clearfix"></div>

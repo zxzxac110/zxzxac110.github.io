@@ -16,7 +16,7 @@
 <meta property="og:description" content="说明tsconfig.json 是 TypeScript 项目的配置文件。如果一个目录下存在一个 tsconfig.json 文件，那么往往意味着这个目录就是 TypeScript 项目的根目录。 tsconfig.json 包含 TypeScript 编译的相关配置，通过更改编译配置项，我们可以让 TypeScript 编译出 ES6、ES5、node 的代码。 相关前置 1.安装最新版type">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-24T03:30:10.039Z">
-<meta property="article:modified_time" content="2022-10-24T03:30:10.039Z">
+<meta property="article:modified_time" content="2023-07-28T03:57:15.111Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="ts">
 <meta name="twitter:card" content="summary">
@@ -187,7 +187,7 @@
 <li><code>files</code> - 设置要编译的文件的名称；</li>
 <li><code>include</code> - 设置需要进行编译的文件，支持路径模式匹配；</li>
 <li><code>exclude</code> - 设置无需进行编译的文件，支持路径模式匹配；</li>
-<li><code>compilerOptions</code> - 设置与编译流程相关的选项。<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span>: &#123;      </span><br><span class="line">  </span><br><span class="line">    <span class="comment">/* 基本选项 */</span>   </span><br><span class="line">    <span class="attr">&quot;target&quot;</span>: <span class="string">&quot;es5&quot;</span>,                       <span class="comment">// 指定 ECMAScript 目标版本: &#x27;ES3&#x27; (default), &#x27;ES5&#x27;, &#x27;ES6&#x27;/&#x27;ES2015&#x27;, &#x27;ES2016&#x27;, &#x27;ES2017&#x27;, or &#x27;ESNEXT&#x27;  </span></span><br><span class="line">    <span class="attr">&quot;module&quot;</span>: <span class="string">&quot;commonjs&quot;</span>,                  <span class="comment">// 指定使用模块: &#x27;commonjs&#x27;, &#x27;amd&#x27;, &#x27;system&#x27;, &#x27;umd&#x27; or &#x27;es2015&#x27;  </span></span><br><span class="line">    <span class="attr">&quot;lib&quot;</span>: [],                             <span class="comment">// 指定要包含在编译中的库文件  </span></span><br><span class="line">    <span class="attr">&quot;allowJs&quot;</span>: <span class="literal">true</span>,                       <span class="comment">// 允许编译 javascript 文件  </span></span><br><span class="line">    <span class="attr">&quot;checkJs&quot;</span>: <span class="literal">true</span>,                       <span class="comment">// 报告 javascript 文件中的错误  </span></span><br><span class="line">    <span class="attr">&quot;jsx&quot;</span>: <span class="string">&quot;preserve&quot;</span>,                     <span class="comment">// 指定 jsx 代码的生成: &#x27;preserve&#x27;, &#x27;react-native&#x27;, or &#x27;react&#x27; </span></span><br><span class="line">    <span class="attr">&quot;declaration&quot;</span>: <span class="literal">true</span>,                   <span class="comment">// 生成相应的 &#x27;.d.ts&#x27; 文件   </span></span><br><span class="line">    <span class="attr">&quot;sourceMap&quot;</span>: <span class="literal">true</span>,                     <span class="comment">// 生成相应的 &#x27;.map&#x27; 文件   </span></span><br><span class="line">    <span class="attr">&quot;outFile&quot;</span>: <span class="string">&quot;./&quot;</span>,                       <span class="comment">// 将输出文件合并为一个文件  </span></span><br><span class="line">    <span class="attr">&quot;outDir&quot;</span>: <span class="string">&quot;./&quot;</span>,                        <span class="comment">// 指定输出目录   </span></span><br><span class="line">    <span class="attr">&quot;rootDir&quot;</span>: <span class="string">&quot;./&quot;</span>,                       <span class="comment">// 用来控制输出目录结构 --outDir.  </span></span><br><span class="line">    <span class="attr">&quot;removeComments&quot;</span>: <span class="literal">true</span>,                <span class="comment">// 删除编译后的所有的注释  </span></span><br><span class="line">    <span class="attr">&quot;noEmit&quot;</span>: <span class="literal">true</span>,                        <span class="comment">// 不生成输出文件   </span></span><br><span class="line">    <span class="attr">&quot;importHelpers&quot;</span>: <span class="literal">true</span>,                 <span class="comment">// 从 tslib 导入辅助工具函数  </span></span><br><span class="line">    <span class="attr">&quot;isolatedModules&quot;</span>: <span class="literal">true</span>,               <span class="comment">// 将每个文件做为单独的模块 （与 &#x27;ts.transpileModule&#x27; 类似）.   </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 严格的类型检查选项 */</span>  </span><br><span class="line">    <span class="attr">&quot;strict&quot;</span>: <span class="literal">true</span>,                        <span class="comment">// 启用所有严格类型检查选项   </span></span><br><span class="line">    <span class="attr">&quot;noImplicitAny&quot;</span>: <span class="literal">true</span>,                 <span class="comment">// 在表达式和声明上有隐含的 any类型时报错  </span></span><br><span class="line">    <span class="attr">&quot;strictNullChecks&quot;</span>: <span class="literal">true</span>,              <span class="comment">// 启用严格的 null 检查   </span></span><br><span class="line">    <span class="attr">&quot;noImplicitThis&quot;</span>: <span class="literal">true</span>,                <span class="comment">// 当 this 表达式值为 any 类型的时候，生成一个错误   </span></span><br><span class="line">    <span class="attr">&quot;alwaysStrict&quot;</span>: <span class="literal">true</span>,                  <span class="comment">// 以严格模式检查每个模块，并在每个文件里加入 &#x27;use strict&#x27;   </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 额外的检查 */</span>  </span><br><span class="line">    <span class="attr">&quot;noUnusedLocals&quot;</span>: <span class="literal">true</span>,                <span class="comment">// 有未使用的变量时，抛出错误   </span></span><br><span class="line">    <span class="attr">&quot;noUnusedParameters&quot;</span>: <span class="literal">true</span>,            <span class="comment">// 有未使用的参数时，抛出错误   </span></span><br><span class="line">    <span class="attr">&quot;noImplicitReturns&quot;</span>: <span class="literal">true</span>,             <span class="comment">// 并不是所有函数里的代码都有返回值时，抛出错误  </span></span><br><span class="line">    <span class="attr">&quot;noFallthroughCasesInSwitch&quot;</span>: <span class="literal">true</span>,    <span class="comment">// 报告 switch 语句的 fallthrough 错误。（即，不允许 switch 的 case 语句贯穿） </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 模块解析选项 */</span>   </span><br><span class="line">    <span class="attr">&quot;moduleResolution&quot;</span>: <span class="string">&quot;node&quot;</span>,            <span class="comment">// 选择模块解析策略： &#x27;node&#x27; (Node.js) or &#x27;classic&#x27; (TypeScript pre-1.6) </span></span><br><span class="line">    <span class="attr">&quot;baseUrl&quot;</span>: <span class="string">&quot;./&quot;</span>,                       <span class="comment">// 用于解析非相对模块名称的基目录   </span></span><br><span class="line">    <span class="attr">&quot;paths&quot;</span>: &#123;&#125;,                           <span class="comment">// 模块名到基于 baseUrl 的路径映射的列表  定义路径别名</span></span><br><span class="line">    <span class="attr">&quot;rootDirs&quot;</span>: [],                        <span class="comment">// 根文件夹列表，其组合内容表示项目运行时的结构内容  </span></span><br><span class="line">    <span class="attr">&quot;typeRoots&quot;</span>: [],                       <span class="comment">// 包含类型声明的文件列表   </span></span><br><span class="line">    <span class="attr">&quot;types&quot;</span>: [],                           <span class="comment">// 需要包含的类型声明文件名列表  </span></span><br><span class="line">    <span class="attr">&quot;allowSyntheticDefaultImports&quot;</span>: <span class="literal">true</span>,  <span class="comment">// 允许从没有设置默认导出的模块中默认导入。   </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* Source Map Options */</span>   </span><br><span class="line">    <span class="attr">&quot;sourceRoot&quot;</span>: <span class="string">&quot;./&quot;</span>,                    <span class="comment">// 指定调试器应该找到 TypeScript 文件而不是源文件的位置   </span></span><br><span class="line">    <span class="attr">&quot;mapRoot&quot;</span>: <span class="string">&quot;./&quot;</span>,                       <span class="comment">// 指定调试器应该找到映射文件而不是生成文件的位置  </span></span><br><span class="line">    <span class="attr">&quot;inlineSourceMap&quot;</span>: <span class="literal">true</span>,               <span class="comment">// 生成单个 soucemaps 文件，而不是将 sourcemaps 生成不同的文件  </span></span><br><span class="line">    <span class="attr">&quot;inlineSources&quot;</span>: <span class="literal">true</span>,                 <span class="comment">// 将代码与 sourcemaps 生成到一个文件中，要求同时设置了 --inlineSourceMap 或 --sourceMap 属性   </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 其他选项 */</span>  </span><br><span class="line">    <span class="attr">&quot;experimentalDecorators&quot;</span>: <span class="literal">true</span>,        <span class="comment">// 启用装饰器  </span></span><br><span class="line">    <span class="attr">&quot;emitDecoratorMetadata&quot;</span>: <span class="literal">true</span>          <span class="comment">// 为装饰器提供元数据的支持 </span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><code>compilerOptions</code> - 设置与编译流程相关的选项。<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span>: &#123;      </span><br><span class="line">  </span><br><span class="line">    <span class="comment">/* 基本选项 */</span>   </span><br><span class="line">    <span class="attr">&quot;target&quot;</span>: <span class="string">&quot;es5&quot;</span>,                       <span class="comment">// 指定 ECMAScript 目标版本: &#x27;ES3&#x27; (default), &#x27;ES5&#x27;, &#x27;ES6&#x27;/&#x27;ES2015&#x27;, &#x27;ES2016&#x27;, &#x27;ES2017&#x27;, or &#x27;ESNEXT&#x27;  </span></span><br><span class="line">    <span class="attr">&quot;module&quot;</span>: <span class="string">&quot;commonjs&quot;</span>,                  <span class="comment">// 指定使用模块: &#x27;commonjs&#x27;, &#x27;amd&#x27;, &#x27;system&#x27;, &#x27;umd&#x27; or &#x27;es2015&#x27;  </span></span><br><span class="line">    <span class="attr">&quot;lib&quot;</span>: [],                             <span class="comment">// 指定要包含在编译中的库文件  </span></span><br><span class="line">    <span class="attr">&quot;allowJs&quot;</span>: <span class="literal">true</span>,                       <span class="comment">// 允许编译 javascript 文件  </span></span><br><span class="line">    <span class="attr">&quot;checkJs&quot;</span>: <span class="literal">true</span>,                       <span class="comment">// 报告 javascript 文件中的错误  </span></span><br><span class="line">    <span class="attr">&quot;jsx&quot;</span>: <span class="string">&quot;preserve&quot;</span>,                     <span class="comment">// 指定 jsx 代码的生成: &#x27;preserve&#x27;, &#x27;react-native&#x27;, or &#x27;react&#x27; </span></span><br><span class="line">    <span class="attr">&quot;declaration&quot;</span>: <span class="literal">true</span>,                   <span class="comment">// 生成相应的 &#x27;.d.ts&#x27; 文件   </span></span><br><span class="line">    <span class="attr">&quot;sourceMap&quot;</span>: <span class="literal">true</span>,                     <span class="comment">// 生成相应的 &#x27;.map&#x27; 文件   </span></span><br><span class="line">    <span class="attr">&quot;outFile&quot;</span>: <span class="string">&quot;./&quot;</span>,                       <span class="comment">// 将输出文件合并为一个文件  </span></span><br><span class="line">    <span class="attr">&quot;outDir&quot;</span>: <span class="string">&quot;./&quot;</span>,                        <span class="comment">// 指定输出目录   </span></span><br><span class="line">    <span class="attr">&quot;rootDir&quot;</span>: <span class="string">&quot;./&quot;</span>,                       <span class="comment">// 用来控制输出目录结构 --outDir.  </span></span><br><span class="line">    <span class="attr">&quot;removeComments&quot;</span>: <span class="literal">true</span>,                <span class="comment">// 删除编译后的所有的注释  </span></span><br><span class="line">    <span class="attr">&quot;noEmit&quot;</span>: <span class="literal">true</span>,                        <span class="comment">// 不生成输出文件   </span></span><br><span class="line">    <span class="attr">&quot;importHelpers&quot;</span>: <span class="literal">true</span>,                 <span class="comment">// 从 tslib 导入辅助工具函数  </span></span><br><span class="line">    <span class="attr">&quot;isolatedModules&quot;</span>: <span class="literal">true</span>,               <span class="comment">// 将每个文件做为单独的模块 （与 &#x27;ts.transpileModule&#x27; 类似）.   </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 严格的类型检查选项 */</span>  </span><br><span class="line">    <span class="attr">&quot;strict&quot;</span>: <span class="literal">true</span>,                        <span class="comment">// 启用所有严格类型检查选项   </span></span><br><span class="line">    <span class="attr">&quot;noImplicitAny&quot;</span>: <span class="literal">true</span>,                 <span class="comment">// 在表达式和声明上有隐含的 any类型时报错  </span></span><br><span class="line">    <span class="attr">&quot;strictNullChecks&quot;</span>: <span class="literal">true</span>,              <span class="comment">// 启用严格的 null 检查   </span></span><br><span class="line">    <span class="attr">&quot;noImplicitThis&quot;</span>: <span class="literal">true</span>,                <span class="comment">// 当 this 表达式值为 any 类型的时候，生成一个错误   </span></span><br><span class="line">    <span class="attr">&quot;alwaysStrict&quot;</span>: <span class="literal">true</span>,                  <span class="comment">// 以严格模式检查每个模块，并在每个文件里加入 &#x27;use strict&#x27;   </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 额外的检查 */</span>  </span><br><span class="line">    <span class="attr">&quot;noUnusedLocals&quot;</span>: <span class="literal">true</span>,                <span class="comment">// 有未使用的变量时，抛出错误   </span></span><br><span class="line">    <span class="attr">&quot;noUnusedParameters&quot;</span>: <span class="literal">true</span>,            <span class="comment">// 有未使用的参数时，抛出错误   </span></span><br><span class="line">    <span class="attr">&quot;noImplicitReturns&quot;</span>: <span class="literal">true</span>,             <span class="comment">// 并不是所有函数里的代码都有返回值时，抛出错误  </span></span><br><span class="line">    <span class="attr">&quot;noFallthroughCasesInSwitch&quot;</span>: <span class="literal">true</span>,    <span class="comment">// 报告 switch 语句的 fallthrough 错误。（即，不允许 switch 的 case 语句贯穿） </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 模块解析选项 */</span>   </span><br><span class="line">    <span class="attr">&quot;moduleResolution&quot;</span>: <span class="string">&quot;node&quot;</span>,            <span class="comment">// 选择模块解析策略： &#x27;node&#x27; (Node.js) or &#x27;classic&#x27; (TypeScript pre-1.6) </span></span><br><span class="line">    <span class="attr">&quot;baseUrl&quot;</span>: <span class="string">&quot;./&quot;</span>,                       <span class="comment">// 用于解析非相对模块名称的基目录   </span></span><br><span class="line">    <span class="attr">&quot;paths&quot;</span>: &#123;&#125;,                           <span class="comment">// 模块名到基于 baseUrl 的路径映射的列表  定义路径别名</span></span><br><span class="line">    <span class="attr">&quot;rootDirs&quot;</span>: [],                        <span class="comment">// 根文件夹列表，其组合内容表示项目运行时的结构内容  </span></span><br><span class="line">    <span class="attr">&quot;typeRoots&quot;</span>: [  <span class="comment">// 包含类型声明的文件列表   </span></span><br><span class="line">      <span class="string">&quot;/src/types&quot;</span>  <span class="comment">// src/types/xxx.d.ts 文件中所有声明的文件可以全局使用 声明 `declare type Titles = &#x27;add&#x27; | &#x27;look&#x27; | &#x27;edit&#x27;`</span></span><br><span class="line">    ],                      </span><br><span class="line">    <span class="attr">&quot;types&quot;</span>: [],                           <span class="comment">// 需要包含的类型声明文件名列表  </span></span><br><span class="line">    <span class="attr">&quot;allowSyntheticDefaultImports&quot;</span>: <span class="literal">true</span>,  <span class="comment">// 允许从没有设置默认导出的模块中默认导入。   </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* Source Map Options */</span>   </span><br><span class="line">    <span class="attr">&quot;sourceRoot&quot;</span>: <span class="string">&quot;./&quot;</span>,                    <span class="comment">// 指定调试器应该找到 TypeScript 文件而不是源文件的位置   </span></span><br><span class="line">    <span class="attr">&quot;mapRoot&quot;</span>: <span class="string">&quot;./&quot;</span>,                       <span class="comment">// 指定调试器应该找到映射文件而不是生成文件的位置  </span></span><br><span class="line">    <span class="attr">&quot;inlineSourceMap&quot;</span>: <span class="literal">true</span>,               <span class="comment">// 生成单个 soucemaps 文件，而不是将 sourcemaps 生成不同的文件  </span></span><br><span class="line">    <span class="attr">&quot;inlineSources&quot;</span>: <span class="literal">true</span>,                 <span class="comment">// 将代码与 sourcemaps 生成到一个文件中，要求同时设置了 --inlineSourceMap 或 --sourceMap 属性   </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 其他选项 */</span>  </span><br><span class="line">    <span class="attr">&quot;experimentalDecorators&quot;</span>: <span class="literal">true</span>,        <span class="comment">// 启用装饰器  </span></span><br><span class="line">    <span class="attr">&quot;emitDecoratorMetadata&quot;</span>: <span class="literal">true</span>          <span class="comment">// 为装饰器提供元数据的支持 </span></span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
         
@@ -304,18 +304,18 @@
   
 <nav id="article-nav">
   
-    <a href="/React-5-ReactNative%E8%B7%AF%E7%94%B1/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-9-%E6%9F%A5%E7%9C%8BF12%E7%9A%84network%E4%BF%A1%E6%81%AF%E8%A7%A3%E9%87%8A/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          5-ReactNative路由
+          9-查看F12的network信息解释
         
       </div>
     </a>
   
   
-    <a href="/React-6-RN%E5%90%84%E7%A7%8D%E5%AE%89%E8%A3%85/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">6-RN各种安装</div>
+    <a href="/TS-3-%E7%AE%80%E4%BB%8Bts/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3-简介ts</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -464,11 +464,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,7 +488,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,7 +496,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,15 +504,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,6 +517,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,11 +540,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指令</a>
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">dome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,11 +552,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">指令</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,7 +564,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,7 +576,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,6 +589,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
             
             <div class="clearfix"></div>

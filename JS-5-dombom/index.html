@@ -15,8 +15,8 @@
 <meta property="og:site_name" content="历史好">
 <meta property="og:description" content="1.获取元素   代码 说明 -    document.documentElement 获得html元素 -   document.head head元素 -   document.body body元素 -   document.getElementById(“id”) 获得符合id对象，返回一个元素对象 -   document.getElementsByTagName(“标签名”) 获得符">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-10-24T03:30:10.023Z">
-<meta property="article:modified_time" content="2022-10-24T03:30:10.023Z">
+<meta property="article:published_time" content="2023-02-13T02:06:56.824Z">
+<meta property="article:modified_time" content="2023-07-27T07:40:51.523Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
@@ -163,7 +163,7 @@
 
         
         <a href="/JS-5-dombom/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.023Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+  	<time datetime="2023-02-13T02:06:56.824Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-13</time>
 </a>
         
       </header>
@@ -724,27 +724,8 @@
 <td></td>
 <td></td>
 </tr>
-<tr>
-<td>dom.offsetTop / dom.offsetLeft</td>
-<td>元素到(文档顶部,左边 / 父元素顶部，坐标)距离 <strong>不算滚动条</strong></td>
-<td>-</td>
-</tr>
-<tr>
-<td>dom.offsetWidth</td>
-<td>对象整体的实际宽度，包滚动条等边线，会随对象显示大小的变化而改变 = <strong>你实际设置的 width+border+padding</strong></td>
-<td>-</td>
-</tr>
-<tr>
-<td>dom.scrollWidth</td>
-<td>对象的实际内容的宽度，不包边线宽度，会随对象中内容超过可视区后而变大。 = <strong>设置的width+padding</strong> 如果发生溢出 那么是 <strong>溢出的大小(offset) + padding</strong></td>
-<td>-</td>
-</tr>
-<tr>
-<td>dom.clientWidth</td>
-<td>对象内容的可视区的宽度，不包滚动条等边线，会随对象显示大小的变化而改变。 = <strong>显示的width+padding-滚动条占的位置</strong> = 页面小鼠标点击时的大小</td>
-<td>-</td>
-</tr>
 </tbody></table>
+<p>| dom.offsetTop / dom.offsetLeft | 元素到(文档顶部,左边 / 父元素顶部，坐标)距离 <strong>不算滚动条</strong> | - |<br>| dom.offsetWidth | 对象整体的实际宽度，包滚动条等边线，会随对象显示大小的变化而改变 = <strong>你实际设置的 width+border+padding</strong> | - |<br>| dom.scrollWidth | 对象的实际内容的宽度，不包边线宽度，会随对象中内容超过可视区后而变大。 = <strong>设置的width+padding</strong> 如果发生溢出 那么是 <strong>溢出的大小(offset) + padding</strong> | - |<br>| dom.clientWidth | 对象内容的可视区的宽度，不包滚动条等边线，会随对象显示大小的变化而改变。 = <strong>显示的width+padding-滚动条占的位置</strong> = 页面小鼠标点击时的大小 | - |<br><code>dom.offsetWidth</code><br>dom.offsetTop 返回的是元素距离其 offsetParent 元素顶部的距离<br>如果父元素的position属性为 static，那么 offsetParent 就是 body 元素。<br>如果父元素的position属性为 relative、absolute 或 fixed，那么 offsetParent 就是离该元素最近的具有定位属性的祖先元素。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 滚动条离底部距离 = 元素实际内容高度 -  滚动条距离元素上边边距离 - 元素可视区的高度</span></span><br><span class="line"> <span class="keyword">var</span>  ScrollBottom = dom.scrollHeight - dom.scrollTop +- dom.clientHeight</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">// 指定元素滚动动画</span></span><br><span class="line"> <span class="keyword">const</span> scrollToTop  = <span class="function">(<span class="params">element</span>) =&gt;</span> element.scrollIntoView(&#123; <span class="attr">behavior</span>: <span class="string">&quot;smooth&quot;</span>, <span class="attr">block</span>: <span class="string">&quot;start&quot;</span> &#125;) <span class="comment">// 指定元素平滑滚动到顶部</span></span><br><span class="line"> <span class="keyword">const</span> scrollToBottom = <span class="function">(<span class="params">element</span>) =&gt;</span> element.scrollIntoView(&#123; <span class="attr">behavior</span>: <span class="string">&quot;smooth&quot;</span>, <span class="attr">block</span>: <span class="string">&quot;end&quot;</span> &#125;) <span class="comment">// 指定元素平滑滚动到底部</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">// window滚动动画到指定位置</span></span><br><span class="line"> <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">scrollYAnimation</span> (<span class="params">curY, y</span>) </span>&#123; <span class="comment">//   当前位置 最终位置</span></span><br><span class="line">  <span class="keyword">if</span> (curY !== y) &#123;</span><br><span class="line">    <span class="keyword">let</span> differ = <span class="built_in">Math</span>.abs(curY - y)</span><br><span class="line">    <span class="keyword">let</span> _curY = curY</span><br><span class="line">    requestAnimationFrame(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> step = <span class="built_in">Math</span>.ceil(differ / <span class="number">10</span>)</span><br><span class="line">      <span class="keyword">if</span> (curY &gt; y) &#123;</span><br><span class="line">        _curY -= step;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        _curY += step;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, curY);</span><br><span class="line">      <span class="keyword">if</span> (differ &gt; <span class="number">10</span> || differ &lt; <span class="number">-10</span>) &#123;</span><br><span class="line">        scrollYAnimation(_curY, y);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, y);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         
@@ -861,18 +842,18 @@
   
 <nav id="article-nav">
   
-    <a href="/JS-2-js%E5%87%BD%E6%95%B0-2/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/Vscode-5-%E6%A0%BC%E5%BC%8F%E5%8C%96/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          2-js函数-2
+          3-插件-格式化
         
       </div>
     </a>
   
   
-    <a href="/JS-4-js%E4%BA%8B%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">4-js事件</div>
+    <a href="/CSS-8-%E4%B8%BB%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3-css简介</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -916,7 +897,7 @@ if(true){
   	repo: 'zxzxac110.github.io',
   	owner: 'zxzxac110',
   	admin: ['zxzxac110'],
-  	id: 'Mon Oct 24 2022 11:30:10 GMT+0800',
+  	id: 'Mon Feb 13 2023 10:06:56 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container')
@@ -1021,11 +1002,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1045,7 +1026,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1053,7 +1034,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1061,15 +1042,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1078,6 +1055,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1097,11 +1078,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指令</a>
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">dome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1109,11 +1090,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">指令</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1121,7 +1102,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1129,7 +1114,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1138,6 +1127,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
             
             <div class="clearfix"></div>

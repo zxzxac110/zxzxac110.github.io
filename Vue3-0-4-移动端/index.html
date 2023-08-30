@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>2.搭建配置 | 历史好</title>
+  <title>历史好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Vite2 + Vue3 + TypeScript + Pinia 搭建一套企业级的开发脚手架 暂未完善 具体可以查看 1.1.搭建配置">
+  <meta name="description" content="vue3+vite项目移动端适配：postcss-pxtorem和amfe-flexible 5215 阅读  0 评论  74 点赞一，定义postcss-pxtoremPostCSS 的一个插件，可以从像素单位生成 rem 单位。 amfe-flexibleamfe-flexible是配置可伸缩布局方案，主要是将1rem设为viewWidth&#x2F;10。 二，使用  设置 viewport在 in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2.搭建配置">
-<meta property="og:url" content="http://yoursite.com/Vue3-0-2-%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="历史好">
+<meta property="og:url" content="http://yoursite.com/Vue3-0-4-%E7%A7%BB%E5%8A%A8%E7%AB%AF/index.html">
 <meta property="og:site_name" content="历史好">
-<meta property="og:description" content="Vite2 + Vue3 + TypeScript + Pinia 搭建一套企业级的开发脚手架 暂未完善 具体可以查看 1.1.搭建配置">
+<meta property="og:description" content="vue3+vite项目移动端适配：postcss-pxtorem和amfe-flexible 5215 阅读  0 评论  74 点赞一，定义postcss-pxtoremPostCSS 的一个插件，可以从像素单位生成 rem 单位。 amfe-flexibleamfe-flexible是配置可伸缩布局方案，主要是将1rem设为viewWidth&#x2F;10。 二，使用  设置 viewport在 in">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-10-24T03:30:10.039Z">
-<meta property="article:modified_time" content="2022-10-24T03:30:10.039Z">
+<meta property="article:published_time" content="2023-04-27T07:52:04.046Z">
+<meta property="article:modified_time" content="2023-04-27T07:52:09.636Z">
 <meta property="article:author" content="历史好">
-<meta property="article:tag" content="vue3.0">
+<meta property="article:tag" content="前端,历史好,666">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="历史好" type="application/atom+xml">
@@ -150,66 +150,26 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Vue3-0-2-搭建配置" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Vue3-0-4-移动端" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      2.搭建配置
-    </h1>
-  
-
-        
-        <a href="/Vue3-0-2-%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/3es6ryoTHE2a5GwWRFuWoQ">Vite2 + Vue3 + TypeScript + Pinia 搭建一套企业级的开发脚手架</a></p>
-<h2 id="暂未完善-具体可以查看-1-1-搭建配置"><a href="#暂未完善-具体可以查看-1-1-搭建配置" class="headerlink" title="暂未完善 具体可以查看 1.1.搭建配置"></a>暂未完善 具体可以查看 1.1.搭建配置</h2><!-- ###  开始
+          <p>vue3+vite项目移动端适配：postcss-pxtorem和amfe-flexible<br> 5215 阅读  0 评论  74 点赞<br>一，定义<br>postcss-pxtorem<br>PostCSS 的一个插件，可以从像素单位生成 rem 单位。</p>
+<p>amfe-flexible<br>amfe-flexible是配置可伸缩布局方案，主要是将1rem设为viewWidth/10。</p>
+<p>二，使用</p>
+<ol>
+<li>设置 viewport<br>在 index.html 中：</li>
+</ol>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+2.安装插件
+npm install amfe-flexible --save
+npm install postcss-pxtorem --save
 
-vue create 项目名 
-// @vue/cli 5.0.8
-
-在2的基础上新增选项
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">1.Check the features needed for your project:</span><br><span class="line"> (*) Babel</span><br><span class="line"> (*) TypeScript</span><br><span class="line"> ( ) Progressive Web App (PWA) Support</span><br><span class="line"> (*) Router</span><br><span class="line"> ( ) Vuex &#x2F;&#x2F; 使用pinia替代</span><br><span class="line"> (*) CSS Pre-processors</span><br><span class="line">&gt;(*) Linter &#x2F; Formatter</span><br><span class="line"> ( ) Unit Testing</span><br><span class="line"> ( ) E2E Testing</span><br><span class="line"></span><br><span class="line">2.Choose a version of Vue.js that you want to start the project with 3.x</span><br><span class="line"></span><br><span class="line">3.Use class-style component syntax? (Y&#x2F;n) y</span><br><span class="line">是否使用Class风格装饰器？</span><br><span class="line">即原本是：home &#x3D; new Vue()创建vue实例</span><br><span class="line">使用装饰器后：class home extends Vue&#123;&#125;</span><br><span class="line"></span><br><span class="line">如果选择了TypeScript 会有这样的提示:</span><br><span class="line">4.Use Babel alongside TypeScript for auto-detected polyfills? (Y&#x2F;n) y</span><br><span class="line">使用Babel与TypeScript一起用于自动检测的填充? yes</span><br><span class="line">还会有这样的提示:</span><br><span class="line"></span><br><span class="line">5.Use history mode for router? (Requires proper server setup for index fallback in production) (Y&#x2F;n) y</span><br><span class="line">路由使用历史模式? 这种模式充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="配置-css-预处理器-scss"><a href="#配置-css-预处理器-scss" class="headerlink" title="配置 css 预处理器 scss"></a>配置 css 预处理器 scss</h3><p>ps：使用<code>vue create ***</code>创建的项目 发现并没有生效 还是用老办法<br>app.vue 中 @import ‘xxx/css’ 的方法吧</p>
-<p>vite 原生支持 less/sass/scss/stylus，但是你必须手动安装他们的预处理器依赖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i sass-loader --dev</span><br><span class="line">npm i dart-sass --dev</span><br><span class="line">npm i sass --dev</span><br></pre></td></tr></table></figure>
-
-<p>add 全局样式文件 <code>src/style/main.scss</code></p>
-<p>update <code>vite.config.ts</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">  ......</span><br><span class="line">  css:&#123;</span><br><span class="line">      preprocessorOptions:&#123;</span><br><span class="line">        scss:&#123;</span><br><span class="line">          additionalData:<span class="string">&#x27;@import &quot;@/assets/style/mian.scss&quot;;&#x27;</span> <span class="comment">// 配置全局样式文件 当然 也可以不填任何东西</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">)&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="自动路由"><a href="#自动路由" class="headerlink" title="自动路由"></a>自动路由</h3><p><a target="_blank" rel="noopener" href="https://next.router.vuejs.org/zh/guide/">vue-router</a><br><code>npm install vue-router@next  ||  npm i vue-router@4</code><br>“vue-router”: “^4.1.5”</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/hannoeru/vite-plugin-pages">vite-plugin-pages</a><br><code>npm install vite-plugin-pages -D</code><br>“vite-plugin-pages”: “^0.26.0”</p>
-<blockquote>
-<p>update <code>vite.config.ts</code><br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Pages <span class="keyword">from</span> <span class="string">&quot;vite-plugin-pages&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">  ......</span><br><span class="line">  plugins: [</span><br><span class="line">    ......</span><br><span class="line">    vue(&#123;</span><br><span class="line">      include: [<span class="regexp">/\.vue$/</span>],</span><br><span class="line">    &#125;),</span><br><span class="line">    Pages(&#123;</span><br><span class="line">      dirs: <span class="string">&quot;src/views&quot;</span>,</span><br><span class="line">      extensions: [<span class="string">&quot;vue&quot;</span>],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">)&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>update <code>src/env.d.ts</code> 添加内容<br>  <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">/// &lt;reference types=&quot;vite-plugin-pages/client&quot; /&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>add <code>src/router/router.ts</code><br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createRouter, createWebHistory, createWebHashHistory, RouteRecordRaw &#125; <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span></span><br><span class="line"><span class="comment">// 由 vite-plugin-pages 生成的页面</span></span><br><span class="line"><span class="keyword">import</span> routes <span class="keyword">from</span> <span class="string">&#x27;virtual:generated-pages&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(routes)</span><br><span class="line"><span class="keyword">const</span> router = createRouter(&#123;</span><br><span class="line">  history: createWebHashHistory(),</span><br><span class="line">  routes,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>update <code>src/main.ts</code><br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;./router/router&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = createApp(App)</span><br><span class="line"></span><br><span class="line">app.use(router)</span><br><span class="line"></span><br><span class="line">app.mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>在使用的地方写入<br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-view</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>新增文件 访问路径<br>  <code>views/[...all].vue</code> 文件内容 代表 访问 不存在的地址显示内容<br>  <code>views/index.vue</code>  代表 ‘/‘<br>  <code>views/data.vue</code> 访问地址 <code>/data</code> –&gt;</p>
-</blockquote>
+<p>3.配置文件<br>Vite自身已经集成PostCSS，因此无需单独创建PostCSS配置文件，可直接在 vite.config.js 文件中配置css.postcss选项。</p>
+<p>import postCssPxToRem from “postcss-pxtorem”;<br>export default defineConfig({<br>    plugins: [vue()],<br>    css: {<br>        postcss: {<br>              plugins: [<br>                postCssPxToRem({<br>                      rootValue: 75, // 1rem，根据 设计稿宽度/10 进行设置<br>                      propList: [‘*’], // 需要转换的属性，这里选择全部都进行转换<br>                })<br>              ]<br>        }<br>    },<br>})<br>4. 导入<br>在 main.js 中引入 amfe-flexible 插件：</p>
+<p>import ‘amfe-flexible’;</p>
 
         
       
@@ -250,17 +210,6 @@ vue create 项目名
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vue3.0</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -311,7 +260,7 @@ vue create 项目名
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/Vue3-0-2-%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/Vue3-0-4-%E7%A7%BB%E5%8A%A8%E7%AB%AF/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -325,18 +274,18 @@ vue create 项目名
   
 <nav id="article-nav">
   
-    <a href="/Vue3-0-1-%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/Flutter-8-%E6%89%93%E5%BC%80app/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          1.搭建配置
+          8-打开app
         
       </div>
     </a>
   
   
-    <a href="/Vue3-0-3-%E6%8F%92%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">3.插件</div>
+    <a href="/dome-%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">上传 下载</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -380,7 +329,7 @@ if(true){
   	repo: 'zxzxac110.github.io',
   	owner: 'zxzxac110',
   	admin: ['zxzxac110'],
-  	id: 'Mon Oct 24 2022 11:30:10 GMT+0800',
+  	id: 'Thu Apr 27 2023 15:52:04 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container')
@@ -485,11 +434,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,7 +458,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,7 +466,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,15 +474,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,6 +487,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,11 +510,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指令</a>
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">dome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,11 +522,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">指令</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,7 +534,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,7 +546,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,6 +559,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
             
             <div class="clearfix"></div>

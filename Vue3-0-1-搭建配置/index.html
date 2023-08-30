@@ -16,7 +16,7 @@
 <meta property="og:description" content="开始版本npm -v  &#x2F;&#x2F; 8.1.0node -v &#x2F;&#x2F; v16.13.0  初始化项目安装 vite 构建工具npm install -g create-vite-app创建项目create-vite-app vue3-demo  初始化项目2npm init @vitejs&#x2F;app vite_vue3_ts --template 报警就改为输入 npm create vite@lates">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-24T03:30:10.039Z">
-<meta property="article:modified_time" content="2022-10-24T03:30:10.039Z">
+<meta property="article:modified_time" content="2023-08-11T07:14:16.654Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="vue3.0">
 <meta name="twitter:card" content="summary">
@@ -186,8 +186,10 @@
 </li>
 <li><p>初始化项目2<br><code>npm init @vitejs/app vite_vue3_ts --template</code> 报警就改为输入 <code>npm create vite@latest</code><br>选择vue 选择ts 回车</p>
 </li>
-<li><p>packgage.json</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;vue3-dem&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;dev&quot;</span>: <span class="string">&quot;vite --mode base&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;build&quot;</span>: <span class="string">&quot;vite build&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;build:dev&quot;</span>: <span class="string">&quot;rm -rf 测试目录 &amp;&amp; vite build --mode development&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;build:pro&quot;</span>: <span class="string">&quot;vite build --mode production&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;axios&quot;</span>: <span class="string">&quot;^0.27.2&quot;</span>, <span class="comment">// npm i axios</span></span><br><span class="line">    <span class="attr">&quot;element-plus&quot;</span>: <span class="string">&quot;^2.2.17&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;fast-glob&quot;</span>: <span class="string">&quot;^3.2.12&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;pinia&quot;</span>: <span class="string">&quot;^2.0.0-rc.10&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;qs&quot;</span>: <span class="string">&quot;^6.10.3&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;vue&quot;</span>: <span class="string">&quot;^3.0.4&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;vue-router&quot;</span>: <span class="string">&quot;^4.1.5&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;@types/node&quot;</span>: <span class="string">&quot;^17.0.21&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;@types/qs&quot;</span>: <span class="string">&quot;^6.9.7&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;@vitejs/plugin-vue&quot;</span>: <span class="string">&quot;^2.2.4&quot;</span>, <span class="comment">// npm i @vitejs/plugin-vue -D</span></span><br><span class="line">    <span class="attr">&quot;sass&quot;</span>: <span class="string">&quot;^1.49.9&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;typescript&quot;</span>: <span class="string">&quot;^4.6.2&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;unplugin-vue-define-options&quot;</span>: <span class="string">&quot;^0.12.0-beta.1&quot;</span>, <span class="comment">// npm i unplugin-vue-define-options -D 可以使用组件name属性</span></span><br><span class="line">    <span class="attr">&quot;vite&quot;</span>: <span class="string">&quot;^2.8.6&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;vite-plugin-svg-icons&quot;</span>: <span class="string">&quot;^2.0.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;vue-tsc&quot;</span>: <span class="string">&quot;^0.32.1&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</ol>
+<ol>
+<li>初始化项目<strong>官网版</strong><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">npm init vue@latest</span><br><span class="line"> Project name：lx <span class="comment">// 项目名称，不建议中文。</span></span><br><span class="line"> Add TypeScript: Yes <span class="comment">// 是否加入TypeScript组件</span></span><br><span class="line"> Add JSX Support: No <span class="comment">// 是否加入JSX支持</span></span><br><span class="line"> Add Vue Router <span class="keyword">for</span> Single Page: yes <span class="comment">// 是否为单页应用程序开发添加Vue Router路由管理组件</span></span><br><span class="line"> Add Pinia <span class="keyword">for</span> state management: yes <span class="comment">// 是否添加Pinia组件来进行状态管理</span></span><br><span class="line"> Add Vitest <span class="keyword">for</span> Unit testing: No <span class="comment">// 是否添加Vitest来进行单元测试</span></span><br><span class="line"> Add Cypress <span class="keyword">for</span> both Unit and End-to-End testing: No <span class="comment">//  是否添加Cypress来进行单元测试和端到端测试</span></span><br><span class="line"> Add ESLint <span class="keyword">for</span> code quality: Yes <span class="comment">// 是否添加ESLint来进行代码质量检查</span></span><br><span class="line"> Add Prettier <span class="keyword">for</span> code formatting:  Yes <span class="comment">// 为代码格式化添加Prettier</span></span><br></pre></td></tr></table></figure></li>
+<li>packgage.json<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;vue3-dem&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;dev&quot;</span>: <span class="string">&quot;vite --mode base&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;build&quot;</span>: <span class="string">&quot;vite build&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;build:dev&quot;</span>: <span class="string">&quot;rm -rf 测试目录 &amp;&amp; vite build --mode development&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;build:pro&quot;</span>: <span class="string">&quot;vite build --mode production&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;axios&quot;</span>: <span class="string">&quot;^0.27.2&quot;</span>, <span class="comment">// npm i axios</span></span><br><span class="line">    <span class="attr">&quot;element-plus&quot;</span>: <span class="string">&quot;^2.2.17&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;fast-glob&quot;</span>: <span class="string">&quot;^3.2.12&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;pinia&quot;</span>: <span class="string">&quot;^2.0.0-rc.10&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;qs&quot;</span>: <span class="string">&quot;^6.10.3&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;vue&quot;</span>: <span class="string">&quot;^3.0.4&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;vue-router&quot;</span>: <span class="string">&quot;^4.1.5&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;@types/node&quot;</span>: <span class="string">&quot;^17.0.21&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;@types/qs&quot;</span>: <span class="string">&quot;^6.9.7&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;@vitejs/plugin-vue&quot;</span>: <span class="string">&quot;^2.2.4&quot;</span>, <span class="comment">// npm i @vitejs/plugin-vue -D</span></span><br><span class="line">    <span class="attr">&quot;sass&quot;</span>: <span class="string">&quot;^1.49.9&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;typescript&quot;</span>: <span class="string">&quot;^4.6.2&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;unplugin-vue-define-options&quot;</span>: <span class="string">&quot;^0.12.0-beta.1&quot;</span>, <span class="comment">// npm i unplugin-vue-define-options -D 可以使用组件name属性</span></span><br><span class="line">    <span class="attr">&quot;vite&quot;</span>: <span class="string">&quot;^2.8.6&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;vite-plugin-svg-icons&quot;</span>: <span class="string">&quot;^2.0.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;vue-tsc&quot;</span>: <span class="string">&quot;^0.32.1&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -195,7 +197,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">  plugins: [vue()],</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    alias: &#123;</span><br><span class="line">      <span class="string">&#x27;@&#x27;</span>: path.resolve(__dirname, <span class="string">&#x27;src&#x27;</span>),</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>update <code>tsconfig.json</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">  ......</span><br><span class="line">  <span class="string">&quot;baseUrl&quot;</span>: <span class="string">&quot;.&quot;</span>,</span><br><span class="line">  <span class="string">&quot;paths&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;@/*&quot;</span>:[<span class="string">&quot;src/*&quot;</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;baseUrl&quot;</span>: <span class="string">&quot;.&quot;</span>,</span><br><span class="line">    <span class="string">&quot;paths&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;@/*&quot;</span>:[<span class="string">&quot;src/*&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;exclude&quot;</span>: [<span class="string">&quot;dist&quot;</span>, <span class="string">&quot;node_modules&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="2-element-plus"><a href="#2-element-plus" class="headerlink" title="2.element-plus"></a>2.element-plus</h1><p><code>npm install element-plus --save</code><br>main.ts</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ElementPlus <span class="keyword">from</span> <span class="string">&#x27;element-plus&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;element-plus/dist/index.css&#x27;</span></span><br><span class="line">app.use(ElementPlus)</span><br></pre></td></tr></table></figure>
@@ -220,7 +222,7 @@
 
 <h1 id="5-环境变量配置"><a href="#5-环境变量配置" class="headerlink" title="5.环境变量配置"></a>5.环境变量配置</h1><ol>
 <li><p>add <code>.env.base</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 环境</span><br><span class="line">NODE_ENV &#x3D; development</span><br><span class="line"></span><br><span class="line"># 接口前缀</span><br><span class="line">VITE_APP_WEB_URL &#x3D; &#39;&#x2F;api&#39;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 环境</span><br><span class="line">NODE_ENV &#x3D; development</span><br><span class="line"></span><br><span class="line"># 接口前缀</span><br><span class="line"># 必须使用VITE_开头 才能在项目中使用 import.meta.env.xxx获取 || 自行在config中配置一下 &#96;envPrefix: &quot;统一个前缀_&quot;,&#96;</span><br><span class="line">VITE_APP_WEB_URL &#x3D; &#39;&#x2F;api&#39;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>add <code>.env.development</code> 默认环境 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 环境</span><br><span class="line">NODE_ENV &#x3D; development</span><br><span class="line"></span><br><span class="line"># 接口前缀</span><br><span class="line">VITE_APP_WEB_URL &#x3D; &#39;https:&#x2F;&#x2F;********.cn &#39;</span><br><span class="line"></span><br><span class="line"># 输出路径</span><br><span class="line">VITE_OUT_DIR &#x3D; &#39;测试目录&#39;</span><br><span class="line"></span><br><span class="line"># 打包路径</span><br><span class="line">VITE_BASE_PATH &#x3D; &#39;.&#x2F;&#39;</span><br></pre></td></tr></table></figure>
@@ -233,7 +235,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;dev&quot;</span>: <span class="string">&quot;vite --mode base&quot;</span>,</span><br><span class="line">  <span class="string">&quot;build&quot;</span>: <span class="string">&quot;vite build&quot;</span>,</span><br><span class="line">  <span class="string">&quot;build:dev&quot;</span>: <span class="string">&quot;vite build --mode development&quot;</span>,</span><br><span class="line">  <span class="string">&quot;build:pro&quot;</span>: <span class="string">&quot;vite build --mode production&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>本地代理 打包配置 <code>vite.config.ts</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; loadEnv &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span> <span class="comment">// +++</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> root = process.cwd() <span class="comment">// ++++</span></span><br><span class="line"><span class="keyword">const</span> env = loadEnv((process.argv[<span class="number">3</span>] === <span class="string">&#x27;--mode&#x27;</span> ? process.argv[<span class="number">4</span>] : process.argv[<span class="number">3</span>]), root) <span class="comment">// +++</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">  base: env.VITE_BASE_PATH, <span class="comment">// 引用前缀</span></span><br><span class="line">  ...</span><br><span class="line">  build: &#123;</span><br><span class="line">    outDir: env.VITE_OUT_DIR || <span class="string">&#x27;dist&#x27;</span>, <span class="comment">// 输出目录</span></span><br><span class="line">  &#125;,</span><br><span class="line">  server: &#123;</span><br><span class="line">    open: <span class="literal">true</span>, <span class="comment">// 字段打开</span></span><br><span class="line">    port: <span class="number">4050</span>, <span class="comment">// 端口号</span></span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">&#x27;/api&#x27;</span>: &#123;</span><br><span class="line">        target: <span class="string">&#x27;https://*****.cn &#x27;</span>,</span><br><span class="line">        changeOrigin: <span class="literal">true</span>,</span><br><span class="line">        rewrite: <span class="function">(<span class="params">path</span>) =&gt;</span> path.replace(<span class="regexp">/^\/api/</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    hmr: &#123;</span><br><span class="line">      overlay: <span class="literal">false</span> <span class="comment">// 屏蔽服务器报错</span></span><br><span class="line">    &#125;,</span><br><span class="line">    host: <span class="string">&#x27;0.0.0.0&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; loadEnv &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span> <span class="comment">// +++</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> root = process.cwd() <span class="comment">// ++++</span></span><br><span class="line"><span class="keyword">const</span> env = loadEnv((process.argv[<span class="number">3</span>] === <span class="string">&#x27;--mode&#x27;</span> ? process.argv[<span class="number">4</span>] : process.argv[<span class="number">3</span>]), root) <span class="comment">// +++</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">  base: env.VITE_BASE_PATH, <span class="comment">// 引用前缀</span></span><br><span class="line">  ...</span><br><span class="line">  build: &#123;</span><br><span class="line">    outDir: env.VITE_OUT_DIR || <span class="string">&#x27;dist&#x27;</span>, <span class="comment">// 输出目录</span></span><br><span class="line">  &#125;,</span><br><span class="line">  server: &#123;</span><br><span class="line">    open: <span class="literal">true</span>, <span class="comment">// 启动自动打开浏览器</span></span><br><span class="line">    port: <span class="number">4050</span>, <span class="comment">// 端口号</span></span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">&#x27;/api&#x27;</span>: &#123;</span><br><span class="line">        target: <span class="string">&#x27;https://*****.cn &#x27;</span>,</span><br><span class="line">        changeOrigin: <span class="literal">true</span>, <span class="comment">// 是否启用跨域</span></span><br><span class="line">         <span class="comment">// secure: false, # 如果是http接口，需要配置该参数</span></span><br><span class="line">        rewrite: <span class="function">(<span class="params">path</span>) =&gt;</span> path.replace(<span class="regexp">/^\/api/</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// hmr: &#123;</span></span><br><span class="line">    <span class="comment">//   overlay: false // 屏蔽服务器报错</span></span><br><span class="line">    <span class="comment">// &#125;,</span></span><br><span class="line">    <span class="comment">// host: &#x27;0.0.0.0&#x27;,</span></span><br><span class="line">    <span class="comment">// secure:true // 是否使用ip验证 默认为true</span></span><br><span class="line">    <span class="comment">// 是在配置代理时的一个选项，用于 Vite 服务器在向目标服务器发送请求时禁用对 SSL证书的验证</span></span><br><span class="line">    <span class="comment">// 你secure 设置为 false 时，Vite 服务器将不会验证目标服务器的SSL证书。这意味着，即使目标服务器的证书不受信任或存在其他问题，Vite 服务器也会继续发送请求，并不会终止连接。</span></span><br><span class="line">    <span class="comment">// 这通常在开发环境下使用，用于避免在本地开发中由于证书问题而导致的请求失败。由于自签名证书或未受信任的证书无法通过默认的SSL验证，因此禁用验证可以允许 Vite 服务器与目标服务器建立连接并成功发送请求。</span></span><br><span class="line">    <span class="comment">// 请注意，在生产环境中，强烈建议使用合法受信任的证书，并将secure 设置为默认值 true ，以确保确保安全性。在生产环境中，不应该禁用对SSL证书的验证。</span></span><br><span class="line">    <span class="comment">// 总结起来，设置 secure: false 可以暂时在开发环境中绕过证书验证问题，但在生产环境下需要谨慎使用，并使用受信任的证书。</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>获取环境变量</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">import</span>.meta.env.VITE_APP_WEB_URL)</span><br></pre></td></tr></table></figure>
@@ -278,13 +280,7 @@
 <li><p>使用<br><code>&lt;SvgIcon name=&quot;vite&quot; className=&quot;font-20&quot;&gt;&lt;/SvgIcon&gt;</code></p>
 </li>
 </ol>
-<p>#</p>
-<p>#</p>
-<p>#</p>
-<p>#</p>
-<p>#</p>
-<p>#</p>
-<p>#</p>
+<p>#<br>#<br>#<br>#<br>#<br>#<br>#</p>
 
         
       
@@ -410,8 +406,8 @@
     </a>
   
   
-    <a href="/Vue3-0-2-%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2.搭建配置</div>
+    <a href="/Vue3-0-3-%E6%8F%92%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3.插件</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -560,11 +556,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,7 +580,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,7 +588,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,15 +596,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,6 +609,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,11 +632,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指令</a>
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">dome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,11 +644,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">指令</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,7 +656,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -668,7 +668,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -677,6 +681,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
             
             <div class="clearfix"></div>

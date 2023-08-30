@@ -16,7 +16,7 @@
 <meta property="og:description" content="一.说明git 管理软件 Sourcetreegit 管理软件  GitHub Desktop git 指令有很多 这边我只说我有用到并且会用的指令    指令 说明 -    - - -   git log 查看所有commit信息 -   git init 初始化仓库 -   git reset –hard ** 回退到 ** 版本 -   git pull 拉取最新版本 -   git pu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-24T03:30:10.054Z">
-<meta property="article:modified_time" content="2022-10-24T03:30:10.054Z">
+<meta property="article:modified_time" content="2023-08-29T05:42:48.607Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="软件工具">
 <meta name="twitter:card" content="summary">
@@ -620,17 +620,32 @@
 <li>fix 修复问题/BUG</li>
 <li>style 代码风格相关无影响运行结果的</li>
 <li>perf 优化/性能提升</li>
-<li>refactor 重构</li>
-<li>revert 撤销修改</li>
+<li>refactor 重构/样式</li>
+<li>revert 撤销修改版本回退</li>
 <li>test 测试相关</li>
 <li>docs 文档/注释</li>
-<li>chore 依赖更新/脚手架配置修改等</li>
+<li>chore 依赖更新/脚手架配置修改其他修改等不属于以上类型的其他类型(日常事务)</li>
 <li>workflow 工作流改进</li>
 <li>ci 持续集成</li>
 <li>types 类型定义文件更改</li>
 <li>wip 开发中</li>
+<li>build 影响项目构建或依赖修改</li>
 </ul>
-<h1 id="四-问题"><a href="#四-问题" class="headerlink" title="四.问题"></a>四.问题</h1><h2 id="1-git-提交-报错没有权限"><a href="#1-git-提交-报错没有权限" class="headerlink" title="1. git 提交 报错没有权限"></a>1. git 提交 报错没有权限</h2><p>  1.确定ssh配置是否有问题。 ssh -T 路径 是否成功 成功的情况下<br>  2.成功的情况下 卸载git 重新安装 有个配置项要改成 使用外部的sshkey而不是内置的sshkey</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&amp;mid=2651609577&amp;idx=2&amp;sn=1ef2a6168e9a1a61e9f0000ae4987399&amp;chksm=80228e28b755073e60b80e9c3de377e7e29bea25fddb1c0da387acf82b5a8140a2b72388ef33&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&amp;mid=2651609577&amp;idx=2&amp;sn=1ef2a6168e9a1a61e9f0000ae4987399&amp;chksm=80228e28b755073e60b80e9c3de377e7e29bea25fddb1c0da387acf82b5a8140a2b72388ef33&amp;scene=21#wechat_redirect</a></p>
+<ul>
+<li><p>1 pnpm i cz-customizable -D<br>“cz-customizable”: “^7.0.0”</p>
+</li>
+<li><p>2 add <code>.cz-config.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">// type 类型（定义之后，可通过上下键选择）</span></span><br><span class="line">   types: [</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;feat&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;feat:     新增功能&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;fix&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;fix:      修复 bug&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;docs&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;docs:     文档变更&#x27;</span> &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      value: <span class="string">&#x27;style&#x27;</span>,</span><br><span class="line">      name: <span class="string">&#x27;style:    代码格式（不影响功能，例如空格、分号等格式修正）&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      value: <span class="string">&#x27;refactor&#x27;</span>,</span><br><span class="line">      name: <span class="string">&#x27;refactor: 代码重构（不包括 bug 修复、功能新增）&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;perf&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;perf:     性能优化&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;revert&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;revert:     撤销修改&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;test&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;test:     测试相关&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;ci&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;ci:     持续集成&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;wip&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;wip:     开发中&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;types&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;types:     类型定义文件更改&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;chore&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;chore:     其他修改, 比如构建流程, 依赖管理、版本好修正.&#x27;</span> &#125;</span><br><span class="line">  ],</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// scope 类型（定义之后，可通过上下键选择）</span></span><br><span class="line">  scopes: [</span><br><span class="line">    [<span class="string">&#x27;components&#x27;</span>, <span class="string">&#x27;组件相关&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;hooks&#x27;</span>, <span class="string">&#x27;hook 相关&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;utils&#x27;</span>, <span class="string">&#x27;utils 相关&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;element-ui&#x27;</span>, <span class="string">&#x27;对 element-ui 的调整&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;styles&#x27;</span>, <span class="string">&#x27;样式相关&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;deps&#x27;</span>, <span class="string">&#x27;项目依赖&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;auth&#x27;</span>, <span class="string">&#x27;对 auth 修改&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;other&#x27;</span>, <span class="string">&#x27;其他修改&#x27;</span>],</span><br><span class="line">    <span class="comment">// 如果选择 custom，后面会让你再输入一个自定义的 scope。也可以不设置此项，把后面的 allowCustomScopes 设置为 true</span></span><br><span class="line">    [<span class="string">&#x27;custom&#x27;</span>, <span class="string">&#x27;以上都不是？我要自定义&#x27;</span>]</span><br><span class="line">  ].map(<span class="function">(<span class="params">[value, description]</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      value,</span><br><span class="line">      name: <span class="string">`<span class="subst">$&#123;value.padEnd(<span class="number">30</span>)&#125;</span> (<span class="subst">$&#123;description&#125;</span>)`</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;),</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 是否允许自定义填写 scope，在 scope 选择的时候，会有 empty 和 custom 可以选择。</span></span><br><span class="line">  <span class="comment">// allowCustomScopes: true,</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// allowTicketNumber: false,</span></span><br><span class="line">  <span class="comment">// isTicketNumberRequired: false,</span></span><br><span class="line">  <span class="comment">// ticketNumberPrefix: &#x27;TICKET-&#x27;,</span></span><br><span class="line">  <span class="comment">// ticketNumberRegExp: &#x27;\\d&#123;1,5&#125;&#x27;,</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 针对每一个 type 去定义对应的 scopes，例如 fix</span></span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">    scopeOverrides: &#123;</span></span><br><span class="line"><span class="comment">      fix: [</span></span><br><span class="line"><span class="comment">        &#123; name: &#x27;merge&#x27; &#125;,</span></span><br><span class="line"><span class="comment">        &#123; name: &#x27;style&#x27; &#125;,</span></span><br><span class="line"><span class="comment">        &#123; name: &#x27;e2eTest&#x27; &#125;,</span></span><br><span class="line"><span class="comment">        &#123; name: &#x27;unitTest&#x27; &#125;</span></span><br><span class="line"><span class="comment">      ]</span></span><br><span class="line"><span class="comment">    &#125;,</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 交互提示信息</span></span><br><span class="line">  messages: &#123;</span><br><span class="line">    type: <span class="string">&#x27;确保本次提交遵循：前端代码规范！\n选择你要提交的类型：&#x27;</span>,</span><br><span class="line">    scope: <span class="string">&#x27;\n选择一个 scope（可选）：&#x27;</span>,</span><br><span class="line">    <span class="comment">// 选择 scope: custom 时会出下面的提示</span></span><br><span class="line">    customScope: <span class="string">&#x27;请输入自定义的 scope：&#x27;</span>,</span><br><span class="line">    subject: <span class="string">&#x27;填写简短精炼的变更描述：\n&#x27;</span>,</span><br><span class="line">    body: <span class="string">&#x27;填写更加详细的变更描述（可选）。使用 &quot;|&quot; 换行：\n&#x27;</span>,</span><br><span class="line">    breaking: <span class="string">&#x27;列举非兼容性重大的变更（可选）：\n&#x27;</span>,</span><br><span class="line">    footer: <span class="string">&#x27;列举出所有变更的 ISSUES CLOSED（可选）。例如: #31, #34：\n&#x27;</span>,</span><br><span class="line">    confirmCommit: <span class="string">&#x27;确认提交？&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置只有 type 选择了 feat 或 fix，才询问 breaking message</span></span><br><span class="line">  allowBreakingChanges: [<span class="string">&#x27;feat&#x27;</span>, <span class="string">&#x27;fix&#x27;</span>],</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 跳过要询问的步骤</span></span><br><span class="line">  skipQuestions: [<span class="string">&#x27;scope&#x27;</span>, <span class="string">&#x27;body&#x27;</span>, <span class="string">&#x27;breaking&#x27;</span>, <span class="string">&#x27;footer&#x27;</span>],</span><br><span class="line"></span><br><span class="line">  subjectLimit: <span class="number">100</span>, <span class="comment">// subject 限制长度</span></span><br><span class="line">  breaklineChar: <span class="string">&#x27;|&#x27;</span> <span class="comment">// 换行符，支持 body 和 footer</span></span><br><span class="line">  <span class="comment">// footerPrefix : &#x27;ISSUES CLOSED:&#x27;</span></span><br><span class="line">  <span class="comment">// askForBreakingChangeFirst : true,</span></span><br><span class="line">&#125;</span><br><span class="line">* <span class="number">3</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3 安装完之后在 <code>package.json</code> 中添加如下节点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">   <span class="string">&quot;git&quot;</span>: <span class="string">&quot;git add . &amp;&amp; git-cz&quot;</span></span><br><span class="line"> &#125;,</span><br><span class="line"><span class="string">&quot;config&quot;</span>: &#123;</span><br><span class="line">   <span class="string">&quot;commitizen&quot;</span>: &#123;</span><br><span class="line">     <span class="string">&quot;path&quot;</span>: <span class="string">&quot;node_modules/cz-customizable&quot;</span></span><br><span class="line">   &#125;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4 </p>
+<h1 id="git-add-git-commit-m-‘xxx’"><a href="#git-add-git-commit-m-‘xxx’" class="headerlink" title="git add . + git commit -m ‘xxx’ "></a>git add . + git commit -m ‘xxx’ </h1><p>npm run git</p>
+<h1 id="四-问题"><a href="#四-问题" class="headerlink" title="四.问题"></a>四.问题</h1></li>
+</ul>
+<h2 id="1-git-提交-报错没有权限"><a href="#1-git-提交-报错没有权限" class="headerlink" title="1. git 提交 报错没有权限"></a>1. git 提交 报错没有权限</h2><p>  1.确定ssh配置是否有问题。 ssh -T 路径 是否成功 成功的情况下<br>  2.成功的情况下 卸载git 重新安装 有个配置项要改成 使用外部的sshkey而不是内置的sshkey</p>
 <h2 id="2-阿里云克隆失败"><a href="#2-阿里云克隆失败" class="headerlink" title="2. 阿里云克隆失败"></a>2. 阿里云克隆失败</h2><p> 1.确定 凭据管理器 里面登入信息是不是本人的<br> 2.确定 ssh 公钥配置<br> 3.克隆https的方式克隆</p>
 <h2 id="3-阿里云克隆失败"><a href="#3-阿里云克隆失败" class="headerlink" title="3. 阿里云克隆失败"></a>3. 阿里云克隆失败</h2><p><code>id_rsa</code> 同级目录新建<code>config</code> 文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">HostKeyAlgorithms +ssh-rsa</span><br><span class="line">PubkeyAcceptedKeyTypes +ssh-rsa</span><br></pre></td></tr></table></figure>
@@ -748,18 +763,18 @@
   
 <nav id="article-nav">
   
-    <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-nginx/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/%E7%94%BB%E5%9B%BE-svg/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          nginx
+          svg
         
       </div>
     </a>
   
   
-    <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-%E8%BD%AF%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">各种用的软件</div>
+    <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-nginx/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">nginx</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -908,11 +923,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -932,7 +947,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -940,7 +955,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -948,15 +963,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -965,6 +976,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -984,11 +999,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指令</a>
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">dome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -996,11 +1011,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">指令</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1008,7 +1023,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1016,7 +1035,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1025,6 +1048,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
             
             <div class="clearfix"></div>

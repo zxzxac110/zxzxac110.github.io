@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.指令   指令 说明 简写 示例    v-model 双向绑定 : v-model&#x3D;”val”   v-bind: 用于绑定属性值 : :src&#x3D;”mysrc”   v-if v-else-if v-else 等同 if elseif else 采用动态添加删除元素的方式控制显示隐藏  v-if&#x3D;”myBoolean”   v-show 采用display:none&#x2F;block方式控制显示隐">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-24T03:30:10.039Z">
-<meta property="article:modified_time" content="2022-10-24T03:30:10.039Z">
+<meta property="article:modified_time" content="2023-02-17T02:34:25.687Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -288,7 +288,7 @@
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      message: <span class="string">&#x27;hello&#x27;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  created() &#123; <span class="built_in">this</span>.hello() &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    hello: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;hello from mixin!&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 单个组件使用</span></span><br><span class="line">...</span><br><span class="line">mixins: [myMixin],</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 全局使用 不推荐使用 因为子组件也会被套一层mixin 显得项目笨重</span></span><br><span class="line">Vue.mixin(myMixin)</span><br></pre></td></tr></table></figure>
 
-<h2 id="7-例子"><a href="#7-例子" class="headerlink" title="7.例子"></a>7.例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">  @import &#39;..&#x2F;..&#x2F;..&#x2F;assets&#x2F;styles&#x2F;1.less&#39;;</span><br><span class="line">    .a&#123;</span><br><span class="line">        color: #000 !important;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div @click&#x3D;&quot;clickF($event,1,2,3)&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;text&quot;</span><br><span class="line">           value&#x3D;&quot;监听回车事件&quot;</span><br><span class="line">           @keyup.enter&#x3D;&quot;b&quot;&gt;</span><br><span class="line">    &lt;el-input value&#x3D;&quot;使用插件-监听回车事件&quot;</span><br><span class="line">              @keyup.enter.native&#x3D;&quot;b&quot;&gt;&lt;&#x2F;el-input&gt;</span><br><span class="line">    &lt;my-a2&gt;&lt;&#x2F;my-a2&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import myA2 from &#39;.&#x2F;a2.vue&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#39;&#39;, &#x2F;&#x2F; 组件名称</span><br><span class="line">  mixins: [], &#x2F;&#x2F; 混入</span><br><span class="line">  components: &#123; &#x2F;&#x2F; 引用子组件 </span><br><span class="line">    myA2,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#x2F;&#x2F;  个人理解 是否在html显示父元素绑定的参数 </span><br><span class="line">  &#x2F;&#x2F; 实例 页面 &lt;child id&#x3D;&quot;a1&quot; a&#x3D;&quot;a&quot; &#x2F;&gt; +  inheritAttrs: false 实际F12页面显示 &lt;child&#x2F;&gt; </span><br><span class="line">  &#x2F;&#x2F;  官方结算：默认情况下父作用域的不被认作 props 的 attribute 绑定 (attribute bindings) 将会“回退”且作为普通的 HTML attribute 应用在子组件的根元素上。</span><br><span class="line">  &#x2F;&#x2F;  如果你不希望组件的根元素继承特性，你可以在组件的选项中设置 inheritAttrs: false。</span><br><span class="line">  inheritAttrs: true, &#x2F;&#x2F; 默认true </span><br><span class="line">  props: &#123; &#x2F;&#x2F; 父组件传递的参数 </span><br><span class="line">    propsA: &#123;</span><br><span class="line">      type: Number,</span><br><span class="line">      default: 0</span><br><span class="line">    &#125;,</span><br><span class="line">    propsB: &#123;</span><br><span class="line">      type: Object,</span><br><span class="line">      default: function () &#123;</span><br><span class="line">        return &#123; &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;  &#x2F;&#x2F;  计算函数</span><br><span class="line">  &#125;,</span><br><span class="line">  filters: &#123;   &#x2F;&#x2F;  过滤</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123; &#x2F;&#x2F;监听</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeCreate () &#123; &#125;,  &#x2F;&#x2F; 创建前</span><br><span class="line">  created () &#123; &#125;,       &#x2F;&#x2F; 创建后</span><br><span class="line">  mounted () &#123;  &#x2F;&#x2F;  挂载后</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  beforemount () &#123; &#125;,   &#x2F;&#x2F; 挂载前</span><br><span class="line">  beforeUpdate () &#123; &#125;,  &#x2F;&#x2F; 更新前</span><br><span class="line">  updated () &#123; &#125;,       &#x2F;&#x2F; 更新后</span><br><span class="line">  beforeDestroy () &#123; &#125;, &#x2F;&#x2F; 销毁前</span><br><span class="line">  destroyed () &#123; &#125;,      &#x2F;&#x2F; 销毁后</span><br><span class="line">  methods: &#123;   &#x2F;&#x2F;   普通函数</span><br><span class="line">    a () &#123;</span><br><span class="line">      this.$nextTick(() &#x3D;&gt; &#123; &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    b () &#123; &#x2F;&#x2F; query和params 的区别</span><br><span class="line">      &#x2F;&#x2F; query的参数会携带在地址栏</span><br><span class="line">      &#x2F;&#x2F; params的参数不会</span><br><span class="line">      this.$router.push(&#123;</span><br><span class="line">        path: &#39;&#x2F;user&#x2F;login&#39;,</span><br><span class="line">        &#x2F;&#x2F; 使用params传参数时，这个name值不能少，路由里也相对应的设置name值</span><br><span class="line">        &#x2F;&#x2F; query可以不用设置name值</span><br><span class="line">        name: &quot;login&quot;, &#x2F;&#x2F; 路由里的name</span><br><span class="line">        query: &#123;</span><br><span class="line">          id: 1</span><br><span class="line">        &#125;,</span><br><span class="line">        params: &#123;</span><br><span class="line">          username: &quot;abc&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      &#x2F;&#x2F; 上述跳转后  下述获取</span><br><span class="line">      const id &#x3D; this.$route.query.id;   &#x2F;&#x2F;1 </span><br><span class="line">      const username &#x3D; this.$route.params.username; &#x2F;&#x2F; abc</span><br><span class="line">    &#125;,</span><br><span class="line">    beforeRouteEnter (to, from, next) &#123; &#x2F;&#x2F; 路由守卫 </span><br><span class="line">      next(vm &#x3D;&gt; &#123; &#x2F;&#x2F; vm 当前进入的路由 vm.参数，就是本页面的data参数</span><br><span class="line">        if (from.name &#x3D;&#x3D; &#39;NewIndex&#39; || from.name &#x3D;&#x3D; &#39;OrderConfirm&#39;) &#123;</span><br><span class="line">          vm.show_pay &#x3D; true;</span><br><span class="line">          return;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          vm.show_pay &#x3D; false;</span><br><span class="line">          return;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="7-例子"><a href="#7-例子" class="headerlink" title="7.例子"></a>7.例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">  @import &#39;..&#x2F;..&#x2F;..&#x2F;assets&#x2F;styles&#x2F;1.less&#39;;</span><br><span class="line">    .a&#123;</span><br><span class="line">        color: #000 !important;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div @click&#x3D;&quot;clickF($event,1,2,3)&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;text&quot;</span><br><span class="line">           value&#x3D;&quot;监听回车事件&quot;</span><br><span class="line">           @keyup.enter&#x3D;&quot;b&quot;&gt;</span><br><span class="line">    &lt;el-input value&#x3D;&quot;使用插件-监听回车事件&quot;</span><br><span class="line">              @keyup.enter.native&#x3D;&quot;b&quot;&gt;&lt;&#x2F;el-input&gt;</span><br><span class="line">    &lt;my-a2&gt;&lt;&#x2F;my-a2&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import myA2 from &#39;.&#x2F;a2.vue&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#39;&#39;, &#x2F;&#x2F; 组件名称</span><br><span class="line">  mixins: [], &#x2F;&#x2F; 混入</span><br><span class="line">  components: &#123; &#x2F;&#x2F; 引用子组件 </span><br><span class="line">    myA2,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#x2F;&#x2F;  个人理解 是否在html显示父元素绑定的参数 </span><br><span class="line">  &#x2F;&#x2F; 实例 页面 &lt;child id&#x3D;&quot;a1&quot; a&#x3D;&quot;a&quot; &#x2F;&gt; +  inheritAttrs: false 实际F12页面显示 &lt;child&#x2F;&gt; </span><br><span class="line">  &#x2F;&#x2F;  官方结算：默认情况下父作用域的不被认作 props 的 attribute 绑定 (attribute bindings) 将会“回退”且作为普通的 HTML attribute 应用在子组件的根元素上。</span><br><span class="line">  &#x2F;&#x2F;  如果你不希望组件的根元素继承特性，你可以在组件的选项中设置 inheritAttrs: false。</span><br><span class="line">  inheritAttrs: true, &#x2F;&#x2F; 默认true </span><br><span class="line">  props: &#123; &#x2F;&#x2F; 父组件传递的参数 </span><br><span class="line">    propsA: &#123;</span><br><span class="line">      type: Number,</span><br><span class="line">      default: 0</span><br><span class="line">    &#125;,</span><br><span class="line">    propsB: &#123;</span><br><span class="line">      type: Object,</span><br><span class="line">      default: function () &#123;</span><br><span class="line">        return &#123; &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;  &#x2F;&#x2F;  计算函数</span><br><span class="line">  &#125;,</span><br><span class="line">  filters: &#123;   &#x2F;&#x2F;  过滤</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123; &#x2F;&#x2F;监听</span><br><span class="line">    handler(newVal, oldVal) &#123;</span><br><span class="line">        console.log(newVal, oldVal)</span><br><span class="line">    &#125;,</span><br><span class="line">    deep: true,</span><br><span class="line">    immediate: true</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeCreate () &#123; &#125;,  &#x2F;&#x2F; 创建前</span><br><span class="line">  created () &#123; &#125;,       &#x2F;&#x2F; 创建后</span><br><span class="line">  mounted () &#123;  &#x2F;&#x2F;  挂载后</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  beforemount () &#123; &#125;,   &#x2F;&#x2F; 挂载前</span><br><span class="line">  beforeUpdate () &#123; &#125;,  &#x2F;&#x2F; 更新前</span><br><span class="line">  updated () &#123; &#125;,       &#x2F;&#x2F; 更新后</span><br><span class="line">  beforeDestroy () &#123; &#125;, &#x2F;&#x2F; 销毁前</span><br><span class="line">  destroyed () &#123; &#125;,      &#x2F;&#x2F; 销毁后</span><br><span class="line">  methods: &#123;   &#x2F;&#x2F;   普通函数</span><br><span class="line">    a () &#123;</span><br><span class="line">      this.$nextTick(() &#x3D;&gt; &#123; &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    b () &#123; &#x2F;&#x2F; query和params 的区别</span><br><span class="line">      &#x2F;&#x2F; query的参数会携带在地址栏</span><br><span class="line">      &#x2F;&#x2F; params的参数不会</span><br><span class="line">      this.$router.push(&#123;</span><br><span class="line">        path: &#39;&#x2F;user&#x2F;login&#39;,</span><br><span class="line">        &#x2F;&#x2F; 使用params传参数时，这个name值不能少，路由里也相对应的设置name值</span><br><span class="line">        &#x2F;&#x2F; query可以不用设置name值</span><br><span class="line">        name: &quot;login&quot;, &#x2F;&#x2F; 路由里的name</span><br><span class="line">        query: &#123;</span><br><span class="line">          id: 1</span><br><span class="line">        &#125;,</span><br><span class="line">        params: &#123;</span><br><span class="line">          username: &quot;abc&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      &#x2F;&#x2F; 上述跳转后  下述获取</span><br><span class="line">      const id &#x3D; this.$route.query.id;   &#x2F;&#x2F;1 </span><br><span class="line">      const username &#x3D; this.$route.params.username; &#x2F;&#x2F; abc</span><br><span class="line">    &#125;,</span><br><span class="line">    beforeRouteEnter (to, from, next) &#123; &#x2F;&#x2F; 路由守卫 </span><br><span class="line">      next(vm &#x3D;&gt; &#123; &#x2F;&#x2F; vm 当前进入的路由 vm.参数，就是本页面的data参数</span><br><span class="line">        if (from.name &#x3D;&#x3D; &#39;NewIndex&#39; || from.name &#x3D;&#x3D; &#39;OrderConfirm&#39;) &#123;</span><br><span class="line">          vm.show_pay &#x3D; true;</span><br><span class="line">          return;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          vm.show_pay &#x3D; false;</span><br><span class="line">          return;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
         
       
@@ -404,18 +404,18 @@
   
 <nav id="article-nav">
   
-    <a href="/Vue-3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%87%86%E5%A4%87/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/Vue-1-cli-3-0%E5%AE%89%E8%A3%85/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          3-移动端准备
+          1-cli-3.0安装
         
       </div>
     </a>
   
   
-    <a href="/Vue-2-cli-2-0%E5%AE%89%E8%A3%85/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2-cli-2.0安装</div>
+    <a href="/Vue-5-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">5-自定义指令</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -564,11 +564,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,7 +588,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,7 +596,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,15 +604,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,6 +617,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,11 +640,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指令</a>
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">dome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,11 +652,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">指令</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">vue插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -664,7 +664,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插件相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,7 +676,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -681,6 +689,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
             
             <div class="clearfix"></div>
