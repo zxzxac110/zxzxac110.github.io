@@ -16,7 +16,7 @@
 <meta property="og:description" content=".alphabet a {padding-right:20px;}     数据请求相关   1.原生简单ajax   2.原生JSONP 跨域请求   其他   2.数组的筛选   3.数组全等于比较   4.设备是否为pc端   5.开启关闭全屏   6.获取浏览器版本   7.加减乘除不精确的解决方法   8.地址栏参数转 对象形式   9.动态修改标题   9.小数点后两位 金额   10">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-24T03:30:10.023Z">
-<meta property="article:modified_time" content="2023-07-28T05:35:02.527Z">
+<meta property="article:modified_time" content="2023-11-03T06:55:28.057Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
@@ -191,13 +191,15 @@
   <a href="#title11" target="_self">11.数组插入</a>
   <a href="#title12" target="_self">12.数组内容替换位置</a>
   <a href="#title12" target="_self">13.定时器同步执行,强制等待</a>
-
+  <a href="#title12" target="_self">14.input 数字 限制输入数字</a>
+  <a href="#title12" target="_self">15.表单验证</a>
   <div>页面相关</div>
   <a href="#title101" target="_self">1.轻提示</a>
   <a href="#title102" target="_self">2.节流+懒加载</a>
   <a href="#title103" target="_self">3.防抖</a>
   <a href="#title104" target="_self">4.手写简单 rem适配</a>
   <a href="#title104" target="_self">5.滚动条滚动动画</a>
+  <a href="#title104" target="_self">6.使用图片代替ico</a>
   <div>感觉有用</div>
   <a href="#title201" target="_self">1.手写 Object.keys()</a>
   <a href="#title202" target="_self">2.dom相关事件兼容ie</a>
@@ -245,6 +247,10 @@
 
 <h2 id="13-定时器同步执行"><a href="#13-定时器同步执行" class="headerlink" title="13.定时器同步执行"></a>13.定时器同步执行</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span> (<span class="params">ms</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res, rej</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123; res() &#125;, ms)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">await</span> sleep(<span class="number">2000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">222</span>) <span class="comment">// 2秒输出 222</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="14-input-数字-限制输入数字"><a href="#14-input-数字-限制输入数字" class="headerlink" title="14.input 数字 限制输入数字"></a>14.input 数字 限制输入数字</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">TNumber</span>(<span class="params">str: string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(<span class="regexp">/\D/g</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">query.value[str <span class="keyword">as</span> <span class="string">&#x27;code&#x27;</span>] = TNumber(query.value[str <span class="keyword">as</span> <span class="string">&#x27;code&#x27;</span>])</span><br><span class="line">@input=<span class="string">&quot;validateInput(&#x27;min_inc_count&#x27;)&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="14-图片url转base64-图片需要可以跨域"><a href="#14-图片url转base64-图片需要可以跨域" class="headerlink" title="14.// 图片url转base64 图片需要可以跨域"></a>14.// 图片url转base64 图片需要可以跨域</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">imageToBase64</span> (<span class="params">image</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">  <span class="keyword">let</span> width = image.width</span><br><span class="line">  <span class="keyword">let</span> height = image.height</span><br><span class="line"></span><br><span class="line">  canvas.width = width</span><br><span class="line">  canvas.height = height</span><br><span class="line">  <span class="keyword">let</span> context = canvas.getContext(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line">  context.drawImage(image, <span class="number">0</span>, <span class="number">0</span>, width, height)</span><br><span class="line">  <span class="keyword">return</span> canvas.toDataURL(<span class="string">&#x27;image/png&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回调方式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">urlToBase64</span> (<span class="params">url, callback = null</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> image = <span class="keyword">new</span> Image()</span><br><span class="line"></span><br><span class="line">  image.setAttribute(<span class="string">&#x27;crossOrigin&#x27;</span>, <span class="string">&#x27;Anonymous&#x27;</span>)</span><br><span class="line">  image.src = url + <span class="string">&#x27;?v=&#x27;</span> + <span class="built_in">Math</span>.random()</span><br><span class="line"></span><br><span class="line">  image.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> dataURL = imageToBase64(image)</span><br><span class="line">    <span class="keyword">if</span> (callback) &#123;</span><br><span class="line">      callback(dataURL)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Promise方式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">urlToBase64Async</span> (<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    urlToBase64(url, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">      resolve(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">await</span> urlToBase64Async(e.url) <span class="comment">// base64</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
@@ -253,6 +259,8 @@
 <h2 id="14-判断是否安装了某个app"><a href="#14-判断是否安装了某个app" class="headerlink" title="14.判断是否安装了某个app"></a>14.判断是否安装了某个app</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原文地址 https://blog.csdn.net/boundle_ss/article/details/125913277</span></span><br><span class="line">openUriWithInputTimeoutHack(<span class="string">&#x27;weixin://&#x27;</span>,<span class="function">() =&gt;</span> &#123; 已安装 &#125;,<span class="function">() =&gt;</span> &#123; 未安装 &#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">openUriWithInputTimeoutHack</span>(<span class="params">uri, failCb, successCb</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> target = <span class="built_in">document</span>.createElement(<span class="string">&#x27;input&#x27;</span>)</span><br><span class="line">  target.style.width = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">  target.style.height = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">  target.style.position = <span class="string">&#x27;fixed&#x27;</span></span><br><span class="line">  target.style.top = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">  target.style.left = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(target)</span><br><span class="line"></span><br><span class="line">  target.focus()</span><br><span class="line">  <span class="keyword">const</span> handler = _registerEvent(target, <span class="string">&#x27;blur&#x27;</span>, onBlur)</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">onBlur</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    successCb &amp;&amp; successCb()</span><br><span class="line">    handler.remove()</span><br><span class="line">    <span class="built_in">clearTimeout</span>(timeout)</span><br><span class="line">    <span class="built_in">document</span>.body.removeChild(target)</span><br><span class="line">  &#125;</span><br><span class="line">  location.href = uri</span><br><span class="line">  <span class="keyword">var</span> timeout: NodeJS.Timeout = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;setTimeout&#x27;</span>)</span><br><span class="line">    failCb &amp;&amp; failCb()</span><br><span class="line">    handler.remove()</span><br><span class="line">    <span class="built_in">document</span>.body.removeChild(target)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_registerEvent</span>(<span class="params">target, eventType, cb</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (target.addEventListener) &#123;</span><br><span class="line">    target.addEventListener(eventType, cb)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      remove() &#123;</span><br><span class="line">        target.removeEventListener(eventType, cb)</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    target.attachEvent(eventType, cb)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      remove() &#123;</span><br><span class="line">        target.detachEvent(eventType, cb)</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
+
+<h2 id="15-表单验证"><a href="#15-表单验证" class="headerlink" title="15.表单验证"></a>15.表单验证</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">formVerification</span>(<span class="params">data: Record&lt;string, any&gt;, rules: Rules</span>): <span class="title">Promise</span>&lt;<span class="title">any</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>&lt;<span class="keyword">void</span>&gt;(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> rules) &#123;</span><br><span class="line">      <span class="keyword">const</span> rule = rules[key]</span><br><span class="line">      <span class="keyword">if</span> (rule.some(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (e.verification ? e.verification(data[key]) : !data[key]) &#123;</span><br><span class="line">          ElMessage.error(&#123;</span><br><span class="line">            message: e.message,</span><br><span class="line">            grouping: <span class="literal">true</span>,</span><br><span class="line">            dangerouslyUseHTMLString: <span class="literal">true</span>,</span><br><span class="line">            showClose:<span class="literal">true</span></span><br><span class="line">          &#125;)</span><br><span class="line">          reject(<span class="keyword">new</span> <span class="built_in">Error</span>(e.message))</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;))</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">    resolve()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> rules = &#123;</span><br><span class="line">  mobile: [</span><br><span class="line">    &#123; <span class="attr">verification</span>: <span class="function">(<span class="params">v</span>) =&gt;</span> !v, <span class="attr">message</span>: <span class="string">&#x27;手机号码不能为空&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">verification</span>: <span class="function">(<span class="params">v</span>) =&gt;</span> v.length !== <span class="number">11</span>, <span class="attr">message</span>: <span class="string">&#x27;手机号格式有误&#x27;</span> &#125;,</span><br><span class="line">  ],</span><br><span class="line">  sms_captcha: [&#123; <span class="attr">verification</span>: <span class="function">(<span class="params">v</span>) =&gt;</span> !v, <span class="attr">message</span>: <span class="string">&#x27;请输入验证码&#x27;</span> &#125;],</span><br><span class="line">  check: [&#123; <span class="attr">verification</span>: <span class="function">(<span class="params">v</span>) =&gt;</span> !v, <span class="attr">message</span>: <span class="string">&#x27;请勾选用户协议&#x27;</span> &#125;],</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">await</span> formVerification(form.value, &#123; <span class="attr">mobile</span>: rules.mobile &#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h1 id="三-页面相关"><a href="#三-页面相关" class="headerlink" title="三.页面相关"></a>三.页面相关</h1><h2 id="1-轻提示"><a href="#1-轻提示" class="headerlink" title="1.轻提示"></a>1.轻提示</h2><p>css 内容</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.hide</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.toast-wrap-box</span>&#123; <span class="comment">/* 提示文字弹窗 */</span></span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">3001</span>;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.toast</span> &#123; <span class="comment">/**/</span></span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0.3rem</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">2500</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">20px</span> <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">7</span>);</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">width</span>:auto;</span><br><span class="line">  <span class="attribute">max-width</span>:<span class="number">600px</span>;</span><br><span class="line">  <span class="attribute">display</span>:inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -268,6 +276,8 @@
 
 <h2 id="5-滚动条滚动动画"><a href="#5-滚动条滚动动画" class="headerlink" title="5.滚动条滚动动画"></a>5.滚动条滚动动画</h2><p>慢慢滚动到指定位置</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scrollYAnimation</span> (<span class="params">curY, y</span>) </span>&#123; <span class="comment">// 当前位置 最终位置</span></span><br><span class="line">  <span class="keyword">if</span> (curY !== y) &#123;</span><br><span class="line">    <span class="keyword">let</span> differ = <span class="built_in">Math</span>.abs(curY - y)</span><br><span class="line">    <span class="keyword">let</span> _curY = curY</span><br><span class="line">    requestAnimationFrame(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> step = <span class="built_in">Math</span>.ceil(differ / <span class="number">10</span>)</span><br><span class="line">      <span class="keyword">if</span> (curY &gt; y) &#123;</span><br><span class="line">        _curY -= step;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        _curY += step;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, curY);</span><br><span class="line">      <span class="keyword">if</span> (differ &gt; <span class="number">10</span> || differ &lt; <span class="number">-10</span>) &#123;</span><br><span class="line">        scrollYAnimation(_curY, y);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, y);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="built_in">document</span></span><br><span class="line">    .querySelector(<span class="string">&#x27;.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default&#x27;</span>)</span><br><span class="line">    ?.scrollTo(&#123; <span class="attr">top</span>: <span class="number">0</span>, <span class="attr">behavior</span>: <span class="string">&#x27;smooth&#x27;</span> &#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-使用图片代替ico"><a href="#6-使用图片代替ico" class="headerlink" title="6.使用图片代替ico"></a>6.使用图片代替ico</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/svg+xml&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/images/logo2.svg&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="四-感觉有用"><a href="#四-感觉有用" class="headerlink" title="四.感觉有用"></a>四.感觉有用</h1><h2 id="1-手写-Object-keys"><a href="#1-手写-Object-keys" class="headerlink" title="1.手写 Object.keys()"></a>1.手写 Object.keys()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">keys = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">Object</span>.wwwwww = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> hasOwnProperty = <span class="built_in">Object</span>.prototype.hasOwnProperty,</span><br><span class="line">      hasDontEnumBug = !(&#123; <span class="attr">toString</span>: <span class="literal">null</span> &#125;).propertyIsEnumerable(<span class="string">&#x27;toString&#x27;</span>),</span><br><span class="line">      dontEnums = [</span><br><span class="line">        <span class="string">&#x27;toString&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;toLocaleString&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;valueOf&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;hasOwnProperty&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;isPrototypeOf&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;propertyIsEnumerable&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;constructor&#x27;</span></span><br><span class="line">      ],</span><br><span class="line">      dontEnumsLength = dontEnums.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">&#x27;object&#x27;</span> &amp;&amp; <span class="keyword">typeof</span> obj !== <span class="string">&#x27;function&#x27;</span> || obj === <span class="literal">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">&#x27;Object.keys called on non-object&#x27;</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> result = [];</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span> (hasOwnProperty.call(obj, prop)) result.push(prop);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (hasDontEnumBug) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; dontEnumsLength; i++) &#123;</span><br><span class="line">          <span class="keyword">if</span> (hasOwnProperty.call(obj, dontEnums[i])) result.push(dontEnums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;使用Object.wwwwww(对象)进行低版本的对象变数组然后循环 使他=== Object.keys()&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -553,15 +563,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,7 +575,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,11 +583,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,11 +599,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,15 +611,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">uniapp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,11 +639,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+                <a href="javascript:void(0)" class="js-tag color5">hook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -641,7 +651,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,11 +671,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,11 +687,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -681,11 +695,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
               </li>
             
             <div class="clearfix"></div>

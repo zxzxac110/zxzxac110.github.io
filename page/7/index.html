@@ -150,19 +150,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-软件工具-nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-杂项-tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-nginx/">nginx</a>
+      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-tree/">tree</a>
     </h1>
   
 
         
-        <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-nginx/" class="archive-article-date">
+        <a href="/%E6%9D%82%E9%A1%B9-tree/" class="archive-article-date">
   	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
 </a>
         
@@ -171,21 +171,1397 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p>有接触过  稍微记录一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">根目录</span><br><span class="line">└─nginx                       </span><br><span class="line">    │  pull.sh   &#x2F;&#x2F; 只需要执行pull.sh 即可完成打包到测试环境的步骤</span><br><span class="line">    │  域名.conf &#x2F;&#x2F; 比如 www.baidu.com.conf</span><br></pre></td></tr></table></figure>
+          <h2 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h2><p>创建文件列表，将所有文件以树的形式列出来</p>
+<p>获取结构百度下 <code>tree</code> 就好了或者<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qianduanjingying/p/6064058.html">戳这里</a></p>
+<p><code>tree /f &gt; tree.txt</code> 获取所有文件和目录 生成 tree.txt文件 目录结构</p>
 
-<p>编写 nginx 配置文件 <code>域名.conf</code></p>
-<p>翻译参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/feiyuanxing/p/4668818.html">https://www.cnblogs.com/feiyuanxing/p/4668818.html</a></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  server_name q.qinba.cn; <span class="comment">// 域名</span></span><br><span class="line"></span><br><span class="line">  root /data/www/qunguangguang-admin-vue/dist;  <span class="comment">// 文件目录 我们一般是在 www/项目名称/打包文件</span></span><br><span class="line">  index index.html; <span class="comment">// 访问文件</span></span><br><span class="line"></span><br><span class="line">  error_page <span class="number">404</span> /<span class="number">404.</span>html;</span><br><span class="line"></span><br><span class="line">  location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123; <span class="comment">// 所有的图片文件</span></span><br><span class="line">    expires <span class="number">30</span>d;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// ~ 正则表达式 区分大小写的正则匹配</span></span><br><span class="line">  location ~ .*\.(js|css)$ &#123; <span class="comment">// 所有的js css文件</span></span><br><span class="line">    expires <span class="number">1</span>h;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  error_log /data/log/openresty/q.qinba.cn_error.log warn; <span class="comment">// 生成日志文件地址 我们一般是在 openresty/域名._error.log warn</span></span><br><span class="line">  access_log /data/log/openresty/q.qinba.cn_access.log domain_access_log; <span class="comment">// 生成日志文件地址 我们一般是在 openresty/域名._access.log domain_access_log</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-tree/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
 
 
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">替换文件路径</span><br><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  server_name baidu.com;</span><br><span class="line"></span><br><span class="line">  root /data/www/baidu/dist;</span><br><span class="line">  index index.html;</span><br><span class="line"></span><br><span class="line">  location /editor &#123;<span class="comment">// 满足baidu.com/editor 的请求</span></span><br><span class="line">    alias /data/www/editor; <span class="comment">// 定义指定位置的替换 满足条件会返回data/www/editor目录下的文件</span></span><br><span class="line">    try_files $uri $uri/ /index.html;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  location / &#123;  <span class="comment">// 满足baidu.com/ 的请求</span></span><br><span class="line">    try_files $uri $uri/ /index.html;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  error_log /data/log/openresty/baidu.com_error.log warn;</span><br><span class="line">  access_log /data/log/openresty/baidu.com_access.log domain_access_log;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+  
+    <article id="post-杂项-win软链接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-win%E8%BD%AF%E9%93%BE%E6%8E%A5/">win软链接</a>
+    </h1>
+  
+
+        
+        <a href="/%E6%9D%82%E9%A1%B9-win%E8%BD%AF%E9%93%BE%E6%8E%A5/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h2><p>跟快捷方式差不多</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mklink &#x2F;d d:\develop \\138.20.1.141\e$\develop</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-win%E8%BD%AF%E9%93%BE%E6%8E%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
 
 
 
-<p>编写 <code>pull.sh</code> 自动拉取操作</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">cd /home/www/q-admin-vue <span class="comment">// 到指定目录</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;<span class="number">1.</span><span class="number">.2</span>&#125; <span class="comment">// 拉取代码 循环2次</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  git checkout develop</span><br><span class="line"> </span><br><span class="line">  git reset --hard</span><br><span class="line"></span><br><span class="line">  git submodule foreach git pull origin master</span><br><span class="line"></span><br><span class="line">  git submodule update --init --recursive</span><br><span class="line"></span><br><span class="line">  git pull origin develop</span><br><span class="line"></span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">lerna bootstrap <span class="comment">// 等同于NPM I </span></span><br><span class="line"></span><br><span class="line">/usr/bin/node ./node_modules/.bin/vue-cli-service build --mode develop <span class="comment">// 执行打包指令 --mode develop 测试</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将除了 这两个文件 的 其他文件 从 home /移动到 /data</span></span><br><span class="line"><span class="comment">// 目的 防止在打包过程中 用户访问会出现访问不到的场景</span></span><br><span class="line"><span class="comment">// 使用移动的方式 会是一瞬间的事 用户察觉不到</span></span><br><span class="line">rsync --<span class="keyword">delete</span> --exclude <span class="string">&quot;node_modules&quot;</span> --exclude <span class="string">&quot;.git&quot;</span> -avz /home/www/qunguangguang-admin-vue/ <span class="regexp">/data/</span>www/qunguangguang-admin-vue</span><br></pre></td></tr></table></figure>
+
+  
+    <article id="post-杂项-杂项中的杂项" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-%E6%9D%82%E9%A1%B9%E4%B8%AD%E7%9A%84%E6%9D%82%E9%A1%B9/">杂项中的杂项</a>
+    </h1>
+  
+
+        
+        <a href="/%E6%9D%82%E9%A1%B9-%E6%9D%82%E9%A1%B9%E4%B8%AD%E7%9A%84%E6%9D%82%E9%A1%B9/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="各种指令"><a href="#各种指令" class="headerlink" title="各种指令"></a>各种指令</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ipconfig</td>
+<td>win + R =&gt; <br> CMD =&gt; <br> 输入ipconfig 电脑在局域网的IP地址</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>查看当前目录中的文件和文件夹</td>
+</tr>
+</tbody></table>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>localhost                          是指本机<br>win =》 选择应用和功能 =》 输入对应的软件名 即可卸载对应软件</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-%E6%9D%82%E9%A1%B9%E4%B8%AD%E7%9A%84%E6%9D%82%E9%A1%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-杂项-混编-phonegap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-%E6%B7%B7%E7%BC%96-phonegap/">混编-phonegap</a>
+    </h1>
+  
+
+        
+        <a href="/%E6%9D%82%E9%A1%B9-%E6%B7%B7%E7%BC%96-phonegap/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>因为不太了解 这里只做粗浅的记录<br>然后我使用的时候卡在 phoneGap 启动不起来<br>只能先在这里留个坑了<br>13.WEIXIN\day7\template 实验代码写在了 template/www/index.html中</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>混编一种新技术:将web项目直接打包成功手机原生app安装包<br>国外:phonegap 混编平台<br>国内:<code>uniapp</code> <a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/">https://uniapp.dcloud.io/</a><br>提供二个方案<br> (1)一个程序打包成多种平台app<br> (2)支持手机底层硬件开发(现在说的内容)</p>
+<blockquote>
+<p><em>下载软件</em><br>1 phonegap desktop<br>2 夜神或蓝碟<br>安装混编软件环境一定关闭防火墙/杀毒软件</p>
+</blockquote>
+<blockquote>
+<p><em>创建开发环境</em>-4个程序支持phonegap服务器/软件模板手机模拟器/phonegap app<br>启动phonegap服务器和夜神<br>通过夜神app软件连接服务器 下载服务器并运行<br>点击模拟器 phonegap app 连接服务器<br>template/www/index.html输入相应内容</p>
+</blockquote>
+<h3 id="device-设备"><a href="#device-设备" class="headerlink" title="device 设备"></a>device 设备</h3>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = device.platform   <span class="comment">// 获取手机操作系统 IOS/ Android</span></span><br><span class="line"><span class="keyword">var</span> a = device.uuid      <span class="comment">// 获取手机硬件编码 48</span></span><br><span class="line"><span class="keyword">var</span> a = device.version    <span class="comment">// 获取手机版本</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="notification-提示功能"><a href="#notification-提示功能" class="headerlink" title="notification 提示功能"></a>notification 提示功能</h3>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">navigator.notification.alert(<span class="string">&quot;&quot;</span>)  <span class="comment">// 提示信息</span></span><br><span class="line">navigator.notification.confirm(msg,fn) <span class="comment">// 确认消息msg</span></span><br><span class="line">navigator.notification.beep(<span class="number">3</span>) <span class="comment">// 蜂鸣器</span></span><br><span class="line">navgator.notification.vibrate(<span class="number">1000</span>) <span class="comment">// 震动时间1s</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="camera相机"><a href="#camera相机" class="headerlink" title="camera相机"></a>camera相机</h3>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">      navigator.camera.getPicture(fn1,fn2,&#123;参数&#125;);</span><br><span class="line">          <span class="comment">// fn1 拍照成功 function(url)&#123; url = 图片路径 &#125;</span></span><br><span class="line">          <span class="comment">// fn2 拍照失败</span></span><br><span class="line">          <span class="comment">// &#123;quality:50&#125;拍照延迟时间</span></span><br><span class="line">  <span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">### capture 录音</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line">      navigator.device.capture.captureAudio(fn1,fn2,参数);</span><br><span class="line">        <span class="comment">//  fn1: 录音成功回调函数</span></span><br><span class="line">        <span class="comment">//  fn2: 录音失败回调函数</span></span><br><span class="line">        <span class="comment">//  &#123;limit:3&#125;录音几次</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="accelerometer-加速度传感器"><a href="#accelerometer-加速度传感器" class="headerlink" title="accelerometer  加速度传感器"></a>accelerometer  加速度传感器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gnavigator.accelerometeretCurrentAcceleration(fn1,fn2); <span class="comment">// 获取用户当前位置信息</span></span><br><span class="line">    <span class="comment">// fn1:获取位置成功返回对象function(obj)&#123;obj.x obj.y obj.z&#125;</span></span><br><span class="line">    <span class="comment">// fn2:获取位置失败</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 变量 = navigator.accelerometer.watchAcceleration(fn1,fn2,参数); <span class="comment">// 创建监听用于监听用户位置变化</span></span><br><span class="line">    <span class="comment">// fn1 获取位置成功返回对象 function(obj)&#123;obj.x obj.y obj.z&#125;</span></span><br><span class="line">    <span class="comment">// fn2 获取位置失败</span></span><br><span class="line">    <span class="comment">// &#123;frequency:1000&#125; 1s监听一次</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">navigator.accelerometer.clearWatch(变量) <span class="comment">// 取消监听</span></span><br><span class="line"> 变量 = <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-%E6%B7%B7%E7%BC%96-phonegap/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-杂项-电脑部分网页访问不了-nds设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-%E7%94%B5%E8%84%91%E9%83%A8%E5%88%86%E7%BD%91%E9%A1%B5%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86-nds%E8%AE%BE%E7%BD%AE/">电脑部分网页访问不了-nds设置</a>
+    </h1>
+  
+
+        
+        <a href="/%E6%9D%82%E9%A1%B9-%E7%94%B5%E8%84%91%E9%83%A8%E5%88%86%E7%BD%91%E9%A1%B5%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86-nds%E8%AE%BE%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="win10"><a href="#win10" class="headerlink" title="win10"></a>win10</h2><p>点击 <code>当前 （右下角网络）网络</code> -&gt; <code>属性</code> 下滑可以看见当前设置 其中有一项是IPv4 DNS 服务器<br>-&gt; <code>返回</code> 下滑<br>-&gt; <code>网络和共享中心</code><br>-&gt; 右边 <code>链接 (内容)</code><br>-&gt; 左下 <code>属性</code><br>-&gt; 选中 <code>Internet 协议版本4</code> 点击 <code>属性</code><br>-&gt; 使用下面DNS服务器地址 首选DNS服务器 114.114.114.114</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-%E7%94%B5%E8%84%91%E9%83%A8%E5%88%86%E7%BD%91%E9%A1%B5%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86-nds%E8%AE%BE%E7%BD%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-杂项-终端账号密码-凭据管理器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-%E7%BB%88%E7%AB%AF%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81-%E5%87%AD%E6%8D%AE%E7%AE%A1%E7%90%86%E5%99%A8/">终端账号密码-凭据管理器</a>
+    </h1>
+  
+
+        
+        <a href="/%E6%9D%82%E9%A1%B9-%E7%BB%88%E7%AB%AF%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81-%E5%87%AD%E6%8D%AE%E7%AE%A1%E7%90%86%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h5 id="终端输入密码时输入错误-一直提示你密码错误又不让你改-怎么办？"><a href="#终端输入密码时输入错误-一直提示你密码错误又不让你改-怎么办？" class="headerlink" title="终端输入密码时输入错误 一直提示你密码错误又不让你改 怎么办？"></a>终端输入密码时输入错误 一直提示你密码错误又不让你改 怎么办？</h5><h3 id="win10"><a href="#win10" class="headerlink" title="win10"></a>win10</h3><p> 左下角搜索 -&gt; <code>凭据管理器</code> -&gt; 右侧 <code>windows凭据</code> -&gt; 这时可以看到你的网址 点击可以修改输入的账号密码</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-%E7%BB%88%E7%AB%AF%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81-%E5%87%AD%E6%8D%AE%E7%AE%A1%E7%90%86%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-网址-网址" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E7%BD%91%E5%9D%80-%E7%BD%91%E5%9D%80/">各种用的网址</a>
+    </h1>
+  
+
+        
+        <a href="/%E7%BD%91%E5%9D%80-%E7%BD%91%E5%9D%80/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <table>
+<thead>
+<tr>
+<th align="left">备注</th>
+<th align="left">备注</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>Node.js v10.15.3 文档</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/fs.html">http://nodejs.cn/api/fs.html</a></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>3-达内下载资料</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://code.tarena.com.cn/">http://code.tarena.com.cn/</a></td>
+<td align="left">tarenacode – code_2015</td>
+</tr>
+<tr>
+<td align="left"><code>4-动画1</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://daneden.github.io/animate.css/">https://daneden.github.io/animate.css/</a></td>
+<td align="left">定义好的动画，在项目中直接使用</td>
+</tr>
+<tr>
+<td align="left"><code>5-动画2</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://sc.dede58.com/xcxmb/">http://sc.dede58.com/xcxmb/</a></td>
+<td align="left">各种特效,动画</td>
+</tr>
+<tr>
+<td align="left"><code>6-boot</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.bootcss.com/">https://www.bootcss.com/</a></td>
+<td align="left">boot给我们封装好很多常用的样式</td>
+</tr>
+<tr>
+<td align="left"><code>7-初始化css</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://github.com/necolas/normalize.css">https://github.com/necolas/normalize.css</a></td>
+<td align="left">- 6.6CSS / 14 / CSS. RESET</td>
+</tr>
+<tr>
+<td align="left"><code>8-express框架</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.expressjs.com.cn/">http://www.expressjs.com.cn/</a></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>9-Npm 包</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.npmjs.com/">https://www.npmjs.com/</a></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>10-菜鸟教程学习</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/js/js-operators.html">https://www.runoob.com/js/js-operators.html</a></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>11-Echarts地图详解</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_21963133/article/details/80012899">https://blog.csdn.net/qq_21963133/article/details/80012899</a></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>12-新浪云</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://login.sina.com.cn/signup/signin.php?entry=sinacloud&amp;r=http://www.sinacloud.com/ucenter.html">https://login.sina.com.cn/signup/signin.php?entry=sinacloud&amp;r=http%3A%2F%2Fwww.sinacloud.com%2Fucenter.html</a></td>
+<td align="left">188***</td>
+</tr>
+<tr>
+<td align="left"><code>13-正则</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://c.runoob.com/front-end/854">https://c.runoob.com/front-end/854</a></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>14-ES6网址</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/intro">https://es6.ruanyifeng.com/#docs/intro</a></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>15-JQ直接 src 网址</code></td>
+<td align="left">&lt;&lt;<a target="_blank" rel="noopener" href="https://libs.baidu.com/jquery/1.7.2/jquery.min.js">https://libs.baidu.com/jquery/1.7.2/jquery.min.js</a>&gt;&gt;</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://libs.baidu.com/jquery/1.7.2/jquery.min.js">https://libs.baidu.com/jquery/1.7.2/jquery.min.js</a></td>
+</tr>
+<tr>
+<td align="left">16-React直接 src 网址</td>
+<td align="left"><strong>必须先 react 然后 react-dom</strong><br><a target="_blank" rel="noopener" href="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js">https://cdn.staticfile.org/react/16.4.0/umd/react.development.js</a> 和<br><a target="_blank" rel="noopener" href="https://cdn.staticfile.org/react-dom/16.4.0/umd/reactdom.development.js">https://cdn.staticfile.org/react-dom/16.4.0/umd/reactdom.development.js</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>16-VUE源码解读</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://github.com/muwoo/blogs/tree/master/src/Vue">https://github.com/muwoo/blogs/tree/master/src/Vue</a></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>17-我的图床</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://imgtu.com/">https://imgtu.com/</a></td>
+<td align="left">这上面得图片我大部分都放到里面去了</td>
+</tr>
+<tr>
+<td align="left"><code>17-图片压缩</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://tinypng.com/">https://tinypng.com/</a></td>
+<td align="left">图片压缩下，减少大小</td>
+</tr>
+<tr>
+<td align="left"><code>101.别人的笔记网站-我是前端</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.imqianduan.com/search/1?k=checkout">https://www.imqianduan.com/search/1?k=checkout</a></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>102.别人的博客网站-张鑫旭</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2020/06/mobile-event-touches-zoom-sacle/">https://www.zhangxinxu.com/wordpress/2020/06/mobile-event-touches-zoom-sacle/</a></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>103.天气插件</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.tianqi.com/plugin/">http://www.tianqi.com/plugin/</a></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>104.在线编辑、在线预览例子</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_23501739/article/details/103032741">https://blog.csdn.net/qq_23501739/article/details/103032741</a></td>
+<td align="left"><code>下载地址</code></td>
+</tr>
+<tr>
+<td align="left"><code>慕课ui</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://app.mockplus.cn/app/12i9QXpJZN/storyboard">https://app.mockplus.cn/app/12i9QXpJZN/storyboard</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>json转js</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.dreamwu.com/tools/json/#">http://www.dreamwu.com/tools/json/#</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>js html压缩</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://tool.oschina.net/jscompress/">https://tool.oschina.net/jscompress/</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>109</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://smalldev.tools/">https://smalldev.tools/</a>)</td>
+<td align="left">代码分享床、JSON 格式化、base64 加解密、HTML/JS/CSS 格式化、压缩 SQL、生成占位图、生成测试数据等等</td>
+</tr>
+<tr>
+<td align="left"><code>1001.我的</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://u8y90p.coding-pages.com/">https://u8y90p.coding-pages.com/</a></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://zxzxac110.github.io/">https://zxzxac110.github.io/</a></td>
+</tr>
+<tr>
+<td align="left"><code>阿里云代码库</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://code.aliyun.com/">https://code.aliyun.com/</a></td>
+<td align="left">188****153</td>
+</tr>
+<tr>
+<td align="left"><code>gitee</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://gitee.com/notifications/messages/">https://gitee.com/notifications/messages/</a></td>
+<td align="left">账号  <code>4481***@qq.com</code>  <code>1889****</code></td>
+</tr>
+<tr>
+<td align="left"><code>图片转ico</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://cdkm.com/cn/png-to-ico">https://cdkm.com/cn/png-to-ico</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>pdf转word</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.alltoall.net/">https://www.alltoall.net/</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>你不会百度吗</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://baidu.leeay.com/">https://baidu.leeay.com</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>原生UI</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://uiverse.io/favorites">https://uiverse.io/favorites</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>混淆工具，加密工具 混淆代码 加密代码</code></td>
+<td align="left">npm install javascript-obfuscator -g</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>react 后台模板</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://preview.pro.ant.design/profile/basic">https://preview.pro.ant.design/profile/basic</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>miniprogram-to-uniapp小程序转换工具</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://ext.dcloud.net.cn/plugin?id=2656">https://ext.dcloud.net.cn/plugin?id=2656</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>自定义截屏</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://github.com/likaia/js-screen-shot">https://github.com/likaia/js-screen-shot</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>一个V3架子</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://github.com/antfu/vitesse-lite">https://github.com/antfu/vitesse-lite</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>开源uniapp小程序</code></td>
+<td align="left"><a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#x69;&#x74;&#101;&#x65;&#x2e;&#x63;&#111;&#109;">&#x67;&#x69;&#x74;&#64;&#103;&#x69;&#x74;&#101;&#x65;&#x2e;&#x63;&#111;&#109;</a>:zxzxac110i/shopxo-uniapp.git</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>vue react 初始化化项目</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41852789/article/details/127159001?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-8-127159001-blog-126608543.235%5Ev38%5Epc_relevant_sort_base3&amp;spm=1001.2101.3001.4242.5&amp;utm_relevant_index=11">https://blog.csdn.net/qq_41852789/article/details/127159001?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-8-127159001-blog-126608543.235^v38^pc_relevant_sort_base3&amp;spm=1001.2101.3001.4242.5&amp;utm_relevant_index=11</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>小程序拖拽设计</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.diygw.com/demo.html">https://www.diygw.com/demo.html</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>官网模板</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.sitemuban.com/">http://www.sitemuban.com/</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>支持seo的框架</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://nuxt.com.cn/blog">https://nuxt.com.cn/blog</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>快站</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.kuaizhan.com/v3/passport/login?refer=/v3/workspace">https://www.kuaizhan.com/v3/passport/login?refer=/v3/workspace</a></td>
+<td align="left">188**</td>
+</tr>
+<tr>
+<td align="left"><strong>ui网址</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>vuetify中文</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://vuetifyjs.com/zh-Hans/components/selects/">https://vuetifyjs.com/zh-Hans/components/selects/</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>element ui</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/quickstart">https://element.eleme.cn/#/zh-CN/component/quickstart</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>uView</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.uviewui.com/components/install.html">https://www.uviewui.com/components/install.html</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>vant</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/v2/#/zh-CN/form">https://vant-contrib.gitee.io/vant/v2/#/zh-CN/form</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>naiveUI</code></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.naiveui.com/zh-CN/os-theme/components/menu">https://www.naiveui.com/zh-CN/os-theme/components/menu</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">``</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://venoui.fdota.com/components/transition">https://venoui.fdota.com/components/transition</a></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="自用"><a href="#自用" class="headerlink" title="自用"></a>自用</h3><p>####<br><a target="_blank" rel="noopener" href="https://ray.so/">https://ray.so/</a><br><a target="_blank" rel="noopener" href="https://go.itab.link/">https://go.itab.link/</a>   下班倒计时<br>####<br>|1| 备注 | 备注 |<br>| :- | :- |  :- |<br>| <code>npm</code> | <a target="_blank" rel="noopener" href="https://www.npmjs.com/?track=newUserCreated">https://www.npmjs.com/?track=newUserCreated</a>  |  lsh666 - 同GIT|<br>| <code>js 查看元素已绑定事件 js触发Tooltip</code> | <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42018258/article/details/101762593">https://blog.csdn.net/weixin_42018258/article/details/101762593</a> |<br>| <code>锁死node版本</code> | 微信我的收藏 |<br>| <code>axios 拦截器实现用户无感刷新 token</code> | <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/LHDd3Tol0JIORdMfFpZKaA">https://mp.weixin.qq.com/s/LHDd3Tol0JIORdMfFpZKaA</a> |<br>| <code>抽奖 转盘 老虎机</code> |<a target="_blank" rel="noopener" href="https://100px.net/demo/grid.html">https://100px.net/demo/grid.html</a>  <a href="mailto:&#103;&#x69;&#116;&#64;&#103;&#105;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#116;&#64;&#103;&#105;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;</a>:buuing/lucky-canvas.git |<br>| <code>可视化编辑大屏</code> |<a target="_blank" rel="noopener" href="https://gitee.com/dromara/go-view#https://gitee.com/qwdingyu/led">https://gitee.com/dromara/go-view#https://gitee.com/qwdingyu/led</a> |<br>| <code>一个大屏项目</code> |<a target="_blank" rel="noopener" href="https://data.sycxin.com/#/register/login">https://data.sycxin.com/#/register/login</a> |</p>
+<p>| <code>v6 自动执行妙淘脚本</code> | <a target="_blank" rel="noopener" href="http://qun-op-test.xbs2023.cn/?message=Process%20weiliuchaty-view%20started">http://qun-op-test.xbs2023.cn/?message=Process%20weiliuchaty-view%20started</a>  |  账号密码同妙淘 |<br>| <code>v6 gilab</code> | <a target="_blank" rel="noopener" href="http://gitlab.v6h5.cn/front-end-development/jukexiao">http://gitlab.v6h5.cn/front-end-development/jukexiao</a>  |  |<br>| <code>chatGPT</code> | <a target="_blank" rel="noopener" href="https://bestgpt.live/pandora/">https://bestgpt.live/pandora/</a> + <a target="_blank" rel="noopener" href="https://pandora.bestgpt.live/">https://pandora.bestgpt.live/</a>  |  |<br>| <code>chatGPT</code> | <a target="_blank" rel="noopener" href="https://chat.loxn.cn/#/">https://chat.loxn.cn/#/</a>  |  |<br>| <code>chatGPT</code> | <a target="_blank" rel="noopener" href="https://chat.chat828.com/#/home">https://chat.chat828.com/#/home</a>  |  |<br>| <code>electron截图</code> | <a href="https://link.zhihu.com/?target=https://github.com/chrisbing/electorn-capture-screen.git">https://link.zhihu.com/?target=https%3A//github.com/chrisbing/electorn-capture-screen.git</a> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/46043613?from_voters_page=true&amp;utm_id=0%7C">https://zhuanlan.zhihu.com/p/46043613?from_voters_page=true&amp;utm_id=0|</a></p>
+<p>其他</p>
+<p>| :- | :- |  :- |<br>| | <a target="_blank" rel="noopener" href="https://ray.so/">https://ray.so/</a>  |   |<br>|  | <a target="_blank" rel="noopener" href="https://baidu.leeay.com/">https://baidu.leeay.com/</a>  |   |<br>| | <a target="_blank" rel="noopener" href="https://chat-simplifier.imzbb.cc/zh">https://chat-simplifier.imzbb.cc/zh</a>  |   |</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网址</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E7%BD%91%E5%9D%80-%E7%BD%91%E5%9D%80/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-杂项-编码类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/">编码类型</a>
+    </h1>
+  
+
+        
+        <a href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h2 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h2><p>1)如何存储英文字符<br><code>ASCII</code>: 总共有128个,对所有的英文字母和符号进行编码<br><code>Latin-1</code>: 总共有256，兼容<code>ASCII</code>码，同时对欧洲符号进行了编码，<code>mysql</code>默认使用这种编码。</p>
+<p>(2)如何存储中文字符<br><code>GB2312</code>:对常用的6千多汉字进行编码，兼容<code>ASCII</code>码<br><code>GBK</code>: 对2万多汉字进行了编码，兼容<code>GB2312</code><br><code>BIG5</code>: 台湾繁体字编码，兼容<code>ASCII</code>码<br><code>Unicode</code>: 对世界上主流的国家常用的语言进行了编码，<code>兼容ASCII</code>，不兼容<code>GB2312,GBK,BIG5</code>，具体分为<code>UTF-8，UTF-16，UTF-32</code>存储方案</p>
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E6%9D%82%E9%A1%B9-%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-软件工具-git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-git/">git</a>
+    </h1>
+  
+
+        
+        <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-git/" class="archive-article-date">
+  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <h1 id="一-说明"><a href="#一-说明" class="headerlink" title="一.说明"></a>一.说明</h1><p>git 管理软件 <code>tree</code><br>git 管理软件  <code>GitHub Desktop</code></p>
+<p>git 指令有很多 这边我只说我有用到并且会用的指令</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git log</td>
+<td>查看所有commit信息</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git init</td>
+<td>初始化仓库</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git reset –hard **</td>
+<td>回退到 ** 版本</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git pull</td>
+<td>拉取最新版本</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git pull origin **</td>
+<td>拉取远程**分支的最新版本</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git add .</td>
+<td>保存所有文件到缓存区</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git rm</td>
+<td>取消已经add的文件</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git config –global user.name “姓名”</td>
+<td>设置姓名</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git config –global user.email “邮箱”</td>
+<td>设置邮箱</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>切换分支</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git checkout 分支名</td>
+<td>切换到选择的分支名</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git checkout -b  分支名</td>
+<td>从当前分支 切出一个分支 并到你切出的分支里去</td>
+<td>创建新分支</td>
+</tr>
+<tr>
+<td>git checkout – 文件路径</td>
+<td>恢复一个文件到上次提交之后的状态</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>删除分支</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git branch</td>
+<td>查看分支</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git branch -d **</td>
+<td>删除本地**分支</td>
+<td>-</td>
+</tr>
+<tr>
+<td>`git branch</td>
+<td>grep -v ‘master’</td>
+<td>xargs git branch -D`</td>
+</tr>
+<tr>
+<td>`git branch</td>
+<td>grep ‘lsh/add’</td>
+<td>xargs git branch -D`</td>
+</tr>
+<tr>
+<td>git push origin –delete **</td>
+<td>删除远程**分支</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>提交</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git commit -m “这是一次提交”</td>
+<td>提交一次备注为”这是一次提交”的版本</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git commit –amend -m “修改上一次提交的内容”</td>
+<td>push后再修改 会要先执行pull在push造成两条修改内容一样但备注不一样的修改记录</td>
+<td>不要修改已经被发布的提交</td>
+</tr>
+<tr>
+<td><code>git commit -m</code> 后，又修改<code>git add</code> 然后<code>git comman --amend &quot;&quot;</code></td>
+<td>可以将此次修改内容和上次的合在一起 只产生一条修改记录</td>
+<td>不要修改已经被发布的提交</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>stash相关</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git stash</td>
+<td>将未提交的修改到stash</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git stash pop</td>
+<td>从stash中恢复最后一次暂存的修改，并从stash中删除这条记录(apply则不会执行删除)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git stash apply stash@{0}</td>
+<td>暂时恢复 stash的[0]的记录</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git stash drop stash@{0}</td>
+<td>回退暂时恢复的修改</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git stash list</td>
+<td>查看stash列表</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git stash clear</td>
+<td>删除所有stash列表中的内容</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git stash drop stash@{0}</td>
+<td>删除stash列表中第一个</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>diff 比较</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git diff origin/master</td>
+<td>比较当前文字和 origin/master 的内容变化</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git diff origin/master  –stat</td>
+<td>比较当前分支和 origin/master 的文件变化-只显示文件</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git diff 分支..分支</td>
+<td>比较两个分支的区别</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>合并</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git merge **</td>
+<td>当前分支 合并 ** 的内容变化</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git merge –abort</td>
+<td>取消此次合并-在合并为完成前</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>git cherry-pick **</code></td>
+<td>合并某次commit改变的内容</td>
+<td>** = log 查看的 版本值</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>remote</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git remote -v</td>
+<td>添加一个远程仓库</td>
+<td></td>
+</tr>
+<tr>
+<td>git remote add origin   远程仓库地址</td>
+<td>设置远程仓库地址</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>reset 回退</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git reset</td>
+<td>放弃本地修改 回退到上次提交的版本</td>
+<td></td>
+</tr>
+<tr>
+<td>git reset –hard 分支名</td>
+<td>放弃本地修改 回退到 分支名 一致的版本</td>
+<td></td>
+</tr>
+<tr>
+<td>git reset –hard 35090b3</td>
+<td>回退到 log 信息这个时候</td>
+<td></td>
+</tr>
+<tr>
+<td>git reset –keep 5090b</td>
+<td>回退版本 并保留当前未提交的本地修改</td>
+<td></td>
+</tr>
+<tr>
+<td>git revert 2cd3623b597252d32407179577fa12cfeb87ab63</td>
+<td>回滚此次修改（比如 先<code>a1</code>次 将 <code>123 改成 456</code>. 后a2次将 <code>777 改成 888</code> <code>revert a1或者a2</code> 只会回滚<code>a1或者a2</code>的修改）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em>子模块相关</em></td>
+<td><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/100214931">https://zhuanlan.zhihu.com/p/100214931</a></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>一 添加子模块</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>git submodule add</code> 子模块仓库地址</td>
+<td>添加子仓库到当前项目</td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>添加子仓库到当前项目<br>此时多出一个文件夹是子项目内容  一个<code>.gitmodules</code>文件,这个配置文件中保存了子仓库项目的URL和在主仓库目录下的映射关系</td>
+<td></td>
+</tr>
+<tr>
+<td><code>git submodule update --init --recursive</code></td>
+<td>初始化子模块（下载最新）</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>二 克隆含有子项目的仓库</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>方法一：</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>git submodule init</code></td>
+<td>用来初始化本地配置文件,也就是向.git/config文件中写入了子模块的信息</td>
+<td></td>
+</tr>
+<tr>
+<td><code>git submodule update</code></td>
+<td>从子仓库中抓取所有的数据找到父级仓库对应的那次子仓库的提交id并且检出到父项目的目录中</td>
+<td></td>
+</tr>
+<tr>
+<td>方法二：</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>git clone --recursive</code></td>
+<td>Git会自动帮我们递归去拉取我们所有的父仓库和子仓库的相关内容。</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>三 提交代码</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>先提交子仓库 后提交父仓库</td>
+<td>对每个子仓库进行了提交,然后父级仓库就会记录下每个子仓库的提交,然后正常提交父级仓库即可</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>四 拉取代码</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>先拉取子 后拉取父</td>
+<td>对每个子仓库进行了提交,然后父级仓库就会记录下每个子仓库的提交,然后正常提交父级仓库即可</td>
+<td></td>
+</tr>
+<tr>
+<td><code>git submodule foreach git pull origin master</code></td>
+<td>对所有的子仓库执行<code>foreach</code> 后跟的代码，比如此处就是 对所有子仓库拉取<code>master</code>上最新代码</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>五 删除子模块</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git submodule deinit</td>
+<td>完全地删除一个子模块</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="二-各种示例"><a href="#二-各种示例" class="headerlink" title="二.各种示例"></a>二.各种示例</h1><h2 id="1-回滚"><a href="#1-回滚" class="headerlink" title="1.回滚"></a>1.回滚</h2><p>  <code>git reset --hard  b498237e6dc1fc4861c79d3314d07285995b</code><br>  强制提交：<code>git push -f origin develop</code></p>
+<h2 id="2-比较时忽略默认文件"><a href="#2-比较时忽略默认文件" class="headerlink" title="2.比较时忽略默认文件"></a>2.比较时忽略默认文件</h2><p>比较时忽略默认文件<br>执行命令 <code>git config diff.nodiff.command true</code><br>项目根目录添加 <code>.gitattributes</code> 文件 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public/dist/**/* diff=nodiff <span class="comment"># public/dist/ diff=nodiff会不生效，所以只能通过通配符来设置，设置为public/dist/**/* diff=nodiff</span></span><br></pre></td></tr></table></figure>
+<p>  这时我们就可以连起来理解了，当我们运行<code>git diff</code>命令的时候，git就会读取<code>.gitattributes</code>的配置，<br>  然后发现遇到向匹配的文件的时候，需要执行<code>nodiff</code>指令，而<code>nodiff</code>指令被我们此前配置成了true 直接返回true，于是，就直接“跳过”了。</p>
+<h2 id="3-提交已有的tag"><a href="#3-提交已有的tag" class="headerlink" title="3.提交已有的tag"></a>3.提交已有的tag</h2><p>比如现在有个 tag v1.0.1<br>  分支  aaa 有修改 要提交的 v1.0.1</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">1.</span> 创建标签 </span><br><span class="line">  git tag v1<span class="number">.0</span><span class="number">.1</span>-light   <span class="comment">// 创建轻量标签</span></span><br><span class="line">  git tag -a v1<span class="number">.0</span><span class="number">.1</span> -m <span class="string">&quot;这是备注信息&quot;</span> <span class="comment">// 创建带备注标签(推荐)</span></span><br><span class="line"><span class="comment">// 2. 提交内容</span></span><br><span class="line">  git tag -a v1<span class="number">.0</span><span class="number">.1</span> loglogloglog -m <span class="string">&quot;这是备注信息&quot;</span> <span class="comment">// 针对特定commit版本SHA创建标签</span></span><br><span class="line"><span class="comment">// 3. 删除标签 </span></span><br><span class="line">  git tag -d v1<span class="number">.0</span><span class="number">.0</span> <span class="comment">// 删除标签(本地) 如果你本地有v1.0.1 那么要先删除然后创建</span></span><br><span class="line">  git push origin --<span class="keyword">delete</span> <span class="number">1.0</span><span class="number">.0</span> <span class="comment">// 删除标签(远程)</span></span><br><span class="line"><span class="comment">// 4. 提交</span></span><br><span class="line">  git push origin v1<span class="number">.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-初次提交本地库到远程库"><a href="#4-初次提交本地库到远程库" class="headerlink" title="4.初次提交本地库到远程库"></a>4.初次提交本地库到远程库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git init                // 初始化git项目</span><br><span class="line">git checkout -b master  新建一个master分支</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;&quot;</span></span><br><span class="line">git remote add origin   远程仓库地址</span><br><span class="line">git remote -v           查看当前连接的远程库地址</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-提交忽略文件"><a href="#5-提交忽略文件" class="headerlink" title="5.提交忽略文件"></a>5.提交忽略文件</h2><p>在做第一次提交之前，首先应该定义好这个忽略文件列表<code>.gitignore</code><br>内容写法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">path/to/file.ext              <span class="comment"># 忽略一个特定的文件</span></span><br><span class="line">filename.ext                  <span class="comment"># 忽略项目下所有这个名字的文件</span></span><br><span class="line"> *.ext                        <span class="comment"># 忽略项目下所有这个类型的文件：例如</span></span><br><span class="line">path/to/folder/*              <span class="comment"># 忽略一个特定目录下的所用文件：例如　</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-gitHub静态访问地址"><a href="#6-gitHub静态访问地址" class="headerlink" title="6.gitHub静态访问地址"></a>6.gitHub静态访问地址</h2><p>1.查看当前项目的静态访问地址<br> 首先你的保证你项目有<code>index.html</code>。一般VUE文件需要的是打包后的文件<br> 进入项目<br> 上面选择 <code>Settings</code>   左侧默认是 <code>Options</code><br> 拉倒底部的位置，找到<code>GitHub Pages</code><br> 下拉选框 选择 <code>master</code> 分支 然后点击 <code>save</code> 保存 那么 <code>GitHub Pages</code> 下发一点会出现一个地址 https:/???/???/.<br> 这是你就可以使用https:/???/???/index  || https:/???/???/dist/index.html 访问了 </p>
+<h2 id="7-github-配置ssh-免密码"><a href="#7-github-配置ssh-免密码" class="headerlink" title="7.github 配置ssh/免密码"></a>7.github 配置ssh/免密码</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/D2073307388/article/details/108834061">https://blog.csdn.net/D2073307388/article/details/108834061</a><br>1 生成.ssh的文件夹,里面是id_ras私钥和id_rsa.pub公钥<br>2 登录你的github<code>点击头像</code>会出来一个列表找到<code>Settings</code>然后点进去,在左侧的目录里会有一个<code>SSH and GPG keys</code>的选项,点进去然后创建一个<code>New SSH key</code><br>然后找到你的公钥<code>id_rsa.pub</code>用记事本打开,全部复制里面的内容,之后添加到你的key输入框里面,title可以随便命名,最后点击<code>Add SSH key</code>,就完成啦<br>3 再次提交还是要输入密码那是因为用的是https而不是ssh，更新origin为ssh格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote remove origin</span><br><span class="line">git remote add origin ssh地址</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="8-push推送多个git地址"><a href="#8-push推送多个git地址" class="headerlink" title="8.push推送多个git地址"></a>8.push推送多个git地址</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url --add origin 地址 <span class="comment">//给origin添加一个远程push地址，这样一次push就能同时push到两个地址上面</span></span><br><span class="line"></span><br><span class="line">git remote -v <span class="comment">//查看是否多了一条push地址（这个可不执行）</span></span><br><span class="line"></span><br><span class="line">git push origin master -f <span class="comment">// 如果第一次推不上去代码，可以使用强推的方式</span></span><br><span class="line"></span><br><span class="line">git remote set-url --<span class="keyword">delete</span> origin 地址 <span class="comment">// 删除一个远程地址</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="20-了解但我没用过的"><a href="#20-了解但我没用过的" class="headerlink" title="20.了解但我没用过的"></a>20.了解但我没用过的</h2><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git fetch 分支</td>
+<td>指抓取 不合并</td>
+<td>-</td>
+</tr>
+<tr>
+<td>rebase 比merge复杂的合并 会改写你的记录历史</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>git rebase branch-分支</td>
+<td>合并分支</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git rebase –abort</td>
+<td>退出合并</td>
+<td>-</td>
+</tr>
+<tr>
+<td>git rebase –continue</td>
+<td>解除冲突后继续重置</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h1 id="三-提交规范"><a href="#三-提交规范" class="headerlink" title="三.提交规范"></a>三.提交规范</h1><ul>
+<li>feat 增加新功能</li>
+<li>fix 修复问题/BUG</li>
+<li>style 代码风格相关无影响运行结果的</li>
+<li>perf 优化/性能提升</li>
+<li>refactor 重构/样式</li>
+<li>revert 撤销修改版本回退</li>
+<li>test 测试相关</li>
+<li>docs 文档/注释</li>
+<li>chore 依赖更新/脚手架配置修改其他修改等不属于以上类型的其他类型(日常事务)</li>
+<li>workflow 工作流改进</li>
+<li>ci 持续集成</li>
+<li>types 类型定义文件更改</li>
+<li>wip 开发中</li>
+<li>build 影响项目构建或依赖修改</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&amp;mid=2651609577&amp;idx=2&amp;sn=1ef2a6168e9a1a61e9f0000ae4987399&amp;chksm=80228e28b755073e60b80e9c3de377e7e29bea25fddb1c0da387acf82b5a8140a2b72388ef33&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&amp;mid=2651609577&amp;idx=2&amp;sn=1ef2a6168e9a1a61e9f0000ae4987399&amp;chksm=80228e28b755073e60b80e9c3de377e7e29bea25fddb1c0da387acf82b5a8140a2b72388ef33&amp;scene=21#wechat_redirect</a></p>
+<ul>
+<li><p>1 pnpm i cz-customizable -D<br>“cz-customizable”: “^7.0.0”</p>
+</li>
+<li><p>2 add <code>.cz-config.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">// type 类型（定义之后，可通过上下键选择）</span></span><br><span class="line">   types: [</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;feat&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;feat:     新增功能&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;fix&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;fix:      修复 bug&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;docs&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;docs:     文档变更&#x27;</span> &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      value: <span class="string">&#x27;style&#x27;</span>,</span><br><span class="line">      name: <span class="string">&#x27;style:    代码格式（不影响功能，例如空格、分号等格式修正）&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      value: <span class="string">&#x27;refactor&#x27;</span>,</span><br><span class="line">      name: <span class="string">&#x27;refactor: 代码重构（不包括 bug 修复、功能新增）&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;perf&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;perf:     性能优化&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;revert&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;revert:     撤销修改&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;test&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;test:     测试相关&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;ci&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;ci:     持续集成&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;wip&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;wip:     开发中&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;types&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;types:     类型定义文件更改&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">value</span>: <span class="string">&#x27;chore&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;chore:     其他修改, 比如构建流程, 依赖管理、版本好修正.&#x27;</span> &#125;</span><br><span class="line">  ],</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// scope 类型（定义之后，可通过上下键选择）</span></span><br><span class="line">  scopes: [</span><br><span class="line">    [<span class="string">&#x27;components&#x27;</span>, <span class="string">&#x27;组件相关&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;hooks&#x27;</span>, <span class="string">&#x27;hook 相关&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;utils&#x27;</span>, <span class="string">&#x27;utils 相关&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;element-ui&#x27;</span>, <span class="string">&#x27;对 element-ui 的调整&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;styles&#x27;</span>, <span class="string">&#x27;样式相关&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;deps&#x27;</span>, <span class="string">&#x27;项目依赖&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;auth&#x27;</span>, <span class="string">&#x27;对 auth 修改&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;other&#x27;</span>, <span class="string">&#x27;其他修改&#x27;</span>],</span><br><span class="line">    <span class="comment">// 如果选择 custom，后面会让你再输入一个自定义的 scope。也可以不设置此项，把后面的 allowCustomScopes 设置为 true</span></span><br><span class="line">    [<span class="string">&#x27;custom&#x27;</span>, <span class="string">&#x27;以上都不是？我要自定义&#x27;</span>]</span><br><span class="line">  ].map(<span class="function">(<span class="params">[value, description]</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      value,</span><br><span class="line">      name: <span class="string">`<span class="subst">$&#123;value.padEnd(<span class="number">30</span>)&#125;</span> (<span class="subst">$&#123;description&#125;</span>)`</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;),</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 是否允许自定义填写 scope，在 scope 选择的时候，会有 empty 和 custom 可以选择。</span></span><br><span class="line">  <span class="comment">// allowCustomScopes: true,</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// allowTicketNumber: false,</span></span><br><span class="line">  <span class="comment">// isTicketNumberRequired: false,</span></span><br><span class="line">  <span class="comment">// ticketNumberPrefix: &#x27;TICKET-&#x27;,</span></span><br><span class="line">  <span class="comment">// ticketNumberRegExp: &#x27;\\d&#123;1,5&#125;&#x27;,</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 针对每一个 type 去定义对应的 scopes，例如 fix</span></span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">    scopeOverrides: &#123;</span></span><br><span class="line"><span class="comment">      fix: [</span></span><br><span class="line"><span class="comment">        &#123; name: &#x27;merge&#x27; &#125;,</span></span><br><span class="line"><span class="comment">        &#123; name: &#x27;style&#x27; &#125;,</span></span><br><span class="line"><span class="comment">        &#123; name: &#x27;e2eTest&#x27; &#125;,</span></span><br><span class="line"><span class="comment">        &#123; name: &#x27;unitTest&#x27; &#125;</span></span><br><span class="line"><span class="comment">      ]</span></span><br><span class="line"><span class="comment">    &#125;,</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 交互提示信息</span></span><br><span class="line">  messages: &#123;</span><br><span class="line">    type: <span class="string">&#x27;确保本次提交遵循：前端代码规范！\n选择你要提交的类型：&#x27;</span>,</span><br><span class="line">    scope: <span class="string">&#x27;\n选择一个 scope（可选）：&#x27;</span>,</span><br><span class="line">    <span class="comment">// 选择 scope: custom 时会出下面的提示</span></span><br><span class="line">    customScope: <span class="string">&#x27;请输入自定义的 scope：&#x27;</span>,</span><br><span class="line">    subject: <span class="string">&#x27;填写简短精炼的变更描述：\n&#x27;</span>,</span><br><span class="line">    body: <span class="string">&#x27;填写更加详细的变更描述（可选）。使用 &quot;|&quot; 换行：\n&#x27;</span>,</span><br><span class="line">    breaking: <span class="string">&#x27;列举非兼容性重大的变更（可选）：\n&#x27;</span>,</span><br><span class="line">    footer: <span class="string">&#x27;列举出所有变更的 ISSUES CLOSED（可选）。例如: #31, #34：\n&#x27;</span>,</span><br><span class="line">    confirmCommit: <span class="string">&#x27;确认提交？&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置只有 type 选择了 feat 或 fix，才询问 breaking message</span></span><br><span class="line">  allowBreakingChanges: [<span class="string">&#x27;feat&#x27;</span>, <span class="string">&#x27;fix&#x27;</span>],</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 跳过要询问的步骤</span></span><br><span class="line">  skipQuestions: [<span class="string">&#x27;scope&#x27;</span>, <span class="string">&#x27;body&#x27;</span>, <span class="string">&#x27;breaking&#x27;</span>, <span class="string">&#x27;footer&#x27;</span>],</span><br><span class="line"></span><br><span class="line">  subjectLimit: <span class="number">100</span>, <span class="comment">// subject 限制长度</span></span><br><span class="line">  breaklineChar: <span class="string">&#x27;|&#x27;</span> <span class="comment">// 换行符，支持 body 和 footer</span></span><br><span class="line">  <span class="comment">// footerPrefix : &#x27;ISSUES CLOSED:&#x27;</span></span><br><span class="line">  <span class="comment">// askForBreakingChangeFirst : true,</span></span><br><span class="line">&#125;</span><br><span class="line">* <span class="number">3</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3 安装完之后在 <code>package.json</code> 中添加如下节点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">   <span class="string">&quot;git&quot;</span>: <span class="string">&quot;git add . &amp;&amp; git-cz&quot;</span></span><br><span class="line"> &#125;,</span><br><span class="line"><span class="string">&quot;config&quot;</span>: &#123;</span><br><span class="line">   <span class="string">&quot;commitizen&quot;</span>: &#123;</span><br><span class="line">     <span class="string">&quot;path&quot;</span>: <span class="string">&quot;node_modules/cz-customizable&quot;</span></span><br><span class="line">   &#125;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4 </p>
+<h1 id="git-add-git-commit-m-‘xxx’"><a href="#git-add-git-commit-m-‘xxx’" class="headerlink" title="git add . + git commit -m ‘xxx’ "></a>git add . + git commit -m ‘xxx’ </h1><p>npm run git</p>
+<h1 id="四-问题"><a href="#四-问题" class="headerlink" title="四.问题"></a>四.问题</h1></li>
+</ul>
+<h2 id="1-git-提交-报错没有权限"><a href="#1-git-提交-报错没有权限" class="headerlink" title="1. git 提交 报错没有权限"></a>1. git 提交 报错没有权限</h2><p>  1.确定ssh配置是否有问题。 ssh -T 路径 是否成功 成功的情况下<br>  2.成功的情况下 卸载git 重新安装 有个配置项要改成 使用外部的sshkey而不是内置的sshkey</p>
+<h2 id="2-阿里云克隆失败"><a href="#2-阿里云克隆失败" class="headerlink" title="2. 阿里云克隆失败"></a>2. 阿里云克隆失败</h2><p> 1.确定 凭据管理器 里面登入信息是不是本人的<br> 2.确定 ssh 公钥配置<br> 3.克隆https的方式克隆</p>
+<h2 id="3-阿里云克隆失败"><a href="#3-阿里云克隆失败" class="headerlink" title="3. 阿里云克隆失败"></a>3. 阿里云克隆失败</h2><p><code>id_rsa</code> 同级目录新建<code>config</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">HostKeyAlgorithms +ssh-rsa</span><br><span class="line">PubkeyAcceptedKeyTypes +ssh-rsa</span><br></pre></td></tr></table></figure>
         
       
 
@@ -209,7 +1585,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-nginx/">展开全文 >></a>
+          <a class="article-more-a" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-git/">展开全文 >></a>
         </p>
       
 
@@ -331,1009 +1707,9 @@
 
 
   
-    <article id="post-软件工具-软件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-%E8%BD%AF%E4%BB%B6/">各种用的软件</a>
-    </h1>
-  
-
-        
-        <a href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-%E8%BD%AF%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>下载地址</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Sourcetree</td>
-<td><a target="_blank" rel="noopener" href="https://www.sourcetreeapp.com/">https://www.sourcetreeapp.com/</a></td>
-<td>git提交工具</td>
-</tr>
-<tr>
-<td>GitHubDesktop</td>
-<td>我的网盘</td>
-<td>git提交工具</td>
-</tr>
-<tr>
-<td>snipaste</td>
-<td>贴图工具。截取多个地方图片 合并成一张。 F1截图 F3贴图。</td>
-<td></td>
-</tr>
-<tr>
-<td>pxcook</td>
-<td><a target="_blank" rel="noopener" href="https://www.fancynode.com.cn/pxcook">https://www.fancynode.com.cn/pxcook</a> 测量psd 文件尺寸工具</td>
-<td></td>
-</tr>
-<tr>
-<td>ps</td>
-<td>我的网盘</td>
-<td></td>
-</tr>
-<tr>
-<td>Postman</td>
-<td>我的网盘</td>
-<td>-</td>
-</tr>
-<tr>
-<td>node</td>
-<td><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/releases/">https://nodejs.org/zh-cn/download/releases/</a></td>
-<td></td>
-</tr>
-</tbody></table>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7-%E8%BD%AF%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-1-env文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/">1-.env 文件</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><p>  <code>.env</code> 全局默认配置文件，不论什么环境都会加载合并<br>  <code>.env.development</code> 开发环境下的配置文件<br>  <code>.env.production</code>生产环境下的配置文件`</p>
-<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><p>  属性名必须以 <code>VUE_APP_</code> 开头，比如 <code>VUE_APP_XXX</code></p>
-<h2 id="文件加载"><a href="#文件加载" class="headerlink" title="文件加载"></a>文件加载</h2><p>  比如执行npm run serve命令，会自动加载.env.development文件</p>
-<p>  如果我们运行npm run serve 在就<br>  先加载.env文件，<br>  之后加载.env.development文件，<br>  两个文件有同一个项，则，后加载的文件就会覆盖掉第一个文件，<br>  也即是.env.development文件覆盖掉了.env文件的NOOE_ENV选项。</p>
-<p>　同理如果npm run build 就执行了.env和.env.development。</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="1-创建3个文件-env-develop-env-development-env-production"><a href="#1-创建3个文件-env-develop-env-development-env-production" class="headerlink" title="1.创建3个文件 .env.develop .env.development .env.production"></a>1.创建3个文件 <code>.env.develop</code> <code>.env.development</code> <code>.env.production</code></h3><p>  .env.develop 用于测试环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39; &#x2F;&#x2F; 按照线上环境的配置打包-比如是否hash命名（热更新的感觉）</span><br><span class="line">VUE_APP_CURRENTMODE &#x3D; &#39;testing&#39; &#x2F;&#x2F; 字段，用于识别</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;测试环境地址&#39; &#x2F;&#x2F; 地址，用于接口</span><br></pre></td></tr></table></figure></p>
-<p>  .env.development 用于开发环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;development&#39; &#x2F;&#x2F; 按照测试环境的配置打包</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#x2F;api&#x2F; </span><br></pre></td></tr></table></figure></p>
-<p>  .env.production 用于正式环境<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV &#x3D; &#39;production&#39;</span><br><span class="line">VUE_APP_API_BASE &#x3D; &#39;***&#39;</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-package-json文件中"><a href="#2-package-json文件中" class="headerlink" title="2.package.json文件中"></a>2.<code>package.json</code>文件中</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;serve&quot;</span>: <span class="string">&quot;vue-cli-service serve&quot;</span>,</span><br><span class="line">  <span class="string">&quot;lint&quot;</span>: <span class="string">&quot;vue-cli-service lint&quot;</span>,</span><br><span class="line">  <span class="string">&quot;build&quot;</span>: <span class="string">&quot;vue-cli-service build&quot;</span>, // 默认会走 .env.production 文件</span><br><span class="line">  <span class="string">&quot;test&quot;</span>: <span class="string">&quot;vue-cli-service build --mode develop&quot;</span> // 会走 .env.develop 文件 即声明的 --mode 后接文件明</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="3-自己项目中的接口URL合集文件-我的是-src-plugins-apiUrls-js"><a href="#3-自己项目中的接口URL合集文件-我的是-src-plugins-apiUrls-js" class="headerlink" title="3.自己项目中的接口URL合集文件  我的是 src/plugins/apiUrls.js"></a>3.自己项目中的接口URL合集文件  我的是 <code>src/plugins/apiUrls.js</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const path = process.env.VUE_APP_API_BASE // 当前环境所对应的接口域名</span><br><span class="line">const urls = &#123;</span><br><span class="line">loginCheck: `<span class="variable">$&#123;path&#125;</span>465465-***8774/` // 具体接口后缀</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">export</span> default urls</span><br></pre></td></tr></table></figure>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-1-env%E6%96%87%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-网址-网址" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E7%BD%91%E5%9D%80-%E7%BD%91%E5%9D%80/">各种用的网址</a>
-    </h1>
-  
-
-        
-        <a href="/%E7%BD%91%E5%9D%80-%E7%BD%91%E5%9D%80/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <table>
-<thead>
-<tr>
-<th align="left">备注</th>
-<th align="left">备注</th>
-<th align="left">备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>Node.js v10.15.3 文档</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/fs.html">http://nodejs.cn/api/fs.html</a></td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left"><code>3-达内下载资料</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="http://code.tarena.com.cn/">http://code.tarena.com.cn/</a></td>
-<td align="left">tarenacode – code_2015</td>
-</tr>
-<tr>
-<td align="left"><code>4-动画1</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://daneden.github.io/animate.css/">https://daneden.github.io/animate.css/</a></td>
-<td align="left">定义好的动画，在项目中直接使用</td>
-</tr>
-<tr>
-<td align="left"><code>5-动画2</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="http://sc.dede58.com/xcxmb/">http://sc.dede58.com/xcxmb/</a></td>
-<td align="left">各种特效,动画</td>
-</tr>
-<tr>
-<td align="left"><code>6-boot</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.bootcss.com/">https://www.bootcss.com/</a></td>
-<td align="left">boot给我们封装好很多常用的样式</td>
-</tr>
-<tr>
-<td align="left"><code>7-初始化css</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://github.com/necolas/normalize.css">https://github.com/necolas/normalize.css</a></td>
-<td align="left">- 6.6CSS / 14 / CSS. RESET</td>
-</tr>
-<tr>
-<td align="left"><code>8-express框架</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="http://www.expressjs.com.cn/">http://www.expressjs.com.cn/</a></td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left"><code>9-Npm 包</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.npmjs.com/">https://www.npmjs.com/</a></td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left"><code>10-菜鸟教程学习</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/js/js-operators.html">https://www.runoob.com/js/js-operators.html</a></td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left"><code>11-Echarts地图详解</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_21963133/article/details/80012899">https://blog.csdn.net/qq_21963133/article/details/80012899</a></td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left"><code>12-新浪云</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://login.sina.com.cn/signup/signin.php?entry=sinacloud&amp;r=http://www.sinacloud.com/ucenter.html">https://login.sina.com.cn/signup/signin.php?entry=sinacloud&amp;r=http%3A%2F%2Fwww.sinacloud.com%2Fucenter.html</a></td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left"><code>13-正则</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://c.runoob.com/front-end/854">https://c.runoob.com/front-end/854</a></td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left"><code>14-ES6网址</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/intro">https://es6.ruanyifeng.com/#docs/intro</a></td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left"><code>15-JQ直接 src 网址</code></td>
-<td align="left">&lt;&lt;<a target="_blank" rel="noopener" href="https://libs.baidu.com/jquery/1.7.2/jquery.min.js">https://libs.baidu.com/jquery/1.7.2/jquery.min.js</a>&gt;&gt;</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://libs.baidu.com/jquery/1.7.2/jquery.min.js">https://libs.baidu.com/jquery/1.7.2/jquery.min.js</a></td>
-</tr>
-<tr>
-<td align="left">16-React直接 src 网址</td>
-<td align="left"><strong>必须先 react 然后 react-dom</strong><br><a target="_blank" rel="noopener" href="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js">https://cdn.staticfile.org/react/16.4.0/umd/react.development.js</a> 和<br><a target="_blank" rel="noopener" href="https://cdn.staticfile.org/react-dom/16.4.0/umd/reactdom.development.js">https://cdn.staticfile.org/react-dom/16.4.0/umd/reactdom.development.js</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>16-VUE源码解读</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://github.com/muwoo/blogs/tree/master/src/Vue">https://github.com/muwoo/blogs/tree/master/src/Vue</a></td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left"><code>17-我的图床</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://imgtu.com/">https://imgtu.com/</a></td>
-<td align="left">这上面得图片我大部分都放到里面去了</td>
-</tr>
-<tr>
-<td align="left"><code>17-图片压缩</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://tinypng.com/">https://tinypng.com/</a></td>
-<td align="left">图片压缩下，减少大小</td>
-</tr>
-<tr>
-<td align="left"><code>101.别人的笔记网站-我是前端</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.imqianduan.com/search/1?k=checkout">https://www.imqianduan.com/search/1?k=checkout</a></td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left"><code>102.别人的博客网站-张鑫旭</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2020/06/mobile-event-touches-zoom-sacle/">https://www.zhangxinxu.com/wordpress/2020/06/mobile-event-touches-zoom-sacle/</a></td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left"><code>103.天气插件</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="http://www.tianqi.com/plugin/">http://www.tianqi.com/plugin/</a></td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left"><code>104.在线编辑、在线预览例子</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_23501739/article/details/103032741">https://blog.csdn.net/qq_23501739/article/details/103032741</a></td>
-<td align="left"><code>下载地址</code></td>
-</tr>
-<tr>
-<td align="left"><code>慕课ui</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://app.mockplus.cn/app/12i9QXpJZN/storyboard">https://app.mockplus.cn/app/12i9QXpJZN/storyboard</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>json转js</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="http://www.dreamwu.com/tools/json/#">http://www.dreamwu.com/tools/json/#</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>js html压缩</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://tool.oschina.net/jscompress/">https://tool.oschina.net/jscompress/</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>109</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://smalldev.tools/">https://smalldev.tools/</a>)</td>
-<td align="left">代码分享床、JSON 格式化、base64 加解密、HTML/JS/CSS 格式化、压缩 SQL、生成占位图、生成测试数据等等</td>
-</tr>
-<tr>
-<td align="left"><code>1001.我的</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://u8y90p.coding-pages.com/">https://u8y90p.coding-pages.com/</a></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://zxzxac110.github.io/">https://zxzxac110.github.io/</a></td>
-</tr>
-<tr>
-<td align="left"><code>阿里云代码库</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://code.aliyun.com/">https://code.aliyun.com/</a></td>
-<td align="left">188****153</td>
-</tr>
-<tr>
-<td align="left"><code>gitee</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://gitee.com/notifications/messages/">https://gitee.com/notifications/messages/</a></td>
-<td align="left">账号  <code>4481***@qq.com</code>  <code>1889****</code></td>
-</tr>
-<tr>
-<td align="left"><code>一个装逼网址</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://ray.so/">https://ray.so/</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>pdf转word</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.alltoall.net/">https://www.alltoall.net/</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>你不会百度吗</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://baidu.leeay.com/">https://baidu.leeay.com</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>原生UI</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://uiverse.io/favorites">https://uiverse.io/favorites</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>混淆工具，加密工具</code></td>
-<td align="left">npm install javascript-obfuscator -g</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>react 后台模板</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://preview.pro.ant.design/profile/basic">https://preview.pro.ant.design/profile/basic</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>miniprogram-to-uniapp小程序转换工具</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://ext.dcloud.net.cn/plugin?id=2656">https://ext.dcloud.net.cn/plugin?id=2656</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>自定义截屏</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://github.com/likaia/js-screen-shot">https://github.com/likaia/js-screen-shot</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>一个V3架子</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://github.com/antfu/vitesse-lite">https://github.com/antfu/vitesse-lite</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>开源uniapp小程序</code></td>
-<td align="left"><a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#105;&#x74;&#101;&#101;&#46;&#99;&#111;&#x6d;">&#x67;&#x69;&#116;&#x40;&#103;&#105;&#x74;&#101;&#101;&#46;&#99;&#111;&#x6d;</a>:zxzxac110i/shopxo-uniapp.git</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>vue react 初始化化项目</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41852789/article/details/127159001?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-8-127159001-blog-126608543.235%5Ev38%5Epc_relevant_sort_base3&amp;spm=1001.2101.3001.4242.5&amp;utm_relevant_index=11">https://blog.csdn.net/qq_41852789/article/details/127159001?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-8-127159001-blog-126608543.235^v38^pc_relevant_sort_base3&amp;spm=1001.2101.3001.4242.5&amp;utm_relevant_index=11</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><strong>ui网址</strong></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>vuetify中文</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://vuetifyjs.com/zh-Hans/components/selects/">https://vuetifyjs.com/zh-Hans/components/selects/</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>element ui</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/quickstart">https://element.eleme.cn/#/zh-CN/component/quickstart</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>uView</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.uviewui.com/components/install.html">https://www.uviewui.com/components/install.html</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>vant</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/v2/#/zh-CN/form">https://vant-contrib.gitee.io/vant/v2/#/zh-CN/form</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>naiveUI</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.naiveui.com/zh-CN/os-theme/components/menu">https://www.naiveui.com/zh-CN/os-theme/components/menu</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">``</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://venoui.fdota.com/components/transition">https://venoui.fdota.com/components/transition</a></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<p>自用</p>
-<table>
-<thead>
-<tr>
-<th align="left">1</th>
-<th align="left">备注</th>
-<th align="left">备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>npm</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.npmjs.com/?track=newUserCreated">https://www.npmjs.com/?track=newUserCreated</a></td>
-<td align="left">lsh666 - 同GIT</td>
-</tr>
-<tr>
-<td align="left"><code>js 查看元素已绑定事件 js触发Tooltip</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42018258/article/details/101762593">https://blog.csdn.net/weixin_42018258/article/details/101762593</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>锁死node版本</code></td>
-<td align="left">微信我的收藏</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>axios 拦截器实现用户无感刷新 token</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/LHDd3Tol0JIORdMfFpZKaA">https://mp.weixin.qq.com/s/LHDd3Tol0JIORdMfFpZKaA</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>抽奖 转盘 老虎机</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://100px.net/demo/grid.html">https://100px.net/demo/grid.html</a>  <a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;">&#103;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;</a>:buuing/lucky-canvas.git</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>可视化编辑大屏</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://gitee.com/dromara/go-view#https://gitee.com/qwdingyu/led">https://gitee.com/dromara/go-view#https://gitee.com/qwdingyu/led</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>一个大屏项目</code></td>
-<td align="left"><a target="_blank" rel="noopener" href="https://data.sycxin.com/#/register/login">https://data.sycxin.com/#/register/login</a></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<p>| <code>v6 自动执行妙淘脚本</code> | <a target="_blank" rel="noopener" href="http://qun-op-test.xbs2023.cn/?message=Process%20weiliuchaty-view%20started">http://qun-op-test.xbs2023.cn/?message=Process%20weiliuchaty-view%20started</a>  |  账号密码同妙淘 |<br>| <code>v6 gilab</code> | <a target="_blank" rel="noopener" href="http://gitlab.v6h5.cn/front-end-development/jukexiao">http://gitlab.v6h5.cn/front-end-development/jukexiao</a>  |  |</p>
-<p>其他</p>
-<p>| :- | :- |  :- |<br>| | <a target="_blank" rel="noopener" href="https://ray.so/">https://ray.so/</a>  |   |<br>|  | <a target="_blank" rel="noopener" href="https://baidu.leeay.com/">https://baidu.leeay.com/</a>  |   |<br>| | <a target="_blank" rel="noopener" href="https://chat-simplifier.imzbb.cc/zh">https://chat-simplifier.imzbb.cc/zh</a>  |   |<br>| <code>GPT</code> | <a target="_blank" rel="noopener" href="https://chat.loxn.cn/#/">https://chat.loxn.cn/#/</a>  |  |</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网址</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E7%BD%91%E5%9D%80-%E7%BD%91%E5%9D%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-10-跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">10-跨域</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <p>什么是跨域: 一个域名下的网页，向另一个域名下的服务器请求资源.受浏览器的同源策略控制，禁止发送的</p>
-<p><code>浏览器同源(origin)策略</code>: 也称禁止跨不同源头访问资源<br>        所有浏览器都有一个安全策略: <code>禁止CORS</code><br>        禁止Cross Origin Resources Shareing<br>        浏览器规定: 请求回来的响应数据的响应头中记录的远程url必须和当前网页正在打开的url地址相同！</p>
-<p>浏览器收到数据后:<br>        会用当前地址栏中的<code>url地址和headers中的origin对比</code>！只有协议，域名，端口号完全一致！才允许网页使用数据</p>
-<h2 id="1-服务端解决跨域"><a href="#1-服务端解决跨域" class="headerlink" title="1.服务端解决跨域"></a>1.服务端解决跨域</h2><p>让服务端返回响应时，篡改响应头中响应源头的地址,nodejs为例子<br>1 手写<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app=<span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>).createServer() </span><br><span class="line">  <span class="comment">// res.send(result); // 不要用res.send了</span></span><br><span class="line">  <span class="comment">//  res.send其实是一种简写: 等效于 res.writeHead()+res.write(JSON.stringify(result))+res.end()</span></span><br><span class="line">  res.writeHead(<span class="number">200</span>,&#123; <span class="comment">//修改头部.200表示成功</span></span><br><span class="line">    <span class="string">&quot;Access-Control-Allow-Origin&quot;</span>:http:<span class="comment">//127.0.0.1:5500</span></span><br><span class="line">                       <span class="comment">//或者：“*” 代表所有</span></span><br><span class="line">  &#125;);</span><br><span class="line">  res.write(<span class="built_in">JSON</span>.stringify(result)); <span class="comment">//发送的内容</span></span><br><span class="line">  res.end(); <span class="comment">//发送</span></span><br><span class="line">  <span class="comment">//   写在原来node中代替res.send(result);的作用.每个都要写</span></span><br><span class="line">  <span class="comment">//  这样返回的数据，就被伪装成来自127.0.0.1:5500的，就可以通过浏览器的同源策略检查，可正常使用</span></span><br></pre></td></tr></table></figure><br>2 引入插件统一写 (推荐)<br>服务端nodejs安装: <code>npm i -save cors</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js中: </span></span><br><span class="line"><span class="keyword">const</span> cors=<span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>); 引入模块</span><br><span class="line">				</span><br><span class="line"> <span class="comment">//在创建端口listen()之后</span></span><br><span class="line"> app.use(cors(&#123;</span><br><span class="line">     origin:<span class="string">&quot;http://127.0.0.1:5500&quot;</span><span class="comment">//不能用*</span></span><br><span class="line"> &#125;));</span><br><span class="line"> <span class="comment">//中间件。。从此所有响应，自动带Access-Control-Allow-Origin:http://127.0.0.1:5500</span></span><br><span class="line"> <span class="comment">//万一客户端浏览器地址发生变化，只改这里origin一处即可！</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-jsonp解决跨域"><a href="#2-jsonp解决跨域" class="headerlink" title="2.jsonp解决跨域"></a>2.jsonp解决跨域</h2><p> jsonp + Promise 只能用于GET请求</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myJsonp</span> (<span class="params">url, obj</span>) </span>&#123; <span class="comment">// 地址，参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> cb = <span class="string">`jsonp<span class="subst">$&#123;<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random() * <span class="number">1000000</span>)&#125;</span>`</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      url += <span class="string">&#x27;&amp;&#x27;</span> + key + <span class="string">&#x27;=&#x27;</span> + obj[key]</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = url + <span class="string">&#x27;&amp;callback=&#x27;</span> + cb <span class="comment">// 地址 + 参数 + 回调函数名 需于后端统一命名</span></span><br><span class="line">    script.id = <span class="string">&#x27;jsonpS&#x27;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">    <span class="built_in">window</span>[cb] = <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> script = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;jsonpS&#x27;</span>);</span><br><span class="line">      <span class="built_in">document</span>.body.removeChild(script);</span><br><span class="line">      <span class="keyword">delete</span> <span class="built_in">window</span>[cb];</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">async</span> a () &#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="keyword">await</span> myJsonp (<span class="string">&#x27;http://dev-test.api.faquange.cn/apppage.php?m=Top&amp;c=getList&#x27;</span>, &#123; <span class="attr">TopCate</span>:<span class="number">1</span> &#125; )</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-ajax解决跨域"><a href="#3-ajax解决跨域" class="headerlink" title="3.ajax解决跨域"></a>3.ajax解决跨域</h2><p><code>dataType:&quot;jsonp&quot;</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line"> url: <span class="string">&quot;服务端接口地址&quot;</span>, <span class="comment">// http://localhost:3000/users/login</span></span><br><span class="line"> type: <span class="string">&quot;get|post&quot;</span>,</span><br><span class="line"> data: &#123; <span class="attr">uname</span>: <span class="string">&quot;dingding&quot;</span>, <span class="attr">upwd</span>: <span class="string">&quot;123456&quot;</span> &#125;,</span><br><span class="line"> <span class="comment">// &quot;uname=dingding&amp;upwd=123456&quot;,</span></span><br><span class="line"> <span class="comment">// 如果返回json，需要自动JSON.parse()转为js对象</span></span><br><span class="line"> dataType:<span class="string">&quot;json&quot;</span>, <span class="comment">//如果不写需要自己手动调用JSON.parse()</span></span><br><span class="line"> <span class="comment">// dataType:&quot;jsonp&quot; // jsonp 跨域</span></span><br><span class="line"> success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;   <span class="comment">// 与.then2选1</span></span><br><span class="line"> &#125;</span><br><span class="line"> &#125;).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-10-%E8%B7%A8%E5%9F%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-11-Worker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/">11-Worker</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>  <a href="/项目相关-5-解答题/#3-程序-进程-线程" target="_self">程序 进程 线程</a></p>
-<p>  <code>WebWorker</code> 新线程用于执行耗时js任务 提高网页效率<br>  <code>WebWorker</code> 执行的js任务不能有 <code>DOM/BOM/jquery</code> 代码</p>
-<p>  由于 Chrome 不允许通过本地文件访问使用Web Worker。<br>  所以可以<br>  <strong>1.更换使用其他浏览器尝试</strong><br>  <strong>2.文件部署到服务器中【上线环境解决方法】</strong></p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="1-如果js执行时间非常长，网页出现停止现象-空白"><a href="#1-如果js执行时间非常长，网页出现停止现象-空白" class="headerlink" title="1. 如果js执行时间非常长，网页出现停止现象(空白)"></a>1. 如果js执行时间非常长，网页出现停止现象(空白)</h3><p>  解决方案:创建一个新线程(Worker)让它执行耗时js任务, UI主线只负责绘制二个按钮<br>  比如<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟一个较长的js  1.js</span></span><br><span class="line"><span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> end = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">&#125; <span class="keyword">while</span> (</span><br><span class="line">  end - start &lt; <span class="number">5000</span>                 </span><br><span class="line">);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;执行完毕&quot;</span>)</span><br></pre></td></tr></table></figure><br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>模拟JS执行超时结果 1.html<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>按钮1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &lt;script src=&quot;1.js&quot;&gt;&lt;/script&gt;  。--&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 如果直接引用 1.js 会发现网页出现5s空白 或者 只有按钮1 按钮2会等5s后才出现 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 创建新对象并且新线程的执行01:js任务 不会出现空白 和只有111按钮的状况</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> w =<span class="keyword">new</span> Worker(<span class="string">&quot;./1.js&quot;</span>)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>按钮2<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="通讯"><a href="#通讯" class="headerlink" title="通讯"></a>通讯</h2><p>  <code>postMessage</code> 发送<br>  <code>onmessage</code> 接受<br>   2.js<br>   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//接收 2.hteml发送的数据</span></span><br><span class="line">  onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.console.log(<span class="string">&#x27;js接受到消息:&#x27;</span> + e.data) <span class="comment">// js接受到消息:1</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 发送</span></span><br><span class="line">postMessage(<span class="string">&quot;2&quot;</span>)</span><br></pre></td></tr></table></figure><br>   2.html<br>   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>02.html UI进程<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> w = <span class="keyword">new</span> Worker(<span class="string">&quot;./02.js&quot;</span>)</span></span><br><span class="line"><span class="javascript">  w.postMessage(<span class="string">&quot;1&quot;</span>)</span></span><br><span class="line"><span class="javascript">  w.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123; <span class="comment">// 接收</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&#x27;得到js传递的消息:&#x27;</span> + e.data) <span class="comment">// 得到js传递的消息:2</span></span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-11-Worker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-12-webSocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/">12-webSocket</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>/12.HTML5/day6<br>/ls-protogenesis-lx/websocket - 运行chat_app.js</p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><pre><code>webSocket工作方式:广播和收听
-    客户端连接到服务器上就不再断开双方都可以随时向对方发送数据</code></pre>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>下载socket.io服务器端第三方模块<br>#npm i socket.io<br>地址下载 <a target="_blank" rel="noopener" href="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js">https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js</a></p>
-<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p><strong>X.on()</strong> 接受消息<br><strong>X.emit(名称,内容)</strong> 发送消息<br><strong>connection</strong> 默认登陆触发 事件名称<br><strong>disconnect</strong> 默认登出触发 事件名称</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app=<span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>).createServer();         <span class="comment">// 1.创建一个服务对象</span></span><br><span class="line"><span class="keyword">var</span> io=<span class="built_in">require</span>(<span class="string">&quot;socket.io&quot;</span>)(app);               <span class="comment">// 2.创建一个io对象</span></span><br><span class="line">app.listen(<span class="number">3000</span>)                                <span class="comment">// 3.绑定服务器监听端口 3000</span></span><br><span class="line"><span class="keyword">var</span> clientCount=<span class="number">0</span>;                              <span class="comment">// 4.创建变量 clientCount 客户端数量</span></span><br><span class="line">io.on(<span class="string">&quot;connection&quot;</span>,<span class="function">(<span class="params">socket</span>)=&gt;</span>&#123;                  <span class="comment">// 5.为io对象绑定事件 connection  每次有人访问 都会触发此事件</span></span><br><span class="line">  clientCount++;</span><br><span class="line">  <span class="built_in">console</span>.log(socket.id) <span class="comment">// 具体属性自己百度。反正有个随机唯一的id            </span></span><br><span class="line">  <span class="keyword">var</span> nickname = <span class="string">&quot;user&quot;</span> + clientCount;            <span class="comment">// 创建对应的编号</span></span><br><span class="line">  io.emit(<span class="string">&quot;enter&quot;</span>, nickname + <span class="string">&quot;：上线&quot;</span>)         <span class="comment">// 广播事件 enter 内容nickname+&quot;上线&quot;</span></span><br><span class="line"></span><br><span class="line">  socket.on(<span class="string">&quot;message&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;               <span class="comment">// 接收客户发来事件 message</span></span><br><span class="line">    io.emit(<span class="string">&quot;list&quot;</span>, nickname + <span class="string">&quot; : &quot;</span> + data)  <span class="comment">// 广播事件 list,</span></span><br><span class="line">  &#125;)</span><br><span class="line">  socket.on(<span class="string">&quot;disconnect&quot;</span>, <span class="function">() =&gt;</span> &#123;               <span class="comment">//接收客户离开事件  默认事件 浏览器关闭后触发disconnect事件      </span></span><br><span class="line">    io.emit(<span class="string">&quot;leave&quot;</span>, nickname + <span class="string">&quot; : 退出&quot;</span>)      <span class="comment">// 广播事件 leave</span></span><br><span class="line">  &#125;)                                       </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="客服端"><a href="#客服端" class="headerlink" title="客服端"></a>客服端</h3><p><strong>io(val)</strong> 连接<br><strong>X.on()</strong> 接受消息<br><strong>X.emit(名称,内容)</strong> 发送消息</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=<span class="string">&quot;btn&quot;</span>&gt;确认申请&lt;/button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn1&quot;</span>&gt;发送&lt;/button&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn2&quot;</span>&gt;退出&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> clientSocket=io(<span class="string">&quot;ws://127.0.0.1:3000&quot;</span>); <span class="comment">// 协议名称 域名 端口号</span></span><br><span class="line"></span><br><span class="line">  clientSocket.emit(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;我一上来就说一句话&quot;</span>)        <span class="comment">// 发送到服务器的message 服务的得到了 我一上来就说一句话 并通过 list事件返回</span></span><br><span class="line"></span><br><span class="line">  clientSocket.on(<span class="string">&quot;list&quot;</span>,<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;            <span class="comment">// 接收到服务的发过来的 list消息</span></span><br><span class="line">      <span class="built_in">console</span>.log(data) <span class="comment">//输出2 我一上来就说一句话</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  clientSocket.on(<span class="string">&quot;enter&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 输出顺序按服务的返回的为准。</span></span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">// 输出1 user1上线</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  clientSocket.on(<span class="string">&quot;leave&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 这一步需要关闭别的链接webSocket的网址才能触发</span></span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">//</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.emit(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;用户提交了申请&quot;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn1&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.send(<span class="string">&quot;77777&quot;</span>) <span class="comment">// 触发服务器 message 的事件 =  clientSocket.emit(&quot;message&quot;, &quot;777777&quot;)</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn2&#x27;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    clientSocket.close() <span class="comment">// 触发服务器 disconnect 的事件 ！！类似 但不等于 clientSocket.emit(&quot;disconnect&quot;,&quot;&quot;)</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-12-webSocket/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-13-Webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/">13-Webpack</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>中文网站：<a target="_blank" rel="noopener" href="https://www.webpackjs.com/">https://www.webpackjs.com/</a></p>
-<p><strong>概念</strong>：webpack是一个javaScript应用程序的静态模块打包器.当webpack处理应用程序的时候.它会递归的构建一个关系依赖图.其中就包含应用程序需要的每一个模块（js.css.图片）.最后将所有的这些模块打包成一个资源包（bundle）文件</p>
-<p><strong>用途</strong>：资源打包后，再供客户端一次性加载，只需要请求一个文件,减少请求次数和请求数据总大小，从而提高访问效率。</p>
-<p>注意：<br>Webpack本身用于打包静态资源，通常的使用场景是：项目初步开发完成后，运行Webpack(是一个NPM扩展包)，把需要处理的静态资源打包，把得到的打包文件和HTML文件一起发布到WEB服务器(可以是Node/PHP/Java等)上供客户端访问。</p>
-<ul>
-<li>18.webpackss\webpack-myapp</li>
-</ul>
-<h3 id="使用过程"><a href="#使用过程" class="headerlink" title="使用过程"></a>使用过程</h3><p>1.创建客户端项目，编写<code>HTML/CSS/JS/</code>图片等文件</p>
-<p>2.创建项目的描述文件：<code>package.json</code><br>npm  init</p>
-<p>3.下载webpack及其依赖的模块，并添加为当前项目的 开发阶段依赖模块<br><code>npm install webpack --save-dev</code></p>
-<p>4.创建编写webpack主配置文件<br>add <code>webpack.config.js</code> 于 <code>package.json</code>在同级</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置文件.将来会被nodejs运行 所以用Nodejs的导出方式</span></span><br><span class="line"><span class="built_in">module</span>.exports=&#123; </span><br><span class="line">    mode:<span class="string">&#x27;development&#x27;</span>,         <span class="comment">// 运行模式：开发模式</span></span><br><span class="line">    <span class="comment">//mode:&#x27;production&#x27;         // 产品模式.会对代码进行压缩.打包过程会慢</span></span><br><span class="line">    entry:<span class="string">&#x27;./src/js/index2.js&#x27;</span>,  <span class="comment">//入口,入口文件.从哪个文件开始打包</span></span><br><span class="line">    output:&#123;                    <span class="comment">//出口文件.打包后输出的文件.要求使用绝对路径</span></span><br><span class="line">        path:__dirname+<span class="string">&#x27;/dist&#x27;</span>, <span class="comment">//目录.dist文件后续会自动创建</span></span><br><span class="line">        filename:<span class="string">&#x27;bundle.js&#x27;</span>    <span class="comment">//文件名称</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//3.加载器.默认情况下.webpacks只能打包JS文件.如果想打包其他格式文件需要有对应的加载器（loader）</span></span><br><span class="line">    <span class="built_in">module</span>:&#123;</span><br><span class="line">        rules:[</span><br><span class="line">            <span class="comment">//检查如果模块以css结尾的话.那么就使用指定的加载器</span></span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.css$/</span>, <span class="comment">// 正则判断文件名后缀</span></span><br><span class="line">                use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>] <span class="comment">//  npm install style-loader css-loader  --save-dev</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.scss$/</span>,</span><br><span class="line">                use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;sass-loader&#x27;</span>] <span class="comment">// npm install sass-loader node-sass --save-dev</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;   <span class="comment">//图片和字体的文件名后缀</span></span><br><span class="line">                test:<span class="regexp">/\.jpg|gif|png|bmp|eot|ttf|woff|woff2|svg$/</span>,</span><br><span class="line">                use:<span class="string">&#x27;url-loader?limit=25600&#x27;</span>  <span class="comment">//limit 大小 1024*25kb  npm install file-loader url-loader --save-dev</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins:[] <span class="comment">// 插件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>5.运行webpack，根据主配置文件对静态资源进行打包</p>
-<p>Nodejs 运行 webpack 文件<br><code>node  ./node_modules/webpack/bin/webpack.js</code></p>
-<p>或者配置为<br><code>scripts： &quot;build&quot;: &quot;webpack&quot;</code>，用 <code>npm  run  build</code>方式运行</p>
-<p>如果输入报错.先输入 <code>npm install webpack-cli –global</code>或<code>npm install webpack-cli --save-dev</code><br>再输入webpack</p>
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-13-Webpack/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目相关-16-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">16-设计模式</a>
-    </h1>
-  
-
-        
-        <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2022-10-24T03:30:10.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <h2 id="一-Observer观察者模式（也称为“订阅-发布”模式）："><a href="#一-Observer观察者模式（也称为“订阅-发布”模式）：" class="headerlink" title="一.Observer观察者模式（也称为“订阅-发布”模式）："></a>一.Observer观察者模式（也称为“订阅-发布”模式）：</h2><p>乙方声明<code>订阅(subscribe)</code>甲方；<br>在未来的某个不确定时间，甲方<code>发布(publish)</code>新消息，乙方会立即接到通知。<br>HttpClient服务采用了“观察者/订阅-发布模式”，其最核心对象为：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span>  obj  =  <span class="keyword">new</span>  Observable( );  <span class="comment">//可被观察的对象</span></span><br><span class="line"><span class="comment">//可以关注/订阅“可被观察的”对象</span></span><br><span class="line">obj.subscribe(<span class="function">()=&gt;</span>&#123; <span class="comment">//收到订阅消息时的回调函数 &#125;)</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="1-手动编写一个观察者模式"><a href="#1-手动编写一个观察者模式" class="headerlink" title="1.手动编写一个观察者模式"></a>1.手动编写一个观察者模式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// event.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Event</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.listeners = []</span><br><span class="line">  <span class="built_in">this</span>.emitedListeners = []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// on emit 不分先后</span></span><br><span class="line"><span class="comment">// 先执行 on,   on return 的是 listeners ,                return的是emit传递的内容原封不动的</span></span><br><span class="line"><span class="comment">// 先执行 emit, on return 的是 emitedListeners 保存的内容  return的是emit传递的内容集合</span></span><br><span class="line"></span><br><span class="line">Event.prototype.on = <span class="function"><span class="keyword">function</span> (<span class="params">key, fn, orEmited = false</span>) </span>&#123; <span class="comment">// key,回调函数,是否on时发现有对应的emit立即调用:(true:已有emit时调用+声明emit时调用1次，false:声明emit时调用一次) // 多次调用多次触发</span></span><br><span class="line">  <span class="keyword">if</span> (orEmited &amp;&amp; key <span class="keyword">in</span> <span class="built_in">this</span>.emitedListeners) &#123;</span><br><span class="line">    fn(...this.emitedListeners[key])</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.listeners[key] = <span class="built_in">this</span>.listeners[key] || []</span><br><span class="line">    <span class="built_in">this</span>.listeners[key].push(fn)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Event.prototype.emit = <span class="function"><span class="keyword">function</span> (<span class="params">key, ...args</span>) </span>&#123; <span class="comment">// key:(同名key会覆盖)  携带参数</span></span><br><span class="line">  <span class="built_in">this</span>.emitedListeners[key] = args</span><br><span class="line">  <span class="keyword">if</span> (key <span class="keyword">in</span> <span class="built_in">this</span>.listeners) &#123;</span><br><span class="line">    <span class="built_in">this</span>.listeners[key].forEach(<span class="function"><span class="params">fn</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        fn(...args)</span><br><span class="line">      &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="comment">// handle err</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">delete</span> <span class="built_in">this</span>.listeners[key] <span class="comment">// 一次emit对应一次on 多次emit不触发多次on</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="keyword">new</span> Event()</span><br><span class="line"><span class="comment">// 示例</span></span><br><span class="line"><span class="comment">// Event.emit(&#x27;名称&#x27;, 1) // </span></span><br><span class="line"><span class="comment">// Event.on(&#x27;名称&#x27;, (data) =&gt; &#123;console.log(data)&#125;, true) // 1</span></span><br><span class="line"><span class="comment">// Event.emit(&#x27;名称&#x27;, 2)  // on调用输出 2</span></span><br><span class="line"><span class="comment">// Event.emit(&#x27;名称&#x27;, 3) //  没有效果</span></span><br></pre></td></tr></table></figure>
-
-<p>使用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.js</span></span><br><span class="line"><span class="keyword">import</span> Event <span class="keyword">from</span> <span class="string">&#x27;./event.js&#x27;</span></span><br><span class="line">Event.on(<span class="string">&#x27;名称&#x27;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data) <span class="comment">// 输出 &#123;&#125;</span></span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.js</span></span><br><span class="line"><span class="keyword">import</span> Event <span class="keyword">from</span> <span class="string">&#x27;./event.js&#x27;</span></span><br><span class="line">Event.emit(<span class="string">&#x27;名称&#x27;</span>, &#123;&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>直接浏览器使用 / 无node环境下使用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="keyword">new</span> Event() </span><br><span class="line"><span class="comment">// 改为 const 变量 = new Event()</span></span><br><span class="line"><span class="comment">// 其它地方直接操作 变量 无需导入</span></span><br></pre></td></tr></table></figure>
-<h2 id="待续"><a href="#待续" class="headerlink" title="待续"></a>待续</h2>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1428,15 +1804,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1444,7 +1816,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1452,11 +1824,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1468,11 +1840,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1480,15 +1852,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">uniapp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1504,11 +1880,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+                <a href="javascript:void(0)" class="js-tag color5">hook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1516,7 +1892,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1528,11 +1912,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1544,11 +1928,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1556,11 +1936,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
               </li>
             
             <div class="clearfix"></div>

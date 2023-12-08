@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>消息确认框 | 历史好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用 123456789101112import &amp;#123; useMessageBox &amp;#125; from &amp;#x27;~&#x2F;components&#x2F;VMessageBox&amp;#x27;const &amp;#123; confirm &amp;#125; &#x3D; useMessageBox()const isConfirm &#x3D; await confirm(&amp;#123;  attach: &amp;#x27;#main-w">
+  <meta name="description" content="准备npm i @vitejs&#x2F;plugin-vue-jsx -D 1234567891011121314151617&#x2F;&#x2F; vite.config.tsimport vueJsx from &amp;#x27;@vitejs&#x2F;plugin-vue-jsx&amp;#x27;...plugins: [ ... vueJsx(&amp;#123;&amp;#125;) ] &#x2F;&#x2F; 识别tsxcss: &amp;#123; &#x2F;&#x2F;   modul">
 <meta property="og:type" content="article">
 <meta property="og:title" content="消息确认框">
 <meta property="og:url" content="http://yoursite.com/dome-%E6%B6%88%E6%81%AF%E7%A1%AE%E8%AE%A4%E6%A1%86-%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="历史好">
-<meta property="og:description" content="使用 123456789101112import &amp;#123; useMessageBox &amp;#125; from &amp;#x27;~&#x2F;components&#x2F;VMessageBox&amp;#x27;const &amp;#123; confirm &amp;#125; &#x3D; useMessageBox()const isConfirm &#x3D; await confirm(&amp;#123;  attach: &amp;#x27;#main-w">
+<meta property="og:description" content="准备npm i @vitejs&#x2F;plugin-vue-jsx -D 1234567891011121314151617&#x2F;&#x2F; vite.config.tsimport vueJsx from &amp;#x27;@vitejs&#x2F;plugin-vue-jsx&amp;#x27;...plugins: [ ... vueJsx(&amp;#123;&amp;#125;) ] &#x2F;&#x2F; 识别tsxcss: &amp;#123; &#x2F;&#x2F;   modul">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-11T08:37:49.929Z">
-<meta property="article:modified_time" content="2023-07-14T03:18:08.562Z">
+<meta property="article:modified_time" content="2023-12-06T01:53:39.325Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="dome">
 <meta name="twitter:card" content="summary">
@@ -171,8 +171,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p>使用</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useMessageBox &#125; <span class="keyword">from</span> <span class="string">&#x27;~/components/VMessageBox&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; confirm &#125; = useMessageBox()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isConfirm = <span class="keyword">await</span> confirm(&#123;</span><br><span class="line">  attach: <span class="string">&#x27;#main-window&#x27;</span>,</span><br><span class="line">  message: <span class="string">&#x27;提示内容&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!isConfirm) &#123;</span><br><span class="line">  <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>npm i @vitejs/plugin-vue-jsx -D</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">import</span> vueJsx <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue-jsx&#x27;</span></span><br><span class="line">...</span><br><span class="line">plugins: [ ... vueJsx(&#123;&#125;) ] <span class="comment">// 识别tsx</span></span><br><span class="line">css: &#123; <span class="comment">// </span></span><br><span class="line">  modules: &#123;</span><br><span class="line">    localsConvention: <span class="string">&#x27;camelCaseOnly&#x27;</span>, <span class="comment">// 使styles.confirmTitle可以和 styles[confirm-title] 有效的对应起来</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="comment">// app.vue</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;VMessageBox /&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; VMessageBox &#125; <span class="keyword">from</span> <span class="string">&#x27;~/components/VMessageBox&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useMessageBox &#125; <span class="keyword">from</span> <span class="string">&#x27;~/components/VMessageBox/index&#x27;</span></span><br><span class="line"><span class="keyword">import</span> CommonSvgIcon <span class="keyword">from</span> <span class="string">&#x27;~/components/common/SvgIcon.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; toast, confirm &#125; = useMessageBox()</span><br><span class="line"></span><br><span class="line">onMounted(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">var</span> bool = <span class="keyword">await</span> confirm(&#123;</span><br><span class="line">    attach: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">    message: <span class="string">&#x27;你是小明吗&#x27;</span>,</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  bool = <span class="keyword">await</span> confirm(&#123;</span><br><span class="line">    attach: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">    message: h(<span class="string">&#x27;p&#x27;</span>, <span class="literal">null</span>, [h(<span class="string">&#x27;span&#x27;</span>, <span class="literal">null</span>, <span class="string">&#x27;你是小明吗&#x27;</span>)]),</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  bool = <span class="keyword">await</span> confirm(&#123;</span><br><span class="line">    attach: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">    message: h(CommonSvgIcon, &#123;</span><br><span class="line">      name: <span class="string">&#x27;arrows-down&#x27;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  toast(&#123;</span><br><span class="line">    message: <span class="string">&#x27;我是&#x27;</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
         
       
@@ -444,15 +446,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -460,7 +458,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,11 +466,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -484,11 +482,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,15 +494,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">uniapp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,11 +522,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+                <a href="javascript:void(0)" class="js-tag color5">hook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,7 +534,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,11 +554,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,11 +570,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,11 +578,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
               </li>
             
             <div class="clearfix"></div>

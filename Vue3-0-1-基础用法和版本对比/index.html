@@ -16,7 +16,7 @@
 <meta property="og:description" content=".my-layout {     display:flex;     justify-content: space-between;   }    .my-layout .highlight {      margin: 5px;      flex:1;    }     基于 Vue3 和 TypeScript 项目大量实践后的思考Vite2 + Vue3 + TypeScript +">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-24T03:30:10.039Z">
-<meta property="article:modified_time" content="2023-04-18T07:14:55.587Z">
+<meta property="article:modified_time" content="2023-11-27T06:12:56.597Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="vue3.0">
 <meta name="twitter:card" content="summary">
@@ -199,9 +199,11 @@
 <h1 id=""><a href="#" class="headerlink" title=""></a></h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/37fTM3rdIZJuxKI_d-ukJg">基于 Vue3 和 TypeScript 项目大量实践后的思考</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/3es6ryoTHE2a5GwWRFuWoQ">Vite2 + Vue3 + TypeScript + Pinia 搭建一套企业级的开发脚手架</a><br><a target="_blank" rel="noopener" href="https://jekip.github.io/#/dashboard/console">Naive Ui Admin</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Sno0eKaOrAbdttJKNokTlg">Vue3 组件标注 TS 类型</a></p>
 <h2 id="1-常用写法-写法对比"><a href="#1-常用写法-写法对比" class="headerlink" title="1.常用写法 写法对比"></a>1.常用写法 写法对比</h2><h3 id="cli-3-0"><a href="#cli-3-0" class="headerlink" title="cli-3.0"></a>cli-3.0</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">      &lt;h2&gt;&#123;&#123;loginForm&#125;&#125;&lt;&#x2F;h2&gt;</span><br><span class="line">      &lt;input v-model&#x3D;&quot;loginForm.sms_code&quot; @keyup.enter&#x3D;&quot;login&quot; &#x2F;&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123;&#125;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    id: &#123;</span><br><span class="line">      type: [String, Number],</span><br><span class="line">      default: &#39;&#39;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      loginForm:&#123;</span><br><span class="line">        sms_code:&#39;&#39;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  filters: &#123;&#125;,</span><br><span class="line">  computed: &#123;&#125;,</span><br><span class="line">  watch: &#123;&#125;,</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    this.loginForm.sms_code &#x3D; &#39;验证码&#39;</span><br><span class="line">   &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    async login()&#123;</span><br><span class="line">      let res &#x3D; await this.$api.getToken(loginForm.value)</span><br><span class="line">      this.$store.commit(&#39;user&#x2F;setInfo&#39;, res)</span><br><span class="line">      this.$router.push(&#123; path: &#39;&#x2F;&#39; &#125;)</span><br><span class="line">      proxy.$toast(&#39;登录成功！&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="vue3-1"><a href="#vue3-1" class="headerlink" title="vue3.1"></a>vue3.1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h2&gt;&#123;&#123;loginForm&#125;&#125;&lt;&#x2F;h2&gt;</span><br><span class="line">    &lt;input v-model.trim&#x3D;&quot;loginForm.sms_code&quot; @keyup.enter&#x3D;&quot;login&quot; &#x2F;&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; defineComponent, getCurrentInstance, ref, onMounted &#125; from &#39;vue&#39;</span><br><span class="line">import &#123; useStore &#125; from &quot;vuex&quot;;</span><br><span class="line">import &#123; useRouter &#125; from &quot;vue-router&quot;;</span><br><span class="line">import $api from &quot;@&#x2F;plugins&#x2F;api.ts&quot;;</span><br><span class="line"></span><br><span class="line">export default defineComponent(&#123;</span><br><span class="line">  setup () &#123;</span><br><span class="line">    const store &#x3D; useStore();</span><br><span class="line">    const router &#x3D; useRouter();</span><br><span class="line">    const &#123; proxy &#125; &#x3D; getCurrentInstance();</span><br><span class="line">    let loginForm &#x3D; ref(&#123;</span><br><span class="line">      mobile: &#39;&#39;,</span><br><span class="line">      sms_code: &#39;&#39;,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    const login &#x3D; async () &#x3D;&gt; &#123;</span><br><span class="line">      let res &#x3D; await $api.getToken(loginForm.value) </span><br><span class="line">      store.commit(&#39;user&#x2F;setInfo&#39;, res)</span><br><span class="line">      router.push(&#123; path: &#39;&#x2F;&#39; &#125;)</span><br><span class="line">      proxy.$toast(&#39;登录成功！&#39;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onMounted(() &#x3D;&gt; &#123;</span><br><span class="line">      loginForm.value.sms_code &#x3D; &#39;验证码&#39;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      loginForm,</span><br><span class="line">      login</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="vue3-1"><a href="#vue3-1" class="headerlink" title="vue3.1"></a>vue3.1</h3><p>API选项式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h2&gt;&#123;&#123;loginForm&#125;&#125;&lt;&#x2F;h2&gt;</span><br><span class="line">    &lt;input v-model.trim&#x3D;&quot;loginForm.sms_code&quot; @keyup.enter&#x3D;&quot;login&quot; &#x2F;&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; defineComponent, getCurrentInstance, ref, onMounted &#125; from &#39;vue&#39;</span><br><span class="line">import &#123; useStore &#125; from &quot;vuex&quot;;</span><br><span class="line">import &#123; useRouter &#125; from &quot;vue-router&quot;;</span><br><span class="line">import $api from &quot;@&#x2F;plugins&#x2F;api.ts&quot;;</span><br><span class="line"></span><br><span class="line">export default defineComponent(&#123;</span><br><span class="line">  setup () &#123;</span><br><span class="line">    const store &#x3D; useStore();</span><br><span class="line">    const router &#x3D; useRouter();</span><br><span class="line">    const &#123; proxy &#125; &#x3D; getCurrentInstance();</span><br><span class="line">    let loginForm &#x3D; ref(&#123;</span><br><span class="line">      mobile: &#39;&#39;,</span><br><span class="line">      sms_code: &#39;&#39;,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    const login &#x3D; async () &#x3D;&gt; &#123;</span><br><span class="line">      let res &#x3D; await $api.getToken(loginForm.value) </span><br><span class="line">      store.commit(&#39;user&#x2F;setInfo&#39;, res)</span><br><span class="line">      router.push(&#123; path: &#39;&#x2F;&#39; &#125;)</span><br><span class="line">      proxy.$toast(&#39;登录成功！&#39;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onMounted(() &#x3D;&gt; &#123;</span><br><span class="line">      loginForm.value.sms_code &#x3D; &#39;验证码&#39;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      loginForm,</span><br><span class="line">      login</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="vue3-2-tsx-setup"><a href="#vue3-2-tsx-setup" class="headerlink" title="vue3.2  .tsx  setup()"></a>vue3.2  .tsx  setup()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang&#x3D;&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref,withDefaults,watch,computed,nextTick onMounted &#125; from &#39;vue&#39;</span><br><span class="line">import &#123; useRoute, useRouter &#125; from &quot;vue-router&quot;;</span><br><span class="line">import &#123; useAppStore &#125; from &#39;@&#x2F;stores&#x2F;app&#39;</span><br><span class="line"></span><br><span class="line">const router &#x3D; useRouter()</span><br><span class="line">const route &#x3D; useRoute()</span><br><span class="line">const appStore &#x3D; useAppStore()</span><br><span class="line">const domRef &#x3D; ref(null)</span><br><span class="line">const state &#x3D; reactive(&#123;</span><br><span class="line">        count:6</span><br><span class="line">      &#125;)</span><br><span class="line">&#x2F;&#x2F; $emit</span><br><span class="line">const emit &#x3D; defineEmits&lt;&#123;</span><br><span class="line">  (e: &#39;submit&#39;, v: Record&lt;string, any&gt;): void</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; porp</span><br><span class="line">const props &#x3D; withDefaults(defineProps&lt;&#123;</span><br><span class="line">  url: string,</span><br><span class="line">  contactItem: Record&lt;string, any&gt;,</span><br><span class="line">  zIndex?: number,</span><br><span class="line">&#125;&gt;(), &#123;</span><br><span class="line">  url: &#39;&#39;,</span><br><span class="line">  contactItem: () &#x3D;&gt; (&#123;&#125;)</span><br><span class="line">  zIndex: 10000,</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; 计算属性 vuex</span><br><span class="line">const getMesssageUserInfoSwitch &#x3D; computed(() &#x3D;&gt; &#123;</span><br><span class="line">  return appStore.messsageUserInfoSwitch</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; 监听</span><br><span class="line">watch(count, (count, prevCount) &#x3D;&gt; &#123;&#125;)</span><br><span class="line">watch(() &#x3D;&gt; state.count, (count, prevCount) &#x3D;&gt; &#123;&#125;)</span><br><span class="line">function fun () &#123;</span><br><span class="line">  router.push(&#123; path: &#39;&#x2F;&#39; &#125;) &#x2F;&#x2F; 跳转路由</span><br><span class="line">  console.log(route.query) &#x2F;&#x2F; 获取地址栏参数</span><br><span class="line">  emit(&#39;submit&#39;,&#123;&#125;) &#x2F;&#x2F; 使用emit</span><br><span class="line">  domRef.xxx() &#x2F;&#x2F; 使用子组件导出的数据defineExpose</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 导出</span><br><span class="line">defineExpose(&#123;</span><br><span class="line">    count</span><br><span class="line">&#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang&#x3D;&quot;scss&quot; scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="vue3-2-tsx-setup"><a href="#vue3-2-tsx-setup" class="headerlink" title="vue3.2  .tsx  setup()"></a>vue3.2  .tsx  setup()</h3><p>组合式 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang&#x3D;&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref,withDefaults,watch,computed,nextTick onMounted &#125; from &#39;vue&#39;</span><br><span class="line">import &#123; useRoute, useRouter &#125; from &quot;vue-router&quot;;</span><br><span class="line">import &#123; useAppStore &#125; from &#39;@&#x2F;stores&#x2F;app&#39;</span><br><span class="line"></span><br><span class="line">const router &#x3D; useRouter()</span><br><span class="line">const route &#x3D; useRoute()</span><br><span class="line">const appStore &#x3D; useAppStore()</span><br><span class="line">const domRef &#x3D; ref(null)</span><br><span class="line">const state &#x3D; reactive(&#123;</span><br><span class="line">        count:6</span><br><span class="line">      &#125;)</span><br><span class="line">&#x2F;&#x2F; $emit</span><br><span class="line">const emit &#x3D; defineEmits&lt;&#123;</span><br><span class="line">  (e: &#39;submit&#39;, v: Record&lt;string, any&gt;): void</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; porp</span><br><span class="line">const props &#x3D; withDefaults(defineProps&lt;&#123;</span><br><span class="line">  url: string,</span><br><span class="line">  contactItem: Record&lt;string, any&gt;,</span><br><span class="line">  zIndex?: number,</span><br><span class="line">&#125;&gt;(), &#123;</span><br><span class="line">  url: &#39;&#39;,</span><br><span class="line">  contactItem: () &#x3D;&gt; (&#123;&#125;)</span><br><span class="line">  zIndex: 10000,</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; 计算属性 vuex</span><br><span class="line">const getMesssageUserInfoSwitch &#x3D; computed(() &#x3D;&gt; &#123;</span><br><span class="line">  return appStore.messsageUserInfoSwitch</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; 监听</span><br><span class="line">watch(count, (count, prevCount) &#x3D;&gt; &#123;&#125;)</span><br><span class="line">watch(() &#x3D;&gt; state.count, (count, prevCount) &#x3D;&gt; &#123;&#125;)</span><br><span class="line">function fun () &#123;</span><br><span class="line">  router.push(&#123; path: &#39;&#x2F;&#39; &#125;) &#x2F;&#x2F; 跳转路由</span><br><span class="line">  console.log(route.query) &#x2F;&#x2F; 获取地址栏参数</span><br><span class="line">  emit(&#39;submit&#39;,&#123;&#125;) &#x2F;&#x2F; 使用emit</span><br><span class="line">  domRef.xxx() &#x2F;&#x2F; 使用子组件导出的数据defineExpose</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 导出</span><br><span class="line">defineExpose(&#123;</span><br><span class="line">    count</span><br><span class="line">&#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang&#x3D;&quot;scss&quot; scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>#</p>
 <h2 id="2-各种版本写法对比"><a href="#2-各种版本写法对比" class="headerlink" title="2.各种版本写法对比"></a>2.各种版本写法对比</h2><p>如果没有特殊声明 3.1写法 同3.2写法一样</p>
@@ -454,8 +456,8 @@
     </a>
   
   
-    <a href="/Vue3-0-1-%E6%90%AD%E5%BB%BA%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">1.搭建配置</div>
+    <a href="/Vue3-0-3-%E6%8F%92%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3.插件</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -600,15 +602,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,7 +614,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -624,11 +622,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,11 +638,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,15 +650,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">uniapp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,11 +678,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+                <a href="javascript:void(0)" class="js-tag color5">hook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,7 +690,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,11 +710,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -716,11 +726,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -728,11 +734,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
               </li>
             
             <div class="clearfix"></div>

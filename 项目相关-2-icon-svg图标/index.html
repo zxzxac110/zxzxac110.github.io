@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>2-优雅使用icon svg图标 | 历史好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1 安装插件  npm install svg-sprite-loader -D 2 创建组件add  components&#x2F;svgIcon.vue 12345678910111213141516171819202122232425262728293031323334353637383940414243&lt;template&gt;  &lt;svg :class&#x3D;&quot;svgClass&amp;">
+  <meta name="description" content="一.vue21 安装插件  npm install svg-sprite-loader -D 2 创建组件add  components&#x2F;svgIcon.vue 12345678910111213141516171819202122232425262728293031323334353637383940414243&lt;template&gt;  &lt;svg :class&#x3D;&quot;svg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2-优雅使用icon svg图标">
 <meta property="og:url" content="http://yoursite.com/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-2-icon-svg%E5%9B%BE%E6%A0%87/index.html">
 <meta property="og:site_name" content="历史好">
-<meta property="og:description" content="1 安装插件  npm install svg-sprite-loader -D 2 创建组件add  components&#x2F;svgIcon.vue 12345678910111213141516171819202122232425262728293031323334353637383940414243&lt;template&gt;  &lt;svg :class&#x3D;&quot;svgClass&amp;">
+<meta property="og:description" content="一.vue21 安装插件  npm install svg-sprite-loader -D 2 创建组件add  components&#x2F;svgIcon.vue 12345678910111213141516171819202122232425262728293031323334353637383940414243&lt;template&gt;  &lt;svg :class&#x3D;&quot;svg">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-24T03:30:10.054Z">
-<meta property="article:modified_time" content="2022-10-24T03:30:10.054Z">
+<meta property="article:modified_time" content="2023-11-21T03:58:29.005Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="项目相关">
 <meta name="twitter:card" content="summary">
@@ -171,7 +171,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h2 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="1 安装插件"></a>1 安装插件</h2><p>  npm install svg-sprite-loader -D</p>
+          <h1 id="一-vue2"><a href="#一-vue2" class="headerlink" title="一.vue2"></a>一.vue2</h1><h2 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="1 安装插件"></a>1 安装插件</h2><p>  npm install svg-sprite-loader -D</p>
 <h2 id="2-创建组件"><a href="#2-创建组件" class="headerlink" title="2 创建组件"></a>2 创建组件</h2><p>add  components/svgIcon.vue</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;svg :class=<span class="string">&quot;svgClass&quot;</span> aria-hidden=<span class="string">&quot;true&quot;</span>&gt;</span><br><span class="line">    &lt;use :xlink:href=<span class="string">&quot;iconName&quot;</span>/&gt;</span><br><span class="line">  &lt;/svg&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="built_in">export</span> default &#123;</span><br><span class="line">    name: <span class="string">&#x27;svgIcon&#x27;</span>,</span><br><span class="line">    props: &#123;</span><br><span class="line">      iconClass: &#123;</span><br><span class="line">        <span class="built_in">type</span>: String,</span><br><span class="line">        required: <span class="literal">true</span></span><br><span class="line">      &#125;,</span><br><span class="line">      className: &#123;</span><br><span class="line">        <span class="built_in">type</span>: String,</span><br><span class="line">        default: <span class="string">&#x27;&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">      <span class="function"><span class="title">iconName</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> `<span class="comment">#icon-$&#123;this.iconClass&#125;`</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function"><span class="title">svgClass</span></span>() &#123;</span><br><span class="line">        <span class="keyword">if</span> (this.className) &#123;</span><br><span class="line">          <span class="built_in">return</span> <span class="string">&#x27;svg-icon &#x27;</span> + this.className</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">return</span> <span class="string">&#x27;svg-icon&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"> </span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">  .svg-icon &#123;</span><br><span class="line">    width: 1em;</span><br><span class="line">    height: 1em;</span><br><span class="line">    vertical-align: -0.18em;</span><br><span class="line">    fill: currentColor;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="3-创建-插件-plugins-icon-js"><a href="#3-创建-插件-plugins-icon-js" class="headerlink" title="3 创建 插件 plugins/icon.js"></a>3 创建 插件 plugins/icon.js</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import Vue from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">import SvgIcon from <span class="string">&#x27;@/components/svgIcon&#x27;</span>// svg组件</span><br><span class="line"></span><br><span class="line">// register globally</span><br><span class="line">Vue.component(<span class="string">&#x27;svg-icon&#x27;</span>, SvgIcon)</span><br><span class="line"></span><br><span class="line">const requireAll = requireContext =&gt; requireContext.keys().map(requireContext)</span><br><span class="line">const req = require.context(<span class="string">&#x27;../svgs&#x27;</span>, <span class="literal">false</span>, /\.svg$/)</span><br><span class="line">const iconMap = requireAll(req)</span><br></pre></td></tr></table></figure>
@@ -182,6 +182,13 @@
 
 <h2 id="6-2-配置webpack-base-conf-js中的规则-未实验-网上寻找-cli2-0"><a href="#6-2-配置webpack-base-conf-js中的规则-未实验-网上寻找-cli2-0" class="headerlink" title="6.2 配置webpack.base.conf.js中的规则 - 未实验 - 网上寻找 - cli2.0"></a>6.2 配置webpack.base.conf.js中的规则 - 未实验 - 网上寻找 - cli2.0</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line"> ...其他代码省略</span><br><span class="line"> module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      ...其他代码省略</span><br><span class="line">      &#123; &#x2F;&#x2F; 这个花括号中都是新增的规则</span><br><span class="line">        test: &#x2F;\.svg$&#x2F;,</span><br><span class="line">        loader: &#39;svg-sprite-loader&#39;,</span><br><span class="line">        include: [path.resolve(__dirname, &quot;..&#x2F;src&#x2F;icons&quot;)], &#x2F;&#x2F; 确保这个路径正确</span><br><span class="line">        options: &#123;</span><br><span class="line">          symbolId: &#39;icon-[name]&#39;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123; &#x2F;&#x2F; 这个规则中新增了exclude这一行</span><br><span class="line">        test: &#x2F;\.(png|jpe?g|gif|svg)(\?.*)?$&#x2F;,</span><br><span class="line">        exclude: [path.resolve(__dirname, &quot;..&#x2F;src&#x2F;icons&quot;)], &#x2F;&#x2F; 确保这个路径正确</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: &#39;url-loader&#39;,</span><br><span class="line">          query: &#123;</span><br><span class="line">            limit: 10000,</span><br><span class="line">            name: &#39;imgs&#x2F;[name]--[folder].[ext]&#39;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 <h2 id="7-使用"><a href="#7-使用" class="headerlink" title="7 使用"></a>7 使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg-icon :icon-class=<span class="string">&quot;&quot;</span>&gt;&lt;/svg-icon&gt;</span><br><span class="line">// icon-class = svg文件名</span><br></pre></td></tr></table></figure>
+
+<h1 id="二-vue3"><a href="#二-vue3" class="headerlink" title="二.vue3"></a>二.vue3</h1><p> vue3.0/1.搭建配置/6.svg</p>
+<h1 id="三-vue3自己实现-当上述插件出现问题的时候-我们可以自己实现"><a href="#三-vue3自己实现-当上述插件出现问题的时候-我们可以自己实现" class="headerlink" title="三.vue3自己实现-当上述插件出现问题的时候 我们可以自己实现"></a>三.vue3自己实现-当上述插件出现问题的时候 我们可以自己实现</h1><h2 id="1-声明组件"><a href="#1-声明组件" class="headerlink" title="1.声明组件"></a>1.声明组件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;i class&#x3D;&quot;es-icon&quot; v-html&#x3D;&quot;icon&quot;&gt;&lt;&#x2F;i&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang&#x3D;&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; computed &#125; from &#39;vue&#39;</span><br><span class="line">import &#123; getIcon &#125; from &#39;.&#x2F;icon&#39;</span><br><span class="line"></span><br><span class="line">const props &#x3D; defineProps(&#123; name: String &#125;)</span><br><span class="line">const icon &#x3D; computed(() &#x3D;&gt; getIcon(props.name))</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped lang&#x3D;&quot;scss&quot;&gt;</span><br><span class="line">.es-icon &#123;</span><br><span class="line">  --color: inherit;</span><br><span class="line">  height: 1em;</span><br><span class="line">  width: 1em;</span><br><span class="line">  line-height: 1em;</span><br><span class="line">  display: inline-flex;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line">  position: relative;</span><br><span class="line">  fill: currentColor;</span><br><span class="line">  color: var(--color);</span><br><span class="line">  font-size: inherit;</span><br><span class="line">  font-style: normal;</span><br><span class="line">  svg &#123;</span><br><span class="line">    height: 1em;</span><br><span class="line">    width: 1em;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// icon.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> svgs = <span class="keyword">import</span>.meta.glob(<span class="string">&#x27;../../../assets/svgs/*.svg&#x27;</span>, &#123; eager: <span class="literal">true</span>, <span class="keyword">as</span>: <span class="string">&#x27;raw&#x27;</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getIcon = <span class="function">(<span class="params">name?: <span class="built_in">string</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!name) <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">return</span> svgs[<span class="string">`../../../assets/svgs/<span class="subst">$&#123;name&#125;</span>.svg`</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h2><p><code>&lt;CommonIcon name=&quot;add&quot; class=&quot;font-20&quot; style=&quot;color: #f00&quot;&gt;&lt;/CommonIcon&gt;</code></p>
+<p>#<br>#<br>#</p>
+
         
       
 
@@ -296,18 +303,18 @@
   
 <nav id="article-nav">
   
-    <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-17-package%E4%B8%8Epackage-lock/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          17-package与package-lock
+          16-设计模式
         
       </div>
     </a>
   
   
-    <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-4-gh-pages/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">4-gh-pages</div>
+    <a href="/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3-17-package%E4%B8%8Epackage-lock/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">17-package与package-lock</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -452,15 +459,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,7 +471,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,11 +479,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,11 +495,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,15 +507,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">uniapp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,11 +535,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+                <a href="javascript:void(0)" class="js-tag color5">hook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,7 +547,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,11 +567,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,11 +583,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,11 +591,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
               </li>
             
             <div class="clearfix"></div>

@@ -16,7 +16,7 @@
 <meta property="og:description" content="模块: 就是一个封装好的功能体 包: 是一个目录模块，里边包含多个文件，其中有一个文件命名为package.json，是包说明文件，含有包的信息 CommonJS: 是一个标准规范.是JS向服务器端发展的规范 npm: 包管理工具，安装nodejs的时候会附带安装，用于管理包，包括下载，上传，升级 1.模块 导入 导出  模块就是一个封装好的功能体  在nodejs下模块分为  1.自定义模块">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-24T03:30:10.023Z">
-<meta property="article:modified_time" content="2022-10-24T03:30:10.023Z">
+<meta property="article:modified_time" content="2023-11-14T08:07:04.151Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="node J S">
 <meta name="twitter:card" content="summary">
@@ -220,12 +220,12 @@
 
 <h2 id="6-zlib模块对服务器响应压缩"><a href="#6-zlib模块对服务器响应压缩" class="headerlink" title="6.zlib模块对服务器响应压缩"></a>6.zlib模块对服务器响应压缩</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Const zlib&#x3D;require(&#39;zlib&#39;)                           &#x2F;&#x2F; 引用zlib模块</span><br><span class="line">&#39;Content-Encoding&#39;:&#39;gzip&#39;                            &#x2F;&#x2F; 设置压缩类型为GZIP</span><br><span class="line">Var gzip&#x3D;zlib.createGzip()                           &#x2F;&#x2F; 创建压缩</span><br><span class="line">Fs.createReadStream(&#39;666.html&#39;).pipe(gzip).pipe(res) &#x2F;&#x2F; 读取的文件流放入压缩.发送给浏览器</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输入 /list 页面显示 666.html 内容</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> zlib = <span class="built_in">require</span>(<span class="string">&#x27;zlib&#x27;</span>) <span class="comment">// zlib</span></span><br><span class="line"><span class="keyword">var</span> a = http.createServer();</span><br><span class="line">a.listen(<span class="number">7758</span>);</span><br><span class="line">a.on(<span class="string">&#x27;request&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (req.url === <span class="string">&#x27;/login&#x27;</span>) &#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/html&#x27;</span> <span class="comment">// 没有这个 默认为纯文本.无法体现H2效果</span></span><br><span class="line">    &#125;)</span><br><span class="line">    res.write(<span class="string">&#x27;&lt;h2&gt;please login&lt;/h2&gt;&#x27;</span>);</span><br><span class="line">    res.end()</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (req.url === <span class="string">&#x27;/list&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> data = fs.readFileSync(<span class="string">&#x27;666.html&#x27;</span>) <span class="comment">// 读取文件666</span></span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123;              <span class="comment">// 设置状态</span></span><br><span class="line">      <span class="string">&#x27;Content-Encoding&#x27;</span>: <span class="string">&#x27;gzip&#x27;</span>,       <span class="comment">// 头信息 ，压缩类型</span></span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/html&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">var</span> gzip = zlib.createGzip()             <span class="comment">// 创建gzip压缩</span></span><br><span class="line">    fs.createReadStream(<span class="string">&#x27;666.html&#x27;</span>).pipe(gzip)<span class="comment">// 通过管道压缩                              </span></span><br><span class="line">      .pipe(res);                               <span class="comment">// 通过管道响应对象</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// res.end();  不能和压缩一起用 必须每行加res.end()</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输入 /list 页面显示 666.html 内容</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> zlib = <span class="built_in">require</span>(<span class="string">&#x27;zlib&#x27;</span>) <span class="comment">// zlib</span></span><br><span class="line"><span class="keyword">var</span> a = http.createServer();</span><br><span class="line">a.listen(<span class="number">7758</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a.on(<span class="string">&#x27;request&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (req.url === <span class="string">&#x27;/login&#x27;</span>) &#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/html&#x27;</span> <span class="comment">// 没有这个 默认为纯文本.无法体现H2效果</span></span><br><span class="line">    &#125;)</span><br><span class="line">    res.write(<span class="string">&#x27;&lt;h2&gt;please login&lt;/h2&gt;&#x27;</span>);</span><br><span class="line">    res.end()</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (req.url === <span class="string">&#x27;/list&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> data = fs.readFileSync(<span class="string">&#x27;666.html&#x27;</span>) <span class="comment">// 读取文件666</span></span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123;              <span class="comment">// 设置状态</span></span><br><span class="line">      <span class="string">&#x27;Content-Encoding&#x27;</span>: <span class="string">&#x27;gzip&#x27;</span>,       <span class="comment">// 头信息 ，压缩类型</span></span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/html&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">var</span> gzip = zlib.createGzip()             <span class="comment">// 创建gzip压缩</span></span><br><span class="line">    fs.createReadStream(<span class="string">&#x27;666.html&#x27;</span>).pipe(gzip)<span class="comment">// 通过管道压缩                              </span></span><br><span class="line">      .pipe(res);                               <span class="comment">// 通过管道响应对象</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// res.end();  不能和压缩一起用 必须每行加res.end()</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="7-session会话模块"><a href="#7-session会话模块" class="headerlink" title="7.session会话模块"></a>7.session会话模块</h2><p> <strong>11.vue ui / day1 / 5session</strong><br> -将数据保存session对象<br>  <code>req.session.uid = 2;</code>    #正确<br>  req.session.id = 2;     #错误 #为什么不能用id原因，session对象自己有一个属性id</p>
 <p> -从session中获取数据<br>  <code>var uid = req.session.uid;</code></p>
  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 服务器node  app.js</span></span><br><span class="line"><span class="keyword">var</span> server = express();</span><br><span class="line"><span class="comment">// (1)引入express-session模块</span></span><br><span class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">&quot;express-session&quot;</span>)</span><br><span class="line">server.use(session(&#123; <span class="comment">// 配置express-session模块</span></span><br><span class="line">  secret:<span class="string">&quot;128位字符串&quot;</span>, <span class="comment">// 自定义字符串用于加密数据使用</span></span><br><span class="line">  resave:<span class="literal">true</span>,          <span class="comment">// 每次请求更新数据</span></span><br><span class="line">  saveUninitialized:<span class="literal">true</span>   <span class="comment">// 保存初始化数据</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 具体路由 比如 routers/user.js</span></span><br><span class="line"> server.get(<span class="string">&quot;/login&quot;</span>,<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> uname = req.query.uname;</span><br><span class="line">   <span class="keyword">var</span> upwd = req.query.upwd;</span><br><span class="line">   <span class="keyword">var</span> sql = <span class="string">&quot;SELECT id FROM xz_login WHERE uname = ? AND upwd=md5(?)&quot;</span>;</span><br><span class="line">   pool.query(sql, [uname,upwd], <span class="function">(<span class="params">err,result</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">   <span class="keyword">if</span> (result.length == <span class="number">0</span>)&#123;</span><br><span class="line">     res.send(&#123;<span class="attr">code</span>:<span class="number">-1</span>,<span class="attr">msg</span>:<span class="string">&quot;用户名或密码有误&quot;</span>&#125;);</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     req.session.uid = result[<span class="number">0</span>].id; <span class="comment">// 保存</span></span><br><span class="line">     <span class="built_in">console</span>.log(req.session);</span><br><span class="line">     res.send(&#123;<span class="attr">code</span>:<span class="number">1</span>,<span class="attr">msg</span>:<span class="string">&quot;登录成功&quot;</span>&#125;)  </span><br><span class="line">   &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;);</span><br><span class="line"> <span class="comment">// 另一路由接口 可根据是否有保存的值 进行操作</span></span><br><span class="line"> server.get(<span class="string">&quot;/addcart&quot;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">var</span> uid = req.session.uid; <span class="comment">// 获取</span></span><br><span class="line">   <span class="keyword">if</span> (!uid) &#123;</span><br><span class="line">     res.send(&#123; <span class="attr">code</span>: <span class="number">-1</span>, <span class="attr">msg</span>: <span class="string">&quot;请先登录&quot;</span> &#125;)</span><br><span class="line">     <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> &#123; lid, price, lname &#125; = req.query;</span><br><span class="line">   <span class="keyword">var</span> sql = <span class="string">&quot;SELECT id FROM xz_cart WHERE uid=? AND lid=?&quot;</span></span><br><span class="line">   pool.query(sql, [uid, lid], <span class="function">(<span class="params">err, result</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">     <span class="keyword">var</span> sql = <span class="string">&quot;&quot;</span></span><br><span class="line">     <span class="keyword">if</span> (result.length == <span class="number">0</span>) &#123;</span><br><span class="line">       sql = <span class="string">`INSERT INTO xz_cart VALUES (NULL,<span class="subst">$&#123;lid&#125;</span>,<span class="subst">$&#123;uid&#125;</span>,1,&#x27;<span class="subst">$&#123;lname&#125;</span>&#x27;,<span class="subst">$&#123;price&#125;</span>,&#x27;01.jpg&#x27;)`</span></span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       sql = <span class="string">`UPDATE xz_cart SET count=count+1 WHERE uid=<span class="subst">$&#123;uid&#125;</span> AND lid=<span class="subst">$&#123;lid&#125;</span>`</span></span><br><span class="line">     &#125;</span><br><span class="line">     pool.query(sql, <span class="function">(<span class="params">err, result</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">       res.send(&#123; <span class="attr">code</span>: <span class="number">1</span>, <span class="attr">msg</span>: <span class="string">&quot;添加成功&quot;</span> &#125;)</span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 具体路由 比如 routers/user.js</span></span><br><span class="line">  server.get(<span class="string">&quot;/login&quot;</span>,<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> uname = req.query.uname;</span><br><span class="line">    <span class="keyword">var</span> upwd = req.query.upwd;</span><br><span class="line">    <span class="keyword">var</span> sql = <span class="string">&quot;SELECT id FROM xz_login WHERE uname = ? AND upwd=md5(?)&quot;</span>;</span><br><span class="line">    pool.query(sql, [uname,upwd], <span class="function">(<span class="params">err,result</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">    <span class="keyword">if</span> (result.length == <span class="number">0</span>)&#123;</span><br><span class="line">      res.send(&#123;<span class="attr">code</span>:<span class="number">-1</span>,<span class="attr">msg</span>:<span class="string">&quot;用户名或密码有误&quot;</span>&#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      req.session.uid = result[<span class="number">0</span>].id; <span class="comment">// 保存</span></span><br><span class="line">      <span class="built_in">console</span>.log(req.session);</span><br><span class="line">      res.send(&#123;<span class="attr">code</span>:<span class="number">1</span>,<span class="attr">msg</span>:<span class="string">&quot;登录成功&quot;</span>&#125;)  </span><br><span class="line">    &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.on(<span class="string">&#x27;request&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (req.url === <span class="string">&#x27;/search&#x27;</span>) &#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/html&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">var</span> upwd = req.query.upwd;</span><br><span class="line">    <span class="keyword">var</span> sql = <span class="string">&quot;SEreq.query.sql</span></span><br><span class="line"><span class="string">    res.write(&#x27;&lt;h2&gt;&lt;/h2&gt;&#x27;);</span></span><br><span class="line"><span class="string">    res.end()</span></span><br><span class="line"><span class="string">  &#125; </span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  // 另一路由接口 可根据是否有保存的值 进行操作</span></span><br><span class="line"><span class="string">  server.get(&quot;</span>/addcart<span class="string">&quot;, (req, res) =&gt; &#123;</span></span><br><span class="line"><span class="string">    var uid = req.session.uid; // 获取</span></span><br><span class="line"><span class="string">    if (!uid) &#123;</span></span><br><span class="line"><span class="string">      res.send(&#123; code: -1, msg: &quot;</span>请先登录<span class="string">&quot; &#125;)</span></span><br><span class="line"><span class="string">      return;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    var &#123; lid, price, lname &#125; = req.query;</span></span><br><span class="line"><span class="string">    var sql = &quot;</span>SELECT id FROM xz_cart WHERE uid=? AND lid=?<span class="string">&quot;</span></span><br><span class="line"><span class="string">    pool.query(sql, [uid, lid], (err, result) =&gt; &#123;</span></span><br><span class="line"><span class="string">      if (err) throw err;</span></span><br><span class="line"><span class="string">      var sql = &quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">      if (result.length == 0) &#123;</span></span><br><span class="line"><span class="string">        sql = `INSERT INTO xz_cart VALUES (NULL,$&#123;lid&#125;,$&#123;uid&#125;,1,&#x27;$&#123;lname&#125;&#x27;,$&#123;price&#125;,&#x27;01.jpg&#x27;)`</span></span><br><span class="line"><span class="string">      &#125; else &#123;</span></span><br><span class="line"><span class="string">        sql = `UPDATE xz_cart SET count=count+1 WHERE uid=$&#123;uid&#125; AND lid=$&#123;lid&#125;`</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">      pool.query(sql, (err, result) =&gt; &#123;</span></span><br><span class="line"><span class="string">        if (err) throw err;</span></span><br><span class="line"><span class="string">        res.send(&#123; code: 1, msg: &quot;</span>添加成功<span class="string">&quot; &#125;)</span></span><br><span class="line"><span class="string">      &#125;)</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string">  &#125;)</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="8-跨域模块"><a href="#8-跨域模块" class="headerlink" title="8.跨域模块"></a>8.跨域模块</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js中: </span></span><br><span class="line"> <span class="comment">//在创建端口listen()之后</span></span><br><span class="line"> app.use(cors(&#123;</span><br><span class="line">     origin:<span class="string">&quot;http://127.0.0.1:5500&quot;</span><span class="comment">//不能用*</span></span><br><span class="line"> &#125;));</span><br><span class="line"> <span class="comment">//中间件。。从此所有响应，自动带Access-Control-Allow-Origin:http://127.0.0.1:5500</span></span><br><span class="line"> <span class="comment">//万一客户端浏览器地址发生变化，只改这里origin一处即可！</span></span><br><span class="line"><span class="keyword">const</span> cors = <span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>);</span><br><span class="line">...</span><br><span class="line"><span class="keyword">var</span> server = listen();</span><br><span class="line">server.use(cors(&#123;</span><br><span class="line">  <span class="comment">// 允许跨域访问程序地址列表</span></span><br><span class="line">  origin:[ <span class="comment">// 最好不用 *</span></span><br><span class="line">    <span class="string">&quot;http://127.0.0.1:8080&quot;</span>,</span><br><span class="line">    <span class="string">&quot;http://localhost:8080&quot;</span></span><br><span class="line">  ],</span><br><span class="line">   credentials:<span class="literal">true</span> <span class="comment">// 是否请求验证，没有session 就 false</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
 <p>当然你也可以看看 <a href="/项目相关-10-跨域/">手写服务端解决跨域–让服务端返回响应时，篡改响应头中响应源头的地址</a></p>
@@ -355,8 +355,8 @@
     </a>
   
   
-    <a href="/Node-js-4-express%E6%A8%A1%E5%9D%97%E6%A1%86%E6%9E%B6/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">4-express模块</div>
+    <a href="/Node-js-3-mysql%E6%A8%A1%E5%9D%97%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3-mysql模块和连接池</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -501,15 +501,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,7 +513,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,11 +521,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,11 +537,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,15 +549,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">uniapp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,11 +577,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+                <a href="javascript:void(0)" class="js-tag color5">hook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,7 +589,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,11 +609,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,11 +625,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,11 +633,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
               </li>
             
             <div class="clearfix"></div>

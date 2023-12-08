@@ -16,7 +16,7 @@
 <meta property="og:description" content="使用https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;388415620   npm install electron -g vue add electron-builder 选择 13.0 如果不成功 重新 npm i 2.1 vite + vue3 + electron-builderhttps:&#x2F;&#x2F;www.jb51.net&#x2F;article&#x2F;263205.html 123456789n">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-21T09:51:24.416Z">
-<meta property="article:modified_time" content="2023-07-24T09:08:51.347Z">
+<meta property="article:modified_time" content="2023-11-01T07:42:10.794Z">
 <meta property="article:author" content="历史好">
 <meta property="article:tag" content="Electron">
 <meta name="twitter:card" content="summary">
@@ -179,9 +179,12 @@
 <h2 id="2-1-vite-vue3-electron-builder"><a href="#2-1-vite-vue3-electron-builder" class="headerlink" title="2.1 vite + vue3 + electron-builder"></a>2.1 vite + vue3 + electron-builder</h2><p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/263205.html">https://www.jb51.net/article/263205.html</a></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm install cnpm -g --registry=https:<span class="comment">//registry.npm.taobao.org</span></span><br><span class="line"><span class="comment">// 打包</span></span><br><span class="line">cnpm  i electron --dev</span><br><span class="line">cnpm  i vue-cli-plugin-electron-builder --dev</span><br><span class="line">cnpm  i electron-devtools-installer --dev</span><br><span class="line"></span><br><span class="line"><span class="comment">// 热更新</span></span><br><span class="line">cnpm  i concurrently -D</span><br><span class="line">cnpm  i wait-on -D</span><br></pre></td></tr></table></figure>
 
+<p>###</p>
+<p><code>desktop-tools</code> <code>xcb</code> 推荐使用 electron-builder 指令</p>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45787691/article/details/126546986">https://blog.csdn.net/qq_45787691/article/details/126546986</a></p>
-<p>electron-builder.json</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    appId: <span class="string">&quot;lethe.com&quot;</span>,</span><br><span class="line">    productName: <span class="string">&quot;my-project&quot;</span>, <span class="comment">// 项目名，也是生成的安装文件名，即wyDemo.exe</span></span><br><span class="line">    copyright: <span class="string">&quot;lethe Copyright © 2022&quot;</span>, <span class="comment">// 版权信息</span></span><br><span class="line">    files: [<span class="string">&quot;./main.js&quot;</span>, <span class="string">&quot;./dist&quot;</span>]</span><br><span class="line">    extraFiles: [</span><br><span class="line">      <span class="comment">// 把指定的资源复制到程序根目录，即把server文件夹的内容复制到程序根目录，这里server文件夹下的内容相当于我的后台，我在background.js中有相应的处理。</span></span><br><span class="line">      <span class="string">&quot;./server&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">    directories: &#123;</span><br><span class="line">      output: <span class="string">&quot;dists&quot;</span>, <span class="comment">// 输出文件路径</span></span><br><span class="line">    &#125;,</span><br><span class="line">    win: &#123;</span><br><span class="line">      <span class="comment">// win相关配置</span></span><br><span class="line">      icon: <span class="string">&quot;./favicon.ico&quot;</span>, <span class="comment">// 图标， 256 * 256 大小</span></span><br><span class="line">      requestedExecutionLevel: <span class="string">&quot;requireAdministrator&quot;</span>, <span class="comment">//获取管理员权限</span></span><br><span class="line">      target: [<span class="string">&quot;nsis&quot;</span>, <span class="string">&quot;zip&quot;</span>], <span class="comment">// 利用nsis制作安装程序</span></span><br><span class="line">    &#125;,</span><br><span class="line">    nsis: &#123;</span><br><span class="line">      oneClick: <span class="literal">false</span>, <span class="comment">// 是否一键安装</span></span><br><span class="line">      allowElevation: <span class="literal">true</span>, <span class="comment">// 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。</span></span><br><span class="line">      allowToChangeInstallationDirectory: <span class="literal">true</span>, <span class="comment">// 允许修改安装目录</span></span><br><span class="line">      <span class="comment">// installerIcon: &quot;./favicon.ico&quot;, // 安装图标</span></span><br><span class="line">      <span class="comment">// uninstallerIcon: &quot;./favicon.ico&quot;, // 卸载图标</span></span><br><span class="line">      <span class="comment">// installerHeaderIcon: &quot;./favicon.ico&quot;, // 安装时头部图标</span></span><br><span class="line">      createDesktopShortcut: <span class="literal">true</span>, <span class="comment">// 创建桌面图标</span></span><br><span class="line">      createStartMenuShortcut: <span class="literal">true</span>, <span class="comment">// 创建开始菜单图标</span></span><br><span class="line">      shortcutName: <span class="string">&quot;leDom&quot;</span>, <span class="comment">// 图标名称(项目名称)</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="electron-builder-json"><a href="#electron-builder-json" class="headerlink" title="electron-builder.json"></a>electron-builder.json</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 该内容可以写入到 package.json 使用 build: 以下内容</span></span><br><span class="line">&#123;</span><br><span class="line">    appId: <span class="string">&quot;lethe.com&quot;</span>,</span><br><span class="line">    productName: <span class="string">&quot;桌面助手&quot;</span>, <span class="comment">// 项目名，也是生成的安装文件名，即wyDemo.exe</span></span><br><span class="line">    copyright: <span class="string">&quot;xxxx © 2022&quot;</span>, <span class="comment">// 版权信息</span></span><br><span class="line">    directories: &#123;</span><br><span class="line">      output: <span class="string">&quot;build&quot;</span>, <span class="comment">// 输出文件路径</span></span><br><span class="line">    &#125;,</span><br><span class="line">    files: [<span class="string">&quot;./main.js&quot;</span>, <span class="string">&quot;./dist&quot;</span>] <span class="comment">// 需要打包的文件有哪些</span></span><br><span class="line">    <span class="comment">// &quot;files&quot;: [</span></span><br><span class="line">    <span class="comment">//   &quot;dist&quot;,</span></span><br><span class="line">    <span class="comment">//   &quot;main-dist&quot;</span></span><br><span class="line">    <span class="comment">// ],</span></span><br><span class="line">    <span class="comment">// extraFiles: [</span></span><br><span class="line">    <span class="comment">//   // 把指定的资源复制到程序根目录，即把server文件夹的内容复制到程序根目录，这里server文件夹下的内容相当于我的后台，我在background.js中有相应的处理。</span></span><br><span class="line">    <span class="comment">//   &quot;./server&quot;,</span></span><br><span class="line">    <span class="comment">// ],</span></span><br><span class="line"></span><br><span class="line">    win: &#123;</span><br><span class="line">      <span class="comment">// win相关配置</span></span><br><span class="line">      icon: <span class="string">&quot;./favicon.ico&quot;</span>, <span class="comment">// 图标， 256 * 256 大小</span></span><br><span class="line">       <span class="string">&quot;target&quot;</span>: [<span class="comment">// 利用nsis制作安装程序</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">&quot;target&quot;</span>: <span class="string">&quot;nsis&quot;</span>,</span><br><span class="line">        <span class="string">&quot;arch&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;ia32&quot;</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">    &#125;,</span><br><span class="line">    nsis: &#123;</span><br><span class="line">      oneClick: <span class="literal">false</span>, <span class="comment">// 是否一键安装</span></span><br><span class="line">      allowElevation: <span class="literal">true</span>, <span class="comment">// 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。</span></span><br><span class="line">      allowToChangeInstallationDirectory: <span class="literal">true</span>, <span class="comment">// 允许修改安装目录</span></span><br><span class="line">      <span class="comment">// installerIcon: &quot;./favicon.ico&quot;, // 安装图标</span></span><br><span class="line">      <span class="comment">// uninstallerIcon: &quot;./favicon.ico&quot;, // 卸载图标</span></span><br><span class="line">      <span class="comment">// installerHeaderIcon: &quot;./favicon.ico&quot;, // 安装时头部图标</span></span><br><span class="line">      createDesktopShortcut: <span class="literal">true</span>, <span class="comment">// 创建桌面图标</span></span><br><span class="line">      createStartMenuShortcut: <span class="literal">true</span>, <span class="comment">// 创建开始菜单图标</span></span><br><span class="line">      shortcutName: <span class="string">&quot;桌面助手&quot;</span>, <span class="comment">// 图标名称(项目名称)</span></span><br><span class="line">      include: <span class="string">&quot;./installer.sh&quot;</span></span><br><span class="line">      <span class="comment">// 内容如下</span></span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="installer-sh"><a href="#installer-sh" class="headerlink" title="installer.sh"></a>installer.sh</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 实现开机自启动和关闭开机自启动</span></span><br><span class="line">!macro customInstall</span><br><span class="line">  WriteRegStr HKCU <span class="string">&quot;Software\Microsoft\Windows\CurrentVersion\Run&quot;</span> <span class="string">&quot;Refrigerant&quot;</span> <span class="string">&quot;<span class="variable">$INSTDIR</span>\refrigerant.exe&quot;</span></span><br><span class="line">!macroend</span><br><span class="line">!macro customUninstall</span><br><span class="line">  DeleteRegValue HKCU <span class="string">&quot;Software\Microsoft\Windows\CurrentVersion\Run&quot;</span> <span class="string">&quot;Refrigerant&quot;</span></span><br><span class="line">!macroend</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个 installer.sh 文件似乎是一个用于创建 Electron 应用程序安装程序的脚本。其中的 !macro customInstall 和 !macro customUninstall 是自定义的宏，用于在安装和卸载过程中执行特定的操作。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#在这个脚本中，!macro customInstall 宏在安装程序时执行以下操作：</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#WriteRegStr HKCU &quot;Software\Microsoft\Windows\CurrentVersion\Run&quot; &quot;Refrigerant&quot; &quot;$INSTDIR\refrigerant.exe&quot;：这行代码将 Electron 应用程序的路径添加到 Windows 注册表的 Run 键中，以便在系统启动时自动运行。其中，HKCU 表示注册表的当前用户分支，&quot;Software\Microsoft\Windows\CurrentVersion\Run&quot; 是注册表的路径，&quot;Refrigerant&quot; 是键名，&quot;$INSTDIR\refrigerant.exe&quot; 是与该键关联的值，$INSTDIR 表示安装目录。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#而 !macro customUninstall 宏在卸载程序时执行以下操作：</span></span><br><span class="line"><span class="comment"># DeleteRegValue HKCU &quot;Software\Microsoft\Windows\CurrentVersion\Run&quot; &quot;Refrigerant&quot;：这行代码将从 Windows 注册表的 Run 键中删除与 Electron 应用程序相关的键值，从而取消自动运行的功能。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这样，当用户安装 Electron 应用程序时，它将在注册表的 Run 键中添加一个自动运行项，当用户卸载应用程序时，它将删除该自动运行项，从而实现开机自启动和关闭开机自启动的功能。</span></span><br></pre></td></tr></table></figure>
 
         
       
@@ -453,15 +456,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,7 +468,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,11 +476,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,11 +492,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">node J S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,15 +504,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">uniapp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vscode</a>
+                <a href="javascript:void(0)" class="js-tag color5">问题汇总</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,11 +532,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
+                <a href="javascript:void(0)" class="js-tag color5">hook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+                <a href="javascript:void(0)" class="js-tag color2">WeiXIn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,7 +544,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,11 +564,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
+                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">谷歌浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color3">谷歌浏览器相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,11 +580,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">画图</a>
+                <a href="javascript:void(0)" class="js-tag color3">网址</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,11 +588,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">画图</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网址</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目相关</a>
               </li>
             
             <div class="clearfix"></div>
